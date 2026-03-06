@@ -1,0 +1,74 @@
+{
+  "schools": [
+    {
+      "id": "sh001",
+      "name": "上海中学",
+      "district": "xuhui",
+      "type": "市重点",
+      "address": "上海市徐汇区百色路989号",
+      "phone": "021-64553500",
+      "website": "http://www.shs.cn",
+      "admission_score_2025": 710,
+      "admission_score_2024": 708,
+      "admission_score_2023": 705,
+      "features": ["科技创新", "国际课程", "竞赛强校"],
+      "description": "上海中学是上海市重点中学，以科技创新和国际课程著称，历年中考录取分数线居全市前列。"
+    },
+    {
+      "id": "sh002", 
+      "name": "华东师范大学第二附属中学",
+      "district": "pudong",
+      "type": "市重点",
+      "address": "上海市浦东新区晨晖路555号",
+      "phone": "021-50838600",
+      "website": "http://www.hsefz.cn",
+      "admission_score_2025": 708,
+      "admission_score_2024": 706,
+      "admission_score_2023": 703,
+      "features": ["理科实验班", "科技创新", "竞赛强校"],
+      "description": "华师大二附中是上海市知名重点中学，理科实验班和科技创新教育成果显著。"
+    },
+    {
+      "id": "sh003",
+      "name": "复旦大学附属中学",
+      "district": "yangpu",
+      "type": "市重点", 
+      "address": "上海市杨浦区国权路243号",
+      "phone": "021-65643377",
+      "website": "http://www.fdfz.cn",
+      "admission_score_2025": 705,
+      "admission_score_2024": 703,
+      "admission_score_2023": 700,
+      "features": ["人文素养", "综合素质", "大学衔接"],
+      "description": "复旦附中依托复旦大学资源，注重学生人文素养和综合素质培养。"
+    },
+    {
+      "id": "sh004",
+      "name": "交大附中",
+      "district": "baoshan",
+      "type": "市重点",
+      "address": "上海市宝山区殷高路42号",
+      "phone": "021-66751111",
+      "website": "http://www.jdfz.edu.cn",
+      "admission_score_2025": 702,
+      "admission_score_2024": 700,
+      "admission_score_2023": 698,
+      "features": ["工程科技", "创新实验", "竞赛培养"],
+      "description": "交大附中依托上海交通大学资源，工程科技和创新实验教育特色鲜明。"
+    },
+    {
+      "id": "sh005",
+      "name": "格致中学",
+      "district": "huangpu",
+      "type": "市重点",
+      "address": "上海市黄浦区广西北路66号",
+      "phone": "021-63512255",
+      "website": "http://www.gezhi.sh.cn",
+      "admission_score_2025": 695,
+      "admission_score_2024": 693,
+      "admission_score_2023": 690,
+      "features": ["理科特色", "历史名校", "全面发展"],
+      "description": "格致中学是上海历史悠久的名校，理科教育和全面发展并重。"
+    }
+  ]
+}
