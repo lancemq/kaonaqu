@@ -257,10 +257,10 @@ a {
     color: var(--ink);
 }
 
-body[data-page="home"] .top-links a[href="/index.html"],
-body[data-page="news"] .top-links a[href="/news.html"],
-body[data-page="schools"] .top-links a[href="/schools.html"],
-body[data-page="knowledge"] .top-links a[href="/knowledge/index.html"] {
+body[data-page="home"] .top-links a[href="/"],
+body[data-page="news"] .top-links a[href="/news"],
+body[data-page="schools"] .top-links a[href="/schools"],
+body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     background: linear-gradient(135deg, rgba(47, 91, 234, 0.14), rgba(20, 125, 116, 0.12));
     color: var(--ink);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
