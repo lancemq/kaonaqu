@@ -1,5 +1,6 @@
 const DATASET_NAMES = ['districts', 'schools', 'policies', 'news'];
 const DEFAULT_PREFIX = process.env.BLOB_DATA_PREFIX || 'runtime-data';
+const DEFAULT_ACCESS = process.env.BLOB_ACCESS || 'private';
 
 function hasBlobToken() {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
@@ -18,7 +19,7 @@ async function uploadDataToBlob(datasets, prefix = DEFAULT_PREFIX) {
     }
 
     const blob = await put(`${prefix}/${name}.json`, JSON.stringify(payload, null, 2), {
-      access: 'public',
+      access: DEFAULT_ACCESS,
       addRandomSuffix: false,
       contentType: 'application/json; charset=utf-8',
       token: process.env.BLOB_READ_WRITE_TOKEN
@@ -48,7 +49,15 @@ async function loadDataFromBlob(prefix = DEFAULT_PREFIX) {
       throw new Error(`Blob 中缺少 ${name}.json`);
     }
 
-    const response = await fetch(blob.url, { cache: 'no-store' });
+    const headers = {};
+    if (process.env.BLOB_READ_WRITE_TOKEN) {
+      headers.Authorization = `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`;
+    }
+
+    const response = await fetch(blob.url, {
+      cache: 'no-store',
+      headers
+    });
     if (!response.ok) {
       throw new Error(`读取 Blob 数据失败: ${name}.json`);
     }
@@ -62,6 +71,7 @@ async function loadDataFromBlob(prefix = DEFAULT_PREFIX) {
 module.exports = {
   DATASET_NAMES,
   DEFAULT_PREFIX,
+  DEFAULT_ACCESS,
   hasBlobToken,
   loadDataFromBlob,
   uploadDataToBlob
