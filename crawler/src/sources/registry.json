@@ -120,5 +120,88 @@
     "seedUrls": [],
     "frequency": "manual",
     "notes": "仅在官方字段缺失时补充，不覆盖官方来源字段。"
+  },
+  {
+    "id": "xiaohongshu-shanghai-school-signals",
+    "name": "小红书上海升学与学校公开内容",
+    "type": "social",
+    "authority": "social",
+    "platform": "xiaohongshu",
+    "host": "www.xiaohongshu.com",
+    "entryUrl": "",
+    "seedUrls": [],
+    "frequency": "manual",
+    "region": "shanghai",
+    "keywords": [
+      "上海中考",
+      "上海高考",
+      "上海学校",
+      "上海招生",
+      "上海校园开放日"
+    ],
+    "collectionMode": "manual_public_metadata",
+    "notes": "仅导入上海地区公开可访问内容的标题、摘要、来源链接和时间，不抓取需登录或受限内容。"
+  },
+  {
+    "id": "douyin-shanghai-school-signals",
+    "name": "抖音上海升学与学校公开内容",
+    "type": "social",
+    "authority": "social",
+    "platform": "douyin",
+    "host": "www.douyin.com",
+    "entryUrl": "",
+    "seedUrls": [],
+    "frequency": "manual",
+    "region": "shanghai",
+    "keywords": [
+      "上海中考",
+      "上海高考",
+      "上海高中",
+      "上海初中",
+      "上海学校探校"
+    ],
+    "collectionMode": "manual_public_metadata",
+    "notes": "仅导入上海地区公开视频/图文的元数据与摘要，用作新闻线索、学校补充信息和活动动态。"
+  },
+  {
+    "id": "bilibili-shanghai-school-signals",
+    "name": "哔哩哔哩上海升学与学校公开内容",
+    "type": "social",
+    "authority": "social",
+    "platform": "bilibili",
+    "host": "www.bilibili.com",
+    "entryUrl": "",
+    "seedUrls": [],
+    "frequency": "manual",
+    "region": "shanghai",
+    "keywords": [
+      "上海中考",
+      "上海高考",
+      "上海学校",
+      "上海择校"
+    ],
+    "collectionMode": "manual_public_metadata",
+    "notes": "适合作为学校介绍、家长经验和公开讲座等补充来源，仅保留公开元数据。"
+  },
+  {
+    "id": "wechat-shanghai-school-signals",
+    "name": "微信公众号上海教育与学校公开内容",
+    "type": "social",
+    "authority": "social",
+    "platform": "wechat",
+    "host": "mp.weixin.qq.com",
+    "entryUrl": "",
+    "seedUrls": [],
+    "frequency": "manual",
+    "region": "shanghai",
+    "keywords": [
+      "上海中考",
+      "上海高考",
+      "上海学校",
+      "招生简章",
+      "校园开放日"
+    ],
+    "collectionMode": "manual_public_metadata",
+    "notes": "适合补充学校开放日、讲座、招生宣讲等公开图文信息，但仍以官方站点为主来源。"
   }
 ]

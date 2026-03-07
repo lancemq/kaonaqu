@@ -90,12 +90,13 @@ function mergeSchoolRecords(records) {
 }
 
 async function processSchoolData() {
-  const [forumSchools, officialSchools, juniorSchools] = await Promise.all([
+  const [forumSchools, officialSchools, juniorSchools, socialSchools] = await Promise.all([
     readOptionalJson('forum-schools.json'),
     readOptionalJson('official-schools.json'),
-    readOptionalJson('junior-schools-tier.json')
+    readOptionalJson('junior-schools-tier.json'),
+    readOptionalJson('social-schools.json')
   ]);
-  const normalized = [...forumSchools, ...officialSchools, ...juniorSchools].map((school) => normalizeSchool({
+  const normalized = [...forumSchools, ...officialSchools, ...juniorSchools, ...socialSchools].map((school) => normalizeSchool({
     ...school,
     features: [],
     source: school.source,
@@ -109,9 +110,10 @@ async function processSchoolData() {
 }
 
 async function processPolicyData() {
-  const [communityPolicies, officialPolicies] = await Promise.all([
+  const [communityPolicies, officialPolicies, socialPolicies] = await Promise.all([
     readOptionalJson('admission-discussions.json'),
-    readOptionalJson('official-policies.json')
+    readOptionalJson('official-policies.json'),
+    readOptionalJson('social-policies.json')
   ]);
   const normalizedCommunityPolicies = communityPolicies.map((discussion, index) => normalizePolicy({
     id: `policy-${index + 1}`,
@@ -131,7 +133,13 @@ async function processPolicyData() {
     sourceUrl: policy.sourceUrl,
     crawledAt: policy.crawledAt
   }, index));
-  const policies = dedupeById([...normalizedOfficialPolicies, ...normalizedCommunityPolicies]).sort((left, right) => {
+  const normalizedSocialPolicies = socialPolicies.map((policy, index) => normalizePolicy({
+    ...policy,
+    source: policy.source,
+    sourceUrl: policy.sourceUrl,
+    crawledAt: policy.crawledAt
+  }, index + normalizedOfficialPolicies.length + normalizedCommunityPolicies.length));
+  const policies = dedupeById([...normalizedOfficialPolicies, ...normalizedSocialPolicies, ...normalizedCommunityPolicies]).sort((left, right) => {
     return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
   });
 
@@ -140,13 +148,23 @@ async function processPolicyData() {
 }
 
 async function processNewsData() {
-  const officialNews = await readOptionalJson('official-news.json');
-  const news = dedupeById(officialNews.map((item, index) => normalizeNews({
+  const [officialNews, socialNews] = await Promise.all([
+    readOptionalJson('official-news.json'),
+    readOptionalJson('social-news.json')
+  ]);
+  const normalizedOfficialNews = officialNews.map((item, index) => normalizeNews({
     ...item,
     source: item.source,
     sourceUrl: item.sourceUrl,
     crawledAt: item.crawledAt
-  }, index))).sort((left, right) => {
+  }, index));
+  const normalizedSocialNews = socialNews.map((item, index) => normalizeNews({
+    ...item,
+    source: item.source,
+    sourceUrl: item.sourceUrl,
+    crawledAt: item.crawledAt
+  }, index + normalizedOfficialNews.length));
+  const news = dedupeById([...normalizedOfficialNews, ...normalizedSocialNews]).sort((left, right) => {
     return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
   });
 

@@ -42,7 +42,11 @@ const SOURCE_TYPE_MAP = {
   '家长帮论坛': 'community',
   '升学帮': 'third_party',
   '学而思社区': 'third_party',
-  '双子学爸数据社（搜狐）': 'third_party'
+  '双子学爸数据社（搜狐）': 'third_party',
+  '小红书': 'social',
+  '抖音': 'social',
+  '哔哩哔哩': 'social',
+  '微信公众号': 'social'
 };
 
 function slugify(value) {
@@ -140,7 +144,20 @@ function buildSchoolTags(raw, schoolStage, tier) {
 }
 
 function inferSourceType(value) {
-  return SOURCE_TYPE_MAP[cleanString(value)] || 'unknown';
+  const name = cleanString(value);
+  if (!name) {
+    return 'unknown';
+  }
+
+  if (SOURCE_TYPE_MAP[name]) {
+    return SOURCE_TYPE_MAP[name];
+  }
+
+  if (name.includes('小红书') || name.includes('抖音') || name.includes('哔哩') || name.includes('微信')) {
+    return 'social';
+  }
+
+  return 'unknown';
 }
 
 function normalizeSource(raw) {
@@ -164,6 +181,9 @@ function inferConfidence(sourceName) {
   }
   if (sourceType === 'community') {
     return 0.6;
+  }
+  if (sourceType === 'social') {
+    return 0.62;
   }
   return 0.5;
 }
