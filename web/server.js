@@ -7,8 +7,10 @@ const { URL } = require('url');
 
 const PORT = Number(process.env.PORT || 8080);
 const HOST = process.env.HOST || '127.0.0.1';
-const WEB_DIR = __dirname;
+const SITE_DIR = path.join(__dirname, '..');
 const DATA_DIR = path.join(__dirname, '..', 'data');
+const BLOCKED_PATH_PREFIXES = ['/api/', '/data/', '/crawler/', '/shared/', '/scripts/', '/web/'];
+const BLOCKED_EXACT_PATHS = ['/api', '/data', '/crawler', '/shared', '/scripts', '/web', '/package.json', '/vercel.json'];
 
 const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
@@ -41,13 +43,54 @@ function sendJson(res, statusCode, payload) {
   res.end(JSON.stringify(payload));
 }
 
-function serveStatic(reqPath, res) {
-  const relativePath = reqPath === '/' ? 'index.html' : reqPath.slice(1);
-  const filePath = path.normalize(path.join(WEB_DIR, relativePath));
+function isBlockedStaticPath(reqPath) {
+  return BLOCKED_EXACT_PATHS.includes(reqPath)
+    || BLOCKED_PATH_PREFIXES.some((prefix) => reqPath.startsWith(prefix))
+    || path.basename(reqPath).startsWith('.');
+}
 
-  if (!filePath.startsWith(WEB_DIR)) {
+function resolveStaticFile(reqPath) {
+  const normalizedPath = reqPath === '/' ? '/index.html' : reqPath;
+  const trimmedPath = normalizedPath.replace(/\/+$/, '');
+  const relativeBase = trimmedPath.replace(/^\/+/, '');
+  const candidates = [];
+
+  if (!relativeBase) {
+    candidates.push('index.html');
+  } else {
+    candidates.push(relativeBase);
+    if (!path.extname(relativeBase)) {
+      candidates.push(`${relativeBase}.html`);
+      candidates.push(path.join(relativeBase, 'index.html'));
+    }
+  }
+
+  for (const candidate of candidates) {
+    const filePath = path.normalize(path.join(SITE_DIR, candidate));
+    if (!filePath.startsWith(SITE_DIR)) {
+      continue;
+    }
+
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+      return filePath;
+    }
+  }
+
+  return null;
+}
+
+function serveStatic(reqPath, res) {
+  if (isBlockedStaticPath(reqPath)) {
     res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('403 Forbidden');
+    return;
+  }
+
+  const filePath = resolveStaticFile(reqPath);
+
+  if (!filePath) {
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('404 Not Found');
     return;
   }
 
