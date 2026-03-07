@@ -4,51 +4,5 @@
     "api/**/*.js": {
       "includeFiles": "data/*.json"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/web/index.html"
-    },
-    {
-      "source": "/index.html",
-      "destination": "/web/index.html"
-    },
-    {
-      "source": "/news",
-      "destination": "/web/news.html"
-    },
-    {
-      "source": "/news.html",
-      "destination": "/web/news.html"
-    },
-    {
-      "source": "/schools",
-      "destination": "/web/schools.html"
-    },
-    {
-      "source": "/schools.html",
-      "destination": "/web/schools.html"
-    },
-    {
-      "source": "/knowledge",
-      "destination": "/web/knowledge/index.html"
-    },
-    {
-      "source": "/knowledge/",
-      "destination": "/web/knowledge/index.html"
-    },
-    {
-      "source": "/knowledge/:path*",
-      "destination": "/web/knowledge/:path*"
-    },
-    {
-      "source": "/styles.css",
-      "destination": "/web/styles.css"
-    },
-    {
-      "source": "/script.js",
-      "destination": "/web/script.js"
-    }
-  ]
+  }
 }
