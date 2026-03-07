@@ -9,11 +9,12 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs').promises;
 const path = require('path');
+const { RAW_DIR } = require('../utils/paths');
 
 class ShanghaiEducationCrawler {
   constructor() {
     this.baseUrl = 'http://edu.sh.gov.cn';
-    this.outputDir = path.join(__dirname, '../../data/raw');
+    this.outputDir = RAW_DIR;
     this.headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     };
