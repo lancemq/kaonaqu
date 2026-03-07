@@ -8,6 +8,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 const EducationForumsCrawler = require('./crawlers/education-forums');
+const { processAllData } = require('./process-data');
 
 async function main() {
   console.log('🚀 开始执行"考哪去"爬虫任务...');
@@ -29,10 +30,15 @@ async function main() {
     const schools = await forumsCrawler.crawlSchoolInfo();
     const discussions = await forumsCrawler.crawlAdmissionDiscussions();
 
+    console.log('🧱 步骤2: 处理并发布结构化数据...\n');
+    const processed = await processAllData();
+
     // 汇总结果
     const summary = {
       totalSchools: schools.length,
       totalDiscussions: discussions.length,
+      publishedSchools: processed.schools.length,
+      publishedPolicies: processed.policies.length,
       crawledAt: new Date().toISOString(),
       status: 'success'
     };
@@ -44,6 +50,7 @@ async function main() {
 
     console.log('\n✅ 爬虫任务完成!');
     console.log(`📊 总计抓取: ${schools.length} 所学校, ${discussions.length} 条讨论`);
+    console.log(`📦 已发布: ${processed.districts.length} 个区, ${processed.schools.length} 所学校, ${processed.policies.length} 条政策`);
     console.log(`📁 数据保存在: ${outputDir}`);
     
   } catch (error) {

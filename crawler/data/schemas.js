@@ -1,61 +1,56 @@
-// 数据模式定义
-const schoolSchema = {
-  type: 'object',
+const districtSchema = {
+  required: ['id', 'name', 'description', 'schoolCount', 'policyCount', 'latestPolicyTitle'],
   properties: {
-    id: { type: 'string' },
-    name: { type: 'string' },
-    district: { type: 'string' },
-    address: { type: 'string' },
-    phone: { type: 'string' },
-    website: { type: 'string' },
-    type: { type: 'string' }, // 重点中学、普通中学、职业学校等
-    level: { type: 'string' }, // 市重点、区重点、普通
-    features: { type: 'array', items: { type: 'string' } },
-    admissionScore: { type: 'number' },
-    enrollmentPlan: { type: 'object' },
-    createdAt: { type: 'string' },
-    updatedAt: { type: 'string' }
-  },
-  required: ['id', 'name', 'district']
+    id: 'string',
+    name: 'string',
+    description: 'string',
+    schoolCount: 'number',
+    policyCount: 'number',
+    latestPolicyTitle: 'string'
+  }
+};
+
+const schoolSchema = {
+  required: ['id', 'name', 'districtId', 'districtName', 'schoolStage', 'schoolStageLabel', 'schoolType', 'schoolTypeLabel', 'source'],
+  properties: {
+    id: 'string',
+    name: 'string',
+    districtId: 'string',
+    districtName: 'string',
+    schoolStage: 'string',
+    schoolStageLabel: 'string',
+    schoolType: 'string',
+    schoolTypeLabel: 'string',
+    tier: 'string',
+    address: 'string',
+    phone: 'string',
+    website: 'string',
+    admissionNotes: 'string',
+    features: 'string[]',
+    tags: 'string[]',
+    source: 'object',
+    updatedAt: 'string|null'
+  }
 };
 
 const policySchema = {
-  type: 'object',
+  required: ['id', 'title', 'districtId', 'districtName', 'year', 'summary', 'source'],
   properties: {
-    id: { type: 'string' },
-    title: { type: 'string' },
-    district: { type: 'string' },
-    year: { type: 'number' },
-    content: { type: 'string' },
-    sourceUrl: { type: 'string' },
-    publishDate: { type: 'string' },
-    effectiveDate: { type: 'string' },
-    tags: { type: 'array', items: { type: 'string' } },
-    createdAt: { type: 'string' },
-    updatedAt: { type: 'string' }
-  },
-  required: ['id', 'title', 'year', 'content']
-};
-
-const districtSchema = {
-  type: 'object',
-  properties: {
-    id: { type: 'string' },
-    name: { type: 'string' },
-    educationBureau: { type: 'string' },
-    website: { type: 'string' },
-    contact: { type: 'string' },
-    schoolCount: { type: 'number' },
-    keySchools: { type: 'array', items: { type: 'string' } },
-    admissionPolicy: { type: 'string' },
-    createdAt: { type: 'string' },
-    updatedAt: { type: 'string' }
-  },
-  required: ['id', 'name']
+    id: 'string',
+    title: 'string',
+    districtId: 'string',
+    districtName: 'string',
+    year: 'number',
+    summary: 'string',
+    content: 'string',
+    source: 'object',
+    publishedAt: 'string|null',
+    updatedAt: 'string|null'
+  }
 };
 
 module.exports = {
-  schoolSchema,
+  districtSchema,
   policySchema,
-  districtSchema
+  schoolSchema
 };

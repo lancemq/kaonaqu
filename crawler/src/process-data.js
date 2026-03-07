@@ -1,101 +1,177 @@
 #!/usr/bin/env node
 
-/**
- * 数据处理脚本 - 将原始爬取数据转换为结构化格式
- */
-
 const fs = require('fs').promises;
 const path = require('path');
+const {
+  buildDistricts,
+  normalizePolicy,
+  normalizeSchool
+} = require('../../shared/data-schema');
+
+const RAW_DIR = path.join(__dirname, '../data/raw');
+const PROCESSED_DIR = path.join(__dirname, '../data/processed');
+const ROOT_DATA_DIR = path.join(__dirname, '../../data');
+
+async function readJson(filename) {
+  const content = await fs.readFile(path.join(RAW_DIR, filename), 'utf8');
+  return JSON.parse(content);
+}
+
+async function readOptionalJson(filename) {
+  try {
+    return await readJson(filename);
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return [];
+    }
+    throw error;
+  }
+}
+
+async function writeJson(dir, filename, payload) {
+  await fs.mkdir(dir, { recursive: true });
+  await fs.writeFile(path.join(dir, filename), JSON.stringify(payload, null, 2));
+}
+
+function dedupeById(records) {
+  const seen = new Set();
+  return records.filter((record) => {
+    if (seen.has(record.id)) {
+      return false;
+    }
+    seen.add(record.id);
+    return true;
+  });
+}
+
+function countFilledSchoolFields(school) {
+  return [
+    school.name,
+    school.address,
+    school.phone,
+    school.website,
+    school.admissionNotes,
+    ...(school.features || [])
+  ].filter((value) => Array.isArray(value) ? value.length > 0 : Boolean(value)).length;
+}
+
+function mergeSchoolRecords(records) {
+  const byId = new Map();
+
+  records.forEach((record) => {
+    const existing = byId.get(record.id);
+    if (!existing) {
+      byId.set(record.id, record);
+      return;
+    }
+
+    const currentScore = countFilledSchoolFields(record);
+    const existingScore = countFilledSchoolFields(existing);
+    const primary = currentScore > existingScore ? record : existing;
+    const secondary = primary === record ? existing : record;
+
+    byId.set(record.id, {
+      ...secondary,
+      ...primary,
+      features: primary.features.length ? primary.features : secondary.features,
+      tags: primary.tags.length ? primary.tags : secondary.tags,
+      source: (primary.source?.confidence || 0) >= (secondary.source?.confidence || 0) ? primary.source : secondary.source,
+      updatedAt: primary.updatedAt || secondary.updatedAt || null
+    });
+  });
+
+  return Array.from(byId.values()).sort((left, right) => {
+    if (left.districtId !== right.districtId) {
+      return left.districtId.localeCompare(right.districtId);
+    }
+    return left.name.localeCompare(right.name, 'zh-CN');
+  });
+}
 
 async function processSchoolData() {
-  console.log('🔄 开始处理学校数据...');
-  
-  try {
-    // 读取原始数据
-    const rawDataPath = path.join(__dirname, '../data/raw/forum-schools.json');
-    const rawData = await fs.readFile(rawDataPath, 'utf8');
-    const schools = JSON.parse(rawData);
-    
-    // 处理和标准化数据
-    const processedSchools = schools.map(school => ({
-      id: school.name.replace(/\s+/g, '-').toLowerCase(),
-      name: school.name,
-      district: school.district,
-      type: school.type,
-      address: school.address,
-      phone: school.phone,
-      website: school.website,
-      admissionInfo: school.admissionInfo,
-      rating: school.rating,
-      source: school.source,
-      crawledAt: school.crawledAt,
-      // 添加更多字段
-      enrollmentCount: Math.floor(Math.random() * 500) + 300, // 模拟招生人数
-      tuition: school.district.includes('国际') ? '150000-200000' : '免费', // 学费
-      establishmentYear: 1950 + Math.floor(Math.random() * 70), // 建校年份
-      keyFeatures: ['重点中学', '师资优秀', '升学率高'] // 特色
-    }));
-    
-    // 保存处理后的数据
-    const outputPath = path.join(__dirname, '../data/processed/schools.json');
-    await fs.mkdir(path.dirname(outputPath), { recursive: true });
-    await fs.writeFile(outputPath, JSON.stringify(processedSchools, null, 2));
-    
-    console.log(`✅ 成功处理 ${processedSchools.length} 所学校数据`);
-    return processedSchools;
-    
-  } catch (error) {
-    console.error('❌ 处理学校数据失败:', error.message);
-    return [];
-  }
+  const [forumSchools, officialSchools, juniorSchools] = await Promise.all([
+    readOptionalJson('forum-schools.json'),
+    readOptionalJson('official-schools.json'),
+    readOptionalJson('junior-schools-tier.json')
+  ]);
+  const normalized = [...forumSchools, ...officialSchools, ...juniorSchools].map((school) => normalizeSchool({
+    ...school,
+    features: [],
+    source: school.source,
+    sourceUrl: school.sourceUrl,
+    crawledAt: school.crawledAt
+  }));
+  const schools = mergeSchoolRecords(normalized);
+
+  await writeJson(PROCESSED_DIR, 'schools.json', schools);
+  return schools;
 }
 
 async function processPolicyData() {
-  console.log('🔄 开始处理政策数据...');
-  
-  try {
-    const rawDataPath = path.join(__dirname, '../data/raw/admission-discussions.json');
-    const rawData = await fs.readFile(rawDataPath, 'utf8');
-    const discussions = JSON.parse(rawData);
-    
-    const processedPolicies = discussions.map((discussion, index) => ({
-      id: `policy-${index + 1}`,
-      title: discussion.title,
-      content: discussion.content,
-      author: discussion.author,
-      date: discussion.date,
-      url: discussion.url,
-      source: discussion.source,
-      crawledAt: discussion.crawledAt,
-      category: 'admission-policy',
-      tags: ['中考', '招生', '政策解读']
-    }));
-    
-    const outputPath = path.join(__dirname, '../data/processed/policies.json');
-    await fs.mkdir(path.dirname(outputPath), { recursive: true });
-    await fs.writeFile(outputPath, JSON.stringify(processedPolicies, null, 2));
-    
-    console.log(`✅ 成功处理 ${processedPolicies.length} 条政策数据`);
-    return processedPolicies;
-    
-  } catch (error) {
-    console.error('❌ 处理政策数据失败:', error.message);
-    return [];
-  }
+  const [communityPolicies, officialPolicies] = await Promise.all([
+    readOptionalJson('admission-discussions.json'),
+    readOptionalJson('official-policies.json')
+  ]);
+  const normalizedCommunityPolicies = communityPolicies.map((discussion, index) => normalizePolicy({
+    id: `policy-${index + 1}`,
+    title: discussion.title,
+    districtId: 'all',
+    summary: discussion.content,
+    content: discussion.content,
+    year: new Date(discussion.date).getUTCFullYear(),
+    source: discussion.source,
+    sourceUrl: discussion.url,
+    crawledAt: discussion.crawledAt,
+    publishedAt: discussion.date
+  }, index));
+  const normalizedOfficialPolicies = officialPolicies.map((policy, index) => normalizePolicy({
+    ...policy,
+    source: policy.source,
+    sourceUrl: policy.sourceUrl,
+    crawledAt: policy.crawledAt
+  }, index));
+  const policies = dedupeById([...normalizedOfficialPolicies, ...normalizedCommunityPolicies]).sort((left, right) => {
+    return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
+  });
+
+  await writeJson(PROCESSED_DIR, 'policies.json', policies);
+  return policies;
+}
+
+async function publishData({ districts, schools, policies }) {
+  await writeJson(ROOT_DATA_DIR, 'districts.json', districts);
+  await writeJson(ROOT_DATA_DIR, 'schools.json', schools);
+  await writeJson(ROOT_DATA_DIR, 'policies.json', policies);
+}
+
+async function processAllData() {
+  const [schools, policies] = await Promise.all([
+    processSchoolData(),
+    processPolicyData()
+  ]);
+
+  const districts = buildDistricts(schools, policies);
+  await writeJson(PROCESSED_DIR, 'districts.json', districts);
+  await publishData({ districts, schools, policies });
+
+  return { districts, schools, policies };
 }
 
 async function main() {
-  console.log('🚀 开始数据处理任务...');
-  
-  await processSchoolData();
-  await processPolicyData();
-  
-  console.log('✅ 数据处理任务完成!');
-  console.log('📁 处理后的数据保存在: /root/.openclaw/workspace/projects/kaonaqu/crawler/data/processed');
+  const result = await processAllData();
+  console.log('数据处理完成');
+  console.log(`districts=${result.districts.length}, schools=${result.schools.length}, policies=${result.policies.length}`);
 }
 
 if (require.main === module) {
-  main().catch(console.error);
+  main().catch((error) => {
+    console.error('数据处理失败:', error.message);
+    process.exit(1);
+  });
 }
 
-module.exports = { processSchoolData, processPolicyData };
+module.exports = {
+  processAllData,
+  processPolicyData,
+  processSchoolData
+};
