@@ -218,6 +218,33 @@ function normalizePolicy(raw, index = 0) {
   };
 }
 
+function normalizeNews(raw, index = 0) {
+  const source = normalizeSource(raw);
+  const title = cleanString(raw.title);
+  const examType = cleanString(raw.examType || raw.exam_type || inferNewsExamType(title, raw.content || raw.summary));
+  const category = cleanString(raw.category || (examType === 'gaokao' ? '高考' : '中考'));
+
+  return {
+    id: cleanString(raw.id) || slugify(`${category}-${title || index}`),
+    title,
+    category,
+    examType: examType === 'gaokao' ? 'gaokao' : 'zhongkao',
+    summary: cleanString(raw.summary || raw.content),
+    content: cleanString(raw.content),
+    publishedAt: raw.publishedAt || raw.publishDate || raw.date || null,
+    updatedAt: raw.updatedAt || source.crawledAt || raw.publishDate || raw.date || null,
+    source
+  };
+}
+
+function inferNewsExamType(title, content) {
+  const text = cleanString(`${title} ${content}`).toLowerCase();
+  if (text.includes('高考') || text.includes('春考') || text.includes('志愿') || text.includes('高校')) {
+    return 'gaokao';
+  }
+  return 'zhongkao';
+}
+
 function buildDistricts(schools, policies) {
   return DISTRICT_CATALOG.map((district) => {
     const districtSchools = schools.filter((school) => school.districtId === district.id);
@@ -256,6 +283,7 @@ module.exports = {
   normalizeDistrictId,
   normalizeDistrictName,
   normalizePolicy,
+  normalizeNews,
   normalizeSchool,
   normalizeSource,
   slugify,

@@ -6,6 +6,8 @@ class KaonaquApp {
         this.news = [];
         this.activeDistrict = 'all';
         this.searchQuery = '';
+        this.activeNewsFilter = 'all';
+        this.pageType = document.body.dataset.page || 'home';
     }
 
     async init() {
@@ -67,45 +69,55 @@ class KaonaquApp {
         const resetButton = document.getElementById('reset-filters');
         const searchTrigger = document.getElementById('search-trigger');
         const quickChips = document.querySelectorAll('[data-query]');
+        const newsFilters = document.querySelectorAll('[data-news-filter]');
 
-        districtFilter.addEventListener('change', (event) => {
-            this.activeDistrict = event.target.value;
-            this.render();
-        });
-
-        searchInput.addEventListener('input', (event) => {
-            this.searchQuery = event.target.value.trim().toLowerCase();
-            this.render();
-        });
-
-        searchInput.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                document.getElementById('schools').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-
-        searchTrigger.addEventListener('click', () => {
-            this.searchQuery = searchInput.value.trim().toLowerCase();
-            this.render();
-            document.getElementById('schools').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-
-        resetButton.addEventListener('click', () => {
-            this.activeDistrict = 'all';
-            this.searchQuery = '';
-            districtFilter.value = 'all';
-            searchInput.value = '';
-            this.render();
-        });
-
-        quickChips.forEach((button) => {
-            button.addEventListener('click', () => {
-                const query = button.dataset.query || '';
-                this.searchQuery = query.toLowerCase();
-                searchInput.value = query;
+        if (districtFilter && searchInput && resetButton && searchTrigger) {
+            districtFilter.addEventListener('change', (event) => {
+                this.activeDistrict = event.target.value;
                 this.render();
-                document.getElementById('schools').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            searchInput.addEventListener('input', (event) => {
+                this.searchQuery = event.target.value.trim().toLowerCase();
+                this.render();
+            });
+
+            searchInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    document.getElementById('schools')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+
+            searchTrigger.addEventListener('click', () => {
+                this.searchQuery = searchInput.value.trim().toLowerCase();
+                this.render();
+                document.getElementById('schools')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            resetButton.addEventListener('click', () => {
+                this.activeDistrict = 'all';
+                this.searchQuery = '';
+                districtFilter.value = 'all';
+                searchInput.value = '';
+                this.render();
+            });
+
+            quickChips.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const query = button.dataset.query || '';
+                    this.searchQuery = query.toLowerCase();
+                    searchInput.value = query;
+                    this.render();
+                    document.getElementById('schools')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        }
+
+        newsFilters.forEach((button) => {
+            button.addEventListener('click', () => {
+                this.activeNewsFilter = button.dataset.newsFilter || 'all';
+                this.render();
             });
         });
     }
@@ -138,9 +150,35 @@ class KaonaquApp {
         return school.admissionInfo || school.admissionNotes || '暂无';
     }
 
+    getPolicyExamType(policy) {
+        const haystack = [
+            policy.title,
+            policy.summary,
+            policy.content
+        ].join(' ').toLowerCase();
+
+        if (haystack.includes('高考') || haystack.includes('高校') || haystack.includes('春考')) {
+            return 'gaokao';
+        }
+
+        return 'zhongkao';
+    }
+
     getSchoolFeatureTags(school) {
         const tags = [...this.getSchoolTags(school), ...this.getSchoolFeatures(school)];
         return tags.slice(0, 4);
+    }
+
+    getFilteredNews() {
+        return this.news
+            .filter((item) => this.activeNewsFilter === 'all' || item.examType === this.activeNewsFilter)
+            .sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')));
+    }
+
+    getLatestNewsByExamType(examType) {
+        return this.news
+            .filter((item) => item.examType === examType)
+            .sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')))[0] || null;
     }
 
     getFilteredSchools() {
@@ -185,18 +223,44 @@ class KaonaquApp {
     render() {
         const schools = this.getFilteredSchools();
         const policies = this.getFilteredPolicies();
+        const news = this.getFilteredNews();
 
-        this.renderDistrictFilter();
-        this.renderNews();
-        this.renderDistricts();
-        this.renderSchools(schools);
+        if (this.pageType === 'home') {
+            this.renderHome(news, schools);
+            return;
+        }
+
+        if (this.pageType === 'news') {
+            this.renderNewsPage(news, policies);
+            return;
+        }
+
+        this.renderSchoolsPage(schools, policies, news);
+    }
+
+    renderHome(news, schools) {
+        this.renderHomeNews(news);
+        this.renderHomeSchools(schools);
+    }
+
+    renderNewsPage(news, policies) {
+        this.renderNews(news, 'news-featured', 'news-list', 5);
         this.renderPolicies(policies);
-        this.renderStats(schools.length, policies.length);
-        this.renderResultSummary(schools.length, policies.length);
+    }
+
+    renderSchoolsPage(schools, policies, news) {
+        this.renderDistrictFilter();
+        this.renderDistricts('district-list');
+        this.renderSchools(schools, 'school-list');
+        this.renderStats(schools.length);
+        this.renderResultSummary(schools.length, news.length);
     }
 
     renderDistrictFilter() {
         const select = document.getElementById('district-filter');
+        if (!select) {
+            return;
+        }
         const options = [
             '<option value="all">全部区域</option>',
             ...this.districts.map((district) => `<option value="${district.id}">${district.name || district.districtName}</option>`)
@@ -206,14 +270,15 @@ class KaonaquApp {
         select.value = this.activeDistrict;
     }
 
-    renderDistricts() {
-        const container = document.getElementById('district-list');
+    renderDistricts(containerId = 'district-list') {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            return;
+        }
         container.innerHTML = this.districts.map((district) => {
             const activeClass = this.activeDistrict === district.id ? ' district-card-active' : '';
             const name = district.name || district.districtName;
             const count = district.schoolCount || district.count || 0;
-            const policyCount = district.policyCount || 0;
-            const latestPolicyTitle = district.latestPolicyTitle || '';
             return `
                 <button class="district-card${activeClass}" data-district-id="${district.id}" type="button">
                     <div class="district-card-header">
@@ -221,7 +286,7 @@ class KaonaquApp {
                         <span>${count} 所学校</span>
                     </div>
                     <p>${district.description || '暂无说明'}</p>
-                    <p class="district-meta">政策 ${policyCount} 条${latestPolicyTitle ? ` · 最新：${latestPolicyTitle}` : ''}</p>
+                    <p class="district-meta">点击查看该区域学校列表与学校特色。</p>
                 </button>
             `;
         }).join('');
@@ -235,22 +300,39 @@ class KaonaquApp {
         });
     }
 
-    renderNews() {
-        const container = document.getElementById('news-list');
-        if (!container) {
+    renderNews(news, featuredId, listId, listCount) {
+        const container = document.getElementById(listId);
+        const featured = document.getElementById(featuredId);
+        if (!container || !featured) {
             return;
         }
 
-        if (!this.news.length) {
+        document.querySelectorAll('[data-news-filter]').forEach((button) => {
+            button.classList.toggle('news-filter-active', button.dataset.newsFilter === this.activeNewsFilter);
+        });
+
+        if (!news.length) {
+            featured.innerHTML = '';
             container.innerHTML = this.getEmptyState();
             return;
         }
 
-        const items = [...this.news]
-            .sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')))
-            .slice(0, 6);
+        const [headline, ...items] = news;
 
-        container.innerHTML = items.map((item) => `
+        featured.innerHTML = `
+            <article class="featured-news-card">
+                <div class="news-meta-row">
+                    <span class="pill">${headline.category}</span>
+                    <span class="news-date">${headline.publishedAt || '暂无日期'}</span>
+                </div>
+                <h3>${headline.title}</h3>
+                <p class="news-summary">${headline.summary || '暂无摘要'}</p>
+                <p class="news-source">来源：${headline.source?.name || '未知'} · 可信度 ${this.formatConfidence(headline.source?.confidence)}</p>
+                ${headline.source?.url ? `<a class="text-link" href="${headline.source.url}" target="_blank" rel="noreferrer">查看原文</a>` : ''}
+            </article>
+        `;
+
+        container.innerHTML = items.slice(0, listCount).map((item) => `
             <article class="news-card">
                 <div class="news-card-header">
                     <div class="news-meta-row">
@@ -266,12 +348,41 @@ class KaonaquApp {
         `).join('');
     }
 
-    renderSchools(schools) {
-        const container = document.getElementById('school-list');
+    renderHomeNews(news) {
+        this.renderNews(news, 'home-news-featured', 'home-news-list', 3);
+    }
+
+    renderHomeSchools(schools) {
+        this.renderDistrictPreviews();
+        const topSchools = schools.slice(0, 6);
+        this.renderSchools(topSchools, 'home-school-list');
+    }
+
+    renderDistrictPreviews() {
+        const container = document.getElementById('home-district-list');
+        if (!container) {
+            return;
+        }
+
+        container.innerHTML = this.districts.slice(0, 6).map((district) => `
+            <article class="district-preview-card">
+                <h3>${district.name || district.districtName}</h3>
+                <p>${district.description || '暂无说明'}</p>
+            </article>
+        `).join('');
+    }
+
+    renderSchools(schools, containerId = 'school-list') {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            return;
+        }
         if (!schools.length) {
             container.innerHTML = this.getEmptyState();
             return;
         }
+
+        const schoolContextNews = this.getLatestNewsByExamType('zhongkao');
 
         container.innerHTML = schools.map((school) => `
             <article class="school-card">
@@ -286,6 +397,7 @@ class KaonaquApp {
                 <div class="school-highlights">
                     ${this.getSchoolFeatureTags(school).map((feature) => `<span class="meta-chip">${feature}</span>`).join('') || '<span class="meta-chip meta-chip-muted">暂无特色标签</span>'}
                 </div>
+                ${schoolContextNews ? `<p class="school-link-note">关联动态：${schoolContextNews.title}</p>` : ''}
                 <details class="school-details">
                     <summary>查看详细信息</summary>
                     <dl class="school-meta">
@@ -326,6 +438,9 @@ class KaonaquApp {
 
     renderPolicies(policies) {
         const container = document.getElementById('policy-list');
+        if (!container) {
+            return;
+        }
         if (!policies.length) {
             container.innerHTML = this.getEmptyState();
             return;
@@ -340,6 +455,7 @@ class KaonaquApp {
                 <p class="policy-summary">${policy.summary || '暂无摘要'}</p>
                 <p class="policy-meta">${policy.year || ''}${policy.publishedAt ? ` | ${policy.publishedAt}` : ''}</p>
                 <p class="policy-content">${policy.content || ''}</p>
+                ${this.getLatestNewsByExamType(this.getPolicyExamType(policy)) ? `<p class="policy-link-note">相关动态：${this.getLatestNewsByExamType(this.getPolicyExamType(policy)).title}</p>` : ''}
                 <p class="policy-source">来源：${policy.source?.name || '未知'} · 可信度 ${this.formatConfidence(policy.source?.confidence)}</p>
             </article>
         `).join('');
@@ -350,18 +466,27 @@ class KaonaquApp {
         return `${Math.round(score * 100)}%`;
     }
 
-    renderStats(schoolCount, policyCount) {
-        document.getElementById('school-count').textContent = String(schoolCount);
-        document.getElementById('policy-count').textContent = String(policyCount);
+    renderStats(schoolCount) {
+        const schoolCountNode = document.getElementById('school-count');
+        const districtCountNode = document.getElementById('district-count');
+        if (!schoolCountNode || !districtCountNode) {
+            return;
+        }
+        schoolCountNode.textContent = String(schoolCount);
+        districtCountNode.textContent = String(this.districts.length);
     }
 
-    renderResultSummary(schoolCount, policyCount) {
+    renderResultSummary(schoolCount, newsCount) {
+        const summaryNode = document.getElementById('result-summary');
+        if (!summaryNode) {
+            return;
+        }
         const districtName = this.activeDistrict === 'all'
             ? '全上海'
             : (this.districts.find((district) => district.id === this.activeDistrict)?.name || this.activeDistrict);
         const queryLabel = this.searchQuery ? `关键词“${this.searchQuery}”` : '全部关键词';
-        document.getElementById('result-summary').textContent =
-            `当前范围：${districtName}，匹配 ${schoolCount} 所学校，关联 ${policyCount} 条政策，搜索条件为 ${queryLabel}。`;
+        summaryNode.textContent =
+            `当前范围：${districtName}，匹配 ${schoolCount} 所学校，搜索条件为 ${queryLabel}。相关政策与考试动态已统一收纳到新闻政策模块，当前共可查看 ${newsCount} 条新闻。`;
     }
 
     getEmptyState() {

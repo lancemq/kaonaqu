@@ -5,56 +5,64 @@
  * 执行所有爬虫任务并汇总数据
  */
 
-const fs = require('fs').promises;
 const path = require('path');
-const EducationForumsCrawler = require('./crawlers/education-forums');
+const crawlOfficialPolicies = require('./crawlers/policies-official');
+const crawlOfficialNews = require('./crawlers/news-official');
+const crawlOfficialSchools = require('./crawlers/schools-official');
+const crawlSchoolWebsites = require('./crawlers/schools-websites');
+const crawlCommunityFallback = require('./crawlers/community-fallback');
 const { processAllData } = require('./process-data');
+const { ensureDir, writeJson } = require('./utils/io');
 
 async function main() {
-  console.log('🚀 开始执行"考哪去"爬虫任务...');
-  console.log('📅 日期:', new Date().toISOString().split('T')[0]);
-  console.log('🎯 目标: 收集上海中考相关信息\n');
+  console.log('开始执行 "考哪去" 采集任务...');
+  console.log('日期:', new Date().toISOString().split('T')[0]);
+  console.log('目标: 官方优先收集新闻、政策和学校信息\n');
 
   try {
-    // 创建输出目录
     const outputDir = path.join(__dirname, '../data/raw');
-    await fs.mkdir(outputDir, { recursive: true });
+    await ensureDir(outputDir);
 
-    // 初始化爬虫
-    const forumsCrawler = new EducationForumsCrawler();
-    await forumsCrawler.initialize();
+    console.log('步骤1: 采集官方政策...');
+    const policies = await crawlOfficialPolicies();
 
-    // 执行爬虫任务
-    console.log('🔍 步骤1: 爬取教育论坛和第三方平台...\n');
-    
-    const schools = await forumsCrawler.crawlSchoolInfo();
-    const discussions = await forumsCrawler.crawlAdmissionDiscussions();
+    console.log('步骤2: 采集官方新闻...');
+    const news = await crawlOfficialNews();
 
-    console.log('🧱 步骤2: 处理并发布结构化数据...\n');
+    console.log('步骤3: 整理官方学校名录...');
+    const schools = await crawlOfficialSchools();
+
+    console.log('步骤4: 尝试补充学校官网详情...');
+    const schoolWebsiteDetails = await crawlSchoolWebsites();
+
+    console.log('步骤5: 采集社区补充数据...');
+    const community = await crawlCommunityFallback();
+
+    console.log('步骤6: 处理并发布结构化数据...\n');
     const processed = await processAllData();
 
-    // 汇总结果
     const summary = {
-      totalSchools: schools.length,
-      totalDiscussions: discussions.length,
+      officialPolicies: policies.length,
+      officialNews: news.length,
+      officialSchools: schools.length,
+      schoolWebsiteDetails: schoolWebsiteDetails.length,
+      fallbackSchools: community.schools.length,
+      fallbackDiscussions: community.discussions.length,
       publishedSchools: processed.schools.length,
       publishedPolicies: processed.policies.length,
+      publishedNews: processed.news.length,
       crawledAt: new Date().toISOString(),
       status: 'success'
     };
 
-    await fs.writeFile(
-      path.join(outputDir, 'crawl-summary.json'),
-      JSON.stringify(summary, null, 2)
-    );
+    await writeJson(path.join(outputDir, 'crawl-summary.json'), summary);
 
-    console.log('\n✅ 爬虫任务完成!');
-    console.log(`📊 总计抓取: ${schools.length} 所学校, ${discussions.length} 条讨论`);
-    console.log(`📦 已发布: ${processed.districts.length} 个区, ${processed.schools.length} 所学校, ${processed.policies.length} 条政策`);
-    console.log(`📁 数据保存在: ${outputDir}`);
+    console.log('\n采集任务完成');
+    console.log(`已发布: ${processed.districts.length} 个区, ${processed.schools.length} 所学校, ${processed.policies.length} 条政策, ${processed.news.length} 条新闻`);
+    console.log(`原始数据目录: ${outputDir}`);
     
   } catch (error) {
-    console.error('❌ 爬虫执行失败:', error.message);
+    console.error('采集任务失败:', error.message);
     process.exit(1);
   }
 }
