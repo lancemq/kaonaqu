@@ -3,6 +3,7 @@ class KaonaquApp {
         this.districts = [];
         this.schools = [];
         this.policies = [];
+        this.news = [];
         this.activeDistrict = 'all';
         this.searchQuery = '';
     }
@@ -25,15 +26,17 @@ class KaonaquApp {
     }
 
     async loadData() {
-        const [districts, schools, policies] = await Promise.all([
+        const [districts, schools, policies, news] = await Promise.all([
             this.fetchJson('/api/districts'),
             this.fetchJson('/api/schools'),
-            this.fetchJson('/api/policies')
+            this.fetchJson('/api/policies'),
+            this.fetchJson('/api/news')
         ]);
 
         this.districts = districts;
         this.schools = schools;
         this.policies = policies;
+        this.news = news;
     }
 
     async fetchJson(url) {
@@ -184,6 +187,7 @@ class KaonaquApp {
         const policies = this.getFilteredPolicies();
 
         this.renderDistrictFilter();
+        this.renderNews();
         this.renderDistricts();
         this.renderSchools(schools);
         this.renderPolicies(policies);
@@ -229,6 +233,37 @@ class KaonaquApp {
                 this.render();
             });
         });
+    }
+
+    renderNews() {
+        const container = document.getElementById('news-list');
+        if (!container) {
+            return;
+        }
+
+        if (!this.news.length) {
+            container.innerHTML = this.getEmptyState();
+            return;
+        }
+
+        const items = [...this.news]
+            .sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')))
+            .slice(0, 6);
+
+        container.innerHTML = items.map((item) => `
+            <article class="news-card">
+                <div class="news-card-header">
+                    <div class="news-meta-row">
+                        <span class="pill">${item.category}</span>
+                        <span class="news-date">${item.publishedAt || '暂无日期'}</span>
+                    </div>
+                    <h3>${item.title}</h3>
+                </div>
+                <p class="news-summary">${item.summary || '暂无摘要'}</p>
+                <p class="news-source">来源：${item.source?.name || '未知'} · 可信度 ${this.formatConfidence(item.source?.confidence)}</p>
+                ${item.source?.url ? `<a class="text-link" href="${item.source.url}" target="_blank" rel="noreferrer">查看原文</a>` : ''}
+            </article>
+        `).join('');
     }
 
     renderSchools(schools) {

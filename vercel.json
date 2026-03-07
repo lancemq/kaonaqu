@@ -1,0 +1,25 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/web/index.html"
+    },
+    {
+      "source": "/knowledge",
+      "destination": "/web/knowledge/index.html"
+    },
+    {
+      "source": "/knowledge/:path*",
+      "destination": "/web/knowledge/:path*"
+    },
+    {
+      "source": "/styles.css",
+      "destination": "/web/styles.css"
+    },
+    {
+      "source": "/script.js",
+      "destination": "/web/script.js"
+    }
+  ]
+}

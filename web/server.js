@@ -26,7 +26,8 @@ function loadData() {
   return {
     districts: readJson('districts.json'),
     schools: readJson('schools.json'),
-    policies: readJson('policies.json')
+    policies: readJson('policies.json'),
+    news: readJson('news.json')
   };
 }
 
@@ -80,7 +81,7 @@ function createServer() {
       }
 
       try {
-        const { districts, schools, policies } = loadData();
+        const { districts, schools, policies, news } = loadData();
         const districtId = requestUrl.searchParams.get('district');
         const query = (requestUrl.searchParams.get('q') || '').trim().toLowerCase();
 
@@ -100,6 +101,11 @@ function createServer() {
             ? policies.filter((policy) => policy.districtId === 'all' || policy.districtId === districtId)
             : policies;
           sendJson(res, 200, results);
+          return;
+        }
+
+        if (pathname === '/api/news') {
+          sendJson(res, 200, news);
           return;
         }
 
@@ -138,10 +144,10 @@ if (require.main === module) {
   const server = createServer();
 
   server.listen(PORT, HOST, () => {
-    const { districts, schools, policies } = loadData();
+    const { districts, schools, policies, news } = loadData();
     console.log('考哪去 MVP 已启动');
     console.log(`地址: http://${HOST}:${PORT}`);
-    console.log(`数据: ${districts.length} 个区, ${schools.length} 所学校, ${policies.length} 条政策`);
+    console.log(`数据: ${districts.length} 个区, ${schools.length} 所学校, ${policies.length} 条政策, ${news.length} 条新闻`);
   });
 
   process.on('SIGINT', () => {
