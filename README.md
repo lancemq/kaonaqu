@@ -114,7 +114,26 @@ kaonaqu/
 当前 [vercel.json](/Users/maqi/project/msy/kaonaqu/vercel.json) 主要负责两件事：
 
 - 开启 `cleanUrls`
-- 确保 `api/*` 打包时包含 `data/*.json`
+- 确保 `api/*` 和定时任务打包时包含所需数据与 crawler 文件
+
+### 定时采集任务
+
+项目已配置 Vercel Cron，每天凌晨 `1:00`（Asia/Shanghai）执行一次信息获取任务。
+
+注意：
+
+- Vercel Cron 使用 UTC，因此配置写成 `0 17 * * *`
+- 该任务会触发 `/api/cron-refresh`
+- 任务顺序是：采集 -> 处理 -> 校验 -> 上传最新 JSON 到 Vercel Blob
+- 前端 API 会优先读取 Blob 中的最新数据，读取失败时才回退到仓库内置数据
+
+需要在 Vercel 项目中配置的环境变量：
+
+- `CRON_SECRET`
+- `BLOB_READ_WRITE_TOKEN`
+- `BLOB_DATA_PREFIX`（可选，默认是 `runtime-data`）
+
+如果你设置了 `CRON_SECRET`，Vercel Cron 会自动在请求里带上 `Authorization: Bearer <CRON_SECRET>`。
 
 如果部署后页面正常但接口报错，优先检查 `/api/districts`、`/api/schools`、`/api/news` 是否返回 200。
 

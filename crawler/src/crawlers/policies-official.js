@@ -3,8 +3,8 @@ const registry = require('../sources/registry.json');
 const { fetchWithRetry } = require('../utils/fetch');
 const { collectLinks, extractArticle, cleanText } = require('../utils/html');
 const { readJson, writeJson } = require('../utils/io');
+const { RAW_DIR } = require('../utils/paths');
 
-const RAW_DIR = path.join(__dirname, '../../data/raw');
 const OUTPUT_FILE = path.join(RAW_DIR, 'official-policies.json');
 
 async function crawlOfficialPolicies() {

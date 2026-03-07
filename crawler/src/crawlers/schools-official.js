@@ -1,7 +1,7 @@
 const path = require('path');
 const { readJson, writeJson } = require('../utils/io');
+const { RAW_DIR } = require('../utils/paths');
 
-const RAW_DIR = path.join(__dirname, '../../data/raw');
 const OUTPUT_FILE = path.join(RAW_DIR, 'official-schools.json');
 
 async function crawlOfficialSchools() {
