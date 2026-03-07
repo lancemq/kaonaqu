@@ -4,6 +4,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const {
   buildDistricts,
+  normalizeNews,
   normalizePolicy,
   normalizeSchool
 } = require('../../shared/data-schema');
@@ -138,29 +139,46 @@ async function processPolicyData() {
   return policies;
 }
 
-async function publishData({ districts, schools, policies }) {
+async function processNewsData() {
+  const officialNews = await readOptionalJson('official-news.json');
+  const news = dedupeById(officialNews.map((item, index) => normalizeNews({
+    ...item,
+    source: item.source,
+    sourceUrl: item.sourceUrl,
+    crawledAt: item.crawledAt
+  }, index))).sort((left, right) => {
+    return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
+  });
+
+  await writeJson(PROCESSED_DIR, 'news.json', news);
+  return news;
+}
+
+async function publishData({ districts, schools, policies, news }) {
   await writeJson(ROOT_DATA_DIR, 'districts.json', districts);
   await writeJson(ROOT_DATA_DIR, 'schools.json', schools);
   await writeJson(ROOT_DATA_DIR, 'policies.json', policies);
+  await writeJson(ROOT_DATA_DIR, 'news.json', news);
 }
 
 async function processAllData() {
-  const [schools, policies] = await Promise.all([
+  const [schools, policies, news] = await Promise.all([
     processSchoolData(),
-    processPolicyData()
+    processPolicyData(),
+    processNewsData()
   ]);
 
   const districts = buildDistricts(schools, policies);
   await writeJson(PROCESSED_DIR, 'districts.json', districts);
-  await publishData({ districts, schools, policies });
+  await publishData({ districts, schools, policies, news });
 
-  return { districts, schools, policies };
+  return { districts, schools, policies, news };
 }
 
 async function main() {
   const result = await processAllData();
   console.log('数据处理完成');
-  console.log(`districts=${result.districts.length}, schools=${result.schools.length}, policies=${result.policies.length}`);
+  console.log(`districts=${result.districts.length}, schools=${result.schools.length}, policies=${result.policies.length}, news=${result.news.length}`);
 }
 
 if (require.main === module) {
@@ -172,6 +190,7 @@ if (require.main === module) {
 
 module.exports = {
   processAllData,
+  processNewsData,
   processPolicyData,
   processSchoolData
 };

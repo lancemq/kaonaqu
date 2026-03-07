@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>考哪去 - 新闻政策模块</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="news">
+    <div class="page-shell">
+        <header class="topbar" aria-label="顶部导航">
+            <a class="brand-mark" href="/index.html" aria-label="考哪去首页">
+                <span class="brand-badge" aria-hidden="true">
+                    <span class="brand-dot brand-dot-blue"></span>
+                    <span class="brand-dot brand-dot-red"></span>
+                    <span class="brand-dot brand-dot-yellow"></span>
+                    <span class="brand-dot brand-dot-green"></span>
+                </span>
+                <span class="brand-text">
+                    <strong>考哪去</strong>
+                    <span>Shanghai Zhongkao Guide</span>
+                </span>
+            </a>
+            <nav class="top-links">
+                <a href="/index.html">首页</a>
+                <a href="/news.html">新闻政策</a>
+                <a href="/schools.html">学校信息</a>
+                <a href="/knowledge/index.html">知识体系</a>
+            </nav>
+        </header>
+
+        <header class="hero">
+            <section class="search-panel page-intro-panel">
+                <nav class="breadcrumb" aria-label="面包屑导航">
+                    <a href="/index.html">首页</a>
+                    <span class="separator">/</span>
+                    <span>新闻政策</span>
+                </nav>
+                <div class="search-panel-head">
+                    <h2>新闻、头条与政策信息模块</h2>
+                    <p>集中查看上海中考、高考的考试动态、关键时间节点和官方政策文件，适合作为家长和学生的最新信息入口。</p>
+                </div>
+            </section>
+        </header>
+
+        <main class="layout">
+            <section class="panel news-panel" id="news">
+                <div class="section-heading">
+                    <h2>考试新闻</h2>
+                    <p>支持按中考和高考分类查看，头条位优先展示最近且最重要的动态。</p>
+                </div>
+                <div class="news-toolbar" aria-label="新闻分类筛选">
+                    <button class="news-filter news-filter-active" type="button" data-news-filter="all">全部</button>
+                    <button class="news-filter" type="button" data-news-filter="zhongkao">中考</button>
+                    <button class="news-filter" type="button" data-news-filter="gaokao">高考</button>
+                </div>
+                <div id="news-featured" class="featured-news"></div>
+                <div id="news-list" class="news-grid"></div>
+            </section>
+
+            <section class="panel" id="policies">
+                <div class="section-heading">
+                    <h2>政策信息</h2>
+                    <p>与考试新闻对应查看官方政策、报名通知和制度性文件。</p>
+                </div>
+                <div id="policy-list" class="policy-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <template id="empty-state-template">
+        <div class="empty-state">
+            <h3>暂无数据</h3>
+            <p>当前条件下没有匹配结果。</p>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>

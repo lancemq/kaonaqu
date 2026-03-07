@@ -1,0 +1,124 @@
+[
+  {
+    "id": "shanghai-edu-zhongzhao-policy",
+    "name": "上海市教育委员会中招政策栏目",
+    "type": "policy",
+    "authority": "official",
+    "host": "edu.sh.gov.cn",
+    "entryUrl": "https://edu.sh.gov.cn/xxgk2_zdgz_rxgkyzs_03/",
+    "seedUrls": [
+      "https://edu.sh.gov.cn/xxgk2_zdgz_rxgkyzs_03/20260227/923fcd6838744ca59c213daa3fb180fd.html",
+      "https://edu.sh.gov.cn/xxgk2_zdgz_rxgkyzs_03/20251126/27f5a2d54e414ed4b1c6a53719e67865.html",
+      "https://edu.sh.gov.cn/xxgk2_zdgz_rxgkyzs_03/20251126/fbeaa9affca540fe874ad41d75aa5110.html"
+    ],
+    "listSelectors": [
+      "a"
+    ],
+    "detailSelectors": [
+      "main",
+      ".article",
+      ".content",
+      "body"
+    ],
+    "frequency": "daily",
+    "notes": "中招工作意见、报名通知及招生制度性文件的主来源。"
+  },
+  {
+    "id": "shanghai-edu-general-school-list",
+    "name": "上海市教育委员会实验性示范性高中名单",
+    "type": "school",
+    "authority": "official",
+    "host": "edu.sh.gov.cn",
+    "entryUrl": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+    "seedUrls": [
+      "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html"
+    ],
+    "frequency": "weekly",
+    "notes": "现有 raw 学校名单主要来源页，用于采集实验性示范性高中。"
+  },
+  {
+    "id": "shanghai-edu-featured-school-list",
+    "name": "上海市教育委员会特色普通高中名单",
+    "type": "school",
+    "authority": "official",
+    "host": "edu.sh.gov.cn",
+    "entryUrl": "https://edu.sh.gov.cn/jy_zwxxgk/20240704/7c76e8de75644c62af5e4f50589f2929.html",
+    "seedUrls": [
+      "https://edu.sh.gov.cn/jy_zwxxgk/20240704/7c76e8de75644c62af5e4f50589f2929.html",
+      "https://edu.sh.gov.cn/xxgk2_zdgz_jcjy_02/20240903/78412f636224449e9ef8f8c6edfd16bb.html"
+    ],
+    "frequency": "weekly",
+    "notes": "用于补充市特色普通高中官方学校来源。"
+  },
+  {
+    "id": "shmeea-message-feed",
+    "name": "上海市教育考试院消息速递",
+    "type": "news",
+    "authority": "official",
+    "host": "www.shmeea.edu.cn",
+    "entryUrl": "https://www.shmeea.edu.cn/page/08000/",
+    "seedUrls": [
+      "https://www.shmeea.edu.cn/page/08000/20260118/20012.html",
+      "https://www.shmeea.edu.cn/page/08000/20260203/20061.html",
+      "https://www.shmeea.edu.cn/page/08000/20251118/19863.html"
+    ],
+    "listSelectors": [
+      "a"
+    ],
+    "detailSelectors": [
+      "main",
+      ".article",
+      ".content",
+      "body"
+    ],
+    "frequency": "daily",
+    "notes": "成绩发布、考试安排、报名确认等消息的主要来源。"
+  },
+  {
+    "id": "shmeea-gaokao-zizhu",
+    "name": "上海市教育考试院高考学考专科自主招生栏目",
+    "type": "news",
+    "authority": "official",
+    "host": "www.shmeea.edu.cn",
+    "entryUrl": "https://www.shmeea.edu.cn/page/02600/",
+    "seedUrls": [
+      "https://www.shmeea.edu.cn/page/02600/20260305/20085.html",
+      "https://www.shmeea.edu.cn/page/02600/20240305/18234.html",
+      "https://www.shmeea.edu.cn/page/02600/20250331/19215.html",
+      "https://www.shmeea.edu.cn/page/02600/20250402/19221.html"
+    ],
+    "listSelectors": [
+      "a"
+    ],
+    "detailSelectors": [
+      "main",
+      ".article",
+      ".content",
+      "body"
+    ],
+    "frequency": "daily",
+    "notes": "高考链路中的专科自主招生和征求志愿动态来源。"
+  },
+  {
+    "id": "school-official-websites",
+    "name": "学校官网详情页",
+    "type": "school_detail",
+    "authority": "official",
+    "host": "multi",
+    "entryUrl": "",
+    "seedUrls": [],
+    "frequency": "weekly",
+    "notes": "由学校主表中的官网字段驱动，补充电话、地址、办学特色和招生说明。"
+  },
+  {
+    "id": "community-fallback",
+    "name": "家长帮与第三方补充源",
+    "type": "fallback",
+    "authority": "community",
+    "host": "multi",
+    "entryUrl": "",
+    "seedUrls": [],
+    "frequency": "manual",
+    "notes": "仅在官方字段缺失时补充，不覆盖官方来源字段。"
+  }
+]

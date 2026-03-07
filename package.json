@@ -6,6 +6,10 @@
   "scripts": {
     "start": "node web/server.js",
     "dev": "nodemon web/server.js",
+    "crawl:policies": "node crawler/src/crawlers/policies-official.js",
+    "crawl:news": "node crawler/src/crawlers/news-official.js",
+    "crawl:schools": "node crawler/src/crawlers/schools-official.js",
+    "crawl:websites": "node crawler/src/crawlers/schools-websites.js",
     "data:process": "node crawler/src/process-data.js",
     "data:validate": "node scripts/validate-data.js",
     "crawl": "node crawler/src/index.js"

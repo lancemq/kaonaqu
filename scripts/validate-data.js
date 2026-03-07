@@ -92,15 +92,39 @@ function validatePolicies(policies) {
   return errors;
 }
 
+function validateNews(news) {
+  const errors = [];
+  const seenIds = new Set();
+
+  news.forEach((item, index) => {
+    validateRequired(item, ['id', 'title', 'category', 'examType', 'summary']).forEach((message) => {
+      errors.push(`news[${index}]: ${message}`);
+    });
+
+    if (!['zhongkao', 'gaokao'].includes(item.examType)) {
+      errors.push(`news[${index}]: invalid examType ${item.examType}`);
+    }
+
+    if (seenIds.has(item.id)) {
+      errors.push(`news[${index}]: duplicate news id ${item.id}`);
+    }
+    seenIds.add(item.id);
+  });
+
+  return errors;
+}
+
 function main() {
   const districts = readJson('districts.json');
   const schools = readJson('schools.json');
   const policies = readJson('policies.json');
+  const news = readJson('news.json');
 
   const errors = [
     ...validateDistricts(districts),
     ...validateSchools(schools),
-    ...validatePolicies(policies)
+    ...validatePolicies(policies),
+    ...validateNews(news)
   ];
 
   if (errors.length) {
@@ -109,7 +133,7 @@ function main() {
     process.exit(1);
   }
 
-  console.log(`数据校验通过: districts=${districts.length}, schools=${schools.length}, policies=${policies.length}`);
+  console.log(`数据校验通过: districts=${districts.length}, schools=${schools.length}, policies=${policies.length}, news=${news.length}`);
 }
 
 if (require.main === module) {
