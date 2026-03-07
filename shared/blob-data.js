@@ -2,6 +2,42 @@ const DATASET_NAMES = ['districts', 'schools', 'policies', 'news'];
 const DEFAULT_PREFIX = process.env.BLOB_DATA_PREFIX || 'runtime-data';
 const DEFAULT_ACCESS = process.env.BLOB_ACCESS || 'private';
 
+function getAccessCandidates() {
+  const preferred = (process.env.BLOB_ACCESS || DEFAULT_ACCESS).toLowerCase();
+  if (preferred === 'public') {
+    return ['public', 'private'];
+  }
+
+  return ['private', 'public'];
+}
+
+async function putWithCompatibleAccess(put, pathname, body) {
+  let lastError = null;
+
+  for (const access of getAccessCandidates()) {
+    try {
+      return await put(pathname, body, {
+        access,
+        addRandomSuffix: false,
+        contentType: 'application/json; charset=utf-8',
+        token: process.env.BLOB_READ_WRITE_TOKEN
+      });
+    } catch (error) {
+      lastError = error;
+      const message = String(error && error.message ? error.message : error);
+      const isAccessMismatch =
+        message.includes('Cannot use public access on a private store') ||
+        message.includes('access must be "public"');
+
+      if (!isAccessMismatch) {
+        throw error;
+      }
+    }
+  }
+
+  throw lastError;
+}
+
 function hasBlobToken() {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
@@ -18,12 +54,11 @@ async function uploadDataToBlob(datasets, prefix = DEFAULT_PREFIX) {
       return null;
     }
 
-    const blob = await put(`${prefix}/${name}.json`, JSON.stringify(payload, null, 2), {
-      access: DEFAULT_ACCESS,
-      addRandomSuffix: false,
-      contentType: 'application/json; charset=utf-8',
-      token: process.env.BLOB_READ_WRITE_TOKEN
-    });
+    const blob = await putWithCompatibleAccess(
+      put,
+      `${prefix}/${name}.json`,
+      JSON.stringify(payload, null, 2)
+    );
 
     return { name, url: blob.url };
   }));
