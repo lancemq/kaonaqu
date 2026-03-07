@@ -45,6 +45,14 @@ body {
         linear-gradient(180deg, #fffdf9 0%, var(--bg) 52%, #efe6d9 100%);
 }
 
+body[data-page="knowledge"] {
+    background:
+        repeating-linear-gradient(180deg, rgba(47, 91, 234, 0.045) 0 1px, transparent 1px 36px),
+        radial-gradient(circle at 0% 0%, rgba(47, 91, 234, 0.14), transparent 26%),
+        radial-gradient(circle at 100% 10%, rgba(216, 93, 87, 0.12), transparent 24%),
+        linear-gradient(180deg, #fffdf9 0%, #f7f1e5 54%, #ede4d4 100%);
+}
+
 a,
 button {
     font: inherit;
@@ -117,6 +125,33 @@ main {
         linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 244, 236, 0.9));
 }
 
+.intro .module-glyph-large {
+    margin-bottom: 14px;
+}
+
+.intro,
+.tips {
+    position: relative;
+    overflow: hidden;
+}
+
+.intro::before,
+.tips::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 24px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(216, 93, 87, 0.3), rgba(216, 93, 87, 0.08));
+}
+
+.intro > *,
+.tips > * {
+    position: relative;
+    z-index: 1;
+}
+
 .intro h2,
 .subjects h2,
 .tips h2,
@@ -174,6 +209,12 @@ table td {
     text-decoration: none;
     box-shadow: var(--shadow-sm), var(--shadow-inset);
     transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.subjects .subject-card {
+    background:
+        repeating-linear-gradient(180deg, rgba(47, 91, 234, 0.035) 0 1px, transparent 1px 30px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(250, 244, 236, 0.95));
 }
 
 .subject-card:hover,
@@ -309,6 +350,28 @@ footer .container {
     background:
         radial-gradient(circle at top right, rgba(20, 125, 116, 0.1), transparent 28%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 244, 236, 0.9));
+}
+
+.page-header,
+.chapter {
+    position: relative;
+}
+
+.chapter::after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(47, 91, 234, 0.08), rgba(216, 93, 87, 0.08));
+    opacity: 0.9;
+}
+
+.chapter > * {
+    position: relative;
+    z-index: 1;
 }
 
 .page-header h1 {
