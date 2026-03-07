@@ -14,6 +14,7 @@ const crawlSocialPlatforms = require('./crawlers/social-platforms');
 const crawlCommunityFallback = require('./crawlers/community-fallback');
 const { processAllData } = require('./process-data');
 const { ensureDir, writeJson } = require('./utils/io');
+const { RAW_DIR } = require('./utils/paths');
 
 async function main() {
   console.log('开始执行 "考哪去" 采集任务...');
@@ -21,7 +22,7 @@ async function main() {
   console.log('目标: 官方优先收集新闻、政策和学校信息\n');
 
   try {
-    const outputDir = path.join(__dirname, '../data/raw');
+    const outputDir = RAW_DIR;
     await ensureDir(outputDir);
 
     console.log('步骤1: 采集官方政策...');
@@ -67,15 +68,19 @@ async function main() {
     console.log('\n采集任务完成');
     console.log(`已发布: ${processed.districts.length} 个区, ${processed.schools.length} 所学校, ${processed.policies.length} 条政策, ${processed.news.length} 条新闻`);
     console.log(`原始数据目录: ${outputDir}`);
-    
+
+    return { summary, processed };
   } catch (error) {
     console.error('采集任务失败:', error.message);
-    process.exit(1);
+    throw error;
   }
 }
 
 if (require.main === module) {
-  main().catch(console.error);
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 }
 
 module.exports = { main };

@@ -1,13 +1,13 @@
 const { loadData, filterSchools } = require('../shared/api-data');
 const { sendJson, handleCors } = require('./_utils');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   if (handleCors(req, res)) {
     return;
   }
 
   try {
-    const { schools } = loadData();
+    const { schools } = await loadData();
     const districtId = req.query?.district || req.query?.districtId || null;
     sendJson(res, 200, filterSchools(schools, districtId));
   } catch (error) {

@@ -2,9 +2,8 @@ const path = require('path');
 const { fetchWithRetry } = require('../utils/fetch');
 const { extractArticle } = require('../utils/html');
 const { readJson, writeJson } = require('../utils/io');
+const { ROOT_DATA_DIR, RAW_DIR } = require('../utils/paths');
 
-const ROOT_DATA_DIR = path.join(__dirname, '../../../data');
-const RAW_DIR = path.join(__dirname, '../../data/raw');
 const OUTPUT_FILE = path.join(RAW_DIR, 'school-websites.json');
 
 async function crawlSchoolWebsites() {

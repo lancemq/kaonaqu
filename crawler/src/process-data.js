@@ -8,10 +8,7 @@ const {
   normalizePolicy,
   normalizeSchool
 } = require('../../shared/data-schema');
-
-const RAW_DIR = path.join(__dirname, '../data/raw');
-const PROCESSED_DIR = path.join(__dirname, '../data/processed');
-const ROOT_DATA_DIR = path.join(__dirname, '../../data');
+const { RAW_DIR, PROCESSED_DIR, ROOT_DATA_DIR } = require('./utils/paths');
 
 async function readJson(filename) {
   const content = await fs.readFile(path.join(RAW_DIR, filename), 'utf8');

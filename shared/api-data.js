@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { loadDataFromBlob, hasBlobToken } = require('./blob-data');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 
@@ -7,13 +8,28 @@ function readJson(filename) {
   return JSON.parse(fs.readFileSync(path.join(DATA_DIR, filename), 'utf8'));
 }
 
-function loadData() {
+function loadLocalData() {
   return {
     districts: readJson('districts.json'),
     schools: readJson('schools.json'),
     policies: readJson('policies.json'),
     news: readJson('news.json')
   };
+}
+
+async function loadData() {
+  if (hasBlobToken()) {
+    try {
+      const blobData = await loadDataFromBlob();
+      if (blobData) {
+        return blobData;
+      }
+    } catch (error) {
+      // Fallback to bundled local data when remote data is unavailable.
+    }
+  }
+
+  return loadLocalData();
 }
 
 function filterSchools(schools, districtId) {
@@ -51,6 +67,7 @@ function searchSchools(schools, query) {
 
 module.exports = {
   loadData,
+  loadLocalData,
   filterSchools,
   filterPolicies,
   searchSchools

@@ -1,9 +1,10 @@
 const path = require('path');
 const registry = require('../sources/registry.json');
 const { readJson, writeJson } = require('../utils/io');
+const { RAW_DIR, DEFAULT_RAW_DIR } = require('../utils/paths');
 
-const RAW_DIR = path.join(__dirname, '../../data/raw');
 const INPUT_FILE = path.join(RAW_DIR, 'shanghai-social-platform-input.json');
+const DEFAULT_INPUT_FILE = path.join(DEFAULT_RAW_DIR, 'shanghai-social-platform-input.json');
 const NEWS_FILE = path.join(RAW_DIR, 'social-news.json');
 const POLICIES_FILE = path.join(RAW_DIR, 'social-policies.json');
 const SCHOOLS_FILE = path.join(RAW_DIR, 'social-schools.json');
@@ -92,7 +93,7 @@ function normalizeBaseRecord(item) {
 async function crawlSocialPlatforms() {
   const socialSources = registry.filter((item) => item.authority === 'social' && item.region === 'shanghai');
   const allowedPlatforms = new Set(socialSources.map((item) => cleanText(item.platform).toLowerCase()));
-  const input = await readJson(INPUT_FILE, []);
+  const input = await readJson(INPUT_FILE, await readJson(DEFAULT_INPUT_FILE, []));
 
   const filtered = input.filter((item) => {
     const platform = cleanText(item.platform).toLowerCase();
