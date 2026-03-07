@@ -1,65 +1,1277 @@
 [
   {
-    "id": "上海中学",
-    "name": "上海中学",
-    "district": "徐汇区",
-    "type": "市重点",
-    "address": "上海市徐汇区百色路989号",
-    "phone": "021-12345678",
-    "website": "http://www.shs.cn",
-    "admissionInfo": "招收全市优秀初中毕业生，需参加自主招生考试",
-    "rating": 4.8,
-    "source": "家长帮论坛",
-    "crawledAt": "2026-03-06T12:22:48.322Z",
-    "enrollmentCount": 369,
-    "tuition": "免费",
-    "establishmentYear": 2004,
-    "keyFeatures": [
-      "重点中学",
-      "师资优秀",
-      "升学率高"
-    ]
+    "id": "baoshan-行知中学",
+    "name": "行知中学",
+    "districtId": "baoshan",
+    "districtName": "宝山区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
   },
   {
-    "id": "华东师范大学第二附属中学",
+    "id": "changning-民办新华初级中学",
+    "name": "民办新华初级中学",
+    "districtId": "changning",
+    "districtName": "长宁区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为长宁区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "民办",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "changning-上海市第三女子中学",
+    "name": "上海市第三女子中学",
+    "districtId": "changning",
+    "districtName": "长宁区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "changning-延安初级中学",
+    "name": "延安初级中学",
+    "districtId": "changning",
+    "districtName": "长宁区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为长宁区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "changning-延安中学",
+    "name": "延安中学",
+    "districtId": "changning",
+    "districtName": "长宁区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "fengxian-上海市奉贤中学",
+    "name": "上海市奉贤中学",
+    "districtId": "fengxian",
+    "districtName": "奉贤区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "featured_high_school",
+    "schoolTypeLabel": "市特色普通高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市特色普通高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/jy_zwxxgk/20240704/7c76e8de75644c62af5e4f50589f2929.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "hongkou-复兴高级中学",
+    "name": "复兴高级中学",
+    "districtId": "hongkou",
+    "districtName": "虹口区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "hongkou-华东师范大学第一附属中学",
+    "name": "华东师范大学第一附属中学",
+    "districtId": "hongkou",
+    "districtName": "虹口区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "huangpu-大境中学",
+    "name": "大境中学",
+    "districtId": "huangpu",
+    "districtName": "黄浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "huangpu-大同中学",
+    "name": "大同中学",
+    "districtId": "huangpu",
+    "districtName": "黄浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "huangpu-格致中学",
+    "name": "格致中学",
+    "districtId": "huangpu",
+    "districtName": "黄浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "huangpu-卢湾中学",
+    "name": "卢湾中学",
+    "districtId": "huangpu",
+    "districtName": "黄浦区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为黄浦区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "huangpu-民办立达中学",
+    "name": "民办立达中学",
+    "districtId": "huangpu",
+    "districtName": "黄浦区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为黄浦区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "民办",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "huangpu-民办明珠中学",
+    "name": "民办明珠中学",
+    "districtId": "huangpu",
+    "districtName": "黄浦区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为黄浦区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "民办",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "huangpu-向明中学",
+    "name": "向明中学",
+    "districtId": "huangpu",
+    "districtName": "黄浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "jiading-嘉定区第一中学",
+    "name": "嘉定区第一中学",
+    "districtId": "jiading",
+    "districtName": "嘉定区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "jingan-静安外国语中学",
+    "name": "静安外国语中学",
+    "districtId": "jingan",
+    "districtName": "静安区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为静安区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "外语特色",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "jingan-上实双语学校",
+    "name": "上实双语学校",
+    "districtId": "jingan",
+    "districtName": "静安区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为静安区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "双语",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "jingan-市北初级中学",
+    "name": "市北初级中学",
+    "districtId": "jingan",
+    "districtName": "静安区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为静安区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "jingan-市西中学",
+    "name": "市西中学",
+    "districtId": "jingan",
+    "districtName": "静安区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "jingan-育才中学",
+    "name": "育才中学",
+    "districtId": "jingan",
+    "districtName": "静安区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "minhang-七宝中学",
+    "name": "七宝中学",
+    "districtId": "minhang",
+    "districtName": "闵行区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "pudong-华东师范大学第二附属中学",
     "name": "华东师范大学第二附属中学",
-    "district": "浦东新区",
-    "type": "市重点",
+    "districtId": "pudong",
+    "districtName": "浦东新区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_key",
+    "schoolTypeLabel": "市重点",
+    "tier": "",
     "address": "上海市浦东新区晨晖路555号",
     "phone": "021-87654321",
-    "website": "http://www.hsefz.cn",
-    "admissionInfo": "招收全市优秀初中毕业生，有国际班和普通班",
-    "rating": 4.7,
-    "source": "升学帮",
-    "crawledAt": "2026-03-06T12:22:48.322Z",
-    "enrollmentCount": 589,
-    "tuition": "免费",
-    "establishmentYear": 2006,
-    "keyFeatures": [
-      "重点中学",
-      "师资优秀",
-      "升学率高"
-    ]
+    "website": "http://www.hsefz.cn/",
+    "admissionNotes": "招收全市优秀初中毕业生，有国际班和普通班",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T12:22:48.322Z"
   },
   {
-    "id": "复旦大学附属中学",
+    "id": "pudong-建平实验中学",
+    "name": "建平实验中学",
+    "districtId": "pudong",
+    "districtName": "浦东新区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为浦东新区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "初中",
+      "A梯队",
+      "实验"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "pudong-建平中学",
+    "name": "建平中学",
+    "districtId": "pudong",
+    "districtName": "浦东新区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "pudong-进才中学",
+    "name": "进才中学",
+    "districtId": "pudong",
+    "districtName": "浦东新区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "pudong-上海民办新竹园中学",
+    "name": "上海民办新竹园中学",
+    "districtId": "pudong",
+    "districtName": "浦东新区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为浦东新区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "民办",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "pudong-上海实验学校东校",
+    "name": "上海实验学校东校",
+    "districtId": "pudong",
+    "districtName": "浦东新区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为浦东新区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "初中",
+      "A梯队",
+      "实验"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "pudong-张江集团中学",
+    "name": "张江集团中学",
+    "districtId": "pudong",
+    "districtName": "浦东新区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为浦东新区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "民办",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "putuo-曹杨第二中学",
+    "name": "曹杨第二中学",
+    "districtId": "putuo",
+    "districtName": "普陀区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "putuo-晋元高级中学",
+    "name": "晋元高级中学",
+    "districtId": "putuo",
+    "districtName": "普陀区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "qingpu-青浦区第一中学",
+    "name": "青浦区第一中学",
+    "districtId": "qingpu",
+    "districtName": "青浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "featured_high_school",
+    "schoolTypeLabel": "市特色普通高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市特色普通高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/jy_zwxxgk/20240704/7c76e8de75644c62af5e4f50589f2929.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "songjiang-松江区第二中学",
+    "name": "松江区第二中学",
+    "districtId": "songjiang",
+    "districtName": "松江区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "xuhui-上海民办华育中学",
+    "name": "上海民办华育中学",
+    "districtId": "xuhui",
+    "districtName": "徐汇区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为徐汇区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "民办",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "xuhui-上海师范大学附属中学",
+    "name": "上海师范大学附属中学",
+    "districtId": "xuhui",
+    "districtName": "徐汇区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "xuhui-上海中学",
+    "name": "上海中学",
+    "districtId": "xuhui",
+    "districtName": "徐汇区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_key",
+    "schoolTypeLabel": "市重点",
+    "tier": "",
+    "address": "上海市徐汇区百色路989号",
+    "phone": "021-12345678",
+    "website": "http://www.shs.cn/",
+    "admissionNotes": "招收全市优秀初中毕业生，需参加自主招生考试",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T12:22:48.322Z"
+  },
+  {
+    "id": "xuhui-世外中学",
+    "name": "世外中学",
+    "districtId": "xuhui",
+    "districtName": "徐汇区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为徐汇区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "双语",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "xuhui-位育中学",
+    "name": "位育中学",
+    "districtId": "xuhui",
+    "districtName": "徐汇区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "xuhui-西南位育中学",
+    "name": "西南位育中学",
+    "districtId": "xuhui",
+    "districtName": "徐汇区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为徐汇区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "yangpu-复旦大学附属中学",
     "name": "复旦大学附属中学",
-    "district": "杨浦区",
-    "type": "市重点",
+    "districtId": "yangpu",
+    "districtName": "杨浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_key",
+    "schoolTypeLabel": "市重点",
+    "tier": "",
     "address": "上海市杨浦区国权路383号",
     "phone": "021-23456789",
-    "website": "http://www.fdfz.cn",
-    "admissionInfo": "主要面向杨浦区招生，部分名额面向全市",
-    "rating": 4.9,
-    "source": "学而思社区",
-    "crawledAt": "2026-03-06T12:22:48.322Z",
-    "enrollmentCount": 454,
-    "tuition": "免费",
-    "establishmentYear": 2015,
-    "keyFeatures": [
-      "重点中学",
-      "师资优秀",
-      "升学率高"
-    ]
+    "website": "http://www.fdfz.cn/",
+    "admissionNotes": "主要面向杨浦区招生，部分名额面向全市",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T12:22:48.322Z"
+  },
+  {
+    "id": "yangpu-控江中学",
+    "name": "控江中学",
+    "districtId": "yangpu",
+    "districtName": "杨浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "yangpu-兰生复旦中学",
+    "name": "兰生复旦中学",
+    "districtId": "yangpu",
+    "districtName": "杨浦区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为杨浦区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "民办",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "yangpu-民办上外双语学校",
+    "name": "民办上外双语学校",
+    "districtId": "yangpu",
+    "districtName": "杨浦区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为杨浦区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "民办",
+      "双语",
+      "外语特色",
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "yangpu-上海存志学校",
+    "name": "上海存志学校",
+    "districtId": "yangpu",
+    "districtName": "杨浦区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "优质初中",
+    "tier": "A",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "根据公开整理文章，列为杨浦区 A 梯队初中。",
+    "features": [],
+    "tags": [
+      "初中",
+      "A梯队"
+    ],
+    "source": {
+      "name": "双子学爸数据社（搜狐）",
+      "type": "third_party",
+      "url": "https://www.sohu.com/a/877366353_121911157",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "yangpu-上海交通大学附属中学",
+    "name": "上海交通大学附属中学",
+    "districtId": "yangpu",
+    "districtName": "杨浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "yangpu-杨浦高级中学",
+    "name": "杨浦高级中学",
+    "districtId": "yangpu",
+    "districtName": "杨浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "municipal_model",
+    "schoolTypeLabel": "市实验性示范性高中",
+    "tier": "",
+    "address": "",
+    "phone": "",
+    "website": "",
+    "admissionNotes": "上海市实验性示范性高中。",
+    "features": [],
+    "tags": [
+      "高中"
+    ],
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zhxxgk/20041028/0015-xxgk2_zhxxgk-303835.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-06T00:00:00.000Z"
   }
 ]

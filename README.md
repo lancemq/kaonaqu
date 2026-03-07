@@ -1,97 +1,87 @@
-# 考哪去 - 上海中考指南
+# 考哪去 MVP
 
-这是一个专注于上海中考信息的综合性平台，提供各区中学列表、招生政策和相关议题讨论。
+一个聚焦上海中考信息的本地可运行原型，当前提供：
 
-## 项目目标
+- 上海各区概览
+- 学校列表与关键词搜索
+- 招生政策摘要展示
+- 从 crawler 到前端的单向数据发布链路
 
-- 📚 **学校信息**：展示上海市各区中学详细信息
-- 📋 **招生政策**：汇总最新中考招生政策和变化
-- 💬 **议题讨论**：提供相关教育议题的讨论空间
-- 📊 **数据分析**：提供录取分数线、升学率等数据
-- 🗺️ **区域对比**：支持不同区域教育资源对比
+## 当前架构
 
-## 功能模块
+项目已经收敛为一套最小闭环实现：
 
-### 1. 学校数据库
-- 按区域分类（黄浦、徐汇、长宁、静安、普陀、虹口、杨浦、闵行、宝山、嘉定、浦东、金山、松江、青浦、奉贤、崇明）
-- 学校基本信息（地址、电话、官网、办学性质）
-- 特色班型和课程设置
-- 历年录取分数线
-- 升学率和重点大学录取情况
+- `web/`：Node.js 原生 HTTP 服务 + 静态前端
+- `data/`：页面和 API 消费的统一 JSON 数据
+- `crawler/`：原始抓取、结构化处理和发布
+- `shared/`：共享 schema 与归一化逻辑
+- `scripts/`：基础数据校验脚本
 
-### 2. 政策中心
-- 最新中考政策解读
-- 各区招生细则
-- 名额分配到校政策
-- 自主招生政策
-- 政策变化历史记录
+当前版本不包含数据库、登录系统或评论系统，目标是先保证数据展示链路可运行。
 
-### 3. 互动社区
-- 家长经验分享
-- 学生学习交流
-- 教育专家答疑
-- 热门话题讨论
+## 快速开始
 
-### 4. 数据可视化
-- 区域教育资源分布图
-- 学校排名和对比
-- 录取趋势分析
-- 政策影响评估
-
-## 技术栈
-
-- **前端**: React + TypeScript + Ant Design
-- **后端**: Node.js + Express
-- **数据库**: PostgreSQL + Redis
-- **部署**: Docker + Nginx
-- **数据采集**: Python爬虫 + 人工审核
-
-## 项目结构
-
+```bash
+npm run data:process
+npm run data:validate
+npm start
 ```
+
+启动后访问：
+
+```text
+http://localhost:8080
+```
+
+## 可用接口
+
+- `GET /api/districts`
+- `GET /api/schools`
+- `GET /api/schools?district=xuhui`
+- `GET /api/policies`
+- `GET /api/policies?district=pudong`
+- `GET /api/search?q=复旦`
+
+## 数据链路
+
+```text
+crawler/data/raw
+  -> crawler/src/process-data.js
+  -> crawler/data/processed
+  -> data/
+  -> web/server.js API
+  -> web/script.js 前端展示
+```
+
+## 统一字段
+
+- `district`: `id`, `name`, `description`, `schoolCount`, `policyCount`, `latestPolicyTitle`
+- `school`: `id`, `name`, `districtId`, `districtName`, `schoolType`, `schoolTypeLabel`, `address`, `phone`, `website`, `admissionNotes`, `features`, `source`, `updatedAt`
+- `policy`: `id`, `title`, `districtId`, `districtName`, `year`, `summary`, `content`, `source`, `publishedAt`, `updatedAt`
+
+`source` 统一为：
+
+- `name`
+- `type`
+- `url`
+- `crawledAt`
+- `confidence`
+
+## 目录说明
+
+```text
 kaonaqu/
-├── README.md
-├── package.json
-├── docker-compose.yml
-├── src/
-│   ├── client/          # 前端代码
-│   ├── server/          # 后端代码  
-│   └── scripts/         # 数据处理脚本
-├── data/
-│   ├── schools/         # 学校数据
-│   ├── policies/        # 政策文件
-│   └── discussions/     # 讨论内容
-└── docs/                # 项目文档
+├── data/           # 前端和 API 使用的数据文件
+├── shared/         # 共享 schema 和归一化逻辑
+├── scripts/        # 数据校验脚本
+├── web/            # MVP 服务端与静态页面
+├── crawler/        # 数据采集与处理流水线
+└── package.json    # 启动脚本
 ```
 
-## 开发计划
+## 常用命令
 
-### 第一阶段：基础框架搭建
-- [ ] 项目初始化和环境配置
-- [ ] 数据库设计和建模
-- [ ] 基础API接口开发
-- [ ] 首页和导航框架
-
-### 第二阶段：核心功能开发
-- [ ] 学校信息展示模块
-- [ ] 政策文档管理系统
-- [ ] 搜索和筛选功能
-- [ ] 用户评论系统
-
-### 第三阶段：高级功能
-- [ ] 数据可视化组件
-- [ ] 移动端适配
-- [ ] 用户个人中心
-- [ ] 通知和订阅功能
-
-## 贡献指南
-
-欢迎对上海中考有了解的家长、学生、教育工作者参与贡献：
-- 提供准确的学校信息
-- 分享最新的政策解读
-- 参与功能需求讨论
-- 报告数据错误或问题
-
-## 许可证
-
-MIT License
+- `npm run crawl`
+- `npm run data:process`
+- `npm run data:validate`
+- `npm start`

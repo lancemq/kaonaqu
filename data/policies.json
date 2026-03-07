@@ -2,33 +2,91 @@
   {
     "id": "policy-1",
     "title": "2026年上海中考政策解读",
+    "districtId": "all",
+    "districtName": "全市",
+    "year": 2026,
+    "summary": "今年政策相对稳定，主要变化在综合素质评价...",
     "content": "今年政策相对稳定，主要变化在综合素质评价...",
-    "author": "教育专家张老师",
-    "date": "2026-03-01",
-    "url": "https://example.com/discussion1",
-    "source": "家长帮",
-    "crawledAt": "2026-03-06T12:22:48.324Z",
-    "category": "admission-policy",
-    "tags": [
-      "中考",
-      "招生",
-      "政策解读"
-    ]
+    "source": {
+      "name": "家长帮",
+      "type": "community",
+      "url": "https://example.com/discussion1",
+      "crawledAt": "2026-03-06T12:22:48.324Z",
+      "confidence": 0.6
+    },
+    "publishedAt": "2026-03-01",
+    "updatedAt": "2026-03-06T12:22:48.324Z"
   },
   {
     "id": "policy-2",
     "title": "各区对口划片政策汇总",
+    "districtId": "all",
+    "districtName": "全市",
+    "year": 2026,
+    "summary": "徐汇区今年对口划片基本保持不变...",
     "content": "徐汇区今年对口划片基本保持不变...",
-    "author": "升学顾问李老师",
-    "date": "2026-02-28",
-    "url": "https://example.com/discussion2",
-    "source": "升学帮",
-    "crawledAt": "2026-03-06T12:22:48.324Z",
-    "category": "admission-policy",
-    "tags": [
-      "中考",
-      "招生",
-      "政策解读"
-    ]
+    "source": {
+      "name": "升学帮",
+      "type": "third_party",
+      "url": "https://example.com/discussion2",
+      "crawledAt": "2026-03-06T12:22:48.324Z",
+      "confidence": 0.75
+    },
+    "publishedAt": "2026-02-28",
+    "updatedAt": "2026-03-06T12:22:48.324Z"
+  },
+  {
+    "id": "2026-all-上海市教育委员会关于2026年上海市高中阶段学校招生工作的若干意见",
+    "title": "上海市教育委员会关于2026年上海市高中阶段学校招生工作的若干意见",
+    "districtId": "all",
+    "districtName": "全市",
+    "year": 2026,
+    "summary": "2026年继续实施自主招生、名额分配综合评价录取和统一招生录取等批次安排，市实验性示范性高中名额分配综合评价录取计划约占学校招生计划的65%。",
+    "content": "官方文件明确 2026 年上海高中阶段学校招生继续实行多批次录取，并稳步扩大中本贯通、五年一贯制和中高职贯通试点专业范围。",
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zdgz_rxgkyzs_03/20260227/923fcd6838744ca59c213daa3fb180fd.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "publishedAt": "2026-02-27",
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "2026-all-上海市教育委员会关于做好2026年上海市高中阶段学校招生报名工作的通知",
+    "title": "上海市教育委员会关于做好2026年上海市高中阶段学校招生报名工作的通知",
+    "districtId": "all",
+    "districtName": "全市",
+    "year": 2026,
+    "summary": "2026年中招报名明确本市户籍和符合条件的非沪籍学生报名资格，并公布集体报名、个别报名和补报名时间安排。",
+    "content": "官方通知要求符合条件的学生完成统一报名，集体报名时间为 2026 年 1 月 19 日至 30 日，个别报名时间为 2026 年 2 月 25 日至 27 日，补报名时间为 2026 年 5 月 6 日至 7 日。",
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zdgz_rxgkyzs_03/20251126/27f5a2d54e414ed4b1c6a53719e67865.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "publishedAt": "2025-11-27",
+    "updatedAt": "2026-03-06T00:00:00.000Z"
+  },
+  {
+    "id": "2026-all-上海市教育委员会关于做好2026年上海市全日制普通中等职业学校自主招收上海市初中应届毕业生中来沪人员随迁子女报名工作的通知",
+    "title": "上海市教育委员会关于做好2026年上海市全日制普通中等职业学校自主招收上海市初中应届毕业生中来沪人员随迁子女报名工作的通知",
+    "districtId": "all",
+    "districtName": "全市",
+    "year": 2026,
+    "summary": "2026年继续面向符合条件的来沪人员随迁子女开放中职校自主招生报名，要求学生在沪就读满3年并满足居住证和社保或灵活就业登记条件。",
+    "content": "官方通知明确随迁子女报名对象、材料核对与时间要求，覆盖五年一贯制和中高职贯通培养模式招生。",
+    "source": {
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/xxgk2_zdgz_rxgkyzs_03/20251126/fbeaa9affca540fe874ad41d75aa5110.html",
+      "crawledAt": "2026-03-06T00:00:00.000Z",
+      "confidence": 0.95
+    },
+    "publishedAt": "2025-11-27",
+    "updatedAt": "2026-03-06T00:00:00.000Z"
   }
 ]
