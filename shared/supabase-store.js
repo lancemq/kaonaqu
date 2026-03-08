@@ -98,6 +98,25 @@ async function replaceRecords(datasetName, records) {
   return fromStoredRows(data);
 }
 
+async function upsertRecords(datasetName, records) {
+  if (!records.length) {
+    return [];
+  }
+
+  const supabase = getSupabaseClient();
+  const table = TABLES[datasetName];
+  const { data, error } = await supabase
+    .from(table)
+    .upsert(records.map(toStoredRow), { onConflict: 'id' })
+    .select('payload, updated_at');
+
+  if (error) {
+    throw new Error(`Supabase 增量写入 ${datasetName} 失败: ${error.message}`);
+  }
+
+  return fromStoredRows(data);
+}
+
 module.exports = {
   TABLES,
   getSupabaseClient,
@@ -105,5 +124,6 @@ module.exports = {
   getSupabaseUrl,
   hasSupabaseConfig,
   listRecords,
-  replaceRecords
+  replaceRecords,
+  upsertRecords
 };

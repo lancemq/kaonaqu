@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { loadDataFromBlob, uploadDataToBlob, hasBlobToken } = require('./blob-data');
 const { buildDistricts } = require('./data-schema');
-const { hasSupabaseConfig, listRecords, replaceRecords } = require('./supabase-store');
+const { hasSupabaseConfig, listRecords, replaceRecords, upsertRecords } = require('./supabase-store');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const DATASET_FILES = {
@@ -99,6 +99,40 @@ async function saveDataStore(nextState) {
   return payload;
 }
 
+async function mergeDataStore(nextState) {
+  const payload = ensureDatasets(nextState);
+
+  if (hasSupabaseConfig()) {
+    const current = await loadDataStore();
+    const merged = ensureDatasets({
+      schools: [...payload.schools, ...current.schools.filter((item) => !payload.schools.some((next) => next.id === item.id))],
+      policies: [...payload.policies, ...current.policies.filter((item) => !payload.policies.some((next) => next.id === item.id))],
+      news: [...payload.news, ...current.news.filter((item) => !payload.news.some((next) => next.id === item.id))]
+    });
+
+    await Promise.all([
+      upsertRecords('schools', payload.schools),
+      upsertRecords('policies', payload.policies),
+      upsertRecords('news', payload.news)
+    ]);
+
+    return merged;
+  }
+
+  if (hasBlobToken()) {
+    const current = await loadDataStore();
+    const merged = ensureDatasets({
+      schools: [...payload.schools, ...current.schools.filter((item) => !payload.schools.some((next) => next.id === item.id))],
+      policies: [...payload.policies, ...current.policies.filter((item) => !payload.policies.some((next) => next.id === item.id))],
+      news: [...payload.news, ...current.news.filter((item) => !payload.news.some((next) => next.id === item.id))]
+    });
+    await uploadDataToBlob(merged);
+    return merged;
+  }
+
+  return saveDataStore(payload);
+}
+
 async function updateDataStore(updater) {
   const current = await loadDataStore();
   const nextState = await updater(current);
@@ -109,6 +143,7 @@ module.exports = {
   ensureDatasets,
   loadDataStore,
   loadLocalData,
+  mergeDataStore,
   saveDataStore,
   updateDataStore
 };

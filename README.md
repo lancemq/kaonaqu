@@ -24,6 +24,8 @@
 ## 快速开始
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run data:process
 npm run data:validate
 npm start
@@ -34,6 +36,8 @@ npm start
 ```text
 http://localhost:8080
 ```
+
+如果要调试 Supabase，把 `.env.local` 里的 `KNQ_SUPABASE_URL` 和 `KNQ_SUPABASE_SERVICE_ROLE_KEY` 改成你的真实值。
 
 本地可直接访问的页面：
 
@@ -148,6 +152,8 @@ kaonaqu/
 npm run data:sync:supabase
 ```
 
+该命令默认按 `id` 增量同步，不会先清空库里的旧数据。
+
 ### 定时采集任务
 
 项目已配置 Vercel Cron，每天凌晨 `1:00`（Asia/Shanghai）执行一次信息获取任务。
@@ -156,7 +162,7 @@ npm run data:sync:supabase
 
 - Vercel Cron 使用 UTC，因此配置写成 `0 17 * * *`
 - 该任务会触发 `/api/cron-refresh`
-- 任务顺序是：采集 -> 处理 -> 校验 -> 写入 Supabase
+- 任务顺序是：采集 -> 处理 -> 校验 -> 增量写入 Supabase
 - 前端 API 会优先读取 Supabase 中的最新数据，读取失败时才回退到仓库内置数据
 
 需要在 Vercel 项目中配置的环境变量：
@@ -181,3 +187,48 @@ npm run data:sync:supabase
 - `npm run data:validate`
 - `npm run data:sync:supabase`
 - `npm start`
+
+## 本地调试示例
+
+查询学校：
+
+```bash
+curl "http://localhost:8080/api/schools?district=xuhui"
+```
+
+新增学校：
+
+```bash
+curl -X POST "http://localhost:8080/api/schools" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "本地调试学校",
+    "districtId": "xuhui",
+    "districtName": "徐汇区",
+    "schoolStage": "senior_high",
+    "schoolTypeLabel": "市重点"
+  }'
+```
+
+更新学校：
+
+```bash
+curl -X PUT "http://localhost:8080/api/schools?id=本地调试学校的id" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "admissionNotes": "本地调试更新"
+  }'
+```
+
+删除学校：
+
+```bash
+curl -X DELETE "http://localhost:8080/api/schools?id=本地调试学校的id"
+```
+
+本地触发定时任务：
+
+```bash
+curl "http://localhost:8080/api/cron-refresh" \
+  -H "Authorization: Bearer 你的CRON_SECRET"
+```
