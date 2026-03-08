@@ -1,4 +1,4 @@
-const { loadData } = require('../shared/api-data');
+const { handleApiRequest } = require('../shared/api-router');
 const { sendJson, handleCors } = require('./_utils');
 
 module.exports = async (req, res) => {
@@ -7,9 +7,13 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { districts } = await loadData();
-    sendJson(res, 200, districts);
+    const result = await handleApiRequest({
+      method: req.method,
+      pathname: '/api/districts',
+      query: req.query || {}
+    });
+    sendJson(res, result.statusCode, result.payload);
   } catch (error) {
-    sendJson(res, 500, { error: error.message });
+    sendJson(res, error.statusCode || 500, { error: error.message });
   }
 };

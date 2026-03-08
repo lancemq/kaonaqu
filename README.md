@@ -14,10 +14,12 @@
 
 - 根目录静态页面：站点首页、新闻页、学校页、知识体系页
 - `api/`：Vercel Serverless Functions，同时也作为前端统一 API 设计参考
-- `data/`：页面和 API 消费的统一 JSON 数据
+- `data/`：本地兜底数据与初始导入数据
 - `crawler/`：来源抓取、数据处理与发布链路
+- `supabase/`：数据库建表 SQL
+- `shared/`：共享 schema、存储层和服务层
 
-当前版本不包含数据库、登录或后台管理，重点先保证内容展示、数据发布和部署链路稳定。
+当前版本已支持使用 Supabase 作为后端存储，学校、新闻、政策的增删改查和定时采集写入都可以落到数据库。
 
 ## 快速开始
 
@@ -49,6 +51,15 @@ http://localhost:8080
 - `GET /api/policies?district=pudong`
 - `GET /api/news`
 - `GET /api/search?q=复旦`
+- `POST /api/schools`
+- `PUT /api/schools?id=<school-id>`
+- `DELETE /api/schools?id=<school-id>`
+- `POST /api/policies`
+- `PUT /api/policies?id=<policy-id>`
+- `DELETE /api/policies?id=<policy-id>`
+- `POST /api/news`
+- `PUT /api/news?id=<news-id>`
+- `DELETE /api/news?id=<news-id>`
 
 ## 数据链路
 
@@ -56,7 +67,7 @@ http://localhost:8080
 crawler/data/raw
   -> crawler/src/process-data.js
   -> crawler/data/processed
-  -> data/
+  -> Supabase / data/
   -> api/* / web/server.js
   -> script.js 前端展示
 ```
@@ -84,8 +95,9 @@ kaonaqu/
 ├── data/             # 前端和 API 使用的数据文件
 ├── knowledge/        # 知识体系页面与样式
 ├── crawler/          # 数据采集与处理流水线
-├── shared/           # 共享 schema 和归一化逻辑
+├── shared/           # 共享 schema、存储、服务、路由逻辑
 ├── scripts/          # 数据校验脚本
+├── supabase/         # Supabase 建表 SQL
 ├── index.html        # 首页
 ├── news.html         # 新闻政策模块
 ├── schools.html      # 学校信息模块
@@ -116,6 +128,26 @@ kaonaqu/
 - 开启 `cleanUrls`
 - 确保 `api/*` 和定时任务打包时包含所需数据与 crawler 文件
 
+### Supabase 配置
+
+先在 Supabase SQL Editor 中执行 [supabase/schema.sql](/Users/maqi/project/msy/kaonaqu/supabase/schema.sql)。
+
+然后为项目配置：
+
+- `SUPABASE_URL` 或 `KNQ_SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY` 或 `KNQ_SUPABASE_SERVICE_ROLE_KEY`
+- `SUPABASE_SCHOOLS_TABLE`（可选，默认 `content_schools`）
+- `SUPABASE_POLICIES_TABLE`（可选，默认 `content_policies`）
+- `SUPABASE_NEWS_TABLE`（可选，默认 `content_news`）
+
+如果你已经使用了 `KNQ_SUPABASE_SECRET_KEY`，当前后端也兼容这个名字，但更建议统一成 `SUPABASE_SERVICE_ROLE_KEY`。
+
+首次把本地数据导入数据库可以执行：
+
+```bash
+npm run data:sync:supabase
+```
+
 ### 定时采集任务
 
 项目已配置 Vercel Cron，每天凌晨 `1:00`（Asia/Shanghai）执行一次信息获取任务。
@@ -124,12 +156,17 @@ kaonaqu/
 
 - Vercel Cron 使用 UTC，因此配置写成 `0 17 * * *`
 - 该任务会触发 `/api/cron-refresh`
-- 任务顺序是：采集 -> 处理 -> 校验 -> 上传最新 JSON 到 Vercel Blob
-- 前端 API 会优先读取 Blob 中的最新数据，读取失败时才回退到仓库内置数据
+- 任务顺序是：采集 -> 处理 -> 校验 -> 写入 Supabase
+- 前端 API 会优先读取 Supabase 中的最新数据，读取失败时才回退到仓库内置数据
 
 需要在 Vercel 项目中配置的环境变量：
 
 - `CRON_SECRET`
+- `SUPABASE_URL` 或 `KNQ_SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY` 或 `KNQ_SUPABASE_SERVICE_ROLE_KEY`
+
+如果你还保留 Blob 方案，也可以继续配置：
+
 - `BLOB_READ_WRITE_TOKEN`
 - `BLOB_DATA_PREFIX`（可选，默认是 `runtime-data`）
 
@@ -142,4 +179,5 @@ kaonaqu/
 - `npm run crawl`
 - `npm run data:process`
 - `npm run data:validate`
+- `npm run data:sync:supabase`
 - `npm start`
