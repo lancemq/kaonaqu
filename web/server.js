@@ -4,11 +4,12 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { URL } = require('url');
+const { handleApiRequest } = require('../shared/api-router');
+const { loadDataStore } = require('../shared/data-store');
 
 const PORT = Number(process.env.PORT || 8080);
 const HOST = process.env.HOST || '127.0.0.1';
 const SITE_DIR = path.join(__dirname, '..');
-const DATA_DIR = path.join(__dirname, '..', 'data');
 const BLOCKED_PATH_PREFIXES = ['/api/', '/data/', '/crawler/', '/shared/', '/scripts/', '/web/'];
 const BLOCKED_EXACT_PATHS = ['/api', '/data', '/crawler', '/shared', '/scripts', '/web', '/package.json', '/vercel.json'];
 
@@ -20,27 +21,35 @@ const MIME_TYPES = {
   '.svg': 'image/svg+xml'
 };
 
-function readJson(filename) {
-  return JSON.parse(fs.readFileSync(path.join(DATA_DIR, filename), 'utf8'));
-}
-
-function loadData() {
-  return {
-    districts: readJson('districts.json'),
-    schools: readJson('schools.json'),
-    policies: readJson('policies.json'),
-    news: readJson('news.json')
-  };
-}
-
 function sendJson(res, statusCode, payload) {
   res.writeHead(statusCode, {
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json; charset=utf-8'
   });
   res.end(JSON.stringify(payload));
+}
+
+function readRequestBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on('data', (chunk) => chunks.push(chunk));
+    req.on('end', () => {
+      const raw = Buffer.concat(chunks).toString('utf8').trim();
+      if (!raw) {
+        resolve({});
+        return;
+      }
+
+      try {
+        resolve(JSON.parse(raw));
+      } catch (error) {
+        reject(error);
+      }
+    });
+    req.on('error', reject);
+  });
 }
 
 function isBlockedStaticPath(reqPath) {
@@ -108,7 +117,7 @@ function serveStatic(reqPath, res) {
 }
 
 function createServer() {
-  return http.createServer((req, res) => {
+  return http.createServer(async (req, res) => {
     const requestUrl = new URL(req.url, `http://${req.headers.host || `${HOST}:${PORT}`}`);
     const pathname = requestUrl.pathname;
 
@@ -118,63 +127,18 @@ function createServer() {
     }
 
     if (pathname.startsWith('/api/')) {
-      if (req.method !== 'GET') {
-        sendJson(res, 405, { error: 'Method not allowed' });
-        return;
-      }
-
       try {
-        const { districts, schools, policies, news } = loadData();
-        const districtId = requestUrl.searchParams.get('district');
-        const query = (requestUrl.searchParams.get('q') || '').trim().toLowerCase();
-
-        if (pathname === '/api/districts') {
-          sendJson(res, 200, districts);
-          return;
-        }
-
-        if (pathname === '/api/schools') {
-          const results = districtId ? schools.filter((school) => school.districtId === districtId) : schools;
-          sendJson(res, 200, results);
-          return;
-        }
-
-        if (pathname === '/api/policies') {
-          const results = districtId && districtId !== 'all'
-            ? policies.filter((policy) => policy.districtId === 'all' || policy.districtId === districtId)
-            : policies;
-          sendJson(res, 200, results);
-          return;
-        }
-
-        if (pathname === '/api/news') {
-          sendJson(res, 200, news);
-          return;
-        }
-
-        if (pathname === '/api/search') {
-          const results = !query ? schools : schools.filter((school) => {
-            const haystack = [
-              school.name,
-              school.districtName,
-              school.schoolStageLabel,
-              school.schoolTypeLabel,
-              school.tier,
-              school.address,
-              school.admissionNotes,
-              ...(school.features || []),
-              ...(school.tags || [])
-            ].join(' ').toLowerCase();
-            return haystack.includes(query);
-          });
-
-          sendJson(res, 200, results);
-          return;
-        }
-
-        sendJson(res, 404, { error: 'API endpoint not found' });
+        const query = Object.fromEntries(requestUrl.searchParams.entries());
+        const body = req.method === 'GET' || req.method === 'DELETE' ? null : await readRequestBody(req);
+        const result = await handleApiRequest({
+          method: req.method,
+          pathname,
+          query,
+          body
+        });
+        sendJson(res, result.statusCode, result.payload);
       } catch (error) {
-        sendJson(res, 500, { error: error.message });
+        sendJson(res, error.statusCode || 500, { error: error.message });
       }
       return;
     }
@@ -186,9 +150,9 @@ function createServer() {
 if (require.main === module) {
   const server = createServer();
 
-  server.listen(PORT, HOST, () => {
-    const { districts, schools, policies, news } = loadData();
-    console.log('考哪去 MVP 已启动');
+  server.listen(PORT, HOST, async () => {
+    const { districts, schools, policies, news } = await loadDataStore();
+    console.log('考哪去后端服务已启动');
     console.log(`地址: http://${HOST}:${PORT}`);
     console.log(`数据: ${districts.length} 个区, ${schools.length} 所学校, ${policies.length} 条政策, ${news.length} 条新闻`);
   });
@@ -199,6 +163,5 @@ if (require.main === module) {
 }
 
 module.exports = {
-  createServer,
-  loadData
+  createServer
 };

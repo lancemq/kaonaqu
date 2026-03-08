@@ -13,6 +13,7 @@
     "crawl:social": "node crawler/src/crawlers/social-platforms.js",
     "data:process": "node crawler/src/process-data.js",
     "data:validate": "node scripts/validate-data.js",
+    "data:sync:supabase": "node scripts/sync-supabase.js",
     "crawl": "node crawler/src/index.js"
   },
   "keywords": [
@@ -26,6 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "@vercel/blob": "^2.3.0",
+    "@supabase/supabase-js": "^2.50.0",
     "axios": "^1.6.7",
     "cheerio": "^1.0.0-rc.12"
   },

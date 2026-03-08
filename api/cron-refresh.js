@@ -2,7 +2,9 @@ const fs = require('fs').promises;
 const os = require('os');
 const path = require('path');
 const { sendJson } = require('./_utils');
-const { uploadDataToBlob } = require('../shared/blob-data');
+const { saveDataStore } = require('../shared/data-store');
+const { hasSupabaseConfig } = require('../shared/supabase-store');
+const { hasBlobToken } = require('../shared/blob-data');
 
 function isAuthorized(req) {
   const expected = process.env.CRON_SECRET;
@@ -24,8 +26,8 @@ module.exports = async (req, res) => {
     return;
   }
 
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    sendJson(res, 500, { error: 'BLOB_READ_WRITE_TOKEN 未配置' });
+  if (!hasSupabaseConfig() && !hasBlobToken()) {
+    sendJson(res, 500, { error: 'SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY 或 BLOB_READ_WRITE_TOKEN 至少需要配置一组' });
     return;
   }
 
@@ -46,7 +48,7 @@ module.exports = async (req, res) => {
 
     const { main: runCrawlerPipeline } = require('../crawler/src/index');
     const result = await runCrawlerPipeline();
-    const uploaded = await uploadDataToBlob(result.processed);
+    await saveDataStore(result.processed);
 
     sendJson(res, 200, {
       ok: true,
@@ -57,7 +59,7 @@ module.exports = async (req, res) => {
         policies: result.processed.policies.length,
         news: result.processed.news.length
       },
-      uploaded
+      storage: hasSupabaseConfig() ? 'supabase' : 'blob'
     });
   } catch (error) {
     sendJson(res, 500, {

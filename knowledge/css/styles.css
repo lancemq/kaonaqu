@@ -446,7 +446,9 @@ footer .container {
 
 .formula,
 .important,
-.grammar-point {
+.grammar-point,
+.example-card,
+.concept-grid {
     margin: 16px 0;
     padding: 18px 20px;
     border-radius: 22px;
@@ -479,6 +481,153 @@ footer .container {
     display: block;
     margin-bottom: 10px;
     color: var(--teal);
+}
+
+.concept-grid,
+.example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+}
+
+.concept-grid {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.concept-card,
+.example-card {
+    min-height: 100%;
+    border-radius: 22px;
+    box-shadow: var(--shadow-sm), var(--shadow-inset);
+}
+
+.concept-card {
+    padding: 18px 20px;
+    border: 1px solid rgba(47, 91, 234, 0.1);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 242, 234, 0.96));
+}
+
+.concept-card h4 {
+    margin: 0 0 10px;
+    color: var(--blue-deep);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.concept-card p,
+.example-card p,
+.example-card li,
+.example-card .answer {
+    color: var(--muted);
+    line-height: 1.72;
+}
+
+.concept-card p {
+    margin: 0;
+    font-size: 0.94rem;
+}
+
+.example-lead {
+    margin-top: 18px;
+    color: var(--blue-deep);
+    font-size: 0.94rem;
+    font-weight: 700;
+}
+
+.example-grid {
+    align-items: stretch;
+}
+
+.example-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    border: 1px solid rgba(33, 183, 168, 0.16);
+    background:
+        radial-gradient(circle at top right, rgba(20, 125, 116, 0.1), transparent 34%),
+        linear-gradient(180deg, rgba(235, 251, 248, 0.98), rgba(247, 255, 253, 0.98));
+}
+
+.example-card .example-tag {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(20, 125, 116, 0.12);
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.example-card h4 {
+    margin: 0;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.example-card p {
+    margin: 0;
+    font-size: 0.93rem;
+}
+
+.example-card .answer {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(20, 125, 116, 0.12);
+    font-size: 0.92rem;
+}
+
+.example-card .answer strong {
+    display: inline;
+    margin-right: 6px;
+    color: var(--teal);
+}
+
+.answer-toggle {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(20, 125, 116, 0.12);
+}
+
+.answer-toggle summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    list-style: none;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(20, 125, 116, 0.1);
+    color: var(--teal);
+    font-size: 0.86rem;
+    font-weight: 700;
+    user-select: none;
+}
+
+.answer-toggle summary::-webkit-details-marker {
+    display: none;
+}
+
+.answer-toggle summary::after {
+    content: "+";
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.answer-toggle[open] summary::after {
+    content: "-";
+}
+
+.answer-toggle .answer {
+    margin-top: 12px;
 }
 
 table {

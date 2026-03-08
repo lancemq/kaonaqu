@@ -1,5 +1,5 @@
-const { loadData, filterSchools } = require('../shared/api-data');
-const { sendJson, handleCors } = require('./_utils');
+const { handleApiRequest } = require('../shared/api-router');
+const { parseJsonBody, sendJson, handleCors } = require('./_utils');
 
 module.exports = async (req, res) => {
   if (handleCors(req, res)) {
@@ -7,10 +7,15 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { schools } = await loadData();
-    const districtId = req.query?.district || req.query?.districtId || null;
-    sendJson(res, 200, filterSchools(schools, districtId));
+    const body = req.method === 'GET' || req.method === 'DELETE' ? null : await parseJsonBody(req);
+    const result = await handleApiRequest({
+      method: req.method,
+      pathname: '/api/schools',
+      query: req.query || {},
+      body
+    });
+    sendJson(res, result.statusCode, result.payload);
   } catch (error) {
-    sendJson(res, 500, { error: error.message });
+    sendJson(res, error.statusCode || 500, { error: error.message });
   }
 };
