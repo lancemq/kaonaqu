@@ -281,6 +281,7 @@ async function deletePolicy(id) {
 async function listNews(filters = {}) {
   const { news } = await loadDataStore();
   const examType = cleanString(filters.examType || filters.exam_type);
+  const newsType = cleanString(filters.newsType || filters.news_type);
   const category = cleanString(filters.category);
   const q = cleanString(filters.q);
   const sourceType = cleanString(filters.sourceType);
@@ -290,6 +291,9 @@ async function listNews(filters = {}) {
       return false;
     }
     if (category && item.category !== category) {
+      return false;
+    }
+    if (newsType && item.newsType !== newsType) {
       return false;
     }
     if (sourceType && item.source?.type !== sourceType) {

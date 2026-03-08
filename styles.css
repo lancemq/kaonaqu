@@ -1718,6 +1718,16 @@ summary:focus-visible {
     .content-side {
         grid-template-columns: 1fr;
     }
+
+    body[data-page="news"] .page-intro-panel::after {
+        position: static;
+        display: inline-flex;
+        margin-top: 14px;
+    }
+
+    body[data-page="news"] .featured-news-card {
+        padding: 24px 24px 24px 28px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1754,6 +1764,21 @@ summary:focus-visible {
     .knowledge-grid,
     .school-grid {
         grid-template-columns: 1fr;
+    }
+
+    body[data-page="news"] .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="news"] .news-filter {
+        flex: 1 1 calc(50% - 8px);
+        justify-content: center;
+    }
+
+    body[data-page="news"] .news-card,
+    body[data-page="news"] .policy-card,
+    body[data-page="news"] .featured-news-card {
+        border-radius: 22px;
     }
 }
 

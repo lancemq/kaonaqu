@@ -36,6 +36,7 @@ const SCHOOL_STAGE_MAP = {
 
 const SOURCE_TYPE_MAP = {
   '上海市教育委员会': 'official',
+  '上海市教育考试院': 'official',
   'shanghai-education': 'official',
   'shanghai-education-news': 'official',
   '家长帮': 'community',
@@ -154,6 +155,10 @@ function inferSourceType(value) {
     return SOURCE_TYPE_MAP[name];
   }
 
+  if (name.includes('官网') || name.includes('教育考试院') || name.includes('教育委员会')) {
+    return 'official';
+  }
+
   if (name.includes('小红书') || name.includes('抖音') || name.includes('哔哩') || name.includes('微信')) {
     return 'social';
   }
@@ -242,20 +247,50 @@ function normalizePolicy(raw, index = 0) {
 function normalizeNews(raw, index = 0) {
   const source = normalizeSource(raw);
   const title = cleanString(raw.title);
-  const examType = cleanString(raw.examType || raw.exam_type || inferNewsExamType(title, raw.content || raw.summary));
-  const category = cleanString(raw.category || (examType === 'gaokao' ? '高考' : '中考'));
+  const newsType = cleanString(raw.newsType || raw.news_type || inferNewsSection(raw));
+  const inferredExamType = inferNewsExamType(title, raw.content || raw.summary);
+  const examType = cleanString(raw.examType || raw.exam_type || inferredExamType);
+  const category = cleanString(raw.category || inferNewsCategory(newsType, examType));
 
   return {
     id: cleanString(raw.id) || slugify(`${category}-${title || index}`),
     title,
+    newsType,
     category,
-    examType: examType === 'gaokao' ? 'gaokao' : 'zhongkao',
+    examType: examType === 'gaokao' ? 'gaokao' : examType === 'zhongkao' ? 'zhongkao' : '',
     summary: cleanString(raw.summary || raw.content),
     content: cleanString(raw.content),
     publishedAt: raw.publishedAt || raw.publishDate || raw.date || null,
     updatedAt: raw.updatedAt || source.crawledAt || raw.publishDate || raw.date || null,
     source
   };
+}
+
+function inferNewsSection(raw) {
+  const marker = cleanString(raw.newsType || raw.news_type).toLowerCase();
+  if (marker === 'admission' || marker === 'school' || marker === 'exam') {
+    return marker;
+  }
+
+  const category = cleanString(raw.category);
+  if (category.includes('招生')) {
+    return 'admission';
+  }
+  if (category.includes('学校') || category.includes('校园')) {
+    return 'school';
+  }
+
+  return 'exam';
+}
+
+function inferNewsCategory(newsType, examType) {
+  if (newsType === 'admission') {
+    return '招生新闻';
+  }
+  if (newsType === 'school') {
+    return '学校动态';
+  }
+  return examType === 'gaokao' ? '高考' : '中考';
 }
 
 function inferNewsExamType(title, content) {
