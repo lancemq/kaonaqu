@@ -169,9 +169,25 @@ class KaonaquApp {
         return tags.slice(0, 4);
     }
 
+    getNewsSection(item) {
+        if (item.newsType) {
+            return item.newsType;
+        }
+
+        if (item.examType === 'zhongkao' || item.examType === 'gaokao') {
+            return 'exam';
+        }
+
+        return 'exam';
+    }
+
+    getNewsCategoryLabel(item) {
+        return item.category || (this.getNewsSection(item) === 'exam' ? '考试新闻' : '新闻');
+    }
+
     getFilteredNews() {
         return this.news
-            .filter((item) => this.activeNewsFilter === 'all' || item.examType === this.activeNewsFilter)
+            .filter((item) => this.activeNewsFilter === 'all' || this.getNewsSection(item) === this.activeNewsFilter)
             .sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')));
     }
 
@@ -322,7 +338,7 @@ class KaonaquApp {
         featured.innerHTML = `
             <article class="featured-news-card">
                 <div class="news-meta-row">
-                    <span class="pill">${headline.category}</span>
+                    <span class="pill">${this.getNewsCategoryLabel(headline)}</span>
                     <span class="news-date">${headline.publishedAt || '暂无日期'}</span>
                 </div>
                 <h3>${headline.title}</h3>
@@ -336,7 +352,7 @@ class KaonaquApp {
             <article class="news-card">
                 <div class="news-card-header">
                     <div class="news-meta-row">
-                        <span class="pill">${item.category}</span>
+                        <span class="pill">${this.getNewsCategoryLabel(item)}</span>
                         <span class="news-date">${item.publishedAt || '暂无日期'}</span>
                     </div>
                     <h3>${item.title}</h3>
@@ -354,7 +370,7 @@ class KaonaquApp {
 
     renderHomeSchools(schools) {
         this.renderDistrictPreviews();
-        const topSchools = schools.slice(0, 6);
+        const topSchools = schools.slice(0, 15);
         this.renderSchools(topSchools, 'home-school-list');
     }
 

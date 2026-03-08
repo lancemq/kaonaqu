@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node web/server.js",
     "dev": "nodemon web/server.js",
+    "seo:build": "node scripts/generate-seo.js",
     "crawl:policies": "node crawler/src/crawlers/policies-official.js",
     "crawl:news": "node crawler/src/crawlers/news-official.js",
     "crawl:schools": "node crawler/src/crawlers/schools-official.js",
