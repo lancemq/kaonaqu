@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@500;700;800&display=swap");
 
 :root {
     --bg: #f6f1e8;
@@ -1320,6 +1320,330 @@ body[data-page="schools"] .district-card-active {
 .district-meta {
     color: var(--muted-soft);
     line-height: 1.65;
+}
+
+body[data-page="news"] {
+    font-family: "Noto Sans SC", "Sora", sans-serif;
+    background:
+        linear-gradient(rgba(87, 56, 44, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(87, 56, 44, 0.04) 1px, transparent 1px),
+        radial-gradient(circle at top left, rgba(170, 40, 28, 0.1), transparent 24%),
+        radial-gradient(circle at 100% 16%, rgba(196, 135, 46, 0.14), transparent 30%),
+        linear-gradient(180deg, #fbf6ef 0%, #f3e7d8 46%, #ead9c6 100%);
+    background-size: 24px 24px, 24px 24px, auto, auto, auto;
+}
+
+body[data-page="news"]::before {
+    top: 26px;
+    right: 24px;
+    width: min(38vw, 520px);
+    height: min(30vw, 360px);
+    border-radius: 36px;
+    background:
+        linear-gradient(135deg, rgba(170, 40, 28, 0.08), rgba(170, 40, 28, 0)),
+        repeating-linear-gradient(135deg, rgba(87, 56, 44, 0.08) 0 2px, transparent 2px 18px);
+    filter: blur(0);
+    opacity: 0.8;
+}
+
+body[data-page="news"]::after {
+    left: 20px;
+    bottom: 26px;
+    width: min(30vw, 360px);
+    height: min(22vw, 240px);
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at center, rgba(196, 135, 46, 0.14), rgba(196, 135, 46, 0)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(170, 40, 28, 0.04));
+    filter: blur(6px);
+}
+
+body[data-page="news"] .topbar {
+    border: 1px solid rgba(87, 56, 44, 0.14);
+    background:
+        linear-gradient(180deg, rgba(255, 251, 245, 0.96), rgba(246, 236, 223, 0.92));
+    box-shadow: 0 24px 60px rgba(89, 58, 38, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.84);
+}
+
+body[data-page="news"] .top-links a:hover,
+body[data-page="news"] .top-links a:focus-visible {
+    background: rgba(170, 40, 28, 0.08);
+}
+
+body[data-page="news"] .top-links a[href="/news"] {
+    background: linear-gradient(135deg, rgba(170, 40, 28, 0.16), rgba(196, 135, 46, 0.18));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+body[data-page="news"] .page-intro-panel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(87, 56, 44, 0.12);
+    background:
+        linear-gradient(90deg, rgba(170, 40, 28, 0.92) 0 12px, transparent 12px 100%),
+        radial-gradient(circle at top right, rgba(196, 135, 46, 0.12), transparent 28%),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(243, 232, 217, 0.94));
+    box-shadow: 0 30px 70px rgba(89, 58, 38, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+body[data-page="news"] .page-intro-panel::after {
+    content: "LIVE / POLICY DESK";
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    padding: 8px 12px;
+    border: 1px solid rgba(170, 40, 28, 0.18);
+    border-radius: 999px;
+    background: rgba(170, 40, 28, 0.08);
+    color: #7b2018;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+body[data-page="news"] .breadcrumb,
+body[data-page="news"] .section-heading p,
+body[data-page="news"] .search-panel-head p,
+body[data-page="news"] .news-summary,
+body[data-page="news"] .news-source,
+body[data-page="news"] .policy-summary,
+body[data-page="news"] .policy-content,
+body[data-page="news"] .policy-meta,
+body[data-page="news"] .policy-source {
+    color: #675a4c;
+}
+
+body[data-page="news"] .search-panel-head,
+body[data-page="news"] .section-heading {
+    position: relative;
+}
+
+body[data-page="news"] .search-panel-head h2,
+body[data-page="news"] .section-heading h2,
+body[data-page="news"] .featured-news-card h3,
+body[data-page="news"] .news-card-header h3,
+body[data-page="news"] .policy-card h3 {
+    font-family: "Noto Serif SC", "Noto Sans SC", serif;
+    letter-spacing: -0.03em;
+}
+
+body[data-page="news"] .section-heading {
+    display: grid;
+    gap: 8px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(87, 56, 44, 0.12);
+}
+
+body[data-page="news"] .section-heading::before {
+    content: "";
+    width: 72px;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #aa281c, #d6a14d);
+}
+
+body[data-page="news"] .news-panel,
+body[data-page="news"] #policies {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(87, 56, 44, 0.12);
+    background:
+        linear-gradient(180deg, rgba(255, 251, 245, 0.98), rgba(244, 235, 223, 0.94));
+    box-shadow: 0 28px 72px rgba(89, 58, 38, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.84);
+}
+
+body[data-page="news"] .news-panel::before,
+body[data-page="news"] #policies::before {
+    content: "";
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(87, 56, 44, 0.16), transparent);
+}
+
+body[data-page="news"] .news-panel::after,
+body[data-page="news"] #policies::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(87, 56, 44, 0.07);
+    border-radius: calc(var(--radius-xl) - 10px);
+    pointer-events: none;
+}
+
+body[data-page="news"] .news-toolbar {
+    gap: 12px;
+    padding: 10px 0 4px;
+}
+
+body[data-page="news"] .news-filter {
+    position: relative;
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 1px solid rgba(87, 56, 44, 0.12);
+    background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(241, 231, 217, 0.94));
+    color: #5e5144;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+body[data-page="news"] .news-filter-active,
+body[data-page="news"] .news-filter:hover,
+body[data-page="news"] .news-filter:focus-visible {
+    border-color: rgba(170, 40, 28, 0.24);
+    background: linear-gradient(135deg, rgba(170, 40, 28, 0.12), rgba(214, 161, 77, 0.18));
+    color: #3d241f;
+    box-shadow: 0 14px 30px rgba(170, 40, 28, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.64);
+}
+
+body[data-page="news"] .featured-news {
+    gap: 18px;
+}
+
+body[data-page="news"] .featured-news-card {
+    padding: 30px 30px 30px 34px;
+    border: 1px solid rgba(87, 56, 44, 0.14);
+    border-radius: 30px;
+    background:
+        linear-gradient(90deg, rgba(170, 40, 28, 0.95) 0 10px, transparent 10px 100%),
+        radial-gradient(circle at top right, rgba(214, 161, 77, 0.18), transparent 34%),
+        linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(244, 234, 221, 0.96));
+    box-shadow: 0 28px 74px rgba(89, 58, 38, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+body[data-page="news"] .featured-news-card::before {
+    content: "头条";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(170, 40, 28, 0.1);
+    color: #8d2218;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+body[data-page="news"] .featured-news-card::after {
+    right: 26px;
+    bottom: 24px;
+    width: 128px;
+    height: 128px;
+    border-radius: 24px;
+    background:
+        radial-gradient(circle, rgba(214, 161, 77, 0.2), rgba(214, 161, 77, 0)),
+        repeating-linear-gradient(135deg, rgba(170, 40, 28, 0.08) 0 2px, transparent 2px 14px);
+}
+
+body[data-page="news"] .featured-news-card h3 {
+    margin-top: 16px;
+    font-size: clamp(1.34rem, 1.7vw, 1.72rem);
+    line-height: 1.35;
+}
+
+body[data-page="news"] .news-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+}
+
+body[data-page="news"] .news-card,
+body[data-page="news"] .policy-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(87, 56, 44, 0.12);
+    border-radius: 24px;
+    background:
+        linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(243, 234, 223, 0.95));
+    box-shadow: 0 18px 42px rgba(89, 58, 38, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+body[data-page="news"] .news-card::before,
+body[data-page="news"] .policy-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18px;
+    bottom: 18px;
+    width: 4px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #aa281c, #d6a14d);
+}
+
+body[data-page="news"] .news-card:hover,
+body[data-page="news"] .policy-card:hover {
+    border-color: rgba(170, 40, 28, 0.18);
+    box-shadow: 0 26px 54px rgba(89, 58, 38, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transform: translateY(-4px);
+}
+
+body[data-page="news"] .news-card-header,
+body[data-page="news"] .policy-card-header {
+    gap: 18px;
+}
+
+body[data-page="news"] .news-card-header h3,
+body[data-page="news"] .policy-card h3 {
+    font-size: 1.08rem;
+    line-height: 1.5;
+}
+
+body[data-page="news"] .news-meta-row {
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+body[data-page="news"] .news-date,
+body[data-page="news"] .news-source,
+body[data-page="news"] .policy-source {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(87, 56, 44, 0.1);
+    background: rgba(255, 251, 245, 0.88);
+    font-size: 0.82rem;
+    line-height: 1;
+}
+
+body[data-page="news"] .news-date {
+    color: #7b2018;
+    font-weight: 800;
+}
+
+body[data-page="news"] .news-source,
+body[data-page="news"] .policy-source {
+    color: #6d5e50;
+}
+
+body[data-page="news"] .news-summary,
+body[data-page="news"] .policy-summary,
+body[data-page="news"] .policy-content {
+    line-height: 1.8;
+}
+
+body[data-page="news"] .policy-list {
+    gap: 18px;
+}
+
+body[data-page="news"] .policy-card {
+    padding: 22px 22px 22px 26px;
+}
+
+body[data-page="news"] .policy-meta {
+    padding-top: 12px;
+    border-top: 1px dashed rgba(87, 56, 44, 0.14);
+}
+
+body[data-page="news"] .policy-link-note {
+    background: rgba(170, 40, 28, 0.06);
+    color: #7b2018;
+    border: 1px solid rgba(170, 40, 28, 0.1);
 }
 
 .empty-state,
