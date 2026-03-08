@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const os = require('os');
 const path = require('path');
 const { sendJson } = require('./_utils');
-const { saveDataStore } = require('../shared/data-store');
+const { mergeDataStore } = require('../shared/data-store');
 const { hasSupabaseConfig } = require('../shared/supabase-store');
 const { hasBlobToken } = require('../shared/blob-data');
 
@@ -48,18 +48,24 @@ module.exports = async (req, res) => {
 
     const { main: runCrawlerPipeline } = require('../crawler/src/index');
     const result = await runCrawlerPipeline();
-    await saveDataStore(result.processed);
+    const merged = await mergeDataStore(result.processed);
 
     sendJson(res, 200, {
       ok: true,
       ranAt: new Date().toISOString(),
       counts: {
-        districts: result.processed.districts.length,
+        districts: merged.districts.length,
+        schools: merged.schools.length,
+        policies: merged.policies.length,
+        news: merged.news.length
+      },
+      imported: {
         schools: result.processed.schools.length,
         policies: result.processed.policies.length,
         news: result.processed.news.length
       },
-      storage: hasSupabaseConfig() ? 'supabase' : 'blob'
+      storage: hasSupabaseConfig() ? 'supabase' : 'blob',
+      mode: 'incremental'
     });
   } catch (error) {
     sendJson(res, 500, {

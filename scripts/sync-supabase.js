@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-const { loadLocalData, saveDataStore } = require('../shared/data-store');
+require('../shared/load-env');
+
+const { loadLocalData, mergeDataStore } = require('../shared/data-store');
 const { hasSupabaseConfig } = require('../shared/supabase-store');
 
 async function main() {
@@ -9,9 +11,9 @@ async function main() {
   }
 
   const localData = await loadLocalData();
-  const saved = await saveDataStore(localData);
+  const saved = await mergeDataStore(localData);
 
-  console.log(`Supabase 同步完成: ${saved.schools.length} 所学校, ${saved.policies.length} 条政策, ${saved.news.length} 条新闻`);
+  console.log(`Supabase 增量同步完成: ${saved.schools.length} 所学校, ${saved.policies.length} 条政策, ${saved.news.length} 条新闻`);
 }
 
 main().catch((error) => {
