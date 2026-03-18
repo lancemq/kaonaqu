@@ -44,6 +44,8 @@ const SOURCE_TYPE_MAP = {
   '升学帮': 'third_party',
   '学而思社区': 'third_party',
   '双子学爸数据社（搜狐）': 'third_party',
+  '上海本地宝': 'third_party',
+  '本地宝': 'third_party',
   '维基百科': 'third_party',
   '小红书': 'social',
   '抖音': 'social',

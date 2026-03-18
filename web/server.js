@@ -12,18 +12,36 @@ const { loadDataStore } = require('../shared/data-store');
 const PORT = Number(process.env.PORT || 8080);
 const HOST = process.env.HOST || '127.0.0.1';
 const SITE_DIR = path.join(__dirname, '..');
-const BLOCKED_PATH_PREFIXES = ['/api/', '/data/', '/crawler/', '/shared/', '/scripts/', '/web/'];
-const BLOCKED_EXACT_PATHS = ['/api', '/data', '/crawler', '/shared', '/scripts', '/web', '/package.json', '/vercel.json'];
+const BLOCKED_PATH_PREFIXES = ['/api/', '/data/', '/crawler/', '/shared/', '/scripts/', '/web/', '/node_modules/'];
+const BLOCKED_EXACT_PATHS = ['/api', '/data', '/crawler', '/shared', '/scripts', '/web', '/node_modules', '/package.json', '/vercel.json'];
 
 const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
+  '.mjs': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.txt': 'text/plain; charset=utf-8',
   '.xml': 'application/xml; charset=utf-8'
 };
+
+function injectHtmlEnhancements(html) {
+  const analyticsTag = '<script type="module" src="/analytics-init.mjs"></script>';
+  if (html.includes(analyticsTag)) {
+    return html;
+  }
+
+  if (html.includes('</body>')) {
+    return html.replace('</body>', `  ${analyticsTag}\n</body>`);
+  }
+
+  if (html.includes('</head>')) {
+    return html.replace('</head>', `  ${analyticsTag}\n</head>`);
+  }
+
+  return `${html}\n${analyticsTag}`;
+}
 
 function sendJson(res, statusCode, payload) {
   res.writeHead(statusCode, {
@@ -115,7 +133,14 @@ function serveStatic(reqPath, res) {
     }
 
     const ext = path.extname(filePath).toLowerCase();
-    res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    res.writeHead(200, { 'Content-Type': contentType });
+
+    if (ext === '.html') {
+      res.end(injectHtmlEnhancements(content.toString('utf8')));
+      return;
+    }
+
     res.end(content);
   });
 }
