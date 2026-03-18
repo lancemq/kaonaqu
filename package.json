@@ -2,10 +2,13 @@
   "name": "kaonaqu",
   "version": "1.0.0",
   "description": "上海中考信息展示平台 - 考哪去",
-  "main": "web/server.js",
+  "main": "next.config.mjs",
   "scripts": {
-    "start": "node web/server.js",
-    "dev": "nodemon web/server.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "dev:legacy": "nodemon web/server.js",
+    "start:legacy": "node web/server.js",
     "seo:build": "node scripts/generate-seo.js",
     "crawl:policies": "node crawler/src/crawlers/policies-official.js",
     "crawl:news": "node crawler/src/crawlers/news-official.js",
@@ -32,7 +35,10 @@
     "@vercel/blob": "^2.3.0",
     "axios": "^1.6.7",
     "cheerio": "^1.0.0-rc.12",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "next": "^16.1.7",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

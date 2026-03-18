@@ -1,10 +1,23 @@
 const fs = require('fs').promises;
+const fsSync = require('fs');
 const path = require('path');
 const { loadDataFromBlob, uploadDataToBlob, hasBlobToken } = require('./blob-data');
 const { buildDistricts } = require('./data-schema');
 const { hasSupabaseConfig, listRecords, replaceRecords, upsertRecords } = require('./supabase-store');
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
+function resolveDataDir() {
+  const candidates = [
+    process.env.KAONAQU_RUNTIME_ROOT_DATA_DIR,
+    path.join(process.cwd(), 'data'),
+    path.join(__dirname, '..', 'data'),
+    path.join(process.cwd(), '..', 'data'),
+    path.join(process.cwd(), '..', '..', 'data')
+  ].filter(Boolean);
+
+  return candidates.find((candidate) => fsSync.existsSync(candidate)) || candidates[0];
+}
+
+const DATA_DIR = resolveDataDir();
 const DATASET_FILES = {
   districts: 'districts.json',
   schools: 'schools.json',

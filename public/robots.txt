@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /data/
+Disallow: /crawler/
+Disallow: /shared/
+Disallow: /scripts/
+Disallow: /web/
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /api/
+Disallow: /data/
+Disallow: /crawler/
+Disallow: /shared/
+Disallow: /scripts/
+Disallow: /web/
+
+Host: kaonaqu.xyz
+Sitemap: https://kaonaqu.xyz/sitemap.xml

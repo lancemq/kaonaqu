@@ -1,13 +1,4 @@
 {
-  "cleanUrls": true,
-  "functions": {
-    "api/cron-refresh.js": {
-      "includeFiles": "{data/*.json,crawler/data/raw/*.json,crawler/src/**/*.js,crawler/src/sources/*.json,shared/*.js}"
-    },
-    "api/**/*.js": {
-      "includeFiles": "data/*.json"
-    }
-  },
   "crons": [
     {
       "path": "/api/cron-refresh",
