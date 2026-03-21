@@ -1,5 +1,342 @@
 [
   {
+    "id": "jiading-上海市嘉定区第一中学",
+    "name": "上海市嘉定区第一中学",
+    "districtId": "jiading",
+    "districtName": "嘉定区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "嘉定区嘉行公路701号",
+    "phone": "021-69983668",
+    "website": "",
+    "admissionNotes": "根据上海校讯中心整理，嘉定一中创办于1926年，2005年被命名为上海市首批实验性示范性高级中学，是嘉定区代表性高中。",
+    "features": [
+      "实验性示范性高中",
+      "百年名校",
+      "人文科技特色"
+    ],
+    "tags": [
+      "高中",
+      "公办",
+      "示范性高中",
+      "百年名校"
+    ],
+    "source": {
+      "name": "上海校讯中心",
+      "type": "unknown",
+      "url": "https://www.021school.cn/schools/16662",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "fengxian-上海市奉贤中学附属初级中学",
+    "name": "上海市奉贤中学附属初级中学",
+    "districtId": "fengxian",
+    "districtName": "奉贤区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "奉贤区文秀路369号",
+    "phone": "021-37122068",
+    "website": "",
+    "admissionNotes": "根据上海校讯中心整理，学校位于奉贤新城，依托奉贤中学资源开展初高中一体化育人探索，是奉贤区关注度较高的公办初中。",
+    "features": [
+      "初高中一体化",
+      "公办初中",
+      "新城学校"
+    ],
+    "tags": [
+      "初中",
+      "公办",
+      "附属学校"
+    ],
+    "source": {
+      "name": "上海校讯中心",
+      "type": "unknown",
+      "url": "https://www.021school.cn/schools/16941",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "fengxian-华东理工大学附属奉贤曙光中学",
+    "name": "华东理工大学附属奉贤曙光中学",
+    "districtId": "fengxian",
+    "districtName": "奉贤区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "奉贤区川博路100号",
+    "phone": "021-57513988",
+    "website": "",
+    "admissionNotes": "根据上海校讯中心整理，学校前身为奉贤曙光中学，具有红色校史背景，现为奉贤区实验性示范性高中。",
+    "features": [
+      "实验性示范性高中",
+      "红色校史",
+      "大学合作"
+    ],
+    "tags": [
+      "高中",
+      "公办",
+      "示范性高中",
+      "附属学校"
+    ],
+    "source": {
+      "name": "上海校讯中心",
+      "type": "unknown",
+      "url": "https://www.021school.cn/schools/16749",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "songjiang-上海市松江一中",
+    "name": "上海市松江一中",
+    "districtId": "songjiang",
+    "districtName": "松江区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "松江区松汇中路601号",
+    "phone": "021-57822996",
+    "website": "https://school.sjyz.sjedu.cn/xxgk_xxgk.html",
+    "admissionNotes": "根据上海校讯中心与学校官网整理，松江一中是创办于1904年的百年名校、上海市实验性示范性高中，校园生活区和学生公寓配套较完整。",
+    "features": [
+      "实验性示范性高中",
+      "百年名校",
+      "住宿条件较完善"
+    ],
+    "tags": [
+      "高中",
+      "公办",
+      "示范性高中",
+      "寄宿"
+    ],
+    "source": {
+      "name": "上海校讯中心",
+      "type": "unknown",
+      "url": "https://www.021school.cn/schools/16733",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "songjiang-上海市松江二中",
+    "name": "上海市松江二中",
+    "districtId": "songjiang",
+    "districtName": "松江区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "松江区中山东路250号",
+    "phone": "021-57832255",
+    "website": "https://www.sjez.com/",
+    "admissionNotes": "根据上海本地宝学校条目与学校官网整理，松江二中是上海市首批实验性示范性高中，历史可追溯至云间书院，办学传统深厚。",
+    "features": [
+      "实验性示范性高中",
+      "历史名校",
+      "学科竞赛"
+    ],
+    "tags": [
+      "高中",
+      "公办",
+      "示范性高中",
+      "百年名校"
+    ],
+    "source": {
+      "name": "上海本地宝",
+      "type": "third_party",
+      "url": "https://m.sh.bendibao.com/wangdian/dian/5916449.shtm",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "songjiang-上海市松江区第五中学",
+    "name": "上海市松江区第五中学（松江二中集团初级中学）",
+    "districtId": "songjiang",
+    "districtName": "松江区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "松江区邱家湾20号",
+    "phone": "021-57832619",
+    "website": "",
+    "admissionNotes": "根据上海校讯中心整理，学校是松江二中教育集团成员校，位于松江中心城区，强调初高中衔接与自治教育。",
+    "features": [
+      "集团化办学",
+      "初高中衔接",
+      "公办初中"
+    ],
+    "tags": [
+      "初中",
+      "公办",
+      "集团校"
+    ],
+    "source": {
+      "name": "上海校讯中心",
+      "type": "unknown",
+      "url": "https://www.021school.cn/schools/15743",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "jinshan-上海市松隐中学",
+    "name": "上海市松隐中学",
+    "districtId": "jinshan",
+    "districtName": "金山区",
+    "schoolStage": "junior",
+    "schoolStageLabel": "初中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "金山区亭林镇松育路100号",
+    "phone": "021-57381208",
+    "website": "",
+    "admissionNotes": "根据上海校讯中心整理，学校创建于1956年，近年来纳入强校工程与集团化办学体系，是金山区较有代表性的公办初中。",
+    "features": [
+      "强校工程",
+      "集团化办学",
+      "公办初中"
+    ],
+    "tags": [
+      "初中",
+      "公办",
+      "强校工程"
+    ],
+    "source": {
+      "name": "上海校讯中心",
+      "type": "unknown",
+      "url": "https://www.021school.cn/schools/15713",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "jinshan-上海市金山中学",
+    "name": "上海市金山中学",
+    "districtId": "jinshan",
+    "districtName": "金山区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "金山区朱泾镇众益街899号",
+    "phone": "021-57326262",
+    "website": "https://www.jsedu.sh.cn/jszx/",
+    "admissionNotes": "根据上海校讯中心与金山中学校园新闻整理，学校是上海市实验性示范性高中、现代化高标准寄宿制高中，是金山区代表性高中之一。",
+    "features": [
+      "实验性示范性高中",
+      "寄宿制",
+      "现代化高中"
+    ],
+    "tags": [
+      "高中",
+      "公办",
+      "示范性高中",
+      "寄宿"
+    ],
+    "source": {
+      "name": "上海校讯中心",
+      "type": "unknown",
+      "url": "https://www.021school.cn/schools/16722",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "jinshan-华东师范大学第三附属中学",
+    "name": "华东师范大学第三附属中学",
+    "districtId": "jinshan",
+    "districtName": "金山区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "金山区张堰镇东贤路69号",
+    "phone": "021-31115588",
+    "website": "https://www.jsedu.sh.cn/hdsdsfz/",
+    "admissionNotes": "根据学校开放日公告整理，学校由华东师大与地方合作办学，现校址位于张堰镇东贤路69号，是金山区重要的实验性示范性高中。",
+    "features": [
+      "实验性示范性高中",
+      "大学附中",
+      "合作办学"
+    ],
+    "tags": [
+      "高中",
+      "公办",
+      "示范性高中",
+      "附属学校"
+    ],
+    "source": {
+      "name": "华东师大三附中官网",
+      "type": "official",
+      "url": "https://www.jsedu.sh.cn/hdsdsfz/p/14813.html",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.95
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
+    "id": "qingpu-上海市青浦高级中学",
+    "name": "上海市青浦高级中学",
+    "districtId": "qingpu",
+    "districtName": "青浦区",
+    "schoolStage": "senior_high",
+    "schoolStageLabel": "高中",
+    "schoolType": "unknown",
+    "schoolTypeLabel": "公办",
+    "tier": "",
+    "address": "青浦区公园东路1100号",
+    "phone": "021-69719058",
+    "website": "https://www.qpshs.sh.cn/",
+    "admissionNotes": "根据上海校讯中心与学校官网整理，青浦高级中学始建于1923年，是上海市实验性示范性高中，也是青浦区老牌优质高中。",
+    "features": [
+      "实验性示范性高中",
+      "百年名校",
+      "寄宿制传统"
+    ],
+    "tags": [
+      "高中",
+      "公办",
+      "示范性高中",
+      "百年名校"
+    ],
+    "source": {
+      "name": "上海校讯中心",
+      "type": "unknown",
+      "url": "https://www.021school.cn/schools/16740",
+      "crawledAt": "2026-03-21T16:20:00+08:00",
+      "confidence": 0.75
+    },
+    "updatedAt": "2026-03-21T16:20:00+08:00"
+  },
+  {
     "id": "baoshan-上海民办行中中学",
     "name": "上海民办行中中学",
     "districtId": "baoshan",
