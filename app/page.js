@@ -8,11 +8,27 @@ const { loadDataStore } = require('../shared/data-store');
 
 export const dynamic = 'force-dynamic';
 
+function getSchoolPreviewScore(school) {
+  const tags = Array.isArray(school.tags) ? school.tags.length : 0;
+  const features = Array.isArray(school.features) ? school.features.length : 0;
+  const metadataFields = [school.address, school.phone, school.website, school.admissionNotes].filter(Boolean).length;
+  return tags * 2 + features * 2 + metadataFields;
+}
+
 export default async function HomePage() {
   const { districts, schools, news } = await loadDataStore();
   const sortedNews = news.slice().sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')));
   const [headline, ...restNews] = sortedNews;
-  const topSchools = schools.slice(0, 15);
+  const topSchools = schools
+    .slice()
+    .sort((left, right) => {
+      const scoreDiff = getSchoolPreviewScore(right) - getSchoolPreviewScore(left);
+      if (scoreDiff !== 0) {
+        return scoreDiff;
+      }
+      return String(right.updatedAt || '').localeCompare(String(left.updatedAt || ''));
+    })
+    .slice(0, 15);
 
   return (
     <SiteShell>

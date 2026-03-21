@@ -112,7 +112,7 @@ export default function SchoolsPageClient({ districts, schools, news }) {
               <button className="action-button action-button-secondary" type="button" onClick={resetFilters}>重置条件</button>
             </div>
             <div className="quick-searches" aria-label="快速搜索" style={{ marginBottom: 24 }}>
-              {['市重点', '实验学校', '科技', '国际课程'].map((chip) => (
+              {['市重点', '实验学校', '科技', '国际课程', '双语', '民办', '国际化', '寄宿'].map((chip) => (
                 <button
                   key={chip}
                   className="quick-chip"
