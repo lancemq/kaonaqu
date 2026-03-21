@@ -5,6 +5,9 @@ crawler/node_modules/
 # Next.js
 .next/
 out/
+.turbo/
+*.tsbuildinfo
+.eslintcache
 
 # Vercel
 .vercel/
@@ -25,12 +28,17 @@ pnpm-debug.log*
 tmp/
 temp/
 .cache/
+.nyc_output/
 
 # OS / editor noise
 .DS_Store
 Thumbs.db
 *.swp
 *.swo
+.idea/
+.vscode/
+*.pid
+*.seed
 
 # Test / coverage artifacts
 coverage/
