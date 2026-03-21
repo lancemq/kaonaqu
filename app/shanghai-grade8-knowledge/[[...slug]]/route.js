@@ -52,7 +52,8 @@ export async function GET(request, { params }) {
   return new NextResponse(content, {
     status: 200,
     headers: {
-      'Content-Type': MIME_TYPES[ext] || 'application/octet-stream'
+      'Content-Type': MIME_TYPES[ext] || 'application/octet-stream',
+      'Cache-Control': ext === '.html' ? 'no-store' : 'public, max-age=31536000, immutable'
     }
   });
 }

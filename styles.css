@@ -614,6 +614,11 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     margin-top: 22px;
 }
 
+.search-shell-advanced {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0;
+}
+
 .search-field {
     display: flex;
     align-items: center;
@@ -680,6 +685,17 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     margin-top: 16px;
 }
 
+.filter-group {
+    display: grid;
+    gap: 10px;
+}
+
+.filter-group-label {
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
 .action-button,
 .quick-chip,
 .pill,
@@ -719,6 +735,13 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     border-color: rgba(30, 36, 48, 0.08);
     background: rgba(255, 252, 247, 0.82);
     color: var(--muted);
+}
+
+.quick-chip-active {
+    border-color: rgba(52, 124, 255, 0.28);
+    background: rgba(230, 239, 255, 0.95);
+    color: #1f4fd1;
+    box-shadow: 0 10px 20px rgba(52, 124, 255, 0.12);
 }
 
 .quick-chip:hover,
