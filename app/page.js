@@ -19,6 +19,9 @@ export default async function HomePage() {
   const { districts, schools, news } = await loadDataStore();
   const sortedNews = news.slice().sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')));
   const [headline, ...restNews] = sortedNews;
+  const examNews = sortedNews.filter((item) => item.newsType === 'exam').slice(0, 4);
+  const admissionNews = sortedNews.filter((item) => item.newsType === 'admission').slice(0, 3);
+  const schoolNews = sortedNews.filter((item) => item.newsType === 'school').slice(0, 3);
   const topSchools = schools
     .slice()
     .sort((left, right) => {
@@ -40,8 +43,8 @@ export default async function HomePage() {
           </div>
           <div className="search-panel-head newsroom-head">
             <div className="newsroom-head-copy">
-              <h2>把上海升学信息，整理成一份可持续阅读的教育资讯首页</h2>
-              <p>这里不是单纯的导航站。我们把政策节点、学校数据库和年级知识体系做成三条并行主线，让家长和学生像读专题资讯一样快速定位重点。</p>
+              <h2>上海升学新闻、学校信息与学习内容一站查看</h2>
+              <p>聚合考试动态、招生政策、学校数据库和年级知识体系，帮助家长和学生更快找到当前真正需要关注的信息。</p>
             </div>
             <div className="newsroom-scoreboard" aria-label="站点统计">
               <article>
@@ -93,6 +96,49 @@ export default async function HomePage() {
       </header>
 
       <main className="layout">
+        <section className="front-page-grid" aria-label="首页导读版面">
+          <article className="panel briefing-panel">
+            <div className="section-heading">
+              <h2>今日快讯</h2>
+              <p>按阅读速度优先排列，适合先扫一遍关键节点。</p>
+            </div>
+            <div className="briefing-list">
+              {sortedNews.slice(0, 5).map((item, index) => (
+                <article key={item.id} className="briefing-item">
+                  <span className="briefing-index">{String(index + 1).padStart(2, '0')}</span>
+                  <div>
+                    <p className="briefing-meta">{getNewsCategoryLabel(item)} · {item.publishedAt || '暂无日期'}</p>
+                    <h3>{item.title}</h3>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </article>
+          <article className="panel tracker-panel">
+            <div className="section-heading">
+              <h2>专题追踪</h2>
+              <p>围绕升学决策最常见的三类信息组织浏览。</p>
+            </div>
+            <div className="tracker-grid">
+              <div className="tracker-card">
+                <span>考试新闻</span>
+                <strong>{examNews.length}</strong>
+                <p>聚焦报名、考试安排、准考证和成绩相关动态。</p>
+              </div>
+              <div className="tracker-card">
+                <span>招生新闻</span>
+                <strong>{admissionNews.length}</strong>
+                <p>关注自主招生、开放日、中本贯通和志愿提醒。</p>
+              </div>
+              <div className="tracker-card">
+                <span>学校动态</span>
+                <strong>{schoolNews.length}</strong>
+                <p>校内通知、校园开放活动和办学动态整理。</p>
+              </div>
+            </div>
+          </article>
+        </section>
+
         <section className="panel news-panel" id="news">
           <div className="section-heading">
             <h2>新闻政策</h2>
@@ -130,6 +176,15 @@ export default async function HomePage() {
               </div>
             </>
           ) : null}
+          <div className="home-topic-strip" aria-label="首页专题条">
+            {admissionNews.map((item) => (
+              <article key={item.id} className="topic-strip-card">
+                <span className="pill">{getNewsCategoryLabel(item)}</span>
+                <h3>{item.title}</h3>
+                <p>{item.summary || '暂无摘要'}</p>
+              </article>
+            ))}
+          </div>
           <Link className="module-link" href="/news">查看新闻政策</Link>
         </section>
 
@@ -171,6 +226,23 @@ export default async function HomePage() {
           <div className="section-heading">
             <h2>学校信息</h2>
             <p>首页只预览部分学校和区域摘要，完整区域筛选、学校介绍和特色信息请进入对应页面查看。</p>
+          </div>
+          <div className="school-topic-band">
+            <article className="school-topic-card">
+              <span>国际化学校</span>
+              <strong>{schools.filter((school) => (school.tags || []).includes('国际化')).length}</strong>
+              <p>集中查看双语、国际课程和外籍学校线索。</p>
+            </article>
+            <article className="school-topic-card">
+              <span>示范性高中</span>
+              <strong>{schools.filter((school) => (school.tags || []).includes('示范性高中')).length}</strong>
+              <p>适合按区快速定位重点高中和寄宿资源。</p>
+            </article>
+            <article className="school-topic-card">
+              <span>九年一贯</span>
+              <strong>{schools.filter((school) => (school.tags || []).includes('九年一贯')).length}</strong>
+              <p>优先查看连续培养路径和集团化办学学校。</p>
+            </article>
           </div>
           <div className="district-preview-grid">
             {districts.slice(0, 6).map((district) => (

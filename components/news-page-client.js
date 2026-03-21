@@ -72,10 +72,61 @@ export default function NewsPageClient({ news, policies }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const visibleNews = useMemo(() => filterNews(news, activeFilter), [news, activeFilter]);
   const visiblePolicies = useMemo(() => policies.filter(isRenderablePolicy), [policies]);
+  const examNews = useMemo(() => news.filter((item) => item.newsType === 'exam').slice().sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))).slice(0, 4), [news]);
+  const admissionNews = useMemo(() => news.filter((item) => item.newsType === 'admission').slice().sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))).slice(0, 4), [news]);
+  const schoolNews = useMemo(() => news.filter((item) => item.newsType === 'school').slice().sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))).slice(0, 4), [news]);
   const [headline, ...restNews] = visibleNews;
 
   return (
     <main className="layout">
+      <section className="news-channel-grid">
+        <section className="panel news-column-panel">
+          <div className="section-heading">
+            <h2>考试新闻专栏</h2>
+            <p>优先关注考试安排、报名、准考证和成绩相关时间点。</p>
+          </div>
+          <div className="compact-news-list">
+            {examNews.map((item) => (
+              <article key={item.id} className="compact-news-card">
+                <span className="pill">{item.publishedAt || '暂无日期'}</span>
+                <h3>{item.title}</h3>
+                <p>{item.summary || '暂无摘要'}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="panel news-column-panel">
+          <div className="section-heading">
+            <h2>招生新闻专栏</h2>
+            <p>单独追踪开放日、自主招生和志愿填报提醒。</p>
+          </div>
+          <div className="compact-news-list">
+            {admissionNews.map((item) => (
+              <article key={item.id} className="compact-news-card">
+                <span className="pill">{item.publishedAt || '暂无日期'}</span>
+                <h3>{item.title}</h3>
+                <p>{item.summary || '暂无摘要'}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="panel news-column-panel">
+          <div className="section-heading">
+            <h2>学校动态专栏</h2>
+            <p>汇总学校开放安排、校园动态和校方消息。</p>
+          </div>
+          <div className="compact-news-list">
+            {schoolNews.map((item) => (
+              <article key={item.id} className="compact-news-card">
+                <span className="pill">{item.publishedAt || '暂无日期'}</span>
+                <h3>{item.title}</h3>
+                <p>{item.summary || '暂无摘要'}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </section>
+
       <section className="panel news-panel" id="news">
         <div className="section-heading">
           <h2>新闻动态</h2>
