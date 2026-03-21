@@ -33,11 +33,42 @@ export default async function HomePage() {
   return (
     <SiteShell>
       <header className="hero" id="top">
-        <section className="search-panel home-hero-panel" aria-label="网站概览">
-          <div className="search-panel-head">
-            <h2>上海学生成长与升学信息平台</h2>
-            <p>把新闻政策、学校信息、知识体系整理成三条清晰主线：首页只展示重点入口，进入二级页面后再进行完整浏览和筛选。</p>
+        <section className="search-panel home-hero-panel newsroom-hero" aria-label="网站概览">
+          <div className="newsroom-kicker-row">
+            <span className="newsroom-kicker">教育新闻台</span>
+            <span className="newsroom-edition">Shanghai Daily Brief</span>
           </div>
+          <div className="search-panel-head newsroom-head">
+            <div className="newsroom-head-copy">
+              <h2>把上海升学信息，整理成一份可持续阅读的教育资讯首页</h2>
+              <p>这里不是单纯的导航站。我们把政策节点、学校数据库和年级知识体系做成三条并行主线，让家长和学生像读专题资讯一样快速定位重点。</p>
+            </div>
+            <div className="newsroom-scoreboard" aria-label="站点统计">
+              <article>
+                <span>学校库</span>
+                <strong>{schools.length}</strong>
+              </article>
+              <article>
+                <span>新闻政策</span>
+                <strong>{news.length}</strong>
+              </article>
+              <article>
+                <span>覆盖区域</span>
+                <strong>{districts.length}</strong>
+              </article>
+            </div>
+          </div>
+          {headline ? (
+            <article className="frontline-story">
+              <div className="frontline-meta">
+                <span className="pill">{getNewsCategoryLabel(headline)}</span>
+                <span>{headline.publishedAt || '暂无日期'}</span>
+              </div>
+              <h3>{headline.title}</h3>
+              <p>{headline.summary || '暂无摘要'}</p>
+              <a className="text-link" href="/news">进入新闻政策版面</a>
+            </article>
+          ) : null}
           <div className="module-entry-grid">
             <Link className="module-entry-card" href="/news">
               <span className="module-glyph module-glyph-news" aria-hidden="true"></span>
