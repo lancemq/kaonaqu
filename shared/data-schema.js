@@ -31,7 +31,8 @@ const SCHOOL_TYPE_MAP = {
 
 const SCHOOL_STAGE_MAP = {
   junior: '初中',
-  senior_high: '高中'
+  senior_high: '高中',
+  complete: '完全中学'
 };
 
 const SOURCE_TYPE_MAP = {
@@ -109,6 +110,9 @@ function normalizeSchoolStage(value) {
   }
   if (text === '高中' || text === 'senior_high') {
     return 'senior_high';
+  }
+  if (text === '完全中学' || text === 'complete') {
+    return 'complete';
   }
   return 'senior_high';
 }

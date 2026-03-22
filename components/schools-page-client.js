@@ -27,7 +27,8 @@ function EmptyState() {
 const STAGE_OPTIONS = [
   { value: 'all', label: '全部学段' },
   { value: 'junior', label: '初中' },
-  { value: 'senior_high', label: '高中' }
+  { value: 'senior_high', label: '高中' },
+  { value: 'complete', label: '完全中学' }
 ];
 
 const OWNERSHIP_OPTIONS = [
