@@ -2821,21 +2821,30 @@
     "schoolTypeLabel": "市重点",
     "tier": "",
     "address": "上海市浦东新区晨晖路555号",
-    "phone": "021-87654321",
+    "phone": "021-50801890",
     "website": "http://www.hsefz.cn/",
-    "admissionNotes": "招收全市优秀初中毕业生，有国际班和普通班",
-    "features": [],
+    "admissionNotes": "根据华东师大二附中官网校情简介整理：学校以“追求卓越，培养创造未来的人”为理念，形成以“立德”和“创新”为核心的卓越教育特色，并建设卓越学院培养拔尖创新人才。",
+    "features": [
+      "卓越教育体系",
+      "卓越学院人才培养",
+      "科技创新与学科奥赛优势",
+      "多校区一体化管理"
+    ],
     "tags": [
-      "高中"
+      "高中",
+      "市重点",
+      "拔尖创新",
+      "竞赛强校",
+      "科技特色"
     ],
     "source": {
-      "name": "升学帮",
-      "type": "third_party",
-      "url": "",
-      "crawledAt": "2026-03-07T04:33:13.093Z",
-      "confidence": 0.75
+      "name": "华东师大二附中官网",
+      "type": "official",
+      "url": "https://www.hsefz.cn/about/introduction/",
+      "crawledAt": "2026-03-22T10:31:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-07T04:33:13.093Z"
+    "updatedAt": "2026-03-22T10:31:00+08:00"
   },
   {
     "id": "pudong-建平实验中学",
@@ -3327,23 +3336,30 @@
     "schoolTypeLabel": "公办",
     "tier": "",
     "address": "浦东新区东明路300号",
-    "phone": "50866067",
+    "phone": "021-50866067",
     "website": "http://www.ses.sh.edu.cn/",
-    "admissionNotes": "根据上海本地宝学校查询页整理，学校实行十年一贯弹性学制，当前条目按初中学段收录。",
-    "features": [],
+    "admissionNotes": "根据上海市实验学校官网学校概况整理：学校实施“小学四年、初中三年、高中三年”的十年一贯弹性学制，强调个性潜能开发、课程贯通与拔尖创新人才早期识别培养。",
+    "features": [
+      "十年一贯弹性学制",
+      "课程贯通衔接",
+      "个性潜能开发",
+      "实验性示范学校"
+    ],
     "tags": [
       "初中",
       "公办",
-      "实验"
+      "实验",
+      "十年一贯",
+      "拔尖创新"
     ],
     "source": {
-      "name": "上海本地宝",
-      "type": "third_party",
-      "url": "https://m.sh.bendibao.com/wangdian/dian/5916316.shtm",
-      "crawledAt": "2026-03-08T09:30:00+08:00",
-      "confidence": 0.75
+      "name": "上海市实验学校官网",
+      "type": "official",
+      "url": "https://www.ses.sh.edu.cn/web/syxy/5190066-5190000004320.htm",
+      "crawledAt": "2026-03-22T10:33:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-08T09:30:00+08:00"
+    "updatedAt": "2026-03-22T10:33:00+08:00"
   },
   {
     "id": "浦东新区-上海中学东校",
@@ -4816,21 +4832,30 @@
     "schoolTypeLabel": "市重点",
     "tier": "",
     "address": "上海市徐汇区百色路989号",
-    "phone": "021-12345678",
+    "phone": "021-64100430",
     "website": "http://www.shs.cn/",
-    "admissionNotes": "招收全市优秀初中毕业生，需参加自主招生考试",
-    "features": [],
+    "admissionNotes": "根据上海中学官网学校概况、课程图谱与校园开放日通知整理：学校以“聚焦志趣、激发潜能”为导向推进拔尖创新人才早期培育，2025年公开校园开放日报名安排。",
+    "features": [
+      "拔尖创新人才早期培育",
+      "大学先修与竞赛课程",
+      "研究型课程体系",
+      "本部与国际部一体资源"
+    ],
     "tags": [
-      "高中"
+      "高中",
+      "市重点",
+      "拔尖创新",
+      "竞赛强校",
+      "国际化"
     ],
     "source": {
-      "name": "家长帮论坛",
-      "type": "community",
-      "url": "",
-      "crawledAt": "2026-03-07T04:33:13.093Z",
-      "confidence": 0.6
+      "name": "上海中学官网",
+      "type": "official",
+      "url": "https://www.shs.cn/zskx/xxjj.htm",
+      "crawledAt": "2026-03-22T10:30:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-07T04:33:13.093Z"
+    "updatedAt": "2026-03-22T10:30:00+08:00"
   },
   {
     "id": "徐汇区-世外中学",
@@ -5063,21 +5088,30 @@
     "schoolTypeLabel": "市重点",
     "tier": "",
     "address": "上海市杨浦区国权路383号",
-    "phone": "021-23456789",
+    "phone": "021-65640560",
     "website": "http://www.fdfz.cn/",
-    "admissionNotes": "主要面向杨浦区招生，部分名额面向全市",
-    "features": [],
+    "admissionNotes": "根据上海校讯中心学校介绍整理：复旦附中是复旦大学与上海市教委双重领导的寄宿制实验性示范性高中，兼具国内高中与国际部资源。",
+    "features": [
+      "复旦大学合作背景",
+      "寄宿制办学",
+      "国际部资源",
+      "人文与科技并重"
+    ],
     "tags": [
-      "高中"
+      "高中",
+      "市重点",
+      "寄宿",
+      "大学附属",
+      "国际化"
     ],
     "source": {
-      "name": "学而思社区",
+      "name": "上海校讯中心",
       "type": "third_party",
-      "url": "",
-      "crawledAt": "2026-03-07T04:33:13.093Z",
-      "confidence": 0.75
+      "url": "https://www.021school.cn/schools/16608",
+      "crawledAt": "2026-03-22T10:32:00+08:00",
+      "confidence": 0.78
     },
-    "updatedAt": "2026-03-07T04:33:13.093Z"
+    "updatedAt": "2026-03-22T10:32:00+08:00"
   },
   {
     "id": "yangpu-兰生复旦中学",
