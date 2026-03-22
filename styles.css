@@ -2620,6 +2620,63 @@ summary:focus-visible {
     z-index: 1;
 }
 
+.open-day-list {
+    display: grid;
+    gap: 14px;
+}
+
+.open-day-card {
+    padding: 18px 18px 20px;
+    border-radius: 22px;
+    border: 1px solid rgba(23, 31, 45, 0.08);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 242, 233, 0.92)),
+        radial-gradient(circle at top right, rgba(200, 139, 40, 0.12), transparent 28%);
+    box-shadow: var(--shadow-sm);
+}
+
+.open-day-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.open-day-card h3 {
+    margin: 14px 0 6px;
+    font-family: "Noto Serif SC", serif;
+    font-size: 1.02rem;
+    line-height: 1.45;
+    letter-spacing: -0.03em;
+}
+
+.open-day-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.72;
+}
+
+.open-day-card p + p {
+    margin-top: 10px;
+}
+
+.open-day-district {
+    color: #7b5d46;
+    font-weight: 700;
+}
+
+.open-day-note {
+    font-size: 0.92rem;
+}
+
+.open-day-card .text-link {
+    display: inline-block;
+    margin-top: 12px;
+}
+
 @media (max-width: 1180px) {
     .front-page-grid,
     .news-channel-grid {

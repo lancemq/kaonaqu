@@ -1,6 +1,7 @@
 import SiteShell from '../../components/site-shell';
 import { createRequire } from 'module';
 import SchoolsPageClient from '../../components/schools-page-client';
+import schoolOpenDays from '../../lib/school-open-days';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../shared/data-store');
@@ -38,7 +39,7 @@ export default async function SchoolsPage() {
           </div>
         </section>
       </header>
-      <SchoolsPageClient districts={districts} schools={schools} news={news} />
+      <SchoolsPageClient districts={districts} schools={schools} news={news} openDays={schoolOpenDays} />
     </SiteShell>
   );
 }

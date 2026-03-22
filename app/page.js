@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
 import SiteShell from '../components/site-shell';
-import { formatConfidence, getNewsCategoryLabel, getSchoolAdmissionInfo, getSchoolDistrictName, getSchoolFeatureTags, getSchoolStage, getSchoolType } from '../lib/site-utils';
+import { formatConfidence, getNewsCategoryLabel, getSchoolAdmissionInfo, getSchoolDistrictName, getSchoolDisplayTags, getSchoolStage, getSchoolType } from '../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../shared/data-store');
@@ -262,12 +262,12 @@ export default async function HomePage() {
                   </div>
                   <span className="pill">{getSchoolStage(school)} · {getSchoolType(school)}</span>
                 </div>
-                <p className="school-summary">{getSchoolAdmissionInfo(school)}</p>
-                <div className="school-highlights">
-                  {getSchoolFeatureTags(school).length
-                    ? getSchoolFeatureTags(school).map((feature) => <span key={feature} className="meta-chip">{feature}</span>)
-                    : <span className="meta-chip meta-chip-muted">暂无特色标签</span>}
-                </div>
+                  <p className="school-summary">{getSchoolAdmissionInfo(school)}</p>
+                  <div className="school-highlights">
+                    {getSchoolDisplayTags(school).length
+                      ? getSchoolDisplayTags(school).map((tag) => <span key={tag} className="meta-chip">{tag}</span>)
+                      : <span className="meta-chip meta-chip-muted">暂无标签</span>}
+                  </div>
               </article>
             ))}
           </div>

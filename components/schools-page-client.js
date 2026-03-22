@@ -7,7 +7,7 @@ import {
   getLatestNewsByExamType,
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
-  getSchoolFeatureTags,
+  getSchoolDisplayTags,
   getSchoolFeatures,
   getSchoolOwnershipLabel,
   getSchoolStage,
@@ -49,7 +49,7 @@ const FEATURE_TAG_OPTIONS = [
   '百年名校'
 ];
 
-export default function SchoolsPageClient({ districts, schools, news }) {
+export default function SchoolsPageClient({ districts, schools, news, openDays = [] }) {
   const [activeDistrict, setActiveDistrict] = useState('all');
   const [activeStage, setActiveStage] = useState('all');
   const [activeOwnership, setActiveOwnership] = useState('all');
@@ -116,7 +116,7 @@ export default function SchoolsPageClient({ districts, schools, news }) {
           <div className="panel main-panel">
             <div className="section-heading">
               <h2>学校列表</h2>
-              <p>展示学校区域、介绍、阶段、特色标签、梯队与来源信息。</p>
+              <p>展示学校区域、介绍、阶段、标签、学校特色、梯队与来源信息。</p>
             </div>
             <div className="search-shell" style={{ marginBottom: 20 }}>
               <label className="search-field search-field-main" htmlFor="search-input">
@@ -219,9 +219,9 @@ export default function SchoolsPageClient({ districts, schools, news }) {
                   </div>
                   <p className="school-summary">{getSchoolAdmissionInfo(school)}</p>
                   <div className="school-highlights">
-                    {getSchoolFeatureTags(school).length
-                      ? getSchoolFeatureTags(school).map((feature) => <span key={feature} className="meta-chip">{feature}</span>)
-                      : <span className="meta-chip meta-chip-muted">暂无特色标签</span>}
+                    {getSchoolDisplayTags(school).length
+                      ? getSchoolDisplayTags(school).map((tag) => <span key={tag} className="meta-chip">{tag}</span>)
+                      : <span className="meta-chip meta-chip-muted">暂无标签</span>}
                   </div>
                   {schoolContextNews ? <p className="school-link-note">关联动态：{schoolContextNews.title}</p> : null}
                   <details className="school-details">
@@ -231,8 +231,8 @@ export default function SchoolsPageClient({ districts, schools, news }) {
                       <div><dt>办学性质</dt><dd>{getSchoolOwnershipLabel(school)}</dd></div>
                       <div><dt>地址</dt><dd>{school.address || '暂无'}</dd></div>
                       <div><dt>电话</dt><dd>{school.phone || '暂无'}</dd></div>
-                      <div><dt>完整特色</dt><dd>{getSchoolFeatures(school).join('、') || '暂无'}</dd></div>
                       <div><dt>标签</dt><dd>{getSchoolTags(school).join('、') || '暂无'}</dd></div>
+                      <div><dt>学校特色</dt><dd>{getSchoolFeatures(school).join('、') || '暂无'}</dd></div>
                       <div><dt>来源</dt><dd>{school.source?.name || '未知'} · 可信度 {formatConfidence(school.source?.confidence)}</dd></div>
                       <div><dt>抓取时间</dt><dd>{school.source?.crawledAt || '暂无'}</dd></div>
                     </dl>
@@ -275,6 +275,28 @@ export default function SchoolsPageClient({ districts, schools, news }) {
               <p>学校页不再展示政策内容，相关政策、头条和考试新闻统一在新闻政策页面查看。</p>
             </div>
             <a className="module-link" href="/news">查看新闻政策</a>
+          </section>
+
+          <section className="panel side-panel" id="school-open-days">
+            <div className="section-heading">
+              <h2>招简与开放日</h2>
+              <p>整理最近可查的学校招生简章、校园开放日和咨询入口，便于择校时快速对照。</p>
+            </div>
+            <div className="open-day-list">
+              {openDays.length ? openDays.map((item) => (
+                <article key={item.id} className="open-day-card">
+                  <div className="open-day-meta">
+                    <span className="pill">{item.tag}</span>
+                    <span>{item.window}</span>
+                  </div>
+                  <h3>{item.schoolName}</h3>
+                  <p className="open-day-district">{item.district}</p>
+                  <p>{item.summary}</p>
+                  <p className="open-day-note">{item.detail}</p>
+                  <a className="text-link" href={item.href} target="_blank" rel="noreferrer">查看原页</a>
+                </article>
+              )) : <EmptyState />}
+            </div>
           </section>
         </aside>
       </section>
