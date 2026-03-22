@@ -8,13 +8,17 @@ const { loadDataStore } = require('../../shared/data-store');
 
 export const metadata = {
   title: '上海初中高中学校信息查询 | 考哪去',
-  description: '按区域检索上海初中、高中学校信息，查看学校介绍、类型、阶段、特色标签、梯队与来源说明，适合升学择校参考。'
+  description: '按区域检索上海初中、高中学校信息，查看学校介绍、类型、阶段、特色标签与梯队说明，适合升学择校参考。'
 };
 
 export const dynamic = 'force-dynamic';
 
-export default async function SchoolsPage() {
+export default async function SchoolsPage({ searchParams }) {
   const { districts, schools, news } = await loadDataStore();
+  const params = await searchParams;
+  const initialDistrict = typeof params?.district === 'string' ? params.district : 'all';
+  const initialStage = typeof params?.stage === 'string' ? params.stage : 'all';
+  const initialQuery = typeof params?.query === 'string' ? params.query : '';
 
   return (
     <SiteShell>
@@ -29,7 +33,7 @@ export default async function SchoolsPage() {
             <div className="editorial-intro-copy">
               <span className="module-glyph module-glyph-schools module-glyph-large" aria-hidden="true"></span>
               <h1>学校数据库</h1>
-              <p>把上海学校信息做成更像资讯数据库的检索页。你可以按区域、学段、办学性质和特色标签交叉筛选，不必在零散帖子里反复找线索。</p>
+              <p>把上海学校信息做成更像资讯数据库的检索页。现在已经明确区分纯初中、纯高中和完全中学，你可以按区域、学段、办学性质和特色标签交叉筛选，不必在零散帖子里反复找线索。</p>
             </div>
             <div className="editorial-intro-metrics">
               <article><span>学校总量</span><strong>{schools.length}</strong></article>
@@ -39,7 +43,15 @@ export default async function SchoolsPage() {
           </div>
         </section>
       </header>
-      <SchoolsPageClient districts={districts} schools={schools} news={news} openDays={schoolOpenDays} />
+      <SchoolsPageClient
+        districts={districts}
+        schools={schools}
+        news={news}
+        openDays={schoolOpenDays}
+        initialDistrict={initialDistrict}
+        initialStage={initialStage}
+        initialQuery={initialQuery}
+      />
     </SiteShell>
   );
 }

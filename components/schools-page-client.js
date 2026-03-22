@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import {
   filterSchools,
@@ -50,13 +52,53 @@ const FEATURE_TAG_OPTIONS = [
   '百年名校'
 ];
 
-export default function SchoolsPageClient({ districts, schools, news, openDays = [] }) {
-  const [activeDistrict, setActiveDistrict] = useState('all');
-  const [activeStage, setActiveStage] = useState('all');
+function getStageMeta(stage) {
+  if (stage === 'junior') {
+    return { label: '纯初中', className: 'stage-badge stage-badge-junior' };
+  }
+  if (stage === 'complete') {
+    return { label: '完全中学', className: 'stage-badge stage-badge-complete' };
+  }
+  return { label: '纯高中', className: 'stage-badge stage-badge-senior' };
+}
+
+function resolveFeaturedSchool(schools, keyword, preferredName) {
+  return schools.find((entry) => entry.name === preferredName)
+    || schools.find((entry) => entry.name === keyword)
+    || schools.find((entry) => entry.name.includes(keyword) || keyword.includes(entry.name))
+    || null;
+}
+
+function getSchoolRelationMeta(school) {
+  const name = String(school?.name || '');
+  if (name.includes('附属学校')) {
+    return { label: '附校', className: 'relation-badge relation-badge-affiliate' };
+  }
+  if (name.includes('分校')) {
+    return { label: '分校', className: 'relation-badge relation-badge-branch' };
+  }
+  if (name.includes('校区') || name.includes('东校') || name.includes('西校') || name.includes('南校') || name.includes('北校')) {
+    return { label: '校区', className: 'relation-badge relation-badge-campus' };
+  }
+  return { label: '主校', className: 'relation-badge relation-badge-main' };
+}
+
+export default function SchoolsPageClient({
+  districts,
+  schools,
+  news,
+  openDays = [],
+  initialDistrict = 'all',
+  initialStage = 'all',
+  initialQuery = ''
+}) {
+  const router = useRouter();
+  const [activeDistrict, setActiveDistrict] = useState(initialDistrict);
+  const [activeStage, setActiveStage] = useState(initialStage);
   const [activeOwnership, setActiveOwnership] = useState('all');
   const [activeTag, setActiveTag] = useState('all');
-  const [queryInput, setQueryInput] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [queryInput, setQueryInput] = useState(initialQuery);
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
 
   const filteredSchools = useMemo(
     () => filterSchools(schools, {
@@ -70,6 +112,75 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
   );
 
   const schoolContextNews = useMemo(() => getLatestNewsByExamType(news, 'zhongkao'), [news]);
+  const featuredSchools = useMemo(() => {
+    const picks = [
+      { keyword: '上海中学', preferredName: '上海中学', eyebrow: '徐汇头部学校', blurb: '拔尖创新、竞赛课程和连续培养关注度高。' },
+      { keyword: '华东师范大学第二附属中学', preferredName: '华东师范大学第二附属中学', eyebrow: '华二体系', blurb: '科技创新与竞赛培养辨识度很强。' },
+      { keyword: '复旦大学附属中学', eyebrow: '复附专题', blurb: '寄宿、人文科技并重，大学附属资源明显。' },
+      { keyword: '上海交通大学附属中学', preferredName: '上海交通大学附属中学', eyebrow: '交附专题', blurb: '工程科技特色鲜明，附中体系关注度高。' },
+      { keyword: '上海市建平中学', eyebrow: '浦东重点', blurb: '浦东传统强校，课程选择和国际理解教育较强。' },
+      { keyword: '上海市七宝中学', eyebrow: '闵行重点', blurb: '科创与人文并重，区域影响力稳定。' }
+    ];
+
+    return picks
+      .map((item) => {
+        const school = resolveFeaturedSchool(schools, item.keyword, item.preferredName);
+        if (!school) {
+          return null;
+        }
+        return { ...item, school };
+      })
+      .filter(Boolean);
+  }, [schools]);
+  const featuredSchoolBriefs = useMemo(
+    () => featuredSchools.map(({ eyebrow, blurb, school }) => ({
+      id: school.id,
+      title: school.name,
+      eyebrow,
+      blurb,
+      district: school.districtName,
+      stage: getSchoolStage(school),
+      type: getSchoolType(school),
+      phone: school.phone || '',
+      website: school.website || '',
+      summary: getSchoolAdmissionInfo(school),
+      features: getSchoolFeatures(school).slice(0, 3)
+    })),
+    [featuredSchools]
+  );
+  const schoolSystems = useMemo(() => {
+    const definitions = [
+      { id: 'shs', name: '上海中学体系', description: '主校与东校并行，适合关注连续培养和校区差异。', keywords: ['上海中学', '上海中学东校'] },
+      { id: 'hsefz', name: '华二体系', description: '包括本部、紫竹校区和普陀校区，辨认校区非常重要。', keywords: ['华东师范大学第二附属中学'] },
+      { id: 'sjtu', name: '交附体系', description: '主校之外还包含嘉定分校、浦东实验高中等延展校。', keywords: ['上海交通大学附属中学'] },
+      { id: 'jianping', name: '建平体系', description: '主校与筠溪分校并存，浦东家长关注度很高。', keywords: ['建平中学'] },
+      { id: 'qibao', name: '七宝体系', description: '主校与浦江分校口径不同，适合分开查看。', keywords: ['七宝中学'] },
+      { id: 'fdfz', name: '复附体系', description: '以主校为核心，适合关注寄宿与附中资源。', keywords: ['复旦大学附属中学'] },
+      { id: 'gezhi', name: '格致体系', description: '黄浦主校和奉贤校区并存，适合分开看区域落点。', keywords: ['格致中学'] },
+      { id: 'datong', name: '大同体系', description: '主校与分校关系清晰，适合一起比较。', keywords: ['大同中学'] },
+      { id: 'xiangming', name: '向明体系', description: '主校和浦江分校定位不同，适合分开跟进。', keywords: ['向明中学'] },
+      { id: 'shixi', name: '市西体系', description: '静安主校与新城分校并存，适合同时查看。', keywords: ['市西中学'] },
+      { id: 'yanan', name: '延安体系', description: '主校与新城分校并存，注意不要和西延安中学混看。', keywords: ['延安中学'], excludeKeywords: ['西延安中学'] },
+      { id: 'kongjiang', name: '控江体系', description: '高中主校和附属学校同时存在，适合区分学段定位。', keywords: ['控江中学'] },
+      { id: 'jincai', name: '进才体系', description: '主校之外还可见北校、南校，适合按学段和校区拆开看。', keywords: ['进才中学'] }
+    ];
+
+    return definitions.map((group) => ({
+      ...group,
+      schools: schools.filter((school) => {
+        const included = group.keywords.some((keyword) => school.name.includes(keyword));
+        const excluded = (group.excludeKeywords || []).some((keyword) => school.name.includes(keyword));
+        return included && !excluded;
+      })
+    })).filter((group) => group.schools.length);
+  }, [schools]);
+  const filteredStageStats = useMemo(() => {
+    const counts = { junior: 0, senior_high: 0, complete: 0 };
+    for (const school of filteredSchools) {
+      counts[school.schoolStage] = (counts[school.schoolStage] || 0) + 1;
+    }
+    return counts;
+  }, [filteredSchools]);
   const districtName = activeDistrict === 'all'
     ? '全上海'
     : (districts.find((district) => district.id === activeDistrict)?.name || activeDistrict);
@@ -82,13 +193,23 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
     setSearchQuery(value.trim());
   };
 
+  const applyFocusedFilters = ({
+    district = 'all',
+    stage = 'all',
+    ownership = 'all',
+    tag = 'all',
+    query = ''
+  } = {}) => {
+    setActiveDistrict(district);
+    setActiveStage(stage);
+    setActiveOwnership(ownership);
+    setActiveTag(tag);
+    setQueryInput(query);
+    setSearchQuery(query);
+  };
+
   const resetFilters = () => {
-    setActiveDistrict('all');
-    setActiveStage('all');
-    setActiveOwnership('all');
-    setActiveTag('all');
-    setQueryInput('');
-    setSearchQuery('');
+    applyFocusedFilters();
   };
 
   return (
@@ -110,6 +231,36 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
             <span>个区域</span>
           </div>
         </div>
+        <div className="stage-stat-grid" aria-label="学段统计">
+          {[
+            { key: 'junior', title: '纯初中', description: '仅覆盖初中学段', value: filteredStageStats.junior },
+            { key: 'senior_high', title: '纯高中', description: '仅覆盖高中学段', value: filteredStageStats.senior_high },
+            { key: 'complete', title: '完全中学', description: '同时覆盖初中与高中', value: filteredStageStats.complete }
+          ].map((item) => (
+            <article key={item.key} className={`stage-stat-card stage-stat-card-${item.key}`}>
+              <span className="stage-stat-label">{item.title}</span>
+              <strong>{item.value}</strong>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+        <div className="stage-entry-row" aria-label="学段专题入口">
+          {[
+            { key: 'junior', title: '查纯初中', text: '适合小升初、初中择校和九年级前规划。' },
+            { key: 'senior_high', title: '查纯高中', text: '聚焦示范性高中、区重点和特色高中。' },
+            { key: 'complete', title: '查完全中学', text: '查看同时覆盖初高中的连续培养学校。' }
+          ].map((item) => (
+            <button
+              key={item.key}
+              type="button"
+              className={`stage-entry-card${activeStage === item.key ? ' stage-entry-card-active' : ''}`}
+              onClick={() => applyFocusedFilters({ stage: item.key })}
+            >
+              <span>{item.title}</span>
+              <p>{item.text}</p>
+            </button>
+          ))}
+        </div>
       </section>
 
       <section className="content-layout">
@@ -117,7 +268,7 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
           <div className="panel main-panel">
             <div className="section-heading">
               <h2>学校列表</h2>
-              <p>展示学校区域、介绍、阶段、标签、学校特色、梯队与来源信息。</p>
+              <p>展示学校区域、介绍、阶段、标签、学校特色和梯队信息。</p>
             </div>
             <div className="search-shell" style={{ marginBottom: 20 }}>
               <label className="search-field search-field-main" htmlFor="search-input">
@@ -171,13 +322,46 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
               <button className="action-button" type="button" onClick={() => applySearch()}>搜索学校</button>
               <button className="action-button action-button-secondary" type="button" onClick={resetFilters}>重置条件</button>
             </div>
+            {featuredSchools.length ? (
+              <section className="featured-school-launcher" aria-label="重点学校快捷入口">
+                <div className="section-heading" style={{ marginBottom: 14 }}>
+                  <h2>重点学校快捷入口</h2>
+                  <p>这里不是学校列表结果，而是 6 所高关注学校的专题入口。点击后会自动带入区域、学段和学校名称筛选。</p>
+                </div>
+                <div className="featured-school-strip">
+                {featuredSchools.map(({ keyword, eyebrow, blurb, school }) => (
+                  <button
+                    key={school.id}
+                    type="button"
+                    className="featured-school-chip"
+                    onClick={() => applyFocusedFilters({
+                      district: school.districtId || 'all',
+                      stage: school.schoolStage || 'all',
+                      query: keyword
+                    })}
+                  >
+                    <p className="featured-school-eyebrow">{eyebrow}</p>
+                    <h3>{school.name}</h3>
+                    <p>{blurb}</p>
+                    <div className="featured-school-meta">
+                      <span>{school.districtName}</span>
+                      <span>{getSchoolStage(school)}</span>
+                      <span>点击进入专题筛选</span>
+                    </div>
+                  </button>
+                ))}
+                </div>
+              </section>
+            ) : null}
             <div className="filter-group" aria-label="特色筛选" style={{ marginBottom: 18 }}>
               <span className="filter-group-label">特色筛选</span>
               <div className="quick-searches">
                 <button
-                  className={`quick-chip${activeTag === 'all' ? ' quick-chip-active' : ''}`}
+                  className={`quick-chip${activeTag === 'all' && !searchQuery ? ' quick-chip-active' : ''}`}
                   type="button"
-                  onClick={() => setActiveTag('all')}
+                  onClick={() => {
+                    setActiveTag('all');
+                  }}
                 >
                   全部特色
                 </button>
@@ -186,7 +370,11 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
                     key={chip}
                     className={`quick-chip${activeTag === chip ? ' quick-chip-active' : ''}`}
                     type="button"
-                    onClick={() => setActiveTag(chip)}
+                    onClick={() => {
+                      setActiveTag(chip);
+                      setQueryInput('');
+                      setSearchQuery('');
+                    }}
                   >
                     {chip}
                   </button>
@@ -199,10 +387,12 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
                   key={chip}
                   className={`quick-chip${searchQuery === chip ? ' quick-chip-active' : ''}`}
                   type="button"
-                  onClick={() => {
-                    setQueryInput(chip);
-                    setSearchQuery(chip);
-                  }}
+                  onClick={() => applyFocusedFilters({
+                    district: activeDistrict,
+                    stage: activeStage,
+                    ownership: activeOwnership,
+                    query: chip
+                  })}
                 >
                   {chip}
                 </button>
@@ -210,13 +400,28 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
             </div>
             <div className="school-grid">
               {filteredSchools.length ? filteredSchools.map((school) => (
-                <article key={school.id} className="school-card">
+                <article
+                  key={school.id}
+                  className="school-card school-card-clickable"
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => router.push(`/schools/${school.id}`)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      router.push(`/schools/${school.id}`);
+                    }
+                  }}
+                >
                   <div className="school-card-header">
                     <div>
                       <h3>{school.name}</h3>
                       <p>{getSchoolDistrictName(school)}</p>
                     </div>
-                    <span className="pill">{getSchoolStage(school)} · {getSchoolType(school)}</span>
+                    <div className="school-card-badges">
+                      <span className={getStageMeta(school.schoolStage).className}>{getStageMeta(school.schoolStage).label}</span>
+                      <span className="pill school-type-pill">{getSchoolType(school)}</span>
+                    </div>
                   </div>
                   <p className="school-summary">{getSchoolAdmissionInfo(school)}</p>
                   <div className="school-highlights">
@@ -225,20 +430,12 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
                       : <span className="meta-chip meta-chip-muted">暂无标签</span>}
                   </div>
                   {schoolContextNews ? <p className="school-link-note">关联动态：{schoolContextNews.title}</p> : null}
-                  <details className="school-details">
-                    <summary>查看详细信息</summary>
-                    <dl className="school-meta">
-                      <div><dt>梯队</dt><dd>{school.tier ? `${school.tier} 梯队` : '暂无'}</dd></div>
-                      <div><dt>办学性质</dt><dd>{getSchoolOwnershipLabel(school)}</dd></div>
-                      <div><dt>地址</dt><dd>{school.address || '暂无'}</dd></div>
-                      <div><dt>电话</dt><dd>{school.phone || '暂无'}</dd></div>
-                      <div><dt>标签</dt><dd>{getSchoolTags(school).join('、') || '暂无'}</dd></div>
-                      <div><dt>学校特色</dt><dd>{getSchoolFeatures(school).join('、') || '暂无'}</dd></div>
-                      <div><dt>来源</dt><dd>{school.source?.name || '未知'} · 可信度 {formatConfidence(school.source?.confidence)}</dd></div>
-                      <div><dt>抓取时间</dt><dd>{school.source?.crawledAt || '暂无'}</dd></div>
-                    </dl>
-                    {school.website ? <a className="text-link" href={school.website} target="_blank" rel="noreferrer">查看学校网站</a> : null}
-                  </details>
+                  <div className="school-card-footer">
+                    <span className="school-card-footnote">
+                      {school.tier ? `${school.tier} 梯队` : getSchoolOwnershipLabel(school)}
+                    </span>
+                    <span className="school-card-enter">点击查看学校详情</span>
+                  </div>
                 </article>
               )) : <EmptyState />}
             </div>
@@ -257,7 +454,7 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
                   key={district.id}
                   className={`district-card${activeDistrict === district.id ? ' district-card-active' : ''}`}
                   type="button"
-                  onClick={() => setActiveDistrict(district.id)}
+                  onClick={() => applyFocusedFilters({ district: district.id })}
                 >
                   <div className="district-card-header">
                     <h3>{district.name || district.districtName}</h3>
@@ -295,6 +492,90 @@ export default function SchoolsPageClient({ districts, schools, news, openDays =
                   <p>{item.summary}</p>
                   <p className="open-day-note">{item.detail}</p>
                   <a className="text-link" href={item.href} target="_blank" rel="noreferrer">查看原页</a>
+                </article>
+              )) : <EmptyState />}
+            </div>
+          </section>
+
+          <section className="panel side-panel" id="featured-school-briefs">
+            <div className="section-heading">
+              <h2>名校招简与咨询</h2>
+              <p>把头部学校当前可查的官网、电话和招生线索集中放在一起，便于进一步跟进。</p>
+            </div>
+            <div className="featured-school-brief-list">
+              {featuredSchoolBriefs.length ? featuredSchoolBriefs.map((item) => (
+                <article key={item.id} className="featured-school-brief-card">
+                  <div className="open-day-meta">
+                    <span className="pill">{item.eyebrow}</span>
+                    <span>{item.district} · {item.stage}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.blurb}</p>
+                  <p className="open-day-note">{item.summary}</p>
+                  <div className="featured-school-brief-tags">
+                    {item.features.length
+                      ? item.features.map((feature) => <span key={feature} className="meta-chip">{feature}</span>)
+                      : <span className="meta-chip meta-chip-muted">{item.type}</span>}
+                  </div>
+                  <div className="featured-school-brief-links">
+                    {item.phone ? <span className="featured-school-brief-contact">咨询电话：{item.phone}</span> : null}
+                    {item.website ? <a className="text-link" href={item.website} target="_blank" rel="noreferrer">查看官网</a> : null}
+                  </div>
+                </article>
+              )) : <EmptyState />}
+            </div>
+          </section>
+
+          <section className="panel side-panel" id="school-systems">
+            <div className="section-heading">
+              <h2>学校体系导览</h2>
+              <p>把主校、分校和校区放在同一组里看，避免把不同学校体系混在一起判断。</p>
+            </div>
+            <div className="school-system-list">
+              {schoolSystems.length ? schoolSystems.map((group) => (
+                <article key={group.id} className="school-system-card">
+                  <h3>{group.name}</h3>
+                  <p>{group.description}</p>
+                  <div className="school-system-summary">
+                    <span>{group.schools.length} 所学校</span>
+                    <span>{group.schools.filter((school) => school.website).length} 个官网入口</span>
+                    <span>{group.schools.filter((school) => school.phone).length} 个咨询电话</span>
+                  </div>
+                  <div className="school-system-entries">
+                    {group.schools.map((school) => (
+                      <button
+                        key={school.id}
+                        type="button"
+                        className="school-system-entry"
+                        onClick={() => applyFocusedFilters({
+                          district: school.districtId || 'all',
+                          stage: school.schoolStage || 'all',
+                          query: school.name
+                        })}
+                      >
+                          <div className="school-system-entry-head">
+                            <strong>{school.name}</strong>
+                            <span className={getSchoolRelationMeta(school).className}>{getSchoolRelationMeta(school).label}</span>
+                          </div>
+                          <span>{school.districtName} · {getSchoolStage(school)} · {getSchoolType(school)}</span>
+                          <span>{getSchoolFeatures(school).slice(0, 2).join(' / ') || getSchoolAdmissionInfo(school)}</span>
+                          <div className="school-system-entry-links">
+                            {school.phone ? <span className="school-system-contact">咨询：{school.phone}</span> : null}
+                            {school.website ? (
+                              <a
+                                className="text-link"
+                                href={school.website}
+                                target="_blank"
+                                rel="noreferrer"
+                                onClick={(event) => event.stopPropagation()}
+                              >
+                                查看官网
+                              </a>
+                            ) : null}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                 </article>
               )) : <EmptyState />}
             </div>

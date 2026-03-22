@@ -15,6 +15,13 @@ function getSchoolPreviewScore(school) {
   return tags * 2 + features * 2 + metadataFields;
 }
 
+function resolveFeaturedSchool(schools, keyword, preferredName) {
+  return schools.find((entry) => entry.name === preferredName)
+    || schools.find((entry) => entry.name === keyword)
+    || schools.find((entry) => entry.name.includes(keyword) || keyword.includes(entry.name))
+    || null;
+}
+
 export default async function HomePage() {
   const { districts, schools, news } = await loadDataStore();
   const sortedNews = news.slice().sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')));
@@ -32,6 +39,22 @@ export default async function HomePage() {
       return String(right.updatedAt || '').localeCompare(String(left.updatedAt || ''));
     })
     .slice(0, 15);
+  const featuredSchoolPicks = [
+    { keyword: '上海中学', preferredName: '上海中学', eyebrow: '徐汇头部学校', blurb: '拔尖创新、竞赛课程和连续培养关注度高。' },
+    { keyword: '华东师范大学第二附属中学', preferredName: '华东师范大学第二附属中学', eyebrow: '华二体系', blurb: '科技创新与竞赛培养辨识度很强。' },
+    { keyword: '复旦大学附属中学', eyebrow: '复附专题', blurb: '寄宿、人文科技并重，大学附属资源明显。' },
+    { keyword: '上海交通大学附属中学', preferredName: '上海交通大学附属中学', eyebrow: '交附专题', blurb: '工程科技特色鲜明，附中体系关注度高。' },
+    { keyword: '上海市建平中学', eyebrow: '浦东重点', blurb: '浦东传统强校，课程选择和国际理解教育较强。' },
+    { keyword: '上海市七宝中学', eyebrow: '闵行重点', blurb: '科创与人文并重，区域影响力稳定。' }
+  ]
+    .map((item) => {
+      const school = resolveFeaturedSchool(schools, item.keyword, item.preferredName);
+      if (!school) {
+        return null;
+      }
+      return { ...item, school };
+    })
+    .filter(Boolean);
 
   return (
     <SiteShell>
@@ -83,7 +106,7 @@ export default async function HomePage() {
               <span className="module-glyph module-glyph-schools" aria-hidden="true"></span>
               <p className="overview-label">主线二</p>
               <h3>学校信息</h3>
-              <p>按区域浏览学校介绍、特色、标签、梯队和来源信息。</p>
+              <p>按区域浏览学校介绍、特色、标签和梯队信息。</p>
             </Link>
             <Link className="module-entry-card" href="/knowledge">
               <span className="module-glyph module-glyph-knowledge" aria-hidden="true"></span>
@@ -252,6 +275,32 @@ export default async function HomePage() {
               </article>
             ))}
           </div>
+          {featuredSchoolPicks.length ? (
+            <section className="featured-school-launcher" aria-label="重点学校快捷入口">
+              <div className="section-heading" style={{ marginBottom: 14 }}>
+                <h3>重点学校快捷入口</h3>
+                <p>下面这 6 所不是学校列表结果，而是专题导航卡。点击后会直接进入学校页并带入对应筛选条件。</p>
+              </div>
+              <div className="featured-school-strip">
+                {featuredSchoolPicks.map(({ keyword, eyebrow, blurb, school }) => (
+                  <Link
+                    key={school.id}
+                    className="featured-school-chip"
+                    href={`/schools?district=${encodeURIComponent(school.districtId || 'all')}&stage=${encodeURIComponent(school.schoolStage || 'all')}&query=${encodeURIComponent(keyword)}`}
+                  >
+                    <p className="featured-school-eyebrow">{eyebrow}</p>
+                    <h3>{school.name}</h3>
+                    <p>{blurb}</p>
+                    <div className="featured-school-meta">
+                      <span>{school.districtName}</span>
+                      <span>{getSchoolStage(school)}</span>
+                      <span>点击进入专题筛选</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
           <div className="school-grid">
             {topSchools.map((school) => (
               <article key={school.id} className="school-card">
@@ -268,6 +317,7 @@ export default async function HomePage() {
                       ? getSchoolDisplayTags(school).map((tag) => <span key={tag} className="meta-chip">{tag}</span>)
                       : <span className="meta-chip meta-chip-muted">暂无标签</span>}
                   </div>
+                  <Link className="text-link" href={`/schools/${school.id}`}>查看学校详情</Link>
               </article>
             ))}
           </div>
