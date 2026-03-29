@@ -98,6 +98,17 @@ export default function NewsPageClient({ news, policies }) {
   const zhongkaoDesk = currentYearNews.filter((item) => item.examType === 'zhongkao').slice(0, 5);
   const gaokaoDesk = currentYearNews.filter((item) => item.examType === 'gaokao').slice(0, 5);
   const schoolDesk = currentYearNews.filter((item) => item.newsType === 'school').slice(0, 4);
+  const monthArchive = useMemo(() => {
+    const groups = new Map();
+    currentYearNews.forEach((item) => {
+      const month = String(item.publishedAt || '').slice(0, 7);
+      if (!groups.has(month)) {
+        groups.set(month, []);
+      }
+      groups.get(month).push(item);
+    });
+    return Array.from(groups.entries());
+  }, [currentYearNews]);
   const examCount = currentYearNews.filter((item) => item.newsType === 'exam').length;
   const admissionCount = currentYearNews.filter((item) => item.newsType === 'admission').length;
   const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
@@ -160,8 +171,59 @@ export default function NewsPageClient({ news, policies }) {
         ))}
       </section>
 
+      <section className="topic-entry-grid" aria-label="频道专题入口">
+        <a className="topic-entry-card" href="#zhongzhao-desk">
+          <span className="overview-label">专题一</span>
+          <h3>中招专题</h3>
+          <p>优先看中考政策、报名安排、政策问答和关键考试节点。</p>
+        </a>
+        <a className="topic-entry-card" href="#gaokao-desk">
+          <span className="overview-label">专题二</span>
+          <h3>高招专题</h3>
+          <p>集中查看春招、秋招、学业考、体艺类与报名确认链路。</p>
+        </a>
+        <a className="topic-entry-card" href="#policies">
+          <span className="overview-label">专题三</span>
+          <h3>政策深读</h3>
+          <p>只保留当年官方政策与制度文件，适合快速理解框架变化。</p>
+        </a>
+        <a className="topic-entry-card" href="#school-watch">
+          <span className="overview-label">专题四</span>
+          <h3>学校观察</h3>
+          <p>把学校官网、开放日和校园更新单独组织，不和政策混看。</p>
+        </a>
+      </section>
+
+      <section className="panel newsroom-archive-panel" id="archive">
+        <div className="section-heading">
+          <h2>时间轴与月度归档</h2>
+          <p>如果想按月份回看 {currentYear} 年资讯，可以直接从这里切进去，不必在长列表里反复滚动。</p>
+        </div>
+        <div className="archive-grid">
+          {monthArchive.map(([month, items]) => (
+            <article key={month} className="archive-card">
+              <div className="archive-card-head">
+                <h3>{month}</h3>
+                <span>{items.length} 条</span>
+              </div>
+              <div className="archive-list">
+                {items.slice(0, 4).map((item) => (
+                  <article key={item.id} className="archive-item">
+                    <span>{String(item.publishedAt || '').slice(5)}</span>
+                    <div>
+                      <p>{getNewsCategoryLabel(item)}</p>
+                      <h4>{item.title}</h4>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="news-channel-grid">
-        <section className="panel news-column-panel">
+        <section className="panel news-column-panel" id="zhongzhao-desk">
           <div className="section-heading">
             <h2>中招焦点</h2>
             <p>优先看中考政策、报名节点和当年操作口径。</p>
@@ -176,7 +238,7 @@ export default function NewsPageClient({ news, policies }) {
             )) : <EmptyState />}
           </div>
         </section>
-        <section className="panel news-column-panel">
+        <section className="panel news-column-panel" id="gaokao-desk">
           <div className="section-heading">
             <h2>高招焦点</h2>
             <p>单独看春招、秋招、体艺类和学业考新闻。</p>
@@ -191,7 +253,7 @@ export default function NewsPageClient({ news, policies }) {
             )) : <EmptyState />}
           </div>
         </section>
-        <section className="panel news-column-panel">
+        <section className="panel news-column-panel" id="school-watch">
           <div className="section-heading">
             <h2>学校观察</h2>
             <p>把学校官网和校园开放入口当作辅助阅读线索，不和政策混在一起。</p>
