@@ -86,18 +86,119 @@ function buildAdmissionRequirements(school) {
   return '高中阶段通常按上海当年中招政策执行，重点关注统一招生、自主招生、名额分配、中本贯通等录取路径，以及学校当年的分数要求和招生简章。';
 }
 
+function hasTag(school, keyword) {
+  return unique([...(school.tags || []), ...(school.features || [])]).some((item) => String(item).includes(keyword));
+}
+
+function buildHighlights(school) {
+  if (Array.isArray(school.schoolHighlights) && school.schoolHighlights.length >= 3) {
+    return unique(school.schoolHighlights.map((item) => String(item).trim()).filter(Boolean)).slice(0, 4);
+  }
+
+  const stage = getStageLabel(school);
+  const ownership = getOwnershipLabel(school);
+  const features = unique(school.features).slice(0, 3);
+  const tags = unique(school.tags).filter((tag) => !['初中', '高中', '完全中学', '公办', '民办'].includes(tag));
+  const highlights = [];
+
+  highlights.push(`${school.name}当前按${stage}学校整理，常见公开口径多标注为${ownership}。`);
+
+  if (features.length) {
+    highlights.push(`当前条目里最突出的办学看点包括${features.join('、')}。`);
+  } else if (tags.length) {
+    highlights.push(`从现有标签看，这所学校更容易被关注的方向包括${tags.slice(0, 3).join('、')}。`);
+  }
+
+  if (school.schoolStage === 'junior') {
+    highlights.push('更适合和对口、统筹、民办报名、九年一贯通道一起看，不建议只看学校名称判断。');
+  } else if (school.schoolStage === 'complete') {
+    highlights.push('这类学校同时覆盖初中和高中信息，查看时要区分义务教育入学和中招录取两套口径。');
+  } else {
+    highlights.push('高中阶段更适合结合统一招生、自主招生、名额分配和学校简章一起判断报考价值。');
+  }
+
+  if (hasTag(school, '国际化') || hasTag(school, '双语')) {
+    highlights.push('如果你同时关注课程路径、升学方向和学费成本，这类学校通常值得单独再做一轮比较。');
+  } else if (hasTag(school, '寄宿')) {
+    highlights.push('寄宿安排、作息管理和走读选择通常会直接影响实际就读体验，建议额外核对。');
+  } else if (hasTag(school, '科技') || hasTag(school, '创新') || hasTag(school, '竞赛')) {
+    highlights.push('如果更看重科创、竞赛或研究性学习，这类学校通常会更值得优先深看。');
+  }
+
+  return unique(highlights).slice(0, 4);
+}
+
+function buildSuitableStudents(school) {
+  if (isMeaningful(school.suitableStudents)) return school.suitableStudents.trim();
+
+  if (hasTag(school, '国际化') || hasTag(school, '双语')) {
+    return '适合同时关注课程路径、英语环境、升学方向和学校开放日信息的家庭；如果你会把学费、课程体系和未来升学去向放在一起评估，这类学校通常更值得重点看。';
+  }
+  if (hasTag(school, '寄宿')) {
+    return '适合希望系统管理作息、能接受寄宿或半寄宿安排，并愿意同时比较校园管理和生活支持条件的家庭。';
+  }
+  if (hasTag(school, '科技') || hasTag(school, '创新') || hasTag(school, '竞赛')) {
+    return '适合更关注科创活动、研究性学习、竞赛氛围和学科拓展资源的学生与家庭。';
+  }
+  if (school.schoolStage === 'junior') {
+    return '适合当前正在做小升初或初中阶段择校比较的家庭，重点看入学路径、办学稳定性和学校特色是否匹配。';
+  }
+  if (school.schoolStage === 'complete') {
+    return '适合希望连续了解初高中培养路径、重视校内衔接和长期规划的家庭。';
+  }
+  return '适合正在比较高中录取路径、办学特色、课程资源和学校整体气质的学生与家庭。';
+}
+
+function buildApplicationTips(school) {
+  if (isMeaningful(school.applicationTips)) return school.applicationTips.trim();
+
+  const tips = [];
+  if (school.schoolStage === 'junior') {
+    tips.push('先确认学校对应的是公办入学、民办报名还是九年一贯路径。');
+    tips.push('再核对所在区当年义务教育入学政策、报名时间和材料要求。');
+  } else if (school.schoolStage === 'complete') {
+    tips.push('先分清你关注的是初中入学还是高中录取，两者口径不同。');
+    tips.push('初中部分看区级入学细则，高中部分再看中招和学校简章。');
+  } else {
+    tips.push('建议同时看统一招生、自主招生、名额分配和学校当年简章。');
+    tips.push('不要只凭学校名气判断，分数线、招生计划和区位都要一起看。');
+  }
+
+  if (school.website) {
+    tips.push('这所学校已有官网入口，适合继续核对课程、活动和最新通知。');
+  } else if (school.phone) {
+    tips.push('当前已有电话信息，可以优先通过咨询电话确认最新招生安排。');
+  } else {
+    tips.push('如果准备进一步比较，建议优先补学校官网、开放日和咨询方式。');
+  }
+
+  return tips.join('');
+}
+
 let descriptionFilled = 0;
 let requirementsFilled = 0;
+let highlightsFilled = 0;
+let suitableFilled = 0;
+let tipsFilled = 0;
 
 const nextSchools = schools.map((school) => {
   const schoolDescription = buildDescription(school);
   const admissionRequirements = buildAdmissionRequirements(school);
+  const schoolHighlights = buildHighlights(school);
+  const suitableStudents = buildSuitableStudents(school);
+  const applicationTips = buildApplicationTips(school);
   if (schoolDescription) descriptionFilled += 1;
   if (admissionRequirements) requirementsFilled += 1;
+  if (schoolHighlights.length) highlightsFilled += 1;
+  if (suitableStudents) suitableFilled += 1;
+  if (applicationTips) tipsFilled += 1;
   return {
     ...school,
     schoolDescription,
-    admissionRequirements
+    admissionRequirements,
+    schoolHighlights,
+    suitableStudents,
+    applicationTips
   };
 });
 
@@ -106,5 +207,8 @@ fs.writeFileSync(filePath, `${JSON.stringify(nextSchools, null, 2)}\n`);
 console.log(JSON.stringify({
   total: nextSchools.length,
   descriptionFilled,
-  requirementsFilled
+  requirementsFilled,
+  highlightsFilled,
+  suitableFilled,
+  tipsFilled
 }, null, 2));

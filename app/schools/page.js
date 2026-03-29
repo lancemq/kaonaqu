@@ -19,6 +19,7 @@ export default async function SchoolsPage({ searchParams }) {
   const initialDistrict = typeof params?.district === 'string' ? params.district : 'all';
   const initialStage = typeof params?.stage === 'string' ? params.stage : 'all';
   const initialQuery = typeof params?.query === 'string' ? params.query : '';
+  const initialDirection = typeof params?.direction === 'string' ? params.direction : 'all';
 
   return (
     <SiteShell>
@@ -51,6 +52,7 @@ export default async function SchoolsPage({ searchParams }) {
         initialDistrict={initialDistrict}
         initialStage={initialStage}
         initialQuery={initialQuery}
+        initialDirection={initialDirection}
       />
     </SiteShell>
   );

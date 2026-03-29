@@ -8,12 +8,14 @@ class KaonaquApp {
         this.searchQuery = '';
         this.activeNewsFilter = 'all';
         this.pageType = document.body.dataset.page || 'home';
+        this.activeSchoolId = '';
     }
 
     async init() {
         try {
             this.assertSupportedAccessMode();
             await this.loadData();
+            this.syncSchoolFromUrl();
             this.bindEvents();
             this.render();
         } catch (error) {
@@ -120,6 +122,11 @@ class KaonaquApp {
                 this.render();
             });
         });
+
+        window.addEventListener('popstate', () => {
+            this.syncSchoolFromUrl();
+            this.render();
+        });
     }
 
     getSchoolDistrictId(school) {
@@ -136,6 +143,16 @@ class KaonaquApp {
 
     getSchoolStage(school) {
         return school.schoolStageLabel || (school.schoolStage === 'junior' ? '初中' : '高中');
+    }
+
+    getSchoolStageBadgeClass(school) {
+        if (school.schoolStage === 'junior') {
+            return 'stage-badge-junior';
+        }
+        if (school.schoolStage === 'complete') {
+            return 'stage-badge-complete';
+        }
+        return 'stage-badge-senior';
     }
 
     getSchoolFeatures(school) {
@@ -268,8 +285,37 @@ class KaonaquApp {
         this.renderDistrictFilter();
         this.renderDistricts('district-list');
         this.renderSchools(schools, 'school-list');
+        this.renderSchoolDetail();
         this.renderStats(schools.length);
         this.renderResultSummary(schools.length, news.length);
+    }
+
+    syncSchoolFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        this.activeSchoolId = params.get('school') || '';
+    }
+
+    updateSchoolUrl() {
+        const url = new URL(window.location.href);
+        if (this.activeSchoolId) {
+            url.searchParams.set('school', this.activeSchoolId);
+        } else {
+            url.searchParams.delete('school');
+        }
+        window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+    }
+
+    openSchoolDetail(schoolId) {
+        this.activeSchoolId = schoolId;
+        this.updateSchoolUrl();
+        this.render();
+        document.getElementById('school-detail-view')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    closeSchoolDetail() {
+        this.activeSchoolId = '';
+        this.updateSchoolUrl();
+        this.render();
     }
 
     renderDistrictFilter() {
@@ -298,8 +344,11 @@ class KaonaquApp {
             return `
                 <button class="district-card${activeClass}" data-district-id="${district.id}" type="button">
                     <div class="district-card-header">
-                        <h3>${name}</h3>
-                        <span>${count} 所学校</span>
+                        <div>
+                            <h3>${name}</h3>
+                            <p class="district-card-caption">区域学校概览</p>
+                        </div>
+                        <span class="pill district-count-pill">${count} 所</span>
                     </div>
                     <p>${district.description || '暂无说明'}</p>
                     <p class="district-meta">点击查看该区域学校列表与学校特色。</p>
@@ -399,57 +448,165 @@ class KaonaquApp {
         }
 
         const schoolContextNews = this.getLatestNewsByExamType('zhongkao');
+        const isDirectoryView = this.pageType === 'schools' && containerId === 'school-list';
 
         container.innerHTML = schools.map((school) => `
             <article class="school-card">
+                <div class="school-card-topline">
+                    <span class="school-record-label">学校档案</span>
+                    <span class="school-record-district">${this.getSchoolDistrictName(school)}</span>
+                </div>
                 <div class="school-card-header">
                     <div>
                         <h3>${school.name}</h3>
-                        <p>${this.getSchoolDistrictName(school)}</p>
+                        <p>${school.address || '暂无地址信息'}</p>
                     </div>
-                    <span class="pill">${this.getSchoolStage(school)} · ${this.getSchoolType(school)}</span>
+                    <div class="school-card-badges">
+                        <span class="stage-badge ${this.getSchoolStageBadgeClass(school)}">${this.getSchoolStage(school)}</span>
+                        <span class="pill school-type-pill">${this.getSchoolType(school)}</span>
+                    </div>
                 </div>
                 <p class="school-summary">${this.getSchoolAdmissionInfo(school)}</p>
+                <div class="school-data-grid">
+                    <div class="school-data-item">
+                        <span>区域</span>
+                        <strong>${this.getSchoolDistrictName(school)}</strong>
+                    </div>
+                    <div class="school-data-item">
+                        <span>梯队</span>
+                        <strong>${school.tier ? `${school.tier} 梯队` : '暂无'}</strong>
+                    </div>
+                    <div class="school-data-item">
+                        <span>来源</span>
+                        <strong>${school.source?.name || '未知'}</strong>
+                    </div>
+                    <div class="school-data-item">
+                        <span>可信度</span>
+                        <strong>${this.formatConfidence(school.source?.confidence)}</strong>
+                    </div>
+                </div>
                 <div class="school-highlights">
                     ${this.getSchoolFeatureTags(school).map((feature) => `<span class="meta-chip">${feature}</span>`).join('') || '<span class="meta-chip meta-chip-muted">暂无特色标签</span>'}
                 </div>
                 ${schoolContextNews ? `<p class="school-link-note">关联动态：${schoolContextNews.title}</p>` : ''}
-                <details class="school-details">
-                    <summary>查看详细信息</summary>
-                    <dl class="school-meta">
-                        <div>
-                            <dt>梯队</dt>
-                            <dd>${school.tier ? `${school.tier} 梯队` : '暂无'}</dd>
-                        </div>
-                        <div>
-                            <dt>地址</dt>
-                            <dd>${school.address || '暂无'}</dd>
-                        </div>
-                        <div>
-                            <dt>电话</dt>
-                            <dd>${school.phone || '暂无'}</dd>
-                        </div>
-                        <div>
-                            <dt>完整特色</dt>
-                            <dd>${this.getSchoolFeatures(school).join('、') || '暂无'}</dd>
-                        </div>
-                        <div>
-                            <dt>标签</dt>
-                            <dd>${this.getSchoolTags(school).join('、') || '暂无'}</dd>
-                        </div>
-                        <div>
-                            <dt>来源</dt>
-                            <dd>${school.source?.name || '未知'} · 可信度 ${this.formatConfidence(school.source?.confidence)}</dd>
-                        </div>
-                        <div>
-                            <dt>抓取时间</dt>
-                            <dd>${school.source?.crawledAt || '暂无'}</dd>
-                        </div>
-                    </dl>
-                    ${school.website ? `<a class="text-link" href="${school.website}" target="_blank" rel="noreferrer">查看学校网站</a>` : ''}
-                </details>
+                <div class="school-card-footer">
+                    <p class="school-card-footnote">来源：${school.source?.name || '未知'} · 可信度 ${this.formatConfidence(school.source?.confidence)}</p>
+                    <div class="school-card-actions">
+                        ${isDirectoryView ? `<button class="action-button action-button-secondary school-detail-trigger" data-school-id="${school.id}" type="button">查看完整档案</button>` : ''}
+                        ${school.website ? `<a class="school-card-enter" href="${school.website}" target="_blank" rel="noreferrer">查看学校网站</a>` : '<span class="school-card-enter">暂无官网链接</span>'}
+                    </div>
+                </div>
             </article>
         `).join('');
+
+        if (isDirectoryView) {
+            container.querySelectorAll('.school-detail-trigger').forEach((button) => {
+                button.addEventListener('click', () => {
+                    this.openSchoolDetail(button.dataset.schoolId);
+                });
+            });
+        }
+    }
+
+    renderSchoolDetail() {
+        const container = document.getElementById('school-detail-view');
+        if (!container) {
+            return;
+        }
+
+        if (!this.activeSchoolId) {
+            container.hidden = true;
+            container.innerHTML = '';
+            return;
+        }
+
+        const school = this.schools.find((item) => item.id === this.activeSchoolId);
+        if (!school) {
+            container.hidden = true;
+            container.innerHTML = '';
+            return;
+        }
+
+        container.hidden = false;
+        container.innerHTML = `
+            <article class="panel school-detail-hero">
+                <div class="school-detail-head">
+                    <div class="school-detail-copy">
+                        <div class="school-detail-kicker-row">
+                            <span class="school-record-label">学校完整档案</span>
+                            <span class="school-record-district">${this.getSchoolDistrictName(school)}</span>
+                        </div>
+                        <h1>${school.name}</h1>
+                        <p>${school.schoolDescription || this.getSchoolAdmissionInfo(school) || '暂无学校说明。'}</p>
+                        <div class="school-detail-chip-group">
+                            <span class="stage-badge ${this.getSchoolStageBadgeClass(school)}">${this.getSchoolStage(school)}</span>
+                            <span class="pill school-type-pill">${this.getSchoolType(school)}</span>
+                            ${school.tier ? `<span class="pill">${school.tier} 梯队</span>` : ''}
+                        </div>
+                        <div class="school-detail-action-row">
+                            ${school.website ? `<a class="action-button" href="${school.website}" target="_blank" rel="noreferrer">访问学校官网</a>` : ''}
+                            <button class="action-button action-button-secondary" id="school-detail-close" type="button">关闭详情</button>
+                        </div>
+                    </div>
+                    <div class="school-detail-metrics">
+                        <article>
+                            <span>所在区域</span>
+                            <strong>${this.getSchoolDistrictName(school)}</strong>
+                        </article>
+                        <article>
+                            <span>学校阶段</span>
+                            <strong>${this.getSchoolStage(school)}</strong>
+                        </article>
+                        <article>
+                            <span>信息可信度</span>
+                            <strong>${this.formatConfidence(school.source?.confidence)}</strong>
+                        </article>
+                    </div>
+                </div>
+            </article>
+            <div class="school-detail-fact-grid">
+                <article class="school-detail-fact-card">
+                    <h3>基础信息</h3>
+                    <dl class="school-detail-facts">
+                        <div><dt>学校类型</dt><dd>${this.getSchoolType(school)}</dd></div>
+                        <div><dt>梯队</dt><dd>${school.tier ? `${school.tier} 梯队` : '暂无'}</dd></div>
+                        <div><dt>地址</dt><dd>${school.address || '暂无'}</dd></div>
+                        <div><dt>电话</dt><dd>${school.phone || '暂无'}</dd></div>
+                    </dl>
+                </article>
+                <article class="school-detail-fact-card">
+                    <h3>招生与查看建议</h3>
+                    <p class="school-detail-note">${school.admissionRequirements || school.applicationTips || '暂无补充说明。'}</p>
+                </article>
+            </div>
+            <div class="school-detail-feature-grid">
+                <article class="school-detail-feature-card">
+                    <h3>学校亮点</h3>
+                    <p>${(school.schoolHighlights && school.schoolHighlights.length ? school.schoolHighlights.join(' ') : '暂无亮点说明。')}</p>
+                </article>
+                <article class="school-detail-feature-card">
+                    <h3>适合学生</h3>
+                    <p>${school.suitableStudents || '暂无适合人群说明。'}</p>
+                </article>
+            </div>
+            <div class="school-detail-related-grid">
+                <article class="school-detail-related-card">
+                    <h3>特色标签</h3>
+                    <div class="school-detail-chip-group">
+                        ${this.getSchoolFeatureTags(school).map((feature) => `<span class="meta-chip">${feature}</span>`).join('') || '<span class="meta-chip meta-chip-muted">暂无特色标签</span>'}
+                    </div>
+                </article>
+                <article class="school-detail-related-card">
+                    <h3>来源信息</h3>
+                    <p>来源：${school.source?.name || '未知'}${school.source?.crawledAt ? `，抓取时间：${school.source.crawledAt}` : ''}。</p>
+                    ${school.source?.url ? `<a class="text-link" href="${school.source.url}" target="_blank" rel="noreferrer">查看原始来源</a>` : ''}
+                </article>
+            </div>
+        `;
+
+        container.querySelector('#school-detail-close')?.addEventListener('click', () => {
+            this.closeSchoolDetail();
+        });
     }
 
     renderPolicies(policies) {

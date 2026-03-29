@@ -269,10 +269,10 @@ export default async function HomePage() {
           </div>
           <div className="district-preview-grid">
             {districts.slice(0, 6).map((district) => (
-              <article key={district.id} className="district-preview-card">
+              <Link key={district.id} href={`/schools/district/${district.id}`} className="district-preview-card">
                 <h3>{district.name || district.districtName}</h3>
                 <p>{district.description || '暂无说明'}</p>
-              </article>
+              </Link>
             ))}
           </div>
           {featuredSchoolPicks.length ? (
@@ -321,7 +321,10 @@ export default async function HomePage() {
               </article>
             ))}
           </div>
-          <Link className="module-link" href="/schools">查看学校信息</Link>
+          <div className="district-card-actions">
+            <Link className="module-link" href="/schools">查看学校信息</Link>
+            <Link className="text-link" href="/schools/compare">进入学校对比</Link>
+          </div>
         </section>
       </main>
     </SiteShell>

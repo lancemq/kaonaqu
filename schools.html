@@ -54,6 +54,17 @@
 </head>
 <body data-page="schools">
     <div class="page-shell">
+        <div class="masthead-rail" aria-label="站点导览">
+            <div class="masthead-rail-inner">
+                <p class="masthead-note">KAONAQU SCHOOL DESK</p>
+                <div class="masthead-tags">
+                    <span>区域筛选</span>
+                    <span>学校特色</span>
+                    <span>标签整理</span>
+                    <span>择校参考</span>
+                </div>
+            </div>
+        </div>
         <header class="topbar" aria-label="顶部导航">
             <a class="brand-mark" href="/" aria-label="考哪去首页">
                 <span class="brand-badge" aria-hidden="true">
@@ -64,7 +75,7 @@
                 </span>
                 <span class="brand-text">
                     <strong>考哪去</strong>
-                    <span>Shanghai Zhongkao Guide</span>
+                    <span>Shanghai Education Newsroom</span>
                 </span>
             </a>
             <nav class="top-links">
@@ -73,18 +84,46 @@
                 <a href="/schools">学校信息</a>
                 <a href="/knowledge">知识体系</a>
             </nav>
+            <div class="topbar-desk">
+                <span class="desk-label">频道定位</span>
+                <strong>学校 · 区域 · 标签</strong>
+            </div>
         </header>
 
         <header class="hero" id="top">
-            <section class="search-panel" aria-label="搜索与筛选">
+            <section class="search-panel editorial-intro-panel" aria-label="搜索与筛选">
                 <nav class="breadcrumb" aria-label="面包屑导航">
                     <a href="/">首页</a>
                     <span class="separator">/</span>
                     <span>学校信息</span>
                 </nav>
-                <div class="search-panel-head">
-                    <span class="module-glyph module-glyph-schools module-glyph-large" aria-hidden="true"></span>
-                    <p>按区域筛选学校，查看学校介绍、阶段、类型、特色标签以及来源信息。</p>
+                <div class="newsroom-kicker-row">
+                    <span class="newsroom-kicker">School Directory</span>
+                    <span class="newsroom-edition">按区域与标签查看学校</span>
+                </div>
+                <div class="editorial-intro-head">
+                    <div class="editorial-intro-copy">
+                        <span class="module-glyph module-glyph-schools module-glyph-large" aria-hidden="true"></span>
+                        <h1>把上海学校信息整理成一套更容易比较的检索界面</h1>
+                        <p>你可以先按区域切入，再结合关键词查看学校介绍、阶段、类型、特色标签和来源信息。这个页面更适合作为择校前的第一轮筛选入口。</p>
+                    </div>
+                    <div class="editorial-intro-metrics" aria-label="学校页概览">
+                        <article>
+                            <span>核心方式</span>
+                            <strong>区域 + 关键词</strong>
+                            <p>先缩小范围，再看学校特点</p>
+                        </article>
+                        <article>
+                            <span>适合场景</span>
+                            <strong>择校前期</strong>
+                            <p>先建立区域和学校认知，再做深入对比</p>
+                        </article>
+                        <article>
+                            <span>页面重点</span>
+                            <strong>标签化阅读</strong>
+                            <p>特色、梯队、阶段、来源都在同一视图内</p>
+                        </article>
+                    </div>
                 </div>
                 <div class="search-shell">
                     <label class="search-field search-field-main" for="search-input">
@@ -110,50 +149,105 @@
                     <button class="quick-chip" type="button" data-query="国际">国际课程</button>
                 </div>
             </section>
+
+            <section class="school-topic-band" aria-label="学校页导读">
+                <article class="school-topic-card">
+                    <span>先看区域</span>
+                    <strong>从区开始筛</strong>
+                    <p>如果你还没有明确学校名单，建议先按区域缩小搜索范围。</p>
+                </article>
+                <article class="school-topic-card">
+                    <span>再看标签</span>
+                    <strong>关注特色与阶段</strong>
+                    <p>学校的办学特色、阶段和类型，比单看名字更有信息量。</p>
+                </article>
+                <article class="school-topic-card">
+                    <span>最后对照</span>
+                    <strong>结合政策与新闻</strong>
+                    <p>锁定几所学校后，可以再回新闻政策页查看招生动态和口径变化。</p>
+                </article>
+            </section>
         </header>
 
-        <main class="layout">
-            <section class="panel summary-panel">
-                <div class="summary-copy">
-                    <h2>学校检索工作区</h2>
-                    <p id="result-summary">正在加载数据。</p>
+        <main class="layout school-page-layout">
+            <section class="panel schools-overview-panel">
+                <div class="section-heading">
+                    <h2>学校信息工作台</h2>
+                    <p>左侧按区域切换，中间集中看学校卡片，右侧保留使用建议和联动入口，减少在一个长列表里来回找信息。</p>
                 </div>
-                <div class="stats-bar" aria-label="结果统计">
-                    <div>
-                        <strong id="school-count">0</strong>
-                        <span>所学校</span>
-                    </div>
-                    <div>
-                        <strong id="district-count">0</strong>
-                        <span>个区域</span>
-                    </div>
+                <div class="school-workflow-strip" aria-label="使用步骤">
+                    <article class="workflow-step-card">
+                        <span>步骤一</span>
+                        <strong>选区域</strong>
+                        <p>先按区缩小范围，减少无效浏览。</p>
+                    </article>
+                    <article class="workflow-step-card">
+                        <span>步骤二</span>
+                        <strong>看学校</strong>
+                        <p>重点看阶段、类型、特色标签和梯队。</p>
+                    </article>
+                    <article class="workflow-step-card">
+                        <span>步骤三</span>
+                        <strong>再对照</strong>
+                        <p>锁定目标后回新闻政策页看最新招生口径。</p>
+                    </article>
                 </div>
             </section>
 
-            <section class="content-layout">
-                <section class="content-main" id="schools">
-                    <div class="panel main-panel">
-                        <div class="section-heading">
-                            <h2>学校列表</h2>
-                            <p>展示学校区域、介绍、阶段、特色标签、梯队与来源信息。</p>
-                        </div>
-                        <div id="school-list" class="school-grid"></div>
+            <section class="schools-workbench">
+                <aside class="panel districts-rail-panel" id="districts">
+                    <div class="section-heading">
+                        <h2>区域导航</h2>
+                        <p>点击区域，快速切换当前学校结果。</p>
                     </div>
+                    <div id="district-list" class="district-grid"></div>
+                </aside>
+
+                <section class="panel school-results-panel" id="schools">
+                    <div class="school-results-head">
+                        <div class="summary-copy">
+                            <h2>学校结果列表</h2>
+                            <p id="result-summary">正在加载数据。</p>
+                        </div>
+                        <div class="stats-bar" aria-label="结果统计">
+                            <div>
+                                <strong id="school-count">0</strong>
+                                <span>当前匹配学校</span>
+                            </div>
+                            <div>
+                                <strong id="district-count">0</strong>
+                                <span>已收录区域</span>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="school-detail-view" class="school-detail-view" hidden aria-live="polite"></section>
+                    <div id="school-list" class="school-grid school-results-grid"></div>
                 </section>
 
-                <aside class="content-side">
-                    <section class="panel side-panel" id="districts">
+                <aside class="schools-support-column">
+                    <section class="panel side-panel school-method-panel">
                         <div class="section-heading">
-                            <h2>区域概览</h2>
-                            <p>点击区域，快速切换当前学校结果。</p>
+                            <h2>怎么使用这页</h2>
+                            <p>用一个更稳定的顺序，避免学校越看越乱。</p>
                         </div>
-                        <div id="district-list" class="district-grid"></div>
+                        <div class="compact-news-list">
+                            <article class="compact-news-card">
+                                <span class="pill">建议 1</span>
+                                <h3>先筛区域再搜关键词</h3>
+                                <p>区域先收窄后，关键词搜索会更有效，也更容易比较学校之间的差异。</p>
+                            </article>
+                            <article class="compact-news-card">
+                                <span class="pill">建议 2</span>
+                                <h3>先看标签，再看详细信息</h3>
+                                <p>卡片第一层先判断阶段、类型和特色，只有有意向的学校再展开详细信息。</p>
+                            </article>
+                        </div>
                     </section>
 
                     <section class="panel side-panel" id="news-policy-link">
                         <div class="section-heading">
                             <h2>新闻政策</h2>
-                            <p>学校页不再展示政策内容，相关政策、头条和考试新闻统一在新闻政策页面查看。</p>
+                            <p>学校页只负责看学校本身，招生口径、政策变化和考试动态统一放在新闻政策频道里。</p>
                         </div>
                         <a class="module-link" href="/news">查看新闻政策</a>
                     </section>

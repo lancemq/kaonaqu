@@ -3,14 +3,21 @@ import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
 import {
+  getSchoolApplicationTips,
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
   getSchoolFeatures,
+  getSchoolHighlights,
   getSchoolOwnershipLabel,
+  getSchoolRelationMeta,
   getSchoolStage,
+  getSchoolSuitableStudents,
+  getSchoolSystem,
   getSchoolTags,
+  getSchoolTrainingDirections,
   getSchoolType
 } from '../../../lib/site-utils';
+import schoolOpenDays from '../../../lib/school-open-days';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
@@ -33,38 +40,12 @@ function resolveSchoolById(schools, rawId) {
   );
 }
 
-function getRelationLabel(name = '') {
-  if (name.includes('附属学校')) return '附校';
-  if (name.includes('分校')) return '分校';
-  if (name.includes('校区') || name.includes('东校') || name.includes('西校') || name.includes('南校') || name.includes('北校')) {
-    return '校区';
-  }
-  return '主校';
-}
-
 function buildSystemPeers(schools, current) {
-  const rules = [
-    ['上海中学', ['上海中学', '上海中学东校']],
-    ['华东师范大学第二附属中学', ['华东师范大学第二附属中学']],
-    ['上海交通大学附属中学', ['上海交通大学附属中学']],
-    ['建平中学', ['建平中学']],
-    ['七宝中学', ['七宝中学']],
-    ['复旦大学附属中学', ['复旦大学附属中学']],
-    ['格致中学', ['格致中学']],
-    ['大同中学', ['大同中学']],
-    ['向明中学', ['向明中学']],
-    ['市西中学', ['市西中学']],
-    ['延安中学', ['延安中学']],
-    ['控江中学', ['控江中学']],
-    ['进才中学', ['进才中学']]
-  ];
+  const system = getSchoolSystem(current);
+  if (!system?.id) return [];
 
-  const matched = rules.find(([, keywords]) => keywords.some((keyword) => current.name.includes(keyword)));
-  if (!matched) return [];
-
-  const keywords = matched[1];
   return schools
-    .filter((school) => school.id !== current.id && keywords.some((keyword) => school.name.includes(keyword)))
+    .filter((school) => school.id !== current.id && getSchoolSystem(school)?.id === system.id)
     .slice(0, 8);
 }
 
@@ -100,6 +81,8 @@ export default async function SchoolDetailPage({ params }) {
 
   const systemPeers = buildSystemPeers(schools, school);
   const districtPeers = getDistrictPeers(schools, school);
+  const schoolSystem = getSchoolSystem(school);
+  const relatedOpenDays = schoolOpenDays.filter((item) => item.schoolName.includes(school.name) || school.name.includes(item.schoolName)).slice(0, 3);
   const relatedNews = news
     .filter((item) => {
       const title = `${item.title || ''} ${item.summary || ''}`;
@@ -122,7 +105,7 @@ export default async function SchoolDetailPage({ params }) {
             <div className="school-detail-copy">
               <div className="school-detail-kicker-row">
                 <span className="stage-badge stage-badge-complete">{getSchoolStage(school)}</span>
-                <span className="relation-badge relation-badge-main">{getRelationLabel(school.name)}</span>
+                <span className={getSchoolRelationMeta(school).className}>{getSchoolRelationMeta(school).label}</span>
                 <span className="pill school-type-pill">{getSchoolType(school)}</span>
               </div>
               <h1>{school.name}</h1>
@@ -143,8 +126,8 @@ export default async function SchoolDetailPage({ params }) {
                 <strong>{getSchoolFeatures(school).length}</strong>
               </article>
               <article>
-                <span>学校类型</span>
-                <strong>{getSchoolType(school)}</strong>
+                <span>培养方向</span>
+                <strong>{getSchoolTrainingDirections(school).length}</strong>
               </article>
             </div>
           </div>
@@ -179,9 +162,51 @@ export default async function SchoolDetailPage({ params }) {
                 <p className="school-detail-note">{school.admissionRequirements || getSchoolAdmissionInfo(school)}</p>
                 <div className="school-detail-action-row">
                   {school.website ? <a className="text-link" href={school.website} target="_blank" rel="noreferrer">查看学校官网</a> : null}
+                  <Link className="text-link" href={`/schools/compare?ids=${encodeURIComponent(school.id)}`}>加入学校对比</Link>
                   <Link className="text-link" href="/schools">返回学校列表</Link>
                 </div>
               </article>
+            </div>
+          </section>
+
+          <section className="panel main-panel">
+            <div className="section-heading">
+              <h2>择校参考</h2>
+              <p>把这所学校更值得快速判断的内容拆成亮点、适合关注人群和报考提醒，方便连续阅读。</p>
+            </div>
+            <div className="school-detail-fact-grid">
+              <article className="school-detail-fact-card">
+                <h3>学校亮点</h3>
+                <div className="school-detail-feature-grid">
+                  {getSchoolHighlights(school).length ? getSchoolHighlights(school).map((item) => (
+                    <article key={item} className="school-detail-feature-card">
+                      <p>{item}</p>
+                    </article>
+                  )) : (
+                    <p className="school-detail-note">这所学校的结构化亮点还在继续补充中。</p>
+                  )}
+                </div>
+              </article>
+              <article className="school-detail-fact-card">
+                <h3>适合关注</h3>
+                <p className="school-detail-note">{getSchoolSuitableStudents(school) || '这所学校的适合人群画像还在继续补充中。'}</p>
+              </article>
+              <article className="school-detail-fact-card">
+                <h3>报考提醒</h3>
+                <p className="school-detail-note">{getSchoolApplicationTips(school) || '这所学校的报考提醒还在继续补充中。'}</p>
+              </article>
+            </div>
+          </section>
+
+          <section className="panel main-panel">
+            <div className="section-heading">
+              <h2>培养方向</h2>
+              <p>把这所学校更适合从哪条路线理解单独拆出来，方便快速判断是否值得继续深看。</p>
+            </div>
+            <div className="school-direction-row school-direction-row-large">
+              {getSchoolTrainingDirections(school).length
+                ? getSchoolTrainingDirections(school).map((item) => <span key={item} className="direction-chip">{item}</span>)
+                : <span className="direction-chip direction-chip-muted">培养方向待补充</span>}
             </div>
           </section>
 
@@ -229,11 +254,54 @@ export default async function SchoolDetailPage({ params }) {
         </section>
 
         <aside className="content-side">
+          {schoolSystem?.id ? (
+            <section className="panel side-panel">
+              <div className="section-heading">
+                <h2>学校体系</h2>
+                <p>如果这所学校属于明确的主校、分校或校区链路，可以从这里继续扩展比较。</p>
+              </div>
+              <div className="district-card">
+                <div className="district-card-header">
+                  <h3>{schoolSystem.name}</h3>
+                  <span>{getSchoolRelationMeta(school).label}</span>
+                </div>
+                <p>{schoolSystem.description || '适合结合主校、分校和校区一起判断。'}</p>
+              </div>
+            </section>
+          ) : null}
+
+          {relatedOpenDays.length ? (
+            <section className="panel side-panel">
+              <div className="section-heading">
+                <h2>开放日与招简</h2>
+                <p>这所学校当前可查的招生简章或开放日入口会集中放在这里。</p>
+              </div>
+              <div className="open-day-list">
+                {relatedOpenDays.map((item) => (
+                  <article key={item.id} className="open-day-card">
+                    <div className="open-day-meta">
+                      <span className="pill">{item.tag}</span>
+                      <span>{item.window}</span>
+                    </div>
+                    <h3>{item.schoolName}</h3>
+                    <p>{item.summary}</p>
+                    <p className="open-day-note">{item.detail}</p>
+                    <a className="text-link" href={item.href} target="_blank" rel="noreferrer">查看原页</a>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           {districtPeers.length ? (
             <section className="panel side-panel">
               <div className="section-heading">
                 <h2>同区域学校</h2>
                 <p>从同一区域里再看几所学校，适合做横向比较。</p>
+              </div>
+              <div className="district-card-actions" style={{ marginBottom: 16 }}>
+                <Link className="text-link" href={`/schools/district/${school.districtId}`}>进入{getSchoolDistrictName(school)}专题</Link>
+                <Link className="text-link" href={`/schools?district=${school.districtId}`}>回到该区列表</Link>
               </div>
               <div className="district-grid">
                 {districtPeers.map((peer) => (

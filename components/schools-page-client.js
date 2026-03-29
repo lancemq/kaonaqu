@@ -4,16 +4,20 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import {
+  buildSchoolSystems,
   filterSchools,
-  formatConfidence,
   getLatestNewsByExamType,
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
   getSchoolDisplayTags,
   getSchoolFeatures,
+  getSchoolHighlights,
   getSchoolOwnershipLabel,
+  getDistrictSchoolTopic,
+  getSchoolRelationMeta,
   getSchoolStage,
   getSchoolTags,
+  getSchoolTrainingDirections,
   getSchoolType
 } from '../lib/site-utils';
 
@@ -52,6 +56,15 @@ const FEATURE_TAG_OPTIONS = [
   '百年名校'
 ];
 
+const TRAINING_DIRECTION_OPTIONS = [
+  '科创竞赛',
+  '人文综合',
+  '国际课程',
+  '寄宿管理',
+  '贯通培养',
+  '外语特色'
+];
+
 function getStageMeta(stage) {
   if (stage === 'junior') {
     return { label: '纯初中', className: 'stage-badge stage-badge-junior' };
@@ -69,20 +82,6 @@ function resolveFeaturedSchool(schools, keyword, preferredName) {
     || null;
 }
 
-function getSchoolRelationMeta(school) {
-  const name = String(school?.name || '');
-  if (name.includes('附属学校')) {
-    return { label: '附校', className: 'relation-badge relation-badge-affiliate' };
-  }
-  if (name.includes('分校')) {
-    return { label: '分校', className: 'relation-badge relation-badge-branch' };
-  }
-  if (name.includes('校区') || name.includes('东校') || name.includes('西校') || name.includes('南校') || name.includes('北校')) {
-    return { label: '校区', className: 'relation-badge relation-badge-campus' };
-  }
-  return { label: '主校', className: 'relation-badge relation-badge-main' };
-}
-
 export default function SchoolsPageClient({
   districts,
   schools,
@@ -90,15 +89,18 @@ export default function SchoolsPageClient({
   openDays = [],
   initialDistrict = 'all',
   initialStage = 'all',
-  initialQuery = ''
+  initialQuery = '',
+  initialDirection = 'all'
 }) {
   const router = useRouter();
   const [activeDistrict, setActiveDistrict] = useState(initialDistrict);
   const [activeStage, setActiveStage] = useState(initialStage);
   const [activeOwnership, setActiveOwnership] = useState('all');
   const [activeTag, setActiveTag] = useState('all');
+  const [activeDirection, setActiveDirection] = useState(initialDirection);
   const [queryInput, setQueryInput] = useState(initialQuery);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
+  const [compareIds, setCompareIds] = useState([]);
 
   const filteredSchools = useMemo(
     () => filterSchools(schools, {
@@ -106,9 +108,10 @@ export default function SchoolsPageClient({
       query: searchQuery,
       stage: activeStage,
       ownership: activeOwnership,
-      tag: activeTag
+      tag: activeTag,
+      direction: activeDirection
     }),
-    [schools, activeDistrict, searchQuery, activeStage, activeOwnership, activeTag]
+    [schools, activeDistrict, searchQuery, activeStage, activeOwnership, activeTag, activeDirection]
   );
 
   const schoolContextNews = useMemo(() => getLatestNewsByExamType(news, 'zhongkao'), [news]);
@@ -148,32 +151,7 @@ export default function SchoolsPageClient({
     })),
     [featuredSchools]
   );
-  const schoolSystems = useMemo(() => {
-    const definitions = [
-      { id: 'shs', name: '上海中学体系', description: '主校与东校并行，适合关注连续培养和校区差异。', keywords: ['上海中学', '上海中学东校'] },
-      { id: 'hsefz', name: '华二体系', description: '包括本部、紫竹校区和普陀校区，辨认校区非常重要。', keywords: ['华东师范大学第二附属中学'] },
-      { id: 'sjtu', name: '交附体系', description: '主校之外还包含嘉定分校、浦东实验高中等延展校。', keywords: ['上海交通大学附属中学'] },
-      { id: 'jianping', name: '建平体系', description: '主校与筠溪分校并存，浦东家长关注度很高。', keywords: ['建平中学'] },
-      { id: 'qibao', name: '七宝体系', description: '主校与浦江分校口径不同，适合分开查看。', keywords: ['七宝中学'] },
-      { id: 'fdfz', name: '复附体系', description: '以主校为核心，适合关注寄宿与附中资源。', keywords: ['复旦大学附属中学'] },
-      { id: 'gezhi', name: '格致体系', description: '黄浦主校和奉贤校区并存，适合分开看区域落点。', keywords: ['格致中学'] },
-      { id: 'datong', name: '大同体系', description: '主校与分校关系清晰，适合一起比较。', keywords: ['大同中学'] },
-      { id: 'xiangming', name: '向明体系', description: '主校和浦江分校定位不同，适合分开跟进。', keywords: ['向明中学'] },
-      { id: 'shixi', name: '市西体系', description: '静安主校与新城分校并存，适合同时查看。', keywords: ['市西中学'] },
-      { id: 'yanan', name: '延安体系', description: '主校与新城分校并存，注意不要和西延安中学混看。', keywords: ['延安中学'], excludeKeywords: ['西延安中学'] },
-      { id: 'kongjiang', name: '控江体系', description: '高中主校和附属学校同时存在，适合区分学段定位。', keywords: ['控江中学'] },
-      { id: 'jincai', name: '进才体系', description: '主校之外还可见北校、南校，适合按学段和校区拆开看。', keywords: ['进才中学'] }
-    ];
-
-    return definitions.map((group) => ({
-      ...group,
-      schools: schools.filter((school) => {
-        const included = group.keywords.some((keyword) => school.name.includes(keyword));
-        const excluded = (group.excludeKeywords || []).some((keyword) => school.name.includes(keyword));
-        return included && !excluded;
-      })
-    })).filter((group) => group.schools.length);
-  }, [schools]);
+  const schoolSystems = useMemo(() => buildSchoolSystems(schools), [schools]);
   const filteredStageStats = useMemo(() => {
     const counts = { junior: 0, senior_high: 0, complete: 0 };
     for (const school of filteredSchools) {
@@ -188,6 +166,14 @@ export default function SchoolsPageClient({
   const stageLabel = STAGE_OPTIONS.find((item) => item.value === activeStage)?.label || '全部学段';
   const ownershipLabel = OWNERSHIP_OPTIONS.find((item) => item.value === activeOwnership)?.label || '全部办学性质';
   const tagLabel = activeTag === 'all' ? '全部特色' : activeTag;
+  const directionLabel = activeDirection === 'all' ? '全部培养方向' : activeDirection;
+  const compareSchools = useMemo(
+    () => compareIds.map((id) => schools.find((item) => item.id === id)).filter(Boolean),
+    [compareIds, schools]
+  );
+  const compareHref = compareSchools.length
+    ? `/schools/compare?ids=${encodeURIComponent(compareSchools.map((item) => item.id).join(','))}`
+    : '/schools/compare';
 
   const applySearch = (value = queryInput) => {
     setSearchQuery(value.trim());
@@ -198,12 +184,14 @@ export default function SchoolsPageClient({
     stage = 'all',
     ownership = 'all',
     tag = 'all',
+    direction = 'all',
     query = ''
   } = {}) => {
     setActiveDistrict(district);
     setActiveStage(stage);
     setActiveOwnership(ownership);
     setActiveTag(tag);
+    setActiveDirection(direction);
     setQueryInput(query);
     setSearchQuery(query);
   };
@@ -212,13 +200,25 @@ export default function SchoolsPageClient({
     applyFocusedFilters();
   };
 
+  const toggleCompare = (schoolId) => {
+    setCompareIds((current) => {
+      if (current.includes(schoolId)) {
+        return current.filter((item) => item !== schoolId);
+      }
+      if (current.length >= 4) {
+        return [...current.slice(1), schoolId];
+      }
+      return [...current, schoolId];
+    });
+  };
+
   return (
     <main className="layout">
       <section className="panel summary-panel">
         <div className="summary-copy">
           <h2>学校检索工作区</h2>
           <p id="result-summary">
-            当前范围：{districtName}，学段为 {stageLabel}，办学性质为 {ownershipLabel}，特色筛选为 {tagLabel}，搜索条件为 {queryLabel}。当前匹配 {filteredSchools.length} 所学校，相关政策与考试动态已统一收纳到新闻政策模块，当前共可查看 {news.length} 条新闻。
+            当前范围：{districtName}，学段为 {stageLabel}，办学性质为 {ownershipLabel}，特色筛选为 {tagLabel}，培养方向为 {directionLabel}，搜索条件为 {queryLabel}。当前匹配 {filteredSchools.length} 所学校，相关政策与考试动态已统一收纳到新闻政策模块，当前共可查看 {news.length} 条新闻。
           </p>
         </div>
         <div className="stats-bar" aria-label="结果统计">
@@ -398,6 +398,47 @@ export default function SchoolsPageClient({
                 </button>
               ))}
             </div>
+            <div className="filter-group" aria-label="培养方向筛选" style={{ marginBottom: 24 }}>
+              <span className="filter-group-label">培养方向</span>
+              <div className="quick-searches">
+                <button
+                  className={`quick-chip${activeDirection === 'all' ? ' quick-chip-active' : ''}`}
+                  type="button"
+                  onClick={() => setActiveDirection('all')}
+                >
+                  全部方向
+                </button>
+                {TRAINING_DIRECTION_OPTIONS.map((item) => (
+                  <button
+                    key={item}
+                    className={`quick-chip${activeDirection === item ? ' quick-chip-active' : ''}`}
+                    type="button"
+                    onClick={() => setActiveDirection(item)}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {compareSchools.length ? (
+              <section className="compare-bar" aria-label="学校对比篮子">
+                <div>
+                  <p className="compare-bar-label">已选学校对比</p>
+                  <div className="compare-pill-row">
+                    {compareSchools.map((school) => (
+                      <button key={school.id} type="button" className="compare-pill" onClick={() => toggleCompare(school.id)}>
+                        <span>{school.name}</span>
+                        <span>移除</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="compare-bar-actions">
+                  <Link className="action-button" href={compareHref}>进入学校对比</Link>
+                  <button type="button" className="action-button action-button-secondary" onClick={() => setCompareIds([])}>清空对比</button>
+                </div>
+              </section>
+            ) : null}
             <div className="school-grid">
               {filteredSchools.length ? filteredSchools.map((school) => (
                 <article
@@ -429,12 +470,32 @@ export default function SchoolsPageClient({
                       ? getSchoolDisplayTags(school).map((tag) => <span key={tag} className="meta-chip">{tag}</span>)
                       : <span className="meta-chip meta-chip-muted">暂无标签</span>}
                   </div>
+                  <div className="school-direction-row">
+                    {getSchoolTrainingDirections(school).length
+                      ? getSchoolTrainingDirections(school).map((direction) => <span key={direction} className="direction-chip">{direction}</span>)
+                      : <span className="direction-chip direction-chip-muted">方向待补充</span>}
+                  </div>
+                  {getSchoolHighlights(school).length ? (
+                    <p className="school-link-note">{getSchoolHighlights(school)[0]}</p>
+                  ) : null}
                   {schoolContextNews ? <p className="school-link-note">关联动态：{schoolContextNews.title}</p> : null}
                   <div className="school-card-footer">
                     <span className="school-card-footnote">
                       {school.tier ? `${school.tier} 梯队` : getSchoolOwnershipLabel(school)}
                     </span>
-                    <span className="school-card-enter">点击查看学校详情</span>
+                    <div className="school-card-actions-inline">
+                      <button
+                        type="button"
+                        className={`compare-inline-button${compareIds.includes(school.id) ? ' compare-inline-button-active' : ''}`}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          toggleCompare(school.id);
+                        }}
+                      >
+                        {compareIds.includes(school.id) ? '已加入对比' : '加入对比'}
+                      </button>
+                      <span className="school-card-enter">点击查看学校详情</span>
+                    </div>
                   </div>
                 </article>
               )) : <EmptyState />}
@@ -446,23 +507,22 @@ export default function SchoolsPageClient({
           <section className="panel side-panel" id="districts">
             <div className="section-heading">
               <h2>区域概览</h2>
-              <p>点击区域，快速切换当前学校结果。</p>
+              <p>可以直接切换当前结果，也可以进入区级专题页连续阅读。</p>
             </div>
             <div className="district-grid">
               {districts.map((district) => (
-                <button
-                  key={district.id}
-                  className={`district-card${activeDistrict === district.id ? ' district-card-active' : ''}`}
-                  type="button"
-                  onClick={() => applyFocusedFilters({ district: district.id })}
-                >
+                <article key={district.id} className={`district-card${activeDistrict === district.id ? ' district-card-active' : ''}`}>
                   <div className="district-card-header">
                     <h3>{district.name || district.districtName}</h3>
                     <span>{district.schoolCount || district.count || 0} 所学校</span>
                   </div>
                   <p>{district.description || '暂无说明'}</p>
-                  <p className="district-meta">点击查看该区域学校列表与学校特色。</p>
-                </button>
+                  <p className="district-meta">{getDistrictSchoolTopic(district)}</p>
+                  <div className="district-card-actions">
+                    <button type="button" className="text-link-button" onClick={() => applyFocusedFilters({ district: district.id })}>查看当前列表</button>
+                    <Link className="text-link" href={`/schools/district/${district.id}`}>进入区级专题</Link>
+                  </div>
+                </article>
               ))}
             </div>
           </section>
