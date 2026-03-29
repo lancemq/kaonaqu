@@ -81,6 +81,13 @@ function isBlockedStaticPath(reqPath) {
 }
 
 function resolveStaticFile(reqPath) {
+  if (reqPath.startsWith('/schools/') && !path.extname(reqPath)) {
+    const schoolsPage = path.join(SITE_DIR, 'schools.html');
+    if (fs.existsSync(schoolsPage) && fs.statSync(schoolsPage).isFile()) {
+      return schoolsPage;
+    }
+  }
+
   const normalizedPath = reqPath === '/' ? '/index.html' : reqPath;
   const trimmedPath = normalizedPath.replace(/\/+$/, '');
   const relativeBase = trimmedPath.replace(/^\/+/, '');

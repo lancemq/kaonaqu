@@ -14,6 +14,13 @@ export const dynamic = 'force-dynamic';
 
 export default async function NewsPage() {
   const { news, policies } = await loadDataStore();
+  const currentYear = Math.max(
+    ...news.map((item) => Number(String(item.publishedAt || '').slice(0, 4)) || 0),
+    ...policies.map((item) => Number(item.year) || Number(String(item.publishedAt || '').slice(0, 4)) || 0),
+    new Date().getFullYear()
+  );
+  const currentYearNews = news.filter((item) => Number(String(item.publishedAt || '').slice(0, 4)) === currentYear);
+  const currentYearPolicies = policies.filter((item) => (Number(item.year) || Number(String(item.publishedAt || '').slice(0, 4))) === currentYear);
 
   return (
     <SiteShell>
@@ -27,13 +34,13 @@ export default async function NewsPage() {
           <div className="search-panel-head editorial-intro-head">
             <div className="editorial-intro-copy">
               <span className="module-glyph module-glyph-news module-glyph-large" aria-hidden="true"></span>
-              <h1>新闻政策版</h1>
-              <p>按资讯站的阅读逻辑组织上海中考、高考动态，把考试新闻、招生新闻、学校动态和政策解释集中在一个版面里浏览。</p>
+              <h1>{currentYear} 上海教育资讯频道</h1>
+              <p>这一版首页只聚焦 {currentYear} 年当年内容，把上海中考、高招、学校观察和政策深读按专业资讯频道的方式重新组织。</p>
             </div>
             <div className="editorial-intro-metrics">
-              <article><span>新闻条数</span><strong>{news.length}</strong></article>
-              <article><span>政策文件</span><strong>{policies.length}</strong></article>
-              <article><span>重点栏目</span><strong>3</strong></article>
+              <article><span>当年新闻</span><strong>{currentYearNews.length}</strong></article>
+              <article><span>当年政策</span><strong>{currentYearPolicies.length}</strong></article>
+              <article><span>频道栏目</span><strong>6</strong></article>
             </div>
           </div>
         </section>

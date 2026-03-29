@@ -16,9 +16,7 @@ function EmptyState() {
 
 function sanitizePolicyText(text, title = '') {
   let value = String(text || '');
-  if (!value) {
-    return '';
-  }
+  if (!value) return '';
 
   value = value
     .replace(/无障碍 首页[\s\S]*?内容概述\s*/g, '')
@@ -43,94 +41,177 @@ function sanitizePolicyText(text, title = '') {
 }
 
 function clipText(text, maxLength) {
-  if (!text || text.length <= maxLength) {
-    return text;
-  }
+  if (!text || text.length <= maxLength) return text;
   return `${text.slice(0, maxLength).trim()}…`;
-}
-
-function isRenderablePolicy(policy) {
-  const title = String(policy?.title || '').trim();
-  return Boolean(title && title !== '上海市教育委员会');
 }
 
 function getPolicySummaryText(policy) {
   const summary = sanitizePolicyText(policy.summary, policy.title);
   const content = sanitizePolicyText(policy.content, policy.title);
-  return clipText(summary || content || '暂无摘要', 140);
+  return clipText(summary || content || '暂无摘要', 160);
 }
 
 function getPolicyDetailText(policy) {
   const content = sanitizePolicyText(policy.content, policy.title);
-  if (!content) {
-    return '';
-  }
-  return clipText(content, 320);
+  if (!content) return '';
+  return clipText(content, 360);
+}
+
+function getCurrentYear(news, policies) {
+  const years = [...news, ...policies]
+    .map((item) => {
+      const value = String(item?.publishedAt || item?.date || '');
+      return Number(value.slice(0, 4)) || Number(item?.year) || 0;
+    })
+    .filter(Boolean)
+    .sort((a, b) => b - a);
+  return years[0] || new Date().getFullYear();
+}
+
+function isCurrentYearItem(item, year) {
+  const publishedYear = Number(String(item?.publishedAt || item?.date || '').slice(0, 4)) || Number(item?.year) || 0;
+  return publishedYear === year;
+}
+
+function isRenderablePolicy(policy, currentYear) {
+  const title = String(policy?.title || '').trim();
+  if (!title || title === '上海市教育委员会') return false;
+  if (!isCurrentYearItem(policy, currentYear)) return false;
+  return policy.source?.type === 'official' || String(policy.source?.name || '').includes('上海市教育委员会');
 }
 
 export default function NewsPageClient({ news, policies }) {
+  const currentYear = useMemo(() => getCurrentYear(news, policies), [news, policies]);
+  const currentYearNews = useMemo(
+    () => news.filter((item) => isCurrentYearItem(item, currentYear)).sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))),
+    [news, currentYear]
+  );
+  const currentYearPolicies = useMemo(
+    () => policies.filter((item) => isRenderablePolicy(item, currentYear)).sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))),
+    [policies, currentYear]
+  );
   const [activeFilter, setActiveFilter] = useState('all');
-  const visibleNews = useMemo(() => filterNews(news, activeFilter), [news, activeFilter]);
-  const visiblePolicies = useMemo(() => policies.filter(isRenderablePolicy), [policies]);
-  const examNews = useMemo(() => news.filter((item) => item.newsType === 'exam').slice().sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))).slice(0, 4), [news]);
-  const admissionNews = useMemo(() => news.filter((item) => item.newsType === 'admission').slice().sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))).slice(0, 4), [news]);
-  const schoolNews = useMemo(() => news.filter((item) => item.newsType === 'school').slice().sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))).slice(0, 4), [news]);
+  const visibleNews = useMemo(() => filterNews(currentYearNews, activeFilter), [currentYearNews, activeFilter]);
+
   const [headline, ...restNews] = visibleNews;
+  const latestWireNews = currentYearNews.slice(0, 6);
+  const zhongkaoDesk = currentYearNews.filter((item) => item.examType === 'zhongkao').slice(0, 5);
+  const gaokaoDesk = currentYearNews.filter((item) => item.examType === 'gaokao').slice(0, 5);
+  const schoolDesk = currentYearNews.filter((item) => item.newsType === 'school').slice(0, 4);
+  const examCount = currentYearNews.filter((item) => item.newsType === 'exam').length;
+  const admissionCount = currentYearNews.filter((item) => item.newsType === 'admission').length;
+  const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
 
   return (
     <main className="layout">
+      <section className="panel newsroom-front-panel">
+        <div className="section-heading newsroom-section-heading">
+          <h2>{currentYear} 年度教育资讯首页</h2>
+          <p>页面聚焦 {currentYear} 年上海当年公开新闻与政策，不再把旧年份内容混在头部信息流里。</p>
+        </div>
+        <div className="newsroom-front-grid">
+          {headline ? (
+            <article className="frontline-story newsroom-lead-story">
+              <div className="frontline-meta">
+                <span className="pill">{getNewsCategoryLabel(headline)}</span>
+                <span>{headline.publishedAt || '暂无日期'}</span>
+              </div>
+              <h3>{headline.title}</h3>
+              <p>{headline.summary || '暂无摘要'}</p>
+              <div className="newsroom-lead-footer">
+                <span className="news-source">来源：{headline.source?.name || '未知'} · 可信度 {formatConfidence(headline.source?.confidence)}</span>
+                {headline.source?.url ? <a className="action-link-chip action-link-chip-strong" href={headline.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
+              </div>
+            </article>
+          ) : <EmptyState />}
+
+          <aside className="panel newsroom-brief-panel">
+            <div className="section-heading">
+              <h2>年度统计</h2>
+              <p>把当年资讯按考试、招生和学校动态三条线拆开看。</p>
+            </div>
+            <div className="tracker-grid">
+              <article className="tracker-card">
+                <span>考试新闻</span>
+                <strong>{examCount}</strong>
+                <p>聚焦考试安排、报名、准考证、成绩和考前提示。</p>
+              </article>
+              <article className="tracker-card">
+                <span>招生新闻</span>
+                <strong>{admissionCount}</strong>
+                <p>集中看报名、填报、确认、公示和录取链路。</p>
+              </article>
+              <article className="tracker-card">
+                <span>学校动态</span>
+                <strong>{schoolCount}</strong>
+                <p>围绕学校官网、开放日和校园观察做辅助阅读。</p>
+              </article>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="news-wire-strip" aria-label="最新快讯">
+        {latestWireNews.map((item) => (
+          <article key={item.id} className="wire-card">
+            <p className="briefing-meta">{getNewsCategoryLabel(item)} · {item.publishedAt}</p>
+            <h3>{item.title}</h3>
+          </article>
+        ))}
+      </section>
+
       <section className="news-channel-grid">
         <section className="panel news-column-panel">
           <div className="section-heading">
-            <h2>考试新闻专栏</h2>
-            <p>优先关注考试安排、报名、准考证和成绩相关时间点。</p>
+            <h2>中招焦点</h2>
+            <p>优先看中考政策、报名节点和当年操作口径。</p>
           </div>
           <div className="compact-news-list">
-            {examNews.map((item) => (
+            {zhongkaoDesk.length ? zhongkaoDesk.map((item) => (
               <article key={item.id} className="compact-news-card">
                 <span className="pill">{item.publishedAt || '暂无日期'}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary || '暂无摘要'}</p>
               </article>
-            ))}
+            )) : <EmptyState />}
           </div>
         </section>
         <section className="panel news-column-panel">
           <div className="section-heading">
-            <h2>招生新闻专栏</h2>
-            <p>单独追踪开放日、自主招生和志愿填报提醒。</p>
+            <h2>高招焦点</h2>
+            <p>单独看春招、秋招、体艺类和学业考新闻。</p>
           </div>
           <div className="compact-news-list">
-            {admissionNews.map((item) => (
+            {gaokaoDesk.length ? gaokaoDesk.map((item) => (
               <article key={item.id} className="compact-news-card">
                 <span className="pill">{item.publishedAt || '暂无日期'}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary || '暂无摘要'}</p>
               </article>
-            ))}
+            )) : <EmptyState />}
           </div>
         </section>
         <section className="panel news-column-panel">
           <div className="section-heading">
-            <h2>学校动态专栏</h2>
-            <p>汇总学校开放安排、校园动态和校方消息。</p>
+            <h2>学校观察</h2>
+            <p>把学校官网和校园开放入口当作辅助阅读线索，不和政策混在一起。</p>
           </div>
           <div className="compact-news-list">
-            {schoolNews.map((item) => (
+            {schoolDesk.length ? schoolDesk.map((item) => (
               <article key={item.id} className="compact-news-card">
                 <span className="pill">{item.publishedAt || '暂无日期'}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary || '暂无摘要'}</p>
               </article>
-            ))}
+            )) : <EmptyState />}
           </div>
         </section>
       </section>
 
       <section className="panel news-panel" id="news">
         <div className="section-heading">
-          <h2>新闻动态</h2>
-          <p>除考试新闻外，补充查看招生新闻和学校动态，头条位优先展示最近且最重要的更新。</p>
+          <h2>年度新闻总览</h2>
+          <p>按资讯频道的阅读方式组织 {currentYear} 年新闻，首条优先展示当天最值得先看的更新。</p>
         </div>
         <div className="news-toolbar" aria-label="新闻分类筛选">
           {[
@@ -160,11 +241,11 @@ export default function NewsPageClient({ news, policies }) {
                 <h3>{headline.title}</h3>
                 <p className="news-summary">{headline.summary || '暂无摘要'}</p>
                 <p className="news-source">来源：{headline.source?.name || '未知'} · 可信度 {formatConfidence(headline.source?.confidence)}</p>
-                {headline.source?.url ? <a className="text-link" href={headline.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
+                {headline.source?.url ? <a className="action-link-chip action-link-chip-strong" href={headline.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
               </article>
             </div>
             <div className="news-grid">
-              {restNews.slice(0, 5).map((item) => (
+              {restNews.slice(0, 8).map((item) => (
                 <article key={item.id} className="news-card">
                   <div className="news-card-header">
                     <div className="news-meta-row">
@@ -183,13 +264,13 @@ export default function NewsPageClient({ news, policies }) {
         ) : <EmptyState />}
       </section>
 
-      <section className="panel" id="policies">
+      <section className="panel newsroom-policy-desk" id="policies">
         <div className="section-heading">
-          <h2>政策信息</h2>
-          <p>与考试新闻对应查看官方政策、报名通知和制度性文件。</p>
+          <h2>政策深读</h2>
+          <p>这里只保留 {currentYear} 年官方政策文件和配套通知，避免第三方内容和旧年份文件混进主版面。</p>
         </div>
         <div className="policy-list">
-          {visiblePolicies.length ? visiblePolicies.map((policy) => (
+          {currentYearPolicies.length ? currentYearPolicies.map((policy) => (
             <article key={policy.id} className="policy-card">
               <div className="policy-card-header">
                 <h3>{policy.title}</h3>
@@ -203,7 +284,10 @@ export default function NewsPageClient({ news, policies }) {
                   <p className="policy-content">{getPolicyDetailText(policy)}</p>
                 </details>
               ) : null}
-              <p className="policy-source">来源：{policy.source?.name || '未知'} · 可信度 {formatConfidence(policy.source?.confidence)}</p>
+              <div className="newsroom-policy-footer">
+                <p className="policy-source">来源：{policy.source?.name || '未知'} · 可信度 {formatConfidence(policy.source?.confidence)}</p>
+                {policy.source?.url ? <a className="text-link" href={policy.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
+              </div>
             </article>
           )) : <EmptyState />}
         </div>
@@ -212,7 +296,7 @@ export default function NewsPageClient({ news, policies }) {
       <section className="panel policy-timeline-panel" id="admission-timeline">
         <div className="section-heading">
           <h2>官方招生日程提醒</h2>
-          <p>按 2026 年 3 月 21 日前已公开的上海市教委、上海市教育考试院资料整理，优先展示容易错过的关键时间窗口。</p>
+          <p>把最容易错过的时间窗口放到一块看，适合先掌握全年关键节奏。</p>
         </div>
         <div className="policy-glossary timeline-grid">
           {admissionTimeline.map((item) => (
@@ -238,7 +322,7 @@ export default function NewsPageClient({ news, policies }) {
       <section className="panel policy-glossary-panel" id="policy-glossary">
         <div className="section-heading">
           <h2>政策概念速查</h2>
-          <p>把新闻里常见但容易混淆的招生术语集中解释，优先采用上海市教委和上海市教育考试院公开口径整理。</p>
+          <p>把新闻里高频出现、最容易混淆的术语集中拆开解释。</p>
         </div>
         <div className="policy-glossary">
           {policyGlossary.map((item) => (

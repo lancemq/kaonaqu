@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   buildSchoolSystems,
   filterSchools,
@@ -65,6 +65,8 @@ const TRAINING_DIRECTION_OPTIONS = [
   '外语特色'
 ];
 
+const SCHOOLS_PER_PAGE = 18;
+
 function getStageMeta(stage) {
   if (stage === 'junior') {
     return { label: '纯初中', className: 'stage-badge stage-badge-junior' };
@@ -101,6 +103,7 @@ export default function SchoolsPageClient({
   const [queryInput, setQueryInput] = useState(initialQuery);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [compareIds, setCompareIds] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredSchools = useMemo(
     () => filterSchools(schools, {
@@ -171,9 +174,24 @@ export default function SchoolsPageClient({
     () => compareIds.map((id) => schools.find((item) => item.id === id)).filter(Boolean),
     [compareIds, schools]
   );
+  const totalPages = Math.max(1, Math.ceil(filteredSchools.length / SCHOOLS_PER_PAGE));
+  const pagedSchools = useMemo(() => {
+    const start = (currentPage - 1) * SCHOOLS_PER_PAGE;
+    return filteredSchools.slice(start, start + SCHOOLS_PER_PAGE);
+  }, [filteredSchools, currentPage]);
   const compareHref = compareSchools.length
     ? `/schools/compare?ids=${encodeURIComponent(compareSchools.map((item) => item.id).join(','))}`
     : '/schools/compare';
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeDistrict, activeStage, activeOwnership, activeTag, activeDirection, searchQuery]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
 
   const applySearch = (value = queryInput) => {
     setSearchQuery(value.trim());
@@ -440,7 +458,7 @@ export default function SchoolsPageClient({
               </section>
             ) : null}
             <div className="school-grid">
-              {filteredSchools.length ? filteredSchools.map((school) => (
+              {pagedSchools.length ? pagedSchools.map((school) => (
                 <article
                   key={school.id}
                   className="school-card school-card-clickable"
@@ -500,6 +518,46 @@ export default function SchoolsPageClient({
                 </article>
               )) : <EmptyState />}
             </div>
+            {filteredSchools.length > SCHOOLS_PER_PAGE ? (
+              <section className="pagination-shell" aria-label="学校列表分页">
+                <div className="pagination-summary">
+                  <span>第 {currentPage} / {totalPages} 页</span>
+                  <strong>当前展示 {pagedSchools.length} 所，累计 {filteredSchools.length} 所</strong>
+                </div>
+                <div className="pagination-controls">
+                  <button
+                    type="button"
+                    className="pagination-button"
+                    onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+                    disabled={currentPage === 1}
+                  >
+                    上一页
+                  </button>
+                  {Array.from({ length: totalPages }, (_, index) => index + 1)
+                    .filter((page) => Math.abs(page - currentPage) <= 1 || page === 1 || page === totalPages)
+                    .map((page, index, pages) => (
+                      <span key={page} className="pagination-fragment">
+                        {index > 0 && pages[index - 1] !== page - 1 ? <span className="pagination-gap">…</span> : null}
+                        <button
+                          type="button"
+                          className={`pagination-button${page === currentPage ? ' pagination-button-active' : ''}`}
+                          onClick={() => setCurrentPage(page)}
+                        >
+                          {page}
+                        </button>
+                      </span>
+                    ))}
+                  <button
+                    type="button"
+                    className="pagination-button"
+                    onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+                    disabled={currentPage === totalPages}
+                  >
+                    下一页
+                  </button>
+                </div>
+              </section>
+            ) : null}
           </div>
         </section>
 
@@ -519,8 +577,8 @@ export default function SchoolsPageClient({
                   <p>{district.description || '暂无说明'}</p>
                   <p className="district-meta">{getDistrictSchoolTopic(district)}</p>
                   <div className="district-card-actions">
-                    <button type="button" className="text-link-button" onClick={() => applyFocusedFilters({ district: district.id })}>查看当前列表</button>
-                    <Link className="text-link" href={`/schools/district/${district.id}`}>进入区级专题</Link>
+                    <button type="button" className="action-link-chip" onClick={() => applyFocusedFilters({ district: district.id })}>查看当前列表</button>
+                    <Link className="action-link-chip action-link-chip-strong" href={`/schools/district/${district.id}`}>进入区级专题</Link>
                   </div>
                 </article>
               ))}

@@ -292,21 +292,35 @@ class KaonaquApp {
 
     syncSchoolFromUrl() {
         const params = new URLSearchParams(window.location.search);
-        this.activeSchoolId = params.get('school') || '';
+        const pathMatch = window.location.pathname.match(/^\/schools\/(.+)$/);
+        const pathSchoolId = pathMatch ? decodeURIComponent(pathMatch[1]) : '';
+        this.activeSchoolId = pathSchoolId || params.get('school') || '';
+
+        if (this.activeSchoolId) {
+            const school = this.schools.find((item) => item.id === this.activeSchoolId);
+            if (school) {
+                this.activeDistrict = this.getSchoolDistrictId(school) || this.activeDistrict;
+            }
+        }
     }
 
     updateSchoolUrl() {
         const url = new URL(window.location.href);
         if (this.activeSchoolId) {
-            url.searchParams.set('school', this.activeSchoolId);
+            url.pathname = `/schools/${encodeURIComponent(this.activeSchoolId)}`;
         } else {
-            url.searchParams.delete('school');
+            url.pathname = '/schools';
         }
+        url.searchParams.delete('school');
         window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
     }
 
     openSchoolDetail(schoolId) {
         this.activeSchoolId = schoolId;
+        const school = this.schools.find((item) => item.id === schoolId);
+        if (school) {
+            this.activeDistrict = this.getSchoolDistrictId(school) || this.activeDistrict;
+        }
         this.updateSchoolUrl();
         this.render();
         document.getElementById('school-detail-view')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -451,7 +465,7 @@ class KaonaquApp {
         const isDirectoryView = this.pageType === 'schools' && containerId === 'school-list';
 
         container.innerHTML = schools.map((school) => `
-            <article class="school-card">
+            <article class="school-card${school.id === this.activeSchoolId ? ' school-card-selected' : ''}">
                 <div class="school-card-topline">
                     <span class="school-record-label">学校档案</span>
                     <span class="school-record-district">${this.getSchoolDistrictName(school)}</span>
@@ -517,6 +531,7 @@ class KaonaquApp {
         if (!this.activeSchoolId) {
             container.hidden = true;
             container.innerHTML = '';
+            this.updateSchoolsPageMeta();
             return;
         }
 
@@ -524,10 +539,12 @@ class KaonaquApp {
         if (!school) {
             container.hidden = true;
             container.innerHTML = '';
+            this.updateSchoolsPageMeta();
             return;
         }
 
         container.hidden = false;
+        this.updateSchoolsPageMeta(school);
         container.innerHTML = `
             <article class="panel school-detail-hero">
                 <div class="school-detail-head">
@@ -607,6 +624,32 @@ class KaonaquApp {
         container.querySelector('#school-detail-close')?.addEventListener('click', () => {
             this.closeSchoolDetail();
         });
+    }
+
+    updateSchoolsPageMeta(school = null) {
+        if (this.pageType !== 'schools') {
+            return;
+        }
+
+        const title = school
+            ? `${school.name} | 上海学校档案 | 考哪去`
+            : '上海初中高中学校信息查询 | 考哪去';
+        const description = school
+            ? (school.schoolDescription || school.admissionNotes || `查看${school.name}的学校档案、阶段、类型、特色、招生建议与来源信息。`).slice(0, 120)
+            : '按区域检索上海初中、高中学校信息，查看学校介绍、类型、阶段、特色标签、梯队与来源说明，适合升学择校参考。';
+        const url = school
+            ? `https://kaonaqu.xyz/schools/${encodeURIComponent(school.id)}`
+            : 'https://kaonaqu.xyz/schools';
+        const ogTitle = school
+            ? `${school.name} | 上海学校档案 | 考哪去`
+            : '上海初中高中学校信息查询 | 考哪去';
+
+        document.title = title;
+        document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+        document.querySelector('link[rel="canonical"]')?.setAttribute('href', url);
+        document.querySelector('meta[property="og:title"]')?.setAttribute('content', ogTitle);
+        document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+        document.querySelector('meta[property="og:url"]')?.setAttribute('content', url);
     }
 
     renderPolicies(policies) {

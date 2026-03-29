@@ -1,4 +1,11 @@
 {
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/schools/(.*)",
+      "destination": "/schools.html"
+    }
+  ],
   "crons": [
     {
       "path": "/api/cron-refresh",
