@@ -12,6 +12,7 @@ const { loadDataStore } = require('../shared/data-store');
 const PORT = Number(process.env.PORT || 8080);
 const HOST = process.env.HOST || '127.0.0.1';
 const SITE_DIR = path.join(__dirname, '..');
+const SCHOOLS_DATA_FILE = path.join(SITE_DIR, 'data', 'schools.json');
 const BLOCKED_PATH_PREFIXES = ['/api/', '/data/', '/crawler/', '/shared/', '/scripts/', '/web/', '/node_modules/'];
 const BLOCKED_EXACT_PATHS = ['/api', '/data', '/crawler', '/shared', '/scripts', '/web', '/node_modules', '/package.json', '/vercel.json'];
 
@@ -26,21 +27,101 @@ const MIME_TYPES = {
   '.xml': 'application/xml; charset=utf-8'
 };
 
-function injectHtmlEnhancements(html) {
+let cachedSchoolsMtimeMs = 0;
+let cachedSchools = [];
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function loadSchoolsForMeta() {
+  const stats = fs.statSync(SCHOOLS_DATA_FILE);
+  if (stats.mtimeMs !== cachedSchoolsMtimeMs) {
+    cachedSchools = JSON.parse(fs.readFileSync(SCHOOLS_DATA_FILE, 'utf8'));
+    cachedSchoolsMtimeMs = stats.mtimeMs;
+  }
+  return cachedSchools;
+}
+
+function getSchoolMetaByPath(reqPath) {
+  const match = reqPath.match(/^\/schools\/(.+)$/);
+  if (!match) {
+    return null;
+  }
+
+  const schoolId = decodeURIComponent(match[1]);
+  const school = loadSchoolsForMeta().find((item) => item.id === schoolId);
+  if (!school) {
+    return null;
+  }
+
+  const title = `${school.name} | 上海学校档案 | 考哪去`;
+  const description = (school.schoolDescription
+    || school.admissionNotes
+    || `查看${school.name}的学校档案、阶段、类型、特色、招生建议与来源信息。`).slice(0, 140);
+  const url = `https://kaonaqu.xyz/schools/${encodeURIComponent(school.id)}`;
+  const ldJson = {
+    '@context': 'https://schema.org',
+    '@type': 'School',
+    name: school.name,
+    url,
+    description,
+    address: school.address || undefined,
+    telephone: school.phone || undefined
+  };
+
+  return {
+    title,
+    description,
+    url,
+    ldJson: JSON.stringify(ldJson)
+  };
+}
+
+function injectSchoolDetailMeta(html, schoolMeta) {
+  let output = html;
+
+  output = output.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(schoolMeta.title)}</title>`);
+  output = output.replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHtml(schoolMeta.description)}">`);
+  output = output.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${escapeHtml(schoolMeta.url)}">`);
+  output = output.replace(/<link rel="alternate" hreflang="zh-CN" href="[^"]*">/, `<link rel="alternate" hreflang="zh-CN" href="${escapeHtml(schoolMeta.url)}">`);
+  output = output.replace(/<meta name="mobile-agent" content="[^"]*">/, `<meta name="mobile-agent" content="format=html5; url=${escapeHtml(schoolMeta.url)}">`);
+  output = output.replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${escapeHtml(schoolMeta.title)}">`);
+  output = output.replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${escapeHtml(schoolMeta.description)}">`);
+  output = output.replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${escapeHtml(schoolMeta.url)}">`);
+
+  if (output.includes('</head>')) {
+    output = output.replace('</head>', `  <script type="application/ld+json">${schoolMeta.ldJson}</script>\n</head>`);
+  }
+
+  return output;
+}
+
+function injectHtmlEnhancements(html, reqPath) {
+  let output = html;
+  const schoolMeta = getSchoolMetaByPath(reqPath);
+  if (schoolMeta) {
+    output = injectSchoolDetailMeta(output, schoolMeta);
+  }
+
   const analyticsTag = '<script type="module" src="/analytics-init.mjs"></script>';
-  if (html.includes(analyticsTag)) {
-    return html;
+  if (output.includes(analyticsTag)) {
+    return output;
   }
 
-  if (html.includes('</body>')) {
-    return html.replace('</body>', `  ${analyticsTag}\n</body>`);
+  if (output.includes('</body>')) {
+    return output.replace('</body>', `  ${analyticsTag}\n</body>`);
   }
 
-  if (html.includes('</head>')) {
-    return html.replace('</head>', `  ${analyticsTag}\n</head>`);
+  if (output.includes('</head>')) {
+    return output.replace('</head>', `  ${analyticsTag}\n</head>`);
   }
 
-  return `${html}\n${analyticsTag}`;
+  return `${output}\n${analyticsTag}`;
 }
 
 function sendJson(res, statusCode, payload) {
@@ -144,7 +225,7 @@ function serveStatic(reqPath, res) {
     res.writeHead(200, { 'Content-Type': contentType });
 
     if (ext === '.html') {
-      res.end(injectHtmlEnhancements(content.toString('utf8')));
+      res.end(injectHtmlEnhancements(content.toString('utf8'), reqPath));
       return;
     }
 
