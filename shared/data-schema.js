@@ -272,6 +272,8 @@ function normalizeNews(raw, index = 0) {
     examType: examType === 'gaokao' ? 'gaokao' : examType === 'zhongkao' ? 'zhongkao' : '',
     summary: cleanString(raw.summary || raw.content),
     content: cleanString(raw.content),
+    contentMd: cleanString(raw.contentMd || raw.content_md),
+    contentFile: cleanString(raw.contentFile || raw.content_file),
     publishedAt: raw.publishedAt || raw.publishDate || raw.date || null,
     updatedAt: raw.updatedAt || source.crawledAt || raw.publishDate || raw.date || null,
     source

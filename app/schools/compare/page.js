@@ -31,7 +31,7 @@ export default async function SchoolComparePage({ searchParams }) {
   const compareSchools = ids.map((id) => schools.find((school) => school.id === id)).filter(Boolean).slice(0, 4);
 
   return (
-    <SiteShell>
+    <SiteShell hideKnowledgeNav>
       <header className="hero" id="top">
         <section className="search-panel editorial-intro-panel" aria-label="学校对比">
           <nav className="breadcrumb" aria-label="面包屑导航">

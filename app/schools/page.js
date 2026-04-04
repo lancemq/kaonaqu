@@ -1,7 +1,6 @@
 import SiteShell from '../../components/site-shell';
 import { createRequire } from 'module';
 import SchoolsPageClient from '../../components/schools-page-client';
-import schoolOpenDays from '../../lib/school-open-days';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../shared/data-store');
@@ -18,41 +17,23 @@ export default async function SchoolsPage({ searchParams }) {
   const params = await searchParams;
   const initialDistrict = typeof params?.district === 'string' ? params.district : 'all';
   const initialStage = typeof params?.stage === 'string' ? params.stage : 'all';
-  const initialQuery = typeof params?.query === 'string' ? params.query : '';
+  const initialOwnership = typeof params?.ownership === 'string' ? params.ownership : 'all';
+  const initialTag = typeof params?.tag === 'string' ? params.tag : 'all';
   const initialDirection = typeof params?.direction === 'string' ? params.direction : 'all';
+  const initialQuery = typeof params?.query === 'string' ? params.query : '';
 
   return (
-    <SiteShell>
-      <header className="hero" id="top">
-        <section className="search-panel editorial-intro-panel" aria-label="搜索与筛选">
-          <nav className="breadcrumb" aria-label="面包屑导航">
-            <a href="/">首页</a>
-            <span className="separator">/</span>
-            <span>学校信息</span>
-          </nav>
-          <div className="search-panel-head editorial-intro-head">
-            <div className="editorial-intro-copy">
-              <span className="module-glyph module-glyph-schools module-glyph-large" aria-hidden="true"></span>
-              <h1>学校数据库</h1>
-              <p>把上海学校信息做成更像资讯数据库的检索页。现在已经明确区分纯初中、纯高中和完全中学，你可以按区域、学段、办学性质和特色标签交叉筛选，不必在零散帖子里反复找线索。</p>
-            </div>
-            <div className="editorial-intro-metrics">
-              <article><span>学校总量</span><strong>{schools.length}</strong></article>
-              <article><span>覆盖区域</span><strong>{districts.length}</strong></article>
-              <article><span>关联动态</span><strong>{news.length}</strong></article>
-            </div>
-          </div>
-        </section>
-      </header>
+    <SiteShell hideKnowledgeNav>
       <SchoolsPageClient
         districts={districts}
         schools={schools}
         news={news}
-        openDays={schoolOpenDays}
         initialDistrict={initialDistrict}
         initialStage={initialStage}
-        initialQuery={initialQuery}
+        initialOwnership={initialOwnership}
+        initialTag={initialTag}
         initialDirection={initialDirection}
+        initialQuery={initialQuery}
       />
     </SiteShell>
   );

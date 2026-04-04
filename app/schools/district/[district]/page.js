@@ -52,7 +52,7 @@ export default async function DistrictSchoolsPage({ params }) {
     .slice(0, 6);
 
   return (
-    <SiteShell>
+    <SiteShell hideKnowledgeNav>
       <header className="hero" id="top">
         <section className="search-panel editorial-intro-panel" aria-label="区级学校专题">
           <nav className="breadcrumb" aria-label="面包屑导航">
@@ -90,7 +90,7 @@ export default async function DistrictSchoolsPage({ params }) {
           </div>
           <div className="district-card-actions" style={{ marginTop: 18 }}>
             <Link className="module-link" href={`/schools?district=${districtInfo.id}`}>进入该区检索结果</Link>
-            <Link className="text-link" href="/schools">返回学校数据库</Link>
+            <Link className="text-link" href="/schools">返回学校信息页</Link>
           </div>
         </section>
 

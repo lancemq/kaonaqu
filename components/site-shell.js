@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function SiteShell({ children }) {
+export default function SiteShell({ children, hideKnowledgeNav = false }) {
   return (
     <div className="page-shell">
       <div className="masthead-rail" aria-label="站点导览">
@@ -8,8 +8,8 @@ export default function SiteShell({ children }) {
           <p className="masthead-note">KAONAQU EDUCATION DESK</p>
           <div className="masthead-tags">
             <span>上海升学观察</span>
-            <span>政策速递</span>
-            <span>学校数据库</span>
+            <span>新闻政策</span>
+            <span>学校信息</span>
             <span>知识体系</span>
           </div>
         </div>
@@ -31,11 +31,11 @@ export default function SiteShell({ children }) {
           <Link href="/">首页</Link>
           <Link href="/news">新闻政策</Link>
           <Link href="/schools">学校信息</Link>
-          <Link href="/knowledge">知识体系</Link>
+          {!hideKnowledgeNav ? <Link href="/knowledge">知识体系</Link> : null}
         </nav>
         <div className="topbar-desk">
-          <span className="desk-label">今日版面</span>
-          <strong>新闻 · 学校 · 知识</strong>
+          <span className="desk-label">频道导航</span>
+          <strong>新闻 · 学校 · 学习</strong>
         </div>
       </header>
       {children}

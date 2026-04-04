@@ -1,18 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import admissionTimeline from '../lib/admission-timeline';
 import policyGlossary from '../lib/policy-glossary';
-import { filterNews, formatConfidence, getNewsCategoryLabel } from '../lib/site-utils';
-
-function EmptyState() {
-  return (
-    <div className="empty-state">
-      <h3>暂无数据</h3>
-      <p>当前条件下没有匹配结果。</p>
-    </div>
-  );
-}
+import { filterNews, getNewsCategoryLabel, getNewsPriorityScore } from '../lib/site-utils';
 
 function sanitizePolicyText(text, title = '') {
   let value = String(text || '');
@@ -25,11 +17,6 @@ function sanitizePolicyText(text, title = '') {
     .replace(/字体 \[ 大 中 小 ]/g, '')
     .replace(/查阅全文[\s\S]*$/g, '')
     .replace(/\[返回上一页][\s\S]*$/g, '')
-    .replace(/不能读取[\s\S]*$/g, '')
-    .replace(/if\s*\(isMobile\.any\(\)\)\s*\{[\s\S]*$/g, '')
-    .replace(/const token =[\s\S]*$/g, '')
-    .replace(/function UUID\(\) \{[\s\S]*$/g, '')
-    .replace(/jQuery\(document\)\.ready\([\s\S]*$/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 
@@ -48,13 +35,7 @@ function clipText(text, maxLength) {
 function getPolicySummaryText(policy) {
   const summary = sanitizePolicyText(policy.summary, policy.title);
   const content = sanitizePolicyText(policy.content, policy.title);
-  return clipText(summary || content || '暂无摘要', 160);
-}
-
-function getPolicyDetailText(policy) {
-  const content = sanitizePolicyText(policy.content, policy.title);
-  if (!content) return '';
-  return clipText(content, 360);
+  return clipText(summary || content || '暂无摘要', 120);
 }
 
 function getCurrentYear(news, policies) {
@@ -90,321 +71,177 @@ export default function NewsPageClient({ news, policies }) {
     () => policies.filter((item) => isRenderablePolicy(item, currentYear)).sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))),
     [policies, currentYear]
   );
-  const [activeFilter, setActiveFilter] = useState('all');
-  const visibleNews = useMemo(() => filterNews(currentYearNews, activeFilter), [currentYearNews, activeFilter]);
 
-  const [headline, ...restNews] = visibleNews;
-  const latestWireNews = currentYearNews.slice(0, 6);
-  const zhongkaoDesk = currentYearNews.filter((item) => item.examType === 'zhongkao').slice(0, 5);
-  const gaokaoDesk = currentYearNews.filter((item) => item.examType === 'gaokao').slice(0, 5);
-  const schoolDesk = currentYearNews.filter((item) => item.newsType === 'school').slice(0, 4);
-  const monthArchive = useMemo(() => {
-    const groups = new Map();
-    currentYearNews.forEach((item) => {
-      const month = String(item.publishedAt || '').slice(0, 7);
-      if (!groups.has(month)) {
-        groups.set(month, []);
-      }
-      groups.get(month).push(item);
-    });
-    return Array.from(groups.entries());
-  }, [currentYearNews]);
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const NEWS_PER_PAGE = 8;
+  const visibleNews = useMemo(() => filterNews(currentYearNews, activeFilter), [currentYearNews, activeFilter]);
+  const rankedNews = useMemo(
+    () => [...visibleNews].sort((left, right) => {
+      const scoreDiff = getNewsPriorityScore(right) - getNewsPriorityScore(left);
+      if (scoreDiff !== 0) return scoreDiff;
+      return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
+    }),
+    [visibleNews]
+  );
+  const totalPages = Math.max(1, Math.ceil(visibleNews.length / NEWS_PER_PAGE));
+  const pagedNews = useMemo(() => {
+    const start = (currentPage - 1) * NEWS_PER_PAGE;
+    return rankedNews.slice(start, start + NEWS_PER_PAGE);
+  }, [rankedNews, currentPage]);
   const examCount = currentYearNews.filter((item) => item.newsType === 'exam').length;
   const admissionCount = currentYearNews.filter((item) => item.newsType === 'admission').length;
   const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
+  const conceptItems = policyGlossary.slice(0, 3);
+  const deepPolicyItems = currentYearPolicies.slice(0, 2);
+  const faqBullets = [
+    'Q1：看到报名通知后，第一步先看报考资格，再看时间节点。',
+    'Q2：学校官网和考试院口径冲突时，优先看考试院和教育主管部门。',
+    'Q3：最值得收藏的信息通常是报名资格、缴费节点、志愿填报和确认时间。'
+  ];
 
   return (
-    <main className="layout">
-      <section className="panel newsroom-front-panel">
-        <div className="section-heading newsroom-section-heading">
-          <h2>{currentYear} 年度教育资讯首页</h2>
-          <p>页面聚焦 {currentYear} 年上海当年公开新闻与政策，不再把旧年份内容混在头部信息流里。</p>
-        </div>
-        <div className="newsroom-front-grid">
-          {headline ? (
-            <article className="frontline-story newsroom-lead-story">
-              <div className="frontline-meta">
-                <span className="pill">{getNewsCategoryLabel(headline)}</span>
-                <span>{headline.publishedAt || '暂无日期'}</span>
-              </div>
-              <h3>{headline.title}</h3>
-              <p>{headline.summary || '暂无摘要'}</p>
-              <div className="newsroom-lead-footer">
-                <span className="news-source">来源：{headline.source?.name || '未知'} · 可信度 {formatConfidence(headline.source?.confidence)}</span>
-                {headline.source?.url ? <a className="action-link-chip action-link-chip-strong" href={headline.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
-              </div>
-            </article>
-          ) : <EmptyState />}
-
-          <aside className="panel newsroom-brief-panel">
-            <div className="section-heading">
-              <h2>年度统计</h2>
-              <p>把当年资讯按考试、招生和学校动态三条线拆开看。</p>
+    <main className="layout news-prototype-layout">
+      <section className="news-prototype-body">
+        <div className="news-prototype-main">
+          <section className="panel news-prototype-list-panel">
+            <div className="news-prototype-filter-meta">
+              <p className="overview-label">新闻分类</p>
+              <span>按栏目查看当年新闻</span>
             </div>
-            <div className="tracker-grid">
-              <article className="tracker-card">
-                <span>考试新闻</span>
-                <strong>{examCount}</strong>
-                <p>聚焦考试安排、报名、准考证、成绩和考前提示。</p>
-              </article>
-              <article className="tracker-card">
-                <span>招生新闻</span>
-                <strong>{admissionCount}</strong>
-                <p>集中看报名、填报、确认、公示和录取链路。</p>
-              </article>
-              <article className="tracker-card">
-                <span>学校动态</span>
-                <strong>{schoolCount}</strong>
-                <p>围绕学校官网、开放日和校园观察做辅助阅读。</p>
-              </article>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="news-wire-strip" aria-label="最新快讯">
-        {latestWireNews.map((item) => (
-          <article key={item.id} className="wire-card">
-            <p className="briefing-meta">{getNewsCategoryLabel(item)} · {item.publishedAt}</p>
-            <h3>{item.title}</h3>
-          </article>
-        ))}
-      </section>
-
-      <section className="topic-entry-grid" aria-label="频道专题入口">
-        <a className="topic-entry-card" href="#zhongzhao-desk">
-          <span className="overview-label">专题一</span>
-          <h3>中招专题</h3>
-          <p>优先看中考政策、报名安排、政策问答和关键考试节点。</p>
-        </a>
-        <a className="topic-entry-card" href="#gaokao-desk">
-          <span className="overview-label">专题二</span>
-          <h3>高招专题</h3>
-          <p>集中查看春招、秋招、学业考、体艺类与报名确认链路。</p>
-        </a>
-        <a className="topic-entry-card" href="#policies">
-          <span className="overview-label">专题三</span>
-          <h3>政策深读</h3>
-          <p>只保留当年官方政策与制度文件，适合快速理解框架变化。</p>
-        </a>
-        <a className="topic-entry-card" href="#school-watch">
-          <span className="overview-label">专题四</span>
-          <h3>学校观察</h3>
-          <p>把学校官网、开放日和校园更新单独组织，不和政策混看。</p>
-        </a>
-      </section>
-
-      <section className="panel newsroom-archive-panel" id="archive">
-        <div className="section-heading">
-          <h2>时间轴与月度归档</h2>
-          <p>如果想按月份回看 {currentYear} 年资讯，可以直接从这里切进去，不必在长列表里反复滚动。</p>
-        </div>
-        <div className="archive-grid">
-          {monthArchive.map(([month, items]) => (
-            <article key={month} className="archive-card">
-              <div className="archive-card-head">
-                <h3>{month}</h3>
-                <span>{items.length} 条</span>
-              </div>
-              <div className="archive-list">
-                {items.slice(0, 4).map((item) => (
-                  <article key={item.id} className="archive-item">
-                    <span>{String(item.publishedAt || '').slice(5)}</span>
-                    <div>
-                      <p>{getNewsCategoryLabel(item)}</p>
-                      <h4>{item.title}</h4>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="news-channel-grid">
-        <section className="panel news-column-panel" id="zhongzhao-desk">
-          <div className="section-heading">
-            <h2>中招焦点</h2>
-            <p>优先看中考政策、报名节点和当年操作口径。</p>
-          </div>
-          <div className="compact-news-list">
-            {zhongkaoDesk.length ? zhongkaoDesk.map((item) => (
-              <article key={item.id} className="compact-news-card">
-                <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                <h3>{item.title}</h3>
-                <p>{item.summary || '暂无摘要'}</p>
-              </article>
-            )) : <EmptyState />}
-          </div>
-        </section>
-        <section className="panel news-column-panel" id="gaokao-desk">
-          <div className="section-heading">
-            <h2>高招焦点</h2>
-            <p>单独看春招、秋招、体艺类和学业考新闻。</p>
-          </div>
-          <div className="compact-news-list">
-            {gaokaoDesk.length ? gaokaoDesk.map((item) => (
-              <article key={item.id} className="compact-news-card">
-                <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                <h3>{item.title}</h3>
-                <p>{item.summary || '暂无摘要'}</p>
-              </article>
-            )) : <EmptyState />}
-          </div>
-        </section>
-        <section className="panel news-column-panel" id="school-watch">
-          <div className="section-heading">
-            <h2>学校观察</h2>
-            <p>把学校官网和校园开放入口当作辅助阅读线索，不和政策混在一起。</p>
-          </div>
-          <div className="compact-news-list">
-            {schoolDesk.length ? schoolDesk.map((item) => (
-              <article key={item.id} className="compact-news-card">
-                <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                <h3>{item.title}</h3>
-                <p>{item.summary || '暂无摘要'}</p>
-              </article>
-            )) : <EmptyState />}
-          </div>
-        </section>
-      </section>
-
-      <section className="panel news-panel" id="news">
-        <div className="section-heading">
-          <h2>年度新闻总览</h2>
-          <p>按资讯频道的阅读方式组织 {currentYear} 年新闻，首条优先展示当天最值得先看的更新。</p>
-        </div>
-        <div className="news-toolbar" aria-label="新闻分类筛选">
-          {[
-            ['all', '全部'],
-            ['exam', '考试新闻'],
-            ['admission', '招生新闻'],
-            ['school', '学校动态']
-          ].map(([value, label]) => (
-            <button
-              key={value}
-              className={`news-filter${activeFilter === value ? ' news-filter-active' : ''}`}
-              type="button"
-              onClick={() => setActiveFilter(value)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        {headline ? (
-          <>
-            <div className="featured-news">
-              <article className="featured-news-card">
-                <div className="news-meta-row">
-                  <span className="pill">{getNewsCategoryLabel(headline)}</span>
-                  <span className="news-date">{headline.publishedAt || '暂无日期'}</span>
-                </div>
-                <h3>{headline.title}</h3>
-                <p className="news-summary">{headline.summary || '暂无摘要'}</p>
-                <p className="news-source">来源：{headline.source?.name || '未知'} · 可信度 {formatConfidence(headline.source?.confidence)}</p>
-                {headline.source?.url ? <a className="action-link-chip action-link-chip-strong" href={headline.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
-              </article>
-            </div>
-            <div className="news-grid">
-              {restNews.slice(0, 8).map((item) => (
-                <article key={item.id} className="news-card">
-                  <div className="news-card-header">
-                    <div className="news-meta-row">
-                      <span className="pill">{getNewsCategoryLabel(item)}</span>
-                      <span className="news-date">{item.publishedAt || '暂无日期'}</span>
-                    </div>
-                    <h3>{item.title}</h3>
-                  </div>
-                  <p className="news-summary">{item.summary || '暂无摘要'}</p>
-                  <p className="news-source">来源：{item.source?.name || '未知'} · 可信度 {formatConfidence(item.source?.confidence)}</p>
-                  {item.source?.url ? <a className="text-link" href={item.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
-                </article>
+            <div className="news-prototype-filter-row" aria-label="新闻分类筛选">
+              {[
+                ['all', '全部'],
+                ['exam', '考试新闻'],
+                ['admission', '招生新闻'],
+                ['school', '学校动态']
+              ].map(([value, label], index) => (
+                <button
+                  key={value}
+                  className={`news-prototype-filter${activeFilter === value ? ' news-prototype-filter-active' : ''}`}
+                  type="button"
+                  aria-pressed={activeFilter === value}
+                  onClick={() => {
+                    setActiveFilter(value);
+                    setCurrentPage(1);
+                  }}
+                >
+                  {label}
+                </button>
               ))}
             </div>
-          </>
-        ) : <EmptyState />}
-      </section>
 
-      <section className="panel newsroom-policy-desk" id="policies">
-        <div className="section-heading">
-          <h2>政策深读</h2>
-          <p>这里只保留 {currentYear} 年官方政策文件和配套通知，避免第三方内容和旧年份文件混进主版面。</p>
-        </div>
-        <div className="policy-list">
-          {currentYearPolicies.length ? currentYearPolicies.map((policy) => (
-            <article key={policy.id} className="policy-card">
-              <div className="policy-card-header">
-                <h3>{policy.title}</h3>
-                <span className="pill">{policy.districtName || policy.district || '全市'}</span>
+            <div className="news-prototype-list-head news-prototype-list-head-secondary">
+              <div className="news-prototype-list-title">
+                <p className="overview-label">年度新闻总览</p>
+                <h2>年度新闻总览</h2>
               </div>
-              <p className="policy-summary">{getPolicySummaryText(policy)}</p>
-              <p className="policy-meta">{policy.year || ''}{policy.publishedAt ? ` | ${policy.publishedAt}` : ''}</p>
-              {getPolicyDetailText(policy) ? (
-                <details className="policy-details">
-                  <summary>查看政策要点</summary>
-                  <p className="policy-content">{getPolicyDetailText(policy)}</p>
-                </details>
-              ) : null}
-              <div className="newsroom-policy-footer">
-                <p className="policy-source">来源：{policy.source?.name || '未知'} · 可信度 {formatConfidence(policy.source?.confidence)}</p>
-                {policy.source?.url ? <a className="text-link" href={policy.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
-              </div>
-            </article>
-          )) : <EmptyState />}
-        </div>
-      </section>
+            </div>
 
-      <section className="panel policy-timeline-panel" id="admission-timeline">
-        <div className="section-heading">
-          <h2>官方招生日程提醒</h2>
-          <p>把最容易错过的时间窗口放到一块看，适合先掌握全年关键节奏。</p>
-        </div>
-        <div className="policy-glossary timeline-grid">
-          {admissionTimeline.map((item) => (
-            <article key={item.title} className="glossary-card timeline-card">
-              <div className="glossary-meta timeline-meta">
-                <span className="pill">{item.tag}</span>
-                <span className="glossary-date timeline-window">{item.window}</span>
-              </div>
-              <h3>{item.title}</h3>
-              <p className="glossary-summary">{item.summary}</p>
-              <p className="glossary-detail">{item.detail}</p>
-              <p className="glossary-source">{item.source}</p>
-              <div className="glossary-links">
-                {item.links.map((link) => (
-                  <a key={link.href} className="text-link" href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+            <div className="news-prototype-list">
+              {pagedNews.length ? (
+                <>
+                  {pagedNews.map((item, index) => (
+                    <article key={item.id} className={`news-prototype-item${index === 1 ? ' news-prototype-item-dark' : ''}`}>
+                      <p className="news-prototype-item-kicker">
+                        {item.examType === 'zhongkao' ? '中招新闻' : item.examType === 'gaokao' ? '高招新闻' : '综合资讯'}
+                        {' / '}
+                        {getNewsCategoryLabel(item)}
+                      </p>
+                      <h3>
+                        <Link className="news-title-link" href={`/news/${item.id}`}>{item.title}</Link>
+                      </h3>
+                      <p>{item.summary || '暂无摘要'}</p>
+                    </article>
+                  ))}
+                </>
+              ) : (
+                <article className="news-prototype-item news-prototype-item-empty">
+                  <p className="news-prototype-item-kicker">暂无内容</p>
+                  <h3>当前筛选下还没有可展示的新闻</h3>
+                  <p>可以切换到“全部”“考试新闻”或“招生新闻”，或者稍后再看学校动态更新。</p>
+                </article>
+              )}
+            </div>
 
-      <section className="panel policy-glossary-panel" id="policy-glossary">
-        <div className="section-heading">
-          <h2>政策概念速查</h2>
-          <p>把新闻里高频出现、最容易混淆的术语集中拆开解释。</p>
+            <div className="news-prototype-pager">
+              <button
+                className="news-prototype-pager-button"
+                type="button"
+                onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+                disabled={currentPage === 1}
+              >
+                上一页
+              </button>
+              <span className="news-prototype-pager-status">第 {currentPage} 页 / 共 {totalPages} 页</span>
+              <button
+                className="news-prototype-pager-button"
+                type="button"
+                onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+                disabled={currentPage === totalPages}
+              >
+                下一页
+              </button>
+            </div>
+          </section>
         </div>
-        <div className="policy-glossary">
-          {policyGlossary.map((item) => (
-            <article key={item.title} className="glossary-card">
-              <div className="glossary-meta">
-                <span className="pill">{item.pill}</span>
-                <span className="glossary-date">{item.date}</span>
-              </div>
-              <h3>{item.title}</h3>
-              <p className="glossary-summary">{item.summary}</p>
-              <p className="glossary-detail">{item.detail}</p>
-              <p className="glossary-source">{item.source}</p>
-              <div className="glossary-links">
-                {item.links.map((link) => (
-                  <a key={link.href} className="text-link" href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+
+        <aside className="news-prototype-side">
+          <section className="news-prototype-side-card news-prototype-side-card-brief">
+            <p className="overview-label">频道速览</p>
+            <div className="news-prototype-brief-metrics">
+              <article><strong>{examCount}</strong><span>考试新闻</span></article>
+              <article><strong>{admissionCount}</strong><span>招生新闻</span></article>
+              <article><strong>{schoolCount}</strong><span>学校动态</span></article>
+            </div>
+          </section>
+
+          <Link className="news-prototype-side-link-card" href="/news/zhongkao-special">
+            <section className="news-prototype-side-card news-prototype-side-card-zhongkao">
+              <p className="overview-label">中招专题</p>
+              <h3 className="news-prototype-side-title">中招报名、考试、录取与政策</h3>
+              <p className="news-prototype-side-description">集中整理中招报名时间、考试安排、录取批次和配套政策，适合持续关注初中升学进度。</p>
+            </section>
+          </Link>
+
+          <Link className="news-prototype-side-link-card" href="/news/gaokao-special">
+            <section className="news-prototype-side-card news-prototype-side-card-gaokao">
+              <p className="overview-label">高招专题</p>
+              <h3 className="news-prototype-side-title">高招考试、成绩、录取与政策</h3>
+              <p className="news-prototype-side-description">把春考、高考、成绩发布、专业计划和录取流程放在同一页，方便按节点连续查看。</p>
+            </section>
+          </Link>
+
+          {conceptItems.length ? (
+            <Link className="news-prototype-side-link-card" href="/news/policy-glossary">
+              <section className="news-prototype-side-card news-prototype-side-card-glossary">
+                <p className="overview-label">政策概念速查</p>
+                <h3 className="news-prototype-side-title">{conceptItems[0].title}</h3>
+                <p className="news-prototype-side-description">把常见升学术语拆开解释，适合先理解概念，再回到具体新闻继续看。</p>
+              </section>
+            </Link>
+          ) : null}
+
+          {faqBullets.length ? (
+            <Link className="news-prototype-side-link-card" href="/news/policy-faq">
+              <section className="news-prototype-side-card news-prototype-side-card-deep">
+                <p className="overview-label">高频政策问答</p>
+                <h3 className="news-prototype-side-title">常见问题与政策答疑</h3>
+                <p className="news-prototype-side-description">汇总最常见的问题，帮助快速找到报名、资格、确认和录取相关答案。</p>
+              </section>
+            </Link>
+          ) : null}
+
+          {deepPolicyItems.length ? (
+            <Link className="news-prototype-side-link-card" href="/news/policy-deep-dive">
+              <section className="news-prototype-side-card news-prototype-side-card-faq">
+                <p className="overview-label">政策深读</p>
+                <h3 className="news-prototype-side-title">{deepPolicyItems[0].title}</h3>
+                <p className="news-prototype-side-description">从年度重点文件里提炼规则、时间和口径，适合系统理解政策变化。</p>
+              </section>
+            </Link>
+          ) : null}
+        </aside>
       </section>
     </main>
   );

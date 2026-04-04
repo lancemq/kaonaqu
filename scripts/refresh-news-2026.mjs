@@ -1,7 +1,268 @@
 import fs from 'fs';
 import path from 'path';
+import { buildNewsMarkdown } from '../lib/news-markdown.mjs';
+import { getNewsContentRelativePath, validateNewsMarkdownFiles, writeNewsMarkdownFiles } from '../lib/news-content-files.mjs';
 
 const filePath = path.join(process.cwd(), 'data', 'news.json');
+const excludedIds = new Set([
+  'exam-2026-shmeea-sports-culture-tip',
+  'school-2026-hsefz-news-feed',
+  'school-2026-sjtu-fz-campus-feed',
+  'school-2026-shs-open-info',
+  'exam-2026-teacher-qualification-written-tip',
+  'admission-2026-joint-exam-hmt',
+  'school-2026-hsefz-info',
+  'school-2026-ses-info',
+  'school-2026-jianping-campus-feed',
+  'exam-2026-putonghua-march-registration',
+  'admission-2026-retired-soldier-college',
+  'exam-2026-ncre-registration',
+  'school-2026-shs-party-plan',
+  'exam-2026-putonghua-january-open',
+  'exam-2026-spring-exam-start'
+]);
+
+function normalizeSummaryText(text, newsType) {
+  const cleaned = String(text || '')
+    .replace(/\s+/g, ' ')
+    .replace(/[，。！？；]+$/g, '')
+    .trim();
+
+  if (!cleaned) {
+    return newsType === 'school' ? '这是一条值得持续关注的学校动态。' : '这是一条值得优先关注的当年教育资讯。';
+  }
+
+  const sentences = cleaned
+    .split(/(?<=[。！？])/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  const normalized = sentences.slice(0, 2).join('');
+  if (normalized.length <= 88) {
+    return normalized;
+  }
+
+  return `${normalized.slice(0, 88).trim()}…`;
+}
+
+const curatedAdditions = [
+  {
+    id: 'admission-2026-compulsory-education-opinion',
+    title: '权威发布！2026年上海市义务教育阶段学校招生入学工作实施意见及问答（附一图看懂）',
+    newsType: 'admission',
+    category: '招生新闻',
+    examType: '',
+    summary: '上海市教委于2026年3月26日发布义务教育阶段学校招生入学实施意见及问答，明确今年政策总体保持稳定，并公布信息登记、报名系统开通等关键安排。',
+    content: '通知明确4月10日开通义务教育入学相关平台，继续通过“一网通办”和“上海市义务教育入学报名系统”办理入学报名等手续，同时配套发布政策问答，便于家长集中了解报名与验证流程。',
+    publishedAt: '2026-03-26',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '上海市教育委员会',
+      type: 'official',
+      url: 'https://edu.sh.gov.cn/mbjy_xwzx/20260327/96e3237ea24542e99749812a94146a65.html',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.96
+    }
+  },
+  {
+    id: 'exam-2026-zhongzhao-implementation-rules',
+    title: '上海市教育考试院关于印发《2026年上海市高中阶段学校考试招生工作实施细则》的通知（沪教考院中招〔2026〕3号）',
+    newsType: 'exam',
+    category: '考试新闻',
+    examType: 'zhongkao',
+    summary: '上海市教育考试院于2026年3月20日印发中招实施细则，进一步明确当年考试组织、录取要求和各环节操作口径。',
+    content: '实施细则对2026年上海高中阶段学校考试招生的考试安排、总分口径、考务组织和录取执行要求进行了细化，是理解年度中招政策如何落地的重要配套文件。',
+    publishedAt: '2026-03-20',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '上海市教育考试院',
+      type: 'official',
+      url: 'https://www.shmeea.edu.cn/page/03100/20260320/20117.html',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.97
+    }
+  },
+  {
+    id: 'admission-2026-migrant-children-secondary-vocational',
+    title: '上海市教育委员会关于做好2026年上海市全日制普通中等职业学校自主招收上海市初中应届毕业生中来沪人员随迁子女工作的通知',
+    newsType: 'admission',
+    category: '招生新闻',
+    examType: 'zhongkao',
+    summary: '上海市教委于2026年3月26日发布来沪人员随迁子女中职自主招生实施意见，明确适用对象、政策服务要求和招生实施安排。',
+    content: '该通知聚焦来沪人员随迁子女参加全日制普通中等职业学校自主招生的实施要求，适合相关家庭重点关注资格条件、政策咨询和后续招生安排。',
+    publishedAt: '2026-03-26',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '上海市教育委员会',
+      type: 'official',
+      url: 'https://edu.sh.gov.cn/xxgk2_zdgz_rxgkyzs_03/20260325/bc14fe73790248a69ee507d71c26bbda.html',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.95
+    }
+  },
+  {
+    id: 'exam-2026-xuekao-score-release',
+    title: '2026年1月上海市普通高中学业水平合格性考试成绩将于1月26日公布',
+    newsType: 'exam',
+    category: '考试新闻',
+    examType: 'gaokao',
+    summary: '上海市教育考试院于2026年1月22日发布公告，明确1月学业水平合格性考试成绩查询时间、查询入口和结果说明。',
+    content: '公告明确1月26日14:00起开通成绩查询，考生可通过上海招考热线等渠道查询语文、数学、外语及六科机考合格性考试成绩，并说明了“合格”“不合格”“缺考”等结果显示规则。',
+    publishedAt: '2026-01-22',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '上海市教育考试院',
+      type: 'official',
+      url: 'https://www.shmeea.edu.cn/page/02100/20260122/20039.html',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.96
+    }
+  },
+  {
+    id: 'school-2026-shs-cross-disciplinary-teaching',
+    title: '学科交叉视野下的教学评价研讨——上海中学东校物化生组与本部生物组跨学科教研活动',
+    newsType: 'school',
+    category: '学校动态',
+    examType: '',
+    summary: '上海中学官网新闻速递显示，2026年3月26日上海中学东校物理、化学、生物教研组与本部生物教研组联合开展跨学科教研活动，围绕核心素养、作业设计和教学评价展开交流。',
+    content: '这类跨学科教研活动能反映学校在课程改革与教学评价上的真实关注点。对于看重学校课程品质、教研能力和跨学科实践的家庭，这类动态比单纯的荣誉新闻更有参考价值。',
+    publishedAt: '2026-03-27',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '上海中学官网',
+      type: 'official',
+      url: 'https://www.shs.cn/',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.91
+    }
+  },
+  {
+    id: 'school-2026-sjtu-ctb-forum',
+    title: '思考探求真知，创新领航未来｜交大附中学子在CTB全国论坛大放异彩',
+    newsType: 'school',
+    category: '学校动态',
+    examType: '',
+    summary: '上海交通大学附属中学官网显示，2026年3月22日发布学校学子参加CTB全球青年研究创新论坛全国论坛的成绩动态，学校获得理事学校称号，并获PBL选修课教学基地认证。',
+    content: '这类新闻不仅体现学生竞赛与研究项目表现，也能反映学校在研究性学习、项目制课程和创新人才培养上的布局。对关注科创培养和学术探究氛围的家庭参考价值较高。',
+    publishedAt: '2026-03-22',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '上海交通大学附属中学官网',
+      type: 'official',
+      url: 'https://fz.sjtu.edu.cn/',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.93
+    }
+  },
+  {
+    id: 'school-2026-hsefz-scarf-ceremony',
+    title: '领巾换新，责任接力！华东师大二附中初中部六年级举行换戴大号红领巾仪式',
+    newsType: 'school',
+    category: '学校动态',
+    examType: '',
+    summary: '华东师大二附中新闻速递显示，2026年3月11日学校初中部举行六年级换戴大号红领巾仪式，体现学校在初中部德育和成长教育上的持续投入。',
+    content: '相比单纯的活动报道，这类学校动态更能看出学校在学段衔接、价值引导和校园文化建设上的日常实践，适合关注初中部育人氛围的家庭参考。',
+    publishedAt: '2026-03-11',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '华东师大二附中官网',
+      type: 'official',
+      url: 'https://www.hsefz.cn/news2/',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.9
+    }
+  },
+  {
+    id: 'school-2026-hsefz-noi-gold',
+    title: '喜报｜二附中学子在NOI冬令营2026获金牌数位列全国第一',
+    newsType: 'school',
+    category: '学校动态',
+    examType: '',
+    summary: '华东师大二附中官网新闻速递显示，2026年2月15日学校发布NOI冬令营竞赛捷报，金牌数量位列全国第一，体现出学校在信息学竞赛方向的长期优势。',
+    content: '这类竞赛成果新闻虽然不是招生通知，但对于关注拔尖创新、竞赛培养和学科特长发展的家庭，有很高的辨识价值，也能帮助判断学校在顶尖竞赛赛道上的稳定性。',
+    publishedAt: '2026-02-15',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '华东师大二附中官网',
+      type: 'official',
+      url: 'https://www.hsefz.cn/news2/',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.92
+    }
+  },
+  {
+    id: 'school-2026-hsefz-leadership-forum',
+    title: '多所沪上中学生共话“领导力发展”，首届中学生领导力论坛举行',
+    newsType: 'school',
+    category: '学校动态',
+    examType: '',
+    summary: '华东师大二附中官网于2026年1月5日发布新闻，记录学校学生骨干组织并参与首届中学生领导力论坛，围绕学生组织运行、跨校交流与责任担当展开研讨。',
+    content: '这类学校动态能体现学校在学生自治、社团文化、跨校交流和综合素养培养上的重视程度。对于不只看分数、更关注学校整体成长环境的家庭，这类信息很值得看。',
+    publishedAt: '2026-01-05',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '华东师大二附中官网',
+      type: 'official',
+      url: 'https://www.hsefz.cn/2026/01/311062029501/',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.94
+    }
+  },
+  {
+    id: 'school-2026-hsefz-volunteer-service-week',
+    title: '〖与奉献同行〗华东师大二附中志愿服务周开启',
+    newsType: 'school',
+    category: '学校动态',
+    examType: '',
+    summary: '华东师大二附中新闻速递显示，2026年3月11日学校启动志愿服务周，把校园服务、社会实践和责任教育结合到同一条育人主线中。',
+    content: '这类动态比单纯活动通稿更有观察价值，因为它能反映学校是否把志愿服务、公共责任和学生自治长期纳入课程与德育设计。对于重视综合素养和校园文化的家庭，这是值得留意的学校线索。',
+    publishedAt: '2026-03-11',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '华东师大二附中官网',
+      type: 'official',
+      url: 'https://www.hsefz.cn/news2/',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.9
+    }
+  },
+  {
+    id: 'school-2026-hsefz-ftc-award',
+    title: '喜报｜二附中学子获FTC中国区总决赛“启发奖”第一名，顺利晋级世锦赛',
+    newsType: 'school',
+    category: '学校动态',
+    examType: '',
+    summary: '华东师大二附中新闻速递显示，2026年2月13日学校机器人团队在FTC中国区总决赛中获奖并晋级世锦赛，体现出学校项目制学习和工程实践培养的连续性。',
+    content: '这类竞赛新闻的价值不只在奖项本身，更在于它能反映学校是否有稳定的科创社团、工程训练和跨学科实践平台。对关注机器人、编程和创新项目的家庭，这类动态很有辨识度。',
+    publishedAt: '2026-02-13',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '华东师大二附中官网',
+      type: 'official',
+      url: 'https://www.hsefz.cn/news2/',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.91
+    }
+  },
+  {
+    id: 'school-2026-hsefz-research-teacher-team',
+    title: '打造研究型教师团队！二附中举行高素质教师研训团队建设阶段性成果展示活动',
+    newsType: 'school',
+    category: '学校动态',
+    examType: '',
+    summary: '华东师大二附中新闻速递显示，2026年1月30日学校举行教师研训团队建设成果展示，持续公开教师发展和校本研修进展。',
+    content: '学校师资建设和教师研修并不是表面信息，但它和课程质量、教学稳定性、教研氛围直接相关。对看重学校长期教学品质的家庭，这类动态通常比单次活动更有参考意义。',
+    publishedAt: '2026-01-30',
+    updatedAt: '2026-03-31T20:00:00+08:00',
+    source: {
+      name: '华东师大二附中官网',
+      type: 'official',
+      url: 'https://www.hsefz.cn/news2/',
+      crawledAt: '2026-03-31T20:00:00+08:00',
+      confidence: 0.9
+    }
+  }
+];
 
 const news = [
   {
@@ -742,7 +1003,20 @@ const news = [
       confidence: 0.9
     }
   }
-].sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)));
+]
+  .filter((item) => !excludedIds.has(item.id))
+  .concat(curatedAdditions)
+  .map((item) => ({
+    ...item,
+    summary: normalizeSummaryText(item.summary, item.newsType),
+    contentMd: buildNewsMarkdown(item),
+    contentFile: getNewsContentRelativePath(item.id)
+  }))
+  .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)));
 
-fs.writeFileSync(filePath, `${JSON.stringify(news, null, 2)}\n`);
-console.log(JSON.stringify({ count: news.length, first: news[0].title, last: news[news.length - 1].title }, null, 2));
+writeNewsMarkdownFiles(news);
+validateNewsMarkdownFiles(news);
+const stored = news.map(({ contentMd, ...item }) => item);
+
+fs.writeFileSync(filePath, `${JSON.stringify(stored, null, 2)}\n`);
+console.log(JSON.stringify({ count: stored.length, first: stored[0].title, last: stored[stored.length - 1].title }, null, 2));
