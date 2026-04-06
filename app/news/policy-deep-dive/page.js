@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
+import { getPolicyDetailHref } from '../../../lib/policy-detail';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
@@ -309,9 +310,7 @@ export default async function PolicyDeepDivePage() {
               </div>
               <p>{buildReadingHint(leadPolicy)}</p>
               <div className="news-glossary-links">
-                {leadPolicy.source?.url ? (
-                  <a className="text-link" href={leadPolicy.source.url} target="_blank" rel="noreferrer">查看原文</a>
-                ) : null}
+                <Link className="text-link" href={getPolicyDetailHref(leadPolicy)}>查看详情</Link>
               </div>
             </section>
           ) : null}
@@ -327,7 +326,7 @@ export default async function PolicyDeepDivePage() {
               </div>
               <div className="news-glossary-list">
                 {items.map((item) => (
-                  <article key={item.id} className="news-glossary-card news-special-card">
+                  <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={getPolicyDetailHref(item)}>
                     <div className="news-prototype-glossary-meta">
                       <span className="pill">{buildPolicyPriority(item).tier} 级</span>
                       <span className="pill">{buildPolicyLens(item).label}</span>
@@ -350,12 +349,7 @@ export default async function PolicyDeepDivePage() {
                       </article>
                     </div>
                     <p>{buildReadingHint(item)}</p>
-                    <div className="news-glossary-links">
-                      {item.source?.url ? (
-                        <a className="text-link" href={item.source.url} target="_blank" rel="noreferrer">查看原文</a>
-                      ) : null}
-                    </div>
-                  </article>
+                  </Link>
                 ))}
               </div>
             </section>
