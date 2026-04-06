@@ -23,6 +23,14 @@ function isCurrentYearItem(item, year) {
   return (Number(String(item?.publishedAt || '').slice(0, 4)) || Number(item?.year) || 0) === year;
 }
 
+function groupZhongkaoNews(news) {
+  return {
+    registration: news.filter((item) => /报名|确认|资格/.test(`${item.title}${item.summary}`)),
+    exam: news.filter((item) => /考试|成绩|准考证|听说|实验/.test(`${item.title}${item.summary}`)),
+    admission: news.filter((item) => /录取|志愿|招生|特长|体育|艺术|自主/.test(`${item.title}${item.summary}`))
+  };
+}
+
 export default async function ZhongkaoSpecialPage() {
   const { news, policies } = await loadDataStore();
   const currentYear = getCurrentYear(news, policies);
@@ -34,6 +42,12 @@ export default async function ZhongkaoSpecialPage() {
     .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));
 
   const leadNews = zhongkaoNews[0] || null;
+  const groups = groupZhongkaoNews(zhongkaoNews);
+  const stageEntries = [
+    { label: '报名前后', title: '先确认报名与资格', description: '适合先看报名、确认、补报名和资格类新闻。', count: groups.registration.length, anchor: '#zhongkao-registration' },
+    { label: '考试阶段', title: '再看考试与成绩安排', description: '重点看听说、实验、笔试和成绩发布时间。', count: groups.exam.length, anchor: '#zhongkao-exam' },
+    { label: '录取阶段', title: '最后看志愿与录取', description: '集中看志愿、特长生、自主招生和录取节点。', count: groups.admission.length, anchor: '#zhongkao-admission' }
+  ];
 
   return (
     <SiteShell hideKnowledgeNav>
@@ -43,7 +57,7 @@ export default async function ZhongkaoSpecialPage() {
             <div className="school-prototype-hero-main">
               <p className="overview-label">新闻政策 / 中招专题</p>
               <h1>{currentYear} 上海中招专题</h1>
-              <p className="school-prototype-subtitle">集中查看和上海中招有关的新闻、政策、报名与录取信息，方便按专题连续阅读。</p>
+              <p className="school-prototype-subtitle">面向上海初三家庭，把中招报名、考试、录取和专项招生相关内容按阶段整理，方便按当前进度快速进入。</p>
               <div className="school-prototype-action-row">
                 <Link className="action-button" href="/news">返回新闻频道</Link>
                 <a className="action-button action-button-secondary" href="#zhongkao-list">查看专题内容</a>
@@ -51,8 +65,9 @@ export default async function ZhongkaoSpecialPage() {
             </div>
             <aside className="school-prototype-hero-side">
               <article className="school-prototype-focus-card">
-                <p className="overview-label">专题重点</p>
-                <h2>把中招相关的重要新闻和政策放到一页集中查看，更容易判断哪些变化和自己当前最相关。</h2>
+                <p className="overview-label">适合谁看</p>
+                <h2>适合正在准备 2026 上海中考、想先分清报名、考试、录取节奏的家庭。</h2>
+                <p>这页不是单纯新闻汇总，而是按当前阶段整理好的中招专题入口。</p>
               </article>
             </aside>
           </div>
@@ -92,10 +107,64 @@ export default async function ZhongkaoSpecialPage() {
           ) : null}
 
           <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">中招新闻</p>
-            <h2>当年中招相关更新</h2>
+            <p className="overview-label">当前阶段入口</p>
+            <h2>先判断自己现在更该看哪一段</h2>
+            <div className="news-special-stage-grid">
+              {stageEntries.map((item, index) => (
+                <a key={item.label} className={`news-special-stage-card${index === 1 ? ' news-special-stage-card-warm' : ''}`} href={item.anchor}>
+                  <span>{item.label}</span>
+                  <strong>{item.count} 条内容</strong>
+                  <p>{item.description}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section id="zhongkao-registration" className="school-prototype-panel news-glossary-panel news-special-panel">
+            <p className="overview-label">报名前后</p>
+            <h2>报名、确认与资格相关内容</h2>
             <div className="news-glossary-list">
-              {zhongkaoNews.map((item) => (
+              {groups.registration.map((item) => (
+                <article key={item.id} className="news-glossary-card news-special-card">
+                  <div className="news-prototype-glossary-meta">
+                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
+                    <span>{getNewsCategoryLabel(item)}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
+                  <div className="news-glossary-links">
+                    <Link className="text-link" href={`/news/${item.id}`}>查看详情</Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="zhongkao-exam" className="school-prototype-panel news-glossary-panel news-special-panel">
+            <p className="overview-label">考试阶段</p>
+            <h2>考试、成绩与时间安排</h2>
+            <div className="news-glossary-list">
+              {groups.exam.map((item) => (
+                <article key={item.id} className="news-glossary-card news-special-card">
+                  <div className="news-prototype-glossary-meta">
+                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
+                    <span>{getNewsCategoryLabel(item)}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
+                  <div className="news-glossary-links">
+                    <Link className="text-link" href={`/news/${item.id}`}>查看详情</Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="zhongkao-admission" className="school-prototype-panel news-glossary-panel news-special-panel">
+            <p className="overview-label">录取阶段</p>
+            <h2>志愿、专项招生与录取相关内容</h2>
+            <div className="news-glossary-list">
+              {groups.admission.map((item) => (
                 <article key={item.id} className="news-glossary-card news-special-card">
                   <div className="news-prototype-glossary-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
@@ -131,6 +200,19 @@ export default async function ZhongkaoSpecialPage() {
             </div>
           </section>
         </section>
+
+        <aside className="school-prototype-side">
+          <section className="school-prototype-side-card">
+            <p className="overview-label">高频概念</p>
+            <p>自主招生、名额分配综合评价录取、统一招生录取，是上海中招最需要先分清的三条主线。</p>
+          </section>
+
+          <section className="school-prototype-side-card">
+            <p className="overview-label">下一步入口</p>
+            <a className="school-prototype-side-link" href="/news/admission-timeline">查看官方招生日程</a>
+            <a className="school-prototype-side-link" href="/news">返回新闻频道</a>
+          </section>
+        </aside>
 
       </main>
 

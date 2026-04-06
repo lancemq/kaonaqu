@@ -68,14 +68,6 @@ function getAudienceLabel(item) {
   return '上海升学家庭';
 }
 
-function matchScenario(item, scenario) {
-  if (scenario === 'all') return true;
-  if (scenario === 'zhongkao') return item.examType === 'zhongkao';
-  if (scenario === 'gaokao') return item.examType === 'gaokao';
-  if (scenario === 'school') return getNewsSection(item) === 'school';
-  return true;
-}
-
 export default function NewsPageClient({ news, policies }) {
   const currentYear = useMemo(() => getCurrentYear(news, policies), [news, policies]);
   const currentYearNews = useMemo(
@@ -86,15 +78,10 @@ export default function NewsPageClient({ news, policies }) {
     () => policies.filter((item) => isRenderablePolicy(item, currentYear)).sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))),
     [policies, currentYear]
   );
-
   const [activeFilter, setActiveFilter] = useState('all');
-  const [activeScenario, setActiveScenario] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const NEWS_PER_PAGE = 8;
-  const visibleNews = useMemo(
-    () => filterNews(currentYearNews, activeFilter).filter((item) => matchScenario(item, activeScenario)),
-    [currentYearNews, activeFilter, activeScenario]
-  );
+  const visibleNews = useMemo(() => filterNews(currentYearNews, activeFilter), [currentYearNews, activeFilter]);
   const rankedNews = useMemo(
     () => [...visibleNews].sort((left, right) => {
       const scoreDiff = getNewsPriorityScore(right) - getNewsPriorityScore(left);
@@ -149,28 +136,7 @@ export default function NewsPageClient({ news, policies }) {
           <section className="panel news-prototype-list-panel">
             <div className="news-prototype-filter-meta">
               <p className="overview-label">上海新闻筛选</p>
-              <span>按栏目和本地场景查看当年新闻</span>
-            </div>
-            <div className="news-prototype-filter-row" aria-label="新闻场景筛选">
-              {[
-                ['all', '全部场景'],
-                ['zhongkao', '上海中考'],
-                ['gaokao', '上海高考'],
-                ['school', '学校动态']
-              ].map(([value, label]) => (
-                <button
-                  key={value}
-                  className={`news-prototype-filter${activeScenario === value ? ' news-prototype-filter-active' : ''}`}
-                  type="button"
-                  aria-pressed={activeScenario === value}
-                  onClick={() => {
-                    setActiveScenario(value);
-                    setCurrentPage(1);
-                  }}
-                >
-                  {label}
-                </button>
-              ))}
+              <span>按栏目查看当年新闻</span>
             </div>
             <div className="news-prototype-filter-row" aria-label="新闻分类筛选">
               {[

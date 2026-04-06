@@ -60,12 +60,6 @@ export default async function NewsPage() {
                   </article>
                 </Link>
               ) : null}
-              <Link className="news-channel-focus-link" href="/news/admission-timeline">
-                <article className="news-channel-mini-card">
-                  <span className="overview-label">本市时间线</span>
-                  <h2>报名、考试、确认、录取时间节点</h2>
-                </article>
-              </Link>
             </aside>
           </div>
           <div className="news-channel-status-bar">
