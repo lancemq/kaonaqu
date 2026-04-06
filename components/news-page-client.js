@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import admissionTimeline from '../lib/admission-timeline';
 import policyGlossary from '../lib/policy-glossary';
-import { filterNews, getNewsCategoryLabel, getNewsPriorityScore, getNewsSection } from '../lib/site-utils';
+import { filterNews, getNewsCategoryLabel, getNewsSection } from '../lib/site-utils';
 
 function sanitizePolicyText(text, title = '') {
   let value = String(text || '');
@@ -83,11 +83,7 @@ export default function NewsPageClient({ news, policies }) {
   const NEWS_PER_PAGE = 8;
   const visibleNews = useMemo(() => filterNews(currentYearNews, activeFilter), [currentYearNews, activeFilter]);
   const rankedNews = useMemo(
-    () => [...visibleNews].sort((left, right) => {
-      const scoreDiff = getNewsPriorityScore(right) - getNewsPriorityScore(left);
-      if (scoreDiff !== 0) return scoreDiff;
-      return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
-    }),
+    () => [...visibleNews].sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''))),
     [visibleNews]
   );
   const totalPages = Math.max(1, Math.ceil(visibleNews.length / NEWS_PER_PAGE));
@@ -171,17 +167,17 @@ export default function NewsPageClient({ news, policies }) {
               {pagedNews.length ? (
                 <>
                   {pagedNews.map((item, index) => (
-                    <article key={item.id} className={`news-prototype-item${index === 1 ? ' news-prototype-item-dark' : ''}`}>
+                    <Link key={item.id} className={`news-prototype-item news-prototype-item-link${index === 1 ? ' news-prototype-item-dark' : ''}`} href={`/news/${item.id}`}>
                       <p className="news-prototype-item-kicker">
                         {item.examType === 'zhongkao' ? '中招新闻' : item.examType === 'gaokao' ? '高招新闻' : '综合资讯'}
                         {' / '}
                         {getNewsCategoryLabel(item)}
                       </p>
                       <h3>
-                        <Link className="news-title-link" href={`/news/${item.id}`}>{item.title}</Link>
+                        <span className="news-title-link">{item.title}</span>
                       </h3>
                       <p>{item.summary || '暂无摘要'}</p>
-                    </article>
+                    </Link>
                   ))}
                 </>
               ) : (

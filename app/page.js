@@ -133,7 +133,7 @@ export default async function HomePage() {
             <aside className="home-prototype-side" aria-label="首页信息盒">
               {headline ? (
                 <div className="prototype-side-stack">
-                  <article className="prototype-side-card prototype-side-lead">
+                  <Link className="prototype-side-card prototype-side-lead prototype-side-card-link" href={headline.id ? `/news/${headline.id}` : '/news'}>
                     <p className="overview-label">本周重要事项</p>
                     <div className="news-meta-row">
                       <span className="pill">{getNewsCategoryLabel(headline)}</span>
@@ -141,8 +141,7 @@ export default async function HomePage() {
                     </div>
                     <h2>{headline.title}</h2>
                     <p>{headline.summary || '暂无摘要'}</p>
-                    <Link className="text-link" href={headline.id ? `/news/${headline.id}` : '/news'}>查看这条新闻</Link>
-                  </article>
+                  </Link>
                   <div className="home-side-timeline">
                     {timelineItems.slice(0, 3).map((item) => (
                       <Link key={item.title} className="home-side-timeline-item" href={item.href}>
@@ -204,7 +203,6 @@ export default async function HomePage() {
                 <p className="home-editorial-card-kicker">{getNewsCategoryLabel(item)} / {item.publishedAt || '暂无日期'}</p>
                 <h3>{item.title}</h3>
                 <p>{item.summary || '暂无摘要'}</p>
-                <span className="home-inline-link">查看详情</span>
               </Link>
             ))}
           </div>

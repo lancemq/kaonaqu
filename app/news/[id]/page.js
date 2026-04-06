@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
 import { readNewsMarkdownFile } from '../../../lib/news-content-files.mjs';
+import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
@@ -261,7 +262,7 @@ export default async function NewsDetailPage({ params }) {
                 <p className="overview-label">相关政策</p>
                 <div className="news-detail-policy-list">
                   {relatedPolicies.map((policy) => (
-                    <a key={policy.id} className="school-prototype-side-link" href={policy.source?.url || '/news'} target={policy.source?.url ? '_blank' : undefined} rel={policy.source?.url ? 'noreferrer' : undefined}>
+                    <a key={policy.id} className="school-prototype-side-link" href={getPolicyDetailHref(policy)}>
                       • {policy.title}
                     </a>
                   ))}

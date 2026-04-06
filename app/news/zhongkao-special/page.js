@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
+import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getPolicyExamType } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
@@ -31,6 +32,14 @@ function groupZhongkaoNews(news) {
   };
 }
 
+function pickItemsById(items, ids) {
+  return ids.map((id) => items.find((item) => item.id === id)).filter(Boolean);
+}
+
+function getDetailHref(item) {
+  return item?.newsType ? `/news/${item.id}` : getPolicyDetailHref(item);
+}
+
 export default async function ZhongkaoSpecialPage() {
   const { news, policies } = await loadDataStore();
   const currentYear = getCurrentYear(news, policies);
@@ -43,10 +52,30 @@ export default async function ZhongkaoSpecialPage() {
 
   const leadNews = zhongkaoNews[0] || null;
   const groups = groupZhongkaoNews(zhongkaoNews);
+  const officialFocus = pickItemsById(
+    [...zhongkaoNews, ...zhongkaoPolicies],
+    [
+      'exam-2026-zhongzhao-opinion',
+      'exam-2026-zhongzhao-implementation-rules',
+      'admission-2026-outstanding-sports-students',
+      'admission-2026-secondary-vocational-self',
+      'admission-2026-special-education-high-school'
+    ]
+  );
   const stageEntries = [
     { label: '报名前后', title: '先确认报名与资格', description: '适合先看报名、确认、补报名和资格类新闻。', count: groups.registration.length, anchor: '#zhongkao-registration' },
     { label: '考试阶段', title: '再看考试与成绩安排', description: '重点看听说、实验、笔试和成绩发布时间。', count: groups.exam.length, anchor: '#zhongkao-exam' },
     { label: '录取阶段', title: '最后看志愿与录取', description: '集中看志愿、特长生、自主招生和录取节点。', count: groups.admission.length, anchor: '#zhongkao-admission' }
+  ];
+  const currentChecklist = [
+    '截至 2026 年 4 月 6 日，中招政策主文件和实施细则已经发布，先把“总分构成、考试日期、志愿规则”这三项看清。',
+    '如果你走优秀体育学生、艺术骨干或中职自主招生路径，4 月前后更要持续跟学校资格确认方案和后续测试安排。',
+    '普通中招家庭现在更适合把 4 至 5 月体育与健身测试、5 月 16 日至 17 日听说和实验、6 月 20 日至 21 日笔试串成一条准备线。'
+  ];
+  const keyFacts = [
+    { title: '录取总成绩', detail: '上海中招录取总分为 750 分，包含语数外、道法、历史、体育与健身和综合测试。' },
+    { title: '笔试日期', detail: '2026 年初中学业水平考试笔试安排在 6 月 20 日至 21 日。' },
+    { title: '志愿填报', detail: '网上志愿填报统一在 6 月 23 日至 26 日进行，6 月 27 日至 28 日完成书面确认。' }
   ];
 
   return (
@@ -98,13 +127,59 @@ export default async function ZhongkaoSpecialPage() {
           {leadNews ? (
             <section className="school-prototype-panel news-glossary-panel news-special-panel">
               <p className="overview-label">专题导读</p>
-              <h2>{leadNews.title}</h2>
-              <p className="news-glossary-summary">{leadNews.summary || '暂无摘要'}</p>
-              <div className="news-glossary-links">
-                <Link className="text-link" href={`/news/${leadNews.id}`}>查看详情</Link>
-              </div>
+              <Link className="news-panel-link" href={`/news/${leadNews.id}`}>
+                <h2>{leadNews.title}</h2>
+                <p className="news-glossary-summary">{leadNews.summary || '暂无摘要'}</p>
+              </Link>
             </section>
           ) : null}
+
+          <section className="school-prototype-panel news-glossary-panel news-special-panel">
+            <p className="overview-label">官方校准</p>
+            <h2>先用这几条官方信息校准中招判断框架</h2>
+            <div className="news-special-annotation-grid">
+              {keyFacts.map((item) => (
+                <article key={item.title}>
+                  <span>{item.title}</span>
+                  <p>{item.detail}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="school-prototype-panel news-glossary-panel news-special-panel">
+            <p className="overview-label">当前该看什么</p>
+            <h2>截至 2026 年 4 月 6 日，中招专题更适合这样使用</h2>
+            <div className="news-special-brief-grid">
+              {currentChecklist.map((item, index) => (
+                <article key={item} className="news-special-brief-card">
+                  <span>{`0${index + 1}`}</span>
+                  <p>{item}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="school-prototype-panel news-glossary-panel news-special-panel">
+            <p className="overview-label">官方文件先看</p>
+            <h2>这几份文件决定了今年上海中招怎么走</h2>
+            <div className="news-glossary-list">
+              {officialFocus.map((item) => (
+                <Link
+                  key={item.id}
+                  className="news-glossary-card news-special-card news-glossary-card-link"
+                  href={getDetailHref(item)}
+                >
+                  <div className="news-prototype-glossary-meta">
+                    <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
+                    <span>{item.source?.name || getNewsCategoryLabel(item)}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
 
           <section className="school-prototype-panel news-glossary-panel news-special-panel">
             <p className="overview-label">当前阶段入口</p>
@@ -125,17 +200,14 @@ export default async function ZhongkaoSpecialPage() {
             <h2>报名、确认与资格相关内容</h2>
             <div className="news-glossary-list">
               {groups.registration.map((item) => (
-                <article key={item.id} className="news-glossary-card news-special-card">
+                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
                   <div className="news-prototype-glossary-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
                   <h3>{item.title}</h3>
                   <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                  <div className="news-glossary-links">
-                    <Link className="text-link" href={`/news/${item.id}`}>查看详情</Link>
-                  </div>
-                </article>
+                </Link>
               ))}
             </div>
           </section>
@@ -145,17 +217,14 @@ export default async function ZhongkaoSpecialPage() {
             <h2>考试、成绩与时间安排</h2>
             <div className="news-glossary-list">
               {groups.exam.map((item) => (
-                <article key={item.id} className="news-glossary-card news-special-card">
+                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
                   <div className="news-prototype-glossary-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
                   <h3>{item.title}</h3>
                   <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                  <div className="news-glossary-links">
-                    <Link className="text-link" href={`/news/${item.id}`}>查看详情</Link>
-                  </div>
-                </article>
+                </Link>
               ))}
             </div>
           </section>
@@ -165,17 +234,14 @@ export default async function ZhongkaoSpecialPage() {
             <h2>志愿、专项招生与录取相关内容</h2>
             <div className="news-glossary-list">
               {groups.admission.map((item) => (
-                <article key={item.id} className="news-glossary-card news-special-card">
+                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
                   <div className="news-prototype-glossary-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
                   <h3>{item.title}</h3>
                   <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                  <div className="news-glossary-links">
-                    <Link className="text-link" href={`/news/${item.id}`}>查看详情</Link>
-                  </div>
-                </article>
+                </Link>
               ))}
             </div>
           </section>
@@ -185,17 +251,14 @@ export default async function ZhongkaoSpecialPage() {
             <h2>当年中招政策与说明</h2>
             <div className="news-glossary-list">
               {zhongkaoPolicies.map((item) => (
-                <article key={item.id} className="news-glossary-card news-special-card">
+                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={getPolicyDetailHref(item)}>
                   <div className="news-prototype-glossary-meta">
                     <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
                     <span>{item.source?.name || '官方来源'}</span>
                   </div>
                   <h3>{item.title}</h3>
                   <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                  <div className="news-glossary-links">
-                    {item.source?.url ? <a className="text-link" href={item.source.url} target="_blank" rel="noreferrer">查看原文</a> : null}
-                  </div>
-                </article>
+                </Link>
               ))}
             </div>
           </section>
@@ -204,7 +267,12 @@ export default async function ZhongkaoSpecialPage() {
         <aside className="school-prototype-side">
           <section className="school-prototype-side-card">
             <p className="overview-label">高频概念</p>
-            <p>自主招生、名额分配综合评价录取、统一招生录取，是上海中招最需要先分清的三条主线。</p>
+            <p>自主招生、名额分配综合评价录取、统一招生录取，是上海中招最需要先分清的三条主线。看不清时先去术语页，再回来读这一页会更顺。</p>
+          </section>
+
+          <section className="school-prototype-side-card">
+            <p className="overview-label">官方节点</p>
+            <p>5 月 16 日至 17 日听说和实验、6 月 20 日至 21 日笔试、6 月 23 日至 26 日志愿填报、6 月 27 日至 28 日书面确认，是今年最核心的中招时间链。</p>
           </section>
 
           <section className="school-prototype-side-card">

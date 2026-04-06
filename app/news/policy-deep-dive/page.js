@@ -102,6 +102,43 @@ function buildPolicyLens(policy) {
   };
 }
 
+function buildPolicyPriority(policy) {
+  const title = String(policy.title || '');
+  if (title.includes('招生工作的若干意见') || title.includes('高中阶段学校招生工作')) {
+    return {
+      tier: 'A',
+      title: '先读总盘文件',
+      description: '这是年度规则总盘，适合先建立当年中招框架。'
+    };
+  }
+  if (title.includes('实施细则')) {
+    return {
+      tier: 'A',
+      title: '再读实施细则',
+      description: '它负责把总盘文件落到考试、志愿、投档和操作细节。'
+    };
+  }
+  if (title.includes('中等职业学校自主招生')) {
+    return {
+      tier: 'B',
+      title: '职业教育专项',
+      description: '适合重点关注中本贯通、五年一贯制、中高职贯通和提前招生的家庭。'
+    };
+  }
+  if (title.includes('特殊教育')) {
+    return {
+      tier: 'B',
+      title: '特殊类型专项',
+      description: '适合需要判断专项通道是否适用、如何评估和如何入学的家庭。'
+    };
+  }
+  return {
+    tier: 'C',
+    title: '补充阅读',
+    description: '适合在总盘和实施细则之后，用来核对边界条件和补充规则。'
+  };
+}
+
 export default async function PolicyDeepDivePage() {
   const { policies } = await loadDataStore();
   const currentYear = getCurrentYear(policies);
@@ -123,6 +160,37 @@ export default async function PolicyDeepDivePage() {
     return acc;
   }, {});
   const groupedEntries = Object.entries(groupedPolicies);
+  const readingStages = [
+    {
+      label: '第一步',
+      title: '先读年度总盘',
+      detail: '优先看 2026 年 2 月 27 日发布的《若干意见》，先把考试科目、录取批次和整体框架看清。'
+    },
+    {
+      label: '第二步',
+      title: '再读实施细则',
+      detail: '再看 2026 年 3 月 20 日发布并于 3 月 27 日公开解读的《实施细则》，把志愿、投档、同分排序和确认环节对上。'
+    },
+    {
+      label: '第三步',
+      title: '最后看专项文件',
+      detail: '根据家庭实际需求，再进入中职自主招生、特殊教育或其他专项文件，不用一开始把所有文件都读一遍。'
+    }
+  ];
+  const calibrationNotes = [
+    {
+      title: '总盘文件不等于操作细则',
+      detail: '《若干意见》负责定义年度框架，《实施细则》负责把考试、志愿和录取规则写实。读到具体操作问题时，要落回细则。'
+    },
+    {
+      title: '新闻摘要不等于资格边界',
+      detail: '很多新闻会先给结论，但真正决定是否适用的，仍是原文里的对象、条件、时间和确认要求。'
+    },
+    {
+      title: '专项文件不是所有家庭都要通读',
+      detail: '特殊教育、中职自主招生、体艺类专项更适合按需求进入，而不是和总盘文件混在一起看。'
+    }
+  ];
 
   return (
     <SiteShell hideKnowledgeNav>
@@ -132,10 +200,11 @@ export default async function PolicyDeepDivePage() {
             <div className="school-prototype-hero-main">
               <p className="overview-label">新闻政策 / 政策深读</p>
               <h1>{currentYear} 上海政策不是越多越好，而是先读对几份。</h1>
-              <p className="school-prototype-subtitle">这页把当年更关键的正式政策文件整理成“先读哪份、为什么先读、读的时候重点看什么”的深读入口，帮助你把新闻结论和官方规则真正对应起来。</p>
+              <p className="school-prototype-subtitle">这页按 {currentYear} 年上海市教委和市教育考试院公开口径，把更关键的正式政策文件整理成“先读哪份、为什么先读、读的时候重点看什么”的深读入口，帮助你把新闻结论和官方规则真正对应起来。</p>
               <div className="news-special-hero-chips">
                 <span>优先阅读清单</span>
                 <span>阅读提示</span>
+                <span>按 2026 官方口径校准</span>
                 <span>原文入口</span>
               </div>
               <div className="school-prototype-action-row">
@@ -183,21 +252,33 @@ export default async function PolicyDeepDivePage() {
             <p className="overview-label">读法建议</p>
             <h2>读政策深度专题时，不建议按发布时间机械往下翻。</h2>
             <div className="news-special-brief-grid">
-              <article className="news-special-brief-card">
-                <span>01</span>
-                <strong>先看总盘文件</strong>
-                <p>先理解当年的总规则，再读报名、专项和补充类文件，效率更高。</p>
-              </article>
-              <article className="news-special-brief-card">
-                <span>02</span>
-                <strong>再看执行节点</strong>
-                <p>所有带有报名、确认、缴费和录取安排的文件，都应该配合时间线一起看。</p>
-              </article>
-              <article className="news-special-brief-card">
-                <span>03</span>
-                <strong>最后核对原文</strong>
-                <p>当你已经知道“结论”，要回到原文确认自己是否满足适用条件。</p>
-              </article>
+              {readingStages.map((stage, index) => (
+                <article key={stage.title} className="news-special-brief-card">
+                  <span>{`0${index + 1}`}</span>
+                  <strong>{stage.title}</strong>
+                  <p>{stage.detail}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="school-prototype-panel news-special-panel">
+            <div className="news-special-section-head">
+              <div>
+                <p className="overview-label">深读校准</p>
+                <h2>先校准这 3 个阅读误区，深读才不会越看越乱。</h2>
+              </div>
+              <p className="news-special-section-summary">深读不是把文件越堆越多，而是先确认哪些文件定义框架，哪些文件负责执行，哪些文件只是专项补充。</p>
+            </div>
+            <div className="news-glossary-relation-grid">
+              {calibrationNotes.map((item) => (
+                <article key={item.title} className="news-glossary-relation-card">
+                  <h3>{item.title}</h3>
+                  <div className="news-glossary-relation-list">
+                    <p>{item.detail}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </section>
 
@@ -205,6 +286,10 @@ export default async function PolicyDeepDivePage() {
             <section className="school-prototype-panel news-glossary-panel news-special-panel">
               <p className="overview-label">优先阅读</p>
               <h2>{leadPolicy.title}</h2>
+              <div className="news-special-hero-chips">
+                <span>{buildPolicyPriority(leadPolicy).tier} 级优先级</span>
+                <span>{buildPolicyPriority(leadPolicy).title}</span>
+              </div>
               <div className="news-special-lead-note">
                 <p className="news-glossary-summary">{getPolicySummary(leadPolicy)}</p>
                 <div className="news-special-annotation-grid">
@@ -215,6 +300,10 @@ export default async function PolicyDeepDivePage() {
                   <article>
                     <span>适合谁读</span>
                     <p>{buildPolicyLens(leadPolicy).audience}</p>
+                  </article>
+                  <article>
+                    <span>为什么先读</span>
+                    <p>{buildPolicyPriority(leadPolicy).description}</p>
                   </article>
                 </div>
               </div>
@@ -240,12 +329,17 @@ export default async function PolicyDeepDivePage() {
                 {items.map((item) => (
                   <article key={item.id} className="news-glossary-card news-special-card">
                     <div className="news-prototype-glossary-meta">
+                      <span className="pill">{buildPolicyPriority(item).tier} 级</span>
                       <span className="pill">{buildPolicyLens(item).label}</span>
                       <span>{item.publishedAt || '暂无日期'}</span>
                       <span>{item.source?.name || '官方来源'}</span>
                     </div>
                     <h3>{item.title}</h3>
                     <div className="news-special-annotation-grid">
+                      <article>
+                        <span>文件定位</span>
+                        <p>{buildPolicyPriority(item).description}</p>
+                      </article>
                       <article>
                         <span>核心内容</span>
                         <p className="news-glossary-summary">{getPolicySummary(item)}</p>
@@ -272,11 +366,18 @@ export default async function PolicyDeepDivePage() {
           <article className="school-prototype-side-card news-special-side-card">
             <p className="overview-label">推荐阅读顺序</p>
             {leadPolicy ? <p>{leadPolicy.title}</p> : null}
+            <p>2026 年 2 月 27 日：先看《若干意见》</p>
+            <p>2026 年 3 月 20 日：再看《实施细则》</p>
             {groupedEntries.map(([group]) => (
               <a key={group} className="school-prototype-side-link" href={`#group-${group}`}>
                 {group}
               </a>
             ))}
+          </article>
+
+          <article className="school-prototype-side-card news-special-side-card">
+            <p className="overview-label">本页校准依据</p>
+            <p>核心依据包括 2026 年 2 月 27 日《上海市高中阶段学校招生工作的若干意见》、2026 年 3 月 20 日发布的《实施细则》、2026 年 3 月 26 日发布的中职自主招生通知，以及 2026 年 3 月 13 日发布的特殊教育高中阶段招生通知。</p>
           </article>
 
           <article className="school-prototype-side-card news-special-side-card news-special-side-card-dark">
