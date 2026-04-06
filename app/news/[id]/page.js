@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
 import { readNewsMarkdownFile } from '../../../lib/news-content-files.mjs';
-import { getNewsCategoryLabel, getPolicyExamType } from '../../../lib/site-utils';
+import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
@@ -120,6 +120,49 @@ function buildRelatedPolicies(policies, current) {
     .slice(0, 4);
 }
 
+function buildRelatedNews(news, current) {
+  return news
+    .filter((item) => item.id !== current.id)
+    .filter((item) => {
+      if (current.examType) {
+        return item.examType === current.examType;
+      }
+      return getNewsSection(item) === getNewsSection(current);
+    })
+    .sort((a, b) => {
+      const scoreDiff = getNewsPriorityScore(b) - getNewsPriorityScore(a);
+      if (scoreDiff !== 0) return scoreDiff;
+      return String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''));
+    })
+    .slice(0, 4);
+}
+
+function getStageLabel(item) {
+  const text = `${item.title || ''} ${item.summary || ''}`;
+  if (text.includes('成绩')) return '成绩公布';
+  if (text.includes('准考证')) return '考前准备';
+  if (text.includes('报名')) return '报名阶段';
+  if (text.includes('志愿')) return '志愿填报';
+  if (text.includes('录取')) return '录取阶段';
+  if (text.includes('确认') || text.includes('缴费')) return '确认环节';
+  if (item.newsType === 'school') return '学校观察';
+  if (item.newsType === 'exam') return '考试节点';
+  return '政策发布';
+}
+
+function getAudienceLabel(item) {
+  if (item.newsType === 'school') return '关注上海学校与择校的家庭';
+  if (item.examType === 'zhongkao') return '上海中考家庭';
+  if (item.examType === 'gaokao') return '上海高考家庭';
+  return '上海升学家庭';
+}
+
+function getNextStepLabel(item) {
+  if (item.newsType === 'exam') return '先确认时间、地点、准考证或成绩使用方式，再看下一条时间线通知。';
+  if (item.newsType === 'admission') return '先确认自己是否适用，再核对报名、志愿、确认或录取的具体截止时间。';
+  return '把它当作学校观察线索，再回到学校详情页和正式招生政策交叉判断。';
+}
+
 export async function generateMetadata({ params }) {
   const { news } = await loadDataStore();
   const { id } = await params;
@@ -145,6 +188,7 @@ export default async function NewsDetailPage({ params }) {
   }
 
   const relatedPolicies = buildRelatedPolicies(policies, item);
+  const relatedNews = buildRelatedNews(news, item);
   const sourceName = item.source?.name || '未知来源';
   const articleType = getNewsCategoryLabel(item);
   const articleBodyMarkdown = readNewsMarkdownFile(item);
@@ -159,6 +203,10 @@ export default async function NewsDetailPage({ params }) {
         <section className="search-panel news-detail-article-hero news-detail-article-shell" aria-label="新闻详情">
           <div className="news-detail-article-head">
               <p className="overview-label">{getExamTypeLabel(item)} / {articleType}</p>
+              <div className="news-detail-stage-row">
+                <span className="pill">{getStageLabel(item)}</span>
+                <span className="news-detail-stage-text">{getAudienceLabel(item)}</span>
+              </div>
               <h1>{item.title}</h1>
               <p className="news-detail-article-summary">{item.summary || '暂无摘要'}</p>
           </div>
@@ -167,16 +215,20 @@ export default async function NewsDetailPage({ params }) {
 
       <section className="school-prototype-stats news-detail-prototype-stats news-detail-article-stats news-detail-article-shell">
         <article>
-          <strong>{articleType}</strong>
-          <span>栏目分类</span>
-        </article>
-        <article>
           <strong>{item.publishedAt || '暂无日期'}</strong>
           <span>发布日期</span>
         </article>
         <article>
+          <strong>{getExamTypeLabel(item)}</strong>
+          <span>适用考试线</span>
+        </article>
+        <article>
+          <strong>{articleType}</strong>
+          <span>栏目分类</span>
+        </article>
+        <article>
           <strong>{sourceName}</strong>
-          <span>信息来源</span>
+          <span>官方来源</span>
         </article>
       </section>
 
@@ -184,7 +236,7 @@ export default async function NewsDetailPage({ params }) {
         <div className="news-detail-article-layout-with-side">
           <article className="news-detail-article-main">
             <section className="school-prototype-panel news-detail-article-panel" id="article-body">
-              <h2>正文</h2>
+              <h2>正文与解读</h2>
               <div className="news-detail-markdown">
                 {renderNewsMarkdown(articleBodyMarkdown)}
               </div>
@@ -193,10 +245,15 @@ export default async function NewsDetailPage({ params }) {
 
           <aside className="school-prototype-side news-detail-article-side" id="related-policies">
             <section className="school-prototype-side-card news-detail-side-card news-detail-side-card-dark">
-              <p className="overview-label">文章信息</p>
-              <p>{articleType} / {getExamTypeLabel(item)}</p>
-              <p>{item.publishedAt || '暂无日期'}</p>
-              <p>{sourceName}</p>
+              <p className="overview-label">这条新闻意味着什么</p>
+              <p>{getStageLabel(item)} / {articleType}</p>
+              <p>{getNextStepLabel(item)}</p>
+            </section>
+
+            <section className="school-prototype-side-card news-detail-side-card">
+              <p className="overview-label">下一步建议</p>
+              <p>{getAudienceLabel(item)}</p>
+              <p>{getActionReminder(item)}</p>
             </section>
 
             {relatedPolicies.length ? (
@@ -206,6 +263,19 @@ export default async function NewsDetailPage({ params }) {
                   {relatedPolicies.map((policy) => (
                     <a key={policy.id} className="school-prototype-side-link" href={policy.source?.url || '/news'} target={policy.source?.url ? '_blank' : undefined} rel={policy.source?.url ? 'noreferrer' : undefined}>
                       • {policy.title}
+                    </a>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {relatedNews.length ? (
+              <section className="school-prototype-side-card news-detail-side-card">
+                <p className="overview-label">继续阅读</p>
+                <div className="news-detail-policy-list">
+                  {relatedNews.map((entry) => (
+                    <a key={entry.id} className="school-prototype-side-link" href={`/news/${entry.id}`}>
+                      • {entry.title}
                     </a>
                   ))}
                 </div>

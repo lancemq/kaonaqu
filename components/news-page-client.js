@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import admissionTimeline from '../lib/admission-timeline';
 import policyGlossary from '../lib/policy-glossary';
-import { filterNews, getNewsCategoryLabel, getNewsPriorityScore } from '../lib/site-utils';
+import { filterNews, getNewsCategoryLabel, getNewsPriorityScore, getNewsSection } from '../lib/site-utils';
 
 function sanitizePolicyText(text, title = '') {
   let value = String(text || '');
@@ -61,6 +61,21 @@ function isRenderablePolicy(policy, currentYear) {
   return policy.source?.type === 'official' || String(policy.source?.name || '').includes('上海市教育委员会');
 }
 
+function getAudienceLabel(item) {
+  if (item.newsType === 'school') return '择校家庭';
+  if (item.examType === 'zhongkao') return '上海中考家庭';
+  if (item.examType === 'gaokao') return '上海高考家庭';
+  return '上海升学家庭';
+}
+
+function matchScenario(item, scenario) {
+  if (scenario === 'all') return true;
+  if (scenario === 'zhongkao') return item.examType === 'zhongkao';
+  if (scenario === 'gaokao') return item.examType === 'gaokao';
+  if (scenario === 'school') return getNewsSection(item) === 'school';
+  return true;
+}
+
 export default function NewsPageClient({ news, policies }) {
   const currentYear = useMemo(() => getCurrentYear(news, policies), [news, policies]);
   const currentYearNews = useMemo(
@@ -73,9 +88,13 @@ export default function NewsPageClient({ news, policies }) {
   );
 
   const [activeFilter, setActiveFilter] = useState('all');
+  const [activeScenario, setActiveScenario] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const NEWS_PER_PAGE = 8;
-  const visibleNews = useMemo(() => filterNews(currentYearNews, activeFilter), [currentYearNews, activeFilter]);
+  const visibleNews = useMemo(
+    () => filterNews(currentYearNews, activeFilter).filter((item) => matchScenario(item, activeScenario)),
+    [currentYearNews, activeFilter, activeScenario]
+  );
   const rankedNews = useMemo(
     () => [...visibleNews].sort((left, right) => {
       const scoreDiff = getNewsPriorityScore(right) - getNewsPriorityScore(left);
@@ -94,6 +113,8 @@ export default function NewsPageClient({ news, policies }) {
   const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
   const conceptItems = policyGlossary.slice(0, 3);
   const deepPolicyItems = currentYearPolicies.slice(0, 2);
+  const weeklyFocus = rankedNews.slice(0, 3);
+  const timelinePreview = admissionTimeline.slice(0, 4);
   const faqBullets = [
     'Q1：看到报名通知后，第一步先看报考资格，再看时间节点。',
     'Q2：学校官网和考试院口径冲突时，优先看考试院和教育主管部门。',
@@ -104,10 +125,52 @@ export default function NewsPageClient({ news, policies }) {
     <main className="layout news-prototype-layout">
       <section className="news-prototype-body">
         <div className="news-prototype-main">
+          {weeklyFocus.length ? (
+            <section className="panel news-prototype-list-panel">
+              <div className="news-prototype-list-head news-prototype-list-head-secondary">
+                <div className="news-prototype-list-title">
+                  <p className="overview-label">本周重点</p>
+                  <h2>先看这几条上海升学关键信息</h2>
+                </div>
+              </div>
+              <div className={`news-prototype-focus-grid news-prototype-focus-grid-count-${Math.min(weeklyFocus.length, 3)}`}>
+                {weeklyFocus.map((item, index) => (
+                  <Link key={item.id} className={`news-prototype-focus-card${index === 0 ? ' news-prototype-focus-card-lead' : ''}`} href={`/news/${item.id}`}>
+                    <p className="news-prototype-item-kicker">{getNewsCategoryLabel(item)} / {item.publishedAt || '暂无日期'}</p>
+                    <h3>{item.title}</h3>
+                    <p>{item.summary || '暂无摘要'}</p>
+                    <span className="news-prototype-focus-meta">{getAudienceLabel(item)}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <section className="panel news-prototype-list-panel">
             <div className="news-prototype-filter-meta">
-              <p className="overview-label">新闻分类</p>
-              <span>按栏目查看当年新闻</span>
+              <p className="overview-label">上海新闻筛选</p>
+              <span>按栏目和本地场景查看当年新闻</span>
+            </div>
+            <div className="news-prototype-filter-row" aria-label="新闻场景筛选">
+              {[
+                ['all', '全部场景'],
+                ['zhongkao', '上海中考'],
+                ['gaokao', '上海高考'],
+                ['school', '学校动态']
+              ].map(([value, label]) => (
+                <button
+                  key={value}
+                  className={`news-prototype-filter${activeScenario === value ? ' news-prototype-filter-active' : ''}`}
+                  type="button"
+                  aria-pressed={activeScenario === value}
+                  onClick={() => {
+                    setActiveScenario(value);
+                    setCurrentPage(1);
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
             </div>
             <div className="news-prototype-filter-row" aria-label="新闻分类筛选">
               {[
@@ -134,7 +197,7 @@ export default function NewsPageClient({ news, policies }) {
             <div className="news-prototype-list-head news-prototype-list-head-secondary">
               <div className="news-prototype-list-title">
                 <p className="overview-label">年度新闻总览</p>
-                <h2>年度新闻总览</h2>
+                <h2>{currentYear} 上海升学新闻总览</h2>
               </div>
             </div>
 
@@ -188,13 +251,32 @@ export default function NewsPageClient({ news, policies }) {
 
         <aside className="news-prototype-side">
           <section className="news-prototype-side-card news-prototype-side-card-brief">
-            <p className="overview-label">频道速览</p>
+            <p className="overview-label">上海频道速览</p>
             <div className="news-prototype-brief-metrics">
               <article><strong>{examCount}</strong><span>考试新闻</span></article>
               <article><strong>{admissionCount}</strong><span>招生新闻</span></article>
               <article><strong>{schoolCount}</strong><span>学校动态</span></article>
             </div>
           </section>
+
+          {timelinePreview.length ? (
+            <Link className="news-prototype-side-link-card" href="/news/admission-timeline">
+              <section className="news-prototype-side-card news-prototype-side-card-timeline">
+                <p className="overview-label">本市近期节点</p>
+                <div className="news-prototype-timeline-list">
+                  {timelinePreview.map((item) => (
+                    <article key={item.title} className="news-prototype-timeline-item">
+                      <div className="news-prototype-timeline-meta">
+                        <span className="pill">{item.examType === 'gaokao' ? '高考' : item.examType === 'zhongkao' ? '中考' : '入学'}</span>
+                        <span className="news-prototype-timeline-window">{item.window}</span>
+                      </div>
+                      <h3>{item.title}</h3>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </Link>
+          ) : null}
 
           <Link className="news-prototype-side-link-card" href="/news/zhongkao-special">
             <section className="news-prototype-side-card news-prototype-side-card-zhongkao">
@@ -228,6 +310,11 @@ export default function NewsPageClient({ news, policies }) {
                 <p className="overview-label">高频政策问答</p>
                 <h3 className="news-prototype-side-title">常见问题与政策答疑</h3>
                 <p className="news-prototype-side-description">汇总最常见的问题，帮助快速找到报名、资格、确认和录取相关答案。</p>
+                <div className="news-prototype-faq-list">
+                  {faqBullets.slice(0, 2).map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
               </section>
             </Link>
           ) : null}

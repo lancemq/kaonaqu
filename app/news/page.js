@@ -25,6 +25,7 @@ export default async function NewsPage() {
   const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
   const examCount = currentYearNews.filter((item) => item.newsType === 'exam').length;
   const admissionCount = currentYearNews.filter((item) => item.newsType === 'admission').length;
+  const latestLocalHeadline = currentYearNews[0] || null;
 
   return (
     <SiteShell hideKnowledgeNav>
@@ -32,34 +33,43 @@ export default async function NewsPage() {
         <section className="search-panel news-channel-hero">
           <div className="news-channel-hero-grid">
             <div className="news-channel-hero-main">
-              <p className="overview-label">新闻政策</p>
-              <h1>{currentYear} 上海教育资讯频道</h1>
+              <p className="overview-label">上海升学新闻中心</p>
+              <h1>{currentYear} 上海升学新闻与政策入口</h1>
               <p className="news-channel-subtitle">
-                汇总当年上海中招、高招、入学政策和学校动态，把更值得优先关注的考试安排、报名录取信息和政策专题放在同一页。
+                只汇总上海本地中招、高招、义务教育入学和学校动态，把更值得优先关注的考试安排、报名录取信息与政策专题放在同一页。
               </p>
-              <p>先看当年主线新闻，再进入专题页继续看政策、术语和时间线。</p>
+              <p>先看本周重点和本市关键节点，再进入专题页继续看政策、术语、时间线和单条新闻详情。</p>
               <div className="news-channel-tag-row">
-                <Link className="pill news-channel-tag-link" href="/news">全部</Link>
-                <Link className="pill news-channel-tag-link" href="/news/zhongkao-special">当年新闻</Link>
-                <Link className="pill news-channel-tag-link" href="/news/policy-deep-dive">当年政策</Link>
-                <Link className="pill news-channel-tag-link" href="/schools">学校观察</Link>
+                <Link className="pill news-channel-tag-link" href="/news/zhongkao-special">上海中考</Link>
+                <Link className="pill news-channel-tag-link" href="/news/gaokao-special">上海高考</Link>
+                <Link className="pill news-channel-tag-link" href="/news/admission-timeline">本市时间线</Link>
+                <Link className="pill news-channel-tag-link" href="/schools">上海学校</Link>
               </div>
             </div>
             <aside className="news-channel-hero-side">
+              {latestLocalHeadline ? (
+                <Link className="news-channel-focus-link" href={`/news/${latestLocalHeadline.id}`}>
+                  <article className="news-channel-focus-card">
+                    <span className="overview-label">本周最重要</span>
+                    <h2>{latestLocalHeadline.title}</h2>
+                    <p className="news-channel-focus-summary">{latestLocalHeadline.summary || '查看这条与当前上海升学节奏最相关的新闻。'}</p>
+                    <div className="news-channel-focus-meta">
+                      <span>{latestLocalHeadline.publishedAt || '暂无日期'}</span>
+                      <span>进入详情</span>
+                    </div>
+                  </article>
+                </Link>
+              ) : null}
               <Link className="news-channel-focus-link" href="/news/admission-timeline">
-                <article className="news-channel-focus-card">
-                  <span className="overview-label">官方招生日程</span>
+                <article className="news-channel-mini-card">
+                  <span className="overview-label">本市时间线</span>
                   <h2>报名、考试、确认、录取时间节点</h2>
-                  <div className="news-channel-focus-meta">
-                    <span>中招 / 高招 / 入学</span>
-                    <span>按时间顺序查看</span>
-                  </div>
                 </article>
               </Link>
             </aside>
           </div>
           <div className="news-channel-status-bar">
-            <span className="news-channel-status-label">最新统计</span>
+            <span className="news-channel-status-label">上海本地统计</span>
             <span>考试新闻 {examCount} · 招生新闻 {admissionCount} · 学校动态 {schoolCount} · 政策文件 {currentYearPolicies.length}</span>
           </div>
         </section>

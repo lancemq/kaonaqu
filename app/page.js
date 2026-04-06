@@ -74,13 +74,55 @@ export default async function HomePage() {
                 <span className="newsroom-edition">本市信息导航</span>
               </div>
               <div className="home-prototype-copy">
-                <div className="home-hero-tag">上海 · 2026</div>
-                <h1>只看上海的初中、高中升学信息。</h1>
-                <p>围绕上海 16 区，把本市政策、考试时间线、学校信息和区县差异整理成统一入口，帮助家长和学生快速判断接下来该看什么。</p>
+                <div className="home-hero-tag-row">
+                  <div className="home-hero-tag">上海 · 2026</div>
+                  <p className="home-hero-micro-note">只聚焦上海家长和学生最需要的升学信息</p>
+                </div>
+                <h1>上海升学这件事，不必再到处打听。</h1>
+                <p className="home-hero-description">考哪去只做上海，把分散在政策通知、考试安排、学校公开信息和学习内容里的关键线索重新整理成可直接判断的升学入口，让家长和学生少走弯路，更快看清时间点、学校差异和下一步选择。</p>
                 <div className="home-hero-inline-meta">
-                  <span>上海 16 区</span>
-                  <span>本市中考高考</span>
-                  <span>本地学校库</span>
+                  <span>只做上海升学</span>
+                  <span>政策与时间线一站看清</span>
+                  <span>学校库 × 知识体系</span>
+                </div>
+                <div className="home-hero-density-grid">
+                  <article className="home-hero-density-card">
+                    <p className="home-hero-density-label">这几件事先看</p>
+                    <div className="home-hero-density-list">
+                      {timelineItems.slice(0, 3).map((item) => (
+                        <Link key={item.title} className="home-hero-density-item" href={item.href}>
+                          <strong>{item.date}</strong>
+                          <span>{item.title}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </article>
+                  <article className="home-hero-density-card home-hero-density-card-warm">
+                    <p className="home-hero-density-label">来到这里能直接解决</p>
+                    <div className="home-hero-density-points">
+                      <span>今年上海中高考政策到底怎么变</span>
+                      <span>下一阶段该盯哪些时间节点</span>
+                      <span>学校、区县和学习路径怎么对比</span>
+                    </div>
+                  </article>
+                </div>
+                <div className="home-hero-route-strip" aria-label="首页快捷入口">
+                  <Link className="home-hero-route-link" href="/news/zhongzhao-special">
+                    <span>中考专题</span>
+                    <strong>批次政策</strong>
+                  </Link>
+                  <Link className="home-hero-route-link" href="/news/gaokao-special">
+                    <span>高考专题</span>
+                    <strong>时间线</strong>
+                  </Link>
+                  <Link className="home-hero-route-link" href="/schools">
+                    <span>学校查询</span>
+                    <strong>查学校</strong>
+                  </Link>
+                  <Link className="home-hero-route-link" href="/knowledge">
+                    <span>知识体系</span>
+                    <strong>看学习路径</strong>
+                  </Link>
                 </div>
               </div>
               <div className="home-hero-actions">
