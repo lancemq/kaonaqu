@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
 import SiteShell from '../components/site-shell';
-import { getNewsCategoryLabel, getSchoolAdmissionInfo, getSchoolDistrictName, getSchoolStage, getSchoolType } from '../lib/site-utils';
+import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getSchoolAdmissionInfo, getSchoolDistrictName, getSchoolStage, getSchoolType } from '../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../shared/data-store');
@@ -15,12 +15,43 @@ function getSchoolPreviewScore(school) {
   return tags * 2 + features * 2 + metadataFields;
 }
 
+function sortNewsByPriority(news) {
+  return news
+    .slice()
+    .sort((left, right) => {
+      const scoreDiff = getNewsPriorityScore(right) - getNewsPriorityScore(left);
+      if (scoreDiff !== 0) {
+        return scoreDiff;
+      }
+      return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
+    });
+}
+
 export default async function HomePage() {
   const { districts, schools, news } = await loadDataStore();
   const sortedNews = news.slice().sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')));
-  const [headline, ...restNews] = sortedNews;
-  const featuredStories = restNews.slice(0, 3);
-  const tickerNews = sortedNews.slice(0, 4);
+  const [headline] = sortedNews;
+  const topNewsByPriority = sortNewsByPriority(news);
+  const featuredPolicy = topNewsByPriority.find((item) => getNewsSection(item) === 'admission') || sortedNews[0] || null;
+  const featuredExam = topNewsByPriority.find((item) => getNewsSection(item) === 'exam') || sortedNews[1] || null;
+  const featuredSchoolNews = topNewsByPriority.find((item) => getNewsSection(item) === 'school') || sortedNews[2] || null;
+  const featuredStories = [featuredPolicy, featuredExam, featuredSchoolNews].filter(Boolean);
+  const districtHighlights = districts
+    .slice()
+    .sort((left, right) => (right.schoolCount || 0) - (left.schoolCount || 0))
+    .slice(0, 4);
+  const timelineItems = [
+    { date: '4月10日', title: '义务教育入学系统开放', description: '信息登记、报名和核验开始集中进行。', href: '/news/admission-2026-compulsory-education-opinion' },
+    { date: '5月16日-17日', title: '中招听说与理化实验', description: '外语听说测试及理化实验操作考试。', href: '/news/exam-2026-zhongzhao-opinion' },
+    { date: '6月7日-9日', title: '全国统一高考', description: '高三考生进入年度最关键考试窗口。', href: '/news/exam-2026-shmeea-calendar' },
+    { date: '6月20日-21日', title: '上海中考笔试', description: '初三考生进行初中学业水平考试笔试。', href: '/news/exam-2026-zhongzhao-opinion' }
+  ];
+  const decisionEntries = [
+    { label: '上海中考', title: '看上海中招政策与录取批次', description: '先看本市年度政策、问答、报名和志愿安排。', href: '/news/zhongzhao-special' },
+    { label: '上海高考', title: '看上海高招与春招时间线', description: '集中查看本市春招、高考、体育类和学考节点。', href: '/news/gaokao-special' },
+    { label: '上海学校', title: '查上海学校详情与办学特点', description: '按上海区县、学段、办学类型快速进入学校页。', href: '/schools' },
+    { label: '上海 16 区', title: '比较上海各区教育格局', description: '先看本市区县资源分布，再继续筛学校和政策。', href: '/schools/district/xuhui' }
+  ];
   const topSchools = schools
     .slice()
     .sort((left, right) => {
@@ -39,24 +70,29 @@ export default async function HomePage() {
           <div className="home-prototype-grid">
             <div className="home-prototype-main">
               <div className="newsroom-kicker-row prototype-kicker-row">
-                <span className="newsroom-kicker">首页头版</span>
-                <span className="newsroom-edition">Shanghai Education Desk</span>
+                <span className="newsroom-kicker">上海升学</span>
+                <span className="newsroom-edition">本市信息导航</span>
               </div>
               <div className="home-prototype-copy">
-                <div className="home-hero-tag">升学 · 2026</div>
-                <h1>把上海初中、高中升学新闻、学校信息与关键时间线，整理成一张清晰的城市教育地图。</h1>
-                <p>覆盖上海主要区县的招生政策、学校特色、开放日与择校线索，先看重点，再决定往哪条线继续深入。</p>
+                <div className="home-hero-tag">上海 · 2026</div>
+                <h1>只看上海的初中、高中升学信息。</h1>
+                <p>围绕上海 16 区，把本市政策、考试时间线、学校信息和区县差异整理成统一入口，帮助家长和学生快速判断接下来该看什么。</p>
+                <div className="home-hero-inline-meta">
+                  <span>上海 16 区</span>
+                  <span>本市中考高考</span>
+                  <span>本地学校库</span>
+                </div>
               </div>
               <div className="home-hero-actions">
-                <Link className="home-cta-button home-cta-button-primary" href="/news">开始查看</Link>
-                <Link className="home-cta-button home-cta-button-secondary" href="/schools">学校信息</Link>
+                <Link className="home-cta-button home-cta-button-primary" href="/news">看上海最新政策</Link>
+                <Link className="home-cta-button home-cta-button-secondary" href="/schools">查上海学校与区县</Link>
               </div>
             </div>
             <aside className="home-prototype-side" aria-label="首页信息盒">
               {headline ? (
                 <div className="prototype-side-stack">
                   <article className="prototype-side-card prototype-side-lead">
-                    <p className="overview-label">今日关注</p>
+                    <p className="overview-label">本周重要事项</p>
                     <div className="news-meta-row">
                       <span className="pill">{getNewsCategoryLabel(headline)}</span>
                       <span className="news-date">{headline.publishedAt || '暂无日期'}</span>
@@ -65,41 +101,51 @@ export default async function HomePage() {
                     <p>{headline.summary || '暂无摘要'}</p>
                     <Link className="text-link" href={headline.id ? `/news/${headline.id}` : '/news'}>查看这条新闻</Link>
                   </article>
+                  <div className="home-side-timeline">
+                    {timelineItems.slice(0, 3).map((item) => (
+                      <Link key={item.title} className="home-side-timeline-item" href={item.href}>
+                        <strong>{item.date}</strong>
+                        <span>{item.title}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : null}
               <div className="prototype-side-metrics">
                 <article>
-                  <span>覆盖区域</span>
+                  <span>上海区县</span>
                   <strong>{districts.length} 区</strong>
                 </article>
                 <article>
-                  <span>学校信息</span>
+                  <span>上海学校</span>
                   <strong>{schools.length}+</strong>
                 </article>
                 <article>
-                  <span>每日更新</span>
+                  <span>本市动态</span>
                   <strong>{news.length}</strong>
                 </article>
               </div>
             </aside>
-          </div>
-          <div className="home-ticker-bar" aria-label="今日快讯">
-            <span className="home-ticker-label">今日快讯</span>
-            <div className="home-ticker-track">
-              {tickerNews.map((item) => (
-                <Link key={item.id} href={`/news/${item.id}`} className="home-ticker-link">{item.title}</Link>
-              ))}
-            </div>
           </div>
         </section>
       </header>
 
       <main className="layout home-prototype-main-layout">
         <section className="home-editorial">
+          <div className="home-decision-grid">
+            {decisionEntries.map((entry) => (
+              <Link key={entry.title} className="home-decision-card" href={entry.href}>
+                <p className="home-editorial-card-kicker">{entry.label}</p>
+                <h3>{entry.title}</h3>
+                <p>{entry.description}</p>
+              </Link>
+            ))}
+          </div>
+
           <div className="home-editorial-section-head home-editorial-news-head">
             <div>
-              <p className="overview-label">今日升学栏目</p>
-              <h2>今天先看这 3 条主线</h2>
+              <p className="overview-label">上海关键进度</p>
+              <h2>先看和本市升学决策最相关的信息</h2>
             </div>
             <div className="home-editorial-section-tools">
               <Link className="home-editorial-mini-link" href="/news">进入新闻频道</Link>
@@ -116,6 +162,7 @@ export default async function HomePage() {
                 <p className="home-editorial-card-kicker">{getNewsCategoryLabel(item)} / {item.publishedAt || '暂无日期'}</p>
                 <h3>{item.title}</h3>
                 <p>{item.summary || '暂无摘要'}</p>
+                <span className="home-inline-link">查看详情</span>
               </Link>
             ))}
           </div>
@@ -124,8 +171,28 @@ export default async function HomePage() {
             <section className="home-editorial-main-col">
               <div className="home-editorial-section-head">
                 <div>
-                  <p className="overview-label">学校图景与详情入口</p>
-                  <h2>从一所重点学校开始，再继续看同类学校</h2>
+                  <p className="overview-label">上海时间线</p>
+                  <h2>接下来要关注的本市关键节点</h2>
+                </div>
+                <div className="home-editorial-section-tools">
+                  <Link className="home-editorial-mini-link" href="/news/admission-timeline">查看完整时间线</Link>
+                </div>
+              </div>
+
+              <div className="home-timeline-grid">
+                {timelineItems.map((item) => (
+                  <Link key={item.title} className="home-timeline-card" href={item.href}>
+                    <p className="home-timeline-date">{item.date}</p>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="home-editorial-section-head">
+                <div>
+                  <p className="overview-label">上海学校信息</p>
+                  <h2>信息最完整的上海重点学校</h2>
                 </div>
                 <div className="home-editorial-section-tools">
                   <Link className="home-editorial-mini-link" href="/schools">查看学校列表</Link>
@@ -166,8 +233,16 @@ export default async function HomePage() {
 
             <aside className="home-editorial-side-col">
               <article className="home-editorial-side-card home-editorial-side-card-dark">
-                <p className="overview-label">新闻政策入口</p>
-                <h3>先看政策和时间线，再决定要继续研究哪一所学校。</h3>
+                <p className="overview-label">上海 16 区</p>
+                <h3>先按上海区县进入，再比较本地学校资源与办学差异。</h3>
+                <div className="home-district-list">
+                  {districtHighlights.map((district) => (
+                    <Link key={district.id} className="home-district-link" href={`/schools/district/${district.id}`}>
+                      <span>{district.name}</span>
+                      <strong>{district.schoolCount} 所学校</strong>
+                    </Link>
+                  ))}
+                </div>
                 <Link className="text-link" href="/news">进入新闻政策页</Link>
               </article>
             </aside>
@@ -175,11 +250,12 @@ export default async function HomePage() {
 
           <div className="home-editorial-cta">
             <div className="home-editorial-cta-copy">
-              <p className="overview-label">继续阅读</p>
-              <h2>进入新闻政策页，继续看更完整的时间线和专题内容。</h2>
+              <p className="overview-label">继续查看上海升学</p>
+              <h2>进入新闻频道或学校库，继续看更完整的上海政策、考试和学校详情。</h2>
             </div>
             <div className="home-editorial-cta-actions">
               <Link className="home-cta-button home-cta-button-primary" href="/news">进入新闻政策</Link>
+              <Link className="home-cta-button home-cta-button-secondary" href="/schools">进入学校库</Link>
             </div>
           </div>
         </section>
