@@ -81,22 +81,42 @@ export default function NewsPageClient({ news, policies }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const NEWS_PER_PAGE = 8;
-  const visibleNews = useMemo(() => filterNews(currentYearNews, activeFilter), [currentYearNews, activeFilter]);
-  const rankedNews = useMemo(
-    () => [...visibleNews].sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''))),
-    [visibleNews]
+  const policyCount = currentYearPolicies.length;
+  const visibleItems = useMemo(() => {
+    if (activeFilter === 'policy') {
+      return currentYearPolicies.map((item) => ({
+        ...item,
+        itemType: 'policy'
+      }));
+    }
+
+    const filteredNews = filterNews(currentYearNews, activeFilter);
+    return filteredNews.map((item) => ({
+      ...item,
+      itemType: 'news'
+    }));
+  }, [currentYearNews, currentYearPolicies, activeFilter]);
+  const rankedItems = useMemo(
+    () => [...visibleItems].sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''))),
+    [visibleItems]
   );
-  const totalPages = Math.max(1, Math.ceil(visibleNews.length / NEWS_PER_PAGE));
+  const totalPages = Math.max(1, Math.ceil(visibleItems.length / NEWS_PER_PAGE));
   const pagedNews = useMemo(() => {
     const start = (currentPage - 1) * NEWS_PER_PAGE;
-    return rankedNews.slice(start, start + NEWS_PER_PAGE);
-  }, [rankedNews, currentPage]);
+    return rankedItems.slice(start, start + NEWS_PER_PAGE);
+  }, [rankedItems, currentPage]);
   const examCount = currentYearNews.filter((item) => item.newsType === 'exam').length;
   const admissionCount = currentYearNews.filter((item) => item.newsType === 'admission').length;
   const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
   const conceptItems = policyGlossary.slice(0, 3);
   const deepPolicyItems = currentYearPolicies.slice(0, 2);
-  const weeklyFocus = rankedNews.slice(0, 3);
+  const weeklyFocus = useMemo(
+    () => currentYearNews
+      .slice()
+      .sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')))
+      .slice(0, 3),
+    [currentYearNews]
+  );
   const timelinePreview = admissionTimeline.slice(0, 4);
   const faqBullets = [
     'Q1：看到报名通知后，第一步先看报考资格，再看时间节点。',
@@ -139,7 +159,8 @@ export default function NewsPageClient({ news, policies }) {
                 ['all', '全部'],
                 ['exam', '考试新闻'],
                 ['admission', '招生新闻'],
-                ['school', '学校动态']
+                ['school', '学校动态'],
+                ['policy', '政策文件']
               ].map(([value, label], index) => (
                 <button
                   key={value}
@@ -156,35 +177,32 @@ export default function NewsPageClient({ news, policies }) {
               ))}
             </div>
 
-            <div className="news-prototype-list-head news-prototype-list-head-secondary">
-              <div className="news-prototype-list-title">
-                <p className="overview-label">年度新闻总览</p>
-                <h2>{currentYear} 上海升学新闻总览</h2>
-              </div>
-            </div>
-
             <div className="news-prototype-list">
               {pagedNews.length ? (
                 <>
                   {pagedNews.map((item, index) => (
-                    <Link key={item.id} className={`news-prototype-item news-prototype-item-link${index === 1 ? ' news-prototype-item-dark' : ''}`} href={`/news/${item.id}`}>
+                    <Link
+                      key={item.id}
+                      className={`news-prototype-item news-prototype-item-link${index === 1 ? ' news-prototype-item-dark' : ''}`}
+                      href={item.itemType === 'policy' ? `/news/policy/${encodeURIComponent(item.id)}` : `/news/${item.id}`}
+                    >
                       <p className="news-prototype-item-kicker">
-                        {item.examType === 'zhongkao' ? '中招新闻' : item.examType === 'gaokao' ? '高招新闻' : '综合资讯'}
-                        {' / '}
-                        {getNewsCategoryLabel(item)}
+                        {item.itemType === 'policy'
+                          ? `${String(item.title || '').includes('义务教育') ? '义务教育' : String(item.title || '').includes('普通高校') || String(item.title || '').includes('高考') || String(item.title || '').includes('春季考试') ? '高招政策' : '中招政策'} / 政策文件`
+                          : `${item.examType === 'zhongkao' ? '中招新闻' : item.examType === 'gaokao' ? '高招新闻' : '综合资讯'} / ${getNewsCategoryLabel(item)}`}
                       </p>
                       <h3>
                         <span className="news-title-link">{item.title}</span>
                       </h3>
-                      <p>{item.summary || '暂无摘要'}</p>
+                      <p>{item.itemType === 'policy' ? getPolicySummaryText(item) : (item.summary || '暂无摘要')}</p>
                     </Link>
                   ))}
                 </>
               ) : (
                 <article className="news-prototype-item news-prototype-item-empty">
                   <p className="news-prototype-item-kicker">暂无内容</p>
-                  <h3>当前筛选下还没有可展示的新闻</h3>
-                  <p>可以切换到“全部”“考试新闻”或“招生新闻”，或者稍后再看学校动态更新。</p>
+                  <h3>当前筛选下还没有可展示的内容</h3>
+                  <p>可以切换到“全部”“考试新闻”“招生新闻”“学校动态”或“政策文件”，或者稍后再看更新。</p>
                 </article>
               )}
             </div>
@@ -218,6 +236,7 @@ export default function NewsPageClient({ news, policies }) {
               <article><strong>{examCount}</strong><span>考试新闻</span></article>
               <article><strong>{admissionCount}</strong><span>招生新闻</span></article>
               <article><strong>{schoolCount}</strong><span>学校动态</span></article>
+              <article><strong>{policyCount}</strong><span>政策文件</span></article>
             </div>
           </section>
 

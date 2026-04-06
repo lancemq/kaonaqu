@@ -62,10 +62,6 @@ export default async function NewsPage() {
               ) : null}
             </aside>
           </div>
-          <div className="news-channel-status-bar">
-            <span className="news-channel-status-label">上海本地统计</span>
-            <span>考试新闻 {examCount} · 招生新闻 {admissionCount} · 学校动态 {schoolCount} · 政策文件 {currentYearPolicies.length}</span>
-          </div>
         </section>
       </header>
       <NewsPageClient news={news} policies={policies} />
