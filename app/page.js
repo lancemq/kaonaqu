@@ -47,10 +47,36 @@ export default async function HomePage() {
     { date: '6月20日-21日', title: '上海中考笔试', description: '初三考生进行初中学业水平考试笔试。', href: '/news/exam-2026-zhongzhao-opinion' }
   ];
   const decisionEntries = [
-    { label: '上海中考', title: '看上海中招政策与录取批次', description: '先看本市年度政策、问答、报名和志愿安排。', href: '/news/zhongzhao-special' },
-    { label: '上海高考', title: '看上海高招与春招时间线', description: '集中查看本市春招、高考、体育类和学考节点。', href: '/news/gaokao-special' },
-    { label: '上海学校', title: '查上海学校详情与办学特点', description: '按上海区县、学段、办学类型快速进入学校页。', href: '/schools' },
-    { label: '上海 16 区', title: '比较上海各区教育格局', description: '先看本市区县资源分布，再继续筛学校和政策。', href: '/schools/district/xuhui' }
+    { label: '上海中考', title: '今年中招怎么招，先从这里看明白', description: '报名、志愿、批次顺序和关键问答，适合家长先看全局。', href: '/news/zhongzhao-special' },
+    { label: '上海高考', title: '春考、高考、成绩和录取节点一页看全', description: '把今年高招最容易错过的时间和政策集中放在一起。', href: '/news/gaokao-special' },
+    { label: '上海学校', title: '哪所学校更适合孩子，先查真实信息', description: '按区县、学段和办学类型筛学校，少走弯路。', href: '/schools' },
+    { label: '上海 16 区', title: '先看区，再看学校，择校会快很多', description: '不同区的学校资源和升学氛围差别很大，值得先看一眼。', href: '/schools/district/xuhui' }
+  ];
+  const darkFeatureCards = [
+    {
+      label: '本周先看',
+      title: '先盯住会影响报名和录取的那几件事',
+      description: '有些消息只是热闹，有些节点会直接影响后面的选择，这里先帮你挑出来。',
+      href: '/news'
+    },
+    {
+      label: '专题入口',
+      title: '看不懂术语、拿不准规则，就从这条线往下读',
+      description: '先搞懂概念，再看常见问题，最后回到原文，很多焦虑会一下子清楚不少。',
+      href: '/news/policy-glossary'
+    },
+    {
+      label: '区域判断',
+      title: '很多择校问题，答案其实先藏在区里',
+      description: '先看区县教育格局，再去比较具体学校，判断会更稳。',
+      href: '/schools/district/xuhui'
+    }
+  ];
+  const darkQuickLinks = [
+    { label: '政策概念速查', value: '先把关键词看懂', href: '/news/policy-glossary' },
+    { label: '高频政策问答', value: '先解答最常见疑问', href: '/news/policy-faq' },
+    { label: '政策深读', value: '再回到正式文件核对', href: '/news/policy-deep-dive' },
+    { label: '官方招生日程', value: '最后盯紧关键日期', href: '/news/admission-timeline' }
   ];
   const topSchools = schools
     .slice()
@@ -71,23 +97,23 @@ export default async function HomePage() {
             <div className="home-prototype-main">
               <div className="newsroom-kicker-row prototype-kicker-row">
                 <span className="newsroom-kicker">上海升学</span>
-                <span className="newsroom-edition">本市信息导航</span>
+                <span className="newsroom-edition">给家长和学生看的关键信息</span>
               </div>
               <div className="home-prototype-copy">
                 <div className="home-hero-tag-row">
                   <div className="home-hero-tag">上海 · 2026</div>
-                  <p className="home-hero-micro-note">只聚焦上海家长和学生最需要的升学信息</p>
+                  <p className="home-hero-micro-note">把今年上海升学最该看的信息，整理到一个入口</p>
                 </div>
                 <h1>上海升学这件事，不必再到处打听。</h1>
-                <p className="home-hero-description">考哪去只做上海，把分散在政策通知、考试安排、学校公开信息和学习内容里的关键线索重新整理成可直接判断的升学入口，让家长和学生少走弯路，更快看清时间点、学校差异和下一步选择。</p>
+                <p className="home-hero-description">从今年的中考、高考政策，到上海 16 区学校信息，再到真正能用上的知识体系，考哪去把最容易让人焦虑、也最需要尽快看懂的内容放到一起，帮你少刷无效信息，更快看清下一步。</p>
                 <div className="home-hero-inline-meta">
-                  <span>只做上海升学</span>
-                  <span>政策与时间线一站看清</span>
-                  <span>学校库 × 知识体系</span>
+                  <span>只看上海升学</span>
+                  <span>政策和时间一页理清</span>
+                  <span>学校信息和学习路径一起看</span>
                 </div>
                 <div className="home-hero-density-grid">
                   <article className="home-hero-density-card">
-                    <p className="home-hero-density-label">这几件事先看</p>
+                    <p className="home-hero-density-label">最近最该盯住</p>
                     <div className="home-hero-density-list">
                       {timelineItems.slice(0, 3).map((item) => (
                         <Link key={item.title} className="home-hero-density-item" href={item.href}>
@@ -98,43 +124,43 @@ export default async function HomePage() {
                     </div>
                   </article>
                   <article className="home-hero-density-card home-hero-density-card-warm">
-                    <p className="home-hero-density-label">来到这里能直接解决</p>
+                    <p className="home-hero-density-label">来这里先解决</p>
                     <div className="home-hero-density-points">
-                      <span>今年上海中高考政策到底怎么变</span>
-                      <span>下一阶段该盯哪些时间节点</span>
-                      <span>学校、区县和学习路径怎么对比</span>
+                      <span>今年上海中高考政策到底变了什么</span>
+                      <span>接下来哪些节点最不能错过</span>
+                      <span>学校、区县和学习路径该怎么一起看</span>
                     </div>
                   </article>
                 </div>
                 <div className="home-hero-route-strip" aria-label="首页快捷入口">
                   <Link className="home-hero-route-link" href="/news/zhongzhao-special">
                     <span>中考专题</span>
-                    <strong>批次政策</strong>
+                    <strong>先看报名和批次</strong>
                   </Link>
                   <Link className="home-hero-route-link" href="/news/gaokao-special">
                     <span>高考专题</span>
-                    <strong>时间线</strong>
+                    <strong>先看时间线</strong>
                   </Link>
                   <Link className="home-hero-route-link" href="/schools">
                     <span>学校查询</span>
-                    <strong>查学校</strong>
+                    <strong>直接查学校</strong>
                   </Link>
                   <Link className="home-hero-route-link" href="/knowledge">
                     <span>知识体系</span>
-                    <strong>看学习路径</strong>
+                    <strong>补学习路径</strong>
                   </Link>
                 </div>
               </div>
               <div className="home-hero-actions">
-                <Link className="home-cta-button home-cta-button-primary" href="/news">看上海最新政策</Link>
-                <Link className="home-cta-button home-cta-button-secondary" href="/schools">查上海学校与区县</Link>
+                <Link className="home-cta-button home-cta-button-primary" href="/news">先看最新政策</Link>
+                <Link className="home-cta-button home-cta-button-secondary" href="/schools">再查学校和区县</Link>
               </div>
             </div>
             <aside className="home-prototype-side" aria-label="首页信息盒">
               {headline ? (
                 <div className="prototype-side-stack">
                   <Link className="prototype-side-card prototype-side-lead prototype-side-card-link" href={headline.id ? `/news/${headline.id}` : '/news'}>
-                    <p className="overview-label">本周重要事项</p>
+                    <p className="overview-label">这周最值得先看</p>
                     <div className="news-meta-row">
                       <span className="pill">{getNewsCategoryLabel(headline)}</span>
                       <span className="news-date">{headline.publishedAt || '暂无日期'}</span>
@@ -154,11 +180,11 @@ export default async function HomePage() {
               ) : null}
               <div className="prototype-side-metrics">
                 <article>
-                  <span>上海区县</span>
+                  <span>覆盖区县</span>
                   <strong>{districts.length} 区</strong>
                 </article>
                 <article>
-                  <span>上海学校</span>
+                  <span>可查学校</span>
                   <strong>{schools.length}+</strong>
                 </article>
                 <article>
@@ -186,10 +212,10 @@ export default async function HomePage() {
           <div className="home-editorial-section-head home-editorial-news-head">
             <div>
               <p className="overview-label">上海关键进度</p>
-              <h2>先看和本市升学决策最相关的信息</h2>
+              <h2>真正会影响选择的消息，先帮你挑出来</h2>
             </div>
             <div className="home-editorial-section-tools">
-              <Link className="home-editorial-mini-link" href="/news">进入新闻频道</Link>
+              <Link className="home-editorial-mini-link" href="/news">新闻频道</Link>
             </div>
           </div>
 
@@ -207,15 +233,42 @@ export default async function HomePage() {
             ))}
           </div>
 
+          <section className="home-dark-band" aria-label="首页深色重点模块">
+            <div className="home-dark-band-head">
+              <div>
+                <p className="overview-label">本周判断重点</p>
+                <h2>当信息太多的时候，先抓住这几件最重要的事。</h2>
+              </div>
+              <Link className="home-dark-band-link" href="/news">专题总览</Link>
+            </div>
+            <div className="home-dark-feature-grid">
+              {darkFeatureCards.map((card) => (
+                <Link key={card.title} className="home-dark-feature-card" href={card.href}>
+                  <p className="home-dark-feature-label">{card.label}</p>
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                </Link>
+              ))}
+            </div>
+            <div className="home-dark-quick-strip">
+              {darkQuickLinks.map((item) => (
+                <Link key={item.label} className="home-dark-quick-link" href={item.href}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </Link>
+              ))}
+            </div>
+          </section>
+
           <div className="home-editorial-columns">
             <section className="home-editorial-main-col">
               <div className="home-editorial-section-head">
                 <div>
                   <p className="overview-label">上海时间线</p>
-                  <h2>接下来要关注的本市关键节点</h2>
+                  <h2>接下来这些时间点，最好提前记下来</h2>
                 </div>
                 <div className="home-editorial-section-tools">
-                  <Link className="home-editorial-mini-link" href="/news/admission-timeline">查看完整时间线</Link>
+                  <Link className="home-editorial-mini-link" href="/news/admission-timeline">完整时间线</Link>
                 </div>
               </div>
 
@@ -232,10 +285,10 @@ export default async function HomePage() {
               <div className="home-editorial-section-head">
                 <div>
                   <p className="overview-label">上海学校信息</p>
-                  <h2>信息最完整的上海重点学校</h2>
+                  <h2>先从这些热门学校开始看，会更容易找到方向</h2>
                 </div>
                 <div className="home-editorial-section-tools">
-                  <Link className="home-editorial-mini-link" href="/schools">查看学校列表</Link>
+                  <Link className="home-editorial-mini-link" href="/schools">学校列表</Link>
                 </div>
               </div>
 
@@ -249,7 +302,7 @@ export default async function HomePage() {
                       <p>{getSchoolAdmissionInfo(featuredSchool)}</p>
                       <div className="home-school-featured-meta">
                         <span>{getSchoolType(featuredSchool)}</span>
-                        <strong>进入学校详情</strong>
+                        <strong>学校详情</strong>
                       </div>
                     </div>
                   </Link>
@@ -274,7 +327,7 @@ export default async function HomePage() {
             <aside className="home-editorial-side-col">
               <article className="home-editorial-side-card home-editorial-side-card-dark">
                 <p className="overview-label">上海 16 区</p>
-                <h3>先按上海区县进入，再比较本地学校资源与办学差异。</h3>
+                <h3>先看你所在的区，再去比较学校，很多问题会一下子清楚。</h3>
                 <div className="home-district-list">
                   {districtHighlights.map((district) => (
                     <Link key={district.id} className="home-district-link" href={`/schools/district/${district.id}`}>
@@ -283,27 +336,27 @@ export default async function HomePage() {
                     </Link>
                   ))}
                 </div>
-                <Link className="text-link" href="/news">进入新闻政策页</Link>
+                <Link className="text-link" href="/news">继续看政策和消息</Link>
               </article>
             </aside>
           </div>
 
           <div className="home-editorial-cta">
             <div className="home-editorial-cta-copy">
-              <p className="overview-label">继续查看上海升学</p>
-              <h2>进入新闻频道或学校库，继续看更完整的上海政策、考试和学校详情。</h2>
+              <p className="overview-label">继续往下看</p>
+              <h2>如果你已经知道自己下一步要看什么，就从这里继续。</h2>
             </div>
             <div className="home-editorial-cta-actions">
-              <Link className="home-cta-button home-cta-button-primary" href="/news">进入新闻政策</Link>
-              <Link className="home-cta-button home-cta-button-secondary" href="/schools">进入学校库</Link>
+              <Link className="home-cta-button home-cta-button-primary" href="/news">继续看政策消息</Link>
+              <Link className="home-cta-button home-cta-button-secondary" href="/schools">继续查学校</Link>
             </div>
           </div>
         </section>
       </main>
 
       <footer className="prototype-page-footer">
-        <span>上海升学观察 · 初中、高中升学新闻与学校信息平台</span>
-        <span>区县政策 / 学校详情 / 开放日 / 志愿填报</span>
+        <span>上海升学观察 · 把复杂信息整理成更容易读懂的判断入口</span>
+        <span>政策消息 / 学校信息 / 区县差异 / 学习路径</span>
       </footer>
     </SiteShell>
   );

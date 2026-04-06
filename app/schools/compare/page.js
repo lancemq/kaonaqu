@@ -65,7 +65,7 @@ export default async function SchoolComparePage({ searchParams }) {
           {compareSchools.length ? (
             <div className="compare-grid">
               {compareSchools.map((school) => (
-                <article key={school.id} className="compare-card">
+                <Link key={school.id} className="compare-card compare-card-link" href={`/schools/${school.id}`}>
                   <div className="compare-card-head">
                     <h3>{school.name}</h3>
                     <p>{getSchoolDistrictName(school)} · {getSchoolStage(school)}</p>
@@ -91,10 +91,10 @@ export default async function SchoolComparePage({ searchParams }) {
                     <p>{getSchoolSuitableStudents(school) || '待补充'}</p>
                   </div>
                   <div className="compare-card-actions">
-                    <Link className="text-link" href={`/schools/${school.id}`}>查看学校详情</Link>
-                    <Link className="text-link" href={`/schools?district=${school.districtId}`}>回到该区列表</Link>
+                    <span className="school-card-footnote">{getSchoolDistrictName(school)} 学校列表</span>
+                    <span className="school-card-footnote">学校详情</span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           ) : (

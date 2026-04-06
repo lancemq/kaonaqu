@@ -220,7 +220,9 @@ export default function PolicyGlossaryPage() {
           <article className="school-prototype-side-card news-special-side-card">
             <p className="overview-label">先查这些词</p>
             {policyGlossary.slice(0, 5).map((item) => (
-              <p key={item.title} className="news-special-side-term">{item.title}</p>
+              <a key={item.title} className="school-prototype-side-link news-special-side-term" href={`#term-${item.title}`}>
+                {item.title}
+              </a>
             ))}
           </article>
 

@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import Link from 'next/link';
 import SiteShell from '../../../../components/site-shell';
-import { readNewsMarkdownFile } from '../../../../lib/news-content-files.mjs';
+import { readPolicyMarkdownFile } from '../../../../lib/policy-content-files.mjs';
 import { getPolicyMappedNewsId, getPolicyDetailHref } from '../../../../lib/policy-detail';
 import { getPolicyExamType } from '../../../../lib/site-utils';
 
@@ -153,21 +153,19 @@ export default async function PolicyDetailPage({ params }) {
 
   const mappedNewsId = getPolicyMappedNewsId(item);
   const mappedNews = mappedNewsId ? news.find((entry) => entry.id === mappedNewsId) : null;
-  const mappedMarkdown = mappedNews ? readNewsMarkdownFile(mappedNews) : null;
+  const articleBodyMarkdown = readPolicyMarkdownFile(item);
   const sourceName = item.source?.name || '官方来源';
   const examTypeLabel = getExamTypeLabel(item);
   const summaryText = cleanPolicyText(item.summary, item.title) || '暂无摘要';
-  const contentText = cleanPolicyText(item.content, item.title);
-  const paragraphs = contentText
-    .split(/(?<=。|；)/)
-    .map((entry) => entry.trim())
-    .filter(Boolean)
-    .slice(0, 8);
   const relatedPolicies = policies
     .filter((policy) => policy.id !== item.id)
     .filter((policy) => getPolicyExamType(policy) === getPolicyExamType(item))
     .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')))
     .slice(0, 4);
+
+  if (!articleBodyMarkdown) {
+    notFound();
+  }
 
   return (
     <SiteShell hideKnowledgeNav>
@@ -210,26 +208,7 @@ export default async function PolicyDetailPage({ params }) {
             <section className="school-prototype-panel news-detail-article-panel" id="article-body">
               <h2>正文与解读</h2>
               <div className="news-detail-markdown">
-                {mappedMarkdown ? (
-                  renderMarkdown(mappedMarkdown)
-                ) : (
-                  <>
-                    <h3 className="news-detail-markdown-heading">政策概览</h3>
-                    <p className="news-detail-markdown-paragraph">{summaryText}</p>
-                    <h3 className="news-detail-markdown-heading">核心内容</h3>
-                    {paragraphs.length ? paragraphs.map((paragraph, index) => (
-                      <p key={index} className="news-detail-markdown-paragraph">{paragraph}</p>
-                    )) : <p className="news-detail-markdown-paragraph">暂未整理出更完整的正文。</p>}
-                    {item.source?.url ? (
-                      <>
-                        <h3 className="news-detail-markdown-heading">官方原文</h3>
-                        <p className="news-detail-markdown-paragraph">
-                          <a className="text-link" href={item.source.url} target="_blank" rel="noreferrer">查看官方原文</a>
-                        </p>
-                      </>
-                    ) : null}
-                  </>
-                )}
+                {renderMarkdown(articleBodyMarkdown)}
               </div>
             </section>
           </article>

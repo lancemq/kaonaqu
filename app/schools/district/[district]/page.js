@@ -89,8 +89,8 @@ export default async function DistrictSchoolsPage({ params }) {
             <article className="tracker-card"><span>完全中学</span><strong>{stageBuckets.complete.length}</strong><p>适合关注初高中贯通培养路径。</p></article>
           </div>
           <div className="district-card-actions" style={{ marginTop: 18 }}>
-            <Link className="module-link" href={`/schools?district=${districtInfo.id}`}>进入该区检索结果</Link>
-            <Link className="text-link" href="/schools">返回学校信息页</Link>
+            <Link className="module-link" href={`/schools?district=${districtInfo.id}`}>{districtInfo.name}学校检索</Link>
+            <Link className="text-link" href="/schools">学校信息页</Link>
           </div>
         </section>
 
@@ -116,8 +116,7 @@ export default async function DistrictSchoolsPage({ params }) {
                   {getSchoolTrainingDirections(school).map((item) => <span key={item} className="direction-chip">{item}</span>)}
                 </div>
                 <div className="school-card-footer">
-                  <span className="school-card-footnote">{getSchoolOwnershipLabel(school)} · {getSchoolStage(school)}</span>
-                  <span className="school-card-enter">点击查看学校详情</span>
+                  <span className="school-card-footnote">{getSchoolOwnershipLabel(school)} · {getSchoolStage(school)} · 学校详情</span>
                 </div>
               </Link>
             ))}

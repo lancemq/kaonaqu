@@ -7,10 +7,10 @@ export default function SiteShell({ children, hideKnowledgeNav = false }) {
         <div className="masthead-rail-inner">
           <p className="masthead-note">KAONAQU EDUCATION DESK</p>
           <div className="masthead-tags">
-            <span>上海升学观察</span>
-            <span>新闻政策</span>
-            <span>学校信息</span>
-            <span>知识体系</span>
+            <span>中高考政策</span>
+            <span>学校选择</span>
+            <span>上海 16 区</span>
+            <span>学习路径</span>
           </div>
         </div>
       </div>
@@ -34,8 +34,8 @@ export default function SiteShell({ children, hideKnowledgeNav = false }) {
           {!hideKnowledgeNav ? <Link href="/knowledge">知识体系</Link> : null}
         </nav>
         <div className="topbar-desk">
-          <span className="desk-label">频道导航</span>
-          <strong>新闻 · 学校 · 学习</strong>
+          <span className="desk-label">先看什么</span>
+          <strong>政策 · 学校 · 学习</strong>
         </div>
       </header>
       {children}

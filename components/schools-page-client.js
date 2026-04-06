@@ -248,7 +248,7 @@ export default function SchoolsPageClient({
               <p className="overview-label">筛选逻辑</p>
               <p>先定区域与学段。</p>
               <p>再看办学性质与学校特点。</p>
-              <p>最后进入学校详情页判断是否匹配。</p>
+              <p>最后结合学校详情判断是否匹配。</p>
             </section>
 
             <section className="schools-prototype-filter-card">
@@ -385,10 +385,14 @@ export default function SchoolsPageClient({
                   || `${getSchoolDistrictName(school)} / ${getSchoolStage(school)} / ${school.name}`;
                 const directions = getSchoolTrainingDirections(school).slice(0, 2);
                 return (
-                  <article key={school.id} className={`schools-prototype-school-card${index === 1 ? ' schools-prototype-school-card-dark' : ''}`}>
+                  <Link
+                    key={school.id}
+                    href={`/schools/${school.id}`}
+                    className={`schools-prototype-school-card schools-prototype-school-card-link${index === 1 ? ' schools-prototype-school-card-dark' : ''}`}
+                  >
                     <p className="schools-prototype-school-kicker">{eyebrow}</p>
-                    <h3><Link className="news-title-link" href={`/schools/${school.id}`}>{school.name}</Link></h3>
-                    <p>{getSchoolAdmissionInfo(school) || `${school.name}已收录到当前学校信息页，可继续进入详情页查看。`}</p>
+                    <h3>{school.name}</h3>
+                    <p>{getSchoolAdmissionInfo(school) || `${school.name}已收录到当前学校信息页，可查看学校详情信息。`}</p>
                     <div className="schools-prototype-school-meta">
                       <span>{getSchoolType(school)}</span>
                       <span>{getSchoolStage(school)}</span>
@@ -400,7 +404,7 @@ export default function SchoolsPageClient({
                         ))}
                       </div>
                     ) : null}
-                  </article>
+                  </Link>
                 );
               })}
             </div>

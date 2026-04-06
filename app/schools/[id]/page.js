@@ -2,15 +2,13 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
+import { readSchoolMarkdownFile } from '../../../lib/school-content-files.mjs';
 import {
-  getSchoolAdmissionInfo,
-  getSchoolApplicationTips,
   getSchoolDistrictName,
   getSchoolFeatures,
   getSchoolHighlights,
   getSchoolOwnershipLabel,
   getSchoolStage,
-  getSchoolSuitableStudents,
   getSchoolTags,
   getSchoolTrainingDirections,
   getSchoolType
@@ -37,6 +35,82 @@ function getDistrictPeers(schools, current) {
   return schools
     .filter((school) => school.id !== current.id && school.districtId === current.districtId)
     .slice(0, 3);
+}
+
+function renderInlineMarkdown(text) {
+  const parts = [];
+  const value = String(text || '');
+  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(value)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(value.slice(lastIndex, match.index));
+    }
+    parts.push(
+      <a key={`${match[2]}-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
+        {match[1]}
+      </a>
+    );
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < value.length) {
+    parts.push(value.slice(lastIndex));
+  }
+
+  return parts;
+}
+
+function renderSchoolMarkdown(markdown) {
+  const lines = String(markdown || '').split('\n');
+  const nodes = [];
+  let listItems = [];
+  let key = 0;
+
+  const flushList = () => {
+    if (!listItems.length) return;
+    nodes.push(
+      <ul key={`list-${key++}`} className="news-detail-markdown-list">
+        {listItems.map((item, index) => (
+          <li key={`item-${index}`}>{renderInlineMarkdown(item)}</li>
+        ))}
+      </ul>
+    );
+    listItems = [];
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line) {
+      flushList();
+      continue;
+    }
+    if (line.startsWith('## ')) {
+      flushList();
+      nodes.push(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{line.slice(3)}</h3>);
+      continue;
+    }
+    if (line.startsWith('### ')) {
+      flushList();
+      nodes.push(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
+      continue;
+    }
+    if (line.startsWith('- ')) {
+      listItems.push(line.slice(2));
+      continue;
+    }
+    flushList();
+    nodes.push(
+      <p key={`p-${key++}`} className="news-detail-markdown-paragraph">
+        {renderInlineMarkdown(line)}
+      </p>
+    );
+  }
+
+  flushList();
+  return nodes;
 }
 
 export async function generateMetadata({ params }) {
@@ -67,14 +141,17 @@ export default async function SchoolDetailPage({ params }) {
   const highlights = getSchoolHighlights(school);
   const features = getSchoolFeatures(school);
   const trainingDirections = getSchoolTrainingDirections(school);
-  const suitableStudents = getSchoolSuitableStudents(school);
-  const applicationTips = getSchoolApplicationTips(school);
   const tags = getSchoolTags(school);
+  const articleBodyMarkdown = readSchoolMarkdownFile(school);
 
   const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '学校属性待补充';
   const schoolTemperament = trainingDirections[0] || '综合型';
   const schoolHeat = tags.length >= 4 ? '高关注' : '持续关注';
   const summaryPoints = [highlights[0], highlights[1], trainingDirections[0] || features[0]].filter(Boolean).slice(0, 3);
+
+  if (!articleBodyMarkdown) {
+    notFound();
+  }
 
   return (
     <SiteShell hideKnowledgeNav>
@@ -142,16 +219,11 @@ export default async function SchoolDetailPage({ params }) {
           </section>
 
           <section className="school-prototype-panel" id="admission-path">
-            <p className="overview-label">招生要求</p>
-            <h2>先确认进入路径，再判断学校节奏是否匹配。</h2>
-            <p>{getSchoolAdmissionInfo(school) || '当前已收录这所学校的基础招生信息，建议结合区域政策和学校节奏一起判断。'}</p>
-            <p>{applicationTips || '建议把通勤距离、孩子适应节奏和学校课程方向一起考虑，不要只看学校名气。'}</p>
-          </section>
-
-          <section className="school-prototype-panel">
-            <p className="overview-label">适合谁</p>
-            <p>适合：{suitableStudents || '自驱力强、学术兴趣稳定、能适应高标准同伴环境的学生。'}</p>
-            <p>谨慎考虑：{applicationTips || '更需要松弛节奏、对竞争氛围敏感，或尚未找到明确学习目标的学生。'}</p>
+            <p className="overview-label">正文与判断</p>
+            <h2>学校详情正文</h2>
+            <div className="news-detail-markdown">
+              {renderSchoolMarkdown(articleBodyMarkdown)}
+            </div>
           </section>
         </section>
 
@@ -172,7 +244,7 @@ export default async function SchoolDetailPage({ params }) {
             )) : (
               <>
                 <Link className="school-prototype-side-link" href={`/schools?district=${school.districtId}`}>• {getSchoolDistrictName(school)} 区学校列表</Link>
-                <Link className="school-prototype-side-link" href="/schools">• 返回学校信息汇总页</Link>
+                <Link className="school-prototype-side-link" href="/schools">• 学校信息汇总页</Link>
               </>
             )}
           </section>
