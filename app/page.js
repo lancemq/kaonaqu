@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
 import SiteShell from '../components/site-shell';
+import { readNewsMarkdownFile } from '../lib/news-content-files.mjs';
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getSchoolAdmissionInfo, getSchoolDistrictName, getSchoolStage, getSchoolType } from '../lib/site-utils';
 
 const require = createRequire(import.meta.url);
@@ -27,10 +28,14 @@ function sortNewsByPriority(news) {
     });
 }
 
+function getNewsDetailHref(item) {
+  return item?.id ? `/news/${encodeURIComponent(item.id)}` : '/news';
+}
+
 export default async function HomePage() {
   const { districts, schools, news } = await loadDataStore();
   const sortedNews = news.slice().sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')));
-  const [headline] = sortedNews;
+  const headline = sortedNews.find((item) => readNewsMarkdownFile(item)) || sortedNews[0] || null;
   const topNewsByPriority = sortNewsByPriority(news);
   const featuredPolicy = topNewsByPriority.find((item) => getNewsSection(item) === 'admission') || sortedNews[0] || null;
   const featuredExam = topNewsByPriority.find((item) => getNewsSection(item) === 'exam') || sortedNews[1] || null;
@@ -159,7 +164,7 @@ export default async function HomePage() {
             <aside className="home-prototype-side" aria-label="首页信息盒">
               {headline ? (
                 <div className="prototype-side-stack">
-                  <Link className="prototype-side-card prototype-side-lead prototype-side-card-link" href={headline.id ? `/news/${headline.id}` : '/news'}>
+                  <Link className="prototype-side-card prototype-side-lead prototype-side-card-link" href={getNewsDetailHref(headline)}>
                     <p className="overview-label">这周最值得先看</p>
                     <div className="news-meta-row">
                       <span className="pill">{getNewsCategoryLabel(headline)}</span>
@@ -224,7 +229,7 @@ export default async function HomePage() {
               <Link
                 key={item.id}
                 className={`home-editorial-news-card home-editorial-news-card-stage${index === 1 ? ' home-editorial-news-card-warm' : ''}`}
-                href={`/news/${item.id}`}
+                href={getNewsDetailHref(item)}
               >
                 <p className="home-editorial-card-kicker">{getNewsCategoryLabel(item)} / {item.publishedAt || '暂无日期'}</p>
                 <h3>{item.title}</h3>
