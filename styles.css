@@ -10497,3 +10497,154 @@ body[data-page="news"] .news-prototype-pager-status {
     background: #f5efe5;
     color: #56504a;
 }
+
+/* Schools channel theme alignment: orange + gray-black (match home) */
+body[data-page="schools"] {
+    background:
+        linear-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+        linear-gradient(180deg, #f7f4ed 0%, #efebe2 50%, #e6e0d4 100%) !important;
+    background-size: 32px 32px, 32px 32px, auto !important;
+}
+
+body[data-page="schools"]::before {
+    background: radial-gradient(circle, rgba(227, 108, 46, 0.14), rgba(227, 108, 46, 0)) !important;
+}
+
+body[data-page="schools"]::after {
+    background: radial-gradient(circle, rgba(17, 17, 17, 0.1), rgba(17, 17, 17, 0)) !important;
+}
+
+body[data-page="schools"] .schools-datadesk-hero,
+body[data-page="schools"] .search-panel {
+    border-color: rgba(17, 17, 17, 0.12);
+    background:
+        radial-gradient(circle at top right, rgba(227, 108, 46, 0.14), transparent 30%),
+        linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(244, 236, 226, 0.98));
+    box-shadow: 0 20px 40px rgba(32, 24, 17, 0.1);
+}
+
+body[data-page="schools"] .schools-datadesk-intro h1,
+body[data-page="schools"] .schools-datadesk-results-head h2,
+body[data-page="schools"] .school-card h3,
+body[data-page="schools"] .compare-card-head h3 {
+    color: #1b1a18;
+    font-family: "Noto Serif SC", serif;
+}
+
+body[data-page="schools"] .schools-datadesk-subtitle,
+body[data-page="schools"] .schools-datadesk-description,
+body[data-page="schools"] .schools-datadesk-results-head > p,
+body[data-page="schools"] .schools-datadesk-cardsummary,
+body[data-page="schools"] .school-summary,
+body[data-page="schools"] .school-card-footnote,
+body[data-page="schools"] .compare-card-head p {
+    color: #5f5952;
+}
+
+body[data-page="schools"] .schools-datadesk-statusbar {
+    border: 1px solid #111111;
+    background: linear-gradient(180deg, #111111 0%, #1b1714 100%);
+    color: #f7f4ed;
+}
+
+body[data-page="schools"] .schools-datadesk-statuslabel {
+    color: rgba(242, 243, 240, 0.72);
+}
+
+body[data-page="schools"] .schools-datadesk-summary-card-strong,
+body[data-page="schools"] .schools-datadesk-panel-dark {
+    border-color: #111111;
+    background:
+        radial-gradient(circle at top right, rgba(227, 108, 46, 0.16), transparent 30%),
+        linear-gradient(180deg, #111111 0%, #1b1714 100%);
+    color: #f2f3f0;
+}
+
+body[data-page="schools"] .schools-datadesk-summary-card,
+body[data-page="schools"] .schools-datadesk-panel,
+body[data-page="schools"] .schools-datadesk-card,
+body[data-page="schools"] .school-card,
+body[data-page="schools"] .compare-card,
+body[data-page="schools"] .panel {
+    border-color: rgba(17, 17, 17, 0.1);
+    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
+    box-shadow: 0 12px 24px rgba(32, 24, 17, 0.06);
+}
+
+body[data-page="schools"] .schools-datadesk-cardkicker,
+body[data-page="schools"] .schools-datadesk-cardmeta span,
+body[data-page="schools"] .schools-datadesk-panel-head span,
+body[data-page="schools"] .schools-datadesk-panel-note p {
+    color: #5f5952;
+}
+
+body[data-page="schools"] .schools-datadesk-card h3,
+body[data-page="schools"] .schools-datadesk-entry strong,
+body[data-page="schools"] .schools-datadesk-district strong {
+    color: #1b1a18;
+}
+
+body[data-page="schools"] .schools-datadesk-tag,
+body[data-page="schools"] .schools-datadesk-cardtag,
+body[data-page="schools"] .direction-chip,
+body[data-page="schools"] .school-type-pill {
+    border-color: rgba(17, 17, 17, 0.1);
+    background: #f5efe5;
+    color: #56504a;
+}
+
+body[data-page="schools"] .schools-datadesk-tag-active {
+    border-color: #111111;
+    background: #111111;
+    color: #f7f4ed;
+}
+
+body[data-page="schools"] .schools-datadesk-button,
+body[data-page="schools"] .module-link,
+body[data-page="schools"] .button {
+    border-color: rgba(17, 17, 17, 0.14);
+    background: #111111;
+    color: #f7f4ed;
+}
+
+body[data-page="schools"] .schools-datadesk-button-secondary {
+    border-color: rgba(17, 17, 17, 0.1);
+    background: #f5efe5;
+    color: #56504a;
+}
+
+body[data-page="schools"] .schools-datadesk-results-head {
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    padding-bottom: 10px;
+}
+
+body[data-page="schools"] .schools-datadesk-results-head .overview-label {
+    color: #d95d1f;
+}
+
+body[data-page="schools"] .schools-datadesk-results-head h2 {
+    color: #1b1a18;
+    font-family: "Noto Serif SC", serif;
+}
+
+body[data-page="schools"] .schools-datadesk-results-head > p {
+    color: #5f5952;
+}
+
+body[data-page="schools"] .schools-datadesk-metrics {
+    border-color: rgba(17, 17, 17, 0.1);
+    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
+}
+
+body[data-page="schools"] .schools-datadesk-metrics article {
+    border-right-color: rgba(17, 17, 17, 0.08);
+}
+
+body[data-page="schools"] .schools-datadesk-metrics strong {
+    color: #1b1a18;
+}
+
+body[data-page="schools"] .schools-datadesk-metrics span {
+    color: #5f5952;
+}

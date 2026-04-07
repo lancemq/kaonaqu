@@ -23,9 +23,34 @@ const DATASET_FILES = {
   news: 'news.json'
 };
 
+// Bundled JSON fallback for serverless environments where runtime fs paths may differ.
+const BUNDLED_DATASETS = {
+  districts: require('../data/districts.json'),
+  schools: require('../data/schools.json'),
+  policies: require('../data/policies.json'),
+  news: require('../data/news.json')
+};
+
+function getDatasetKeyByFilename(filename) {
+  return Object.entries(DATASET_FILES).find(([, value]) => value === filename)?.[0] || null;
+}
+
 async function readLocalJson(filename) {
-  const content = await fs.readFile(path.join(DATA_DIR, filename), 'utf8');
-  return JSON.parse(content);
+  const filePath = path.join(DATA_DIR, filename);
+  try {
+    const content = await fs.readFile(filePath, 'utf8');
+    return JSON.parse(content);
+  } catch (error) {
+    const datasetKey = getDatasetKeyByFilename(filename);
+    if (!datasetKey) {
+      throw error;
+    }
+    const fallback = BUNDLED_DATASETS[datasetKey];
+    if (!Array.isArray(fallback)) {
+      throw error;
+    }
+    return fallback;
+  }
 }
 
 async function writeLocalJson(filename, payload) {
