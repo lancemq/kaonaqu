@@ -71,13 +71,13 @@ function getOwnershipLabel(school) {
 }
 
 function getSchoolPositioning(school) {
-  const description = clipText(school?.schoolDescription, 84);
-  if (description) {
-    return description;
-  }
   const admission = clipText(getSchoolAdmissionInfo(school), 84);
   if (admission) {
     return admission;
+  }
+  const directions = getSchoolTrainingDirections(school);
+  if (directions.length) {
+    return `${school.name}更值得关注的培养方向包括${directions.slice(0, 2).join('、')}。`;
   }
   return `${school.name}已收录到学校数据库，可继续查看详情、标签和招生相关线索。`;
 }

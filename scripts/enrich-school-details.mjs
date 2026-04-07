@@ -1,8 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import { isHighInterestSchoolName } from '../lib/school-enrichment-config.mjs';
+import { getSchoolContentRelativePath, writeSchoolMarkdownFiles } from '../lib/school-content-files.mjs';
 
 const filePath = path.join(process.cwd(), 'data', 'schools.json');
 const schools = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+const DETAIL_FIELDS = ['schoolDescription', 'admissionRequirements', 'schoolHighlights', 'suitableStudents', 'applicationTips'];
 
 function isMeaningful(text) {
   return String(text || '').trim().length >= 12;
@@ -175,18 +178,48 @@ function buildApplicationTips(school) {
   return tips.join('');
 }
 
+function buildTrainingDirections(school, nextDraft) {
+  const directions = new Set(Array.isArray(school.trainingDirections) ? school.trainingDirections.map((item) => String(item).trim()).filter(Boolean) : []);
+  const haystack = [
+    school.name,
+    nextDraft.schoolDescription,
+    school.admissionNotes,
+    ...(nextDraft.features || []),
+    ...(nextDraft.tags || []),
+    ...(nextDraft.schoolHighlights || [])
+  ].filter(Boolean).join(' ');
+
+  if (/(科技|科创|创新|竞赛|研究)/.test(haystack)) directions.add('科创竞赛');
+  if (/(人文|综合|通识|领导力)/.test(haystack)) directions.add('人文综合');
+  if (/(国际|双语|ib|ap|alevel)/i.test(haystack)) directions.add('国际课程');
+  if (/(寄宿|住宿)/.test(haystack)) directions.add('寄宿管理');
+  if (/(贯通|一贯|衔接|完全中学|十年一贯)/.test(haystack)) directions.add('贯通培养');
+  if (/(外语|外国语|英语)/.test(haystack)) directions.add('外语特色');
+
+  return Array.from(directions).slice(0, 3);
+}
+
 let descriptionFilled = 0;
 let requirementsFilled = 0;
 let highlightsFilled = 0;
 let suitableFilled = 0;
 let tipsFilled = 0;
 
-const nextSchools = schools.map((school) => {
+const detailSchools = schools.map((school) => {
   const schoolDescription = buildDescription(school);
   const admissionRequirements = buildAdmissionRequirements(school);
   const schoolHighlights = buildHighlights(school);
   const suitableStudents = buildSuitableStudents(school);
   const applicationTips = buildApplicationTips(school);
+  const nextDraft = {
+    ...school,
+    schoolDescription,
+    schoolHighlights,
+    suitableStudents,
+    applicationTips
+  };
+  const trainingDirections = buildTrainingDirections(school, nextDraft);
+  const profileDepth = isHighInterestSchoolName(school.name) ? 'priority' : 'foundation';
   if (schoolDescription) descriptionFilled += 1;
   if (admissionRequirements) requirementsFilled += 1;
   if (schoolHighlights.length) highlightsFilled += 1;
@@ -198,17 +231,31 @@ const nextSchools = schools.map((school) => {
     admissionRequirements,
     schoolHighlights,
     suitableStudents,
-    applicationTips
+    applicationTips,
+    trainingDirections,
+    profileDepth,
+    contentFile: school.contentFile || getSchoolContentRelativePath(school.id)
   };
+});
+
+writeSchoolMarkdownFiles(detailSchools);
+
+const nextSchools = detailSchools.map((school) => {
+  const cleaned = { ...school };
+  for (const field of DETAIL_FIELDS) {
+    delete cleaned[field];
+  }
+  return cleaned;
 });
 
 fs.writeFileSync(filePath, `${JSON.stringify(nextSchools, null, 2)}\n`);
 
 console.log(JSON.stringify({
-  total: nextSchools.length,
+  total: detailSchools.length,
   descriptionFilled,
   requirementsFilled,
   highlightsFilled,
   suitableFilled,
-  tipsFilled
+  tipsFilled,
+  strippedFields: DETAIL_FIELDS
 }, null, 2));

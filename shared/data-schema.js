@@ -144,6 +144,11 @@ function normalizeTier(value) {
   return text || '';
 }
 
+function normalizeProfileDepth(value) {
+  const text = cleanString(value).toLowerCase();
+  return text === 'priority' ? 'priority' : 'foundation';
+}
+
 function buildSchoolTags(raw, schoolStage, tier) {
   const tags = new Set(Array.isArray(raw.tags) ? raw.tags.map(cleanString).filter(Boolean) : []);
   const name = cleanString(raw.name);
@@ -230,6 +235,7 @@ function normalizeSchool(raw) {
   const name = cleanString(raw.name);
   const schoolStage = normalizeSchoolStage(raw.schoolStage || raw.stage);
   const tier = normalizeTier(raw.tier);
+  const contentFile = cleanString(raw.contentFile || `content/schools/${cleanString(raw.id) || slugify(`${districtId}-${name}`)}.md`);
 
   return {
     id: cleanString(raw.id) || slugify(`${districtId}-${name}`),
@@ -250,6 +256,9 @@ function normalizeSchool(raw) {
     schoolHighlights: Array.isArray(raw.schoolHighlights) ? raw.schoolHighlights.map(cleanString).filter(Boolean) : [],
     suitableStudents: cleanString(raw.suitableStudents),
     applicationTips: cleanString(raw.applicationTips),
+    trainingDirections: Array.isArray(raw.trainingDirections) ? raw.trainingDirections.map(cleanString).filter(Boolean) : [],
+    profileDepth: normalizeProfileDepth(raw.profileDepth),
+    contentFile,
     features: Array.isArray(raw.features) ? raw.features.map(cleanString).filter(Boolean) : [],
     tags: buildSchoolTags(raw, schoolStage, tier),
     source,

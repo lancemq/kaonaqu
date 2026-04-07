@@ -66,6 +66,14 @@ function pickDefined(raw = {}) {
   );
 }
 
+function stripSchoolDetailFields(record = {}) {
+  const cleaned = { ...record };
+  for (const field of ['schoolDescription', 'admissionRequirements', 'schoolHighlights', 'suitableStudents', 'applicationTips']) {
+    delete cleaned[field];
+  }
+  return cleaned;
+}
+
 function requireFields(record, requiredFields) {
   const issues = validateRequired(record, requiredFields);
   if (issues.length) {
@@ -140,13 +148,14 @@ async function createSchool(input) {
       throw error;
     }
 
+    const indexedDraft = stripSchoolDetailFields(draft);
     return {
       ...state,
       schools: sortByTimeDesc([
         {
-          ...draft,
-          features: uniqueStrings(draft.features),
-          tags: uniqueStrings(draft.tags),
+          ...indexedDraft,
+          features: uniqueStrings(indexedDraft.features),
+          tags: uniqueStrings(indexedDraft.tags),
           updatedAt: new Date().toISOString()
         },
         ...state.schools
@@ -169,17 +178,18 @@ async function updateSchool(id, input) {
       ...pickDefined(input),
       id
     });
+    const indexedMerged = stripSchoolDetailFields(merged);
 
-    requireFields(merged, ['id', 'name', 'districtId', 'districtName']);
+    requireFields(indexedMerged, ['id', 'name', 'districtId', 'districtName']);
 
     return {
       ...state,
       schools: state.schools.map((school) => (
         school.id === id
           ? {
-            ...merged,
-            features: uniqueStrings(merged.features),
-            tags: uniqueStrings(merged.tags),
+            ...indexedMerged,
+            features: uniqueStrings(indexedMerged.features),
+            tags: uniqueStrings(indexedMerged.tags),
             updatedAt: new Date().toISOString()
           }
           : school

@@ -1,8 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import { isHighInterestSchoolName } from '../lib/school-enrichment-config.mjs';
+import { buildSchoolMarkdown, getSchoolContentAbsolutePath, getSchoolContentRelativePath } from '../lib/school-content-files.mjs';
 
 const filePath = path.join(process.cwd(), 'data', 'schools.json');
 const schools = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+const DETAIL_FIELDS = ['schoolDescription', 'admissionRequirements', 'schoolHighlights', 'suitableStudents', 'applicationTips'];
 
 const overrides = {
   '上海中学': {
@@ -160,16 +163,58 @@ const overrides = {
   }
 };
 
+function inferTrainingDirections(school) {
+  const directions = new Set(Array.isArray(school.trainingDirections) ? school.trainingDirections.map((item) => String(item).trim()).filter(Boolean) : []);
+  const haystack = [
+    school.name,
+    school.schoolDescription,
+    school.admissionNotes,
+    ...(school.features || []),
+    ...(school.tags || []),
+    ...(school.schoolHighlights || [])
+  ].filter(Boolean).join(' ');
+
+  if (/(科技|科创|创新|竞赛|研究)/.test(haystack)) directions.add('科创竞赛');
+  if (/(人文|综合|通识|领导力)/.test(haystack)) directions.add('人文综合');
+  if (/(国际|双语|ib|ap|alevel)/i.test(haystack)) directions.add('国际课程');
+  if (/(寄宿|住宿)/.test(haystack)) directions.add('寄宿管理');
+  if (/(贯通|一贯|衔接|完全中学|十年一贯)/.test(haystack)) directions.add('贯通培养');
+  if (/(外语|外国语|英语)/.test(haystack)) directions.add('外语特色');
+
+  return Array.from(directions).slice(0, 3);
+}
+
 let updated = 0;
 
 const nextSchools = schools.map((school) => {
   const override = overrides[school.name];
   if (!override) return school;
   updated += 1;
-  return {
+  const detailed = {
     ...school,
     ...override
   };
+  const profileDepth = isHighInterestSchoolName(detailed.name) ? 'priority' : (detailed.profileDepth || 'foundation');
+  const trainingDirections = inferTrainingDirections(detailed);
+  const markdown = buildSchoolMarkdown({
+    ...detailed,
+    trainingDirections,
+    profileDepth,
+    contentFile: detailed.contentFile || getSchoolContentRelativePath(detailed.id)
+  });
+  fs.writeFileSync(getSchoolContentAbsolutePath(detailed), `${markdown}\n`, 'utf8');
+
+  const indexed = {
+    ...detailed,
+    profileDepth,
+    trainingDirections,
+    contentFile: detailed.contentFile || getSchoolContentRelativePath(detailed.id)
+  };
+  for (const field of DETAIL_FIELDS) {
+    delete indexed[field];
+  }
+
+  return indexed;
 });
 
 fs.writeFileSync(filePath, `${JSON.stringify(nextSchools, null, 2)}\n`);

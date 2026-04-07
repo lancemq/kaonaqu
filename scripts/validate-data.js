@@ -14,6 +14,8 @@ const ROOT_DIR = path.join(__dirname, '..');
 const VALID_DISTRICT_IDS = new Set(DISTRICT_CATALOG.map((district) => district.id));
 const ALLOWED_EXAM_TYPES = new Set(['zhongkao', 'gaokao']);
 const ALLOWED_NEWS_TYPES = new Set(['school', 'admission', 'exam']);
+const ALLOWED_PROFILE_DEPTHS = new Set(['foundation', 'priority']);
+const DETAIL_FIELDS = ['schoolDescription', 'admissionRequirements', 'schoolHighlights', 'suitableStudents', 'applicationTips'];
 
 function readJson(filename) {
   return JSON.parse(fs.readFileSync(path.join(DATA_DIR, filename), 'utf8'));
@@ -67,6 +69,32 @@ function validateSchools(schools) {
 
     if (!['junior', 'senior_high', 'complete'].includes(school.schoolStage)) {
       errors.push(`schools[${index}]: invalid schoolStage ${school.schoolStage}`);
+    }
+
+    const profileDepth = cleanString(school.profileDepth || 'foundation');
+    if (!ALLOWED_PROFILE_DEPTHS.has(profileDepth)) {
+      errors.push(`schools[${index}]: invalid profileDepth ${school.profileDepth}`);
+    }
+
+    if (!Array.isArray(school.trainingDirections)) {
+      errors.push(`schools[${index}]: trainingDirections must be an array`);
+    }
+
+    for (const field of DETAIL_FIELDS) {
+      const value = school[field];
+      if (Array.isArray(value) ? value.length : cleanString(value)) {
+        errors.push(`schools[${index}]: ${field} must be stored in markdown, not schools.json`);
+      }
+    }
+
+    const contentFile = cleanString(school.contentFile || `content/schools/${school.id}.md`);
+    const contentPath = path.join(ROOT_DIR, contentFile);
+    if (!contentFile.endsWith('.md')) {
+      errors.push(`schools[${index}]: invalid contentFile ${contentFile}`);
+    } else if (!fs.existsSync(contentPath)) {
+      errors.push(`schools[${index}]: missing school content file ${contentFile}`);
+    } else if (!fs.readFileSync(contentPath, 'utf8').trim()) {
+      errors.push(`schools[${index}]: empty school content file ${contentFile}`);
     }
   });
 

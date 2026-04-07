@@ -9126,6 +9126,14 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     color: #f8fbff;
 }
 
+.school-datadesk-detail-gap {
+    height: 16px;
+}
+
+.school-datadesk-detail-main-gap {
+    height: 18px;
+}
+
 .school-datadesk-detail-stats {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -9204,7 +9212,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 .school-datadesk-detail-panel-dark {
     border-color: rgba(21, 32, 45, 0.96);
     background: linear-gradient(180deg, rgba(20, 31, 43, 0.98), rgba(28, 42, 59, 0.98));
-    color: #f4f8fc;
+    color: #f7fbff;
 }
 
 .school-datadesk-detail-panel-dark .overview-label,
@@ -9216,7 +9224,20 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 
 .school-datadesk-detail-panel-dark .overview-label,
 .school-datadesk-detail-panel-dark dt {
-    color: rgba(244, 248, 252, 0.68);
+    color: rgba(247, 251, 255, 0.9);
+}
+
+.school-datadesk-detail-panel-dark dd {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.school-datadesk-detail-panel-dark .school-datadesk-detail-sectionhead span {
+    color: rgba(247, 251, 255, 0.92);
+}
+
+.school-datadesk-detail-panel-dark .school-datadesk-detail-facts div {
+    border-top-color: rgba(247, 251, 255, 0.2);
 }
 
 .school-datadesk-detail-highlightgrid {
@@ -9289,6 +9310,21 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     margin: 0;
     color: #152535;
     line-height: 1.6;
+}
+
+.school-datadesk-detail-fact-value {
+    color: inherit;
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.school-datadesk-detail-panel-dark .school-datadesk-detail-fact-value {
+    color: #ffffff !important;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.34);
 }
 
 .school-datadesk-detail-facts-compact dd {
