@@ -10686,7 +10686,7 @@ body[data-page="schools"] .schools-datadesk-summary-card-strong strong {
 
 body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-panel-head span,
 body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-panel-meta span {
-    color: rgba(242, 243, 240, 0.78);
+    color: rgba(247, 244, 237, 0.84);
 }
 
 body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-panel-meta strong,
@@ -10695,13 +10695,18 @@ body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-activec
 }
 
 body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-activechip {
-    border-color: rgba(242, 243, 240, 0.2);
-    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(247, 244, 237, 0.18);
+    background: rgba(247, 244, 237, 0.1);
 }
 
-/* Current conditions: make the district chip gray/black */
 body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-activechip-district {
-    border-color: rgba(17, 17, 17, 0.12);
-    background: #f5efe5;
-    color: #1b1a18;
+    border-color: rgba(236, 187, 124, 0.32);
+    background: rgba(236, 187, 124, 0.16);
+    color: #fff5e8;
+}
+
+body[data-page="schools"] .schools-datadesk-panel-dark {
+    border-color: rgba(17, 17, 17, 0.98);
+    background: linear-gradient(180deg, rgba(19, 18, 18, 0.98), rgba(29, 28, 26, 0.98));
+    box-shadow: 0 18px 34px rgba(15, 13, 12, 0.24);
 }

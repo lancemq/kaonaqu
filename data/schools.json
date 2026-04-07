@@ -796,24 +796,34 @@
     "schoolType": "district_key",
     "schoolTypeLabel": "区重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 高中 区重点",
-    "features": [],
+    "address": "上海市宝山区盘古路247弄20号",
+    "phone": "63160973",
+    "website": "https://school.bsedu.org.cn/bszx/",
+    "admissionNotes": "宝山区区重点高中，建议结合统一招生口径、课程改革、校园管理和学校近年公开活动一起判断。",
+    "features": [
+      "百年老校",
+      "课程改革",
+      "综合课程",
+      "特色社团"
+    ],
     "tags": [
       "高中",
-      "区重点"
+      "区重点",
+      "百年老校",
+      "课程改革"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市宝山中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/bszx/",
+      "crawledAt": "2026-04-07T21:30:00+08:00",
+      "confidence": 0.93
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-07T21:30:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "德育活动强"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山中学.md"
   },
@@ -1099,24 +1109,34 @@
     "schoolType": "district_key",
     "schoolTypeLabel": "区重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 高中 区重点",
-    "features": [],
+    "address": "上海市宝山区呼玛路888号",
+    "phone": "56741519",
+    "website": "https://school.bsedu.org.cn/thzx/",
+    "admissionNotes": "宝山区区重点高中，学校公开口径重点落在课程建设、科学教育、心理支持和足球等特色项目上。",
+    "features": [
+      "实验性示范性高中",
+      "科学教育实践基地",
+      "心理辅导实验校",
+      "足球特色"
+    ],
     "tags": [
       "高中",
-      "区重点"
+      "区重点",
+      "实验性示范性高中",
+      "科学教育"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市通河中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/thzx/app/info/doc/index.php/563",
+      "crawledAt": "2026-04-07T21:30:00+08:00",
+      "confidence": 0.93
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-07T21:30:00+08:00",
+    "trainingDirections": [
+      "科创竞赛",
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市通河中学.md"
   },
@@ -1164,25 +1184,35 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 高中 市重点",
-    "features": [],
+    "address": "上海市宝山区泰和路99号",
+    "phone": "021-56580100",
+    "website": "https://school.bsedu.org.cn/shwusong/",
+    "admissionNotes": "宝山区市重点高中，建议重点关注统一招生、自主招生以及学校艺术、科技和特色平台项目。",
+    "features": [
+      "实验性示范性高中",
+      "科技教育特色",
+      "艺术教育特色",
+      "同济大学苗圃班"
+    ],
     "tags": [
       "高中",
-      "市重点"
+      "市重点",
+      "实验性示范性高中",
+      "科技艺术特色"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市吴淞中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/shwusong/app/info/doc/index.php/449",
+      "crawledAt": "2026-04-07T21:30:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
-    "profileDepth": "foundation",
+    "updatedAt": "2026-04-07T21:30:00+08:00",
+    "trainingDirections": [
+      "科创竞赛",
+      "人文综合"
+    ],
+    "profileDepth": "priority",
     "contentFile": "content/schools/baoshan-上海市吴淞中学.md"
   },
   {
@@ -1234,25 +1264,37 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 高中 市重点",
-    "features": [],
+    "address": "上海市宝山区子青路99号",
+    "phone": "021-56104504",
+    "website": "https://school.bsedu.org.cn/xzhs/",
+    "admissionNotes": "宝山区市重点高中，适合重点关注统一招生、自主招生、学科基地与科技艺术特色项目。",
+    "features": [
+      "实验性示范性高中",
+      "陶行知教育",
+      "创新实验室",
+      "科技艺术特色"
+    ],
     "tags": [
       "高中",
-      "市重点"
+      "市重点",
+      "实验性示范性高中",
+      "科创竞赛",
+      "人文综合"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市行知中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/xzhs/app/info/doc/index.php/1432",
+      "crawledAt": "2026-04-07T21:30:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
-    "profileDepth": "foundation",
+    "updatedAt": "2026-04-07T21:30:00+08:00",
+    "trainingDirections": [
+      "科创竞赛",
+      "人文综合",
+      "国际课程"
+    ],
+    "profileDepth": "priority",
     "contentFile": "content/schools/baoshan-上海市行知中学.md"
   },
   {
@@ -1432,25 +1474,36 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "崇明区 高中 市重点",
-    "features": [],
+    "address": "上海市崇明区城桥镇鼓浪屿路801号",
+    "phone": "021-69672006",
+    "website": "https://www.shcm.gov.cn/xwzx/002009/20241216/c958f995-c679-4b09-b664-d41b4a98fdac.html",
+    "admissionNotes": "崇明区市重点高中，建议重点关注学校自主发展特色、科技艺术项目和本区高中升学主线。",
+    "features": [
+      "实验性示范性高中",
+      "科技教育特色",
+      "艺术教育特色",
+      "百年老校"
+    ],
     "tags": [
       "高中",
-      "市重点"
+      "市重点",
+      "实验性示范性高中",
+      "百年老校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市崇明区人民政府",
+      "type": "official",
+      "url": "https://www.shcm.gov.cn/xwzx/002009/20241216/c958f995-c679-4b09-b664-d41b4a98fdac.html",
+      "crawledAt": "2026-04-07T21:30:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
-    "profileDepth": "foundation",
+    "updatedAt": "2026-04-07T21:30:00+08:00",
+    "trainingDirections": [
+      "科创竞赛",
+      "人文综合",
+      "艺术特色"
+    ],
+    "profileDepth": "priority",
     "contentFile": "content/schools/chongming-上海市崇明区崇明中学.md"
   },
   {
