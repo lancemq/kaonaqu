@@ -136,7 +136,7 @@ function ensureDatasets(data = {}) {
 }
 
 async function loadDataStore() {
-  const local = await loadLocalData().catch(() => ({ districts: [], schools: [], policies: [], news: [] }));
+  const local = await loadLocalData();
   return ensureDatasets(local);
 }
 
