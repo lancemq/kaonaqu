@@ -13,19 +13,54 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic';
 
+function toTimestamp(value) {
+  const timestamp = Date.parse(value || '');
+  return Number.isFinite(timestamp) ? timestamp : 0;
+}
+
+function getCurrentYear(news, policies) {
+  const years = [...news, ...policies]
+    .map((item) => {
+      const value = String(item?.publishedAt || item?.date || '');
+      return Number(value.slice(0, 4)) || Number(item?.year) || 0;
+    })
+    .filter(Boolean)
+    .sort((a, b) => b - a);
+  return years[0] || new Date().getFullYear();
+}
+
+function isCurrentYearItem(item, year) {
+  const publishedYear = Number(String(item?.publishedAt || item?.date || '').slice(0, 4)) || Number(item?.year) || 0;
+  return publishedYear === year;
+}
+
+function isRenderablePolicy(policy, currentYear) {
+  const title = String(policy?.title || '').trim();
+  if (!title || title === '上海市教育委员会') return false;
+  if (!isCurrentYearItem(policy, currentYear)) return false;
+  return policy.source?.type === 'official' || String(policy.source?.name || '').includes('上海市教育委员会');
+}
+
 export default async function NewsPage() {
-  const { news, policies } = await loadDataStore();
-  const currentYear = Math.max(
-    ...news.map((item) => Number(String(item.publishedAt || '').slice(0, 4)) || 0),
-    ...policies.map((item) => Number(item.year) || Number(String(item.publishedAt || '').slice(0, 4)) || 0),
-    new Date().getFullYear()
+  const { news, policies, schools } = await loadDataStore();
+  const schoolNamesById = Object.fromEntries(
+    schools.map((school) => [school.id, school.name || ''])
   );
-  const currentYearNews = news.filter((item) => Number(String(item.publishedAt || '').slice(0, 4)) === currentYear);
-  const currentYearPolicies = policies.filter((item) => (Number(item.year) || Number(String(item.publishedAt || '').slice(0, 4))) === currentYear);
+  const currentYear = getCurrentYear(news, policies);
+  const currentYearNews = news.filter((item) => isCurrentYearItem(item, currentYear));
+  const currentYearPolicies = policies.filter((item) => isRenderablePolicy(item, currentYear));
   const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
-  const examCount = currentYearNews.filter((item) => item.newsType === 'exam').length;
-  const admissionCount = currentYearNews.filter((item) => item.newsType === 'admission').length;
-  const latestLocalHeadline = currentYearNews[0] || null;
+  const latestLocalHeadline = currentYearNews
+    .slice()
+    .sort((left, right) => {
+      const publishedDiff = toTimestamp(right.publishedAt) - toTimestamp(left.publishedAt);
+      if (publishedDiff !== 0) return publishedDiff;
+
+      const updatedDiff = toTimestamp(right.updatedAt) - toTimestamp(left.updatedAt);
+      if (updatedDiff !== 0) return updatedDiff;
+
+      return String(left.id || '').localeCompare(String(right.id || ''));
+    })[0] || null;
 
   return (
     <SiteShell hideKnowledgeNav>
@@ -64,7 +99,7 @@ export default async function NewsPage() {
           </div>
         </section>
       </header>
-      <NewsPageClient news={news} policies={policies} />
+      <NewsPageClient news={news} policies={policies} schoolNamesById={schoolNamesById} />
 
       <footer className="prototype-page-footer">
         <span>上海升学观察 / {currentYear} 最值得先看的消息与政策</span>

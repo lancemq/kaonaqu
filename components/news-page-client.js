@@ -3,8 +3,15 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import admissionTimeline from '../lib/admission-timeline';
+import {
+  getNewsCardActionLabel,
+  getNewsCardValueLine,
+  getNewsSection,
+  getSchoolObservationTag,
+  shouldShowNewsSchoolCta
+} from '../lib/news-channel-utils.mjs';
 import policyGlossary from '../lib/policy-glossary';
-import { filterNews, getNewsCategoryLabel, getNewsSection } from '../lib/site-utils';
+import { filterNews, getNewsCategoryLabel } from '../lib/site-utils';
 
 function sanitizePolicyText(text, title = '') {
   let value = String(text || '');
@@ -68,7 +75,7 @@ function getAudienceLabel(item) {
   return '上海升学家庭';
 }
 
-export default function NewsPageClient({ news, policies }) {
+export default function NewsPageClient({ news, policies, schoolNamesById = {} }) {
   const currentYear = useMemo(() => getCurrentYear(news, policies), [news, policies]);
   const currentYearNews = useMemo(
     () => news.filter((item) => isCurrentYearItem(item, currentYear)).sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))),
@@ -123,6 +130,9 @@ export default function NewsPageClient({ news, policies }) {
     '学校通知和官方口径不一致时，先以考试院和教育主管部门发布的信息为准。',
     '真正值得提前收藏的，通常不是热闹消息，而是资格、时间和志愿确认。'
   ];
+  const getLinkedSchoolName = (item) => (
+    item?.primarySchoolId ? schoolNamesById[item.primarySchoolId] || '' : ''
+  );
 
   return (
     <main className="layout news-prototype-layout">
@@ -180,23 +190,46 @@ export default function NewsPageClient({ news, policies }) {
             <div className="news-prototype-list">
               {pagedNews.length ? (
                 <>
-                  {pagedNews.map((item, index) => (
-                    <Link
-                      key={item.id}
-                      className={`news-prototype-item news-prototype-item-link${index === 1 ? ' news-prototype-item-dark' : ''}`}
-                      href={item.itemType === 'policy' ? `/news/policy/${encodeURIComponent(item.id)}` : `/news/${item.id}`}
-                    >
-                      <p className="news-prototype-item-kicker">
-                        {item.itemType === 'policy'
-                          ? `${String(item.title || '').includes('义务教育') ? '义务教育' : String(item.title || '').includes('普通高校') || String(item.title || '').includes('高考') || String(item.title || '').includes('春季考试') ? '高招政策' : '中招政策'} / 政策文件`
-                          : `${item.examType === 'zhongkao' ? '中招新闻' : item.examType === 'gaokao' ? '高招新闻' : '综合资讯'} / ${getNewsCategoryLabel(item)}`}
-                      </p>
-                      <h3>
-                        <span className="news-title-link">{item.title}</span>
-                      </h3>
-                      <p>{item.itemType === 'policy' ? getPolicySummaryText(item) : (item.summary || '暂无摘要')}</p>
-                    </Link>
-                  ))}
+                  {pagedNews.map((item, index) => {
+                    const newsSection = item.itemType === 'news' ? getNewsSection(item) : '';
+                    const linkedSchoolName = item.itemType === 'news' ? getLinkedSchoolName(item) : '';
+                    const showSchoolSignal = newsSection === 'school' && linkedSchoolName;
+                    const showAdmissionSchoolSignal = newsSection === 'admission' && linkedSchoolName && shouldShowNewsSchoolCta(item);
+
+                    return (
+                      <Link
+                        key={item.id}
+                        className={`news-prototype-item news-prototype-item-link${index === 1 ? ' news-prototype-item-dark' : ''}`}
+                        href={item.itemType === 'policy' ? `/news/policy/${encodeURIComponent(item.id)}` : `/news/${item.id}`}
+                      >
+                        <p className="news-prototype-item-kicker">
+                          {item.itemType === 'policy'
+                            ? `${String(item.title || '').includes('义务教育') ? '义务教育' : String(item.title || '').includes('普通高校') || String(item.title || '').includes('高考') || String(item.title || '').includes('春季考试') ? '高招政策' : '中招政策'} / 政策文件`
+                            : `${item.examType === 'zhongkao' ? '中招新闻' : item.examType === 'gaokao' ? '高招新闻' : '综合资讯'} / ${getNewsCategoryLabel(item)}`}
+                        </p>
+                        <h3>
+                          <span className="news-title-link">{item.title}</span>
+                        </h3>
+                        {item.itemType === 'news' ? (
+                          <>
+                            {showSchoolSignal ? (
+                              <p className="news-prototype-item-signal">
+                                {linkedSchoolName} / {getSchoolObservationTag(item)}
+                              </p>
+                            ) : null}
+                            {showAdmissionSchoolSignal ? (
+                              <p className="news-prototype-item-signal">涉及学校 / {linkedSchoolName}</p>
+                            ) : null}
+                            <p className="news-prototype-item-summary">{item.summary || '暂无摘要'}</p>
+                            <p className="news-prototype-item-copy">{getNewsCardValueLine(item)}</p>
+                            <span className="news-prototype-item-action">{getNewsCardActionLabel(item)}</span>
+                          </>
+                        ) : (
+                          <p className="news-prototype-item-copy">{getPolicySummaryText(item)}</p>
+                        )}
+                      </Link>
+                    );
+                  })}
                 </>
               ) : (
                 <article className="news-prototype-item news-prototype-item-empty">

@@ -6135,17 +6135,52 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     letter-spacing: -0.05em;
 }
 
-.news-prototype-item p:last-child {
+.news-prototype-item-summary {
+    margin: 10px 0 0;
+    color: inherit;
+    opacity: 0.86;
+    line-height: 1.68;
+}
+
+.news-prototype-item-copy {
     margin: 10px 0 0;
     color: inherit;
     opacity: 0.75;
     line-height: 1.68;
 }
 
+.news-prototype-item-signal {
+    margin: 10px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #6c7a89;
+}
+
+.news-prototype-item-action {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #163a63;
+}
+
+.news-prototype-item-action::after {
+    content: ' ->';
+    margin-left: 6px;
+}
+
 .news-prototype-item-dark .news-title-link,
 .news-prototype-item-dark .news-title-link:hover,
 .news-prototype-item-dark .news-title-link:focus-visible {
     color: #f7f4ed;
+}
+
+.news-prototype-item-dark .news-prototype-item-summary,
+.news-prototype-item-dark .news-prototype-item-signal,
+.news-prototype-item-dark .news-prototype-item-action {
+    color: #cdd7e2;
 }
 
 .news-prototype-pager {
