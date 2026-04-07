@@ -364,7 +364,12 @@ export default function SchoolsPageClient({
             {activeFilterSummary.length ? (
               <div className="schools-datadesk-activechips">
                 {activeFilterSummary.map((line) => (
-                  <span key={line} className="schools-datadesk-activechip">{line}</span>
+                  <span
+                    key={line}
+                    className={`schools-datadesk-activechip${line.startsWith('区域：') ? ' schools-datadesk-activechip-district' : ''}`}
+                  >
+                    {line}
+                  </span>
                 ))}
               </div>
             ) : (
