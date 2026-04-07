@@ -17,7 +17,7 @@
     "crawl:social": "node crawler/src/crawlers/social-platforms.js",
     "data:process": "node crawler/src/process-data.js",
     "data:policies:markdown": "node scripts/build-policy-markdown.mjs",
-    "data:validate": "node scripts/validate-data.js",
+    "data:validate": "node scripts/check-news-school-links.mjs && node scripts/validate-data.js",
     "data:sync:supabase": "node scripts/sync-supabase.js",
     "crawl": "node crawler/src/index.js"
   },
