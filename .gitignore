@@ -45,3 +45,9 @@ coverage/
 
 # Local automation or diagnostics noise
 .codex/
+
+# Local crawler/debug artifacts
+.remote-schools.json
+remote-schools.tmp
+crawler/data/raw_*.html
+crawler/data/raw/raw_*.html
