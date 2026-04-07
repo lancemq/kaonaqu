@@ -7,13 +7,8 @@ fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
 const routes = [
   { name: 'news', path: '/news' },
-  { name: 'policy-glossary', path: '/news/policy-glossary' },
-  { name: 'policy-deep-dive', path: '/news/policy-deep-dive' },
-  { name: 'policy-faq', path: '/news/policy-faq' },
-  { name: 'admission-timeline', path: '/news/admission-timeline' },
-  { name: 'zhongkao-special', path: '/news/zhongkao-special' },
-  { name: 'gaokao-special', path: '/news/gaokao-special' },
-  { name: 'news-detail', path: '/news/school-2026-shs-cross-disciplinary-teaching' }
+  { name: 'news-detail-school', path: '/news/school-2026-shs-cross-disciplinary-teaching' },
+  { name: 'news-detail-admission-school', path: '/news/admission-2026-hsefz-sports-students-plan' }
 ];
 
 const browser = await chromium.launch({ headless: true });
@@ -23,6 +18,7 @@ const context = await browser.newContext({
 });
 
 const report = [];
+const failures = [];
 
 for (const route of routes) {
   const page = await context.newPage();
@@ -55,6 +51,17 @@ for (const route of routes) {
     pageErrors
   });
 
+  const status = response?.status() || null;
+  if (!status || status < 200 || status >= 300 || consoleErrors.length || pageErrors.length) {
+    failures.push({
+      name: route.name,
+      path: route.path,
+      status,
+      consoleErrors,
+      pageErrors
+    });
+  }
+
   await page.close();
 }
 
@@ -63,3 +70,8 @@ await browser.close();
 const reportPath = path.join(OUTPUT_DIR, 'report.json');
 fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 console.log(reportPath);
+
+if (failures.length) {
+  console.error(JSON.stringify(failures, null, 2));
+  process.exit(1);
+}

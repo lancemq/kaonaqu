@@ -71,11 +71,11 @@ function getOwnershipLabel(school) {
 }
 
 function getSchoolPositioning(school) {
-  const description = clipText(school?.schoolDescription, 100);
+  const description = clipText(school?.schoolDescription, 84);
   if (description) {
     return description;
   }
-  const admission = clipText(getSchoolAdmissionInfo(school), 100);
+  const admission = clipText(getSchoolAdmissionInfo(school), 84);
   if (admission) {
     return admission;
   }
@@ -90,6 +90,39 @@ function buildCardTags(school) {
   ].filter(Boolean);
 
   return Array.from(new Set(values)).slice(0, 4);
+}
+
+function formatSchoolUpdate(value) {
+  const text = String(value || '').trim();
+  if (!text) {
+    return '时间待补充';
+  }
+  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
+  if (match) {
+    const [, year, month, day, hour, minute] = match;
+    if (hour && minute) {
+      return `${year}.${month}.${day} ${hour}:${minute}`;
+    }
+    return `${year}.${month}.${day}`;
+  }
+  return text;
+}
+
+function getUpdateSortValue(value) {
+  const text = String(value || '').trim();
+  if (!text) {
+    return 0;
+  }
+  const parsed = Date.parse(text);
+  if (!Number.isNaN(parsed)) {
+    return parsed;
+  }
+  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2})(?::(\d{2}))?)?/);
+  if (!match) {
+    return 0;
+  }
+  const [, year, month, day, hour = '00', minute = '00', second = '00'] = match;
+  return Number(`${year}${month}${day}${hour}${minute}${second}`);
 }
 
 export default function SchoolsPageClient({
@@ -215,6 +248,16 @@ export default function SchoolsPageClient({
     ? '全市范围'
     : (districts.find((item) => item.id === activeDistrict)?.name || activeDistrict);
 
+  const latestUpdated = useMemo(() => {
+    const values = schools
+      .map((school) => String(school.updatedAt || '').trim())
+      .filter(Boolean)
+      .sort((left, right) => getUpdateSortValue(right) - getUpdateSortValue(left));
+    return formatSchoolUpdate(values[0]);
+  }, [schools]);
+
+  const activeFilterCount = activeFilterSummary.length;
+
   const resultDescriptor = activeFilterSummary.length
     ? `${currentDistrictLabel}下匹配 ${filteredSchools.length} 所学校`
     : `当前数据库收录 ${schools.length} 所学校，可按区域和学段逐步缩小范围`;
@@ -298,6 +341,10 @@ export default function SchoolsPageClient({
                 <p>高中 / 初中 / 完全中学</p>
               </article>
             </div>
+            <div className="schools-datadesk-hero-footnote">
+              <span>数据更新时间 {latestUpdated}</span>
+              <span>来源以学校索引与公开资料整理为主</span>
+            </div>
           </div>
         </section>
       </header>
@@ -310,12 +357,23 @@ export default function SchoolsPageClient({
       <main className="layout schools-datadesk-layout">
         <aside className="schools-datadesk-sidebar">
           <section className="schools-datadesk-panel schools-datadesk-panel-dark">
-            <p className="overview-label">当前条件</p>
-            {activeFilterSummary.length ? activeFilterSummary.map((line) => (
-              <p key={line}>{line}</p>
-            )) : (
-              <p>当前未添加具体筛选条件，建议先从区域和学段开始缩小范围。</p>
+            <div className="schools-datadesk-panel-head schools-datadesk-panel-head-tight">
+              <p className="overview-label">当前条件</p>
+              <span>{activeFilterCount} 项激活</span>
+            </div>
+            {activeFilterSummary.length ? (
+              <div className="schools-datadesk-activechips">
+                {activeFilterSummary.map((line) => (
+                  <span key={line} className="schools-datadesk-activechip">{line}</span>
+                ))}
+              </div>
+            ) : (
+              <p className="schools-datadesk-panel-copy">当前未添加具体筛选条件，建议先从区域和学段开始缩小范围。</p>
             )}
+            <div className="schools-datadesk-panel-meta">
+              <span>最近更新时间</span>
+              <strong>{latestUpdated}</strong>
+            </div>
             <button className="schools-datadesk-button schools-datadesk-button-secondary" type="button" onClick={resetFilters}>清空全部条件</button>
           </section>
 
@@ -325,31 +383,40 @@ export default function SchoolsPageClient({
               <span>先缩范围，再看学校</span>
             </div>
             <div className="schools-datadesk-controls">
-              <label className="search-field search-field-select" htmlFor="prototype-district-filter">
-                <span className="visually-hidden">按区域筛选</span>
-                <select id="prototype-district-filter" value={activeDistrict} onChange={(event) => { setActiveDistrict(event.target.value); setCurrentPage(1); }}>
-                  <option value="all">全部区域</option>
-                  {districts.map((district) => (
-                    <option key={district.id} value={district.id}>{district.name || district.districtName}</option>
-                  ))}
-                </select>
-              </label>
-              <label className="search-field search-field-select" htmlFor="prototype-stage-filter">
-                <span className="visually-hidden">按学段筛选</span>
-                <select id="prototype-stage-filter" value={activeStage} onChange={(event) => { setActiveStage(event.target.value); setCurrentPage(1); }}>
-                  {STAGE_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>{option.label}</option>
-                  ))}
-                </select>
-              </label>
-              <label className="search-field search-field-select" htmlFor="prototype-ownership-filter">
-                <span className="visually-hidden">按办学性质筛选</span>
-                <select id="prototype-ownership-filter" value={activeOwnership} onChange={(event) => { setActiveOwnership(event.target.value); setCurrentPage(1); }}>
-                  {OWNERSHIP_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>{option.label}</option>
-                  ))}
-                </select>
-              </label>
+              <div className="schools-datadesk-controlblock">
+                <span>区域</span>
+                <label className="search-field search-field-select" htmlFor="prototype-district-filter">
+                  <span className="visually-hidden">按区域筛选</span>
+                  <select id="prototype-district-filter" value={activeDistrict} onChange={(event) => { setActiveDistrict(event.target.value); setCurrentPage(1); }}>
+                    <option value="all">全部区域</option>
+                    {districts.map((district) => (
+                      <option key={district.id} value={district.id}>{district.name || district.districtName}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <div className="schools-datadesk-controlblock">
+                <span>学段</span>
+                <label className="search-field search-field-select" htmlFor="prototype-stage-filter">
+                  <span className="visually-hidden">按学段筛选</span>
+                  <select id="prototype-stage-filter" value={activeStage} onChange={(event) => { setActiveStage(event.target.value); setCurrentPage(1); }}>
+                    {STAGE_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <div className="schools-datadesk-controlblock">
+                <span>办学性质</span>
+                <label className="search-field search-field-select" htmlFor="prototype-ownership-filter">
+                  <span className="visually-hidden">按办学性质筛选</span>
+                  <select id="prototype-ownership-filter" value={activeOwnership} onChange={(event) => { setActiveOwnership(event.target.value); setCurrentPage(1); }}>
+                    {OWNERSHIP_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
             </div>
           </section>
 
@@ -462,6 +529,7 @@ export default function SchoolsPageClient({
                     <div className="schools-datadesk-cardmeta">
                       <span>{getSchoolType(school)}</span>
                       <span>{school.tier || '梯队信息待补充'}</span>
+                      <span>更新于 {formatSchoolUpdate(school.updatedAt)}</span>
                     </div>
                   </div>
                   <p className="schools-datadesk-cardsummary">{getSchoolPositioning(school)}</p>

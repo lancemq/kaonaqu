@@ -88,6 +88,28 @@ function cleanUrl(value) {
   }
 }
 
+function normalizeStringArray(value) {
+  if (value === undefined || value === null) {
+    return [];
+  }
+
+  const items = Array.isArray(value) ? value : [value];
+  return Array.from(new Set(items.map(cleanString).filter(Boolean)));
+}
+
+function normalizeConfidence(value) {
+  if (value === undefined || value === null) {
+    return null;
+  }
+
+  const numeric = typeof value === 'number' ? value : Number(value);
+  if (!Number.isFinite(numeric)) {
+    return null;
+  }
+
+  return Math.min(1, Math.max(0, numeric));
+}
+
 function normalizeDistrictId(value) {
   const text = cleanString(value);
   return DISTRICT_NAME_TO_ID[text] || text;
@@ -263,6 +285,14 @@ function normalizeNews(raw, index = 0) {
   const inferredExamType = inferNewsExamType(title, raw.content || raw.summary);
   const examType = cleanString(raw.examType || raw.exam_type || inferredExamType);
   const category = cleanString(raw.category || inferNewsCategory(newsType, examType));
+  const primarySchoolId = cleanString(raw.primarySchoolId);
+  const rawRelatedSchoolIds = raw.relatedSchoolIds || raw.related_school_ids || raw.relatedSchoolId || raw.related_school_id;
+  const relatedSchoolIds = normalizeStringArray(rawRelatedSchoolIds);
+  if (primarySchoolId && !relatedSchoolIds.includes(primarySchoolId)) {
+    relatedSchoolIds.unshift(primarySchoolId);
+  }
+  const schoolLinkReason = cleanString(raw.schoolLinkReason);
+  const schoolLinkConfidence = normalizeConfidence(raw.schoolLinkConfidence);
 
   return {
     id: cleanString(raw.id) || slugify(`${category}-${title || index}`),
@@ -276,7 +306,11 @@ function normalizeNews(raw, index = 0) {
     contentFile: cleanString(raw.contentFile || raw.content_file),
     publishedAt: raw.publishedAt || raw.publishDate || raw.date || null,
     updatedAt: raw.updatedAt || source.crawledAt || raw.publishDate || raw.date || null,
-    source
+    source,
+    primarySchoolId,
+    relatedSchoolIds,
+    schoolLinkReason,
+    schoolLinkConfidence
   };
 }
 
@@ -350,6 +384,8 @@ module.exports = {
   buildDistricts,
   cleanString,
   cleanUrl,
+  normalizeStringArray,
+  normalizeConfidence,
   normalizeDistrictId,
   normalizeDistrictName,
   normalizePolicy,

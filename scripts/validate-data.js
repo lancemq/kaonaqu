@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const {
   DISTRICT_CATALOG,
+  cleanString,
   normalizeDistrictId,
   validateRequired
 } = require('../shared/data-schema');
@@ -11,6 +12,8 @@ const {
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const ROOT_DIR = path.join(__dirname, '..');
 const VALID_DISTRICT_IDS = new Set(DISTRICT_CATALOG.map((district) => district.id));
+const ALLOWED_EXAM_TYPES = new Set(['zhongkao', 'gaokao']);
+const ALLOWED_NEWS_TYPES = new Set(['school', 'admission', 'exam']);
 
 function readJson(filename) {
   return JSON.parse(fs.readFileSync(path.join(DATA_DIR, filename), 'utf8'));
@@ -62,7 +65,7 @@ function validateSchools(schools) {
     }
     seenKeys.add(uniqueKey);
 
-    if (!['junior', 'senior_high'].includes(school.schoolStage)) {
+    if (!['junior', 'senior_high', 'complete'].includes(school.schoolStage)) {
       errors.push(`schools[${index}]: invalid schoolStage ${school.schoolStage}`);
     }
   });
@@ -108,17 +111,75 @@ function validatePolicies(policies) {
   return errors;
 }
 
-function validateNews(news) {
+function validateNews(news, validSchoolIds) {
   const errors = [];
   const seenIds = new Set();
 
   news.forEach((item, index) => {
-    validateRequired(item, ['id', 'title', 'category', 'examType', 'summary']).forEach((message) => {
+    const newsTypeRaw = cleanString(item.newsType);
+    const newsTypeNormalized = newsTypeRaw.toLowerCase();
+    const examTypeRaw = cleanString(item.examType);
+    const examTypeNormalized = examTypeRaw.toLowerCase();
+    const needsExamType = newsTypeNormalized === 'exam';
+    const hasExamType = examTypeNormalized !== '';
+    const requiredFields = ['id', 'title', 'category', 'summary'];
+    if (needsExamType) {
+      requiredFields.push('examType');
+    }
+    requiredFields.push('newsType');
+
+    validateRequired(item, requiredFields).forEach((message) => {
       errors.push(`news[${index}]: ${message}`);
     });
 
-    if (!['zhongkao', 'gaokao'].includes(item.examType)) {
-      errors.push(`news[${index}]: invalid examType ${item.examType}`);
+    if (!ALLOWED_NEWS_TYPES.has(newsTypeNormalized)) {
+      errors.push(`news[${index}]: invalid newsType ${newsTypeRaw}`);
+    }
+
+    if (needsExamType && !ALLOWED_EXAM_TYPES.has(examTypeNormalized)) {
+      errors.push(`news[${index}]: invalid examType ${examTypeRaw}`);
+    } else if (hasExamType && !ALLOWED_EXAM_TYPES.has(examTypeNormalized)) {
+      errors.push(`news[${index}]: invalid examType ${examTypeRaw}`);
+    }
+
+    const primarySchoolId = cleanString(item.primarySchoolId);
+    if (primarySchoolId) {
+      if (!validSchoolIds.has(primarySchoolId)) {
+        errors.push(`news[${index}]: invalid primarySchoolId ${primarySchoolId}`);
+      }
+    }
+
+    const relatedSchoolIdsRaw = item.relatedSchoolIds;
+    const hasRelatedArray = Array.isArray(relatedSchoolIdsRaw);
+    const normalizedRelatedSchoolIds = [];
+
+    if (hasRelatedArray) {
+      relatedSchoolIdsRaw.forEach((relatedId) => {
+        const normalizedRelatedId = cleanString(relatedId);
+        if (!normalizedRelatedId) {
+          errors.push(`news[${index}]: invalid relatedSchoolId ${relatedId}`);
+          return;
+        }
+        normalizedRelatedSchoolIds.push(normalizedRelatedId);
+        if (!validSchoolIds.has(normalizedRelatedId)) {
+          errors.push(`news[${index}]: invalid relatedSchoolId ${normalizedRelatedId}`);
+        }
+      });
+    }
+
+    if (primarySchoolId) {
+      if (!hasRelatedArray) {
+        errors.push(`news[${index}]: relatedSchoolIds must be an array when primarySchoolId is set`);
+      } else if (!normalizedRelatedSchoolIds.includes(primarySchoolId)) {
+        errors.push(`news[${index}]: relatedSchoolIds must include primarySchoolId ${primarySchoolId}`);
+      }
+    }
+
+    const confidence = item.schoolLinkConfidence;
+    if (confidence !== undefined && confidence !== null) {
+      if (typeof confidence !== 'number' || Number.isNaN(confidence) || confidence < 0 || confidence > 1) {
+        errors.push(`news[${index}]: invalid schoolLinkConfidence ${confidence}`);
+      }
     }
 
     if (seenIds.has(item.id)) {
@@ -135,12 +196,13 @@ function main() {
   const schools = readJson('schools.json');
   const policies = readJson('policies.json');
   const news = readJson('news.json');
+  const validSchoolIds = new Set(schools.map((school) => cleanString(school.id)).filter(Boolean));
 
   const errors = [
     ...validateDistricts(districts),
     ...validateSchools(schools),
     ...validatePolicies(policies),
-    ...validateNews(news)
+    ...validateNews(news, validSchoolIds)
   ];
 
   if (errors.length) {

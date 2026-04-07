@@ -4,6 +4,7 @@ import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
 import { readSchoolMarkdownFile } from '../../../lib/school-content-files.mjs';
 import {
+  getSchoolAdmissionInfo,
   getSchoolDistrictName,
   getSchoolFeatures,
   getSchoolHighlights,
@@ -16,6 +17,22 @@ import {
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
+
+function formatSchoolUpdate(value) {
+  const text = String(value || '').trim();
+  if (!text) {
+    return '时间待补充';
+  }
+  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
+  if (!match) {
+    return text;
+  }
+  const [, year, month, day, hour, minute] = match;
+  if (hour && minute) {
+    return `${year}.${month}.${day} ${hour}:${minute}`;
+  }
+  return `${year}.${month}.${day}`;
+}
 
 function resolveSchoolById(schools, rawId) {
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
@@ -148,6 +165,19 @@ export default async function SchoolDetailPage({ params }) {
   const schoolTemperament = trainingDirections[0] || '综合型';
   const schoolHeat = tags.length >= 4 ? '高关注' : '持续关注';
   const summaryPoints = [highlights[0], highlights[1], trainingDirections[0] || features[0]].filter(Boolean).slice(0, 3);
+  const quickTags = Array.from(new Set([...tags, ...features, ...trainingDirections])).filter(Boolean).slice(0, 6);
+  const profileFacts = [
+    ['办学属性', schoolAttribute],
+    ['学校类型', getSchoolType(school)],
+    ['所在区域', getSchoolDistrictName(school)],
+    ['学段', getSchoolStage(school)],
+    ['更新时间', formatSchoolUpdate(school.updatedAt)]
+  ].filter(([, value]) => String(value || '').trim());
+  const serviceFacts = [
+    ['地址', school.address],
+    ['电话', school.phone],
+    ['官网', school.website]
+  ].filter(([, value]) => String(value || '').trim());
 
   if (!articleBodyMarkdown) {
     notFound();
@@ -156,34 +186,45 @@ export default async function SchoolDetailPage({ params }) {
   return (
     <SiteShell hideKnowledgeNav>
       <header className="hero" id="top">
-        <section className="search-panel school-prototype-hero" aria-label="学校详情">
-          <div className="school-prototype-hero-grid">
-            <div className="school-prototype-hero-main">
+        <section className="search-panel school-datadesk-detail-hero" aria-label="学校详情">
+          <div className="school-datadesk-detail-hero-grid">
+            <div className="school-datadesk-detail-main">
               <p className="overview-label">
                 学校库 / {getSchoolDistrictName(school)} / {getSchoolStage(school)} / {schoolAttribute}
               </p>
               <h1>{school.name}</h1>
-              <p className="school-prototype-subtitle">
+              <p className="school-datadesk-detail-subtitle">
                 {school.schoolDescription || getSchoolAdmissionInfo(school) || '学术强校、课程体系与校园节奏兼具，是上海家长高频检索的学校之一。'}
               </p>
+              <div className="school-datadesk-detail-chiprow">
+                {quickTags.length ? quickTags.map((item) => (
+                  <span key={item} className="school-datadesk-detail-chip">{item}</span>
+                )) : (
+                  <span className="school-datadesk-detail-chip">信息持续补充中</span>
+                )}
+              </div>
+              <div className="school-datadesk-detail-actions">
+                <Link className="button button-secondary" href="/schools">返回学校数据库</Link>
+                <a className="button" href="#school-article">查看正文判断</a>
+              </div>
             </div>
-            <aside className="school-prototype-hero-side">
-              <article className="school-prototype-focus-card">
-                <p className="overview-label">学校定位</p>
-                <h2>
-                  {highlights[0]
-                    || '重学术、强课程、节奏快。更适合自驱力强、目标清晰、能承受高密度学习环境的学生。'}
-                </h2>
-                <p>
-                  先看招生路径和课程方向，再判断学校节奏、竞争环境和孩子的适配度。
-                </p>
+            <aside className="school-datadesk-detail-sidehead">
+              <article className="school-datadesk-detail-sidecard school-datadesk-detail-sidecard-strong">
+                <span>学校定位</span>
+                <strong>{highlights[0] || '适合先用课程、招生与培养方向来判断学校节奏。'}</strong>
+                <p>先确认招生口径，再看课程方向、校园节奏和家庭适配度。</p>
+              </article>
+              <article className="school-datadesk-detail-sidecard">
+                <span>最近更新时间</span>
+                <strong>{formatSchoolUpdate(school.updatedAt)}</strong>
+                <p>详情页与数据库索引统一按本地收录时间展示。</p>
               </article>
             </aside>
           </div>
         </section>
       </header>
 
-      <section className="school-prototype-stats">
+      <section className="school-datadesk-detail-stats">
         <article>
           <strong>{schoolAttribute}</strong>
           <span>学校属性</span>
@@ -202,15 +243,15 @@ export default async function SchoolDetailPage({ params }) {
         </article>
       </section>
 
-      <main className="layout school-prototype-layout">
-        <section className="school-prototype-main">
-          <section className="school-prototype-panel">
+      <main className="layout school-datadesk-detail-layout">
+        <section className="school-datadesk-detail-maincol">
+          <section className="school-datadesk-detail-panel">
             <p className="overview-label">学校概览</p>
             <h2>{school.name}</h2>
             <p>{school.schoolDescription || getSchoolAdmissionInfo(school) || '学校基础信息已整理，可结合培养方向和招生路径继续判断。'}</p>
-            <div className="school-prototype-highlight-grid">
+            <div className="school-datadesk-detail-highlightgrid">
               {summaryPoints.map((item, index) => (
-                <article key={`${item}-${index}`} className="school-prototype-highlight-card">
+                <article key={`${item}-${index}`} className="school-datadesk-detail-highlightcard">
                   <span>重点 {index + 1}</span>
                   <strong>{item}</strong>
                 </article>
@@ -218,33 +259,70 @@ export default async function SchoolDetailPage({ params }) {
             </div>
           </section>
 
-          <section className="school-prototype-panel" id="admission-path">
+          <section className="school-datadesk-detail-panel" id="school-article">
             <p className="overview-label">正文与判断</p>
             <h2>学校详情正文</h2>
-            <div className="news-detail-markdown">
+            <div className="news-detail-markdown school-datadesk-detail-article">
               {renderSchoolMarkdown(articleBodyMarkdown)}
             </div>
           </section>
         </section>
 
-        <aside className="school-prototype-side">
-          <section className="school-prototype-side-card">
-            <p className="overview-label">学校速览</p>
-            <p>办学属性：{schoolAttribute}</p>
-            <p>培养方向：{trainingDirections.slice(0, 2).join('、') || '综合培养'}</p>
-            <p>核心关键词：{[...features.slice(0, 2), ...tags.slice(0, 2)].filter(Boolean).join('、') || '课程深度、校园节奏、区域关注'}</p>
+        <aside className="school-datadesk-detail-sidebar">
+          <section className="school-datadesk-detail-panel school-datadesk-detail-panel-dark">
+            <div className="school-datadesk-detail-sectionhead">
+              <p className="overview-label">学校速览</p>
+              <span>核心口径</span>
+            </div>
+            <dl className="school-datadesk-detail-facts">
+              {profileFacts.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
           </section>
 
-          <section className="school-prototype-side-card school-prototype-side-dark">
-            <p className="overview-label">同区学校</p>
+          <section className="school-datadesk-detail-panel">
+            <div className="school-datadesk-detail-sectionhead">
+              <p className="overview-label">培养与检索</p>
+              <span>数据库摘要</span>
+            </div>
+            <p className="school-datadesk-detail-sidecopy">培养方向：{trainingDirections.slice(0, 2).join('、') || '综合培养'}</p>
+            <p className="school-datadesk-detail-sidecopy">核心关键词：{[...features.slice(0, 2), ...tags.slice(0, 2)].filter(Boolean).join('、') || '课程深度、校园节奏、区域关注'}</p>
+            {serviceFacts.length ? (
+              <dl className="school-datadesk-detail-facts school-datadesk-detail-facts-compact">
+                {serviceFacts.map(([label, value]) => (
+                  <div key={label}>
+                    <dt>{label}</dt>
+                    <dd>{label === '官网' ? <a className="text-link" href={value} target="_blank" rel="noreferrer">{value}</a> : value}</dd>
+                  </div>
+                ))}
+              </dl>
+            ) : null}
+          </section>
+
+          <section className="school-datadesk-detail-panel">
+            <div className="school-datadesk-detail-sectionhead">
+              <p className="overview-label">同区学校</p>
+              <span>{getSchoolDistrictName(school)}</span>
+            </div>
             {districtPeers.length ? districtPeers.map((peer) => (
-              <Link key={peer.id} className="school-prototype-side-link" href={`/schools/${peer.id}`}>
-                • {peer.name}
+              <Link key={peer.id} className="school-datadesk-detail-peerlink" href={`/schools/${peer.id}`}>
+                <strong>{peer.name}</strong>
+                <span>{getSchoolStage(peer)} / {getSchoolOwnershipLabel(peer) || '学校信息'}</span>
               </Link>
             )) : (
               <>
-                <Link className="school-prototype-side-link" href={`/schools?district=${school.districtId}`}>• {getSchoolDistrictName(school)} 区学校列表</Link>
-                <Link className="school-prototype-side-link" href="/schools">• 学校信息汇总页</Link>
+                <Link className="school-datadesk-detail-peerlink" href={`/schools?district=${school.districtId}`}>
+                  <strong>{getSchoolDistrictName(school)} 区学校列表</strong>
+                  <span>返回该区学校数据库结果</span>
+                </Link>
+                <Link className="school-datadesk-detail-peerlink" href="/schools">
+                  <strong>学校信息汇总页</strong>
+                  <span>回到全市学校数据库</span>
+                </Link>
               </>
             )}
           </section>
@@ -252,8 +330,8 @@ export default async function SchoolDetailPage({ params }) {
       </main>
 
       <footer className="prototype-page-footer">
-        <span>上海升学观察 / 学校信息详情页</span>
-        <span>学校画像 / 招生路径 / 课程结构 / FAQ</span>
+        <span>上海学校数据库 / 学校详情页</span>
+        <span>学校画像 / 招生口径 / 同区比较 / 正文判断</span>
       </footer>
     </SiteShell>
   );
