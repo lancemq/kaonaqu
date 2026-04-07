@@ -3,6 +3,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import {
+  getNewsCardValueLine,
+  getNewsCardActionLabel,
+  getSchoolObservationTag,
+  getNewsSchoolCtaCopy,
+  getNewsSection,
+  shouldShowNewsSchoolCta
+} from '../lib/news-channel-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const NEWS_PATH = path.join(__dirname, '..', 'data', 'news.json');
@@ -24,6 +32,14 @@ function getLinkData(item) {
     schoolLinkReason: item.schoolLinkReason || '',
     schoolLinkConfidence: typeof item.schoolLinkConfidence === 'number' ? item.schoolLinkConfidence : null
   };
+}
+
+function findNewsItem(id) {
+  const item = newsById.get(id);
+  if (!item) {
+    errors.push(`missing news item ${id} for helper assertions`);
+  }
+  return item;
 }
 
 [
@@ -113,6 +129,112 @@ function getLinkData(item) {
     `schoolLinkConfidence should be null for ${spec.id}, found ${schoolLinkConfidence}`
   );
 });
+
+[
+  {
+    id: 'school-2026-shs-cross-disciplinary-teaching',
+    run(item) {
+      expect(
+        this.id,
+        getNewsSection(item) === 'school',
+        `getNewsSection should be school for ${this.id}`
+      );
+      expect(
+        this.id,
+        getSchoolObservationTag(item) === '教研与课程',
+        `getSchoolObservationTag should return 教研与课程 for ${this.id}`
+      );
+      expect(
+        this.id,
+        getNewsCardActionLabel(item) === '继续看这条的学校线索',
+        `getNewsCardActionLabel should return 继续看这条的学校线索 for ${this.id}`
+      );
+      const valueLine = String(getNewsCardValueLine(item) || '');
+      expect(
+        this.id,
+        valueLine.includes('学校'),
+        `getNewsCardValueLine for ${this.id} should mention 学校`
+      );
+      const schoolCta = getNewsSchoolCtaCopy(item);
+      expect(
+        this.id,
+        schoolCta && schoolCta.action === '查看学校详情',
+        `getNewsSchoolCtaCopy should return the school CTA for ${this.id}`
+      );
+    }
+  },
+  {
+    id: 'admission-2026-hsefz-sports-students-plan',
+    run(item) {
+      expect(
+        this.id,
+        getNewsSection(item) === 'admission',
+        `getNewsSection should be admission for ${this.id}`
+      );
+      expect(
+        this.id,
+        getNewsCardActionLabel(item) === '进去看完整安排',
+        `getNewsCardActionLabel should return 进去看完整安排 for ${this.id}`
+      );
+      expect(
+        this.id,
+        shouldShowNewsSchoolCta(item),
+        `shouldShowNewsSchoolCta should be true for ${this.id}`
+      );
+      const admissionCta = getNewsSchoolCtaCopy(item);
+      expect(
+        this.id,
+        admissionCta && admissionCta.action === '查看这所学校的招生与定位',
+        `getNewsSchoolCtaCopy should return the admission CTA for ${this.id}`
+      );
+    }
+  },
+  {
+    id: 'exam-2026-zhongzhao-opinion',
+    run(item) {
+      expect(
+        this.id,
+        getNewsSection(item) === 'exam',
+        `getNewsSection should be exam for ${this.id}`
+      );
+      expect(
+        this.id,
+        !shouldShowNewsSchoolCta(item),
+        `shouldShowNewsSchoolCta should be false for ${this.id}`
+      );
+      expect(
+        this.id,
+        getNewsSchoolCtaCopy(item) === null,
+        `getNewsSchoolCtaCopy should be null for ${this.id}`
+      );
+    }
+  }
+].forEach((spec) => {
+  const item = findNewsItem(spec.id);
+  if (!item) return;
+  spec.run(item);
+});
+
+const legacySchoolLike = {
+  id: 'legacy-school-like',
+  title: '这是一条学校官网发布的动态',
+  summary: '说明学校组织了一个教研活动',
+  category: '学校动态',
+  source: {
+    name: '某学校官网'
+  }
+};
+
+expect(
+  legacySchoolLike.id,
+  getNewsSection(legacySchoolLike) === 'school',
+  'getNewsSection should classify a legacy-shaped school-like item as school'
+);
+expect(
+  legacySchoolLike.id,
+  getNewsSchoolCtaCopy(legacySchoolLike) === null,
+  'getNewsSchoolCtaCopy should stay null for a legacy school-like item without linkage'
+);
 
 if (errors.length) {
   console.error('news school link checks failed:');
