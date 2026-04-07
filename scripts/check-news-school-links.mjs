@@ -158,6 +158,16 @@ function findNewsItem(id) {
       const schoolCta = getNewsSchoolCtaCopy(item);
       expect(
         this.id,
+        schoolCta && schoolCta.title === '这条新闻说明了这所学校什么',
+        `getNewsSchoolCtaCopy should return the school CTA title for ${this.id}`
+      );
+      expect(
+        this.id,
+        schoolCta && schoolCta.body.includes(getSchoolObservationTag(item)),
+        `getNewsSchoolCtaCopy should mention the observation tag for ${this.id}`
+      );
+      expect(
+        this.id,
         schoolCta && schoolCta.action === '查看学校详情',
         `getNewsSchoolCtaCopy should return the school CTA for ${this.id}`
       );
@@ -182,6 +192,16 @@ function findNewsItem(id) {
         `shouldShowNewsSchoolCta should be true for ${this.id}`
       );
       const admissionCta = getNewsSchoolCtaCopy(item);
+      expect(
+        this.id,
+        admissionCta && admissionCta.title === '这条招生安排和这所学校有什么关系',
+        `getNewsSchoolCtaCopy should return the admission CTA title for ${this.id}`
+      );
+      expect(
+        this.id,
+        admissionCta && admissionCta.body === '这条新闻已经明确提到具体学校，继续看学校页可以补齐办学定位、招生口径和公开特征。',
+        `getNewsSchoolCtaCopy should return the admission CTA body for ${this.id}`
+      );
       expect(
         this.id,
         admissionCta && admissionCta.action === '查看这所学校的招生与定位',

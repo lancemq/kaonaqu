@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
+import { getNewsSchoolCtaCopy, shouldShowNewsSchoolCta } from '../../../lib/news-channel-utils.mjs';
 import { readNewsMarkdownFile } from '../../../lib/news-content-files.mjs';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
@@ -180,7 +182,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function NewsDetailPage({ params }) {
-  const { news, policies } = await loadDataStore();
+  const { news, policies, schools } = await loadDataStore();
   const { id } = await params;
   const item = resolveNewsById(news, id);
 
@@ -190,6 +192,10 @@ export default async function NewsDetailPage({ params }) {
 
   const relatedPolicies = buildRelatedPolicies(policies, item);
   const relatedNews = buildRelatedNews(news, item);
+  const schoolsById = new Map(schools.map((school) => [school.id, school]));
+  const linkedSchool = item.primarySchoolId ? schoolsById.get(item.primarySchoolId) || null : null;
+  const schoolCta = getNewsSchoolCtaCopy(item);
+  const shouldRenderSchoolBridge = shouldShowNewsSchoolCta(item) && linkedSchool && schoolCta;
   const sourceName = item.source?.name || '未知来源';
   const articleType = getNewsCategoryLabel(item);
   const articleBodyMarkdown = readNewsMarkdownFile(item);
@@ -256,6 +262,23 @@ export default async function NewsDetailPage({ params }) {
               <p>{getAudienceLabel(item)}</p>
               <p>{getActionReminder(item)}</p>
             </section>
+
+            {shouldRenderSchoolBridge ? (
+              <section className="school-prototype-side-card news-detail-side-card news-detail-school-bridge">
+                <p className="overview-label">关联学校</p>
+                <div className="news-detail-school-bridge-copy">
+                  <p className="news-detail-school-bridge-title">{schoolCta.title}</p>
+                  <p className="news-detail-school-bridge-body">{schoolCta.body}</p>
+                </div>
+                <div className="news-detail-school-bridge-school">
+                  <span className="news-detail-school-bridge-school-label">已关联学校</span>
+                  <strong>{linkedSchool.name}</strong>
+                </div>
+                <Link className="button news-detail-school-bridge-link" href={`/schools/${linkedSchool.id}`}>
+                  {schoolCta.action}
+                </Link>
+              </section>
+            ) : null}
 
             {relatedPolicies.length ? (
               <section className="school-prototype-side-card news-detail-side-card">
