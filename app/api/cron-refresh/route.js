@@ -6,8 +6,6 @@ const fs = require('fs').promises;
 const os = require('os');
 const path = require('path');
 const { mergeDataStore } = require('../../../shared/data-store');
-const { hasSupabaseConfig } = require('../../../shared/supabase-store');
-const { hasBlobToken } = require('../../../shared/blob-data');
 
 function isAuthorized(request) {
   const expected = process.env.CRON_SECRET;
@@ -21,13 +19,6 @@ function isAuthorized(request) {
 export async function GET(request) {
   if (!isAuthorized(request)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  if (!hasSupabaseConfig() && !hasBlobToken()) {
-    return NextResponse.json(
-      { error: 'SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY 或 BLOB_READ_WRITE_TOKEN 至少需要配置一组' },
-      { status: 500 }
-    );
   }
 
   const runId = Date.now().toString(36);
@@ -63,8 +54,8 @@ export async function GET(request) {
         policies: result.processed.policies.length,
         news: result.processed.news.length
       },
-      storage: hasSupabaseConfig() ? 'supabase' : 'blob',
-      mode: 'incremental'
+      storage: 'local-file',
+      mode: 'replace-local'
     });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -1,9 +1,7 @@
 const fs = require('fs').promises;
 const fsSync = require('fs');
 const path = require('path');
-const { loadDataFromBlob, uploadDataToBlob, hasBlobToken } = require('./blob-data');
 const { buildDistricts } = require('./data-schema');
-const { hasSupabaseConfig, listRecords, replaceRecords, upsertRecords } = require('./supabase-store');
 
 function resolveDataDir() {
   const candidates = [
@@ -139,61 +137,11 @@ function ensureDatasets(data = {}) {
 
 async function loadDataStore() {
   const local = await loadLocalData().catch(() => ({ districts: [], schools: [], policies: [], news: [] }));
-
-  if (hasSupabaseConfig()) {
-    try {
-      const [schools, policies, news] = await Promise.all([
-        listRecords('schools'),
-        listRecords('policies'),
-        listRecords('news')
-      ]);
-
-      if (schools.length || policies.length || news.length) {
-        return ensureDatasets({
-          schools: mergeRecords(local.schools, schools),
-          policies: mergeRecords(local.policies, policies),
-          news: mergeRecords(local.news, news)
-        });
-      }
-    } catch (error) {
-      // Fall back when database is empty or temporarily unavailable.
-    }
-  }
-
-  if (hasBlobToken()) {
-    try {
-      const remote = await loadDataFromBlob();
-      if (remote) {
-        return ensureDatasets({
-          schools: mergeRecords(local.schools, remote.schools),
-          policies: mergeRecords(local.policies, remote.policies),
-          news: mergeRecords(local.news, remote.news)
-        });
-      }
-    } catch (error) {
-      // Fall back to local bundled data when Blob is empty or temporarily unavailable.
-    }
-  }
-
   return ensureDatasets(local);
 }
 
 async function saveDataStore(nextState) {
   const payload = ensureDatasets(nextState);
-
-  if (hasSupabaseConfig()) {
-    await Promise.all([
-      replaceRecords('schools', payload.schools),
-      replaceRecords('policies', payload.policies),
-      replaceRecords('news', payload.news)
-    ]);
-    return payload;
-  }
-
-  if (hasBlobToken()) {
-    await uploadDataToBlob(payload);
-    return payload;
-  }
 
   await Promise.all([
     writeLocalJson(DATASET_FILES.districts, payload.districts),
@@ -207,34 +155,6 @@ async function saveDataStore(nextState) {
 
 async function mergeDataStore(nextState) {
   const payload = ensureDatasets(nextState);
-
-  if (hasSupabaseConfig()) {
-    const current = await loadDataStore();
-    const merged = ensureDatasets({
-      schools: [...payload.schools, ...current.schools.filter((item) => !payload.schools.some((next) => next.id === item.id))],
-      policies: [...payload.policies, ...current.policies.filter((item) => !payload.policies.some((next) => next.id === item.id))],
-      news: [...payload.news, ...current.news.filter((item) => !payload.news.some((next) => next.id === item.id))]
-    });
-
-    await Promise.all([
-      upsertRecords('schools', payload.schools),
-      upsertRecords('policies', payload.policies),
-      upsertRecords('news', payload.news)
-    ]);
-
-    return merged;
-  }
-
-  if (hasBlobToken()) {
-    const current = await loadDataStore();
-    const merged = ensureDatasets({
-      schools: [...payload.schools, ...current.schools.filter((item) => !payload.schools.some((next) => next.id === item.id))],
-      policies: [...payload.policies, ...current.policies.filter((item) => !payload.policies.some((next) => next.id === item.id))],
-      news: [...payload.news, ...current.news.filter((item) => !payload.news.some((next) => next.id === item.id))]
-    });
-    await uploadDataToBlob(merged);
-    return merged;
-  }
 
   return saveDataStore(payload);
 }
