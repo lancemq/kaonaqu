@@ -545,7 +545,7 @@ git commit -m "feat: add school bridge to news detail pages"
 - Modify: `/Users/maqi/project/kaonaqu/docs/superpowers/plans/2026-04-07-news-channel-conversion.md`
 - Test: `/Users/maqi/project/kaonaqu/scripts/check-news-school-links.mjs`
 
-- [ ] **Step 1: Run the full verification suite**
+- [x] **Step 1: Run the full verification suite**
 
 Run: `node scripts/check-news-school-links.mjs`
 Expected: PASS with `news school-link regression checks passed`
@@ -559,7 +559,13 @@ Expected: PASS and write `tmp/visual-news/report.json`
 Run: `npm run build`
 Expected: PASS with a successful Next.js production build
 
-- [ ] **Step 2: Manually inspect the final routes in a browser**
+Results (2026-04-07):
+- `node scripts/check-news-school-links.mjs` passed (module type warning from Node ESM auto-detect).
+- `npm run data:validate` passed.
+- `node scripts/visual-check-news.mjs` passed and wrote `tmp/visual-news/report.json`.
+- `npm run build` passed.
+
+- [x] **Step 2: Manually inspect the final routes in a browser**
 
 Run: `PORT=3003 npm run dev`
 Expected: app starts on `http://127.0.0.1:3003`
@@ -575,7 +581,12 @@ Expected:
 - linked school detail pages show the school bridge before related content
 - unlinked generic exam detail pages do not show a school CTA
 
-- [ ] **Step 3: Update the plan checklist with any deviations**
+Notes:
+- A Next dev server was already running on port 3000, so a temporary 3003 to 3000 proxy was used for the visual check.
+- Manual inspection used Playwright against `http://127.0.0.1:3000` and confirmed the criteria.
+- Unlinked exam detail check used `http://127.0.0.1:3000/news/exam-2026-zhongzhao-opinion` (no school CTA).
+
+- [x] **Step 3: Update the plan checklist with any deviations**
 
 ```md
 <!-- /Users/maqi/project/kaonaqu/docs/superpowers/plans/2026-04-07-news-channel-conversion.md -->
@@ -583,6 +594,10 @@ Expected:
 - [x] Linked school CTA only appears on high-confidence items
 - [x] Generic exam news remains article-first with no forced school jump
 ```
+
+- [x] Verification complete on local build
+- [x] Linked school CTA only appears on high-confidence items
+- [x] Generic exam news remains article-first with no forced school jump
 
 - [ ] **Step 4: Commit the final verification state**
 
