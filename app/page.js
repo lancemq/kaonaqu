@@ -52,7 +52,7 @@ export default async function HomePage() {
     { date: '6月20日-21日', title: '上海中考笔试', description: '初三考生进行初中学业水平考试笔试。', href: '/news/exam-2026-zhongzhao-opinion' }
   ];
   const decisionEntries = [
-    { label: '上海中考', title: '今年中招怎么招，先从这里看明白', description: '报名、志愿、批次顺序和关键问答，适合家长先看全局。', href: '/news/zhongzhao-special' },
+    { label: '上海中考', title: '今年中招怎么招，先从这里看明白', description: '报名、志愿、批次顺序和关键问答，适合家长先看全局。', href: '/news/zhongkao-special' },
     { label: '上海高考', title: '春考、高考、成绩和录取节点一页看全', description: '把今年高招最容易错过的时间和政策集中放在一起。', href: '/news/gaokao-special' },
     { label: '上海学校', title: '哪所学校更适合孩子，先查真实信息', description: '按区县、学段和办学类型筛学校，少走弯路。', href: '/schools' },
     { label: '上海 16 区', title: '先看区，再看学校，择校会快很多', description: '不同区的学校资源和升学氛围差别很大，值得先看一眼。', href: '/schools/district/xuhui' }
@@ -138,7 +138,7 @@ export default async function HomePage() {
                   </article>
                 </div>
                 <div className="home-hero-route-strip" aria-label="首页快捷入口">
-                  <Link className="home-hero-route-link" href="/news/zhongzhao-special">
+                  <Link className="home-hero-route-link" href="/news/zhongkao-special">
                     <span>中考专题</span>
                     <strong>先看报名和批次</strong>
                   </Link>
