@@ -8317,3 +8317,583 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
         top: auto;
     }
 }
+
+.schools-datadesk-hero {
+    padding: 28px 30px 24px;
+    border: 1px solid rgba(38, 51, 68, 0.12);
+    background:
+        radial-gradient(circle at top right, rgba(114, 142, 174, 0.14), transparent 32%),
+        linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(234, 240, 246, 0.98));
+    box-shadow: 0 24px 48px rgba(20, 30, 44, 0.08);
+}
+
+.schools-datadesk-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.95fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.schools-datadesk-intro {
+    min-width: 0;
+    max-width: 900px;
+}
+
+.schools-datadesk-intro h1 {
+    margin: 10px 0 0;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.06em;
+}
+
+.schools-datadesk-subtitle {
+    max-width: 42rem;
+    margin: 14px 0 0;
+    color: #15202d;
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.schools-datadesk-description {
+    max-width: 45rem;
+    margin: 12px 0 0;
+    color: #52606f;
+    font-size: 0.95rem;
+    line-height: 1.72;
+}
+
+.schools-datadesk-search-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.schools-datadesk-search {
+    flex: 1;
+}
+
+.schools-datadesk-search .search-field-main {
+    background: transparent;
+}
+
+.schools-datadesk-button {
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid rgba(28, 45, 64, 0.18);
+    background: #182433;
+    color: #f7fafc;
+    font-weight: 700;
+    box-shadow: none;
+}
+
+.schools-datadesk-button:hover,
+.schools-datadesk-button:focus-visible {
+    background: #243548;
+    box-shadow: none;
+}
+
+.schools-datadesk-button-secondary {
+    width: 100%;
+    justify-content: center;
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(244, 248, 252, 0.08);
+    color: #f5f8fb;
+}
+
+.schools-datadesk-button-secondary:hover,
+.schools-datadesk-button-secondary:focus-visible {
+    background: rgba(244, 248, 252, 0.14);
+}
+
+.schools-datadesk-inline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.schools-datadesk-inline-meta span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border: 1px solid rgba(56, 74, 95, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.58);
+    color: #415164;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.schools-datadesk-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.schools-datadesk-summary-card {
+    display: grid;
+    gap: 6px;
+    min-height: 132px;
+    padding: 16px 16px 14px;
+    border: 1px solid rgba(38, 51, 68, 0.1);
+    background: rgba(251, 253, 255, 0.92);
+}
+
+.schools-datadesk-summary-card span {
+    color: #5d6977;
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.schools-datadesk-summary-card strong {
+    color: #102033;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: clamp(1.6rem, 2vw, 2rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.schools-datadesk-summary-card p {
+    margin: 0;
+    color: #566273;
+    font-size: 0.88rem;
+    line-height: 1.56;
+}
+
+.schools-datadesk-summary-card-strong {
+    background: linear-gradient(180deg, rgba(23, 35, 49, 0.98), rgba(33, 49, 68, 0.98));
+    border-color: rgba(17, 27, 39, 0.9);
+    box-shadow: 0 16px 32px rgba(16, 24, 36, 0.18);
+}
+
+.schools-datadesk-summary-card-strong span,
+.schools-datadesk-summary-card-strong p {
+    color: rgba(241, 245, 249, 0.74);
+}
+
+.schools-datadesk-summary-card-strong strong {
+    color: #f8fbff;
+}
+
+.schools-datadesk-summary-card-stack strong {
+    font-size: 1.3rem;
+    line-height: 1.22;
+}
+
+.schools-datadesk-statusbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 10px 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: #15202d;
+    color: #ecf2f9;
+}
+
+.schools-datadesk-statuslabel {
+    flex: 0 0 auto;
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(236, 242, 249, 0.66);
+}
+
+.schools-datadesk-layout {
+    display: grid;
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.schools-datadesk-sidebar,
+.schools-datadesk-results {
+    min-width: 0;
+    display: grid;
+    gap: 14px;
+}
+
+.schools-datadesk-sidebar {
+    position: sticky;
+    top: 24px;
+    align-content: start;
+}
+
+.schools-datadesk-panel {
+    display: grid;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid rgba(38, 51, 68, 0.09);
+    background: linear-gradient(180deg, rgba(252, 253, 255, 0.98), rgba(240, 245, 249, 0.98));
+    box-shadow: 0 10px 22px rgba(20, 30, 44, 0.05);
+}
+
+.schools-datadesk-panel-dark {
+    border-color: rgba(21, 32, 45, 0.96);
+    background: linear-gradient(180deg, rgba(20, 31, 43, 0.98), rgba(28, 42, 59, 0.98));
+    color: #f4f8fc;
+}
+
+.schools-datadesk-panel-dark .overview-label,
+.schools-datadesk-panel-dark p,
+.schools-datadesk-panel-dark span {
+    color: inherit;
+}
+
+.schools-datadesk-panel-dark .overview-label {
+    color: rgba(244, 248, 252, 0.68);
+}
+
+.schools-datadesk-panel-note p {
+    margin: 0;
+    color: #536171;
+    line-height: 1.68;
+}
+
+.schools-datadesk-panel-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.schools-datadesk-panel-head span {
+    color: #657384;
+    font-size: 0.82rem;
+}
+
+.schools-datadesk-controls {
+    display: grid;
+    gap: 10px;
+}
+
+.schools-datadesk-taggroup {
+    display: grid;
+    gap: 10px;
+}
+
+.schools-datadesk-tagrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.schools-datadesk-tag {
+    min-height: 32px;
+    padding: 0 11px;
+    border: 1px solid rgba(61, 78, 97, 0.12);
+    border-radius: 999px;
+    background: #f2f6fa;
+    color: #506071;
+    font-size: 0.82rem;
+    line-height: 1;
+    box-shadow: none;
+}
+
+.schools-datadesk-tag:hover,
+.schools-datadesk-tag:focus-visible {
+    background: #e7eef5;
+    box-shadow: none;
+}
+
+.schools-datadesk-tag-active {
+    border-color: #182433;
+    background: #182433;
+    color: #f7fafc;
+}
+
+.schools-datadesk-shortcuts,
+.schools-datadesk-districts {
+    display: grid;
+    gap: 8px;
+}
+
+.schools-datadesk-entry,
+.schools-datadesk-district {
+    display: grid;
+    gap: 4px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(24, 36, 51, 0.08);
+    color: inherit;
+    text-decoration: none;
+}
+
+.schools-datadesk-entry:first-child,
+.schools-datadesk-district:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.schools-datadesk-entry strong,
+.schools-datadesk-district strong {
+    color: #142333;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.38;
+    letter-spacing: -0.02em;
+}
+
+.schools-datadesk-entry span,
+.schools-datadesk-district span {
+    color: #627180;
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.schools-datadesk-results-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px;
+    padding: 4px 0 2px;
+}
+
+.schools-datadesk-results-head h2 {
+    margin: 6px 0 0;
+    color: #111d2a;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.12;
+    letter-spacing: -0.05em;
+}
+
+.schools-datadesk-results-head > p {
+    margin: 0;
+    max-width: 34rem;
+    color: #5b6876;
+    line-height: 1.62;
+    text-align: right;
+}
+
+.schools-datadesk-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid rgba(38, 51, 68, 0.1);
+    background: linear-gradient(180deg, rgba(249, 251, 253, 0.98), rgba(236, 242, 247, 0.98));
+}
+
+.schools-datadesk-metrics article {
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+    border-right: 1px solid rgba(38, 51, 68, 0.08);
+}
+
+.schools-datadesk-metrics article:last-child {
+    border-right: 0;
+}
+
+.schools-datadesk-metrics strong {
+    color: #122233;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.schools-datadesk-metrics span {
+    color: #5c6979;
+    font-size: 0.84rem;
+}
+
+.schools-datadesk-cardlist {
+    display: grid;
+    gap: 12px;
+}
+
+.schools-datadesk-card {
+    display: grid;
+    gap: 14px;
+    padding: 18px 20px;
+    border: 1px solid rgba(38, 51, 68, 0.1);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 246, 250, 0.98));
+    box-shadow: 0 14px 30px rgba(20, 30, 44, 0.05);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.schools-datadesk-card-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.schools-datadesk-card:hover,
+.schools-datadesk-card:focus-within {
+    transform: translateY(-2px);
+    border-color: rgba(29, 46, 65, 0.22);
+    box-shadow: 0 20px 40px rgba(20, 30, 44, 0.08);
+}
+
+.schools-datadesk-cardhead {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: start;
+}
+
+.schools-datadesk-cardkicker,
+.schools-datadesk-cardmeta {
+    color: #556474;
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.schools-datadesk-cardkicker {
+    margin: 0 0 8px;
+}
+
+.schools-datadesk-card h3 {
+    margin: 0;
+    color: #101d2b;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: clamp(1.12rem, 1.55vw, 1.38rem);
+    line-height: 1.14;
+    letter-spacing: -0.045em;
+}
+
+.schools-datadesk-cardmeta {
+    display: grid;
+    gap: 6px;
+    justify-items: end;
+    text-align: right;
+}
+
+.schools-datadesk-cardsummary {
+    margin: 0;
+    color: #4d5c6d;
+    line-height: 1.72;
+}
+
+.schools-datadesk-cardfooter {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: end;
+}
+
+.schools-datadesk-cardtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.schools-datadesk-cardtag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border: 1px solid rgba(53, 73, 95, 0.12);
+    border-radius: 999px;
+    background: #eef3f7;
+    color: #4b5b6d;
+    font-size: 0.8rem;
+    line-height: 1;
+}
+
+.schools-datadesk-cardtag-muted {
+    background: rgba(242, 246, 250, 0.7);
+    color: #728192;
+}
+
+.schools-datadesk-cardlink {
+    color: #182433;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.schools-datadesk-pager {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 0 0;
+    border-top: 1px solid rgba(38, 51, 68, 0.1);
+}
+
+.schools-datadesk-pager button {
+    min-width: 104px;
+    height: 38px;
+    padding: 0 14px;
+    border: 1px solid rgba(38, 51, 68, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(237, 242, 247, 0.98));
+    color: #172535;
+}
+
+.schools-datadesk-pager button:disabled {
+    opacity: 0.42;
+}
+
+.schools-datadesk-pager span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 132px;
+    min-height: 38px;
+    padding: 0 14px;
+    border: 1px solid rgba(38, 51, 68, 0.08);
+    background: rgba(245, 249, 252, 0.96);
+    color: #516171;
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    font-size: 0.82rem;
+}
+
+@media (max-width: 1080px) {
+    .schools-datadesk-hero-grid,
+    .schools-datadesk-layout,
+    .schools-datadesk-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .schools-datadesk-sidebar {
+        position: static;
+        top: auto;
+    }
+
+    .schools-datadesk-results-head,
+    .schools-datadesk-cardhead,
+    .schools-datadesk-cardfooter {
+        display: grid;
+        align-items: start;
+    }
+
+    .schools-datadesk-results-head > p,
+    .schools-datadesk-cardmeta {
+        text-align: left;
+        justify-items: start;
+    }
+}
+
+@media (max-width: 720px) {
+    .schools-datadesk-hero,
+    .schools-datadesk-statusbar {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .schools-datadesk-search-row,
+    .schools-datadesk-statusbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .schools-datadesk-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schools-datadesk-card,
+    .schools-datadesk-panel,
+    .schools-datadesk-metrics article {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
