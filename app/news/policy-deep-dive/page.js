@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
+import { readPolicyPlainText } from '../../../lib/policy-content-files.mjs';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
@@ -55,7 +56,7 @@ function isRenderablePolicy(policy, currentYear) {
 
 function getPolicySummary(policy) {
   const summary = sanitizePolicyText(policy.summary, policy.title);
-  const content = sanitizePolicyText(policy.content, policy.title);
+  const content = sanitizePolicyText(readPolicyPlainText(policy), policy.title);
   return clipText(summary || content || '暂无摘要', 160);
 }
 

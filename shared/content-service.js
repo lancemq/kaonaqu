@@ -7,6 +7,8 @@ const {
   validateRequired
 } = require('./data-schema');
 const { loadDataStore, updateDataStore } = require('./data-store');
+const fsSync = require('fs');
+const path = require('path');
 
 function sortByTimeDesc(items, field = 'updatedAt') {
   return items
@@ -30,6 +32,32 @@ function matchesQuery(fields, query) {
     .join(' ');
 
   return haystack.includes(normalizedQuery);
+}
+
+function stripMarkdown(markdown = '') {
+  return String(markdown || '')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/^\-\s+/gm, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function readPolicySearchText(policy) {
+  const filePath = cleanString(policy?.contentFile);
+  if (!filePath) {
+    return '';
+  }
+
+  try {
+    const absolutePath = path.join(process.cwd(), filePath);
+    if (!fsSync.existsSync(absolutePath)) {
+      return '';
+    }
+    return stripMarkdown(fsSync.readFileSync(absolutePath, 'utf8'));
+  } catch {
+    return '';
+  }
 }
 
 function pickDefined(raw = {}) {
@@ -194,7 +222,7 @@ async function listPolicies(filters = {}) {
       return false;
     }
 
-    return matchesQuery([policy.title, policy.summary, policy.content, policy.districtName], q);
+    return matchesQuery([policy.title, policy.summary, policy.districtName, readPolicySearchText(policy)], q);
   }), 'publishedAt');
 }
 

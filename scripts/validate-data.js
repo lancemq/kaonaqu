@@ -9,6 +9,7 @@ const {
 } = require('../shared/data-schema');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
+const ROOT_DIR = path.join(__dirname, '..');
 const VALID_DISTRICT_IDS = new Set(DISTRICT_CATALOG.map((district) => district.id));
 
 function readJson(filename) {
@@ -71,11 +72,17 @@ function validateSchools(schools) {
 
 function validatePolicies(policies) {
   const errors = [];
+  const seenIds = new Set();
 
   policies.forEach((policy, index) => {
-    validateRequired(policy, ['id', 'title', 'districtId', 'districtName', 'summary']).forEach((message) => {
+    validateRequired(policy, ['id', 'title', 'districtId', 'districtName', 'summary', 'contentFile']).forEach((message) => {
       errors.push(`policies[${index}]: ${message}`);
     });
+
+    if (seenIds.has(policy.id)) {
+      errors.push(`policies[${index}]: duplicate policy id ${policy.id}`);
+    }
+    seenIds.add(policy.id);
 
     if (policy.districtId !== 'all' && !VALID_DISTRICT_IDS.has(policy.districtId)) {
       errors.push(`policies[${index}]: invalid districtId ${policy.districtId}`);
@@ -85,6 +92,15 @@ function validatePolicies(policies) {
       const normalizedDistrictId = normalizeDistrictId(policy.districtName);
       if (normalizedDistrictId !== policy.districtId) {
         errors.push(`policies[${index}]: district mismatch ${policy.districtId} vs ${policy.districtName}`);
+      }
+    }
+
+    if (policy.contentFile) {
+      const contentPath = path.join(ROOT_DIR, policy.contentFile);
+      if (!fs.existsSync(contentPath)) {
+        errors.push(`policies[${index}]: missing content file ${policy.contentFile}`);
+      } else if (!fs.readFileSync(contentPath, 'utf8').trim()) {
+        errors.push(`policies[${index}]: empty content file ${policy.contentFile}`);
       }
     }
   });

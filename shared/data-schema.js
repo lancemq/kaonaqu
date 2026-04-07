@@ -249,7 +249,7 @@ function normalizePolicy(raw, index = 0) {
     districtName,
     year,
     summary: cleanString(raw.summary || raw.content),
-    content: cleanString(raw.content),
+    contentFile: cleanString(raw.contentFile || raw.content_file),
     source,
     publishedAt: raw.publishedAt || raw.publishDate || raw.date || null,
     updatedAt: raw.updatedAt || source.crawledAt || raw.publishDate || raw.date || null
