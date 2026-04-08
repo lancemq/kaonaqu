@@ -713,9 +713,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-summary-card-strong {
-    background: linear-gradient(180deg, rgba(23, 35, 49, 0.98), rgba(33, 49, 68, 0.98));
-    border-color: rgba(17, 27, 39, 0.9);
-    box-shadow: 0 16px 32px rgba(16, 24, 36, 0.18);
 }
 
 .schools-datadesk-summary-card-strong span,
@@ -739,9 +736,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     align-items: center;
     margin-bottom: 16px;
     padding: 10px 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    background: #15202d;
-    color: #ecf2f9;
 }
 
 .schools-datadesk-statuslabel {
@@ -1325,9 +1319,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     min-width: 0;
     display: grid;
     gap: 14px;
-}
-
-.school-datadesk-detail-sidebar {
     position: sticky;
     top: 24px;
     align-content: start;
@@ -1358,10 +1349,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-panel-dark {
-    border-color: rgba(17, 17, 17, 0.98);
-    background: linear-gradient(180deg, rgba(19, 18, 18, 0.98), rgba(29, 28, 26, 0.98));
-    color: #f2f3f0;
-    box-shadow: 0 18px 34px rgba(15, 13, 12, 0.24);
 }
 
 .school-datadesk-detail-panel-dark .overview-label,
@@ -1626,9 +1613,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .district-datadesk-summary-card-strong {
-    background: linear-gradient(180deg, rgba(23, 35, 49, 0.98), rgba(33, 49, 68, 0.98));
-    border-color: rgba(17, 27, 39, 0.9);
-    box-shadow: 0 16px 32px rgba(16, 24, 36, 0.18);
 }
 
 .district-datadesk-summary-card-strong span,
@@ -1647,8 +1631,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     align-items: center;
     margin-bottom: 16px;
     padding: 10px 30px;
-    background: #15202d;
-    color: #ecf2f9;
 }
 
 .district-datadesk-statuslabel {
@@ -1672,9 +1654,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     min-width: 0;
     display: grid;
     gap: 14px;
-}
-
-.district-datadesk-sidebar {
     position: sticky;
     top: 24px;
     align-content: start;
