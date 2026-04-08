@@ -9344,24 +9344,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "市重点分校",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "闵行区 高中 市重点分校",
-    "features": [],
+    "address": "上海市闵行区浦锦路138号",
+    "phone": "021-24066036",
+    "website": "https://www.shmeea.edu.cn/download/20220629/01zzzs/11.pdf",
+    "admissionNotes": "闵行区市重点分校，建议重点关注统一招生、自主招生、向明体系培养逻辑和闵行区位适配度。",
+    "features": [
+      "向明体系",
+      "市重点分校",
+      "研究性学习",
+      "综合素养培养"
+    ],
     "tags": [
       "高中",
-      "市重点分校"
+      "市重点分校",
+      "研究性学习"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市教育考试院",
+      "type": "official",
+      "url": "https://www.shmeea.edu.cn/download/20220629/01zzzs/11.pdf",
+      "crawledAt": "2026-04-08T12:40:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T12:40:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市向明中学浦江分校.md"
   },
