@@ -9017,11 +9017,11 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 
 .school-datadesk-detail-hero {
     padding: 28px 30px 24px;
-    border: 1px solid rgba(38, 51, 68, 0.12);
+    border: 1px solid rgba(17, 17, 17, 0.12);
     background:
-        radial-gradient(circle at top right, rgba(114, 142, 174, 0.14), transparent 32%),
-        linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(234, 240, 246, 0.98));
-    box-shadow: 0 24px 48px rgba(20, 30, 44, 0.08);
+        radial-gradient(circle at top right, rgba(227, 108, 46, 0.14), transparent 30%),
+        linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(244, 236, 226, 0.98));
+    box-shadow: 0 20px 40px rgba(32, 24, 17, 0.1);
 }
 
 .school-datadesk-detail-hero-grid {
@@ -9033,8 +9033,8 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 
 .school-datadesk-detail-main h1 {
     margin: 10px 0 0;
-    color: #101d2b;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    color: #1b1a18;
+    font-family: "Noto Serif SC", serif;
     font-size: clamp(2rem, 3.2vw, 3rem);
     line-height: 1.02;
     letter-spacing: -0.06em;
@@ -9043,7 +9043,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 .school-datadesk-detail-subtitle {
     max-width: 46rem;
     margin: 14px 0 0;
-    color: #1d2b39;
+    color: #5f5952;
     font-size: 1.02rem;
     font-weight: 700;
     line-height: 1.6;
@@ -9061,10 +9061,10 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     align-items: center;
     min-height: 30px;
     padding: 0 11px;
-    border: 1px solid rgba(56, 74, 95, 0.12);
+    border: 1px solid rgba(17, 17, 17, 0.1);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.6);
-    color: #435364;
+    background: #f5efe5;
+    color: #56504a;
     font-size: 0.8rem;
     font-weight: 600;
 }
@@ -9085,12 +9085,12 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     display: grid;
     gap: 8px;
     padding: 16px;
-    border: 1px solid rgba(38, 51, 68, 0.1);
-    background: rgba(251, 253, 255, 0.92);
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
 }
 
 .school-datadesk-detail-sidecard span {
-    color: #5d6977;
+    color: #5f5952;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.74rem;
     letter-spacing: 0.08em;
@@ -9098,8 +9098,8 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .school-datadesk-detail-sidecard strong {
-    color: #102033;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    color: #1b1a18;
+    font-family: "Noto Serif SC", serif;
     font-size: 1.18rem;
     line-height: 1.3;
     letter-spacing: -0.04em;
@@ -9107,23 +9107,25 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 
 .school-datadesk-detail-sidecard p {
     margin: 0;
-    color: #566273;
+    color: #5f5952;
     line-height: 1.6;
 }
 
 .school-datadesk-detail-sidecard-strong {
-    background: linear-gradient(180deg, rgba(23, 35, 49, 0.98), rgba(33, 49, 68, 0.98));
-    border-color: rgba(17, 27, 39, 0.9);
-    box-shadow: 0 16px 32px rgba(16, 24, 36, 0.18);
+    border-color: #111111;
+    background:
+        radial-gradient(circle at top right, rgba(227, 108, 46, 0.16), transparent 30%),
+        linear-gradient(180deg, #111111 0%, #1b1714 100%);
+    box-shadow: 0 16px 30px rgba(32, 24, 17, 0.2);
 }
 
 .school-datadesk-detail-sidecard-strong span,
 .school-datadesk-detail-sidecard-strong p {
-    color: rgba(241, 245, 249, 0.76);
+    color: rgba(242, 243, 240, 0.78);
 }
 
 .school-datadesk-detail-sidecard-strong strong {
-    color: #f8fbff;
+    color: #f7f4ed;
 }
 
 .school-datadesk-detail-gap {
@@ -9137,15 +9139,15 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 .school-datadesk-detail-stats {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    border: 1px solid rgba(38, 51, 68, 0.1);
-    background: linear-gradient(180deg, rgba(249, 251, 253, 0.98), rgba(236, 242, 247, 0.98));
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
 }
 
 .school-datadesk-detail-stats article {
     display: grid;
     gap: 6px;
     padding: 18px 24px;
-    border-right: 1px solid rgba(38, 51, 68, 0.08);
+    border-right: 1px solid rgba(17, 17, 17, 0.08);
 }
 
 .school-datadesk-detail-stats article:last-child {
@@ -9153,15 +9155,15 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .school-datadesk-detail-stats strong {
-    color: #122233;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    color: #1b1a18;
+    font-family: "Noto Serif SC", serif;
     font-size: 1.2rem;
     line-height: 1.3;
     letter-spacing: -0.04em;
 }
 
 .school-datadesk-detail-stats span {
-    color: #5c6979;
+    color: #5f5952;
     font-size: 0.82rem;
 }
 
@@ -9189,15 +9191,15 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     display: grid;
     gap: 14px;
     padding: 18px;
-    border: 1px solid rgba(38, 51, 68, 0.09);
-    background: linear-gradient(180deg, rgba(252, 253, 255, 0.98), rgba(240, 245, 249, 0.98));
-    box-shadow: 0 10px 22px rgba(20, 30, 44, 0.05);
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
+    box-shadow: 0 12px 24px rgba(32, 24, 17, 0.06);
 }
 
 .school-datadesk-detail-panel h2 {
     margin: 0;
-    color: #101d2b;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    color: #1b1a18;
+    font-family: "Noto Serif SC", serif;
     font-size: 1.42rem;
     line-height: 1.14;
     letter-spacing: -0.04em;
@@ -9205,14 +9207,15 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 
 .school-datadesk-detail-panel > p {
     margin: 0;
-    color: #516071;
+    color: #5f5952;
     line-height: 1.68;
 }
 
 .school-datadesk-detail-panel-dark {
-    border-color: rgba(21, 32, 45, 0.96);
-    background: linear-gradient(180deg, rgba(20, 31, 43, 0.98), rgba(28, 42, 59, 0.98));
-    color: #f7fbff;
+    border-color: rgba(17, 17, 17, 0.98);
+    background: linear-gradient(180deg, rgba(19, 18, 18, 0.98), rgba(29, 28, 26, 0.98));
+    color: #f2f3f0;
+    box-shadow: 0 18px 34px rgba(15, 13, 12, 0.24);
 }
 
 .school-datadesk-detail-panel-dark .overview-label,
@@ -9224,20 +9227,20 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 
 .school-datadesk-detail-panel-dark .overview-label,
 .school-datadesk-detail-panel-dark dt {
-    color: rgba(247, 251, 255, 0.9);
+    color: rgba(247, 244, 237, 0.9);
 }
 
 .school-datadesk-detail-panel-dark dd {
-    color: #ffffff;
+    color: #f7f4ed;
     font-weight: 600;
 }
 
 .school-datadesk-detail-panel-dark .school-datadesk-detail-sectionhead span {
-    color: rgba(247, 251, 255, 0.92);
+    color: rgba(247, 244, 237, 0.84);
 }
 
 .school-datadesk-detail-panel-dark .school-datadesk-detail-facts div {
-    border-top-color: rgba(247, 251, 255, 0.2);
+    border-top-color: rgba(247, 244, 237, 0.18);
 }
 
 .school-datadesk-detail-highlightgrid {
@@ -9250,12 +9253,12 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     display: grid;
     gap: 6px;
     padding: 14px;
-    border: 1px solid rgba(38, 51, 68, 0.08);
-    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    background: rgba(255, 252, 246, 0.82);
 }
 
 .school-datadesk-detail-highlightcard span {
-    color: #5d6977;
+    color: #5f5952;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.72rem;
     letter-spacing: 0.08em;
@@ -9263,7 +9266,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .school-datadesk-detail-highlightcard strong {
-    color: #122233;
+    color: #1b1a18;
     font-size: 0.94rem;
     line-height: 1.56;
 }
@@ -9276,7 +9279,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .school-datadesk-detail-sectionhead span {
-    color: #657384;
+    color: #5f5952;
     font-size: 0.82rem;
 }
 
@@ -9290,7 +9293,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     display: grid;
     gap: 4px;
     padding-top: 12px;
-    border-top: 1px solid rgba(38, 51, 68, 0.08);
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
 }
 
 .school-datadesk-detail-facts div:first-child {
@@ -9299,7 +9302,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .school-datadesk-detail-facts dt {
-    color: #617082;
+    color: #5f5952;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.72rem;
     letter-spacing: 0.08em;
@@ -9308,7 +9311,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 
 .school-datadesk-detail-facts dd {
     margin: 0;
-    color: #152535;
+    color: #1b1a18;
     line-height: 1.6;
 }
 
@@ -9320,7 +9323,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .school-datadesk-detail-panel-dark .school-datadesk-detail-fact-value {
-    color: #ffffff !important;
+    color: #f7f4ed !important;
     font-size: 1.08rem;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -9328,13 +9331,13 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .school-datadesk-detail-facts-compact dd {
-    color: #4f6071;
+    color: #5f5952;
     font-size: 0.92rem;
 }
 
 .school-datadesk-detail-sidecopy {
     margin: 0;
-    color: #516071;
+    color: #5f5952;
     line-height: 1.68;
 }
 
@@ -9342,7 +9345,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     display: grid;
     gap: 4px;
     padding: 10px 0;
-    border-top: 1px solid rgba(24, 36, 51, 0.08);
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
     color: inherit;
     text-decoration: none;
 }
@@ -9353,15 +9356,15 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .school-datadesk-detail-peerlink strong {
-    color: #142333;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    color: #1b1a18;
+    font-family: "Noto Serif SC", serif;
     font-size: 0.96rem;
     line-height: 1.4;
     letter-spacing: -0.02em;
 }
 
 .school-datadesk-detail-peerlink span {
-    color: #627180;
+    color: #5f5952;
     font-size: 0.82rem;
     line-height: 1.45;
 }
@@ -10407,24 +10410,35 @@ body[data-page="news"] .news-prototype-side-card > .overview-label {
 
 body[data-page="news"] .news-channel-focus-card,
 body[data-page="news"] .news-prototype-item-dark,
+body[data-page="news"] .news-prototype-list > :nth-child(2),
 body[data-page="news"] .news-special-side-card-dark,
 body[data-page="news"] .news-prototype-side-card-deep,
 body[data-page="news"] .school-prototype-side-card.news-detail-side-card-dark,
 body[data-page="news"] .news-detail-article-focus {
     border-color: #111111;
     background:
-        radial-gradient(circle at top right, rgba(227, 108, 46, 0.16), transparent 30%),
-        linear-gradient(180deg, #111111 0%, #1b1714 100%);
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.06), transparent 28%),
+        linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
     color: #f2f3f0;
 }
 
 body[data-page="news"] .news-channel-focus-card *,
 body[data-page="news"] .news-prototype-item-dark *,
+body[data-page="news"] .news-prototype-list > :nth-child(2) *,
 body[data-page="news"] .news-special-side-card-dark *,
 body[data-page="news"] .news-prototype-side-card-deep *,
 body[data-page="news"] .school-prototype-side-card.news-detail-side-card-dark *,
 body[data-page="news"] .news-detail-article-focus * {
     color: inherit;
+}
+
+body[data-page="news"] .news-prototype-list > :nth-child(2):hover,
+body[data-page="news"] .news-prototype-list > :nth-child(2):focus-visible {
+    border-color: #111111;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.06), transparent 28%),
+        linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+    color: #f2f3f0;
 }
 
 body[data-page="news"] .news-channel-status-bar {

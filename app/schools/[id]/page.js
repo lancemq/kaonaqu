@@ -237,10 +237,6 @@ export default async function SchoolDetailPage({ params }) {
                   <span className="school-datadesk-detail-chip">信息持续补充中</span>
                 )}
               </div>
-              <div className="school-datadesk-detail-actions">
-                <Link className="button button-secondary" href="/schools">返回学校数据库</Link>
-                <a className="button" href="#school-article">查看正文判断</a>
-              </div>
             </div>
             <aside className="school-datadesk-detail-sidehead">
               <article className="school-datadesk-detail-sidecard school-datadesk-detail-sidecard-strong">
