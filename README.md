@@ -184,9 +184,41 @@ npm run data:sync:supabase
 
 - `npm run crawl`
 - `npm run data:process`
+- `npm run data:schools:enrich:dry`
+- `npm run data:schools:enrich`
 - `npm run data:validate`
 - `npm run data:sync:supabase`
 - `npm start`
+
+## 学校详情补全
+
+学校详情 markdown 的统一补全入口为：
+
+- `scripts/enrich-school-markdown-unified.mjs`
+
+建议流程：
+
+1. 先预演范围（不写盘）：
+
+```bash
+npm run data:schools:enrich:dry
+```
+
+2. 确认后执行正式补全：
+
+```bash
+npm run data:schools:enrich
+```
+
+3. 完成后做全量校验：
+
+```bash
+npm run data:validate
+```
+
+按区县、条数、是否包含重点学校等参数说明见：
+
+- [docs/school-markdown-enrichment.md](/Users/maqi/project/kaonaqu/docs/school-markdown-enrichment.md)
 
 ## 本地调试示例
 
