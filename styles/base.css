@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@500;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@500;700;800&display=swap");
 
 :root {
     --bg: #f2f0ea;
@@ -74,6 +74,156 @@ body::after {
     border-radius: 50%;
     background: radial-gradient(circle, rgba(242, 125, 95, 0.12), rgba(242, 125, 95, 0));
     filter: blur(18px);
+}
+
+/* Shared Typography */
+.home-prototype-copy h1,
+.news-channel-hero-main h1,
+.news-detail-article-head h1,
+.news-detail-copy h1,
+.news-special-hero-main h1,
+.schools-datadesk-intro h1,
+.school-datadesk-detail-main h1,
+.district-datadesk-hero-main h1 {
+    margin: 10px 0 0;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.06em;
+}
+
+.home-editorial-section-head h2,
+.home-dark-band-head h2,
+.news-prototype-list-title h2,
+.news-detail-article-panel h2,
+.school-prototype-panel h2,
+.schools-datadesk-results-head h2,
+.district-datadesk-results-head h2,
+.school-datadesk-detail-panel h2 {
+    margin: 6px 0 0;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    line-height: 1.12;
+    letter-spacing: -0.05em;
+}
+
+.home-editorial-news-card h3,
+.home-dark-feature-card h3,
+.home-timeline-card h3,
+.home-school-featured-copy h3,
+.home-school-mini-copy h3,
+.home-editorial-side-card h3,
+.news-prototype-item h3,
+.news-prototype-focus-card h3,
+.news-channel-focus-card h2,
+.school-prototype-focus-card h2,
+.news-detail-focus-card h2,
+.news-glossary-card h3,
+.news-special-brief-card strong,
+.news-special-compact-card h3,
+.news-special-timeline-copy h3,
+.news-special-faq-body h3,
+.news-glossary-process-card h3,
+.news-glossary-relation-card h3,
+.schools-datadesk-card h3,
+.district-datadesk-card h3 {
+    margin: 0;
+    font-family: "Noto Serif SC", serif;
+    font-size: 1rem;
+    line-height: 1.24;
+    letter-spacing: -0.04em;
+}
+
+.home-prototype-copy .home-hero-description,
+.news-channel-subtitle,
+.school-prototype-subtitle,
+.schools-datadesk-subtitle,
+.schools-datadesk-description,
+.district-datadesk-subtitle,
+.district-datadesk-description,
+.school-datadesk-detail-subtitle {
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.news-channel-hero-main > p:last-of-type,
+.schools-datadesk-results-head > p,
+.district-datadesk-results-head > p,
+.schools-datadesk-cardsummary,
+.district-datadesk-cardsummary,
+.school-datadesk-detail-panel > p {
+    font-size: 0.95rem;
+    line-height: 1.68;
+}
+
+/* Shared Layout Primitives */
+.news-prototype-main,
+.news-prototype-side,
+.schools-datadesk-sidebar,
+.schools-datadesk-results,
+.district-datadesk-sidebar,
+.district-datadesk-results,
+.school-datadesk-detail-maincol,
+.school-datadesk-detail-sidebar {
+    min-width: 0;
+    display: grid;
+    gap: 14px;
+}
+
+.news-prototype-side,
+.schools-datadesk-sidebar,
+.district-datadesk-sidebar,
+.school-datadesk-detail-sidebar {
+    position: sticky;
+    top: 24px;
+    align-content: start;
+}
+
+.news-prototype-list-head,
+.schools-datadesk-results-head,
+.district-datadesk-results-head,
+.schools-datadesk-cardhead,
+.district-datadesk-cardhead,
+.schools-datadesk-cardfooter,
+.district-datadesk-cardfooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-prototype-list-head,
+.schools-datadesk-results-head,
+.district-datadesk-results-head,
+.schools-datadesk-cardfooter,
+.district-datadesk-cardfooter {
+    align-items: end;
+}
+
+.schools-datadesk-cardhead,
+.district-datadesk-cardhead {
+    align-items: start;
+}
+
+.schools-datadesk-inline-meta span,
+.district-datadesk-inline-meta span,
+.schools-datadesk-tag,
+.schools-datadesk-cardtag,
+.district-datadesk-cardtag,
+.school-datadesk-detail-chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+}
+
+.home-timeline-card,
+.home-school-featured-card,
+.home-school-mini-card,
+.home-school-topic-pill,
+.news-prototype-focus-card,
+.schools-datadesk-card,
+.district-datadesk-card,
+.schools-compare-datadesk-card {
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 a,

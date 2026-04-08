@@ -110,7 +110,6 @@ body[data-page="schools"] .district-datadesk-card h3,
 body[data-page="schools"] .district-datadesk-schoolitem strong,
 body[data-page="schools"] .school-datadesk-detail-peerlink strong {
     color: var(--schools-tone-text);
-    font-family: "Noto Serif SC", serif;
 }
 
 body[data-page="schools"] .schools-datadesk-subtitle,
@@ -559,11 +558,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 /* Migrated from base.css: Schools Channel Blocks */
 .schools-datadesk-hero {
     padding: 28px 30px 24px;
-    border: 1px solid rgba(38, 51, 68, 0.12);
-    background:
-        radial-gradient(circle at top right, rgba(114, 142, 174, 0.14), transparent 32%),
-        linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(234, 240, 246, 0.98));
-    box-shadow: 0 24px 48px rgba(20, 30, 44, 0.08);
 }
 
 .schools-datadesk-hero-grid {
@@ -579,17 +573,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-intro h1 {
-    margin: 10px 0 0;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(2rem, 3.2vw, 3rem);
-    line-height: 1.02;
-    letter-spacing: -0.06em;
 }
 
 .schools-datadesk-subtitle {
     max-width: 42rem;
     margin: 14px 0 0;
-    color: #15202d;
     font-size: 1.02rem;
     font-weight: 700;
     line-height: 1.55;
@@ -598,7 +586,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .schools-datadesk-description {
     max-width: 45rem;
     margin: 12px 0 0;
-    color: #52606f;
     font-size: 0.95rem;
     line-height: 1.72;
 }
@@ -617,9 +604,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .schools-datadesk-button {
     min-height: 44px;
     padding: 0 18px;
-    border: 1px solid rgba(28, 45, 64, 0.18);
-    background: #182433;
-    color: #f7fafc;
     font-weight: 700;
     box-shadow: none;
 }
@@ -633,9 +617,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .schools-datadesk-button-secondary {
     width: 100%;
     justify-content: center;
-    border-color: rgba(255, 255, 255, 0.14);
-    background: rgba(244, 248, 252, 0.08);
-    color: #f5f8fb;
 }
 
 .schools-datadesk-button-secondary:hover,
@@ -655,10 +636,7 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     align-items: center;
     min-height: 28px;
     padding: 0 10px;
-    border: 1px solid rgba(56, 74, 95, 0.12);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.58);
-    color: #415164;
     font-size: 0.8rem;
     font-weight: 600;
 }
@@ -685,12 +663,9 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     gap: 6px;
     min-height: 132px;
     padding: 16px 16px 14px;
-    border: 1px solid rgba(38, 51, 68, 0.1);
-    background: rgba(251, 253, 255, 0.92);
 }
 
 .schools-datadesk-summary-card span {
-    color: #5d6977;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.74rem;
     letter-spacing: 0.08em;
@@ -698,8 +673,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-summary-card strong {
-    color: #102033;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
     font-size: clamp(1.6rem, 2vw, 2rem);
     line-height: 1;
     letter-spacing: -0.05em;
@@ -707,21 +680,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .schools-datadesk-summary-card p {
     margin: 0;
-    color: #566273;
     font-size: 0.88rem;
     line-height: 1.56;
 }
 
 .schools-datadesk-summary-card-strong {
-}
-
-.schools-datadesk-summary-card-strong span,
-.schools-datadesk-summary-card-strong p {
-    color: rgba(241, 245, 249, 0.74);
-}
-
-.schools-datadesk-summary-card-strong strong {
-    color: #f8fbff;
 }
 
 .schools-datadesk-summary-card-stack strong {
@@ -744,7 +707,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     font-size: 0.74rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(236, 242, 249, 0.66);
 }
 
 .schools-datadesk-layout {
@@ -756,40 +718,13 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .schools-datadesk-sidebar,
 .schools-datadesk-results {
-    min-width: 0;
-    display: grid;
     gap: 14px;
-}
-
-.schools-datadesk-sidebar {
-    position: sticky;
-    top: 24px;
-    align-content: start;
 }
 
 .schools-datadesk-panel {
     display: grid;
     gap: 14px;
     padding: 16px;
-    border: 1px solid rgba(38, 51, 68, 0.09);
-    background: linear-gradient(180deg, rgba(252, 253, 255, 0.98), rgba(240, 245, 249, 0.98));
-    box-shadow: 0 10px 22px rgba(20, 30, 44, 0.05);
-}
-
-.schools-datadesk-panel-dark {
-    border-color: rgba(21, 32, 45, 0.96);
-    background: linear-gradient(180deg, rgba(20, 31, 43, 0.98), rgba(28, 42, 59, 0.98));
-    color: #f4f8fc;
-}
-
-.schools-datadesk-panel-dark .overview-label,
-.schools-datadesk-panel-dark p,
-.schools-datadesk-panel-dark span {
-    color: inherit;
-}
-
-.schools-datadesk-panel-dark .overview-label {
-    color: rgba(244, 248, 252, 0.68);
 }
 
 .schools-datadesk-panel-note p {
@@ -811,7 +746,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-panel-head span {
-    color: #657384;
     font-size: 0.82rem;
 }
 
@@ -871,13 +805,10 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-panel-meta span {
-    color: rgba(244, 248, 252, 0.68);
     font-size: 0.8rem;
 }
 
 .schools-datadesk-panel-meta strong {
-    color: #f7fbff;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
     font-size: 1rem;
     letter-spacing: -0.03em;
 }
@@ -891,10 +822,7 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .schools-datadesk-tag {
     min-height: 32px;
     padding: 0 11px;
-    border: 1px solid rgba(61, 78, 97, 0.12);
     border-radius: 999px;
-    background: #f2f6fa;
-    color: #506071;
     font-size: 0.82rem;
     line-height: 1;
     box-shadow: none;
@@ -904,12 +832,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .schools-datadesk-tag:focus-visible {
     background: #e7eef5;
     box-shadow: none;
-}
-
-.schools-datadesk-tag-active {
-    border-color: #182433;
-    background: #182433;
-    color: #f7fafc;
 }
 
 .schools-datadesk-shortcuts,
@@ -959,18 +881,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-results-head h2 {
-    margin: 6px 0 0;
-    color: #111d2a;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: 1.45rem;
-    line-height: 1.12;
-    letter-spacing: -0.05em;
 }
 
 .schools-datadesk-results-head > p {
     margin: 0;
     max-width: 34rem;
-    color: #5b6876;
     line-height: 1.62;
     text-align: right;
 }
@@ -978,8 +893,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .schools-datadesk-metrics {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    border: 1px solid rgba(38, 51, 68, 0.1);
-    background: linear-gradient(180deg, rgba(249, 251, 253, 0.98), rgba(236, 242, 247, 0.98));
 }
 
 .schools-datadesk-metrics article {
@@ -994,15 +907,12 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-metrics strong {
-    color: #122233;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
     font-size: 1.5rem;
     line-height: 1;
     letter-spacing: -0.05em;
 }
 
 .schools-datadesk-metrics span {
-    color: #5c6979;
     font-size: 0.84rem;
 }
 
@@ -1015,10 +925,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     display: grid;
     gap: 12px;
     padding: 16px 18px;
-    border: 1px solid rgba(38, 51, 68, 0.1);
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 246, 250, 0.98));
-    box-shadow: 0 14px 30px rgba(20, 30, 44, 0.05);
     transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
@@ -1035,17 +941,13 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-cardhead {
-    display: flex;
-    justify-content: space-between;
     gap: 18px;
-    align-items: start;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(38, 51, 68, 0.08);
 }
 
 .schools-datadesk-cardkicker,
 .schools-datadesk-cardmeta {
-    color: #556474;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.74rem;
     letter-spacing: 0.08em;
@@ -1057,12 +959,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-card h3 {
-    margin: 0;
-    color: #101d2b;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(1.12rem, 1.55vw, 1.38rem);
-    line-height: 1.14;
-    letter-spacing: -0.045em;
 }
 
 .schools-datadesk-cardmeta {
@@ -1075,17 +971,13 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .schools-datadesk-cardsummary {
     margin: 0;
-    color: #4d5c6d;
     max-width: 60ch;
     line-height: 1.64;
     font-size: 0.92rem;
 }
 
 .schools-datadesk-cardfooter {
-    display: flex;
-    justify-content: space-between;
     gap: 14px;
-    align-items: end;
 }
 
 .schools-datadesk-cardtags {
@@ -1095,14 +987,8 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .schools-datadesk-cardtag {
-    display: inline-flex;
-    align-items: center;
     min-height: 28px;
     padding: 0 10px;
-    border: 1px solid rgba(53, 73, 95, 0.12);
-    border-radius: 999px;
-    background: #eef3f7;
-    color: #4b5b6d;
     font-size: 0.76rem;
     line-height: 1;
 }
@@ -1157,11 +1043,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .school-datadesk-detail-hero {
     padding: 28px 30px 24px;
-    border: 1px solid rgba(17, 17, 17, 0.12);
-    background:
-        radial-gradient(circle at top right, rgba(227, 108, 46, 0.14), transparent 30%),
-        linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(244, 236, 226, 0.98));
-    box-shadow: 0 20px 40px rgba(32, 24, 17, 0.1);
 }
 
 .school-datadesk-detail-hero-grid {
@@ -1172,18 +1053,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-main h1 {
-    margin: 10px 0 0;
-    color: #1b1a18;
-    font-family: "Noto Serif SC", serif;
-    font-size: clamp(2rem, 3.2vw, 3rem);
-    line-height: 1.02;
-    letter-spacing: -0.06em;
 }
 
 .school-datadesk-detail-subtitle {
     max-width: 46rem;
     margin: 14px 0 0;
-    color: #5f5952;
     font-size: 1.02rem;
     font-weight: 700;
     line-height: 1.6;
@@ -1201,10 +1075,7 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     align-items: center;
     min-height: 30px;
     padding: 0 11px;
-    border: 1px solid rgba(17, 17, 17, 0.1);
     border-radius: 999px;
-    background: #f5efe5;
-    color: #56504a;
     font-size: 0.8rem;
     font-weight: 600;
 }
@@ -1225,12 +1096,9 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     display: grid;
     gap: 8px;
     padding: 16px;
-    border: 1px solid rgba(17, 17, 17, 0.1);
-    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
 }
 
 .school-datadesk-detail-sidecard span {
-    color: #5f5952;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.74rem;
     letter-spacing: 0.08em;
@@ -1238,8 +1106,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-sidecard strong {
-    color: #1b1a18;
-    font-family: "Noto Serif SC", serif;
     font-size: 1.18rem;
     line-height: 1.3;
     letter-spacing: -0.04em;
@@ -1247,25 +1113,7 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .school-datadesk-detail-sidecard p {
     margin: 0;
-    color: #5f5952;
     line-height: 1.6;
-}
-
-.school-datadesk-detail-sidecard-strong {
-    border-color: #111111;
-    background:
-        radial-gradient(circle at top right, rgba(227, 108, 46, 0.16), transparent 30%),
-        linear-gradient(180deg, #111111 0%, #1b1714 100%);
-    box-shadow: 0 16px 30px rgba(32, 24, 17, 0.2);
-}
-
-.school-datadesk-detail-sidecard-strong span,
-.school-datadesk-detail-sidecard-strong p {
-    color: rgba(242, 243, 240, 0.78);
-}
-
-.school-datadesk-detail-sidecard-strong strong {
-    color: #f7f4ed;
 }
 
 .school-datadesk-detail-gap {
@@ -1279,8 +1127,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .school-datadesk-detail-stats {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    border: 1px solid rgba(17, 17, 17, 0.1);
-    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
 }
 
 .school-datadesk-detail-stats article {
@@ -1295,15 +1141,12 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-stats strong {
-    color: #1b1a18;
-    font-family: "Noto Serif SC", serif;
     font-size: 1.2rem;
     line-height: 1.3;
     letter-spacing: -0.04em;
 }
 
 .school-datadesk-detail-stats span {
-    color: #5f5952;
     font-size: 0.82rem;
 }
 
@@ -1328,23 +1171,13 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     display: grid;
     gap: 14px;
     padding: 18px;
-    border: 1px solid rgba(17, 17, 17, 0.1);
-    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
-    box-shadow: 0 12px 24px rgba(32, 24, 17, 0.06);
 }
 
 .school-datadesk-detail-panel h2 {
-    margin: 0;
-    color: #1b1a18;
-    font-family: "Noto Serif SC", serif;
-    font-size: 1.42rem;
-    line-height: 1.14;
-    letter-spacing: -0.04em;
 }
 
 .school-datadesk-detail-panel > p {
     margin: 0;
-    color: #5f5952;
     line-height: 1.68;
 }
 
@@ -1386,12 +1219,9 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     display: grid;
     gap: 6px;
     padding: 14px;
-    border: 1px solid rgba(17, 17, 17, 0.08);
-    background: rgba(255, 252, 246, 0.82);
 }
 
 .school-datadesk-detail-highlightcard span {
-    color: #5f5952;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.72rem;
     letter-spacing: 0.08em;
@@ -1399,7 +1229,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-highlightcard strong {
-    color: #1b1a18;
     font-size: 0.94rem;
     line-height: 1.56;
 }
@@ -1412,7 +1241,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-sectionhead span {
-    color: #5f5952;
     font-size: 0.82rem;
 }
 
@@ -1435,7 +1263,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-facts dt {
-    color: #5f5952;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.72rem;
     letter-spacing: 0.08em;
@@ -1444,7 +1271,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .school-datadesk-detail-facts dd {
     margin: 0;
-    color: #1b1a18;
     line-height: 1.6;
 }
 
@@ -1464,13 +1290,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-facts-compact dd {
-    color: #5f5952;
     font-size: 0.92rem;
 }
 
 .school-datadesk-detail-sidecopy {
     margin: 0;
-    color: #5f5952;
     line-height: 1.68;
 }
 
@@ -1489,15 +1313,12 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .school-datadesk-detail-peerlink strong {
-    color: #1b1a18;
-    font-family: "Noto Serif SC", serif;
     font-size: 0.96rem;
     line-height: 1.4;
     letter-spacing: -0.02em;
 }
 
 .school-datadesk-detail-peerlink span {
-    color: #5f5952;
     font-size: 0.82rem;
     line-height: 1.45;
 }
@@ -1508,11 +1329,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .district-datadesk-hero {
     padding: 28px 30px 24px;
-    border: 1px solid rgba(38, 51, 68, 0.12);
-    background:
-        radial-gradient(circle at top right, rgba(114, 142, 174, 0.14), transparent 32%),
-        linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(234, 240, 246, 0.98));
-    box-shadow: 0 24px 48px rgba(20, 30, 44, 0.08);
 }
 
 .district-datadesk-hero-grid {
@@ -1523,18 +1339,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .district-datadesk-hero-main h1 {
-    margin: 10px 0 0;
-    color: #101d2b;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(2rem, 3.2vw, 3rem);
-    line-height: 1.02;
-    letter-spacing: -0.06em;
 }
 
 .district-datadesk-subtitle {
     max-width: 40rem;
     margin: 14px 0 0;
-    color: #1d2b39;
     font-size: 1.02rem;
     font-weight: 700;
     line-height: 1.58;
@@ -1543,7 +1352,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .district-datadesk-description {
     max-width: 46rem;
     margin: 12px 0 0;
-    color: #52606f;
     line-height: 1.72;
 }
 
@@ -1566,10 +1374,7 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     align-items: center;
     min-height: 28px;
     padding: 0 10px;
-    border: 1px solid rgba(56, 74, 95, 0.12);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.58);
-    color: #415164;
     font-size: 0.8rem;
     font-weight: 600;
 }
@@ -1585,12 +1390,9 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     gap: 6px;
     min-height: 132px;
     padding: 16px 16px 14px;
-    border: 1px solid rgba(38, 51, 68, 0.1);
-    background: rgba(251, 253, 255, 0.92);
 }
 
 .district-datadesk-summary-card span {
-    color: #5d6977;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.74rem;
     letter-spacing: 0.08em;
@@ -1598,8 +1400,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .district-datadesk-summary-card strong {
-    color: #102033;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
     font-size: clamp(1.4rem, 2vw, 1.9rem);
     line-height: 1.05;
     letter-spacing: -0.05em;
@@ -1607,21 +1407,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .district-datadesk-summary-card p {
     margin: 0;
-    color: #566273;
     font-size: 0.88rem;
     line-height: 1.56;
 }
 
 .district-datadesk-summary-card-strong {
-}
-
-.district-datadesk-summary-card-strong span,
-.district-datadesk-summary-card-strong p {
-    color: rgba(241, 245, 249, 0.74);
-}
-
-.district-datadesk-summary-card-strong strong {
-    color: #f8fbff;
 }
 
 .district-datadesk-statusbar {
@@ -1635,7 +1425,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .district-datadesk-statuslabel {
     flex: 0 0 auto;
-    color: rgba(236, 242, 249, 0.66);
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.74rem;
     letter-spacing: 0.08em;
@@ -1663,26 +1452,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     display: grid;
     gap: 14px;
     padding: 16px;
-    border: 1px solid rgba(38, 51, 68, 0.09);
-    background: linear-gradient(180deg, rgba(252, 253, 255, 0.98), rgba(240, 245, 249, 0.98));
-    box-shadow: 0 10px 22px rgba(20, 30, 44, 0.05);
-}
-
-.district-datadesk-panel-dark {
-    border-color: rgba(21, 32, 45, 0.96);
-    background: linear-gradient(180deg, rgba(20, 31, 43, 0.98), rgba(28, 42, 59, 0.98));
-    color: #f4f8fc;
-}
-
-.district-datadesk-panel-dark .overview-label,
-.district-datadesk-panel-dark p,
-.district-datadesk-panel-dark span,
-.district-datadesk-panel-dark strong {
-    color: inherit;
-}
-
-.district-datadesk-panel-dark .overview-label {
-    color: rgba(244, 248, 252, 0.68);
 }
 
 .district-datadesk-panel-head {
@@ -1693,7 +1462,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .district-datadesk-panel-head span {
-    color: #657384;
     font-size: 0.82rem;
 }
 
@@ -1791,18 +1559,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .district-datadesk-results-head h2 {
-    margin: 6px 0 0;
-    color: #111d2a;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: 1.42rem;
-    line-height: 1.12;
-    letter-spacing: -0.05em;
 }
 
 .district-datadesk-results-head p {
     margin: 0;
     max-width: 34rem;
-    color: #5b6876;
     line-height: 1.62;
     text-align: right;
 }
@@ -1817,9 +1578,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     display: grid;
     gap: 12px;
     padding: 16px 18px;
-    border: 1px solid rgba(38, 51, 68, 0.1);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 246, 250, 0.98));
-    box-shadow: 0 14px 30px rgba(20, 30, 44, 0.05);
     color: inherit;
     text-decoration: none;
     transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
@@ -1843,7 +1601,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .district-datadesk-cardkicker,
 .district-datadesk-cardmeta {
-    color: #556474;
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.74rem;
     letter-spacing: 0.08em;
@@ -1855,12 +1612,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 }
 
 .district-datadesk-card h3 {
-    margin: 0;
-    color: #101d2b;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(1.08rem, 1.45vw, 1.32rem);
-    line-height: 1.14;
-    letter-spacing: -0.045em;
 }
 
 .district-datadesk-cardmeta {
@@ -1873,7 +1624,6 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .district-datadesk-cardsummary {
     margin: 0;
-    color: #4d5c6d;
     max-width: 60ch;
     font-size: 0.92rem;
     line-height: 1.64;
@@ -1897,10 +1647,7 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     align-items: center;
     min-height: 28px;
     padding: 0 10px;
-    border: 1px solid rgba(53, 73, 95, 0.12);
     border-radius: 999px;
-    background: #eef3f7;
-    color: #4b5b6d;
     font-size: 0.76rem;
     line-height: 1;
 }
@@ -1921,19 +1668,15 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     display: grid;
     gap: 4px;
     padding: 14px 16px;
-    border: 1px solid rgba(38, 51, 68, 0.08);
-    background: rgba(255, 255, 255, 0.72);
     color: inherit;
     text-decoration: none;
 }
 
 .district-datadesk-schoolitem strong {
-    color: #142333;
     font-size: 0.98rem;
 }
 
 .district-datadesk-schoolitem span {
-    color: #627180;
     font-size: 0.82rem;
     line-height: 1.45;
 }

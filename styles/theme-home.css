@@ -7,10 +7,6 @@ body[data-page="home"] .home-prototype-grid {
 
 body[data-page="home"] .home-prototype-copy h1 {
     color: #0f2840;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(2rem, 3.2vw, 3rem);
-    line-height: 1.02;
-    letter-spacing: -0.06em;
 }
 
 body[data-page="home"] .home-hero-description {
@@ -53,14 +49,10 @@ body[data-page="home"] .home-school-mini-card:focus-visible {
 
 body[data-page="home"] .home-editorial-section-head h2 {
     color: #0f2840;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    letter-spacing: -0.05em;
 }
 
 body[data-page="home"] .home-dark-band-head h2 {
     color: #f3f8ff;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    letter-spacing: -0.05em;
 }
 
 /* Supporting Surfaces */
@@ -471,13 +463,9 @@ body[data-page="home"] .top-links a[href="/"] {
 }
 
 .home-dark-band-head h2 {
-    margin: 8px 0 0;
     max-width: 16em;
     color: #f2f3f0;
-    font-family: "Noto Serif SC", serif;
-    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
-    line-height: 1.12;
-    letter-spacing: -0.05em;
+    margin-top: 8px;
 }
 
 .home-dark-band-link {
@@ -525,10 +513,7 @@ body[data-page="home"] .top-links a[href="/"] {
 .home-dark-feature-card h3 {
     margin: 0;
     color: #f2f3f0;
-    font-family: "Noto Serif SC", serif;
-    font-size: 1.08rem;
     line-height: 1.35;
-    letter-spacing: -0.03em;
 }
 
 .home-dark-feature-card p:last-child {
@@ -616,11 +601,6 @@ body[data-page="home"] .top-links a[href="/"] {
 .home-school-featured-copy h3,
 .home-school-mini-copy h3,
 .home-editorial-side-card h3 {
-    margin: 0;
-    font-family: "Noto Serif SC", serif;
-    font-size: 1rem;
-    line-height: 1.24;
-    letter-spacing: -0.04em;
 }
 
 .home-editorial-news-card p:last-child,
@@ -663,7 +643,6 @@ body[data-page="home"] .top-links a[href="/"] {
     background: #fbf8f2;
     color: inherit;
     text-decoration: none;
-    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .home-timeline-card:hover,
@@ -683,11 +662,7 @@ body[data-page="home"] .top-links a[href="/"] {
 }
 
 .home-timeline-card h3 {
-    margin: 0;
-    font-family: "Noto Serif SC", serif;
-    font-size: 1rem;
     line-height: 1.28;
-    letter-spacing: -0.04em;
 }
 
 .home-timeline-card p:last-child {
@@ -709,7 +684,6 @@ body[data-page="home"] .top-links a[href="/"] {
     color: inherit;
     text-decoration: none;
     box-shadow: 0 8px 18px rgba(71, 58, 42, 0.04);
-    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .home-school-featured-card:hover,
@@ -784,9 +758,7 @@ body[data-page="home"] .top-links a[href="/"] {
 
 .home-school-featured-copy h3 {
     max-width: 10.5em;
-    font-size: clamp(1.3rem, 1.9vw, 1.7rem);
     line-height: 1.08;
-    letter-spacing: -0.05em;
 }
 
 .home-school-featured-meta {
@@ -820,9 +792,7 @@ body[data-page="home"] .top-links a[href="/"] {
 }
 
 .home-school-mini-copy h3 {
-    font-size: 0.98rem;
     line-height: 1.28;
-    letter-spacing: -0.03em;
 }
 
 .home-school-topic-strip {
@@ -839,7 +809,6 @@ body[data-page="home"] .top-links a[href="/"] {
     background: linear-gradient(180deg, rgba(255, 254, 250, 0.98), rgba(242, 236, 226, 0.94));
     color: inherit;
     text-decoration: none;
-    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .home-school-topic-pill:hover,
