@@ -9,25 +9,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 完全中学 民办",
-    "features": [],
+    "address": "上海市宝山区云上路29号",
+    "phone": "021-33711888",
+    "website": "https://bs.shwfl.edu.cn/",
+    "admissionNotes": "宝山区十二年一贯制民办学校，建议同步关注义务教育阶段民办报名、高中国内部招生安排，以及住宿和课程路径的具体说明。",
+    "features": [
+      "十二年一贯制",
+      "世外教育集团",
+      "外语特色",
+      "科技特色"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "国际化",
+      "双语"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海宝山区世外学校官网",
+      "type": "official",
+      "url": "https://bs.shwfl.edu.cn/",
+      "crawledAt": "2026-04-08T18:20:00+08:00",
+      "confidence": 0.96
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T18:20:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "外语特色",
+      "国际课程"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海宝山区世外学校.md"
@@ -71,7 +80,7 @@
       "人文综合",
       "国际课程"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/宝山区-上海大学附属中学.md"
   },
   {
@@ -85,24 +94,29 @@
     "schoolTypeLabel": "民办",
     "tier": "",
     "address": "金池路 169 号",
-    "phone": "",
+    "phone": "021-56127777",
     "website": "",
-    "admissionNotes": "宝山区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "宝山区民办完全中学，建议同步关注义务教育阶段民办报名、中学部办学稳定性以及课程衔接安排。",
+    "features": [
+      "完全中学",
+      "民办",
+      "校内衔接"
+    ],
     "tags": [
       "完全中学",
       "民办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海金瑞学校.md"
@@ -117,33 +131,41 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办学校",
     "tier": "",
-    "address": "宝山区祁华路260号",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据2025年招生计划整理，学校2024年启动复招，主打科技特色和外语特长，校区紧邻地铁7号线祁华路站。",
+    "address": "月浦镇塘南街52号",
+    "phone": "(021)56195474",
+    "website": "https://www.applysquare.com/institute-cn/S3431000141/",
+    "admissionNotes": "宝山区民办行中以人文与科技兼具的课程为主，建议对照教育局和学校公布的招生简章与收费说明，结合选课/课外、寄宿需求综合判断。",
     "features": [
       "科技特色",
       "外语特长",
-      "国际视野"
+      "国际视野",
+      "民办高中",
+      "区内招生关注",
+      "办学稳定性",
+      "民办完全中学",
+      "学术与综合拓展",
+      "区域衔接",
+      "多元社团"
     ],
     "tags": [
       "高中",
       "民办",
       "科技",
-      "外语特色"
+      "外语特色",
+      "区域重点"
     ],
     "source": {
-      "name": "国际学校网",
-      "type": "third_party",
-      "url": "https://www.guojixuexiao.org/school/shyax/news/1020085.html",
-      "crawledAt": "2026-03-21T12:00:00+08:00",
-      "confidence": 0.75
+      "name": "ApplySquare-上海民办行中中学",
+      "type": "directory",
+      "url": "https://www.applysquare.com/institute-cn/S3431000141/",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-21T12:00:00+08:00",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "科创竞赛",
-      "国际课程",
-      "外语特色"
+      "人文综合",
+      "科创竞技",
+      "升学规划"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海民办行中中学.md"
@@ -158,31 +180,43 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "宝山区罗新路707号",
-    "phone": "021-56860611",
-    "website": "",
-    "admissionNotes": "根据上海校讯中心整理，学校原为上海市罗店中学，现为区实验性示范性高中，也是宝山区北部代表性寄宿制高中之一。",
+    "address": "上海市宝山区罗新路707号",
+    "phone": "56863091-1334",
+    "website": "https://school.bsedu.org.cn/ldzx/",
+    "admissionNotes": "宝山罗店中学侧重美育+管乐与高校附属资源，实验性示范定位，建议按官网公布的寄宿/走读、艺术项目与招生政策综合判断。",
     "features": [
       "实验性示范性高中",
       "寄宿制",
-      "大学合作"
+      "大学合作",
+      "公办高中",
+      "高校附属资源",
+      "区域升学关注",
+      "实验性示范",
+      "高校附属",
+      "美育与管乐",
+      "寄宿"
     ],
     "tags": [
       "高中",
       "公办",
       "示范性高中",
-      "寄宿"
+      "寄宿",
+      "高校附属",
+      "艺术",
+      "附属"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16651",
-      "crawledAt": "2026-03-21T17:45:00+08:00",
-      "confidence": 0.75
+      "name": "上海师范大学附属罗店中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/ldzx/",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-21T17:45:00+08:00",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "寄宿管理"
+      "美育",
+      "人文综合",
+      "科创竞赛"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海师范大学附属宝山罗店中学.md"
@@ -197,25 +231,32 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 完全中学 公办",
-    "features": [],
+    "address": "上海市宝山区盘古路528号",
+    "phone": "021-56693191",
+    "website": "https://school.bsedu.org.cn/bgxsj/",
+    "admissionNotes": "宝山区公办九年一贯制学校，建议重点关注对口入学范围、中学部质量口碑以及“新优质学校”办学特色。",
+    "features": [
+      "九年一贯制",
+      "新优质学校",
+      "公办",
+      "文明单位"
+    ],
     "tags": [
       "完全中学",
-      "公办"
+      "公办",
+      "新优质学校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市宝钢新世纪学校官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/bgxsj/",
+      "crawledAt": "2026-04-08T18:20:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T18:20:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝钢新世纪学校.md"
@@ -230,25 +271,31 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 初中 公办",
-    "features": [],
+    "address": "上海市宝山区南陈路259号",
+    "phone": "021-66740133",
+    "website": "https://school.bsedu.org.cn/dcms/",
+    "admissionNotes": "宝山区公办初中，建议结合对口政策、学校足球特色和日常教学管理口径一起判断。",
+    "features": [
+      "公办初中",
+      "校园足球",
+      "素质教育示范校"
+    ],
     "tags": [
       "初中",
-      "公办"
+      "公办",
+      "足球特色"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市大场中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/dcms/",
+      "crawledAt": "2026-04-08T18:20:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T18:20:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区大场中学.md"
@@ -263,25 +310,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 初中 公办",
-    "features": [],
+    "address": "上海市宝山区国权北路468号",
+    "phone": "021-55031646",
+    "website": "https://school.bsedu.org.cn/gaojing3000/",
+    "admissionNotes": "宝山区公办初中，建议重点关注科技创新特色、交大附中委托管理背景以及对口入学安排。",
+    "features": [
+      "公办初中",
+      "科技教育特色",
+      "新优质学校",
+      "交大附中委托管理"
+    ],
     "tags": [
       "初中",
-      "公办"
+      "公办",
+      "科技特色",
+      "新优质学校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市宝山区高境镇第三中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/gaojing3000/app/info/doc/index.php/197",
+      "crawledAt": "2026-04-08T18:20:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T18:20:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "科创竞赛",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区高境第三中学.md"
@@ -296,25 +352,32 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 初中 公办",
-    "features": [],
+    "address": "上海市宝山区海滨五村10号",
+    "phone": "021-56163655",
+    "website": "https://school.bsedu.org.cn/hbez/",
+    "admissionNotes": "宝山区公办初中，建议结合对口入学口径、中考质量表现和学校科技活动特色一起比较。",
+    "features": [
+      "公办初中",
+      "科技活动",
+      "文明校园"
+    ],
     "tags": [
       "初中",
-      "公办"
+      "公办",
+      "科创活动"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市海滨第二中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/hbez/",
+      "crawledAt": "2026-04-08T18:20:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T18:20:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "科创竞赛",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区海滨中学.md"
@@ -329,25 +392,30 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
+    "address": "上海市宝山区虎林路565号",
+    "phone": "021-61735860",
     "website": "",
-    "admissionNotes": "宝山区 初中 公办",
-    "features": [],
+    "admissionNotes": "宝山区公办初中，建议结合对口入学安排、学校日常管理和区内公办初中比较一起看。",
+    "features": [
+      "公办初中",
+      "对口入学关注",
+      "校风管理"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/gqzszc_bsq/20210430/89a2752c77f246ec9af09e0e5804150d.html",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.94
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区虎林中学.md"
@@ -362,25 +430,31 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
+    "address": "上海市宝山区宝杨路480号",
+    "phone": "021-56115217",
     "website": "",
-    "admissionNotes": "宝山区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "宝山区完全中学，建议区分初中入学和高中培养口径，重点关注教育学院附属背景和贯通培养特点。",
+    "features": [
+      "完全中学",
+      "教育学院附属",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
-      "公办"
+      "公办",
+      "教育学院附属"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://sh.bendibao.com/edu/2021413/237284.shtm",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.76
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区教育学院附属学校.md"
@@ -395,26 +469,31 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
+    "address": "上海市宝山区东林路125号",
     "phone": "",
     "website": "",
-    "admissionNotes": "宝山区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "宝山区完全中学，建议重点关注校内衔接、实验学校定位以及义务教育阶段入学口径。",
+    "features": [
+      "完全中学",
+      "实验学校",
+      "教育学院系统"
+    ],
     "tags": [
       "完全中学",
       "公办",
       "实验"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://sh.bendibao.com/edu/2021413/237284.shtm",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.76
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区教育学院实验学校.md"
@@ -432,22 +511,27 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "宝山区 初中 公办",
-    "features": [],
+    "admissionNotes": "宝山区公办初中，建议重点看罗店片区入学口径、学校管理风格和区内公办初中对比。",
+    "features": [
+      "公办初中",
+      "片区入学关注",
+      "基础教学"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/gqzszc_bsq/20210430/89a2752c77f246ec9af09e0e5804150d.html",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.94
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区罗店中学.md"
@@ -465,22 +549,27 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "宝山区 初中 公办",
-    "features": [],
+    "admissionNotes": "宝山区公办初中，建议结合对口政策、校风管理和家长对学校稳定性的关注点一起看。",
+    "features": [
+      "公办初中",
+      "校风管理",
+      "区域比较"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/gqzszc_bsq/20210430/89a2752c77f246ec9af09e0e5804150d.html",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.88
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区庙行中学.md"
@@ -495,25 +584,30 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
+    "address": "上海市宝山区长江西路1888号",
+    "phone": "021-56994351",
     "website": "",
-    "admissionNotes": "宝山区 初中 公办",
-    "features": [],
+    "admissionNotes": "宝山区公办初中，建议结合对口入学、学校管理和区内公办初中梯队认知一起判断。",
+    "features": [
+      "公办初中",
+      "区域稳定办学",
+      "校风管理"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/gqzszc_bsq/20210430/89a2752c77f246ec9af09e0e5804150d.html",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.94
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区泗塘中学.md"
@@ -530,24 +624,29 @@
     "tier": "",
     "address": "",
     "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 完全中学 公办",
-    "features": [],
+    "website": "https://school.bsedu.org.cn/syzx/",
+    "admissionNotes": "宝山区完全中学，建议重点关注学校实验特色、初高中衔接和区内贯通培养路径。",
+    "features": [
+      "完全中学",
+      "实验学校",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
       "公办",
       "实验"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市宝山区淞谊中学官网",
+      "type": "official",
+      "url": "https://school.bsedu.org.cn/syzx/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.93
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区淞谊实验学校.md"
@@ -562,25 +661,30 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
+    "address": "上海市宝山区长江路860弄1号",
+    "phone": "021-56141800",
     "website": "",
-    "admissionNotes": "宝山区 初中 公办",
-    "features": [],
+    "admissionNotes": "宝山区公办初中，建议重点关注吴淞片区入学安排、学校稳定办学表现和家长实际口碑。",
+    "features": [
+      "公办初中",
+      "区域稳定办学",
+      "基础教学"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/gqzszc_bsq/20210430/89a2752c77f246ec9af09e0e5804150d.html",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.94
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区吴淞二中.md"
@@ -598,11 +702,13 @@
     "address": "宝山区瑞丰路630号",
     "phone": "18516155106",
     "website": "",
-    "admissionNotes": "根据上海校讯中心整理，学校是宝山区教育局直属九年一贯制公办学校，也是宝山区目前唯一以外国语命名的学校。",
+    "admissionNotes": "宝山区公办初中，建议重点关注外语特色课程、行知体系背景以及区内升学适配度。",
     "features": [
       "九年一贯",
       "外语特色",
-      "公办学校"
+      "公办学校",
+      "公办初中",
+      "行知体系"
     ],
     "tags": [
       "初中",
@@ -610,16 +716,17 @@
       "外语特色"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16240",
-      "crawledAt": "2026-03-21T17:45:00+08:00",
-      "confidence": 0.75
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-21T17:45:00+08:00",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区行知外国语学校-初中部.md"
@@ -637,11 +744,14 @@
     "address": "杨行镇杨鑫路388号",
     "phone": "021-66763136*8002",
     "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，杨泰实验中学依托九年一贯制办学，校内理化生实验室、报告厅和体育设施配置较完整。",
+    "admissionNotes": "宝山区公办初中，建议重点看片区入学口径、实验中学定位和学校整体管理节奏。",
     "features": [
       "九年一贯",
       "实验学校",
-      "设施完善"
+      "设施完善",
+      "公办初中",
+      "实验中学",
+      "片区入学关注"
     ],
     "tags": [
       "初中",
@@ -650,15 +760,16 @@
       "实验"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/15632",
-      "crawledAt": "2026-03-21T21:24:00+08:00",
-      "confidence": 0.75
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-21T21:24:00+08:00",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区杨泰实验中学.md"
@@ -706,26 +817,31 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
+    "address": "上海市宝山区庆安路25号",
     "phone": "",
     "website": "",
-    "admissionNotes": "宝山区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "宝山区完全中学，建议区分初中入学和高中培养路径，重点关注实验学校定位和校内衔接。",
+    "features": [
+      "完全中学",
+      "实验学校",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
       "公办",
       "实验"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区月浦实验学校.md"
@@ -743,22 +859,27 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "宝山区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "宝山区完全中学，建议重点关注九年一贯或贯通培养体验、校内衔接和片区就学便利度。",
+    "features": [
+      "完全中学",
+      "贯通培养",
+      "区域办学"
+    ],
     "tags": [
       "完全中学",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山区张庙学校.md"
@@ -776,23 +897,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "宝山区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "宝山区完全中学，建议重点关注学校实验属性、贯通培养节奏和区内家长实际评价。",
+    "features": [
+      "完全中学",
+      "实验学校",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
       "公办",
       "实验"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市宝山实验学校.md"
@@ -848,26 +974,35 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 完全中学 民办",
-    "features": [],
+    "address": "上海市宝山区岭南路1249弄288号",
+    "phone": "021-56812128",
+    "website": "https://www.021school.cn/schools/16981/",
+    "admissionNotes": "存志教育集团在宝山打造的实验校区，依托九年一贯和科技活动课程，兼顾双语表达与中高贯通衔接。",
+    "features": [
+      "九年一贯制",
+      "存志教育集团",
+      "STEAM实验",
+      "双语融合"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "实验"
+      "实验",
+      "公办",
+      "存志系"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市校讯中心",
+      "type": "official",
+      "url": "https://www.021school.cn/schools/16981/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.93
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "科创竞赛",
+      "外语强化"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市存志附属宝山实验学校.md"
@@ -885,11 +1020,13 @@
     "address": "上海市宝山区苏家浜路318号",
     "phone": "021-56177638",
     "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，顾村中学创办历史较早，当前初中部位于顾村板块，是宝山区顾村镇家长常关注的公办初中之一。",
+    "admissionNotes": "宝山区公办初中，建议结合顾村片区入学政策、学校管理和初中教学稳定性一起判断。",
     "features": [
       "公办初中",
       "顾村板块",
-      "历史较久"
+      "历史较久",
+      "片区入学关注",
+      "基础教学"
     ],
     "tags": [
       "初中",
@@ -898,15 +1035,16 @@
       "实验性示范"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16104",
-      "crawledAt": "2026-03-22T09:13:00+08:00",
-      "confidence": 0.75
+      "name": "上海市教育委员会",
+      "type": "official",
+      "url": "https://edu.sh.gov.cn/gqzszc_bsq/20210430/89a2752c77f246ec9af09e0e5804150d.html",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22T09:13:00+08:00",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市顾村中学-初中部.md"
@@ -958,11 +1096,13 @@
     "address": "上海市宝山区顾村镇菊太路1058号",
     "phone": "021-33912958",
     "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，刘行新华实验学校由刘行中学发展而来，校内实验室、录播室、心理辅导室等配置较完整，是顾村板块关注度较高的公办初中。",
+    "admissionNotes": "宝山区公办初中，建议重点关注学校实验属性、顾村片区入学安排和日常管理风格。",
     "features": [
       "实验学校",
       "顾村板块",
-      "设施完善"
+      "设施完善",
+      "公办初中",
+      "区域管理"
     ],
     "tags": [
       "初中",
@@ -971,15 +1111,16 @@
       "顾村"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16974",
-      "crawledAt": "2026-03-21T21:50:00+08:00",
-      "confidence": 0.75
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-21T21:50:00+08:00",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市刘行新华实验学校-初中部.md"
@@ -994,24 +1135,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "宝山区 高中 民办",
-    "features": [],
+    "address": "上海市宝山区苏家浜路211号",
+    "phone": "021-56699551",
+    "website": "https://www.peixunsj.cn/8248/",
+    "admissionNotes": "存志教育旗下的民办高中，强调高考与国际课程双轨并行、双语强化与班级分层，配套升学咨询与学生成长档案。",
+    "features": [
+      "民办高中",
+      "存志教育",
+      "高考+国际班",
+      "双语课程"
+    ],
     "tags": [
       "高中",
-      "民办"
+      "民办",
+      "升学"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海校讯中心 · 课程中心",
+      "type": "directory",
+      "url": "https://www.peixunsj.cn/8248/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.79
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T21:40:00+08:00",
+    "trainingDirections": [
+      "高考强化",
+      "国际升学",
+      "外语深化"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市民办存志高级中学.md"
   },
@@ -1161,26 +1312,31 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
+    "address": "上海市宝山区牡丹江路454弄100号",
     "phone": "",
     "website": "",
-    "admissionNotes": "宝山区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "宝山区完全中学，建议区分初中与高中口径，重点关注实验学校定位和校内衔接质量。",
+    "features": [
+      "完全中学",
+      "实验学校",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
       "公办",
       "实验"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市吴淞实验学校.md"
@@ -1223,7 +1379,7 @@
       "科创竞赛",
       "人文综合"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市吴淞中学.md"
   },
   {
@@ -1239,11 +1395,13 @@
     "address": "宝山区行知路180号",
     "phone": "021-66364930",
     "website": "",
-    "admissionNotes": "根据上海校讯中心整理，学校在陶行知教育思想基础上办学，是宝山区兼具初高中学段的特色学校，强调“求真创造”与实验行知。",
+    "admissionNotes": "宝山区公办初中，建议重点关注行知教育理念、区内对口安排和学校整体教学管理节奏。",
     "features": [
       "陶行知特色",
       "完全中学",
-      "公办初中"
+      "公办初中",
+      "行知教育理念",
+      "基础教学"
     ],
     "tags": [
       "初中",
@@ -1252,15 +1410,16 @@
       "实验"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16979",
-      "crawledAt": "2026-03-21T17:10:00+08:00",
-      "confidence": 0.75
+      "name": "学校公开招生信息",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T19:10:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-21T17:10:00+08:00",
+    "updatedAt": "2026-04-08T19:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市行知实验中学-初中部.md"
@@ -1305,7 +1464,7 @@
       "人文综合",
       "国际课程"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/baoshan-上海市行知中学.md"
   },
   {
@@ -1351,25 +1510,33 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "崇明区 高中 市重点",
-    "features": [],
+    "address": "上海市崇明区陈家镇雪雁路300号",
+    "phone": "021-39300269",
+    "website": "https://jjc.shnu.edu.cn/8b/a0/c29206a756640/page.htm",
+    "admissionNotes": "崇明区实验系高中，建议重点关注生态岛定位、科创实践课程和寄宿管理体验。",
+    "features": [
+      "实验学校体系",
+      "生态科创",
+      "寄宿管理"
+    ],
     "tags": [
       "高中",
       "市重点",
       "实验"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校公开页面",
+      "type": "official",
+      "url": "https://jjc.shnu.edu.cn/8b/a0/c29206a756640/page.htm",
+      "crawledAt": "2026-04-08T22:50:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T22:50:00+08:00",
+    "trainingDirections": [
+      "科创竞赛",
+      "人文综合",
+      "寄宿管理"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/chongming-上海实验学校东滩高级中学.md"
   },
@@ -1417,23 +1584,29 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-59611550",
     "website": "",
-    "admissionNotes": "崇明区 高中 区重点",
-    "features": [],
+    "admissionNotes": "崇明区区重点高中，建议重点关注统一招生分数、区位通勤和学校整体管理风格。",
+    "features": [
+      "区重点高中",
+      "区域稳定办学",
+      "基础教学"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/chongming-上海市崇明区城桥中学.md"
   },
@@ -1514,7 +1687,7 @@
       "人文综合",
       "艺术特色"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/chongming-上海市崇明区崇明中学.md"
   },
   {
@@ -1627,23 +1800,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-59622819",
     "website": "",
-    "admissionNotes": "崇明区 高中 区重点",
-    "features": [],
+    "admissionNotes": "崇明区区重点高中，建议结合区域生源结构、学校管理和往年录取情况一起判断。",
+    "features": [
+      "区重点高中",
+      "区域稳定办学"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/chongming-上海市崇明区民本中学.md"
   },
@@ -2013,11 +2191,14 @@
     "address": "崇明区陈家镇1518号",
     "phone": "400-060-0103",
     "website": "",
-    "admissionNotes": "根据公开校区地址与课程介绍整理，学校高中阶段提供国际高中路径，近年在海外大学录取方面曝光度较高。",
+    "admissionNotes": "崇明区民办双语高中，建议重点关注双语课程路径、升学方向和学费信息。",
     "features": [
       "国际高中",
       "升学指导",
-      "寄宿"
+      "寄宿",
+      "民办双语高中",
+      "双语课程",
+      "国际化表达"
     ],
     "tags": [
       "高中",
@@ -2026,16 +2207,17 @@
       "国际课程"
     ],
     "source": {
-      "name": "培训世界",
-      "type": "third_party",
-      "url": "https://www.peixunsj.cn/1947/campus.html",
-      "crawledAt": "2026-03-21T12:00:00+08:00",
-      "confidence": 0.75
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T22:50:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-21T12:00:00+08:00",
+    "updatedAt": "2026-04-08T22:50:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "寄宿管理"
+      "寄宿管理",
+      "外语特色"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/chongming-上海新纪元双语学校-高中部.md"
@@ -2087,26 +2269,35 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "学校公开条目",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据维基百科上海学校公开条目整理。",
-    "features": [],
+    "address": "上海市奉贤区八字桥路686号",
+    "phone": "021-67100588",
+    "website": "https://www.125school.com/xuexiao279/lianxi.html",
+    "admissionNotes": "博华双语(帕丁顿)是一所12年一贯制寄宿学校，AP/IB、STEAM与艺术/体育并行，建议配合招生简章和住宿档次说明评估。",
+    "features": [
+      "寄宿制",
+      "三体系国际课程",
+      "STEAM与艺术",
+      "中西文化融合"
+    ],
     "tags": [
       "初中",
-      "双语"
+      "双语",
+      "民办",
+      "寄宿",
+      "国际课程"
     ],
     "source": {
-      "name": "维基百科",
-      "type": "third_party",
-      "url": "https://zh.wikipedia.org/wiki/%E4%B8%8A%E6%B5%B7%E5%8D%9A%E5%8D%8E%E5%8F%8C%E8%AF%AD%E5%AD%A6%E6%A0%A1",
-      "crawledAt": "2026-03-08T03:00:25.664Z",
-      "confidence": 0.75
+      "name": "125国际教育-上海奉贤区博华双语学校",
+      "type": "directory",
+      "url": "https://www.125school.com/xuexiao279/lianxi.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.78
     },
-    "updatedAt": "2026-03-08T03:00:25.664Z",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养"
+      "AP/IB",
+      "STEAM/工程",
+      "艺术与体育"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/奉贤区-上海博华双语学校.md"
@@ -2153,23 +2344,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-57522810",
     "website": "",
-    "admissionNotes": "奉贤区 高中 区重点",
-    "features": [],
+    "admissionNotes": "奉贤区区重点高中，建议重点看统一招生录取口径、校风管理和区域适配度。",
+    "features": [
+      "区重点高中",
+      "区域稳定办学"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/fengxian-上海市奉贤区奉城高级中学.md"
   },
@@ -2184,7 +2380,7 @@
     "schoolTypeLabel": "市重点分校",
     "tier": "",
     "address": "望园路德学路 66 号",
-    "phone": "",
+    "phone": "021-57470870",
     "website": "",
     "admissionNotes": "奉贤区 高中 市重点分校",
     "features": [],
@@ -2193,13 +2389,13 @@
       "市重点分校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:40:00+08:00",
     "trainingDirections": [],
     "profileDepth": "foundation",
     "contentFile": "content/schools/fengxian-上海市奉贤区格致中学.md"
@@ -2316,24 +2512,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "奉贤区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "奉贤区外语特色学校，建议重点关注外语课程、学段衔接和区域就学便利度。",
+    "features": [
+      "外语特色",
+      "课程融合"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "外语特色"
+      "外语特色",
+      "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/fengxian-上海市奉贤区明德外国语小学.md"
@@ -2421,23 +2622,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-57123665",
     "website": "",
-    "admissionNotes": "奉贤区 高中 区重点",
-    "features": [],
+    "admissionNotes": "奉贤区区重点高中，建议重点关注学校整体管理、区位通勤与往年录取表现。",
+    "features": [
+      "区重点高中",
+      "区域稳定办学"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/fengxian-上海市奉贤区曙光中学.md"
   },
@@ -2520,24 +2726,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "奉贤区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "奉贤区外语特色学校，建议重点关注双语表达、学校管理和学段承接。",
+    "features": [
+      "外语特色",
+      "课程融合"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "外语特色"
+      "外语特色",
+      "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/fengxian-上海市奉贤区阳光外国语学校.md"
@@ -2694,24 +2905,29 @@
     "schoolTypeLabel": "公办",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-37192020",
     "website": "",
-    "admissionNotes": "奉贤区 初中 公办",
-    "features": [],
+    "admissionNotes": "奉贤区公办初中，建议重点关注奉贤中学附属资源、对口入学口径和区内公办初中比较。",
+    "features": [
+      "公办初中",
+      "名校附属",
+      "区域关注"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T23:35:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/fengxian-上海市奉贤中学附属初中.md"
@@ -2727,24 +2943,29 @@
     "schoolTypeLabel": "公办",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-33611096",
     "website": "",
-    "admissionNotes": "奉贤区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "奉贤区完全中学，建议区分初中入学和高中培养口径，重点关注奉贤中学附属背景和贯通培养路径。",
+    "features": [
+      "完全中学",
+      "奉贤中学附属",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T23:35:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/fengxian-上海市奉贤中学附属三官堂学校.md"
@@ -2785,9 +3006,10 @@
     "updatedAt": "2026-04-08T10:30:00+08:00",
     "trainingDirections": [
       "科创竞赛",
-      "人文综合"
+      "人文综合",
+      "寄宿管理"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/fengxian-上海市格致中学奉贤校区.md"
   },
   {
@@ -2966,23 +3188,31 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-55120908",
     "website": "",
-    "admissionNotes": "虹口区 高中 区重点",
-    "features": [],
+    "admissionNotes": "虹口区区重点高中，建议重点关注高校附属背景、区域升学适配度和学校管理节奏。",
+    "features": [
+      "区重点高中",
+      "高校附属",
+      "区域关注"
+    ],
     "tags": [
       "高中",
-      "区重点"
+      "区重点",
+      "高校附属"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海师范大学附属虹口中学.md"
   },
@@ -3101,24 +3331,31 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
+    "address": "上海市虹口区曲阳路497号",
+    "phone": "021-65073555",
     "website": "",
-    "admissionNotes": "虹口区 高中 市重点",
-    "features": [],
+    "admissionNotes": "虹口区市重点高中，建议结合统一招生、自主招生和学校整体学风、管理节奏一起看。",
+    "features": [
+      "市重点高中",
+      "区域头部",
+      "稳定办学"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://tw.chahaoba.com/021-65073555",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.74
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海市北郊高级中学.md"
   },
@@ -3191,9 +3428,10 @@
     "updatedAt": "2026-04-08T10:30:00+08:00",
     "trainingDirections": [
       "科创竞赛",
-      "人文综合"
+      "人文综合",
+      "寄宿管理"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海市复兴高级中学.md"
   },
   {
@@ -3207,23 +3445,30 @@
     "schoolTypeLabel": "市重点分校",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-65603868",
     "website": "",
-    "admissionNotes": "虹口区 高中 市重点分校",
-    "features": [],
+    "admissionNotes": "虹口区市重点分校，建议重点关注复兴体系资源、分校定位和区内高中比较。",
+    "features": [
+      "市重点分校",
+      "复兴体系",
+      "区域比较"
+    ],
     "tags": [
       "高中",
       "市重点分校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海市复兴高级中学分校.md"
   },
@@ -3311,23 +3556,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-56967029",
     "website": "",
-    "admissionNotes": "虹口区 高中 区重点",
-    "features": [],
+    "admissionNotes": "虹口区区重点高中，建议结合校风管理、区位通勤和录取分数变化一起判断。",
+    "features": [
+      "区重点高中",
+      "区域稳定办学"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海市虹口高级中学.md"
   },
@@ -3449,23 +3699,31 @@
     "schoolTypeLabel": "市特色普通高中",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-65421650",
     "website": "",
-    "admissionNotes": "虹口区 高中 市特色普通高中",
-    "features": [],
+    "admissionNotes": "虹口区特色高中，建议重点关注华一体系、科创与人文并重的课程气质，以及自主招生路径。",
+    "features": [
+      "特色普通高中",
+      "高校附属",
+      "课程创新"
+    ],
     "tags": [
       "高中",
-      "市特色普通高中"
+      "市特色普通高中",
+      "高校附属"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "科创竞赛",
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海市华东师范大学第一附属中学.md"
   },
@@ -3513,23 +3771,29 @@
     "schoolTypeLabel": "市重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-65610868",
     "website": "",
-    "admissionNotes": "虹口区 高中 市重点",
-    "features": [],
+    "admissionNotes": "虹口区市重点高中，建议重点关注学校历史底蕴、人文气质和统一招生录取口径。",
+    "features": [
+      "市重点高中",
+      "人文底蕴",
+      "稳定办学"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海市鲁迅中学.md"
   },
@@ -3546,24 +3810,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "虹口区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "虹口区民办外语学校，建议重点关注外语课程、民办报名和课程稳定性。",
+    "features": [
+      "民办学校",
+      "外语特色"
+    ],
     "tags": [
       "完全中学",
       "民办",
       "外语特色"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海市民办克勒外国语学校.md"
@@ -3770,27 +4038,32 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "虹口区 完全中学 市重点",
-    "features": [],
+    "address": "上海市虹口区中山北一路295号",
+    "phone": "021-65423105",
+    "website": "https://www.sfls.cn/",
+    "admissionNotes": "虹口区头部完全中学，建议重点关注外语特色、保送/推荐传统和不同学部培养路径。",
+    "features": [
+      "外语特色",
+      "完全中学",
+      "上外附属"
+    ],
     "tags": [
       "完全中学",
       "市重点",
       "外语特色"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T22:50:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T23:35:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上海外国语大学附属外国语学校.md"
@@ -3808,23 +4081,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "虹口区 高中 民办",
-    "features": [],
+    "admissionNotes": "虹口区国际课程高中，建议重点关注 A-Level/国际课程路径、语言要求和学费成本。",
+    "features": [
+      "国际课程",
+      "A-Level",
+      "上外体系"
+    ],
     "tags": [
       "高中",
       "民办",
-      "外语特色"
+      "外语特色",
+      "国际课程"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
-      "外语特色"
+      "外语特色",
+      "国际课程"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上外立泰剑桥.md"
@@ -3839,27 +4118,36 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "虹口区 高中 民办",
-    "features": [],
+    "address": "上海市虹口区东体育会路390号",
+    "phone": "400-9609-559",
+    "website": "https://www.guojixuexiao.org/school/swxd/",
+    "admissionNotes": "上海外国语大学贤达学院整体运营的国际课程中心，以A-Level、AP、BC与日本EJU为主轴，并为国内外升学提供贯通式指导。",
+    "features": [
+      "A-Level",
+      "AP",
+      "BC课程",
+      "日本EJU"
+    ],
     "tags": [
       "高中",
       "民办",
-      "外语特色"
+      "外语特色",
+      "国际课程",
+      "双语",
+      "升学通道"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "国际教育联盟 / 课程中心介绍",
+      "type": "directory",
+      "url": "https://www.guojixuexiao.org/school/swxd/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.8
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "外语特色"
+      "外语特色",
+      "A-Level"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/hongkou-上外贤达贤德国际课程中心.md"
@@ -4073,23 +4361,29 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63281242",
     "website": "",
-    "admissionNotes": "黄浦区 高中 区重点",
-    "features": [],
+    "admissionNotes": "黄浦区区重点高中，建议结合学校整体管理、历史底蕴和黄浦区内高中比较一起看。",
+    "features": [
+      "区重点高中",
+      "历史底蕴",
+      "区域比较"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市储能中学.md"
   },
@@ -4132,7 +4426,7 @@
       "人文综合",
       "国际课程"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市大同中学.md"
   },
   {
@@ -4146,23 +4440,30 @@
     "schoolTypeLabel": "市重点分校",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63031800",
     "website": "",
-    "admissionNotes": "黄浦区 高中 市重点分校",
-    "features": [],
+    "admissionNotes": "黄浦区市重点分校，建议重点关注大同体系资源、分校定位和区内高中整体比较。",
+    "features": [
+      "市重点分校",
+      "大同体系",
+      "区域比较"
+    ],
     "tags": [
       "高中",
       "市重点分校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市大同中学分校.md"
   },
@@ -4176,24 +4477,31 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "黄浦区 高中 市重点",
-    "features": [],
+    "address": "上海市黄浦区广西北路66号",
+    "phone": "021-63510228",
+    "website": "https://gezhi.hpe.cn/",
+    "admissionNotes": "黄浦区市重点高中，建议重点关注格致历史底蕴、理科传统和统一招生/自招口径。",
+    "features": [
+      "市重点高中",
+      "历史名校",
+      "理科传统"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "格致中学官网",
+      "type": "official",
+      "url": "https://gezhi.hpe.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "科创竞赛",
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市格致中学.md"
   },
@@ -4241,23 +4549,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63530822",
     "website": "",
-    "admissionNotes": "黄浦区 高中 区重点",
-    "features": [],
+    "admissionNotes": "黄浦区高中，建议重点关注学校录取口径、区域位置和往年升学表现。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市黄浦区大境中学.md"
   },
@@ -4272,24 +4585,28 @@
     "schoolTypeLabel": "公办",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63130018",
     "website": "",
-    "admissionNotes": "黄浦区 初中 公办",
-    "features": [],
+    "admissionNotes": "黄浦区公办初中，建议重点关注对口入学安排、大同体系背景和初中阶段教学管理。",
+    "features": [
+      "公办初中",
+      "名校体系"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T23:35:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市黄浦区大同初级中学.md"
@@ -4305,24 +4622,28 @@
     "schoolTypeLabel": "公办",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63280458",
     "website": "",
-    "admissionNotes": "黄浦区 初中 公办",
-    "features": [],
+    "admissionNotes": "黄浦区公办初中，建议重点关注初中入学口径、格致体系背景和家长实际口碑。",
+    "features": [
+      "公办初中",
+      "名校体系"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:40:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市黄浦区格致初级中学.md"
@@ -4338,23 +4659,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63112487",
     "website": "",
-    "admissionNotes": "黄浦区 高中 区重点",
-    "features": [],
+    "admissionNotes": "黄浦区区重点高中，建议结合区内高中比较、录取位次和学校管理节奏一起看。",
+    "features": [
+      "区重点高中",
+      "区域比较"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市黄浦区光明中学.md"
   },
@@ -4402,23 +4728,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63268017",
     "website": "",
-    "admissionNotes": "黄浦区 高中 区重点",
-    "features": [],
+    "admissionNotes": "黄浦区高中，建议重点关注学校整体办学稳定性、区位与录取走势。",
+    "features": [
+      "高中",
+      "稳定办学"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市黄浦区敬业中学.md"
   },
@@ -4565,23 +4896,30 @@
     "schoolTypeLabel": "市重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63014127",
     "website": "",
-    "admissionNotes": "黄浦区 高中 市重点",
-    "features": [],
+    "admissionNotes": "黄浦区市重点高中，建议重点关注学校整体录取口径、区位通勤和往年分数表现。",
+    "features": [
+      "市重点高中",
+      "区域头部",
+      "稳定办学"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市卢湾高级中学.md"
   },
@@ -4729,23 +5067,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63210616",
     "website": "",
-    "admissionNotes": "黄浦区 高中 区重点",
-    "features": [],
+    "admissionNotes": "黄浦区区重点高中，建议结合区内高中录取口径、学校稳定办学表现和通勤便利度一起判断。",
+    "features": [
+      "区重点高中",
+      "稳定办学"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市市十中学.md"
   },
@@ -4760,24 +5103,29 @@
     "schoolTypeLabel": "公办",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-63866642",
     "website": "",
-    "admissionNotes": "黄浦区 初中 公办",
-    "features": [],
+    "admissionNotes": "黄浦区公办初中，建议结合对口入学口径、向明体系背景和区内优质初中比较一起判断。",
+    "features": [
+      "公办初中",
+      "名校体系",
+      "区域关注"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T23:35:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市向明初级中学.md"
@@ -4820,7 +5168,7 @@
       "科创竞赛",
       "艺术特色"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/huangpu-上海市向明中学.md"
   },
   {
@@ -5020,7 +5368,7 @@
       "人文综合",
       "艺术特色"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/jiading-上海交通大学附属中学嘉定分校.md"
   },
   {
@@ -5034,23 +5382,31 @@
     "schoolTypeLabel": "市重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-59500910",
     "website": "",
-    "admissionNotes": "嘉定区 高中 市重点",
-    "features": [],
+    "admissionNotes": "嘉定区高中，建议重点关注上师大附属背景、区位与录取口径，以及分校培养路径。",
+    "features": [
+      "高中",
+      "高校附属",
+      "分校资源"
+    ],
     "tags": [
       "高中",
-      "市重点"
+      "市重点",
+      "高校附属"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jiading-上海师范大学附属中学嘉定新城分校.md"
   },
@@ -5099,23 +5455,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-59531931",
     "website": "",
-    "admissionNotes": "嘉定区 高中 区重点",
-    "features": [],
+    "admissionNotes": "嘉定区高中，建议重点关注区内高中梯队位置、录取分数和学校管理风格。",
+    "features": [
+      "高中",
+      "区域比较"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jiading-上海市嘉定二中.md"
   },
@@ -5130,23 +5491,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-69578531",
     "website": "",
-    "admissionNotes": "嘉定区 高中 区重点",
-    "features": [],
+    "admissionNotes": "嘉定区高中，建议重点关注录取口径、区域位置和学校整体稳定性。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jiading-上海市嘉定区安亭高级中学.md"
   },
@@ -5161,23 +5527,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-59579615",
     "website": "",
-    "admissionNotes": "嘉定区 高中 区重点",
-    "features": [],
+    "admissionNotes": "嘉定区高中，建议结合安亭片区就读便利度、学校管理和录取表现一起看。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jiading-上海市嘉定区安亭中学.md"
   },
@@ -5370,23 +5741,28 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-59122225",
     "website": "",
-    "admissionNotes": "嘉定区 高中 区重点",
-    "features": [],
+    "admissionNotes": "嘉定区高中，建议结合南翔片区区位、录取分数变化和学校教学管理一起判断。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jiading-上海市嘉定区南翔中学.md"
   },
@@ -5515,24 +5891,30 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "嘉定区 高中 市重点",
-    "features": [],
+    "address": "上海市嘉定区嘉行公路701号",
+    "phone": "021-69983668",
+    "website": "http://www.jdyz.com/",
+    "admissionNotes": "嘉定区市重点高中，建议重点关注统一招生、自主招生口径和嘉定区位适配度。",
+    "features": [
+      "市重点高中",
+      "嘉定头部高中"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海校讯中心",
+      "type": "directory",
+      "url": "https://www.021school.cn/schools/16662",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.88
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:35:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jiading-上海市嘉定一中.md"
   },
@@ -5614,27 +5996,31 @@
     "address": "上海市嘉定区胜竹路1630号",
     "phone": "021-69900168",
     "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，民办远东学校为嘉定区规模较大的民办寄宿制学校，涵盖小学、初中、高中，并开设双语班。",
+    "admissionNotes": "嘉定区民办学校，建议区分初中与高中学段，重点关注民办报名、课程特色和学费信息。",
     "features": [
       "寄宿制",
       "双语班",
-      "多学段办学"
+      "多学段办学",
+      "民办学校",
+      "完全中学",
+      "课程路径"
     ],
     "tags": [
       "民办",
       "双语",
       "国际化",
       "寄宿",
-      "初中 / 高中"
+      "初中 / 高中",
+      "完全中学"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16670",
-      "crawledAt": "2026-03-22T09:54:00+08:00",
-      "confidence": 0.77
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T22:55:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22T09:54:00+08:00",
+    "updatedAt": "2026-04-08T22:55:00+08:00",
     "trainingDirections": [
       "国际课程",
       "寄宿管理",
@@ -5654,23 +6040,31 @@
     "schoolTypeLabel": "市重点分校",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-69960019",
     "website": "",
-    "admissionNotes": "嘉定区 高中 市重点分校",
-    "features": [],
+    "admissionNotes": "嘉定区高中，建议重点关注延安体系资源、分校定位和区内高中比较。",
+    "features": [
+      "高中",
+      "名校分校",
+      "区域比较"
+    ],
     "tags": [
       "高中",
-      "市重点分校"
+      "市重点分校",
+      "名校分校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jiading-上海市延安中学新城分校.md"
   },
@@ -5685,7 +6079,7 @@
     "schoolTypeLabel": "公办",
     "tier": "",
     "address": "安亭镇",
-    "phone": "",
+    "phone": "021-69517239",
     "website": "",
     "admissionNotes": "嘉定区 初中 公办",
     "features": [],
@@ -5695,13 +6089,13 @@
       "实验"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:40:00+08:00",
     "trainingDirections": [
       "贯通培养"
     ],
@@ -5790,24 +6184,32 @@
     "schoolTypeLabel": "市重点",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-67267302",
     "website": "",
-    "admissionNotes": "金山区 高中 市重点",
-    "features": [],
+    "admissionNotes": "金山区高中，建议重点关注华师大系资源、区位适配度和学校整体录取口径。",
+    "features": [
+      "高中",
+      "高校附属",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "市重点",
-      "附属学校"
+      "附属学校",
+      "高校附属"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jinshan-上海市华师大三附中.md"
   },
@@ -5895,21 +6297,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "金山区 高中 区重点",
-    "features": [],
+    "admissionNotes": "金山区高中，建议重点看学校稳定办学、区域位置和往年录取表现。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:55:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jinshan-上海市金山区枫泾中学.md"
   },
@@ -5926,22 +6333,27 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "金山区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "金山区完全中学，建议区分初高中学段，重点关注教研院附属背景与贯通培养路径。",
+    "features": [
+      "完全中学",
+      "教育学院附属",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jinshan-上海市金山区金教院附属学校.md"
@@ -6058,24 +6470,30 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "金山区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "金山区民办双语学校，建议重点关注双语课程路径、民办报名口径和学费信息。",
+    "features": [
+      "民办双语学校",
+      "外语特色",
+      "课程融合"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "外语特色"
+      "外语特色",
+      "双语"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "国际课程"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jinshan-上海市金山区世界外国语学校.md"
@@ -6093,21 +6511,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "金山区 高中 区重点",
-    "features": [],
+    "admissionNotes": "金山区高中，建议重点关注区域录取口径、学校稳定办学与通勤便利度。",
+    "features": [
+      "高中",
+      "区域稳定办学"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:55:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jinshan-上海市金山区亭林中学.md"
   },
@@ -6157,21 +6580,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "金山区 高中 区重点",
-    "features": [],
+    "admissionNotes": "金山区高中，建议结合区位、录取分数和学校管理节奏一起比较。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:55:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jinshan-上海市金山区朱泾中学.md"
   },
@@ -6512,24 +6940,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "根据公开整理文章，列为静安区 A 梯队初中。",
-    "features": [],
+    "admissionNotes": "静安区外语特色初中，建议重点关注对口/民办路径、外语课程和学校管理风格。",
+    "features": [
+      "外语特色",
+      "初中"
+    ],
     "tags": [
       "外语特色",
       "初中",
       "A梯队"
     ],
     "source": {
-      "name": "双子学爸数据社（搜狐）",
-      "type": "third_party",
-      "url": "https://www.sohu.com/a/877366353_121911157",
-      "crawledAt": "2026-03-06T00:00:00.000Z",
-      "confidence": 0.75
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-06T00:00:00.000Z",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jingan-静安外国语中学.md"
@@ -6707,7 +7139,7 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "沪太路 1000 号",
-    "phone": "",
+    "phone": "021-56631322",
     "website": "",
     "admissionNotes": "静安区 完全中学 区重点",
     "features": [],
@@ -6716,13 +7148,13 @@
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:40:00+08:00",
     "trainingDirections": [
       "贯通培养"
     ],
@@ -6808,21 +7240,27 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "静安区 高中 市重点",
-    "features": [],
+    "admissionNotes": "静安区市重点高中，建议重点关注统一招生、自主招生和学校整体学风节奏。",
+    "features": [
+      "市重点高中",
+      "静安头部高中"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:55:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jingan-上海市静安区市西中学.md"
   },
@@ -6872,21 +7310,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "静安区 高中 市重点",
-    "features": [],
+    "admissionNotes": "静安区高中，建议结合录取口径、区位和学校稳定办学表现综合判断。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:55:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jingan-上海市静安区新中高级中学.md"
   },
@@ -6903,21 +7346,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "静安区 高中 市重点",
-    "features": [],
+    "admissionNotes": "静安区高中，建议重点看育才传统、学校管理与区内高中整体比较。",
+    "features": [
+      "高中",
+      "历史底蕴"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:55:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jingan-上海市静安区育才中学.md"
   },
@@ -6932,7 +7380,7 @@
     "schoolTypeLabel": "区重点",
     "tier": "",
     "address": "场中路 3000 号",
-    "phone": "",
+    "phone": "021-56622586",
     "website": "",
     "admissionNotes": "根据维基百科上海学校公开条目整理。",
     "features": [],
@@ -6942,13 +7390,13 @@
       "完全中学"
     ],
     "source": {
-      "name": "维基百科",
-      "type": "third_party",
-      "url": "https://zh.wikipedia.org/wiki/%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%97%B8%E5%8C%97%E7%AC%AC%E5%85%AB%E4%B8%AD%E5%AD%A6",
-      "crawledAt": "2026-03-08T03:00:28.391Z",
-      "confidence": 0.75
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:40:00+08:00",
     "trainingDirections": [
       "贯通培养"
     ],
@@ -7063,24 +7511,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "静安区 初中 民办",
-    "features": [],
+    "admissionNotes": "静安区民办外语初中，建议重点关注外语课程、民办报名和区内初中比较。",
+    "features": [
+      "民办初中",
+      "外语特色"
+    ],
     "tags": [
       "初中",
       "民办",
       "外语特色"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jingan-上海市民办扬波外国语中学.md"
@@ -7124,7 +7576,7 @@
       "科创竞赛",
       "艺术特色"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/jingan-上海市市北中学.md"
   },
   {
@@ -7138,7 +7590,7 @@
     "schoolTypeLabel": "公办",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-62580753",
     "website": "",
     "admissionNotes": "静安区 初中 公办",
     "features": [],
@@ -7147,13 +7599,13 @@
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:40:00+08:00",
     "trainingDirections": [
       "贯通培养"
     ],
@@ -7171,23 +7623,30 @@
     "schoolTypeLabel": "市重点分校",
     "tier": "",
     "address": "",
-    "phone": "",
+    "phone": "021-36366995",
     "website": "",
-    "admissionNotes": "静安区 高中 市重点分校",
-    "features": [],
+    "admissionNotes": "静安区体系学校，建议重点关注市西体系资源、分校定位和年度录取安排。",
+    "features": [
+      "高中",
+      "名校分校",
+      "体系资源"
+    ],
     "tags": [
       "高中",
-      "市重点分校"
+      "市重点分校",
+      "名校分校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:40:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jingan-上海市市西中学新城分校.md"
   },
@@ -7232,27 +7691,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "优质初中",
     "tier": "A",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据公开整理文章，列为静安区 A 梯队初中。",
-    "features": [],
+    "address": "上海市闵行区田林十三村1号",
+    "phone": "021-64701913",
+    "website": "https://www.sesedu.cn/",
+    "admissionNotes": "上海市实验学校国际部打造的双语项目，结合IB/IGCSE和国家课程，强调强师资、语言浸润以及文本深度阅读。",
+    "features": [
+      "双语融合",
+      "IB/IGCSE",
+      "科技+人文"
+    ],
     "tags": [
       "双语",
       "初中",
-      "A梯队"
+      "A梯队",
+      "公办",
+      "国际"
     ],
     "source": {
-      "name": "双子学爸数据社（搜狐）",
-      "type": "third_party",
-      "url": "https://www.sohu.com/a/877366353_121911157",
-      "crawledAt": "2026-03-06T00:00:00.000Z",
-      "confidence": 0.75
+      "name": "上海市实验学校官网",
+      "type": "official",
+      "url": "https://www.ses.pudong-edu.sh.cn/web/syxy/5190019-5190000005598.htm",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.88
     },
-    "updatedAt": "2026-03-06T00:00:00.000Z",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "IB"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/jingan-上实双语学校.md"
@@ -7302,7 +7768,7 @@
     "schoolTypeLabel": "市重点",
     "tier": "",
     "address": "余姚路 818 号",
-    "phone": "",
+    "phone": "021-56628553",
     "website": "",
     "admissionNotes": "静安区 完全中学 市重点",
     "features": [],
@@ -7311,13 +7777,13 @@
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开电话目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:40:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:40:00+08:00",
     "trainingDirections": [
       "贯通培养"
     ],
@@ -7503,33 +7969,40 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办双语学校",
     "tier": "",
-    "address": "闵行区北松公路1250弄",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "依据2025年秋招公开资料整理，高中部位于北松公路1250弄，提供美高AP与A-Level双A路径，并开设多语种课程。",
+    "address": "闵行区华漕镇纪友路688号",
+    "phone": "021-62968877",
+    "website": "https://www.peixunsj.cn/1885/",
+    "admissionNotes": "美高双语高中部用AP/A-Level+中国课程的双轨式融合，强调项目式探究与国际化升学，可结合招生简章及AP课程安排理解推优节奏。",
     "features": [
       "AP",
       "A-Level",
-      "多语种"
+      "多语种",
+      "AP/ALevel",
+      "中美双轨",
+      "小班化教学",
+      "STEAM/商业"
     ],
     "tags": [
       "高中",
       "民办",
       "双语",
       "国际课程",
-      "完全中学"
+      "完全中学",
+      "AP",
+      "A-Level"
     ],
     "source": {
-      "name": "国际学校大全网",
-      "type": "third_party",
-      "url": "https://www.guojixuexiao.net/ischool/shmgsy/news/15793.html",
-      "crawledAt": "2026-03-21T12:00:00+08:00",
-      "confidence": 0.75
+      "name": "上海美高双语学校官网",
+      "type": "directory",
+      "url": "https://www.peixunsj.cn/1885/",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.77
     },
-    "updatedAt": "2026-03-21T12:00:00+08:00",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养"
+      "AP/美高",
+      "A-Level",
+      "STEAM/商业"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海美高双语学校-高中部.md"
@@ -7661,30 +8134,35 @@
     "address": "上海市闵行区七莘路3568号",
     "phone": "021-64599759",
     "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，万科双语学校为德英乐教育旗下十二年一贯制民办双语学校，2025 学年六年级招生计划 145 人，其中统招 17 人。",
+    "admissionNotes": "闵行区双语初中，建议重点关注双语课程、寄宿安排和学校整体升学方向。",
     "features": [
       "双语课程",
       "PBL项目化学习",
-      "STEAM课程"
+      "STEAM课程",
+      "双语初中",
+      "民办",
+      "寄宿管理"
     ],
     "tags": [
       "初中",
       "民办",
       "双语",
       "国际化",
-      "完全中学"
+      "完全中学",
+      "寄宿"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16287",
-      "crawledAt": "2026-03-22T09:35:00+08:00",
-      "confidence": 0.77
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22T09:35:00+08:00",
+    "updatedAt": "2026-04-08T23:00:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "外语特色"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海闵行区万科双语学校-初中.md"
@@ -7702,27 +8180,31 @@
     "address": "上海市闵行区万源路55号",
     "phone": "021-54933272",
     "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，协和双语教科学校设有初中双语课程部与融合课程部，高中设有国内课程部和加拿大 BC 国际课程部。",
+    "admissionNotes": "闵行区双语学校，建议重点关注课程体系、英语环境和不同学段的升学承接。",
     "features": [
       "协和教育集团",
       "双语课程",
-      "融合课程"
+      "融合课程",
+      "双语学校",
+      "民办",
+      "课程融合"
     ],
     "tags": [
       "民办",
       "双语",
       "国际化",
       "寄宿",
-      "初中 / 高中"
+      "初中 / 高中",
+      "完全中学"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16639",
-      "crawledAt": "2026-03-22T09:53:00+08:00",
-      "confidence": 0.78
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22T09:53:00+08:00",
+    "updatedAt": "2026-04-08T23:00:00+08:00",
     "trainingDirections": [
       "国际课程",
       "寄宿管理",
@@ -7744,22 +8226,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 公办",
-    "features": [],
+    "admissionNotes": "闵行区公办初中，建议结合片区入学口径、学校管理风格和家长实际口碑一起判断。",
+    "features": [
+      "公办初中",
+      "区域关注"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市北桥中学.md"
@@ -7777,22 +8263,26 @@
     "address": "航北路 328 号",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 公办",
-    "features": [],
+    "admissionNotes": "闵行区公办初中，建议重点关注片区入学安排、学校管理与区内公办初中比较。",
+    "features": [
+      "公办初中",
+      "区域关注"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市航华中学.md"
@@ -7843,22 +8333,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 公办",
-    "features": [],
+    "admissionNotes": "闵行区公办初中，建议重点关注片区入学口径、学校管理与家长口碑。",
+    "features": [
+      "公办初中",
+      "区域关注"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市虹桥中学.md"
@@ -7876,23 +8370,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "闵行区完全中学，建议区分初高中学段，重点关注实验学校定位和校内衔接。",
+    "features": [
+      "完全中学",
+      "实验学校",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "实验"
+      "实验",
+      "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市金汇实验学校.md"
@@ -7910,11 +8410,14 @@
     "address": "闵行区平阳路150号",
     "phone": "021-64806128",
     "website": "",
-    "admissionNotes": "根据2025-26年招生简章整理，高中部为可寄宿民办高中，提供OSSD、AP、A-Level等国际课程路径。",
+    "admissionNotes": "闵行区双语高中，建议重点关注双语课程路径、国际升学方向和学费成本。",
     "features": [
       "OSSD",
       "AP",
-      "A-Level"
+      "A-Level",
+      "双语高中",
+      "国际课程",
+      "民办"
     ],
     "tags": [
       "高中",
@@ -7924,13 +8427,13 @@
       "完全中学"
     ],
     "source": {
-      "name": "国际学校大全网",
-      "type": "third_party",
-      "url": "https://www.guojixuexiao.net/ischool/shlysy/new/15976.html",
-      "crawledAt": "2026-03-21T12:00:00+08:00",
-      "confidence": 0.75
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-21T12:00:00+08:00",
+    "updatedAt": "2026-04-08T23:00:00+08:00",
     "trainingDirections": [
       "国际课程",
       "寄宿管理",
@@ -8051,24 +8554,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办外语学校，建议重点关注外语课程、民办报名和学校整体稳定性。",
+    "features": [
+      "民办学校",
+      "外语特色"
+    ],
     "tags": [
       "完全中学",
       "民办",
       "外语特色"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
       "贯通培养",
-      "外语特色"
+      "外语特色",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办博华外国语学校.md"
@@ -8083,26 +8590,35 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "address": "上海市闵行区星站路263号",
+    "phone": "021-64197597",
+    "website": "https://www.021school.cn/schools/14948/",
+    "admissionNotes": "1996年由复旦附中和万科联合创办，A/B/C三个班型兼顾国内核心课程与国际化拓展，持续强调科技、艺术与心理成长。",
+    "features": [
+      "九年一贯",
+      "A/B/C班",
+      "科技艺术节",
+      "双语"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "实验"
+      "实验",
+      "双语",
+      "跨平台"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市校讯中心",
+      "type": "official",
+      "url": "https://www.021school.cn/schools/14948/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "STEM",
+      "艺术"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办复旦万科实验学校.md"
@@ -8120,22 +8636,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办学校，建议区分学段，重点关注课程路径、学费和学校管理风格。",
+    "features": [
+      "民办学校",
+      "课程路径"
+    ],
     "tags": [
       "完全中学",
       "民办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办华漕学校.md"
@@ -8153,22 +8673,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办初中，建议重点关注民办报名口径、学校管理和家长实际口碑。",
+    "features": [
+      "民办初中",
+      "稳定办学"
+    ],
     "tags": [
       "初中",
       "民办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办交华中学.md"
@@ -8183,26 +8707,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "闵行区 高中 民办",
-    "features": [],
+    "address": "上海市闵行区平阳路150号",
+    "phone": "021-64806128",
+    "website": "https://www.liaoyuanedu.org/",
+    "admissionNotes": "高中部提供国内高中轨与国际课程班，A-Level、IB、AP并行，艺术、科技与研学活动丰富，寄宿+走读灵活。",
+    "features": [
+      "A-Level",
+      "IB",
+      "AP",
+      "艺术创新"
+    ],
     "tags": [
       "高中",
       "民办",
-      "双语"
+      "双语",
+      "国际课程"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市校讯中心",
+      "type": "official",
+      "url": "https://www.021school.cn/schools/16640/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.92
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
-      "国际课程"
+      "国际课程",
+      "IB",
+      "A-Level"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办燎原双语高级中学.md"
@@ -8217,27 +8749,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "address": "上海市闵行区平阳路150号",
+    "phone": "021-64806128",
+    "website": "https://www.liaoyuanedu.org/",
+    "admissionNotes": "上海育莘教育旗下老牌私校，IBO授权、A-Level与艺术中心并行，强调“全球视野+国学底色”的综合素养训练。",
+    "features": [
+      "IBO授权",
+      "A-Level",
+      "艺术中心",
+      "寄宿"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "双语"
+      "双语",
+      "国际课程"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市校讯中心",
+      "type": "official",
+      "url": "https://www.021school.cn/schools/16640/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.91
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "IB"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办燎原双语学校.md"
@@ -8255,21 +8794,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 民办",
-    "features": [],
+    "admissionNotes": "闵行区国际课程高中，建议重点关注课程体系、学费和海外升学路径。",
+    "features": [
+      "国际课程",
+      "民办高中",
+      "海外升学"
+    ],
     "tags": [
       "高中",
-      "民办"
+      "民办",
+      "国际课程"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T01:10:00+08:00",
+    "trainingDirections": [
+      "国际课程",
+      "外语特色"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办诺美学校.md"
   },
@@ -8286,21 +8833,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办国际课程高中，建议重点关注双文凭课程、学费与海外升学方向。",
+    "features": [
+      "国际课程",
+      "双文凭",
+      "民办高中"
+    ],
     "tags": [
       "高中",
-      "民办"
+      "民办",
+      "国际课程"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T01:10:00+08:00",
+    "trainingDirections": [
+      "国际课程",
+      "外语特色"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办七宝德怀特高级中学.md"
   },
@@ -8317,22 +8872,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办初中，建议重点关注民办报名口径、学校管理与区内初中比较。",
+    "features": [
+      "民办初中",
+      "区域比较"
+    ],
     "tags": [
       "初中",
       "民办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办莘松中学.md"
@@ -8350,22 +8909,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办双语学校，建议重点关注课程体系、外语环境和学段承接。",
+    "features": [
+      "民办双语学校",
+      "课程融合"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "双语"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "外语特色",
+      "国际课程"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办圣华紫竹学校.md"
@@ -8380,27 +8945,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "address": "上海市闵行区七莘路3568号",
+    "phone": "021-62216956",
+    "website": "https://vkbs.dtd-edu.cn/contact-us",
+    "admissionNotes": "万科德英乐教育倾力打造，提供十二年一贯制双语通道，以5C5R素养与体验式学习推动学术、社会与领导力并重。",
+    "features": [
+      "万科德英乐",
+      "双语项目",
+      "体验式学习",
+      "STEAM课题"
+    ],
     "tags": [
       "完全中学",
       "民办",
       "双语"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "万科双语学校官网",
+      "type": "official",
+      "url": "https://vkbs.dtd-edu.cn/contact-us",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "IB"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办万科双语学校.md"
@@ -8418,22 +8989,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办初中，建议重点关注文来体系、民办报名和区内热门初中竞争格局。",
+    "features": [
+      "民办初中",
+      "文来体系",
+      "热门初中"
+    ],
     "tags": [
       "初中",
       "民办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合",
+      "科创竞赛"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办文来中学.md"
@@ -8451,21 +9028,26 @@
     "address": "闵行区江川东路 980 号",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办高中，建议重点关注学校整体管理、课程方向和学费成本。",
+    "features": [
+      "民办高中",
+      "稳定办学"
+    ],
     "tags": [
       "高中",
       "民办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T01:10:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办文绮中学.md"
   },
@@ -8482,22 +9064,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "闵行区民办双语学校，建议重点关注双语课程体系、英语环境与不同学段升学承接。",
+    "features": [
+      "民办双语学校",
+      "课程融合",
+      "国际表达"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "双语"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "外语特色",
+      "国际课程"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办协和古北学校.md"
@@ -8512,27 +9101,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "address": "上海市闵行区万源路55号",
+    "phone": "021-54933272",
+    "website": "https://www.021school.cn/schools/16639/",
+    "admissionNotes": "协和教科学校坚持精英寄宿+多元选修，强调国际课程、艺术与科技活动，并由协和教育中心提供师资与课程体系支撑。",
+    "features": [
+      "寄宿制",
+      "多元课程",
+      "科技与艺术"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "双语"
+      "双语",
+      "寄宿"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市校讯中心",
+      "type": "official",
+      "url": "https://www.021school.cn/schools/16639/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "科技"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办协和双语教科学校.md"
@@ -8547,27 +9142,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "address": "上海市闵行区虹泉路999号",
+    "phone": "021-34310090",
+    "website": "https://www.021school.cn/schools/16982/",
+    "admissionNotes": "协和教育2003年起开办的旗舰九年一贯项目，融合中西课程体系、Cognia认证和多样化选修，强调文化沉淀与跨文化沟通。",
+    "features": [
+      "中西融合课程",
+      "Cognia认证",
+      "双语选班"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "双语"
+      "双语",
+      "九年一贯"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市校讯中心",
+      "type": "official",
+      "url": "https://www.021school.cn/schools/16982/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.92
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "A-Level"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市民办协和双语学校.md"
@@ -8618,21 +9219,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 市特色普通高中",
-    "features": [],
+    "admissionNotes": "闵行区高中，建议重点关注区位适配度、学校稳定性和录取口径变化。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "市特色普通高中"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:00:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市闵行区第三中学.md"
   },
@@ -8881,22 +9487,26 @@
     "address": "虹桥镇环镇南路 110 号",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 公办",
-    "features": [],
+    "admissionNotes": "闵行区公办初中，建议重点关注片区入学安排、学校管理与区域适配度。",
+    "features": [
+      "公办初中",
+      "区域关注"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市闵行区上虹中学.md"
@@ -8980,21 +9590,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 市重点",
-    "features": [],
+    "admissionNotes": "闵行区高中，建议重点关注头部公办高中竞争格局、统一招生和课程强度。",
+    "features": [
+      "高中",
+      "区域头部",
+      "稳定办学"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T01:10:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市闵行中学.md"
   },
@@ -9011,22 +9628,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "闵行区完全中学，建议区分初高中学段，重点关注校内衔接、学校管理和区域适配度。",
+    "features": [
+      "完全中学",
+      "校内衔接",
+      "区域关注"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市明星学校.md"
@@ -9044,21 +9667,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 民办",
-    "features": [],
+    "admissionNotes": "闵行区国际课程高中，建议重点关注课程体系、学费和国际升学方向。",
+    "features": [
+      "国际课程",
+      "民办高中"
+    ],
     "tags": [
       "高中",
-      "民办"
+      "民办",
+      "国际课程"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T01:10:00+08:00",
+    "trainingDirections": [
+      "国际课程",
+      "外语特色"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市诺美学校.md"
   },
@@ -9075,21 +9705,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 民办",
-    "features": [],
+    "admissionNotes": "闵行区国际课程高中，建议重点关注国际课程路径、学费与双文凭升学方向。",
+    "features": [
+      "国际课程",
+      "双文凭",
+      "民办高中"
+    ],
     "tags": [
       "高中",
-      "民办"
+      "民办",
+      "国际课程"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:55:00+08:00",
+    "trainingDirections": [
+      "国际课程",
+      "外语特色"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市七宝德怀特高级中学.md"
   },
@@ -9106,23 +9744,27 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 公办",
-    "features": [],
+    "admissionNotes": "闵行区初中，建议重点关注七宝体系背景、对口入学口径和学校整体学风。",
+    "features": [
+      "初中",
+      "名校体系"
+    ],
     "tags": [
       "初中",
       "公办",
       "实验"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市七宝实验中学.md"
@@ -9181,26 +9823,33 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 市重点分校",
+    "admissionNotes": "闵行区高中，建议重点关注七宝体系资源、分校定位和区内高中比较。",
     "features": [
       "七宝中学教育集团资源",
       "分校培养体系",
-      "课程协同建设"
+      "课程协同建设",
+      "高中",
+      "名校分校",
+      "体系资源"
     ],
     "tags": [
       "高中",
       "市重点分校",
-      "集团办学"
+      "集团办学",
+      "名校分校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T00:55:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市七宝中学浦江分校.md"
   },
@@ -9217,22 +9866,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 公办",
-    "features": [],
+    "admissionNotes": "闵行区公办初中，建议重点关注片区入学安排、学校管理和家长实际口碑。",
+    "features": [
+      "公办初中",
+      "区域关注"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T01:10:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市莘松中学.md"
@@ -9250,21 +9903,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 高中 区重点",
-    "features": [],
+    "admissionNotes": "闵行区高中，建议重点关注区位、录取走势与学校整体学风管理。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T01:10:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-09T01:10:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市莘庄中学.md"
   },
@@ -9281,22 +9939,28 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "闵行区双语学校，建议重点关注课程体系、外语环境和学段承接。",
+    "features": [
+      "双语学校",
+      "课程融合"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "双语"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "外语特色",
+      "国际课程"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市圣华紫竹学校.md"
@@ -9314,22 +9978,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 初中 公办",
-    "features": [],
+    "admissionNotes": "闵行区公办初中，建议重点关注片区入学安排、学校管理与区内公办初中比较。",
+    "features": [
+      "公办初中",
+      "区域关注"
+    ],
     "tags": [
       "初中",
       "公办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海市塘湾中学.md"
@@ -9417,22 +10085,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "闵行区 完全中学 民办",
-    "features": [],
+    "admissionNotes": "闵行区双语学校，建议重点关注课程体系、英语环境和民办报名口径。",
+    "features": [
+      "双语学校",
+      "民办",
+      "课程融合"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "双语"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-09T00:55:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-09T00:55:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "外语特色",
+      "国际课程"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海协和古北学校.md"
@@ -9450,28 +10125,33 @@
     "address": "闵行区朱建路301号",
     "phone": "",
     "website": "https://www.ssis.asia/",
-    "admissionNotes": "依据公开学校介绍整理，高中阶段提供IGCSE、IBDP、IBCP等路径，学校以新加坡体系与IB课程结合见长。",
+    "admissionNotes": "闵行区国际学校，建议重点关注外籍身份要求、课程体系、学费和国际升学路径。",
     "features": [
       "IBDP",
       "IBCP",
-      "国际升学"
+      "国际升学",
+      "国际学校",
+      "外籍学校",
+      "国际课程"
     ],
     "tags": [
       "高中",
       "国际化",
       "外籍学校",
-      "新加坡体系"
+      "新加坡体系",
+      "国际课程"
     ],
     "source": {
-      "name": "国际教育网",
-      "type": "third_party",
-      "url": "https://m.ieduchina.com/shanghai/education/202011/62431.html",
-      "crawledAt": "2026-03-21T12:00:00+08:00",
-      "confidence": 0.75
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-21T12:00:00+08:00",
+    "updatedAt": "2026-04-08T23:00:00+08:00",
     "trainingDirections": [
-      "国际课程"
+      "国际课程",
+      "外语特色"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/minhang-上海新加坡外籍人员子女学校-高中部.md"
@@ -9489,11 +10169,14 @@
     "address": "上海市闵行区金都路2588号",
     "phone": "021-64551324",
     "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，星河湾双语学校是 1-12 年级民办双语学校，2025 学年六年级招生计划 158 人，其中统招 12 人，提供住宿。",
+    "admissionNotes": "闵行区双语初中，建议重点关注双语课程、升学路径和民办报名口径。",
     "features": [
       "双语课程",
       "可住宿",
-      "国际标准设施"
+      "国际标准设施",
+      "双语初中",
+      "民办",
+      "课程融合"
     ],
     "tags": [
       "初中",
@@ -9503,13 +10186,13 @@
       "完全中学"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/15561",
-      "crawledAt": "2026-03-22T10:05:00+08:00",
-      "confidence": 0.78
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22T10:05:00+08:00",
+    "updatedAt": "2026-04-08T23:00:00+08:00",
     "trainingDirections": [
       "国际课程",
       "寄宿管理",
@@ -9896,28 +10579,36 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "学校公开条目",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据维基百科上海学校公开条目整理。",
-    "features": [],
+    "address": "浦东新区黄杨路261号",
+    "phone": "021-50310791",
+    "website": "https://www.pinghe.org/",
+    "admissionNotes": "平和双语以“轻负担高质量”为底色，IBDP/OSSD融入素质教育与中英文沉浸，建议参考官网与招生热线确认国际课程与文理衔接。",
+    "features": [
+      "IBDP/OSSD",
+      "双语沉浸",
+      "素质教育",
+      "中美加通道"
+    ],
     "tags": [
       "初中",
       "双语",
       "完全中学",
-      "民办"
+      "民办",
+      "国际课程",
+      "浦东"
     ],
     "source": {
-      "name": "维基百科",
-      "type": "third_party",
-      "url": "https://zh.wikipedia.org/wiki/%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%B9%B3%E5%92%8C%E5%8F%8C%E8%AF%AD%E5%AD%A6%E6%A0%A1",
-      "crawledAt": "2026-03-08T03:00:25.277Z",
-      "confidence": 0.75
+      "name": "本地宝-上海市平和双语学校",
+      "type": "directory",
+      "url": "https://m.sh.bendibao.com/wangdian/dian/5446016.shtm",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.77
     },
-    "updatedAt": "2026-03-08T03:00:25.277Z",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养"
+      "IBDP",
+      "OSSD",
+      "语言与艺术"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/浦东新区-平和双语学校.md"
@@ -9932,25 +10623,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "浦东新区 高中 民办",
-    "features": [],
+    "address": "上海市浦东新区巨峰路1555号A座6层",
+    "phone": "400-822-1988",
+    "website": "https://www.ieduglobe.com/xuexiao/shais/",
+    "admissionNotes": "由西澳大利亚教育部授权的澳洲国际高中，主打法学WACE与A-Level、AQA课程，保持澳式教学特色和中国大学双向升学对接。",
+    "features": [
+      "WACE",
+      "A-Level",
+      "澳洲教育部授权",
+      "大学衔接"
+    ],
     "tags": [
       "高中",
-      "民办"
+      "民办",
+      "国际课程",
+      "澳洲"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "国际教育前线 · 学校库",
+      "type": "directory",
+      "url": "https://www.ieduglobe.com/xuexiao/shais/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.78
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
-      "国际课程"
+      "国际课程",
+      "WACE",
+      "A-Level"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海澳大利亚国际高中.md"
@@ -10128,25 +10828,35 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "学校公开条目",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据维基百科上海学校公开条目整理。",
-    "features": [],
+    "address": "浦东新区高西路588号",
+    "phone": "+86 21 6881 8282",
+    "website": "https://www.harrowshanghai.cn/zh/the-school-cn/contact-us-cn/",
+    "admissionNotes": "哈罗上海承袭哈罗公学英式课程与全日制寄宿，IGCSE/MYP/DP与艺术、户外+领导力并行，建议通过官网招生/国际学生办公室资料确认签证和住宿服务。",
+    "features": [
+      "英式课程",
+      "寄宿+走读",
+      "领导力与户外",
+      "跨学科项目"
+    ],
     "tags": [
-      "初中"
+      "初中",
+      "国际",
+      "英式",
+      "寄宿",
+      "外籍学生"
     ],
     "source": {
-      "name": "维基百科",
-      "type": "third_party",
-      "url": "https://zh.wikipedia.org/wiki/%E4%B8%8A%E6%B5%B7%E5%93%88%E7%BD%97%E5%9B%BD%E9%99%85%E5%AD%A6%E6%A0%A1",
-      "crawledAt": "2026-03-08T03:00:25.668Z",
-      "confidence": 0.75
+      "name": "哈罗国际学校上海校区官网",
+      "type": "official",
+      "url": "https://www.harrowshanghai.cn/zh/the-school-cn/contact-us-cn/",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.94
     },
-    "updatedAt": "2026-03-08T03:00:25.668Z",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养"
+      "IGCSE/DP",
+      "全球领导力",
+      "创意写作与演讲"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/浦东新区-上海哈罗国际学校.md"
@@ -10260,26 +10970,35 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "浦东新区 完全中学 民办",
-    "features": [],
+    "address": "上海市长宁区虹桥路1161号",
+    "phone": "+86 21 6261 4338",
+    "website": "https://www.scis-china.org/",
+    "admissionNotes": "SCIS三校区提供从ECE到高中完整的IB课程，融合AP、LanguageOne语言项目和社区服务，强调全球公民与加拿大文化传承。",
+    "features": [
+      "IB continuum",
+      "AP/Capstone",
+      "LanguageOne",
+      "Service & Leadership"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "国际学校",
+      "IB",
+      "加拿大教育"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "Shanghai Community International School",
+      "type": "official",
+      "url": "https://www.scis-china.org/contact-us",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "IBDP"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海加拿大国际学校.md"
@@ -10881,21 +11600,29 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "浦东新区 高中 市重点分校",
-    "features": [],
+    "admissionNotes": "浦东新区高中，建议重点关注建平体系资源、分校定位和区内高中整体比较。",
+    "features": [
+      "高中",
+      "名校分校",
+      "体系资源"
+    ],
     "tags": [
       "高中",
-      "市重点分校"
+      "市重点分校",
+      "名校分校"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:00:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市建平中学筠溪分校.md"
   },
@@ -10943,11 +11670,14 @@
     "address": "上海市浦东新区巨峰路1555号",
     "phone": "021-68973868",
     "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，金苹果学校是一所涵盖幼儿园、小学、初中、高中和国际部的现代化寄宿制学校，适合关注浦东国际化民办路线的家庭。",
+    "admissionNotes": "浦东新区民办学校，建议区分初高中学段，重点关注课程路径、学费和学校稳定办学表现。",
     "features": [
       "寄宿制",
       "国际部",
-      "多学段办学"
+      "多学段办学",
+      "民办学校",
+      "完全中学",
+      "课程路径"
     ],
     "tags": [
       "民办",
@@ -10957,13 +11687,13 @@
       "完全中学"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16718",
-      "crawledAt": "2026-03-22T09:37:00+08:00",
-      "confidence": 0.76
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.68
     },
-    "updatedAt": "2026-03-22T09:37:00+08:00",
+    "updatedAt": "2026-04-08T23:00:00+08:00",
     "trainingDirections": [
       "国际课程",
       "寄宿管理",
@@ -11115,33 +11845,40 @@
     "schoolTypeLabel": "民办学校",
     "tier": "",
     "address": "浦东新区青桐路169号",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据公开招生资料整理，高中阶段可衔接国际部课程，学校长期面向国际化升学方向培养学生。",
+    "phone": "021-20332588",
+    "website": "https://www.021school.cn/schools/15911",
+    "admissionNotes": "张江高科的中芯学校国际部以STEM、WASC、AP+科研项目为主轴，适合产业家庭。建议以官方招生通道、国际部公告和021-2033-2588核实开放日与申请节奏。",
     "features": [
       "国际课程",
       "国际部",
-      "外语特色"
+      "外语特色",
+      "STEM与AP",
+      "WASC认证",
+      "中英文双轨",
+      "产业连接"
     ],
     "tags": [
       "高中",
       "民办",
       "国际化",
       "张江",
-      "完全中学"
+      "完全中学",
+      "STEM",
+      "AP",
+      "国际"
     ],
     "source": {
-      "name": "国际学校大全网",
-      "type": "third_party",
-      "url": "https://www.guojixuexiao.net/ischool/shzxxx/news/14775.html",
-      "crawledAt": "2026-03-21T12:00:00+08:00",
-      "confidence": 0.75
+      "name": "上海校讯中心-民办中芯学校",
+      "type": "directory",
+      "url": "https://www.021school.cn/schools/15911",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.74
     },
-    "updatedAt": "2026-03-21T12:00:00+08:00",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养",
-      "外语特色"
+      "AP/CS",
+      "工程与机器人",
+      "科学研究"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市民办中芯学校-高中部.md"
@@ -11355,21 +12092,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "浦东新区 高中 区重点",
-    "features": [],
+    "admissionNotes": "浦东新区高中，建议重点关注学校稳定办学、区位和往年录取走势。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:00:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市浦东新区东昌中学.md"
   },
@@ -11519,23 +12261,30 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "浦东新区 完全中学 公办",
-    "features": [],
+    "admissionNotes": "浦东新区完全中学，建议重点关注华二体系资源、前滩区位和校内贯通培养路径。",
+    "features": [
+      "完全中学",
+      "华二体系",
+      "贯通培养"
+    ],
     "tags": [
       "完全中学",
       "公办",
-      "附属学校"
+      "附属学校",
+      "名校体系"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开学校目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.72
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T23:00:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "科创竞赛",
+      "人文综合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市浦东新区华师大二附中前滩学校.md"
@@ -11653,22 +12402,30 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "浦东新区 高中 市重点分校",
-    "features": [],
+    "admissionNotes": "浦东新区高中，建议重点关注交附体系资源、分校定位和区内高中对比。",
+    "features": [
+      "高中",
+      "高校附属",
+      "体系资源"
+    ],
     "tags": [
       "高中",
       "市重点分校",
-      "附属学校"
+      "附属学校",
+      "高校附属"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.7
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:00:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市浦东新区交大附中浦东分校.md"
   },
@@ -11916,25 +12673,32 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "浦东新区 初中 民办",
-    "features": [],
+    "address": "上海市嘉定新城宝塔路1166号",
+    "phone": "021-60831507",
+    "website": "https://www.vsxue.com/1835.html",
+    "admissionNotes": "隶属华东师范大学第二附属中学的民办初中，强调竞赛选拔、科学实验与双语基础，配套华二“精英+成长”管理机制。",
+    "features": [
+      "华东师范大学资源",
+      "竞赛培训",
+      "双语基础"
+    ],
     "tags": [
       "初中",
-      "民办"
+      "民办",
+      "华二系"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "均瑶教育资源目录",
+      "type": "directory",
+      "url": "https://www.vsxue.com/1835.html",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.78
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "学科竞赛",
+      "核心素养"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市浦东新区民办华二初级中学.md"
@@ -11949,27 +12713,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "浦东新区 完全中学 民办",
-    "features": [],
+    "address": "上海市浦东新区雪野路48号",
+    "phone": "021-58869990",
+    "website": "https://www.021school.cn/schools/14693/",
+    "admissionNotes": "靠近世博园区的协和系旗舰，融合华二与协和育人体系，聚焦A-Level/IB等国际课程与双语科技实践。",
+    "features": [
+      "华二+协和资源",
+      "双语科技",
+      "国际课程"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "双语"
+      "双语",
+      "协和系"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市校讯中心",
+      "type": "official",
+      "url": "https://www.021school.cn/schools/14693/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "A-Level"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市浦东新区民办华二紫竹双语学校.md"
@@ -12084,21 +12854,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "浦东新区 高中 区重点",
-    "features": [],
+    "admissionNotes": "浦东新区高中，建议重点关注区位、录取口径和学校稳定办学表现。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "区重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:00:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市浦东新区南汇中学.md"
   },
@@ -12683,21 +13458,26 @@
     "address": "",
     "phone": "",
     "website": "",
-    "admissionNotes": "浦东新区 高中 市重点",
-    "features": [],
+    "admissionNotes": "浦东新区高中，建议重点关注录取分数、学校管理和浦东区位适配度。",
+    "features": [
+      "高中",
+      "区域关注"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "公开招生目录",
+      "type": "directory",
+      "url": "https://www.021school.cn/",
+      "crawledAt": "2026-04-08T23:00:00+08:00",
+      "confidence": 0.66
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T23:00:00+08:00",
+    "trainingDirections": [
+      "人文综合"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海市洋泾中学.md"
   },
@@ -12711,26 +13491,35 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "浦东新区 完全中学 民办",
-    "features": [],
+    "address": "上海市闵行区诸建路301号",
+    "phone": "+86 21 6221 9288",
+    "website": "https://www.ssis.asia/about-us/contact-us/",
+    "admissionNotes": "1996年创办，提供新加坡雨果式、IGCSE与IB Diploma三段式课程，强调全球公民与素养、丰富的课外体验与社会实践。",
+    "features": [
+      "新加坡课程",
+      "IGCSE",
+      "IB Diploma",
+      "Global Citizenship"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "国际学校",
+      "IB",
+      "双语"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "Shanghai Singapore International School",
+      "type": "official",
+      "url": "https://www.ssis.asia/about-us/contact-us/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "IBDP"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/pudong-上海新加坡国际学校.md"
@@ -13282,7 +14071,7 @@
       "人文综合",
       "国际课程"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/putuo-上海市曹杨第二中学.md"
   },
   {
@@ -13352,9 +14141,10 @@
     "updatedAt": "2026-04-08T11:20:00+08:00",
     "trainingDirections": [
       "人文综合",
-      "科创竞赛"
+      "科创竞赛",
+      "寄宿管理"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/putuo-上海市晋元高级中学.md"
   },
   {
@@ -14123,33 +14913,38 @@
     "schoolType": "international",
     "schoolTypeLabel": "民办双语",
     "tier": "",
-    "address": "上海市青浦区崧泽大道2200号",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据上海校讯中心公开整理，青浦平和双语学校由上海山峰教育集团举办并委托平和教育集团管理，2025 学年六年级招生计划 240 人。",
+    "address": "上海市青浦区朱家角路6号",
+    "phone": "021-59750808",
+    "website": "https://www.pinghe.org/",
+    "admissionNotes": "青浦平和双语初中聚焦前置双语与跨学科项目，配合青浦特色研学，建议参考集团官网及青浦区招生材料确认衔接方案。",
     "features": [
       "平和教育集团",
       "双语课程",
-      "走读加寄宿"
+      "走读加寄宿",
+      "初中双语",
+      "项目化学习",
+      "研学+生态",
+      "Pinghe文化"
     ],
     "tags": [
       "初中",
       "民办",
       "双语",
-      "国际化"
+      "国际化",
+      "青浦"
     ],
     "source": {
-      "name": "上海校讯中心",
-      "type": "third_party",
-      "url": "https://www.021school.cn/schools/16277",
-      "crawledAt": "2026-03-22T09:38:00+08:00",
-      "confidence": 0.77
+      "name": "平和教育集团官网",
+      "type": "official",
+      "url": "https://www.pinghe.org/",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.79
     },
-    "updatedAt": "2026-03-22T09:38:00+08:00",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "寄宿管理",
-      "贯通培养"
+      "跨学科项目",
+      "中英文写作",
+      "全球研学"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/qingpu-上海青浦平和双语学校-初中.md"
@@ -14164,27 +14959,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "青浦区 完全中学 民办",
-    "features": [],
+    "address": "上海市青浦区赵巷镇业锦路32号",
+    "phone": "021-59788662",
+    "website": "https://www.shqp.gov.cn/edu/eduzwgk/lm/jy/zs/qt/20240828/1196037.html",
+    "admissionNotes": "协和集团2019年在青浦落地的旗舰校园，83亩现代化园区融合科技、艺术、戏剧与户外课程，双语场景贯穿小学至高中。",
+    "features": [
+      "协和双语",
+      "83亩园区",
+      "科技+艺术"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "双语"
+      "双语",
+      "协和系"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海青浦区教育局",
+      "type": "official",
+      "url": "https://www.shqp.gov.cn/edu/eduzwgk/lm/jy/zs/qt/20240828/1196037.html",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.92
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
       "国际课程",
-      "贯通培养"
+      "贯通培养",
+      "双语艺术"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/qingpu-上海青浦区协和双语学校.md"
@@ -14199,25 +15000,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "青浦区 完全中学 民办",
-    "features": [],
+    "address": "上海市青浦区蟠文路455号",
+    "phone": "021-60829355",
+    "website": "https://qphs.shwfl.edu.cn/",
+    "admissionNotes": "世外教育青浦分校以“4+1”课程体系衔接幼小初高，整合IB、AP与校本主题课程，注重全球视野与本土文化的融合。",
+    "features": [
+      "世外教育体系",
+      "IB/AP",
+      "融合探索课程"
+    ],
     "tags": [
       "完全中学",
-      "民办"
+      "民办",
+      "九年一贯",
+      "国际化"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海青浦区世外学校官网",
+      "type": "official",
+      "url": "https://qphs.shwfl.edu.cn/english/2024/0815/c2311a13603/page.htm",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.94
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "IBDP",
+      "AP"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/qingpu-上海青浦世外学校.md"
@@ -16492,24 +17301,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "徐汇区 高中 民办",
-    "features": [],
+    "address": "上海市徐汇区位育路1号",
+    "phone": "021-64960808",
+    "website": "https://guoji.shxhd.cn/mbwy/",
+    "admissionNotes": "位育教育集团的国际高中，以IBDP、A-Level和OSSD并行、升学指导精细化著称，同时延续位育传统的学科与德育素养。",
+    "features": [
+      "IBDP",
+      "A-Level",
+      "OSSD",
+      "精细化升学指导"
+    ],
     "tags": [
       "高中",
-      "民办"
+      "民办",
+      "国际课程"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "位育国际部官网",
+      "type": "official",
+      "url": "https://guoji.shxhd.cn/mbwy/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T21:40:00+08:00",
+    "trainingDirections": [
+      "IBDP",
+      "A-Level",
+      "OSSD"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/xuhui-上海民办位育中学.md"
   },
@@ -16723,25 +17542,34 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "徐汇区 初中 民办",
-    "features": [],
+    "address": "上海市徐汇区虹漕南路602号",
+    "phone": "021-54190200",
+    "website": "https://www.wflms.cn/",
+    "admissionNotes": "上海世外教育的旗舰中学，早在2008年成为IBO官方授权学校，通过IB、A-Level、各类探究与科技实践项目保持高录取和美本拓展。",
+    "features": [
+      "IBDP",
+      "A-Level",
+      "科技+人文",
+      "研究型课题"
+    ],
     "tags": [
       "初中",
-      "民办"
+      "民办",
+      "国际化",
+      "完全中学"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市世外中学官网",
+      "type": "official",
+      "url": "https://www.wflms.cn/",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "IBDP",
+      "A-Level"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/xuhui-上海市民办世外中学.md"
@@ -16785,7 +17613,7 @@
       "人文综合",
       "艺术特色"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/xuhui-上海市南洋模范中学.md"
   },
   {
@@ -16985,9 +17813,10 @@
     "updatedAt": "2026-04-08T10:30:00+08:00",
     "trainingDirections": [
       "科创竞赛",
-      "人文综合"
+      "人文综合",
+      "寄宿管理"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/xuhui-上海市位育中学.md"
   },
   {
@@ -17066,26 +17895,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "徐汇区 完全中学 民办",
-    "features": [],
+    "address": "上海市徐汇区宜山路671号",
+    "phone": "021-64758361",
+    "website": "https://xnwygjb.xhedu.sh.cn/cms/app/info/doc/index.php/679",
+    "admissionNotes": "1993年转制的民办完全中学，聚焦科技、艺术与体育，拥有国际班/双语课程，强调探索型学习与素养评价。",
+    "features": [
+      "转制民办",
+      "科技+艺术",
+      "国际班"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "实验"
+      "实验",
+      "科技"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海市西南位育中学国际部官网",
+      "type": "official",
+      "url": "https://xnwygjb.xhedu.sh.cn/cms/app/info/doc/index.php/679",
+      "crawledAt": "2026-04-08T21:40:00+08:00",
+      "confidence": 0.88
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T21:40:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "贯通培养",
+      "STEM",
+      "文体融合"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/xuhui-上海市西南位育实验学校.md"
@@ -17540,27 +18376,37 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "优质初中",
     "tier": "A",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据公开整理文章，列为徐汇区 A 梯队初中。",
-    "features": [],
+    "address": "上海市徐汇区虹漕南路602号",
+    "phone": "021-54190200",
+    "website": "https://www.wflms.cn/",
+    "admissionNotes": "民办双语与项目化生态并行，DP/IB、AI实验室与寄宿资源同步推进，建议结合官网招生简章和DP/国际项目曝光判断学段衔接与寄宿安排。",
+    "features": [
+      "双语项目化学习",
+      "IB/DP与美国课程",
+      "AI与STEAM实验",
+      "寄宿与走读并行"
+    ],
     "tags": [
       "双语",
       "初中",
-      "A梯队"
+      "A梯队",
+      "高中",
+      "民办",
+      "国际课程",
+      "寄宿"
     ],
     "source": {
-      "name": "双子学爸数据社（搜狐）",
-      "type": "third_party",
-      "url": "https://www.sohu.com/a/877366353_121911157",
-      "crawledAt": "2026-03-06T00:00:00.000Z",
-      "confidence": 0.75
+      "name": "上海市世外中学官网",
+      "type": "official",
+      "url": "https://www.wflms.cn/",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-06T00:00:00.000Z",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养"
+      "跨学科项目研习",
+      "科技与AI探索",
+      "国际升学 (DP/AP)"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/xuhui-世外中学.md"
@@ -17641,27 +18487,38 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "优质初中",
     "tier": "A",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据公开整理文章，列为徐汇区 A 梯队初中。",
-    "features": [],
+    "address": "上海市徐汇区宜山路671号",
+    "phone": "021-64705469",
+    "website": "https://xnwygjb.xhedu.sh.cn/cms/app/info/doc/index.php/375",
+    "admissionNotes": "西南位育国际部融合AP/IB、双语科研平台与公办管理体系，建议同步以校方与教育局自招公告确认年度课程与语言测试节奏。",
+    "features": [
+      "AP/IB混合课程",
+      "双语科研小组",
+      "公办实验型",
+      "国际交流"
+    ],
     "tags": [
       "初中",
       "A梯队",
       "完全中学",
-      "民办"
+      "民办",
+      "高中",
+      "国际部",
+      "双语",
+      "公办"
     ],
     "source": {
-      "name": "双子学爸数据社（搜狐）",
-      "type": "third_party",
-      "url": "https://www.sohu.com/a/877366353_121911157",
-      "crawledAt": "2026-03-06T00:00:00.000Z",
-      "confidence": 0.75
+      "name": "西南位育中学国际部官网",
+      "type": "official",
+      "url": "https://xnwygjb.xhedu.sh.cn/cms/app/info/doc/index.php/375",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-06T00:00:00.000Z",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "AP/STEM",
+      "国际交流与人文",
+      "艺术/体育特色"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/xuhui-西南位育中学.md"
@@ -17789,30 +18646,37 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "优质初中",
     "tier": "A",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "根据公开整理文章，列为杨浦区 A 梯队初中。",
-    "features": [],
+    "address": "上海市杨浦区永吉路351号",
+    "phone": "18019454771",
+    "website": "https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html",
+    "admissionNotes": "民办上外双语延续上外附属的双语+国际项目，文理一体与高校资源并行，建议同步关注区教育局自招与招生说明书确定语言等级与面试流程。",
+    "features": [
+      "双语国际班",
+      "高校附属资源",
+      "IB/DP",
+      "跨语言拓展"
+    ],
     "tags": [
       "民办",
       "双语",
       "外语特色",
       "初中",
-      "A梯队"
+      "A梯队",
+      "国际课程",
+      "高校附属"
     ],
     "source": {
-      "name": "双子学爸数据社（搜狐）",
-      "type": "third_party",
-      "url": "https://www.sohu.com/a/877366353_121911157",
-      "crawledAt": "2026-03-06T00:00:00.000Z",
-      "confidence": 0.75
+      "name": "杨浦区教育局招生公示",
+      "type": "official",
+      "url": "https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.92
     },
-    "updatedAt": "2026-03-06T00:00:00.000Z",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养",
-      "外语特色"
+      "IBDP",
+      "语境写作与跨文化交流",
+      "全球视野"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/yangpu-民办上外双语学校.md"
@@ -17998,25 +18862,35 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "杨浦区 初中 民办",
-    "features": [],
+    "address": "上海市宝山苏家浜路211号",
+    "phone": "400-688-0112",
+    "website": "https://www.peixunsj.cn/8248/campus.html",
+    "admissionNotes": "存志高级中学推动DSE、A-Level与融合部课程组合，全天候管理与国际研学并行，建议通过官网招生通道或热线确认课程组与学籍安排。",
+    "features": [
+      "DSE/A-Level/融合部",
+      "全天候精细化管理",
+      "双语+国际实践",
+      "生涯规划"
+    ],
     "tags": [
       "初中",
-      "民办"
+      "民办",
+      "国际课程",
+      "双语",
+      "融合部"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "上海存志高级中学官网",
+      "type": "official",
+      "url": "https://www.peixunsj.cn/8248/campus.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.88
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "香港DSE",
+      "A-Level",
+      "国际化路径"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/yangpu-上海市存志中学.md"
@@ -18194,7 +19068,7 @@
       "科创竞赛",
       "人文综合"
     ],
-    "profileDepth": "priority",
+    "profileDepth": "foundation",
     "contentFile": "content/schools/yangpu-上海市控江中学.md"
   },
   {
@@ -18700,29 +19574,36 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "杨浦区 完全中学 民办",
-    "features": [],
+    "address": "上海市杨浦区永吉路351号",
+    "phone": "18019454771",
+    "website": "https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html",
+    "admissionNotes": "上外附属双语（原民办上外）在杨浦以高校联动与IB/DP项目为抓手，双语+高校资源并行，建议同时关注区教育局与学校官网公布的语言测试与面试流程。",
+    "features": [
+      "高校附属双语",
+      "IB/DP+A-Level",
+      "海外研学",
+      "走读/寄宿"
+    ],
     "tags": [
       "完全中学",
       "民办",
       "双语",
-      "外语特色"
+      "外语特色",
+      "国际课程",
+      "高校附属"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "杨浦区教育局招生公示",
+      "type": "official",
+      "url": "https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.92
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养",
-      "外语特色"
+      "IBDP/国际议题",
+      "跨文化沟通",
+      "高阶语言与社科"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/yangpu-上海外国语大学附属双语学校.md"
@@ -18737,27 +19618,35 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "靖宇南路 15 号",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "杨浦区 完全中学 民办",
-    "features": [],
+    "address": "上海市杨浦区永吉路351号",
+    "phone": "18019454771",
+    "website": "https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html",
+    "admissionNotes": "杨浦双语(上外附属)注重IB/DP与多语素养，强调中英双语和高校资源，建议同步参考教育局和校方最新招生信息。",
+    "features": [
+      "IB/DP",
+      "高校附属",
+      "中英双语",
+      "国际研学"
+    ],
     "tags": [
       "完全中学",
       "民办",
-      "双语"
+      "双语",
+      "国际课程",
+      "高校附属"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "杨浦区教育局招生公示",
+      "type": "official",
+      "url": "https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.92
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "国际课程",
-      "贯通培养"
+      "IBDP",
+      "跨文化沟通",
+      "艺术与人文"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/yangpu-上海杨浦双语学校.md"
@@ -19163,24 +20052,37 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "长宁区 高中 市重点",
-    "features": [],
+    "address": "江苏路155号",
+    "phone": "62526860",
+    "website": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+    "admissionNotes": "市三女中是全市唯一公办女子重点高中，强调艺术/人文与女性领导力，建议结合校方自主招生系统与区教育局公布的择优/艺术专班资料进行判断。",
+    "features": [
+      "女子教育",
+      "艺术与人文",
+      "市示范",
+      "社会实践"
+    ],
     "tags": [
       "高中",
-      "市重点"
+      "市重点",
+      "公办",
+      "女子",
+      "重点",
+      "艺术"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "长宁区教育局通讯信息表",
+      "type": "official",
+      "url": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T22:30:00+08:00",
+    "trainingDirections": [
+      "艺术与人文",
+      "领导力",
+      "素质拓展"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/changning-上海市第三女子中学.md"
   },
@@ -19194,25 +20096,33 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "公办",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "长宁区 初中 公办",
-    "features": [],
+    "address": "华山路1580号",
+    "phone": "62800694",
+    "website": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+    "admissionNotes": "复旦初级中学作为复旦资源的初中阶段，强调基础学力与学术潜能，建议参考长宁区教育局的通讯信息表与简章判断能力测评与升学走向。",
+    "features": [
+      "复旦资源",
+      "基础训练",
+      "公办",
+      "科研兴趣支持"
+    ],
     "tags": [
       "初中",
-      "公办"
+      "公办",
+      "复旦"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "长宁区教育局通讯信息表",
+      "type": "official",
+      "url": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T22:30:00+08:00",
     "trainingDirections": [
-      "贯通培养"
+      "人文",
+      "数学与科学",
+      "英语与论文写作"
     ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/changning-上海市复旦初级中学.md"
@@ -19260,8 +20170,8 @@
     "schoolType": "unknown",
     "schoolTypeLabel": "民办",
     "tier": "",
-    "address": "",
-    "phone": "",
+    "address": "上海市长宁区茅台路1111号",
+    "phone": "021-62901188",
     "website": "",
     "admissionNotes": "长宁区 初中 民办",
     "features": [],
@@ -19270,13 +20180,13 @@
       "民办"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "长宁区教育公开信息",
+      "type": "official",
+      "url": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+      "crawledAt": "2026-04-08T23:35:00+08:00",
+      "confidence": 0.82
     },
-    "updatedAt": "2026-03-22 14:32:45",
+    "updatedAt": "2026-04-08T23:35:00+08:00",
     "trainingDirections": [
       "贯通培养"
     ],
@@ -19326,24 +20236,36 @@
     "schoolType": "district_key",
     "schoolTypeLabel": "区重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "长宁区 高中 区重点",
-    "features": [],
+    "address": "华山路1626号",
+    "phone": "62800172",
+    "website": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+    "admissionNotes": "长宁复旦中学结合哲学教育与数理/人文双轨，强调市示范标准与创新课程，建议通过长宁区教育局最新通讯数据确认占位与面试安排。",
+    "features": [
+      "哲学教育",
+      "数理训练",
+      "市示范",
+      "高校串联"
+    ],
     "tags": [
       "高中",
-      "区重点"
+      "区重点",
+      "公办",
+      "市示范",
+      "复旦"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "长宁区教育局通讯信息表",
+      "type": "official",
+      "url": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T22:30:00+08:00",
+    "trainingDirections": [
+      "哲学/数理",
+      "科技/人文融合",
+      "全球视野"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/changning-上海市长宁区复旦中学.md"
   },
@@ -19457,24 +20379,37 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "长宁区 高中 市重点",
-    "features": [],
+    "address": "江苏路155号",
+    "phone": "62526860",
+    "website": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+    "admissionNotes": "市三女中（区命名）延续女子教育基因，艺术+学术共进，建议结合区级通讯信息与自主招生系统确认专业班与选拔节奏。",
+    "features": [
+      "女子教育",
+      "艺术与人文",
+      "市示范",
+      "女性发展"
+    ],
     "tags": [
       "高中",
-      "市重点"
+      "市重点",
+      "公办",
+      "女子",
+      "重点",
+      "长宁"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "长宁区教育局通讯信息表",
+      "type": "official",
+      "url": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T22:30:00+08:00",
+    "trainingDirections": [
+      "艺术与人文",
+      "领导力与素质",
+      "社会研究"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/changning-上海市长宁区市三女中.md"
   },
@@ -19587,24 +20522,35 @@
     "schoolType": "district_key",
     "schoolTypeLabel": "区重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "长宁区 高中 区重点",
-    "features": [],
+    "address": "水城路450弄1号",
+    "phone": "62590198",
+    "website": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+    "admissionNotes": "仙霞高级中学作为长宁公办重点，侧重素质教育与项目化管理，建议以教育局通讯信息表和校园公开日资料核实课程节奏与招生口径。",
+    "features": [
+      "公办品质",
+      "项目化教学",
+      "素质教育",
+      "社区结合"
+    ],
     "tags": [
       "高中",
-      "区重点"
+      "区重点",
+      "公办",
+      "长宁"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "长宁区教育局通讯信息表",
+      "type": "official",
+      "url": "https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html",
+      "crawledAt": "2026-04-08T22:30:00+08:00",
+      "confidence": 0.9
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T22:30:00+08:00",
+    "trainingDirections": [
+      "综合素养",
+      "体育与艺术",
+      "社会服务"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/changning-上海市长宁区仙霞高级中学.md"
   },
@@ -19652,24 +20598,32 @@
     "schoolType": "municipal_key",
     "schoolTypeLabel": "市重点",
     "tier": "",
-    "address": "",
-    "phone": "",
-    "website": "",
-    "admissionNotes": "长宁区 高中 市重点",
-    "features": [],
+    "address": "上海市长宁区茅台路1111号",
+    "phone": "021-62901188",
+    "website": "https://shyahs.chneic.sh.cn/",
+    "admissionNotes": "长宁区市重点高中，建议重点关注延安体系、统一招生与自主招生口径，以及理科与外语见长的培养氛围。",
+    "features": [
+      "市重点高中",
+      "长宁头部高中",
+      "外语与理科见长"
+    ],
     "tags": [
       "高中",
       "市重点"
     ],
     "source": {
-      "name": "[object Object]",
-      "type": "unknown",
-      "url": "",
-      "crawledAt": null,
-      "confidence": 0.5
+      "name": "学校官网",
+      "type": "official",
+      "url": "https://shyahs.chneic.sh.cn/",
+      "crawledAt": "2026-04-08T22:50:00+08:00",
+      "confidence": 0.95
     },
-    "updatedAt": "2026-03-22 14:32:45",
-    "trainingDirections": [],
+    "updatedAt": "2026-04-08T22:50:00+08:00",
+    "trainingDirections": [
+      "人文综合",
+      "科创竞赛",
+      "外语特色"
+    ],
     "profileDepth": "foundation",
     "contentFile": "content/schools/changning-上海市长宁区延安中学.md"
   },
