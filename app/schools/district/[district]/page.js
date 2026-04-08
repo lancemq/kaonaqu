@@ -126,7 +126,7 @@ export default async function DistrictSchoolsPage({ params }) {
   return (
     <SiteShell hideKnowledgeNav>
       <header className="hero" id="top">
-        <section className="search-panel district-datadesk-hero" aria-label="区级学校专题">
+        <section className="district-datadesk-hero" aria-label="区级学校专题">
           <div className="district-datadesk-hero-grid">
             <div className="district-datadesk-hero-main">
               <p className="overview-label">District Database</p>

@@ -33,7 +33,7 @@ export default async function SchoolComparePage({ searchParams }) {
   return (
     <SiteShell hideKnowledgeNav>
       <header className="hero" id="top">
-        <section className="search-panel editorial-intro-panel" aria-label="学校对比">
+        <section className="schools-datadesk-hero schools-compare-datadesk-hero" aria-label="学校对比">
           <nav className="breadcrumb" aria-label="面包屑导航">
             <Link href="/">首页</Link>
             <span className="separator">/</span>
@@ -41,34 +41,62 @@ export default async function SchoolComparePage({ searchParams }) {
             <span className="separator">/</span>
             <span>学校对比</span>
           </nav>
-          <div className="search-panel-head editorial-intro-head">
-            <div className="editorial-intro-copy">
-              <span className="module-glyph module-glyph-schools module-glyph-large" aria-hidden="true"></span>
+          <div className="schools-datadesk-hero-grid schools-compare-datadesk-hero-grid">
+            <div className="schools-datadesk-intro schools-compare-datadesk-intro">
               <h1>学校对比</h1>
-              <p>把 2 到 4 所学校放在同一屏里看，适合快速比较学段、培养方向、学校亮点和报考提醒。</p>
+              <p className="schools-datadesk-subtitle">把 2 到 4 所学校放在同一屏里看，优先比较学段、办学性质、培养方向和报考提醒。</p>
+              <p className="schools-datadesk-description">这一页更适合已经缩到少量候选学校的家庭。先看方向和提醒，再决定回区页继续收窄，还是直接进入单校详情。</p>
+              <div className="schools-datadesk-inline-meta">
+                <span>Compare Desk</span>
+                <span>建议控制在 2-4 所学校内</span>
+              </div>
             </div>
-            <div className="editorial-intro-metrics">
-              <article><span>已选学校</span><strong>{compareSchools.length}</strong></article>
-              <article><span>建议数量</span><strong>2-4</strong></article>
-              <article><span>比较重点</span><strong>方向 / 提醒</strong></article>
+            <div className="schools-datadesk-summary-grid schools-compare-datadesk-summary-grid">
+              <article className="schools-datadesk-summary-card schools-datadesk-summary-card-strong">
+                <span>已选学校</span>
+                <strong>{compareSchools.length}</strong>
+                <p>当前进入对比台的学校数量</p>
+              </article>
+              <article className="schools-datadesk-summary-card">
+                <span>建议数量</span>
+                <strong>2-4</strong>
+                <p>方便在同屏内保持有效比较</p>
+              </article>
+              <article className="schools-datadesk-summary-card">
+                <span>比较重点</span>
+                <strong>方向 / 提醒</strong>
+                <p>优先看培养和报考提醒，而不是只看标签</p>
+              </article>
             </div>
           </div>
         </section>
       </header>
 
-      <main className="layout">
-        <section className="panel main-panel">
-          <div className="section-heading">
-            <h2>对比结果</h2>
-            <p>如果当前还没选择学校，可以先回到学校列表把学校加入对比。</p>
+      <main className="layout schools-compare-datadesk-layout">
+        <section className="schools-datadesk-panel schools-compare-datadesk-panel">
+          <div className="schools-datadesk-results-head schools-compare-datadesk-head">
+            <div>
+              <span className="overview-label">Compare Result</span>
+              <h2>对比结果</h2>
+              <p>如果当前还没选择学校，可以先回到学校列表把学校加入对比。</p>
+            </div>
+            <div className="schools-datadesk-inline-meta">
+              <span>同屏比较</span>
+              <span>支持直接进入学校详情</span>
+            </div>
           </div>
           {compareSchools.length ? (
-            <div className="compare-grid">
+            <div className="compare-grid schools-compare-datadesk-grid">
               {compareSchools.map((school) => (
-                <Link key={school.id} className="compare-card compare-card-link" href={`/schools/${school.id}`}>
-                  <div className="compare-card-head">
-                    <h3>{school.name}</h3>
-                    <p>{getSchoolDistrictName(school)} · {getSchoolStage(school)}</p>
+                <Link key={school.id} className="compare-card compare-card-link schools-compare-datadesk-card" href={`/schools/${school.id}`}>
+                  <div className="compare-card-head schools-compare-datadesk-cardhead">
+                    <div>
+                      <p className="schools-datadesk-cardkicker">{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getSchoolOwnershipLabel(school)}</p>
+                      <h3>{school.name}</h3>
+                    </div>
+                    <div className="schools-datadesk-cardmeta">
+                      <span>{getSchoolType(school)}</span>
+                    </div>
                   </div>
                   <dl className="school-detail-facts">
                     <div><dt>办学性质</dt><dd>{getSchoolOwnershipLabel(school)}</dd></div>
@@ -90,7 +118,7 @@ export default async function SchoolComparePage({ searchParams }) {
                     <h4>适合关注</h4>
                     <p>{getSchoolSuitableStudents(school) || '待补充'}</p>
                   </div>
-                  <div className="compare-card-actions">
+                  <div className="compare-card-actions schools-compare-datadesk-actions">
                     <span className="school-card-footnote">{getSchoolDistrictName(school)} 学校列表</span>
                     <span className="school-card-footnote">学校详情</span>
                   </div>

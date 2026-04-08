@@ -283,7 +283,7 @@ export default function SchoolsPageClient({
   return (
     <>
       <header className="hero" id="top">
-        <section className="search-panel schools-datadesk-hero" aria-label="上海学校数据库入口">
+        <section className="schools-datadesk-hero" aria-label="上海学校数据库入口">
           <div className="schools-datadesk-hero-grid">
             <div className="schools-datadesk-intro">
               <p className="overview-label">School Database</p>
@@ -291,7 +291,7 @@ export default function SchoolsPageClient({
               <p className="schools-datadesk-subtitle">先按区域、学段、办学性质与学校特征缩小范围，再进入学校详情做判断。</p>
               <p className="schools-datadesk-description">这一页优先解决“先把候选学校缩到可比较范围内”这个问题。搜索适合已知目标学校，左侧控制台适合还在缩范围的家庭。</p>
               <div className="schools-datadesk-search-row">
-                <label className="search-field search-field-main schools-datadesk-search" htmlFor="prototype-school-search">
+                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-main schools-datadesk-search" htmlFor="prototype-school-search">
                   <span className="visually-hidden">搜索学校、区域或关键词</span>
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M10.5 4a6.5 6.5 0 1 0 4.03 11.6l4.43 4.43 1.41-1.41-4.43-4.43A6.5 6.5 0 0 0 10.5 4Zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"></path>
@@ -390,7 +390,7 @@ export default function SchoolsPageClient({
             <div className="schools-datadesk-controls">
               <div className="schools-datadesk-controlblock">
                 <span>区域</span>
-                <label className="search-field search-field-select" htmlFor="prototype-district-filter">
+                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-district-filter">
                   <span className="visually-hidden">按区域筛选</span>
                   <select id="prototype-district-filter" value={activeDistrict} onChange={(event) => { setActiveDistrict(event.target.value); setCurrentPage(1); }}>
                     <option value="all">全部区域</option>
@@ -402,7 +402,7 @@ export default function SchoolsPageClient({
               </div>
               <div className="schools-datadesk-controlblock">
                 <span>学段</span>
-                <label className="search-field search-field-select" htmlFor="prototype-stage-filter">
+                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-stage-filter">
                   <span className="visually-hidden">按学段筛选</span>
                   <select id="prototype-stage-filter" value={activeStage} onChange={(event) => { setActiveStage(event.target.value); setCurrentPage(1); }}>
                     {STAGE_OPTIONS.map((option) => (
@@ -413,7 +413,7 @@ export default function SchoolsPageClient({
               </div>
               <div className="schools-datadesk-controlblock">
                 <span>办学性质</span>
-                <label className="search-field search-field-select" htmlFor="prototype-ownership-filter">
+                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-ownership-filter">
                   <span className="visually-hidden">按办学性质筛选</span>
                   <select id="prototype-ownership-filter" value={activeOwnership} onChange={(event) => { setActiveOwnership(event.target.value); setCurrentPage(1); }}>
                     {OWNERSHIP_OPTIONS.map((option) => (

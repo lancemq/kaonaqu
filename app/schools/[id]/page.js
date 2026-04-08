@@ -220,7 +220,7 @@ export default async function SchoolDetailPage({ params }) {
   return (
     <SiteShell hideKnowledgeNav>
       <header className="hero" id="top">
-        <section className="search-panel school-datadesk-detail-hero" aria-label="学校详情">
+        <section className="school-datadesk-detail-hero" aria-label="学校详情">
           <div className="school-datadesk-detail-hero-grid">
             <div className="school-datadesk-detail-main">
               <p className="overview-label">
