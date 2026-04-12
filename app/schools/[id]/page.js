@@ -218,7 +218,14 @@ export default async function SchoolDetailPage({ params }) {
   ].filter(([, value]) => String(value || '').trim());
 
   return (
-    <SiteShell hideKnowledgeNav>
+    <SiteShell
+      hideKnowledgeNav
+      breadcrumbItems={[
+        { label: '学校信息', href: '/schools' },
+        { label: getSchoolDistrictName(school), href: `/schools/district/${school.districtId}` },
+        { label: school.name }
+      ]}
+    >
       <header className="hero" id="top">
         <section className="school-datadesk-detail-hero" aria-label="学校详情">
           <div className="school-datadesk-detail-hero-grid">

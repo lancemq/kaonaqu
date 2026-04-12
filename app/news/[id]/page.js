@@ -205,7 +205,14 @@ export default async function NewsDetailPage({ params }) {
   }
 
   return (
-    <SiteShell hideKnowledgeNav>
+    <SiteShell
+      hideKnowledgeNav
+      breadcrumbItems={[
+        { label: '新闻政策', href: '/news' },
+        { label: articleType },
+        { label: item.title }
+      ]}
+    >
       <header className="hero" id="top">
         <section className="search-panel news-detail-article-hero news-detail-article-shell" aria-label="新闻详情">
           <div className="news-detail-article-head">

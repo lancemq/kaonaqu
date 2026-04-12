@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import SiteBreadcrumbs from './site-breadcrumbs';
 
-export default function SiteShell({ children, hideKnowledgeNav = false }) {
+export default function SiteShell({ children, hideKnowledgeNav = false, breadcrumbItems }) {
   return (
     <div className="page-shell">
       <div className="masthead-rail" aria-label="站点导览">
@@ -38,6 +39,7 @@ export default function SiteShell({ children, hideKnowledgeNav = false }) {
           <strong>政策 · 学校 · 学习</strong>
         </div>
       </header>
+      <SiteBreadcrumbs items={breadcrumbItems} />
       {children}
     </div>
   );

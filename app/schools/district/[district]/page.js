@@ -124,7 +124,14 @@ export default async function DistrictSchoolsPage({ params }) {
   ].filter((group) => group.items.length);
 
   return (
-    <SiteShell hideKnowledgeNav>
+    <SiteShell
+      hideKnowledgeNav
+      breadcrumbItems={[
+        { label: '学校信息', href: '/schools' },
+        { label: '区级专题' },
+        { label: districtInfo.name }
+      ]}
+    >
       <header className="hero" id="top">
         <section className="district-datadesk-hero" aria-label="区级学校专题">
           <div className="district-datadesk-hero-grid">
@@ -132,11 +139,7 @@ export default async function DistrictSchoolsPage({ params }) {
               <p className="overview-label">District Database</p>
               <h1>{districtInfo.name}学校专题</h1>
               <p className="district-datadesk-subtitle">{getDistrictSchoolTopic(districtInfo)}</p>
-              <p className="district-datadesk-description">这页把 {districtInfo.name} 的学校按区域数据库方式重组，先看区内学校结构和优先学校，再决定进入学校详情还是返回全市学校库继续比较。</p>
-              <div className="district-datadesk-actions">
-                <Link className="button" href={`/schools?district=${districtInfo.id}`}>{districtInfo.name}学校检索</Link>
-                <Link className="button button-secondary" href="/schools">返回全市学校数据库</Link>
-              </div>
+              <p className="district-datadesk-description">这页把 {districtInfo.name} 的学校按区域数据库方式重组，先看区内学校结构和优先学校，再进入具体学校详情继续判断。</p>
               <div className="district-datadesk-inline-meta">
                 <span>区域结构优先</span>
                 <span>先看学段分布</span>
