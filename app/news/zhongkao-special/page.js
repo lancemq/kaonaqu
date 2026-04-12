@@ -88,8 +88,7 @@ export default async function ZhongkaoSpecialPage() {
               <h1>{currentYear} 上海中招专题</h1>
               <p className="school-prototype-subtitle">面向上海初三家庭，把中招报名、考试、录取和专项招生相关内容按阶段整理，方便按当前进度快速进入。</p>
               <div className="school-prototype-action-row">
-                <Link className="action-button" href="/news">返回新闻频道</Link>
-                <a className="action-button action-button-secondary" href="#zhongkao-list">查看专题内容</a>
+                <a className="action-button" href="#zhongkao-list">查看专题内容</a>
               </div>
             </div>
             <aside className="school-prototype-hero-side">
@@ -278,7 +277,6 @@ export default async function ZhongkaoSpecialPage() {
           <section className="school-prototype-side-card">
             <p className="overview-label">下一步入口</p>
             <a className="school-prototype-side-link" href="/news/admission-timeline">查看官方招生日程</a>
-            <a className="school-prototype-side-link" href="/news">返回新闻频道</a>
           </section>
         </aside>
 

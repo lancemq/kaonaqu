@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import SiteShell from '../../../components/site-shell';
 import { readSchoolMarkdownFile } from '../../../lib/school-content-files.mjs';
+import { getSchoolRichProfile } from '../../../lib/school-rich-profiles';
 import {
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
@@ -197,6 +198,7 @@ export default async function SchoolDetailPage({ params }) {
   const features = articleInsights.keywords.length ? articleInsights.keywords : getSchoolFeatures(school);
   const trainingDirections = articleInsights.directions.length ? articleInsights.directions : getSchoolTrainingDirections(school);
   const tags = getSchoolTags(school);
+  const richProfile = getSchoolRichProfile(school.id);
   const schoolSummary = articleInsights.overview || getSchoolAdmissionInfo(school) || '学术强校、课程体系与校园节奏兼具，是上海家长高频检索的学校之一。';
 
   const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '学校属性待补充';
@@ -238,6 +240,9 @@ export default async function SchoolDetailPage({ params }) {
                 {schoolSummary}
               </p>
               <div className="school-datadesk-detail-chiprow">
+                {richProfile?.badge ? (
+                  <span className="school-datadesk-detail-chip school-datadesk-detail-chip-strong">{richProfile.badge}</span>
+                ) : null}
                 {quickTags.length ? quickTags.map((item) => (
                   <span key={item} className="school-datadesk-detail-chip">{item}</span>
                 )) : (
@@ -262,6 +267,20 @@ export default async function SchoolDetailPage({ params }) {
       </header>
 
       <div className="school-datadesk-detail-gap" aria-hidden="true" />
+
+      {richProfile ? (
+        <section className="school-rich-visual" aria-label={`${school.name}核心资料`}>
+          <figure className="school-rich-image-card">
+            <img src={richProfile.image.url} alt={richProfile.image.alt} loading="lazy" />
+            <figcaption>{richProfile.image.caption}</figcaption>
+          </figure>
+          <div className="school-rich-brief">
+            <p className="overview-label">核心资料包</p>
+            <h2>历史、特色、校友与录取参考</h2>
+            <p>这部分优先整理头部学校的公开信息。分数线为录取参考，不同年份、区、批次和计划类型口径不同，填报前仍要回到当年官方发布核对。</p>
+          </div>
+        </section>
+      ) : null}
 
       <section className="school-datadesk-detail-stats">
         <article>
@@ -299,6 +318,85 @@ export default async function SchoolDetailPage({ params }) {
               ))}
             </div>
           </section>
+
+          {richProfile ? (
+            <section className="school-rich-panel" id="school-rich-profile">
+              <div className="school-rich-panel-head">
+                <p className="overview-label">深度资料</p>
+                <h2>{school.name}核心信息</h2>
+              </div>
+
+              <div className="school-rich-history">
+                {richProfile.history.map((item) => (
+                  <article key={`${item.year}-${item.text}`}>
+                    <span>{item.year}</span>
+                    <p>{item.text}</p>
+                  </article>
+                ))}
+              </div>
+
+              <div className="school-rich-card-grid">
+                {richProfile.programs.map((item) => (
+                  <article key={item.title} className="school-rich-card">
+                    <span>办学特色</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </article>
+                ))}
+              </div>
+
+              <div className="school-rich-two-column">
+                <section>
+                  <div className="school-rich-subhead">
+                    <p className="overview-label">相关名人与校友线索</p>
+                    <span>公开资料口径</span>
+                  </div>
+                  <div className="school-rich-people-list">
+                    {richProfile.notablePeople.map((item) => (
+                      <article key={item.name}>
+                        <strong>{item.name}</strong>
+                        <p>{item.role}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section>
+                  <div className="school-rich-subhead">
+                    <p className="overview-label">历年入学分数线</p>
+                    <span>录取参考</span>
+                  </div>
+                  <div className="school-rich-score-table" role="table" aria-label={`${school.name}录取参考分数线`}>
+                    <div role="row" className="school-rich-score-row school-rich-score-head">
+                      <span role="columnheader">年份</span>
+                      <span role="columnheader">批次</span>
+                      <span role="columnheader">分数</span>
+                    </div>
+                    {richProfile.scoreLines.map((item) => (
+                      <div key={`${item.year}-${item.batch}`} role="row" className="school-rich-score-row">
+                        <span role="cell">{item.year}</span>
+                        <span role="cell">{item.batch}<small>{item.scope}</small></span>
+                        <strong role="cell">{item.score}</strong>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="school-rich-note">{richProfile.scoreLines[0]?.source?.note}</p>
+                </section>
+              </div>
+
+              <div className="school-rich-source-list">
+                <span>资料入口</span>
+                {richProfile.sources.map((item) => (
+                  <a key={item.url} href={item.url} target="_blank" rel="noreferrer">{item.label}</a>
+                ))}
+                {richProfile.scoreLines[0]?.source ? (
+                  <a href={richProfile.scoreLines[0].source.url} target="_blank" rel="noreferrer">
+                    {richProfile.scoreLines[0].source.label}
+                  </a>
+                ) : null}
+              </div>
+            </section>
+          ) : null}
 
           <section className="school-datadesk-detail-panel" id="school-article">
             <p className="overview-label">正文与判断</p>
@@ -357,16 +455,7 @@ export default async function SchoolDetailPage({ params }) {
                 <span>{getSchoolStage(peer)} / {getSchoolOwnershipLabel(peer) || '学校信息'}</span>
               </Link>
             )) : (
-              <>
-                <Link className="school-datadesk-detail-peerlink" href={`/schools?district=${school.districtId}`}>
-                  <strong>{getSchoolDistrictName(school)} 区学校列表</strong>
-                  <span>返回该区学校数据库结果</span>
-                </Link>
-                <Link className="school-datadesk-detail-peerlink" href="/schools">
-                  <strong>学校信息汇总页</strong>
-                  <span>回到全市学校数据库</span>
-                </Link>
-              </>
+              <p className="school-datadesk-detail-empty">同区学校信息持续补充中，可通过上方路径进入区级专题继续查看。</p>
             )}
           </section>
         </aside>

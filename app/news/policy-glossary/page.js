@@ -85,8 +85,7 @@ export default function PolicyGlossaryPage() {
                 <span>术语不再混着看</span>
               </div>
               <div className="school-prototype-action-row">
-                <Link className="action-button" href="/news">返回新闻频道</Link>
-                <a className="action-button action-button-secondary" href="#glossary-list">开始查看</a>
+                <a className="action-button" href="#glossary-list">开始查看</a>
               </div>
             </div>
             <aside className="school-prototype-hero-side">
@@ -119,7 +118,7 @@ export default function PolicyGlossaryPage() {
         </article>
         <article>
           <strong>适合反复回看</strong>
-          <span>读专题时可随时返回速查</span>
+          <span>读专题时可随时进入速查</span>
         </article>
       </section>
 

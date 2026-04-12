@@ -149,8 +149,7 @@ export default function PolicyFaqPage() {
                 <span>问题直接指向下一步</span>
               </div>
               <div className="school-prototype-action-row">
-                <Link className="action-button" href="/news">返回新闻频道</Link>
-                <a className="action-button action-button-secondary" href="#faq-list">开始查看问答</a>
+                <a className="action-button" href="#faq-list">开始查看问答</a>
               </div>
             </div>
             <aside className="school-prototype-hero-side">

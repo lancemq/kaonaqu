@@ -210,8 +210,7 @@ export default async function PolicyDeepDivePage() {
                 <span>原文入口</span>
               </div>
               <div className="school-prototype-action-row">
-                <Link className="action-button" href="/news">返回新闻频道</Link>
-                <a className="action-button action-button-secondary" href="#policy-list">查看政策列表</a>
+                <a className="action-button" href="#policy-list">查看政策列表</a>
               </div>
             </div>
             <aside className="school-prototype-hero-side">
@@ -379,7 +378,7 @@ export default async function PolicyDeepDivePage() {
             <p className="overview-label">配合阅读</p>
             <Link className="school-prototype-side-link" href="/news/admission-timeline">先查时间线</Link>
             <Link className="school-prototype-side-link" href="/news/policy-glossary">再看政策术语</Link>
-            <Link className="school-prototype-side-link" href="/news/policy-faq">回到高频问答</Link>
+            <Link className="school-prototype-side-link" href="/news/policy-faq">查看高频问答</Link>
           </article>
         </aside>
 

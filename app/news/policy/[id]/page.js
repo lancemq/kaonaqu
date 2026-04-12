@@ -248,7 +248,7 @@ export default async function PolicyDetailPage({ params }) {
 
             <section className="school-prototype-side-card news-detail-side-card">
               <p className="overview-label">继续阅读</p>
-              <Link className="school-prototype-side-link" href="/news/zhongkao-special">返回中招专题</Link>
+              <Link className="school-prototype-side-link" href="/news/zhongkao-special">进入中招专题</Link>
               <Link className="school-prototype-side-link" href="/news/admission-timeline">查看官方招生日程</Link>
             </section>
           </aside>

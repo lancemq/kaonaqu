@@ -1080,6 +1080,12 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     font-weight: 600;
 }
 
+.school-datadesk-detail-chip-strong {
+    border-color: #111111 !important;
+    background: #111111 !important;
+    color: #f7f4ed !important;
+}
+
 .school-datadesk-detail-actions {
     display: flex;
     flex-wrap: wrap;
@@ -1118,6 +1124,77 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
 .school-datadesk-detail-gap {
     height: 16px;
+}
+
+.school-rich-visual {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.8fr);
+    gap: 18px;
+    align-items: stretch;
+    margin-bottom: 18px;
+}
+
+.school-rich-image-card,
+.school-rich-brief {
+    overflow: hidden;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.68);
+}
+
+.school-rich-image-card {
+    position: relative;
+    min-height: 300px;
+    margin: 0;
+}
+
+.school-rich-image-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    background: #ece7dc;
+}
+
+.school-rich-image-card figcaption {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    max-width: calc(100% - 28px);
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(17, 17, 17, 0.72);
+    color: #f7f4ed;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.school-rich-brief {
+    display: grid;
+    align-content: end;
+    gap: 12px;
+    padding: 24px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(240, 234, 223, 0.72)),
+        radial-gradient(circle at top right, rgba(37, 89, 89, 0.14), transparent 34%);
+}
+
+.school-rich-brief h2 {
+    max-width: 11em;
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+}
+
+.school-rich-brief p:last-child {
+    max-width: 34rem;
+    margin: 0;
+    color: rgba(17, 17, 17, 0.68);
+    font-size: 0.96rem;
+    font-weight: 650;
+    line-height: 1.72;
 }
 
 .school-datadesk-detail-main-gap {
@@ -1231,6 +1308,209 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 .school-datadesk-detail-highlightcard strong {
     font-size: 0.94rem;
     line-height: 1.56;
+}
+
+.school-rich-panel {
+    display: grid;
+    gap: 18px;
+    padding: 20px;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.74);
+}
+
+.school-rich-panel-head {
+    display: grid;
+    gap: 8px;
+}
+
+.school-rich-panel-head h2 {
+    margin: 0;
+}
+
+.school-rich-history {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.school-rich-history article,
+.school-rich-card,
+.school-rich-two-column > section,
+.school-rich-people-list article {
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 8px;
+    background: rgba(250, 247, 240, 0.72);
+}
+
+.school-rich-history article {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    padding: 14px;
+}
+
+.school-rich-history span {
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: #111111;
+    color: #f7f4ed;
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.school-rich-history p,
+.school-rich-card p,
+.school-rich-people-list p,
+.school-rich-note {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.7);
+    line-height: 1.68;
+}
+
+.school-rich-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.school-rich-card {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+}
+
+.school-rich-card span,
+.school-rich-source-list span,
+.school-rich-subhead span {
+    color: rgba(17, 17, 17, 0.54);
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.school-rich-card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+}
+
+.school-rich-two-column {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.86fr);
+    gap: 12px;
+}
+
+.school-rich-two-column > section {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    padding: 16px;
+}
+
+.school-rich-subhead {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+}
+
+.school-rich-people-list {
+    display: grid;
+    gap: 8px;
+}
+
+.school-rich-people-list article {
+    display: grid;
+    gap: 6px;
+    padding: 12px;
+}
+
+.school-rich-people-list strong {
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+.school-rich-score-table {
+    display: grid;
+    overflow: hidden;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 8px;
+}
+
+.school-rich-score-row {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) 72px;
+    gap: 10px;
+    align-items: center;
+    padding: 11px 12px;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.school-rich-score-row:first-child {
+    border-top: 0;
+}
+
+.school-rich-score-head {
+    background: rgba(17, 17, 17, 0.92);
+    color: #f7f4ed;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.school-rich-score-row span,
+.school-rich-score-row strong {
+    min-width: 0;
+}
+
+.school-rich-score-row small {
+    display: block;
+    margin-top: 2px;
+    color: rgba(17, 17, 17, 0.56);
+    font-size: 0.72rem;
+    line-height: 1.35;
+}
+
+.school-rich-score-head small {
+    color: inherit;
+}
+
+.school-rich-score-row strong {
+    font-size: 1.25rem;
+    letter-spacing: -0.045em;
+}
+
+.school-rich-source-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding-top: 2px;
+}
+
+.school-rich-source-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 10px;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    color: inherit;
+    font-size: 0.8rem;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.school-rich-source-list a:hover,
+.school-rich-source-list a:focus-visible {
+    border-color: rgba(37, 89, 89, 0.4);
+    color: #255959;
 }
 
 .school-datadesk-detail-sectionhead {
@@ -1695,6 +1975,13 @@ body[data-page="schools"] .top-links a[href="/schools"] {
         grid-template-columns: 1fr;
     }
 
+    .school-rich-visual,
+    .school-rich-history,
+    .school-rich-card-grid,
+    .school-rich-two-column {
+        grid-template-columns: 1fr;
+    }
+
     .schools-datadesk-sidebar {
         position: static;
         top: auto;
@@ -1769,6 +2056,7 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     .district-datadesk-card,
     .district-datadesk-schoolitem,
     .school-datadesk-detail-panel,
+    .school-rich-panel,
     .school-datadesk-detail-stats article,
     .school-datadesk-detail-hero {
         padding-left: 16px;
@@ -1777,6 +2065,30 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
     .school-datadesk-detail-actions {
         display: grid;
+    }
+
+    .school-rich-image-card,
+    .school-rich-image-card img {
+        min-height: 220px;
+    }
+
+    .school-rich-brief {
+        padding: 20px 18px;
+    }
+
+    .school-rich-brief h2 {
+        max-width: none;
+    }
+
+    .school-rich-subhead,
+    .school-rich-source-list {
+        align-items: flex-start;
+    }
+
+    .school-rich-score-row {
+        grid-template-columns: 58px minmax(0, 1fr) 62px;
+        gap: 8px;
+        padding: 10px;
     }
 }
 

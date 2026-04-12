@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import SiteShell from '../../../components/site-shell';
 import admissionTimeline from '../../../lib/admission-timeline';
 
@@ -50,8 +49,7 @@ export default function AdmissionTimelinePage() {
               <h1>上海升学官方招生日程</h1>
               <p className="school-prototype-subtitle">把上海中考报名、个别报名、体育类考试、志愿确认、统考和特殊教育招生的关键时间节点集中整理，适合家长先查时间，再继续看专题和单条政策。</p>
               <div className="school-prototype-action-row">
-                <Link className="action-button" href="/news">返回新闻频道</Link>
-                <a className="action-button action-button-secondary" href="#timeline-list">查看日程</a>
+                <a className="action-button" href="#timeline-list">查看日程</a>
               </div>
             </div>
             <aside className="school-prototype-hero-side">
@@ -173,7 +171,6 @@ export default function AdmissionTimelinePage() {
           <section className="school-prototype-side-card">
             <p className="overview-label">下一步入口</p>
             <a className="school-prototype-side-link" href="/news/zhongkao-special">进入中招专题</a>
-            <a className="school-prototype-side-link" href="/news">返回新闻频道</a>
           </section>
         </aside>
 
