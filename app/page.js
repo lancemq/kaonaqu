@@ -109,7 +109,7 @@ export default async function HomePage() {
                   <div className="home-hero-tag">上海 · 2026</div>
                   <p className="home-hero-micro-note">把今年上海升学最该看的信息，整理到一个入口</p>
                 </div>
-                <h1>上海升学这件事，不必再到处打听。</h1>
+                <h1>上海升学这件事，不必再到处打听</h1>
                 <p className="home-hero-description">从今年的中考、高考政策，到上海 16 区学校信息，再到真正能用上的知识体系，考哪去把最容易让人焦虑、也最需要尽快看懂的内容放到一起，帮你少刷无效信息，更快看清下一步。</p>
                 <div className="home-hero-inline-meta">
                   <span>只看上海升学</span>

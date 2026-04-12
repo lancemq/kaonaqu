@@ -1779,3 +1779,66 @@ body[data-page="schools"] .top-links a[href="/schools"] {
         display: grid;
     }
 }
+
+/* Readability guardrails */
+body[data-page="schools"] .schools-datadesk-summary-card-strong,
+body[data-page="schools"] .schools-datadesk-panel-dark,
+body[data-page="schools"] .district-datadesk-summary-card-strong,
+body[data-page="schools"] .district-datadesk-panel-dark,
+body[data-page="schools"] .school-datadesk-detail-sidecard-strong,
+body[data-page="schools"] .school-datadesk-detail-panel-dark {
+    border-color: #111111;
+    background:
+        radial-gradient(circle at top right, rgba(247, 244, 237, 0.08), transparent 30%),
+        linear-gradient(180deg, #151515 0%, #24231f 100%);
+    color: #f7f4ed;
+}
+
+body[data-page="schools"] .schools-datadesk-summary-card-strong *,
+body[data-page="schools"] .schools-datadesk-panel-dark *,
+body[data-page="schools"] .district-datadesk-summary-card-strong *,
+body[data-page="schools"] .district-datadesk-panel-dark *,
+body[data-page="schools"] .school-datadesk-detail-sidecard-strong *,
+body[data-page="schools"] .school-datadesk-detail-panel-dark * {
+    color: inherit;
+}
+
+body[data-page="schools"] .schools-datadesk-summary-card-strong span,
+body[data-page="schools"] .schools-datadesk-panel-dark span,
+body[data-page="schools"] .district-datadesk-summary-card-strong span,
+body[data-page="schools"] .district-datadesk-panel-dark span,
+body[data-page="schools"] .school-datadesk-detail-sidecard-strong span,
+body[data-page="schools"] .school-datadesk-detail-panel-dark span,
+body[data-page="schools"] .schools-datadesk-summary-card-strong p,
+body[data-page="schools"] .schools-datadesk-panel-dark p,
+body[data-page="schools"] .district-datadesk-summary-card-strong p,
+body[data-page="schools"] .district-datadesk-panel-dark p,
+body[data-page="schools"] .school-datadesk-detail-sidecard-strong p,
+body[data-page="schools"] .school-datadesk-detail-panel-dark p {
+    color: rgba(247, 244, 237, 0.84);
+}
+
+body[data-page="schools"] .schools-datadesk-summary-card-strong strong,
+body[data-page="schools"] .schools-datadesk-panel-dark strong,
+body[data-page="schools"] .district-datadesk-summary-card-strong strong,
+body[data-page="schools"] .district-datadesk-panel-dark strong,
+body[data-page="schools"] .school-datadesk-detail-sidecard-strong strong,
+body[data-page="schools"] .school-datadesk-detail-panel-dark strong,
+body[data-page="schools"] .schools-datadesk-summary-card-strong .overview-label,
+body[data-page="schools"] .schools-datadesk-panel-dark .overview-label,
+body[data-page="schools"] .district-datadesk-summary-card-strong .overview-label,
+body[data-page="schools"] .district-datadesk-panel-dark .overview-label,
+body[data-page="schools"] .school-datadesk-detail-sidecard-strong .overview-label,
+body[data-page="schools"] .school-datadesk-detail-panel-dark .overview-label {
+    color: #f7f4ed;
+}
+
+body[data-page="schools"] .schools-datadesk-description,
+body[data-page="schools"] .schools-datadesk-cardsummary,
+body[data-page="schools"] .district-datadesk-description,
+body[data-page="schools"] .district-datadesk-cardsummary,
+body[data-page="schools"] .school-datadesk-detail-panel > p,
+body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-paragraph,
+body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-list li {
+    color: #39372f;
+}
