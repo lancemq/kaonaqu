@@ -32,7 +32,7 @@ export default function SiteShell({ children, hideKnowledgeNav = false, breadcru
           <Link href="/">首页</Link>
           <Link href="/news">新闻政策</Link>
           <Link href="/schools">学校信息</Link>
-          {!hideKnowledgeNav ? <Link href="/knowledge">知识体系</Link> : null}
+          <Link href="/knowledge">知识体系</Link>
         </nav>
         <div className="topbar-desk">
           <span className="desk-label">先看什么</span>

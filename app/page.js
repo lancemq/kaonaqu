@@ -16,6 +16,58 @@ const CORE_FEATURED_SCHOOL_NAMES = [
   '上海交通大学附属中学'
 ];
 
+const GRADE8_COURSES = [
+  {
+    subject: '物理',
+    title: '沪科版八年级物理',
+    description: '测量、声光、运动和力、压强浮力、简单机械与热现象，配套实验和学习计划。',
+    href: '/knowledge/physics-grade8',
+    status: '重点复原'
+  },
+  {
+    subject: '化学',
+    title: '沪教版八年级化学',
+    description: '开启化学之门、空气、氧气、水与生命、微粒观、化学用语和质量守恒。',
+    href: '/knowledge/chemistry-grade8',
+    status: '重点复原'
+  },
+  {
+    subject: '数学',
+    title: '八年级数学',
+    description: '一次函数、勾股定理、平行四边形、分式和数据分析。',
+    href: '/knowledge/math-grade8',
+    status: '已恢复'
+  },
+  {
+    subject: '英语',
+    title: '八年级英语',
+    description: '核心词汇、现在完成时、过去进行时、被动语态、阅读和写作。',
+    href: '/knowledge/english-grade8',
+    status: '已恢复'
+  },
+  {
+    subject: '语文',
+    title: '八年级语文',
+    description: '古诗文、文言文、现代文阅读和写作表达。',
+    href: '/knowledge/chinese-grade8',
+    status: '已恢复'
+  },
+  {
+    subject: '历史',
+    title: '八年级历史',
+    description: '中国近现代史主线、近代化探索、抗战与解放战争。',
+    href: '/knowledge/history-grade8',
+    status: '已恢复'
+  },
+  {
+    subject: '道法',
+    title: '八年级道德与法治',
+    description: '社会规则、诚信、权利义务、法治意识和责任担当。',
+    href: '/knowledge/politics-grade8',
+    status: '已恢复'
+  }
+];
+
 function getSchoolPreviewScore(school) {
   const tags = Array.isArray(school.tags) ? school.tags.length : 0;
   const features = Array.isArray(school.features) ? school.features.length : 0;
@@ -119,7 +171,7 @@ export default async function HomePage() {
   const topSchools = getHomeFeaturedSchools(schools);
   const [featuredSchool, ...supportSchools] = topSchools;
   return (
-    <SiteShell hideKnowledgeNav>
+    <SiteShell>
       <header className="hero" id="top">
         <section className="search-panel home-hero-panel home-prototype-hero" aria-label="网站概览">
           <div className="home-prototype-grid">
@@ -285,6 +337,34 @@ export default async function HomePage() {
                 <Link key={item.label} className="home-dark-quick-link" href={item.href}>
                   <span>{item.label}</span>
                   <strong>{item.value}</strong>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <section className="home-knowledge-panel" aria-label="上海八年级课程">
+            <div className="home-knowledge-head">
+              <div>
+                <p className="overview-label">知识体系</p>
+                <h2>上海八年级课程先恢复到这里</h2>
+                <p>八年级是承接九年级复习的关键年级，先从学科目录进入，再看知识点、实验、例题和学习计划。</p>
+              </div>
+              <div className="home-knowledge-actions">
+                <Link className="home-editorial-mini-link" href="/knowledge/grade-8">八年级总览</Link>
+                <Link className="home-editorial-mini-link" href="/shanghai-grade8-knowledge">旧版入口</Link>
+              </div>
+            </div>
+            <div className="home-grade8-course-grid">
+              {GRADE8_COURSES.map((course, index) => (
+                <Link
+                  key={course.href}
+                  className={`home-grade8-course-card${index < 2 ? ' home-grade8-course-card-priority' : ''}`}
+                  href={course.href}
+                >
+                  <span>{course.status}</span>
+                  <h3>{course.title}</h3>
+                  <p>{course.description}</p>
+                  <strong>{course.subject}课程</strong>
                 </Link>
               ))}
             </div>

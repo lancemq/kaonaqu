@@ -47,6 +47,16 @@ const SOURCES = [
     columns: { name: 1, ownership: 2 }
   },
   {
+    districtId: 'putuo',
+    districtName: '普陀区',
+    type: 'html-table',
+    url: 'https://www.shpt.gov.cn/zhengwu/ywjyzs-jyjrxbkyzs/2025/97/195805.html',
+    fileName: 'putuo-staff.html',
+    tableIndex: 0,
+    columns: { name: 1, ownership: 2, address: 3 },
+    ownershipPattern: '初中|完中|一贯制|十二年制'
+  },
+  {
     districtId: 'jingan',
     districtName: '静安区',
     type: 'pdf-patterns',
@@ -152,6 +162,24 @@ const SOURCES = [
       { name: '上海同大实验学校', stage: 'complete', address: '武东路295号' },
       { name: '上海杨浦双语学校', stage: 'complete', address: '永吉路351号' }
     ]
+  },
+  {
+    districtId: 'minhang',
+    districtName: '闵行区',
+    type: 'html-table',
+    url: 'https://www.shanghai.gov.cn/mhqywjy/20250407/ff191ff43156426081990035cf99e39d.html',
+    fileName: 'minhang-facilities.html',
+    tableIndex: 0,
+    columns: { name: 1, ownership: 2, address: 3 }
+  },
+  {
+    districtId: 'baoshan',
+    districtName: '宝山区',
+    type: 'html-table',
+    url: 'https://www.shanghai.gov.cn/bsqywjy/20250423/20dd1322257241bb9e8aeba19f94dc14.html',
+    fileName: 'baoshan-facilities.html',
+    tableIndex: 0,
+    columns: { name: 1, ownership: 2 }
   },
   {
     districtId: 'hongkou',
@@ -265,16 +293,18 @@ function parseHtmlTable(source, html) {
   const $ = cheerio.load(html);
   const rows = [];
   const table = $('table').eq(source.tableIndex);
+  const ownershipPattern = source.ownershipPattern ? new RegExp(source.ownershipPattern) : null;
   table.find('tr').each((_, tr) => {
     const cells = $(tr).find('td,th').map((__, cell) => cleanCell($(cell).text())).get();
     const name = cells[source.columns.name];
     const ownership = cells[source.columns.ownership] || '';
+    if (ownershipPattern && !ownershipPattern.test(ownership)) return;
     if (!name || !/中学|学校/.test(name) || /学校名称|名称/.test(name) || name === '学校') return;
     rows.push({
       name,
       districtId: source.districtId,
       districtName: source.districtName,
-      stage: inferStageByOwnership(ownership),
+      stage: source.defaultStage || inferStageByOwnership(`${ownership}${name}`),
       ownership: inferOwnershipLabel(ownership),
       address: cells[source.columns.address] || '',
       sourceUrl: source.url
