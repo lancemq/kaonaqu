@@ -172,6 +172,7 @@ export default async function HomePage() {
                     </div>
                     <h2>{headline.title}</h2>
                     <p>{headline.summary || '暂无摘要'}</p>
+                    <span className="prototype-side-readmore">阅读全文</span>
                   </Link>
                   <div className="home-side-timeline">
                     {timelineItems.slice(0, 3).map((item) => (
