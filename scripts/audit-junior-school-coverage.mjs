@@ -20,6 +20,15 @@ const SOURCES = [
     columns: { name: 1, ownership: 2, address: 3 }
   },
   {
+    districtId: 'xuhui',
+    districtName: '徐汇区',
+    type: 'html-table',
+    url: 'https://www.shanghai.gov.cn/xhqywjy/20250411/832e8a6c9de94342b77c087100ff956c.html',
+    fileName: 'xuhui-facilities.html',
+    tableIndex: 0,
+    columns: { name: 1, ownership: 2, address: 3 }
+  },
+  {
     districtId: 'pudong',
     districtName: '浦东新区',
     type: 'html-table',
@@ -79,6 +88,69 @@ const SOURCES = [
       '上海市时代中学',
       '上海市回民中学',
       '上海市久隆模范中学'
+    ]
+  },
+  {
+    districtId: 'yangpu',
+    districtName: '杨浦区',
+    type: 'pdf-patterns',
+    url: 'https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs-czzs/20250407/477711/67963ead943a49ee9742645ab6014263.pdf',
+    fileName: 'yangpu-public-facilities.pdf',
+    textFileName: 'yangpu-public-facilities.txt',
+    ownership: '公办',
+    names: [
+      { name: '上海理工大学附属初级中学', address: '图们路50号' },
+      { name: '上海理工大学附属实验初级中学', address: '内江路385号' },
+      { name: '上海市鞍山初级中学', address: '控江路2077号' },
+      { name: '上海市鞍山实验中学', address: '翔殷支路100号' },
+      { name: '上海市包头中学', address: '包头路765弄11号' },
+      { name: '上海市东辽阳中学', address: '周家嘴路4220号（过渡）' },
+      { name: '上海市二十五中学', address: '长阳路2400号' },
+      { name: '上海市国和中学', address: '中原路288、289号' },
+      { name: '上海市惠民中学', address: '怀德路568号' },
+      { name: '上海市建设初级中学', address: '平凉路2400号' },
+      { name: '上海市控江初级中学', address: '永吉路118号' },
+      { name: '上海市辽阳中学', address: '眉州路540号；眉州路515弄100号（分部）' },
+      { name: '上海市三门中学', address: '政立路838号' },
+      { name: '上海市十五中学', address: '怀德路110号' },
+      { name: '上海市思源中学', address: '市光四村69号；市光二村88号' },
+      { name: '上海市铁岭中学', address: '鞍山路300号' },
+      { name: '上海市同济初级中学', address: '政通路260号' },
+      { name: '上海市同济第二初级中学', address: '政德东路185号' },
+      { name: '上海市新大桥中学', address: '眉州支路77号' },
+      { name: '上海市杨浦初级中学', address: '飞虹路1001号' },
+      { name: '上海市杨浦区教育学院附属中学', address: '江浦路1322号' },
+      { name: '复旦大学第二附属学校', stage: 'complete', address: '恒学路100号' },
+      { name: '上海交通大学附属中学杨浦实验学校', stage: 'complete', address: '开鲁路35号（过渡）' },
+      { name: '上海市复旦实验中学', address: '安波路151号' },
+      { name: '上海市黄兴学校', stage: 'complete', address: '控江四村107号' },
+      { name: '上海市江浦实验学校', stage: 'complete', address: '江浦路1322号（过渡）' },
+      { name: '上海市昆明学校', stage: 'complete', address: '打虎山路7号' },
+      { name: '上海市市东实验学校', stage: 'complete', address: '霍山路520号' },
+      { name: '上海市市光学校', stage: 'complete', address: '市光路1085号' },
+      { name: '上海市体育学院附属中学', address: '周家嘴路4220号' },
+      { name: '上海市育鹰学校', stage: 'complete', address: '国顺路83号' },
+      { name: '上海音乐学院实验学校', stage: 'complete', address: '政和路359号' },
+      { name: '同济大学附属新江湾城实验学校', stage: 'complete', address: '政青路678号' }
+    ]
+  },
+  {
+    districtId: 'yangpu',
+    districtName: '杨浦区',
+    type: 'pdf-patterns',
+    url: 'https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs-czzs/20250407/6af0accd385e44ee933d5465d1a581c1/5201b51f0eae46438d73013cf08eedce.pdf',
+    fileName: 'yangpu-private-facilities.pdf',
+    textFileName: 'yangpu-private-facilities.txt',
+    ownership: '民办',
+    names: [
+      { name: '上海民办杨浦凯慧初级中学', stage: 'junior', address: '大连路1530号' },
+      { name: '上海民办杨浦实验学校', stage: 'junior', address: '开鲁路40号' },
+      { name: '上海市存志学校', stage: 'junior', address: '许昌路1474号' },
+      { name: '上海民办兰生中学', stage: 'complete', address: '世界路8号' },
+      { name: '上海民办沪东外国语学校', stage: 'complete', address: '密云路454弄21号' },
+      { name: '上海市长阳实验学校', stage: 'complete', address: '怀德路1000号' },
+      { name: '上海同大实验学校', stage: 'complete', address: '武东路295号' },
+      { name: '上海杨浦双语学校', stage: 'complete', address: '永吉路351号' }
     ]
   },
   {

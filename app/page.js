@@ -9,11 +9,41 @@ const { loadDataStore } = require('../shared/data-store');
 
 export const dynamic = 'force-dynamic';
 
+const CORE_FEATURED_SCHOOL_NAMES = [
+  '上海中学',
+  '华东师范大学第二附属中学',
+  '复旦大学附属中学',
+  '上海交通大学附属中学'
+];
+
 function getSchoolPreviewScore(school) {
   const tags = Array.isArray(school.tags) ? school.tags.length : 0;
   const features = Array.isArray(school.features) ? school.features.length : 0;
   const metadataFields = [school.address, school.phone, school.website, school.admissionNotes].filter(Boolean).length;
   return tags * 2 + features * 2 + metadataFields;
+}
+
+function findSchoolByName(schools, targetName) {
+  return schools.find((school) => school.name === targetName)
+    || schools.find((school) => school.name.includes(targetName));
+}
+
+function getHomeFeaturedSchools(schools) {
+  const picked = CORE_FEATURED_SCHOOL_NAMES
+    .map((name) => findSchoolByName(schools, name))
+    .filter(Boolean);
+  const usedIds = new Set(picked.map((school) => school.id));
+  const fallback = schools
+    .filter((school) => !usedIds.has(school.id))
+    .sort((left, right) => {
+      const scoreDiff = getSchoolPreviewScore(right) - getSchoolPreviewScore(left);
+      if (scoreDiff !== 0) {
+        return scoreDiff;
+      }
+      return String(right.updatedAt || '').localeCompare(String(left.updatedAt || ''));
+    });
+
+  return [...picked, ...fallback].slice(0, 4);
 }
 
 function sortNewsByPriority(news) {
@@ -42,9 +72,12 @@ export default async function HomePage() {
   const featuredSchoolNews = topNewsByPriority.find((item) => getNewsSection(item) === 'school') || sortedNews[2] || null;
   const featuredStories = [featuredPolicy, featuredExam, featuredSchoolNews].filter(Boolean);
   const districtHighlights = districts
-    .slice()
-    .sort((left, right) => (right.schoolCount || 0) - (left.schoolCount || 0))
-    .slice(0, 4);
+    .map((district) => ({
+      ...district,
+      visibleSchoolCount: schools.filter((school) => school.districtId === district.id).length
+    }))
+    .sort((left, right) => (right.visibleSchoolCount || 0) - (left.visibleSchoolCount || 0))
+    .slice(0, 8);
   const timelineItems = [
     { date: '4月10日', title: '义务教育入学系统开放', description: '信息登记、报名和核验开始集中进行。', href: '/news/admission-2026-compulsory-education-opinion' },
     { date: '5月16日-17日', title: '中招听说与理化实验', description: '外语听说测试及理化实验操作考试。', href: '/news/exam-2026-zhongzhao-opinion' },
@@ -83,16 +116,7 @@ export default async function HomePage() {
     { label: '政策深读', value: '再回到正式文件核对', href: '/news/policy-deep-dive' },
     { label: '官方招生日程', value: '最后盯紧关键日期', href: '/news/admission-timeline' }
   ];
-  const topSchools = schools
-    .slice()
-    .sort((left, right) => {
-      const scoreDiff = getSchoolPreviewScore(right) - getSchoolPreviewScore(left);
-      if (scoreDiff !== 0) {
-        return scoreDiff;
-      }
-      return String(right.updatedAt || '').localeCompare(String(left.updatedAt || ''));
-    })
-    .slice(0, 4);
+  const topSchools = getHomeFeaturedSchools(schools);
   const [featuredSchool, ...supportSchools] = topSchools;
   return (
     <SiteShell hideKnowledgeNav>
@@ -291,7 +315,7 @@ export default async function HomePage() {
               <div className="home-editorial-section-head">
                 <div>
                   <p className="overview-label">上海学校信息</p>
-                  <h2>先从这些热门学校开始看，会更容易找到方向</h2>
+                  <h2>先从这几所最重点的学校开始看，会更容易找到方向</h2>
                 </div>
                 <div className="home-editorial-section-tools">
                   <Link className="home-editorial-mini-link" href="/schools">学校列表</Link>
@@ -338,11 +362,11 @@ export default async function HomePage() {
                   {districtHighlights.map((district) => (
                     <Link key={district.id} className="home-district-link" href={`/schools/district/${district.id}`}>
                       <span>{district.name}</span>
-                      <strong>{district.schoolCount} 所学校</strong>
+                      <strong>{district.visibleSchoolCount || district.schoolCount} 所学校</strong>
                     </Link>
                   ))}
                 </div>
-                <Link className="text-link" href="/news">继续看政策和消息</Link>
+                <Link className="text-link" href="/schools/district">查看全部区域专题</Link>
               </article>
             </aside>
           </div>

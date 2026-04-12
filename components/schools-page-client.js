@@ -317,6 +317,9 @@ export default function SchoolsPageClient({
                 <span>学段与性质并排判断</span>
                 <span>标签用于快速比较</span>
               </div>
+              <div className="schools-datadesk-hero-actions">
+                <Link className="module-link" href="/schools/district">查看 16 区专题</Link>
+              </div>
             </div>
 
             <div className="schools-datadesk-summary-grid">
