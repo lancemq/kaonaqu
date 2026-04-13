@@ -48,7 +48,7 @@ body[data-page="knowledge"] .topbar-desk {
 body[data-page="knowledge"] .knowledge-next-page {
     width: min(1440px, calc(100% - 28px));
     margin: 0 auto;
-    padding: 0 0 78px;
+    padding: 0 0 64px;
 }
 
 body[data-page="knowledge"] .knowledge-next-toolbar {
@@ -129,7 +129,7 @@ body[data-page="knowledge"] .subjects,
 body[data-page="knowledge"] .intro,
 body[data-page="knowledge"] .tips {
     overflow: hidden;
-    padding: clamp(24px, 3vw, 38px);
+    padding: clamp(20px, 2.4vw, 30px);
     border: 1px solid var(--knowledge-line);
     background:
         radial-gradient(circle at top right, rgba(217, 93, 31, 0.12), transparent 34%),
@@ -155,8 +155,8 @@ body[data-page="knowledge"] .knowledge-front-hero::after {
     position: absolute;
     right: clamp(18px, 3vw, 40px);
     bottom: clamp(18px, 3vw, 40px);
-    width: min(34vw, 320px);
-    height: min(34vw, 320px);
+    width: min(28vw, 240px);
+    height: min(28vw, 240px);
     border: 1px solid rgba(17, 17, 17, 0.08);
     background:
         linear-gradient(90deg, rgba(17, 17, 17, 0.05) 1px, transparent 1px),
@@ -213,9 +213,9 @@ body[data-page="knowledge"] .page-header h1 {
     max-width: 880px;
     margin: 10px 0 0;
     font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(2.05rem, 4vw, 4.25rem);
-    line-height: 0.98;
-    letter-spacing: -0.07em;
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.06em;
 }
 
 body[data-page="knowledge"] .chapter h2,
@@ -224,7 +224,7 @@ body[data-page="knowledge"] .intro h2,
 body[data-page="knowledge"] .tips h2 {
     margin: 0 0 16px;
     font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(1.45rem, 2.4vw, 2.05rem);
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
     line-height: 1.12;
     letter-spacing: -0.05em;
 }
@@ -238,7 +238,7 @@ body[data-page="knowledge"] .chapter h3,
 body[data-page="knowledge"] .chapter h4 {
     margin: 0;
     font-family: "Noto Serif SC", serif;
-    font-size: 1.02rem;
+    font-size: 1rem;
     line-height: 1.3;
     letter-spacing: -0.04em;
 }
@@ -274,8 +274,8 @@ body[data-page="knowledge"] .knowledge-front-stats {
 body[data-page="knowledge"] .subject-grid,
 body[data-page="knowledge"] .grade-overview-grid,
 body[data-page="knowledge"] .concept-grid {
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    margin-top: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin-top: 14px;
 }
 
 body[data-page="knowledge"] .knowledge-stat,
@@ -288,7 +288,7 @@ body[data-page="knowledge"] .knowledge-note-card,
 body[data-page="knowledge"] .lead-card {
     display: grid;
     gap: 8px;
-    padding: 18px;
+    padding: 16px;
     border: 1px solid var(--knowledge-line);
     background: linear-gradient(180deg, rgba(255, 252, 246, 0.94), rgba(240, 232, 219, 0.9));
     color: inherit;
@@ -341,7 +341,7 @@ body[data-page="knowledge"] .knowledge-rail-metric strong {
     display: block;
     color: #111111;
     font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(1.35rem, 2.5vw, 2.15rem);
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
     line-height: 1;
     letter-spacing: -0.05em;
 }
@@ -371,7 +371,7 @@ body[data-page="knowledge"] .page-header-actions {
 }
 
 body[data-page="knowledge"] .knowledge-rail-card {
-    padding: 18px;
+    padding: 16px;
     border: 1px solid var(--knowledge-line);
     background: linear-gradient(180deg, rgba(255, 252, 246, 0.94), rgba(240, 232, 219, 0.9));
     box-shadow: var(--knowledge-shadow);
@@ -413,7 +413,7 @@ body[data-page="knowledge"] .knowledge-rail-metric {
     display: grid;
     gap: 8px;
     min-width: 0;
-    padding: 14px;
+    padding: 12px;
     background: rgba(255, 252, 246, 0.96);
 }
 
@@ -458,7 +458,7 @@ body[data-page="knowledge"] table {
 body[data-page="knowledge"] th,
 body[data-page="knowledge"] td {
     min-width: 130px;
-    padding: 13px 15px;
+    padding: 11px 13px;
     border: 1px solid rgba(17, 17, 17, 0.1);
     text-align: left;
     vertical-align: top;
@@ -493,7 +493,7 @@ body[data-page="knowledge"] .knowledge-page-channel .knowledge-next-layout {
 }
 
 body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-hero {
-    min-height: 420px;
+    min-height: 320px;
     background:
         radial-gradient(circle at 82% 18%, rgba(217, 93, 31, 0.16), transparent 28%),
         linear-gradient(135deg, rgba(255, 252, 246, 0.98) 0%, rgba(238, 229, 214, 0.98) 58%, rgba(225, 215, 197, 0.96) 100%);
@@ -505,8 +505,8 @@ body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy {
 }
 
 body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy h1 {
-    font-size: clamp(2.8rem, 5.6vw, 5.85rem);
-    max-width: 10.5em;
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    max-width: 15em;
 }
 
 body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-stats {
@@ -514,7 +514,7 @@ body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-stats {
 }
 
 body[data-page="knowledge"] .knowledge-page-channel .knowledge-stat {
-    min-height: 128px;
+    min-height: 0;
 }
 
 body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
@@ -559,7 +559,7 @@ body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon {
 }
 
 body[data-page="knowledge"] .knowledge-page-grade .ribbon-card {
-    min-height: 148px;
+    min-height: 116px;
 }
 
 body[data-page="knowledge"] .knowledge-page-grade .ribbon-card::after {
@@ -569,7 +569,7 @@ body[data-page="knowledge"] .knowledge-page-grade .ribbon-card::after {
     bottom: 10px;
     color: rgba(17, 17, 17, 0.08);
     font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: 3rem;
+    font-size: 2.15rem;
     font-weight: 800;
     letter-spacing: -0.08em;
 }
@@ -583,7 +583,7 @@ body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subj
 }
 
 body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-card {
-    min-height: 184px;
+    min-height: 132px;
     align-content: space-between;
 }
 
@@ -619,7 +619,7 @@ body[data-page="knowledge"] .knowledge-page-subject .knowledge-rich-article {
 }
 
 body[data-page="knowledge"] .knowledge-page-subject .page-header {
-    min-height: 360px;
+    min-height: 260px;
     background:
         radial-gradient(circle at 78% 24%, rgba(217, 93, 31, 0.2), transparent 28%),
         linear-gradient(180deg, #171411, #241b15);
@@ -645,7 +645,7 @@ body[data-page="knowledge"] .knowledge-page-subject .page-header .action-link {
 }
 
 body[data-page="knowledge"] .knowledge-page-subject .chapter {
-    padding-top: clamp(28px, 4vw, 46px);
+    padding-top: clamp(22px, 2.4vw, 30px);
     background:
         linear-gradient(90deg, rgba(17, 17, 17, 0.03) 1px, transparent 1px),
         linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(240, 232, 219, 0.94));
@@ -671,8 +671,8 @@ body[data-page="knowledge"] .case-grid,
 body[data-page="knowledge"] .example-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    margin: 14px 0;
+    gap: 10px;
+    margin: 12px 0;
 }
 
 body[data-page="knowledge"] .case-card,
@@ -680,7 +680,7 @@ body[data-page="knowledge"] .example-card,
 body[data-page="knowledge"] .formula {
     display: grid;
     gap: 8px;
-    padding: 18px;
+    padding: 14px;
     border: 1px solid rgba(17, 17, 17, 0.1);
     background: rgba(255, 252, 246, 0.78);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
@@ -773,10 +773,21 @@ body[data-page="knowledge"] .knowledge-page-subject .knowledge-rail-nav a:nth-of
     body[data-page="knowledge"] .intro,
     body[data-page="knowledge"] .tips,
     body[data-page="knowledge"] .knowledge-rail-card {
-        padding: 20px 18px;
+        padding: 18px 16px;
     }
 
     body[data-page="knowledge"] .knowledge-rail-metrics {
         grid-template-columns: 1fr;
+    }
+
+    body[data-page="knowledge"] .knowledge-front-copy h1,
+    body[data-page="knowledge"] .page-header h1,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy h1 {
+        font-size: clamp(2rem, 10vw, 2.55rem);
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-hero,
+    body[data-page="knowledge"] .knowledge-page-subject .page-header {
+        min-height: 0;
     }
 }
