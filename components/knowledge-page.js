@@ -18,15 +18,26 @@ function textFromNodes(nodes = []) {
   }).join('').trim();
 }
 
+function createAnchorId(label, index) {
+  const normalized = String(label || '')
+    .toLowerCase()
+    .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 36);
+  return `knowledge-${index}-${normalized || 'section'}`;
+}
+
 function collectRichAnchors(nodes = [], limit = 8) {
   const anchors = [];
+  let headingIndex = 0;
 
   function visit(node) {
     if (!node || anchors.length >= limit) return;
-    if (node.id && ['h2', 'h3', 'section'].includes(node.tag)) {
+    if (['h2', 'h3'].includes(node.tag)) {
       const label = textFromNodes(node.children);
       if (label) {
-        anchors.push({ href: `#${node.id}`, label });
+        headingIndex += 1;
+        anchors.push({ href: `#${node.id || createAnchorId(label, headingIndex)}`, label });
       }
     }
     node.children?.forEach(visit);
@@ -46,10 +57,17 @@ function getPageTrail(page) {
   return collectRichAnchors(page.richBlocks);
 }
 
+function getKnowledgePageKind(page) {
+  if (page.slug === 'index') return 'channel';
+  if (page.slug?.startsWith('grade-')) return 'grade';
+  return 'subject';
+}
+
 function KnowledgeSideRail({ page }) {
   const trail = getPageTrail(page);
   const stats = page.hero?.stats || [];
-  const pageType = page.renderMode === 'structured' ? '学习地图' : '学科档案';
+  const pageKind = getKnowledgePageKind(page);
+  const pageType = pageKind === 'channel' ? '频道地图' : pageKind === 'grade' ? '年级专题' : '学科档案';
 
   return (
     <aside className="knowledge-side-rail" aria-label="知识体系页面索引">
@@ -110,8 +128,8 @@ function LeadCards({ cards = [] }) {
 
   return (
     <section className="knowledge-lead-grid">
-      {cards.map((card) => (
-        <article className="lead-card knowledge-note-card" key={card.title}>
+      {cards.map((card, index) => (
+        <article className="lead-card knowledge-note-card" data-card-index={index + 1} key={card.title}>
           <h2>{card.title}</h2>
           {card.description ? <p>{card.description}</p> : null}
           {card.list?.length ? (
@@ -148,8 +166,8 @@ function Ribbons({ ribbons = [] }) {
 
   return (
     <section className="stage-ribbon" aria-label="知识体系阅读重点">
-      {ribbons.map((item) => (
-        <article className="ribbon-card" key={item.label}>
+      {ribbons.map((item, index) => (
+        <article className="ribbon-card" data-ribbon-index={index + 1} key={item.label}>
           <span>{item.label}</span>
           <strong>{item.title}</strong>
           <p>{item.description}</p>
@@ -161,12 +179,13 @@ function Ribbons({ ribbons = [] }) {
 
 function CardGrid({ section }) {
   return (
-    <section className={section.type === 'cardGrid' ? 'subjects' : 'chapter'} id={section.id}>
+    <section className={`${section.type === 'cardGrid' ? 'subjects' : 'chapter'} knowledge-section knowledge-section-${section.id}`} id={section.id}>
       <h2>{section.title}</h2>
       <div className={section.type === 'cardGrid' ? 'subject-grid grade-grid' : 'grade-overview-grid'}>
-        {section.cards.map((card) => {
+        {section.cards.map((card, index) => {
           const content = (
             <>
+              <span className="knowledge-card-index">{String(index + 1).padStart(2, '0')}</span>
               <div className="grade-card-top">
                 <h3>{card.title}</h3>
                 {card.status ? <span className="status-pill status-pill-live">{card.status}</span> : null}
@@ -176,11 +195,11 @@ function CardGrid({ section }) {
           );
 
           return card.href ? (
-            <Link href={card.href} className="subject-card grade-card active-grade" key={card.title}>
+            <Link href={card.href} className="subject-card grade-card active-grade" data-card-index={index + 1} key={card.title}>
               {content}
             </Link>
           ) : (
-            <article className="overview-card" key={card.title}>{content}</article>
+            <article className="overview-card" data-card-index={index + 1} key={card.title}>{content}</article>
           );
         })}
       </div>
@@ -190,7 +209,7 @@ function CardGrid({ section }) {
 
 function ListSection({ section }) {
   return (
-    <section className="tips" id={section.id}>
+    <section className={`tips knowledge-section knowledge-section-${section.id}`} id={section.id}>
       <h2>{section.title}</h2>
       <ul>
         {section.items.map((item) => <li key={item}>{item}</li>)}
@@ -224,22 +243,35 @@ function StructuredKnowledgePage({ page }) {
   );
 }
 
-function RichTextNodes({ nodes = [] }) {
-  return nodes.map((node, index) => <RichTextNode node={node} key={`${node.type}-${node.tag || 'text'}-${index}`} />);
+function RichTextNodes({ nodes = [], headingState }) {
+  return nodes.map((node, index) => (
+    <RichTextNode
+      headingState={headingState}
+      node={node}
+      key={`${node.type}-${node.tag || 'text'}-${index}`}
+    />
+  ));
 }
 
-function RichTextNode({ node }) {
+function RichTextNode({ headingState, node }) {
   if (!node) return null;
 
   if (node.type === 'text') {
     return node.text;
   }
 
-  const children = <RichTextNodes nodes={node.children} />;
+  const children = <RichTextNodes headingState={headingState} nodes={node.children} />;
   const props = {};
   if (node.className) props.className = node.className;
   if (node.id) props.id = node.id;
   if (node['aria-label']) props['aria-label'] = node['aria-label'];
+  if (!props.id && ['h2', 'h3'].includes(node.tag)) {
+    const label = textFromNodes(node.children);
+    if (label && headingState) {
+      headingState.count += 1;
+      props.id = createAnchorId(label, headingState.count);
+    }
+  }
 
   if (node.tag === 'a') {
     const href = node.href || '#';
@@ -300,10 +332,12 @@ function RichTextNode({ node }) {
 }
 
 function RichKnowledgePage({ page }) {
+  const headingState = { count: 0 };
+
   return (
     <div className="knowledge-next-layout">
       <article className="knowledge-next-content knowledge-rich-article">
-        <RichTextNodes nodes={page.richBlocks} />
+        <RichTextNodes headingState={headingState} nodes={page.richBlocks} />
       </article>
       <KnowledgeSideRail page={page} />
     </div>
@@ -311,8 +345,10 @@ function RichKnowledgePage({ page }) {
 }
 
 export default function KnowledgePage({ page }) {
+  const pageKind = getKnowledgePageKind(page);
+
   return (
-    <main className="knowledge-next-page" data-knowledge-slug={page.slug}>
+    <main className={`knowledge-next-page knowledge-page-${pageKind}`} data-knowledge-slug={page.slug}>
       <KnowledgeToolbar />
       {page.renderMode === 'structured' ? (
         <StructuredKnowledgePage page={page} />

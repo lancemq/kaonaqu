@@ -487,6 +487,232 @@ body[data-page="knowledge"] code {
     font-family: "IBM Plex Mono", monospace;
 }
 
+/* Page Type: Knowledge Channel */
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-next-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-hero {
+    min-height: 420px;
+    background:
+        radial-gradient(circle at 82% 18%, rgba(217, 93, 31, 0.16), transparent 28%),
+        linear-gradient(135deg, rgba(255, 252, 246, 0.98) 0%, rgba(238, 229, 214, 0.98) 58%, rgba(225, 215, 197, 0.96) 100%);
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy {
+    align-self: end;
+    max-width: 760px;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy h1 {
+    font-size: clamp(2.8rem, 5.6vw, 5.85rem);
+    max-width: 10.5em;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-stats {
+    align-self: end;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-stat {
+    min-height: 128px;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-high-school .subject-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-reading-path .grade-overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior {
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.15), transparent 30%),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(239, 230, 216, 0.96));
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] {
+    border-color: rgba(17, 17, 17, 0.2);
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.22), transparent 32%),
+        linear-gradient(180deg, #171411, #241b15);
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] h3,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] p,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] .knowledge-card-index {
+    color: #f7f4ed;
+}
+
+/* Page Type: Grade Topic */
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-front-hero {
+    background:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+        radial-gradient(circle at 78% 18%, rgba(217, 93, 31, 0.16), transparent 28%),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(236, 226, 210, 0.96));
+    background-size: 22px 22px, auto, auto;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .ribbon-card {
+    min-height: 148px;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .ribbon-card::after {
+    content: attr(data-ribbon-index);
+    position: absolute;
+    right: 16px;
+    bottom: 10px;
+    color: rgba(17, 17, 17, 0.08);
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.08em;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon .ribbon-card:nth-child(1)::after {
+    color: rgba(247, 244, 237, 0.12);
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-card {
+    min-height: 184px;
+    align-content: space-between;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-card[data-card-index="4"],
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-card[data-card-index="5"] {
+    border-color: rgba(217, 93, 31, 0.3);
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.18), transparent 34%),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(233, 222, 205, 0.98));
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-focus .grade-overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-card-index {
+    display: inline-flex;
+    width: fit-content;
+    color: rgba(17, 17, 17, 0.34);
+    font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+/* Page Type: Subject Detail */
+body[data-page="knowledge"] .knowledge-page-subject .knowledge-next-layout {
+    grid-template-columns: minmax(0, 0.94fr) minmax(300px, 360px);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .knowledge-rich-article {
+    gap: 14px;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header {
+    min-height: 360px;
+    background:
+        radial-gradient(circle at 78% 24%, rgba(217, 93, 31, 0.2), transparent 28%),
+        linear-gradient(180deg, #171411, #241b15);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header::before {
+    background: linear-gradient(180deg, #f7f4ed, rgba(217, 93, 31, 0.4));
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header h1,
+body[data-page="knowledge"] .knowledge-page-subject .page-header p {
+    color: #f7f4ed;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header p {
+    color: rgba(247, 244, 237, 0.72);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header .action-link {
+    border-color: rgba(247, 244, 237, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: #f7f4ed;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .chapter {
+    padding-top: clamp(28px, 4vw, 46px);
+    background:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.03) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(240, 232, 219, 0.94));
+    background-size: 24px 24px, auto;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .chapter > h2 {
+    max-width: 850px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .chapter > h3 {
+    margin-top: 22px;
+    color: #302821;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+}
+
+body[data-page="knowledge"] .concept-grid,
+body[data-page="knowledge"] .case-grid,
+body[data-page="knowledge"] .example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 14px 0;
+}
+
+body[data-page="knowledge"] .case-card,
+body[data-page="knowledge"] .example-card,
+body[data-page="knowledge"] .formula {
+    display: grid;
+    gap: 8px;
+    padding: 18px;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    background: rgba(255, 252, 246, 0.78);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+body[data-page="knowledge"] .example-card {
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.1), transparent 30%),
+        rgba(255, 252, 246, 0.88);
+}
+
+body[data-page="knowledge"] .formula,
+body[data-page="knowledge"] .important {
+    border-color: rgba(217, 93, 31, 0.24);
+    background:
+        linear-gradient(90deg, rgba(217, 93, 31, 0.08), transparent 38%),
+        rgba(255, 252, 246, 0.9);
+}
+
+body[data-page="knowledge"] .case-card h4,
+body[data-page="knowledge"] .example-card h4 {
+    margin: 0;
+    font-family: "Noto Serif SC", serif;
+    color: var(--knowledge-ink);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .knowledge-rail-nav a:nth-of-type(1),
+body[data-page="knowledge"] .knowledge-page-subject .knowledge-rail-nav a:nth-of-type(2) {
+    color: var(--knowledge-accent-deep);
+    font-weight: 700;
+}
+
 @media (max-width: 1080px) {
     body[data-page="knowledge"] .knowledge-next-layout {
         grid-template-columns: 1fr;
@@ -501,6 +727,15 @@ body[data-page="knowledge"] code {
     body[data-page="knowledge"] .knowledge-rail-nav {
         grid-column: 1 / -1;
     }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-high-school .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-reading-path .grade-overview-grid,
+    body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon,
+    body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-focus .grade-overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 860px) {
@@ -513,6 +748,15 @@ body[data-page="knowledge"] code {
     }
 
     body[data-page="knowledge"] .knowledge-side-rail {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-high-school .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-reading-path .grade-overview-grid,
+    body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon,
+    body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-focus .grade-overview-grid {
         grid-template-columns: 1fr;
     }
 }
