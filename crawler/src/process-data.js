@@ -10,6 +10,18 @@ const {
 } = require('../../shared/data-schema');
 const { RAW_DIR, PROCESSED_DIR, ROOT_DATA_DIR } = require('./utils/paths');
 
+const RAW_OUTPUT_FILES = [
+  'admission-discussions.json',
+  'forum-schools.json',
+  'junior-schools-tier.json',
+  'official-news.json',
+  'official-policies.json',
+  'official-schools.json',
+  'social-news.json',
+  'social-policies.json',
+  'social-schools.json'
+];
+
 async function readJson(filename) {
   const content = await fs.readFile(path.join(RAW_DIR, filename), 'utf8');
   return JSON.parse(content);
@@ -24,6 +36,21 @@ async function readOptionalJson(filename) {
     }
     throw error;
   }
+}
+
+async function hasRawOutputFiles() {
+  const checks = await Promise.all(RAW_OUTPUT_FILES.map(async (filename) => {
+    try {
+      await fs.access(path.join(RAW_DIR, filename));
+      return true;
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        return false;
+      }
+      throw error;
+    }
+  }));
+  return checks.some(Boolean);
 }
 
 async function writeJson(dir, filename, payload) {
@@ -177,11 +204,19 @@ async function publishData({ districts, schools, policies, news }) {
 }
 
 async function processAllData() {
+  if (!await hasRawOutputFiles()) {
+    throw new Error('未发现 raw 抓取输出，已停止处理以避免生成空的 processed 数据或覆盖 data/*.json');
+  }
+
   const [schools, policies, news] = await Promise.all([
     processSchoolData(),
     processPolicyData(),
     processNewsData()
   ]);
+
+  if (!schools.length && !policies.length && !news.length) {
+    throw new Error('raw 抓取输出为空，已停止处理以避免用空数据覆盖 data/*.json');
+  }
 
   const districts = buildDistricts(schools, policies);
   await writeJson(PROCESSED_DIR, 'districts.json', districts);

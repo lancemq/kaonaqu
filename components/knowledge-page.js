@@ -10,6 +10,78 @@ function KnowledgeToolbar() {
   );
 }
 
+function textFromNodes(nodes = []) {
+  return nodes.map((node) => {
+    if (!node) return '';
+    if (node.type === 'text') return node.text || '';
+    return textFromNodes(node.children);
+  }).join('').trim();
+}
+
+function collectRichAnchors(nodes = [], limit = 8) {
+  const anchors = [];
+
+  function visit(node) {
+    if (!node || anchors.length >= limit) return;
+    if (node.id && ['h2', 'h3', 'section'].includes(node.tag)) {
+      const label = textFromNodes(node.children);
+      if (label) {
+        anchors.push({ href: `#${node.id}`, label });
+      }
+    }
+    node.children?.forEach(visit);
+  }
+
+  nodes.forEach(visit);
+  return anchors;
+}
+
+function getPageTrail(page) {
+  if (page.renderMode === 'structured') {
+    return (page.sections || []).map((section) => ({
+      href: `#${section.id}`,
+      label: section.title
+    }));
+  }
+  return collectRichAnchors(page.richBlocks);
+}
+
+function KnowledgeSideRail({ page }) {
+  const trail = getPageTrail(page);
+  const stats = page.hero?.stats || [];
+  const pageType = page.renderMode === 'structured' ? '学习地图' : '学科档案';
+
+  return (
+    <aside className="knowledge-side-rail" aria-label="知识体系页面索引">
+      <div className="knowledge-rail-card knowledge-rail-card-dark">
+        <span className="knowledge-rail-eyebrow">{pageType}</span>
+        <strong>{page.slug === 'index' ? '知识体系总览' : page.title.replace(' | 考哪去', '')}</strong>
+        <p>{page.description}</p>
+      </div>
+
+      {stats.length ? (
+        <div className="knowledge-rail-card knowledge-rail-metrics">
+          {stats.map((stat) => (
+            <div className="knowledge-rail-metric" key={stat.label}>
+              <span>{stat.label}</span>
+              <strong>{stat.value}</strong>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      {trail.length ? (
+        <nav className="knowledge-rail-card knowledge-rail-nav" aria-label="本页目录">
+          <span className="knowledge-rail-eyebrow">本页目录</span>
+          {trail.map((item) => (
+            <a href={item.href} key={`${item.href}-${item.label}`}>{item.label}</a>
+          ))}
+        </nav>
+      ) : null}
+    </aside>
+  );
+}
+
 function Hero({ hero }) {
   return (
     <section className="knowledge-front-hero">
@@ -139,12 +211,15 @@ function Section({ section }) {
 
 function StructuredKnowledgePage({ page }) {
   return (
-    <div className="knowledge-next-content">
-      <Hero hero={page.hero} />
-      <LeadCards cards={page.leadCards} />
-      <HeaderPanel header={page.header} />
-      <Ribbons ribbons={page.ribbons} />
-      {page.sections.map((section) => <Section section={section} key={section.id} />)}
+    <div className="knowledge-next-layout">
+      <div className="knowledge-next-content">
+        <Hero hero={page.hero} />
+        <LeadCards cards={page.leadCards} />
+        <HeaderPanel header={page.header} />
+        <Ribbons ribbons={page.ribbons} />
+        {page.sections.map((section) => <Section section={section} key={section.id} />)}
+      </div>
+      <KnowledgeSideRail page={page} />
     </div>
   );
 }
@@ -226,8 +301,11 @@ function RichTextNode({ node }) {
 
 function RichKnowledgePage({ page }) {
   return (
-    <div className="knowledge-next-content">
-      <RichTextNodes nodes={page.richBlocks} />
+    <div className="knowledge-next-layout">
+      <article className="knowledge-next-content knowledge-rich-article">
+        <RichTextNodes nodes={page.richBlocks} />
+      </article>
+      <KnowledgeSideRail page={page} />
     </div>
   );
 }

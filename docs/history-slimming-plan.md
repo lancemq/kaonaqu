@@ -21,11 +21,9 @@
 
 - `data/schools.json`
 - `data/policies.json`
-- `crawler/data/raw/official-*.json`
-- `crawler/data/processed/*.json`
 - `kaonaqu.pen`
 
-原因：这些文件虽然占历史对象，但当前仍可能有业务或审计价值；应单独评估后再决定是否重写历史。
+说明：当前工作树已不再保留 `crawler/data/raw/official-*.json` 与 `crawler/data/processed/*.json` 这类抓取缓存；如果后续要进一步瘦身历史对象，可单独把这些缓存路径纳入 `git filter-repo` 范围。
 
 ## 仓库现状
 
@@ -123,7 +121,7 @@ git filter-repo \
 
 - `--invert-paths` 表示把这些路径从全部历史中删除
 - `--path-glob` 用于匹配带时间戳的原始 HTML 文件
-- 本命令不会删除 `crawler/data/raw/official-news.json` 这类原始 JSON，也不会动 `data/*.json`
+- 本命令不会动 `data/*.json`；如需继续清理历史里的 crawler JSON 缓存，可另开一轮 filter-repo 范围
 
 ### 5. 清理本地不可达对象并复查体积
 
