@@ -10,6 +10,9 @@ function resolvePage(pathname) {
   if (pathname.startsWith('/schools')) {
     return 'schools';
   }
+  if (pathname.startsWith('/knowledge') || pathname.startsWith('/shanghai-grade8-knowledge')) {
+    return 'knowledge';
+  }
   return 'home';
 }
 

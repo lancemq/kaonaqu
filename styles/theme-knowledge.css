@@ -1,0 +1,286 @@
+body[data-page="knowledge"] {
+    --knowledge-accent: #9a4f20;
+    --knowledge-accent-strong: #6f3215;
+    --knowledge-ink: #211b16;
+    --knowledge-muted: #6b6158;
+    --knowledge-line: rgba(96, 64, 38, 0.14);
+    --knowledge-surface: rgba(255, 251, 244, 0.94);
+    --knowledge-surface-deep: rgba(245, 235, 220, 0.96);
+    --knowledge-shadow: 0 22px 52px rgba(68, 43, 22, 0.1);
+}
+
+body[data-page="knowledge"] .knowledge-next-page {
+    width: min(1440px, calc(100% - 28px));
+    margin: 0 auto;
+    padding: 0 0 72px;
+}
+
+body[data-page="knowledge"] .knowledge-next-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: -2px 0 16px;
+}
+
+body[data-page="knowledge"] .knowledge-next-chip,
+body[data-page="knowledge"] .action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 14px;
+    border: 1px solid var(--knowledge-line);
+    border-radius: 999px;
+    background: #f7efe3;
+    color: var(--knowledge-accent-strong);
+    font-family: "IBM Plex Mono", "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+body[data-page="knowledge"] .knowledge-next-chip:hover,
+body[data-page="knowledge"] .knowledge-next-chip:focus-visible,
+body[data-page="knowledge"] .action-link:hover,
+body[data-page="knowledge"] .action-link:focus-visible {
+    background: #111111;
+    color: #f7f4ed;
+    transform: translateY(-1px);
+}
+
+body[data-page="knowledge"] .knowledge-next-content {
+    display: grid;
+    gap: 24px;
+}
+
+body[data-page="knowledge"] .knowledge-front-hero,
+body[data-page="knowledge"] .page-header,
+body[data-page="knowledge"] .chapter,
+body[data-page="knowledge"] .subjects,
+body[data-page="knowledge"] .intro,
+body[data-page="knowledge"] .tips,
+body[data-page="knowledge"] .stage-ribbon,
+body[data-page="knowledge"] .knowledge-lead-grid {
+    position: relative;
+}
+
+body[data-page="knowledge"] .knowledge-front-hero,
+body[data-page="knowledge"] .page-header,
+body[data-page="knowledge"] .chapter,
+body[data-page="knowledge"] .subjects,
+body[data-page="knowledge"] .intro,
+body[data-page="knowledge"] .tips {
+    overflow: hidden;
+    padding: clamp(24px, 3vw, 36px);
+    border: 1px solid var(--knowledge-line);
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at top right, rgba(154, 79, 32, 0.13), transparent 34%),
+        linear-gradient(180deg, var(--knowledge-surface), var(--knowledge-surface-deep));
+    box-shadow: var(--knowledge-shadow);
+}
+
+body[data-page="knowledge"] .knowledge-front-hero::before,
+body[data-page="knowledge"] .page-header::before,
+body[data-page="knowledge"] .chapter::before,
+body[data-page="knowledge"] .subjects::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(180deg, #111111, rgba(154, 79, 32, 0.18));
+}
+
+body[data-page="knowledge"] .knowledge-front-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+body[data-page="knowledge"] .knowledge-front-copy,
+body[data-page="knowledge"] .knowledge-front-stats,
+body[data-page="knowledge"] .page-header > *,
+body[data-page="knowledge"] .chapter > *,
+body[data-page="knowledge"] .subjects > * {
+    position: relative;
+    z-index: 1;
+}
+
+body[data-page="knowledge"] .knowledge-front-kicker,
+body[data-page="knowledge"] .overview-label,
+body[data-page="knowledge"] .knowledge-stat span,
+body[data-page="knowledge"] .ribbon-card span,
+body[data-page="knowledge"] .status-pill {
+    color: var(--knowledge-accent) !important;
+    font-family: "IBM Plex Mono", "JetBrains Mono", monospace;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body[data-page="knowledge"] h1,
+body[data-page="knowledge"] h2,
+body[data-page="knowledge"] h3,
+body[data-page="knowledge"] h4 {
+    color: var(--knowledge-ink);
+    letter-spacing: -0.04em;
+}
+
+body[data-page="knowledge"] .knowledge-front-copy h1,
+body[data-page="knowledge"] .page-header h1 {
+    max-width: 840px;
+    margin: 8px 0 0;
+    font-size: clamp(2.1rem, 4vw, 4rem);
+    line-height: 0.98;
+}
+
+body[data-page="knowledge"] .knowledge-front-summary,
+body[data-page="knowledge"] .page-header p,
+body[data-page="knowledge"] .chapter p,
+body[data-page="knowledge"] .chapter li,
+body[data-page="knowledge"] .subject-card p,
+body[data-page="knowledge"] .knowledge-stat p,
+body[data-page="knowledge"] .ribbon-card p,
+body[data-page="knowledge"] td {
+    color: var(--knowledge-muted);
+    line-height: 1.75;
+}
+
+body[data-page="knowledge"] .knowledge-front-summary,
+body[data-page="knowledge"] .page-header p {
+    max-width: 860px;
+    font-size: 1.02rem;
+}
+
+body[data-page="knowledge"] .knowledge-front-stats,
+body[data-page="knowledge"] .subject-grid,
+body[data-page="knowledge"] .grade-overview-grid,
+body[data-page="knowledge"] .concept-grid {
+    display: grid;
+    gap: 14px;
+}
+
+body[data-page="knowledge"] .knowledge-front-stats {
+    grid-template-columns: 1fr;
+}
+
+body[data-page="knowledge"] .subject-grid,
+body[data-page="knowledge"] .grade-overview-grid,
+body[data-page="knowledge"] .concept-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 18px;
+}
+
+body[data-page="knowledge"] .knowledge-stat,
+body[data-page="knowledge"] .ribbon-card,
+body[data-page="knowledge"] .subject-card,
+body[data-page="knowledge"] .overview-card,
+body[data-page="knowledge"] .concept-card,
+body[data-page="knowledge"] .important,
+body[data-page="knowledge"] .knowledge-note-card,
+body[data-page="knowledge"] .lead-card {
+    display: block;
+    padding: 20px;
+    border: 1px solid var(--knowledge-line);
+    border-radius: 22px;
+    background: rgba(255, 253, 248, 0.76);
+    color: inherit;
+    text-decoration: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+body[data-page="knowledge"] .subject-card {
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+body[data-page="knowledge"] .subject-card:hover,
+body[data-page="knowledge"] .subject-card:focus-visible {
+    border-color: rgba(154, 79, 32, 0.35);
+    box-shadow: 0 18px 34px rgba(68, 43, 22, 0.12);
+    transform: translateY(-3px);
+}
+
+body[data-page="knowledge"] .knowledge-stat strong,
+body[data-page="knowledge"] .ribbon-card strong {
+    display: block;
+    margin-top: 8px;
+    color: #111111;
+    font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+    line-height: 1;
+}
+
+body[data-page="knowledge"] .knowledge-lead-grid,
+body[data-page="knowledge"] .stage-ribbon {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+body[data-page="knowledge"] .page-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+body[data-page="knowledge"] table {
+    width: 100%;
+    margin: 18px 0;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+body[data-page="knowledge"] th,
+body[data-page="knowledge"] td {
+    padding: 14px 16px;
+    border: 1px solid rgba(96, 64, 38, 0.12);
+    text-align: left;
+    vertical-align: top;
+}
+
+body[data-page="knowledge"] th {
+    color: var(--knowledge-ink);
+    background: rgba(238, 223, 203, 0.72);
+}
+
+body[data-page="knowledge"] ul,
+body[data-page="knowledge"] ol {
+    padding-left: 1.25rem;
+}
+
+body[data-page="knowledge"] li + li {
+    margin-top: 8px;
+}
+
+@media (max-width: 860px) {
+    body[data-page="knowledge"] .knowledge-front-layout {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="knowledge"] .knowledge-next-toolbar {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    body[data-page="knowledge"] .knowledge-next-page {
+        width: min(100% - 18px, 1440px);
+    }
+
+    body[data-page="knowledge"] .knowledge-front-hero,
+    body[data-page="knowledge"] .page-header,
+    body[data-page="knowledge"] .chapter,
+    body[data-page="knowledge"] .subjects,
+    body[data-page="knowledge"] .intro,
+    body[data-page="knowledge"] .tips {
+        padding: 22px 18px;
+        border-radius: 22px;
+    }
+}
