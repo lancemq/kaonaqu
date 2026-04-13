@@ -149,6 +149,89 @@ function StructuredKnowledgePage({ page }) {
   );
 }
 
+function RichTextNodes({ nodes = [] }) {
+  return nodes.map((node, index) => <RichTextNode node={node} key={`${node.type}-${node.tag || 'text'}-${index}`} />);
+}
+
+function RichTextNode({ node }) {
+  if (!node) return null;
+
+  if (node.type === 'text') {
+    return node.text;
+  }
+
+  const children = <RichTextNodes nodes={node.children} />;
+  const props = {};
+  if (node.className) props.className = node.className;
+  if (node.id) props.id = node.id;
+  if (node['aria-label']) props['aria-label'] = node['aria-label'];
+
+  if (node.tag === 'a') {
+    const href = node.href || '#';
+    if (href.startsWith('/')) {
+      return <Link {...props} href={href}>{children}</Link>;
+    }
+    return (
+      <a {...props} href={href} target={node.target} rel={node.rel || (node.target === '_blank' ? 'noopener noreferrer' : undefined)}>
+        {children}
+      </a>
+    );
+  }
+
+  switch (node.tag) {
+    case 'article':
+      return <article {...props}>{children}</article>;
+    case 'br':
+      return <br />;
+    case 'code':
+      return <code {...props}>{children}</code>;
+    case 'div':
+      return <div {...props}>{children}</div>;
+    case 'h1':
+      return <h1 {...props}>{children}</h1>;
+    case 'h2':
+      return <h2 {...props}>{children}</h2>;
+    case 'h3':
+      return <h3 {...props}>{children}</h3>;
+    case 'h4':
+      return <h4 {...props}>{children}</h4>;
+    case 'li':
+      return <li {...props}>{children}</li>;
+    case 'ol':
+      return <ol {...props}>{children}</ol>;
+    case 'p':
+      return <p {...props}>{children}</p>;
+    case 'section':
+      return <section {...props}>{children}</section>;
+    case 'span':
+      return <span {...props}>{children}</span>;
+    case 'strong':
+      return <strong {...props}>{children}</strong>;
+    case 'table':
+      return <table {...props}>{children}</table>;
+    case 'tbody':
+      return <tbody {...props}>{children}</tbody>;
+    case 'td':
+      return <td {...props}>{children}</td>;
+    case 'th':
+      return <th {...props}>{children}</th>;
+    case 'tr':
+      return <tr {...props}>{children}</tr>;
+    case 'ul':
+      return <ul {...props}>{children}</ul>;
+    default:
+      return null;
+  }
+}
+
+function RichKnowledgePage({ page }) {
+  return (
+    <div className="knowledge-next-content">
+      <RichTextNodes nodes={page.richBlocks} />
+    </div>
+  );
+}
+
 export default function KnowledgePage({ page }) {
   return (
     <main className="knowledge-next-page" data-knowledge-slug={page.slug}>
@@ -156,7 +239,7 @@ export default function KnowledgePage({ page }) {
       {page.renderMode === 'structured' ? (
         <StructuredKnowledgePage page={page} />
       ) : (
-        <div className="knowledge-next-content" dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
+        <RichKnowledgePage page={page} />
       )}
     </main>
   );

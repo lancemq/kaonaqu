@@ -351,7 +351,7 @@ export default async function HomePage() {
               </div>
               <div className="home-knowledge-actions">
                 <Link className="home-editorial-mini-link" href="/knowledge/grade-8">八年级总览</Link>
-                <Link className="home-editorial-mini-link" href="/shanghai-grade8-knowledge">旧版入口</Link>
+                <Link className="home-editorial-mini-link" href="/knowledge/physics-grade8">物理知识点</Link>
               </div>
             </div>
             <div className="home-grade8-course-grid">
