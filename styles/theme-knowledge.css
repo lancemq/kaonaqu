@@ -1,18 +1,54 @@
 body[data-page="knowledge"] {
-    --knowledge-accent: #9a4f20;
-    --knowledge-accent-strong: #6f3215;
-    --knowledge-ink: #211b16;
-    --knowledge-muted: #6b6158;
-    --knowledge-line: rgba(96, 64, 38, 0.14);
-    --knowledge-surface: rgba(255, 251, 244, 0.94);
-    --knowledge-surface-deep: rgba(245, 235, 220, 0.96);
-    --knowledge-shadow: 0 22px 52px rgba(68, 43, 22, 0.1);
+    --knowledge-ink: #171411;
+    --knowledge-muted: #5f5952;
+    --knowledge-soft: #7c746b;
+    --knowledge-accent: #d95d1f;
+    --knowledge-accent-deep: #9a3f16;
+    --knowledge-paper: rgba(255, 252, 246, 0.96);
+    --knowledge-paper-2: rgba(242, 234, 221, 0.96);
+    --knowledge-line: rgba(17, 17, 17, 0.1);
+    --knowledge-line-strong: rgba(217, 93, 31, 0.28);
+    --knowledge-dark: #111111;
+    --knowledge-dark-2: #1c1713;
+    --knowledge-shadow: 0 18px 38px rgba(32, 24, 17, 0.08);
+    background:
+        linear-gradient(rgba(17, 17, 17, 0.038) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.038) 1px, transparent 1px),
+        radial-gradient(circle at 88% 12%, rgba(217, 93, 31, 0.12), transparent 30%),
+        linear-gradient(180deg, #f7f4ed 0%, #efe9dd 48%, #e6ded0 100%) !important;
+    background-size: 32px 32px, 32px 32px, auto, auto !important;
+}
+
+body[data-page="knowledge"]::before {
+    background: radial-gradient(circle, rgba(217, 93, 31, 0.15), rgba(217, 93, 31, 0)) !important;
+}
+
+body[data-page="knowledge"]::after {
+    background: radial-gradient(circle, rgba(17, 17, 17, 0.09), rgba(17, 17, 17, 0)) !important;
+}
+
+body[data-page="knowledge"] .topbar {
+    border-color: rgba(17, 17, 17, 0.12) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(250, 244, 236, 0.86)) !important;
+    box-shadow: 0 14px 28px rgba(17, 17, 17, 0.08) !important;
+}
+
+body[data-page="knowledge"] .top-links a[href="/knowledge"] {
+    background: linear-gradient(135deg, rgba(217, 93, 31, 0.18), rgba(17, 17, 17, 0.08)) !important;
+    color: #1b1a18 !important;
+}
+
+body[data-page="knowledge"] .masthead-rail-inner,
+body[data-page="knowledge"] .topbar-desk {
+    border-color: rgba(17, 17, 17, 0.12);
+    background: rgba(255, 248, 239, 0.86);
+    color: #5f5952;
 }
 
 body[data-page="knowledge"] .knowledge-next-page {
     width: min(1440px, calc(100% - 28px));
     margin: 0 auto;
-    padding: 0 0 72px;
+    padding: 0 0 64px;
 }
 
 body[data-page="knowledge"] .knowledge-next-toolbar {
@@ -20,7 +56,7 @@ body[data-page="knowledge"] .knowledge-next-toolbar {
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: 8px;
-    margin: -2px 0 16px;
+    margin: -2px 0 14px;
 }
 
 body[data-page="knowledge"] .knowledge-next-chip,
@@ -32,28 +68,46 @@ body[data-page="knowledge"] .action-link {
     padding: 0 14px;
     border: 1px solid var(--knowledge-line);
     border-radius: 999px;
-    background: #f7efe3;
-    color: var(--knowledge-accent-strong);
-    font-family: "IBM Plex Mono", "JetBrains Mono", monospace;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    background: #f5efe5;
+    color: #56504a;
+    font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
     text-decoration: none;
-    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    text-transform: uppercase;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 body[data-page="knowledge"] .knowledge-next-chip:hover,
 body[data-page="knowledge"] .knowledge-next-chip:focus-visible,
 body[data-page="knowledge"] .action-link:hover,
 body[data-page="knowledge"] .action-link:focus-visible {
-    background: #111111;
+    border-color: rgba(17, 17, 17, 0.22);
+    background: var(--knowledge-dark);
     color: #f7f4ed;
     transform: translateY(-1px);
 }
 
-body[data-page="knowledge"] .knowledge-next-content {
+body[data-page="knowledge"] .knowledge-next-layout {
     display: grid;
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 350px);
+    gap: 18px;
+    align-items: start;
+}
+
+body[data-page="knowledge"] .knowledge-next-content {
+    min-width: 0;
+    display: grid;
+    gap: 18px;
+}
+
+body[data-page="knowledge"] .knowledge-side-rail {
+    position: sticky;
+    top: 24px;
+    display: grid;
+    gap: 12px;
+    min-width: 0;
 }
 
 body[data-page="knowledge"] .knowledge-front-hero,
@@ -62,8 +116,9 @@ body[data-page="knowledge"] .chapter,
 body[data-page="knowledge"] .subjects,
 body[data-page="knowledge"] .intro,
 body[data-page="knowledge"] .tips,
+body[data-page="knowledge"] .knowledge-lead-grid,
 body[data-page="knowledge"] .stage-ribbon,
-body[data-page="knowledge"] .knowledge-lead-grid {
+body[data-page="knowledge"] .knowledge-rail-card {
     position: relative;
 }
 
@@ -74,30 +129,49 @@ body[data-page="knowledge"] .subjects,
 body[data-page="knowledge"] .intro,
 body[data-page="knowledge"] .tips {
     overflow: hidden;
-    padding: clamp(24px, 3vw, 36px);
+    padding: clamp(20px, 2.4vw, 30px);
     border: 1px solid var(--knowledge-line);
-    border-radius: 28px;
     background:
-        radial-gradient(circle at top right, rgba(154, 79, 32, 0.13), transparent 34%),
-        linear-gradient(180deg, var(--knowledge-surface), var(--knowledge-surface-deep));
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.12), transparent 34%),
+        linear-gradient(180deg, var(--knowledge-paper), var(--knowledge-paper-2));
     box-shadow: var(--knowledge-shadow);
 }
 
 body[data-page="knowledge"] .knowledge-front-hero::before,
 body[data-page="knowledge"] .page-header::before,
 body[data-page="knowledge"] .chapter::before,
-body[data-page="knowledge"] .subjects::before {
+body[data-page="knowledge"] .subjects::before,
+body[data-page="knowledge"] .intro::before,
+body[data-page="knowledge"] .tips::before {
     content: "";
     position: absolute;
     inset: 0 auto 0 0;
     width: 5px;
-    background: linear-gradient(180deg, #111111, rgba(154, 79, 32, 0.18));
+    background: linear-gradient(180deg, var(--knowledge-dark), rgba(217, 93, 31, 0.22));
+}
+
+body[data-page="knowledge"] .knowledge-front-hero::after {
+    content: "";
+    position: absolute;
+    right: clamp(18px, 3vw, 40px);
+    bottom: clamp(18px, 3vw, 40px);
+    width: min(28vw, 240px);
+    height: min(28vw, 240px);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    background:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px);
+    background-size: 18px 18px;
+    opacity: 0.6;
+    transform: rotate(-4deg);
 }
 
 body[data-page="knowledge"] .knowledge-front-layout {
+    position: relative;
+    z-index: 1;
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-    gap: 24px;
+    grid-template-columns: minmax(0, 1.18fr) minmax(260px, 0.72fr);
+    gap: clamp(18px, 3vw, 28px);
     align-items: stretch;
 }
 
@@ -105,7 +179,9 @@ body[data-page="knowledge"] .knowledge-front-copy,
 body[data-page="knowledge"] .knowledge-front-stats,
 body[data-page="knowledge"] .page-header > *,
 body[data-page="knowledge"] .chapter > *,
-body[data-page="knowledge"] .subjects > * {
+body[data-page="knowledge"] .subjects > *,
+body[data-page="knowledge"] .intro > *,
+body[data-page="knowledge"] .tips > * {
     position: relative;
     z-index: 1;
 }
@@ -114,12 +190,14 @@ body[data-page="knowledge"] .knowledge-front-kicker,
 body[data-page="knowledge"] .overview-label,
 body[data-page="knowledge"] .knowledge-stat span,
 body[data-page="knowledge"] .ribbon-card span,
-body[data-page="knowledge"] .status-pill {
+body[data-page="knowledge"] .status-pill,
+body[data-page="knowledge"] .knowledge-rail-eyebrow,
+body[data-page="knowledge"] .knowledge-rail-metric span {
     color: var(--knowledge-accent) !important;
-    font-family: "IBM Plex Mono", "JetBrains Mono", monospace;
-    font-size: 0.76rem;
+    font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+    font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
 }
 
@@ -128,33 +206,57 @@ body[data-page="knowledge"] h2,
 body[data-page="knowledge"] h3,
 body[data-page="knowledge"] h4 {
     color: var(--knowledge-ink);
-    letter-spacing: -0.04em;
 }
 
 body[data-page="knowledge"] .knowledge-front-copy h1,
 body[data-page="knowledge"] .page-header h1 {
-    max-width: 840px;
-    margin: 8px 0 0;
-    font-size: clamp(2.1rem, 4vw, 4rem);
-    line-height: 0.98;
+    max-width: 880px;
+    margin: 10px 0 0;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.06em;
 }
 
-body[data-page="knowledge"] .knowledge-front-summary,
-body[data-page="knowledge"] .page-header p,
-body[data-page="knowledge"] .chapter p,
-body[data-page="knowledge"] .chapter li,
-body[data-page="knowledge"] .subject-card p,
-body[data-page="knowledge"] .knowledge-stat p,
-body[data-page="knowledge"] .ribbon-card p,
+body[data-page="knowledge"] .chapter h2,
+body[data-page="knowledge"] .subjects h2,
+body[data-page="knowledge"] .intro h2,
+body[data-page="knowledge"] .tips h2 {
+    margin: 0 0 16px;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    line-height: 1.12;
+    letter-spacing: -0.05em;
+}
+
+body[data-page="knowledge"] .subject-card h3,
+body[data-page="knowledge"] .overview-card h3,
+body[data-page="knowledge"] .concept-card h3,
+body[data-page="knowledge"] .knowledge-note-card h2,
+body[data-page="knowledge"] .knowledge-note-card h3,
+body[data-page="knowledge"] .chapter h3,
+body[data-page="knowledge"] .chapter h4 {
+    margin: 0;
+    font-family: "Noto Serif SC", serif;
+    font-size: 1rem;
+    line-height: 1.3;
+    letter-spacing: -0.04em;
+}
+
+body[data-page="knowledge"] p,
+body[data-page="knowledge"] li,
 body[data-page="knowledge"] td {
     color: var(--knowledge-muted);
-    line-height: 1.75;
+    line-height: 1.74;
 }
 
 body[data-page="knowledge"] .knowledge-front-summary,
 body[data-page="knowledge"] .page-header p {
     max-width: 860px;
+    color: var(--knowledge-muted);
     font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.62;
 }
 
 body[data-page="knowledge"] .knowledge-front-stats,
@@ -162,7 +264,7 @@ body[data-page="knowledge"] .subject-grid,
 body[data-page="knowledge"] .grade-overview-grid,
 body[data-page="knowledge"] .concept-grid {
     display: grid;
-    gap: 14px;
+    gap: 12px;
 }
 
 body[data-page="knowledge"] .knowledge-front-stats {
@@ -172,8 +274,8 @@ body[data-page="knowledge"] .knowledge-front-stats {
 body[data-page="knowledge"] .subject-grid,
 body[data-page="knowledge"] .grade-overview-grid,
 body[data-page="knowledge"] .concept-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    margin-top: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin-top: 14px;
 }
 
 body[data-page="knowledge"] .knowledge-stat,
@@ -184,41 +286,81 @@ body[data-page="knowledge"] .concept-card,
 body[data-page="knowledge"] .important,
 body[data-page="knowledge"] .knowledge-note-card,
 body[data-page="knowledge"] .lead-card {
-    display: block;
-    padding: 20px;
+    display: grid;
+    gap: 8px;
+    padding: 16px;
     border: 1px solid var(--knowledge-line);
-    border-radius: 22px;
-    background: rgba(255, 253, 248, 0.76);
+    background: linear-gradient(180deg, rgba(255, 252, 246, 0.94), rgba(240, 232, 219, 0.9));
     color: inherit;
     text-decoration: none;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
-body[data-page="knowledge"] .subject-card {
-    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+body[data-page="knowledge"] .subject-card,
+body[data-page="knowledge"] .action-link,
+body[data-page="knowledge"] .knowledge-note-card {
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
 body[data-page="knowledge"] .subject-card:hover,
-body[data-page="knowledge"] .subject-card:focus-visible {
-    border-color: rgba(154, 79, 32, 0.35);
-    box-shadow: 0 18px 34px rgba(68, 43, 22, 0.12);
-    transform: translateY(-3px);
+body[data-page="knowledge"] .subject-card:focus-visible,
+body[data-page="knowledge"] .knowledge-note-card:hover,
+body[data-page="knowledge"] .knowledge-note-card:focus-within {
+    border-color: var(--knowledge-line-strong);
+    box-shadow: 0 18px 34px rgba(32, 24, 17, 0.11);
+    transform: translateY(-2px);
+}
+
+body[data-page="knowledge"] .active-grade:nth-child(1),
+body[data-page="knowledge"] .active-grade:nth-child(2),
+body[data-page="knowledge"] .home-grade8-course-card-priority {
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.15), transparent 34%),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(235, 226, 211, 0.96));
+}
+
+body[data-page="knowledge"] .grade-card-top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+body[data-page="knowledge"] .status-pill {
+    width: fit-content;
+    padding: 5px 8px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.52);
+    white-space: nowrap;
 }
 
 body[data-page="knowledge"] .knowledge-stat strong,
-body[data-page="knowledge"] .ribbon-card strong {
+body[data-page="knowledge"] .ribbon-card strong,
+body[data-page="knowledge"] .knowledge-rail-metric strong {
     display: block;
-    margin-top: 8px;
     color: #111111;
-    font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
     line-height: 1;
+    letter-spacing: -0.05em;
 }
 
 body[data-page="knowledge"] .knowledge-lead-grid,
 body[data-page="knowledge"] .stage-ribbon {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+}
+
+body[data-page="knowledge"] .stage-ribbon .ribbon-card:nth-child(1) {
+    border-color: rgba(17, 17, 17, 0.18);
+    background: linear-gradient(180deg, #171411, #241b15);
+}
+
+body[data-page="knowledge"] .stage-ribbon .ribbon-card:nth-child(1) strong,
+body[data-page="knowledge"] .stage-ribbon .ribbon-card:nth-child(1) p {
+    color: #f7f4ed;
 }
 
 body[data-page="knowledge"] .page-header-actions {
@@ -228,35 +370,372 @@ body[data-page="knowledge"] .page-header-actions {
     margin-top: 18px;
 }
 
+body[data-page="knowledge"] .knowledge-rail-card {
+    padding: 16px;
+    border: 1px solid var(--knowledge-line);
+    background: linear-gradient(180deg, rgba(255, 252, 246, 0.94), rgba(240, 232, 219, 0.9));
+    box-shadow: var(--knowledge-shadow);
+}
+
+body[data-page="knowledge"] .knowledge-rail-card-dark {
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.18), transparent 32%),
+        linear-gradient(180deg, var(--knowledge-dark), var(--knowledge-dark-2));
+    color: #f7f4ed;
+}
+
+body[data-page="knowledge"] .knowledge-rail-card-dark strong {
+    display: block;
+    margin-top: 10px;
+    color: #f7f4ed;
+    font-family: "Noto Serif SC", serif;
+    font-size: 1.05rem;
+    line-height: 1.36;
+}
+
+body[data-page="knowledge"] .knowledge-rail-card-dark p {
+    margin: 10px 0 0;
+    color: rgba(247, 244, 237, 0.68);
+    font-size: 0.88rem;
+    line-height: 1.68;
+}
+
+body[data-page="knowledge"] .knowledge-rail-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    padding: 0;
+    overflow: hidden;
+    background: rgba(17, 17, 17, 0.12);
+}
+
+body[data-page="knowledge"] .knowledge-rail-metric {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+    padding: 12px;
+    background: rgba(255, 252, 246, 0.96);
+}
+
+body[data-page="knowledge"] .knowledge-rail-nav {
+    display: grid;
+    gap: 8px;
+}
+
+body[data-page="knowledge"] .knowledge-rail-nav a {
+    display: block;
+    padding: 10px 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+    color: #3c3833;
+    font-family: "Noto Serif SC", serif;
+    font-size: 0.94rem;
+    line-height: 1.38;
+    text-decoration: none;
+}
+
+body[data-page="knowledge"] .knowledge-rail-nav a:hover,
+body[data-page="knowledge"] .knowledge-rail-nav a:focus-visible {
+    color: var(--knowledge-accent-deep);
+}
+
+body[data-page="knowledge"] .knowledge-rich-article > section,
+body[data-page="knowledge"] .knowledge-rich-article > div,
+body[data-page="knowledge"] .knowledge-rich-article > article,
+body[data-page="knowledge"] .knowledge-rich-article > table {
+    min-width: 0;
+}
+
 body[data-page="knowledge"] table {
+    display: block;
     width: 100%;
     margin: 18px 0;
+    overflow-x: auto;
+    border: 1px solid rgba(17, 17, 17, 0.1);
     border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 252, 246, 0.78);
 }
 
 body[data-page="knowledge"] th,
 body[data-page="knowledge"] td {
-    padding: 14px 16px;
-    border: 1px solid rgba(96, 64, 38, 0.12);
+    min-width: 130px;
+    padding: 11px 13px;
+    border: 1px solid rgba(17, 17, 17, 0.1);
     text-align: left;
     vertical-align: top;
 }
 
 body[data-page="knowledge"] th {
     color: var(--knowledge-ink);
-    background: rgba(238, 223, 203, 0.72);
+    background: rgba(235, 225, 209, 0.9);
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
 }
 
 body[data-page="knowledge"] ul,
 body[data-page="knowledge"] ol {
-    padding-left: 1.25rem;
+    padding-left: 1.2rem;
 }
 
 body[data-page="knowledge"] li + li {
     margin-top: 8px;
+}
+
+body[data-page="knowledge"] code {
+    padding: 2px 6px;
+    border-radius: 8px;
+    background: rgba(17, 17, 17, 0.07);
+    color: #9a3f16;
+    font-family: "IBM Plex Mono", monospace;
+}
+
+/* Page Type: Knowledge Channel */
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-next-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-hero {
+    min-height: 320px;
+    background:
+        radial-gradient(circle at 82% 18%, rgba(217, 93, 31, 0.16), transparent 28%),
+        linear-gradient(135deg, rgba(255, 252, 246, 0.98) 0%, rgba(238, 229, 214, 0.98) 58%, rgba(225, 215, 197, 0.96) 100%);
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy {
+    align-self: end;
+    max-width: 760px;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy h1 {
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    max-width: 15em;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-stats {
+    align-self: end;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-stat {
+    min-height: 0;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-high-school .subject-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-reading-path .grade-overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior {
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.15), transparent 30%),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(239, 230, 216, 0.96));
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] {
+    border-color: rgba(17, 17, 17, 0.2);
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.22), transparent 32%),
+        linear-gradient(180deg, #171411, #241b15);
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] h3,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] p,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] .knowledge-card-index {
+    color: #f7f4ed;
+}
+
+/* Page Type: Grade Topic */
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-front-hero {
+    background:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+        radial-gradient(circle at 78% 18%, rgba(217, 93, 31, 0.16), transparent 28%),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(236, 226, 210, 0.96));
+    background-size: 22px 22px, auto, auto;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .ribbon-card {
+    min-height: 116px;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .ribbon-card::after {
+    content: attr(data-ribbon-index);
+    position: absolute;
+    right: 16px;
+    bottom: 10px;
+    color: rgba(17, 17, 17, 0.08);
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: 2.15rem;
+    font-weight: 800;
+    letter-spacing: -0.08em;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon .ribbon-card:nth-child(1)::after {
+    color: rgba(247, 244, 237, 0.12);
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-card {
+    min-height: 132px;
+    align-content: space-between;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-card[data-card-index="4"],
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-card[data-card-index="5"] {
+    border-color: rgba(217, 93, 31, 0.3);
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.18), transparent 34%),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(233, 222, 205, 0.98));
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-focus .grade-overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body[data-page="knowledge"] .knowledge-card-index {
+    display: inline-flex;
+    width: fit-content;
+    color: rgba(17, 17, 17, 0.34);
+    font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+/* Page Type: Subject Detail */
+body[data-page="knowledge"] .knowledge-page-subject .knowledge-next-layout {
+    grid-template-columns: minmax(0, 0.94fr) minmax(300px, 360px);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .knowledge-rich-article {
+    gap: 14px;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header {
+    min-height: 260px;
+    background:
+        radial-gradient(circle at 78% 24%, rgba(217, 93, 31, 0.2), transparent 28%),
+        linear-gradient(180deg, #171411, #241b15);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header::before {
+    background: linear-gradient(180deg, #f7f4ed, rgba(217, 93, 31, 0.4));
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header h1,
+body[data-page="knowledge"] .knowledge-page-subject .page-header p {
+    color: #f7f4ed;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header p {
+    color: rgba(247, 244, 237, 0.72);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .page-header .action-link {
+    border-color: rgba(247, 244, 237, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: #f7f4ed;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .chapter {
+    padding-top: clamp(22px, 2.4vw, 30px);
+    background:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.03) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(240, 232, 219, 0.94));
+    background-size: 24px 24px, auto;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .chapter > h2 {
+    max-width: 850px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .chapter > h3 {
+    margin-top: 22px;
+    color: #302821;
+    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+}
+
+body[data-page="knowledge"] .concept-grid,
+body[data-page="knowledge"] .case-grid,
+body[data-page="knowledge"] .example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin: 12px 0;
+}
+
+body[data-page="knowledge"] .case-card,
+body[data-page="knowledge"] .example-card,
+body[data-page="knowledge"] .formula {
+    display: grid;
+    gap: 8px;
+    padding: 14px;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    background: rgba(255, 252, 246, 0.78);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+body[data-page="knowledge"] .example-card {
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.1), transparent 30%),
+        rgba(255, 252, 246, 0.88);
+}
+
+body[data-page="knowledge"] .formula,
+body[data-page="knowledge"] .important {
+    border-color: rgba(217, 93, 31, 0.24);
+    background:
+        linear-gradient(90deg, rgba(217, 93, 31, 0.08), transparent 38%),
+        rgba(255, 252, 246, 0.9);
+}
+
+body[data-page="knowledge"] .case-card h4,
+body[data-page="knowledge"] .example-card h4 {
+    margin: 0;
+    font-family: "Noto Serif SC", serif;
+    color: var(--knowledge-ink);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject .knowledge-rail-nav a:nth-of-type(1),
+body[data-page="knowledge"] .knowledge-page-subject .knowledge-rail-nav a:nth-of-type(2) {
+    color: var(--knowledge-accent-deep);
+    font-weight: 700;
+}
+
+@media (max-width: 1080px) {
+    body[data-page="knowledge"] .knowledge-next-layout {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="knowledge"] .knowledge-side-rail {
+        position: static;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        order: -1;
+    }
+
+    body[data-page="knowledge"] .knowledge-rail-nav {
+        grid-column: 1 / -1;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-high-school .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-reading-path .grade-overview-grid,
+    body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon,
+    body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-focus .grade-overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 860px) {
@@ -266,6 +745,19 @@ body[data-page="knowledge"] li + li {
 
     body[data-page="knowledge"] .knowledge-next-toolbar {
         justify-content: flex-start;
+    }
+
+    body[data-page="knowledge"] .knowledge-side-rail {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-high-school .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-reading-path .grade-overview-grid,
+    body[data-page="knowledge"] .knowledge-page-grade .stage-ribbon,
+    body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-subjects .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-grade .knowledge-section-grade8-focus .grade-overview-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -279,8 +771,23 @@ body[data-page="knowledge"] li + li {
     body[data-page="knowledge"] .chapter,
     body[data-page="knowledge"] .subjects,
     body[data-page="knowledge"] .intro,
-    body[data-page="knowledge"] .tips {
-        padding: 22px 18px;
-        border-radius: 22px;
+    body[data-page="knowledge"] .tips,
+    body[data-page="knowledge"] .knowledge-rail-card {
+        padding: 18px 16px;
+    }
+
+    body[data-page="knowledge"] .knowledge-rail-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="knowledge"] .knowledge-front-copy h1,
+    body[data-page="knowledge"] .page-header h1,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy h1 {
+        font-size: clamp(2rem, 10vw, 2.55rem);
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-hero,
+    body[data-page="knowledge"] .knowledge-page-subject .page-header {
+        min-height: 0;
     }
 }

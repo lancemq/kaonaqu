@@ -25,20 +25,35 @@ test('resolves grade 8 as structured data with subject links', async () => {
   assert.equal(subjectSection.cards.some((card) => card.href === '/knowledge/physics-grade8'), true);
 });
 
-test('resolves subject pages and preserves legacy content fragments for now', async () => {
+test('resolves subject pages as structured rich content nodes', async () => {
   const page = await getKnowledgePage(['physics-grade8']);
 
   assert.equal(page.slug, 'physics-grade8');
-  assert.equal(page.renderMode, 'html');
+  assert.equal(page.renderMode, 'rich');
   assert.equal(page.href, '/knowledge/physics-grade8');
   assert.match(page.title, /物理/);
-  assert.ok(page.contentHtml.includes('沪科版'));
+  assert.equal(page.contentHtml, '');
+  assert.equal(page.richBlocks.some((block) => block.tag === 'div' && block.className.includes('page-header')), true);
+  assert.equal(page.richBlocks.some((block) => block.tag === 'section' && block.children.some((child) => child.tag === 'table')), true);
   assert.ok(page.breadcrumbItems.some((item) => item.label === '知识体系'));
 });
 
 test('returns null for unknown or unsafe knowledge slugs', async () => {
   assert.equal(await getKnowledgePage(['missing-page']), null);
   assert.equal(await getKnowledgePage(['..', 'package.json']), null);
+});
+
+test('all knowledge pages are served from the Next.js data model', async () => {
+  const slugs = await listKnowledgeSlugs();
+  assert.equal(slugs.length, 23);
+
+  for (const item of slugs) {
+    const page = await getKnowledgePage(item.slug);
+    assert.ok(page, `expected page for ${item.slug.join('/') || 'index'}`);
+    assert.notEqual(page.renderMode, 'html');
+    assert.equal(page.contentHtml, '');
+    assert.ok(page.renderMode === 'structured' || page.richBlocks.length > 0);
+  }
 });
 
 test('lists known knowledge slugs for static params', async () => {

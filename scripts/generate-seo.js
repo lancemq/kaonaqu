@@ -3,26 +3,31 @@ const path = require('path');
 
 const SITE_URL = 'https://kaonaqu.xyz';
 const ROOT = path.join(__dirname, '..');
+const PUBLIC_DIR = path.join(ROOT, 'public');
+const KNOWLEDGE_DATA_FILE = 'data/knowledge-pages.json';
 
-const ROUTES = [
-  { url: '/', file: 'index.html', changefreq: 'daily', priority: '1.0' },
-  { url: '/news', file: 'news.html', changefreq: 'daily', priority: '0.9' },
-  { url: '/schools', file: 'schools.html', changefreq: 'daily', priority: '0.9' },
-  { url: '/knowledge', file: 'knowledge/index.html', changefreq: 'weekly', priority: '0.9' },
-  { url: '/knowledge/grade-7', file: 'knowledge/grade-7.html', changefreq: 'weekly', priority: '0.8' },
-  { url: '/knowledge/grade-8', file: 'knowledge/grade-8.html', changefreq: 'weekly', priority: '0.9' },
-  { url: '/knowledge/grade-9', file: 'knowledge/grade-9.html', changefreq: 'weekly', priority: '0.8' },
-  { url: '/knowledge/senior-1', file: 'knowledge/senior-1.html', changefreq: 'weekly', priority: '0.8' },
-  { url: '/knowledge/senior-2', file: 'knowledge/senior-2.html', changefreq: 'weekly', priority: '0.8' },
-  { url: '/knowledge/senior-3', file: 'knowledge/senior-3.html', changefreq: 'weekly', priority: '0.8' },
-  { url: '/knowledge/chinese-grade8', file: 'knowledge/chinese-grade8.html', changefreq: 'weekly', priority: '0.7' },
-  { url: '/knowledge/math-grade8', file: 'knowledge/math-grade8.html', changefreq: 'weekly', priority: '0.7' },
-  { url: '/knowledge/english-grade8', file: 'knowledge/english-grade8.html', changefreq: 'weekly', priority: '0.7' },
-  { url: '/knowledge/physics-grade8', file: 'knowledge/physics-grade8.html', changefreq: 'weekly', priority: '0.8' },
-  { url: '/knowledge/chemistry-grade8', file: 'knowledge/chemistry-grade8.html', changefreq: 'weekly', priority: '0.7' },
-  { url: '/knowledge/history-grade8', file: 'knowledge/history-grade8.html', changefreq: 'weekly', priority: '0.7' },
-  { url: '/knowledge/politics-grade8', file: 'knowledge/politics-grade8.html', changefreq: 'weekly', priority: '0.7' }
+const STATIC_ROUTES = [
+  { url: '/', file: 'app/page.js', changefreq: 'daily', priority: '1.0' },
+  { url: '/news', file: 'app/news/page.js', changefreq: 'daily', priority: '0.9' },
+  { url: '/schools', file: 'app/schools/page.js', changefreq: 'daily', priority: '0.9' }
 ];
+
+function getKnowledgeRoutes() {
+  const data = JSON.parse(fs.readFileSync(path.join(ROOT, KNOWLEDGE_DATA_FILE), 'utf8'));
+  return Object.keys(data.pages || {})
+    .sort((a, b) => a.localeCompare(b))
+    .map((slug) => {
+      const url = slug === 'index' ? '/knowledge' : `/knowledge/${slug}`;
+      return {
+        url,
+        file: KNOWLEDGE_DATA_FILE,
+        changefreq: 'weekly',
+        priority: slug === 'index' || slug === 'grade-8' ? '0.9' : slug.includes('grade8') ? '0.8' : '0.7'
+      };
+    });
+}
+
+const ROUTES = [...STATIC_ROUTES, ...getKnowledgeRoutes()];
 
 function getLastMod(file) {
   return fs.statSync(path.join(ROOT, file)).mtime.toISOString().slice(0, 10);
@@ -47,7 +52,8 @@ function buildBaiduUrlList() {
   return ROUTES.map((route) => `${SITE_URL}${route.url}`).join('\n') + '\n';
 }
 
-fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(), 'utf8');
-fs.writeFileSync(path.join(ROOT, 'baidu_urls.txt'), buildBaiduUrlList(), 'utf8');
+fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+fs.writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), buildSitemap(), 'utf8');
+fs.writeFileSync(path.join(PUBLIC_DIR, 'baidu_urls.txt'), buildBaiduUrlList(), 'utf8');
 
-console.log(`Generated sitemap.xml and baidu_urls.txt for ${ROUTES.length} URLs.`);
+console.log(`Generated public/sitemap.xml and public/baidu_urls.txt for ${ROUTES.length} URLs.`);

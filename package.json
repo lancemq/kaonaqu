@@ -7,8 +7,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "dev:legacy": "nodemon web/server.js",
-    "start:legacy": "node web/server.js",
     "seo:build": "node scripts/generate-seo.js",
     "crawl:policies": "node crawler/src/crawlers/policies-official.js",
     "crawl:news": "node crawler/src/crawlers/news-official.js",
@@ -20,8 +18,6 @@
     "data:schools:markdown": "node scripts/sync-detail-markdown.mjs",
     "data:schools:enrich": "node scripts/enrich-school-markdown-unified.mjs",
     "data:schools:enrich:dry": "node scripts/enrich-school-markdown-unified.mjs --dry-run --limit 20",
-    "data:schools:polish:top50": "node scripts/polish-top50-runner.mjs --all",
-    "data:schools:audit": "node scripts/generate-school-quality-audit-2026-04-08.mjs",
     "data:validate": "node scripts/check-news-school-links.mjs && node scripts/check-school-enrichment.mjs && node scripts/validate-data.js",
     "data:sync:supabase": "node scripts/sync-supabase.js",
     "crawl": "node crawler/src/index.js",
@@ -51,7 +47,6 @@
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@playwright/test": "^1.59.0",
-    "nodemon": "^3.0.1"
+    "@playwright/test": "^1.59.0"
   }
 }
