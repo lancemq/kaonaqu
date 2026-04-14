@@ -24,7 +24,11 @@
     "data:schools:audit": "node scripts/generate-school-quality-audit-2026-04-08.mjs",
     "data:validate": "node scripts/check-news-school-links.mjs && node scripts/check-school-enrichment.mjs && node scripts/validate-data.js",
     "data:sync:supabase": "node scripts/sync-supabase.js",
-    "crawl": "node crawler/src/index.js"
+    "crawl": "node crawler/src/index.js",
+    "crawl:school-enrich": "node crawler/src/crawlers/school-enrichment.js",
+    "crawl:school-enrich:dry": "node crawler/src/crawlers/school-enrichment.js --dry-run --limit 10",
+    "data:schools:merge": "node crawler/src/merge-school-data.js",
+    "data:schools:validate": "node crawler/src/merge-school-data.js"
   },
   "keywords": [
     "shanghai",
