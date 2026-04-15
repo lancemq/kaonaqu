@@ -86,10 +86,45 @@ function renderSchoolMarkdown(markdown) {
   const nodes = [];
   let listItems = [];
   let key = 0;
+  
+  // Section tracking for highlights
+  let activeSectionType = null; // 'catchment', 'group', or null
+  let currentSectionTitle = '';
+  let currentSectionNodes = [];
+
+  const flushSection = () => {
+    if (currentSectionNodes.length === 0) return;
+    if (activeSectionType === 'catchment') {
+      nodes.push(
+        <div key={`catchment-section-${key++}`} className="highlight-card highlight-card-catchment">
+          <div className="highlight-card-header">📍 {currentSectionTitle}</div>
+          <div className="highlight-card-content">
+            {currentSectionNodes}
+          </div>
+        </div>
+      );
+    } else if (activeSectionType === 'group') {
+      nodes.push(
+        <div key={`group-section-${key++}`} className="highlight-card highlight-card-group">
+          <div className="highlight-card-header">🏛️ {currentSectionTitle}</div>
+          <div className="highlight-card-content">
+            {currentSectionNodes}
+          </div>
+        </div>
+      );
+    } else {
+      nodes.push(...currentSectionNodes);
+    }
+    currentSectionNodes = [];
+    currentSectionTitle = '';
+    activeSectionType = null;
+  };
+
+  const pushToSection = (node) => currentSectionNodes.push(node);
 
   const flushList = () => {
     if (!listItems.length) return;
-    nodes.push(
+    pushToSection(
       <ul key={`list-${key++}`} className="news-detail-markdown-list">
         {listItems.map((item, index) => (
           <li key={`item-${index}`}>{renderInlineMarkdown(item)}</li>
@@ -107,12 +142,26 @@ function renderSchoolMarkdown(markdown) {
     }
     if (line.startsWith('## ')) {
       flushList();
-      nodes.push(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{line.slice(3)}</h3>);
+      flushSection();
+      
+      const title = line.slice(3);
+      if (title.includes('官方对口查询')) {
+        activeSectionType = 'catchment';
+        currentSectionTitle = title;
+        continue;
+      } else if (title.includes('教育集团')) {
+        activeSectionType = 'group';
+        currentSectionTitle = title;
+        continue;
+      } else {
+        pushToSection(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{title}</h3>);
+        flushSection(); // Regular sections close immediately
+      }
       continue;
     }
     if (line.startsWith('### ')) {
       flushList();
-      nodes.push(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
+      pushToSection(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
       continue;
     }
     if (line.startsWith('- ')) {
@@ -120,7 +169,7 @@ function renderSchoolMarkdown(markdown) {
       continue;
     }
     flushList();
-    nodes.push(
+    pushToSection(
       <p key={`p-${key++}`} className="news-detail-markdown-paragraph">
         {renderInlineMarkdown(line)}
       </p>
@@ -128,6 +177,7 @@ function renderSchoolMarkdown(markdown) {
   }
 
   flushList();
+  flushSection();
   return nodes;
 }
 
@@ -422,6 +472,22 @@ export default async function SchoolDetailPage({ params }) {
               ))}
             </dl>
           </section>
+
+          {school.group && (
+            <section className="school-datadesk-detail-panel">
+              <div className="school-datadesk-detail-sectionhead">
+                <p className="overview-label">教育集团</p>
+                <span>集团化办学</span>
+              </div>
+              <div className="group-badge-container">
+                <span className="group-badge-icon">🏛️</span>
+                <div className="group-badge-text">
+                  <span className="group-badge-label">所属集团</span>
+                  <span className="group-badge-value">{school.group}</span>
+                </div>
+              </div>
+            </section>
+          )}
 
           <section className="school-datadesk-detail-panel">
             <div className="school-datadesk-detail-sectionhead">
