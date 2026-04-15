@@ -1,0 +1,16 @@
+{
+  "check_time": "2026-04-15",
+  "total_news": 69,
+  "quality_summary": {
+    "high_quality": 69,
+    "medium_quality": 0,
+    "low_quality": 0
+  },
+  "issues_found": {
+    "content_too_short": 11,
+    "missing_markdown": 0,
+    "low_confidence_source": 0,
+    "missing_fields": 0
+  },
+  "recommendation": "保留全部 69 条新闻，优化 11 条新闻的 JSON content 字段"
+}
