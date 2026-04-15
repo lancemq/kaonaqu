@@ -30,3 +30,8 @@
 - 最后看长期可持续性：通勤成本、家庭支持能力和孩子心理状态同样关键。
 ## 公开信息入口
 [学校官网](https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html)
+
+## 联系与地址
+- **学校官网**: [https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html](https://zwgk.shcn.gov.cn/xxgk/xsdw-jyj/2023/286/70433.html)
+- **地址**: 水城路450弄1号
+- **联系电话**: 62590198

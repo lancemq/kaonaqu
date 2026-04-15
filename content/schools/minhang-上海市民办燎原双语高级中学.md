@@ -30,3 +30,8 @@
 - 寄宿学校需额外核对作息管理、周末安排与生活支持体系。
 ## 公开信息入口
 [学校官网](https://www.liaoyuanedu.org/)
+
+## 联系与地址
+- **学校官网**: [https://www.liaoyuanedu.org/](https://www.liaoyuanedu.org/)
+- **地址**: 上海市闵行区平阳路150号
+- **联系电话**: 021-64806128

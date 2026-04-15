@@ -30,3 +30,8 @@
 - 国际化方向建议同步比较课程体系、升学路径与家庭预算承受能力。
 ## 公开信息入口
 [学校官网](https://vkbs.dtd-edu.cn/contact-us)
+
+## 联系与地址
+- **学校官网**: [https://vkbs.dtd-edu.cn/contact-us](https://vkbs.dtd-edu.cn/contact-us)
+- **地址**: 上海市闵行区七莘路3568号
+- **联系电话**: 021-62216956

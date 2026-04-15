@@ -30,3 +30,8 @@
 - 科创导向学校建议重点看项目资源、竞赛支持和学生时间管理要求。
 ## 公开信息入口
 [学校官网](https://school.bsedu.org.cn/hbez/)
+
+## 联系与地址
+- **学校官网**: [https://school.bsedu.org.cn/hbez/](https://school.bsedu.org.cn/hbez/)
+- **地址**: 上海市宝山区海滨五村10号
+- **联系电话**: 021-56163655

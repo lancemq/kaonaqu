@@ -31,3 +31,8 @@
 - 国际化方向建议同步比较课程体系、升学路径与家庭预算承受能力。
 ## 公开信息入口
 [学校官网](https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html)
+
+## 联系与地址
+- **学校官网**: [https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html](https://www.shyp.gov.cn/shypq/yqyw-wb-jyjzl-ypzs/20240407/452021.html)
+- **地址**: 上海市杨浦区永吉路351号
+- **联系电话**: 18019454771

@@ -30,3 +30,8 @@
 - 最后看长期可持续性：通勤成本、家庭支持能力和孩子心理状态同样关键。
 ## 公开信息入口
 [学校官网](https://school.bsedu.org.cn/gaojing3000/)
+
+## 联系与地址
+- **学校官网**: [https://school.bsedu.org.cn/gaojing3000/](https://school.bsedu.org.cn/gaojing3000/)
+- **地址**: 上海市宝山区国权北路468号
+- **联系电话**: 021-55031646

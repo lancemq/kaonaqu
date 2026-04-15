@@ -30,3 +30,8 @@
 - 科创导向学校建议重点看项目资源、竞赛支持和学生时间管理要求。
 ## 公开信息入口
 [学校官网](https://www.jsedu.sh.cn/hdsdsfz/)
+
+## 联系与地址
+- **学校官网**: [https://www.jsedu.sh.cn/hdsdsfz/](https://www.jsedu.sh.cn/hdsdsfz/)
+- **地址**: 金山区张堰镇东贤路69号
+- **联系电话**: 021-31115588

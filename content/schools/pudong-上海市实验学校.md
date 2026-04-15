@@ -27,3 +27,8 @@
 ## 公开信息入口
 - [上海市实验学校官网](https://www.ses.sh.edu.cn/)
 - [维基百科-上海市实验学校](https://zh.wikipedia.org/wiki/%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%AE%9E%E9%AA%8C%E5%AD%A6%E6%A0%A1)
+
+## 联系与地址
+- **学校官网**: [https://www.ses.sh.edu.cn/](https://www.ses.sh.edu.cn/)
+- **地址**: 浦东新区东明路 300 号
+- **联系电话**: 021-50866067

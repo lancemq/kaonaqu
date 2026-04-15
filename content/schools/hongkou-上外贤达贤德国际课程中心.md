@@ -30,3 +30,8 @@
 - 国际化方向建议同步比较课程体系、升学路径与家庭预算承受能力。
 ## 公开信息入口
 [学校官网](https://www.guojixuexiao.org/school/swxd/)
+
+## 联系与地址
+- **学校官网**: [https://www.guojixuexiao.org/school/swxd/](https://www.guojixuexiao.org/school/swxd/)
+- **地址**: 上海市虹口区东体育会路390号
+- **联系电话**: 400-9609-559

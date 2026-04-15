@@ -30,3 +30,8 @@
 - 寄宿学校需额外核对作息管理、周末安排与生活支持体系。
 ## 公开信息入口
 [学校官网](https://school.sjyz.sjedu.cn/xxgk_xxgk.html)
+
+## 联系与地址
+- **学校官网**: [https://school.sjyz.sjedu.cn/xxgk_xxgk.html](https://school.sjyz.sjedu.cn/xxgk_xxgk.html)
+- **地址**: 松江区松汇中路601号
+- **联系电话**: 021-57822996

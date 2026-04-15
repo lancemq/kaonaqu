@@ -30,3 +30,8 @@
 - 科创导向学校建议重点看项目资源、竞赛支持和学生时间管理要求。
 ## 公开信息入口
 [学校官网](https://school.bsedu.org.cn/thzx/)
+
+## 联系与地址
+- **学校官网**: [https://school.bsedu.org.cn/thzx/](https://school.bsedu.org.cn/thzx/)
+- **地址**: 上海市宝山区呼玛路888号
+- **联系电话**: 56741519
