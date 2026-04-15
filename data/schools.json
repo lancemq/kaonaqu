@@ -18080,6 +18080,16 @@
       "pudong-上海市建平临港中学",
       "pudong-上海市建平实验地杰中学",
       "pudong-上海市建平世纪中学"
+    ],
+    "admissionRoutes": [
+      {
+        "school_id": "pudong-建平实验中学",
+        "high_school_name": "上海市建平中学",
+        "high_school_id": "pudong-上海市建平中学",
+        "year": 2025,
+        "count": 14,
+        "type": "分配到校"
+      }
     ]
   },
   {
@@ -18170,6 +18180,16 @@
       "浦东新区-进才实验学校",
       "pudong-上海市进才中学",
       "pudong-上海市民办进才外国语中学"
+    ],
+    "admissionRoutes": [
+      {
+        "school_id": "浦东新区-进才实验中学",
+        "high_school_name": "上海市进才中学",
+        "high_school_id": "pudong-上海市进才中学",
+        "year": 2025,
+        "count": 16,
+        "type": "分配到校"
+      }
     ]
   },
   {
@@ -32129,7 +32149,17 @@
       "国际升学 (DP/AP)"
     ],
     "profileDepth": "foundation",
-    "contentFile": "content/schools/xuhui-世外中学.md"
+    "contentFile": "content/schools/xuhui-世外中学.md",
+    "admissionRoutes": [
+      {
+        "school_id": "xuhui-世外中学",
+        "high_school_name": "上海市南洋模范中学",
+        "high_school_id": "xuhui-上海市南洋模范中学",
+        "year": 2025,
+        "count": 4,
+        "type": "分配到校"
+      }
+    ]
   },
   {
     "id": "徐汇区-位育初级中学",

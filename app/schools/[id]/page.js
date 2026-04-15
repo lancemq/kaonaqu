@@ -49,6 +49,17 @@ function resolveSchoolById(schools, rawId) {
   return schools.find((item) => item.id === normalizedId) || schools.find((item) => item.id === decodedId) || null;
 }
 
+function getAdmissionRoutes(school) {
+  const routes = school.admissionRoutes || [];
+  if (routes.length === 0) return null;
+  
+  // Sort by year desc, then count desc
+  return routes.sort((a, b) => {
+    if (b.year !== a.year) return b.year - a.year;
+    return b.count - a.count;
+  });
+}
+
 function getDistrictPeers(schools, current) {
   return schools
     .filter((school) => school.id !== current.id && school.districtId === current.districtId)
@@ -485,6 +496,32 @@ export default async function SchoolDetailPage({ params }) {
                   <span className="group-badge-label">所属集团</span>
                   <span className="group-badge-value">{school.group}</span>
                 </div>
+              </div>
+            </section>
+          )}
+
+          {getAdmissionRoutes(school) && (
+            <section className="school-datadesk-detail-panel">
+              <div className="school-datadesk-detail-sectionhead">
+                <p className="overview-label">名额分配去向</p>
+                <span>升学出口</span>
+              </div>
+              <div className="quota-list">
+                {getAdmissionRoutes(school).slice(0, 5).map((route) => (
+                  <div key={`${route.high_school_id}-${route.year}`} className="quota-item">
+                    <div className="quota-info">
+                      <Link href={`/schools/${route.high_school_id}`} className="quota-link">
+                        {route.high_school_name}
+                      </Link>
+                      <span className="quota-type">{route.type}</span>
+                    </div>
+                    <div className="quota-count">
+                      <span className="quota-year">{route.year}</span>
+                      <span className="quota-number">{route.count}人</span>
+                    </div>
+                  </div>
+                ))}
+                <p className="quota-note">数据仅供参考，实际以当年官方公布为准</p>
               </div>
             </section>
           )}
