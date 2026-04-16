@@ -9,7 +9,8 @@ async function fetchWithRetry(url, options = {}) {
     timeout = 15000,
     retries = 2,
     delay = 1200,
-    headers = {}
+    headers = {},
+    params = {}
   } = options;
 
   let lastError;
@@ -18,6 +19,7 @@ async function fetchWithRetry(url, options = {}) {
     try {
       const response = await axios.get(url, {
         timeout,
+        params,
         headers: {
           'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
           ...headers

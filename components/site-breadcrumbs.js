@@ -12,6 +12,7 @@ const ROUTE_LABELS = {
   '/news/policy-glossary': '政策概念速查',
   '/news/zhongkao-special': '中考专题',
   '/schools': '学校信息',
+  '/schools/groups': '教育集团',
   '/schools/district': '区域专题',
   '/schools/compare': '学校对比'
 };
