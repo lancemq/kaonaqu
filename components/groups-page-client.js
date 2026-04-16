@@ -17,6 +17,29 @@ const STAGE_OPTIONS = [
 
 const TIER_ORDER = ['四校', '四校分校', '八大', '八大分校', '市实验性示范性高中', '区重点', '一般高中', '民办高中', '国际课程', '公办初中', '民办初中', '公办完全中学', '民办完全中学'];
 const TOP_TIER_SET = new Set(['四校', '四校分校', '八大', '八大分校', '市实验性示范性高中']);
+const EXCLUDED_GROUP_NAMES = new Set([
+  '黄浦系',
+  '徐汇系',
+  '长宁系',
+  '静安系',
+  '普陀系',
+  '虹口系',
+  '杨浦系',
+  '闵行系',
+  '宝山系',
+  '嘉定系',
+  '浦东系',
+  '浦东新区系',
+  '金山系',
+  '松江系',
+  '青浦系',
+  '奉贤系',
+  '崇明系',
+  '南汇系',
+  '国际学校',
+  '二中系',
+  '教院系'
+]);
 
 const TIER_LABELS = {
   四校: '四校',
@@ -57,6 +80,13 @@ function buildGroupSummary(group) {
     return `跨 ${group.districts.length} 个区域布局，适合观察集团化办学的区域扩展路径。`;
   }
   return `当前收录 ${group.schoolCount} 所成员校，适合结合区域、学段和学校详情继续判断。`;
+}
+
+function getGroupExclusionReason(group) {
+  if (!group?.name) return 'empty';
+  if (EXCLUDED_GROUP_NAMES.has(group.name)) return 'low-confidence';
+  if (group.schoolCount < 2) return 'single-school';
+  return '';
 }
 
 export default function GroupsPageClient({ districts, schools, initialDistrict = 'all', initialStage = 'all', initialTier = 'all', initialQuery = '' }) {
@@ -123,6 +153,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
           summary: buildGroupSummary({ ...group, districts: Array.from(group.districts), tiers })
         };
       })
+      .filter((group) => !getGroupExclusionReason(group))
       .sort((left, right) => {
         if (left.hasTopTier !== right.hasTopTier) return Number(right.hasTopTier) - Number(left.hasTopTier);
         if (left.schoolCount !== right.schoolCount) return right.schoolCount - left.schoolCount;
@@ -154,7 +185,9 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
   }, [groupsData, selectedDistrict, selectedStage, selectedTier, searchQuery]);
 
   const topGroups = groupsData.filter((group) => group.hasTopTier).slice(0, 4);
+  const rawGroupedSchoolTotal = schools.filter((school) => String(school.group || '').trim()).length;
   const memberSchoolTotal = groupsData.reduce((sum, group) => sum + group.schoolCount, 0);
+  const excludedGroupedSchoolTotal = rawGroupedSchoolTotal - memberSchoolTotal;
   const districtCoverage = new Set(groupsData.flatMap((group) => group.districtIds)).size;
   const activeFilterCount = [selectedDistrict !== 'all', selectedStage !== 'all', selectedTier !== 'all', Boolean(searchQuery)].filter(Boolean).length;
 
@@ -175,8 +208,8 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
             <div className="school-groups-intro">
               <p className="overview-label">School Groups</p>
               <h1>上海教育集团专题</h1>
-              <p className="school-groups-subtitle">把同一教育集团旗下学校放在一张图里看，先判断核心校、分校、区域扩展和学段覆盖。</p>
-              <p className="school-groups-description">集团化办学不能直接等同于升学结果，但它能帮助家长理解资源共享、课程协同、校区分布和择校比较的上下文。</p>
+              <p className="school-groups-subtitle">把可信的多校教育集团放在一张图里看，先判断核心校、分校、区域扩展和学段覆盖。</p>
+              <p className="school-groups-description">本页已排除区域名归并、泛化类别和单校伪集团；集团化办学不能直接等同于升学结果，仍建议进入学校详情核对官方口径。</p>
               <div className="schools-datadesk-search-row">
                 <label className="schools-datadesk-searchfield schools-datadesk-searchfield-main schools-datadesk-search" htmlFor="school-group-search">
                   <span className="visually-hidden">搜索教育集团、成员校或区域</span>
@@ -209,12 +242,12 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
               <article className="schools-datadesk-summary-card schools-datadesk-summary-card-strong">
                 <span>教育集团</span>
                 <strong>{groupsData.length}</strong>
-                <p>当前可按集团归并的学校体系</p>
+                <p>通过基础校验的多校集团候选</p>
               </article>
               <article className="schools-datadesk-summary-card">
                 <span>成员学校</span>
                 <strong>{memberSchoolTotal}</strong>
-                <p>带有集团字段的学校条目</p>
+                <p>纳入本页展示的成员校条目</p>
               </article>
               <article className="schools-datadesk-summary-card">
                 <span>覆盖区域</span>
@@ -224,7 +257,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
               <article className="schools-datadesk-summary-card schools-datadesk-summary-card-stack">
                 <span>当前结果</span>
                 <strong>{filteredGroups.length}</strong>
-                <p>{activeFilterCount ? '筛选后的集团范围' : '未添加筛选条件'}</p>
+                <p>{activeFilterCount ? '筛选后的集团范围' : `已排除 ${excludedGroupedSchoolTotal} 条低置信归类`}</p>
               </article>
             </div>
           </div>
@@ -233,7 +266,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
 
       <section className="schools-datadesk-statusbar school-groups-statusbar" aria-label="教育集团专题状态">
         <span className="schools-datadesk-statuslabel">Group Desk</span>
-        <span>当前显示 {filteredGroups.length} 个教育集团，覆盖 {memberSchoolTotal} 所成员校</span>
+        <span>当前显示 {filteredGroups.length} 个通过校验的教育集团，覆盖 {memberSchoolTotal} 所成员校</span>
       </section>
 
       <main className="layout schools-datadesk-layout school-groups-layout">
@@ -243,7 +276,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
               <p className="overview-label">当前条件</p>
               <span>{activeFilterCount} 项激活</span>
             </div>
-            <p className="schools-datadesk-panel-copy">用区域、学段和梯队先缩小集团范围，再展开成员校逐个查看详情。</p>
+            <p className="schools-datadesk-panel-copy">用区域、学段和梯队先缩小集团范围，再展开成员校逐个查看详情。区域系、单校系和泛化类别已从本页隐藏。</p>
             <button className="schools-datadesk-button schools-datadesk-button-secondary" type="button" onClick={resetFilters}>清空全部条件</button>
           </section>
 
@@ -313,7 +346,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
               <p className="overview-label">集团结果</p>
               <h2>可展开的教育集团</h2>
             </div>
-            <p>{activeFilterCount ? '已按当前条件筛选。展开卡片可查看成员校，并进入学校详情页继续判断。' : '默认按头部梯队和成员校数量排序，适合先找集团核心脉络。'}</p>
+            <p>{activeFilterCount ? '已按当前条件筛选。展开卡片可查看成员校，并进入学校详情页继续判断。' : '默认按头部梯队和成员校数量排序，只展示通过基础校验的多校集团候选。'}</p>
           </div>
 
           {filteredGroups.length ? (

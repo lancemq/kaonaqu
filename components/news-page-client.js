@@ -69,6 +69,8 @@ function isRenderablePolicy(policy, currentYear) {
 }
 
 function getAudienceLabel(item) {
+  if (item.newsType === 'policy') return '政策关注家庭';
+  if (item.newsType === 'guide') return '规划型家庭';
   if (item.newsType === 'school') return '择校家庭';
   if (item.examType === 'zhongkao') return '上海中考家庭';
   if (item.examType === 'gaokao') return '上海高考家庭';
@@ -91,10 +93,15 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
   const policyCount = currentYearPolicies.length;
   const visibleItems = useMemo(() => {
     if (activeFilter === 'policy') {
-      return currentYearPolicies.map((item) => ({
+      const policyNews = filterNews(currentYearNews, 'policy').map((item) => ({
+        ...item,
+        itemType: 'news'
+      }));
+      const policyFiles = currentYearPolicies.map((item) => ({
         ...item,
         itemType: 'policy'
       }));
+      return [...policyNews, ...policyFiles];
     }
 
     const filteredNews = filterNews(currentYearNews, activeFilter);
@@ -115,6 +122,8 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
   const examCount = currentYearNews.filter((item) => item.newsType === 'exam').length;
   const admissionCount = currentYearNews.filter((item) => item.newsType === 'admission').length;
   const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
+  const guideCount = currentYearNews.filter((item) => item.newsType === 'guide').length;
+  const policyNewsCount = currentYearNews.filter((item) => item.newsType === 'policy').length;
   const conceptItems = policyGlossary.slice(0, 3);
   const deepPolicyItems = currentYearPolicies.slice(0, 2);
   const weeklyFocus = useMemo(
@@ -162,15 +171,16 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
           <section className="panel news-prototype-list-panel">
             <div className="news-prototype-filter-meta">
               <p className="overview-label">按你现在最关心的内容看</p>
-              <span>考试、招生、学校动态和政策文件，一键切换</span>
+              <span>政策、指南、考试、招生和学校动态，一键切换</span>
             </div>
             <div className="news-prototype-filter-row" aria-label="新闻分类筛选">
               {[
                 ['all', '全部'],
+                ['policy', '政策文件'],
+                ['guide', '升学指南'],
                 ['exam', '考试新闻'],
                 ['admission', '招生新闻'],
-                ['school', '学校动态'],
-                ['policy', '政策文件']
+                ['school', '学校动态']
               ].map(([value, label], index) => (
                 <button
                   key={value}
@@ -235,7 +245,7 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
                 <article className="news-prototype-item news-prototype-item-empty">
                   <p className="news-prototype-item-kicker">这一栏暂时还没有新消息</p>
                   <h3>换个分类看看，可能你关心的内容正在别处更新</h3>
-                  <p>可以切换到“全部”“考试新闻”“招生新闻”“学校动态”或“政策文件”，先把最近的重要信息补齐。</p>
+                  <p>可以切换到“全部”“政策文件”“升学指南”“考试新闻”“招生新闻”或“学校动态”，先把最近的重要信息补齐。</p>
                 </article>
               )}
             </div>
@@ -268,8 +278,9 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
             <div className="news-prototype-brief-metrics">
               <article><strong>{examCount}</strong><span>考试新闻</span></article>
               <article><strong>{admissionCount}</strong><span>招生新闻</span></article>
+              <article><strong>{guideCount}</strong><span>升学指南</span></article>
               <article><strong>{schoolCount}</strong><span>学校动态</span></article>
-              <article><strong>{policyCount}</strong><span>政策文件</span></article>
+              <article><strong>{policyCount + policyNewsCount}</strong><span>政策文件</span></article>
             </div>
           </section>
 

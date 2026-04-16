@@ -10,7 +10,7 @@ const news = JSON.parse(raw);
 const enriched = news.map((item) => ({
   ...item,
   contentMd: buildNewsMarkdown(item),
-  contentFile: getNewsContentRelativePath(item.id)
+  contentFile: getNewsContentRelativePath(item)
 }));
 
 writeNewsMarkdownFiles(enriched);

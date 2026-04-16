@@ -16,7 +16,7 @@ from datetime import datetime, timezone, timedelta
 
 CST = timezone(timedelta(hours=8))
 DATA_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'policies.json')
-CONTENT_DIR = os.path.join(os.path.dirname(__file__), '..', 'content', 'policies')
+CONTENT_DIR = os.path.join(os.path.dirname(__file__), '..', 'content', 'news', 'policy')
 
 # 第二批高质量政策文件
 BATCH_2_POLICIES = [
