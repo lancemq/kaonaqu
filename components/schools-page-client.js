@@ -470,6 +470,10 @@ export default function SchoolsPageClient({
               <span>高频学校与热门区县</span>
             </div>
             <div className="schools-datadesk-shortcuts">
+              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/compare">
+                <strong>学校多维对比</strong>
+                <span>支持梯队、集团、地址等全方位参数对比</span>
+              </Link>
               <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/groups">
                 <strong>教育集团专题</strong>
                 <span>按集团查看成员校、覆盖区域与梯队结构</span>
@@ -532,31 +536,47 @@ export default function SchoolsPageClient({
           <div className="schools-datadesk-cardlist">
             {(pagedSchools.length ? pagedSchools : emptyStateSchools).map((school) => {
               const cardTags = buildCardTags(school);
+              const mapUrl = school.address 
+                ? `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.address)}`
+                : `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.districtName)}`;
+              
               return (
-                <Link key={school.id} href={`/schools/${school.id}`} className="schools-datadesk-card schools-datadesk-card-link">
-                  <div className="schools-datadesk-cardhead">
-                    <div>
-                      <p className="schools-datadesk-cardkicker">{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getOwnershipLabel(school)}</p>
-                      <h3>{school.name}</h3>
+                <div key={school.id} className="schools-datadesk-card-wrapper relative group">
+                  <Link href={`/schools/${school.id}`} className="schools-datadesk-card schools-datadesk-card-link block">
+                    <div className="schools-datadesk-cardhead">
+                      <div>
+                        <p className="schools-datadesk-cardkicker">{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getOwnershipLabel(school)}</p>
+                        <h3>{school.name}</h3>
+                      </div>
+                      <div className="schools-datadesk-cardmeta">
+                        <span>{getSchoolType(school)}</span>
+                        <span>{school.tier || '梯队信息待补充'}</span>
+                        <span>更新于 {formatSchoolUpdate(school.updatedAt)}</span>
+                      </div>
                     </div>
-                    <div className="schools-datadesk-cardmeta">
-                      <span>{getSchoolType(school)}</span>
-                      <span>{school.tier || '梯队信息待补充'}</span>
-                      <span>更新于 {formatSchoolUpdate(school.updatedAt)}</span>
+                    <p className="schools-datadesk-cardsummary">{getSchoolPositioning(school)}</p>
+                    <div className="schools-datadesk-cardfooter">
+                      <div className="schools-datadesk-cardtags">
+                        {cardTags.length ? cardTags.map((tag) => (
+                          <span key={tag} className="schools-datadesk-cardtag">{tag}</span>
+                        )) : (
+                          <span className="schools-datadesk-cardtag schools-datadesk-cardtag-muted">标签待补充</span>
+                        )}
+                      </div>
+                      <span className="schools-datadesk-cardlink">进入学校详情</span>
                     </div>
-                  </div>
-                  <p className="schools-datadesk-cardsummary">{getSchoolPositioning(school)}</p>
-                  <div className="schools-datadesk-cardfooter">
-                    <div className="schools-datadesk-cardtags">
-                      {cardTags.length ? cardTags.map((tag) => (
-                        <span key={tag} className="schools-datadesk-cardtag">{tag}</span>
-                      )) : (
-                        <span className="schools-datadesk-cardtag schools-datadesk-cardtag-muted">标签待补充</span>
-                      )}
-                    </div>
-                    <span className="schools-datadesk-cardlink">进入学校详情</span>
-                  </div>
-                </Link>
+                  </Link>
+                  {/* 查看地图按钮 - 浮在右上角 */}
+                  <a 
+                    href={mapUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="map-link-btn absolute top-2 right-2 bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded opacity-80 hover:opacity-100 transition-opacity z-10"
+                  >
+                    📍 查看地图
+                  </a>
+                </div>
               );
             })}
           </div>

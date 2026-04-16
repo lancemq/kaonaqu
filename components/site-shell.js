@@ -32,6 +32,7 @@ export default function SiteShell({ children, hideKnowledgeNav = false, breadcru
           <Link href="/">首页</Link>
           <Link href="/news">新闻政策</Link>
           <Link href="/schools">学校信息</Link>
+          <Link href="/schools/compare">对比工具</Link>
           <Link href="/knowledge">知识体系</Link>
         </nav>
         <div className="topbar-desk">
