@@ -69,7 +69,7 @@ function getDistrictPeers(schools, current) {
 function renderInlineMarkdown(text) {
   const parts = [];
   const value = String(text || '');
-  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const regex = /\[([^\]]+)\]\(([^)]*)\)|\*\*([^*]+)\*\*/g;
   let lastIndex = 0;
   let match;
 
@@ -77,11 +77,17 @@ function renderInlineMarkdown(text) {
     if (match.index > lastIndex) {
       parts.push(value.slice(lastIndex, match.index));
     }
-    parts.push(
-      <a key={`${match[2]}-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
-        {match[1]}
-      </a>
-    );
+
+    if (match[1] !== undefined) {
+      parts.push(
+        <a key={`link-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
+          {match[1] || match[2]}
+        </a>
+      );
+    } else {
+      parts.push(<strong key={`strong-${match.index}`}>{match[3]}</strong>);
+    }
+
     lastIndex = regex.lastIndex;
   }
 
@@ -108,7 +114,7 @@ function renderSchoolMarkdown(markdown) {
     if (activeSectionType === 'catchment') {
       nodes.push(
         <div key={`catchment-section-${key++}`} className="highlight-card highlight-card-catchment">
-          <div className="highlight-card-header">📍 {currentSectionTitle}</div>
+          <div className="highlight-card-header">{currentSectionTitle}</div>
           <div className="highlight-card-content">
             {currentSectionNodes}
           </div>
@@ -117,7 +123,7 @@ function renderSchoolMarkdown(markdown) {
     } else if (activeSectionType === 'group') {
       nodes.push(
         <div key={`group-section-${key++}`} className="highlight-card highlight-card-group">
-          <div className="highlight-card-header">🏛️ {currentSectionTitle}</div>
+          <div className="highlight-card-header">{currentSectionTitle}</div>
           <div className="highlight-card-content">
             {currentSectionNodes}
           </div>
@@ -298,7 +304,7 @@ export default async function SchoolDetailPage({ params }) {
               </p>
               <h1>{school.name}</h1>
               <p className="school-datadesk-detail-subtitle">
-                {schoolSummary}
+                {renderInlineMarkdown(schoolSummary)}
               </p>
               <div className="school-datadesk-detail-chiprow">
                 {richProfile?.badge ? (
@@ -369,7 +375,7 @@ export default async function SchoolDetailPage({ params }) {
           <section className="school-datadesk-detail-panel">
             <p className="overview-label">学校概览</p>
             <h2>{school.name}</h2>
-            <p>{schoolSummary || '学校基础信息已整理，可结合培养方向和招生路径继续判断。'}</p>
+            <p>{renderInlineMarkdown(schoolSummary || '学校基础信息已整理，可结合培养方向和招生路径继续判断。')}</p>
             <div className="school-datadesk-detail-highlightgrid">
               {summaryPoints.map((item, index) => (
                 <article key={`${item}-${index}`} className="school-datadesk-detail-highlightcard">
@@ -491,7 +497,6 @@ export default async function SchoolDetailPage({ params }) {
                 <span>集团化办学</span>
               </div>
               <div className="group-badge-container">
-                <span className="group-badge-icon">🏛️</span>
                 <div className="group-badge-text">
                   <span className="group-badge-label">所属集团</span>
                   <span className="group-badge-value">{school.group}</span>
