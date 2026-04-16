@@ -26,7 +26,7 @@ function resolvePolicyById(policies, rawId) {
 function renderInlineMarkdown(text) {
   const parts = [];
   const value = String(text || '');
-  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const regex = /\[([^\]]+)\]\(([^)]*)\)|\*\*([^*]+)\*\*|\*([^*]+)\*/g;
   let lastIndex = 0;
   let match;
 
@@ -34,11 +34,19 @@ function renderInlineMarkdown(text) {
     if (match.index > lastIndex) {
       parts.push(value.slice(lastIndex, match.index));
     }
-    parts.push(
-      <a key={`${match[2]}-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
-        {match[1]}
-      </a>
-    );
+
+    if (match[1] !== undefined) {
+      parts.push(
+        <a key={`link-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
+          {match[1] || match[2]}
+        </a>
+      );
+    } else if (match[3] !== undefined) {
+      parts.push(<strong key={`strong-${match.index}`}>{match[3]}</strong>);
+    } else {
+      parts.push(<em key={`em-${match.index}`}>{match[4]}</em>);
+    }
+
     lastIndex = regex.lastIndex;
   }
 
@@ -49,45 +57,171 @@ function renderInlineMarkdown(text) {
   return parts;
 }
 
+function parseMarkdownTableRow(line) {
+  return String(line || '')
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map((cell) => cell.trim());
+}
+
+function isMarkdownTableSeparator(line) {
+  const cells = parseMarkdownTableRow(line);
+  return cells.length > 1 && cells.every((cell) => /^:?-{3,}:?$/.test(cell));
+}
+
 function renderMarkdown(markdown) {
   const lines = String(markdown || '').split('\n');
   const nodes = [];
   let listItems = [];
+  let listType = 'ul';
+  let quoteItems = [];
+  let tableRows = [];
   let key = 0;
+  let inFrontmatter = false;
 
   const flushList = () => {
     if (!listItems.length) return;
+    const ListTag = listType === 'ol' ? 'ol' : 'ul';
     nodes.push(
-      <ul key={`list-${key++}`} className="news-detail-markdown-list">
+      <ListTag key={`list-${key++}`} className="news-detail-markdown-list">
         {listItems.map((item, index) => (
           <li key={`item-${index}`}>{renderInlineMarkdown(item)}</li>
         ))}
-      </ul>
+      </ListTag>
     );
     listItems = [];
+    listType = 'ul';
   };
 
-  for (const rawLine of lines) {
+  const flushQuote = () => {
+    if (!quoteItems.length) return;
+    nodes.push(
+      <blockquote key={`quote-${key++}`} className="news-detail-markdown-quote">
+        {quoteItems.map((item, index) => (
+          <p key={`quote-line-${index}`}>{renderInlineMarkdown(item)}</p>
+        ))}
+      </blockquote>
+    );
+    quoteItems = [];
+  };
+
+  const flushTable = () => {
+    if (tableRows.length < 2) {
+      tableRows = [];
+      return;
+    }
+    const [header, ...bodyRows] = tableRows;
+    nodes.push(
+      <div key={`table-${key++}`} className="news-detail-markdown-table-wrap">
+        <table className="news-detail-markdown-table">
+          <thead>
+            <tr>
+              {header.map((cell, cellIndex) => (
+                <th key={`head-${cellIndex}`}>{renderInlineMarkdown(cell)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {bodyRows.map((row, rowIndex) => (
+              <tr key={`row-${rowIndex}`}>
+                {row.map((cell, cellIndex) => (
+                  <td key={`cell-${rowIndex}-${cellIndex}`}>{renderInlineMarkdown(cell)}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+    tableRows = [];
+  };
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const rawLine = lines[index];
     const line = rawLine.trim();
+    if (index === 0 && line === '---') {
+      inFrontmatter = true;
+      continue;
+    }
+    if (inFrontmatter) {
+      if (line === '---') {
+        inFrontmatter = false;
+      }
+      continue;
+    }
     if (!line) {
       flushList();
+      flushQuote();
+      flushTable();
+      continue;
+    }
+    if (line === '---') {
+      flushList();
+      flushQuote();
+      flushTable();
+      nodes.push(<hr key={`hr-${key++}`} className="news-detail-markdown-divider" />);
+      continue;
+    }
+    const nextLine = String(lines[index + 1] || '').trim();
+    const isTableRow = line.includes('|') && (tableRows.length > 0 || isMarkdownTableSeparator(nextLine));
+    if (isTableRow) {
+      flushList();
+      flushQuote();
+      tableRows.push(parseMarkdownTableRow(line));
+      if (isMarkdownTableSeparator(nextLine)) {
+        index += 1;
+      }
+      continue;
+    }
+    if (line.startsWith('>')) {
+      flushList();
+      flushTable();
+      const quoteText = line.replace(/^>\s?/, '').trim();
+      if (quoteText) {
+        quoteItems.push(quoteText);
+      }
+      continue;
+    }
+    if (line.startsWith('# ')) {
+      flushList();
+      flushQuote();
+      flushTable();
       continue;
     }
     if (line.startsWith('## ')) {
       flushList();
+      flushQuote();
+      flushTable();
       nodes.push(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{line.slice(3)}</h3>);
       continue;
     }
     if (line.startsWith('### ')) {
       flushList();
+      flushQuote();
+      flushTable();
       nodes.push(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
       continue;
     }
     if (line.startsWith('- ')) {
+      flushTable();
+      if (listType !== 'ul') flushList();
+      listType = 'ul';
       listItems.push(line.slice(2));
       continue;
     }
+    const orderedMatch = line.match(/^\d+\.\s+(.+)$/);
+    if (orderedMatch) {
+      flushTable();
+      if (listType !== 'ol') flushList();
+      listType = 'ol';
+      listItems.push(orderedMatch[1]);
+      continue;
+    }
     flushList();
+    flushQuote();
+    flushTable();
     nodes.push(
       <p key={`p-${key++}`} className="news-detail-markdown-paragraph">
         {renderInlineMarkdown(line)}
@@ -96,6 +230,8 @@ function renderMarkdown(markdown) {
   }
 
   flushList();
+  flushQuote();
+  flushTable();
   return nodes;
 }
 

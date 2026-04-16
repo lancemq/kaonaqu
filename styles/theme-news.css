@@ -411,6 +411,20 @@ body[data-page="news"] .news-prototype-pager {
     color: #37332f;
 }
 
+.news-detail-markdown-paragraph strong,
+.news-detail-markdown-list strong,
+.news-detail-markdown-quote strong {
+    color: #18130f;
+    font-weight: 800;
+}
+
+.news-detail-markdown-paragraph em,
+.news-detail-markdown-list em,
+.news-detail-markdown-quote em {
+    color: #5a5148;
+    font-style: italic;
+}
+
 .news-detail-markdown-list {
     margin: 0;
     padding-left: 1.2rem;
@@ -421,6 +435,79 @@ body[data-page="news"] .news-prototype-pager {
 .news-detail-markdown-list li {
     color: #37332f;
     line-height: 1.8;
+}
+
+.news-detail-markdown-quote {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 14px 16px;
+    border-left: 4px solid #111111;
+    border-radius: 0 var(--site-radius-sm) var(--site-radius-sm) 0;
+    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
+    color: #37332f;
+}
+
+.news-detail-markdown-quote p {
+    margin: 0;
+    line-height: 1.72;
+}
+
+.news-detail-markdown-divider {
+    width: 100%;
+    height: 1px;
+    margin: 4px 0;
+    border: 0;
+    background: rgba(17, 17, 17, 0.1);
+}
+
+.news-detail-markdown-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--site-line);
+    border-radius: var(--site-radius-md);
+    background: linear-gradient(180deg, var(--site-surface-strong), var(--site-surface));
+    box-shadow: var(--site-shadow-sm);
+}
+
+.news-detail-markdown-table {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+    color: #37332f;
+    font-size: 0.92rem;
+}
+
+.news-detail-markdown-table th,
+.news-detail-markdown-table td {
+    padding: 12px 14px;
+    border-right: 1px solid rgba(17, 17, 17, 0.08);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    text-align: left;
+    line-height: 1.62;
+    vertical-align: top;
+}
+
+.news-detail-markdown-table th:last-child,
+.news-detail-markdown-table td:last-child {
+    border-right: 0;
+}
+
+.news-detail-markdown-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.news-detail-markdown-table thead th {
+    background: #111111;
+    color: #f7f4ed;
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.news-detail-markdown-table tbody tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.34);
 }
 
 .news-title-link,
