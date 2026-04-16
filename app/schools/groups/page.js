@@ -21,7 +21,13 @@ export default async function GroupsPage({ searchParams }) {
   const initialQuery = typeof params?.query === 'string' ? params.query : '';
 
   return (
-    <SiteShell hideKnowledgeNav>
+    <SiteShell
+      hideKnowledgeNav
+      breadcrumbItems={[
+        { label: '学校信息', href: '/schools' },
+        { label: '教育集团' }
+      ]}
+    >
       <GroupsPageClient
         districts={districts}
         schools={schools}

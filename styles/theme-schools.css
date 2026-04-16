@@ -1726,6 +1726,262 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     color: #255959;
 }
 
+/* Education Groups Topic */
+.school-groups-hero {
+    padding: 28px 30px 24px;
+}
+
+.school-groups-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.42fr) minmax(320px, 0.95fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.school-groups-subtitle {
+    max-width: 44rem;
+    margin: 14px 0 0;
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.58;
+}
+
+.school-groups-description {
+    max-width: 48rem;
+    margin: 12px 0 0;
+    color: #526170;
+    line-height: 1.72;
+}
+
+.school-groups-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.school-groups-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.school-groups-statusbar {
+    margin-top: 16px;
+}
+
+.school-groups-layout {
+    margin-top: 0;
+}
+
+.school-groups-shortlist {
+    display: grid;
+    gap: 8px;
+}
+
+.school-groups-shortcut {
+    width: 100%;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.schools-datadesk-entry-feature {
+    margin-bottom: 2px;
+    padding: 12px 14px;
+    border: 1px solid rgba(37, 89, 89, 0.18);
+    border-radius: var(--site-radius-sm);
+    background:
+        radial-gradient(circle at top right, rgba(37, 89, 89, 0.12), transparent 36%),
+        linear-gradient(180deg, var(--site-surface-strong), var(--site-surface));
+}
+
+.school-groups-results {
+    display: grid;
+    gap: 14px;
+}
+
+.school-groups-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.school-group-card {
+    position: relative;
+    display: grid;
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid var(--site-line);
+    border-radius: var(--site-radius-md);
+    background: linear-gradient(180deg, var(--site-surface-strong), var(--site-surface));
+    box-shadow: var(--site-shadow-sm);
+    overflow: hidden;
+}
+
+.school-group-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: rgba(37, 89, 89, 0.22);
+}
+
+.school-group-card-strong::before {
+    background: #111111;
+}
+
+.school-group-card-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: start;
+}
+
+.school-group-card-head h3 {
+    margin: 4px 0 0;
+    font-size: clamp(1.15rem, 2vw, 1.48rem);
+    line-height: 1.16;
+    letter-spacing: -0.035em;
+}
+
+.school-group-count {
+    min-width: 76px;
+    padding: 10px 12px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: var(--site-radius-sm);
+    background: var(--site-surface-soft);
+    text-align: right;
+}
+
+.school-group-count strong {
+    display: block;
+    color: var(--site-text);
+    font-size: 1.55rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.school-group-count span,
+.school-group-meta,
+.school-group-summary {
+    color: #5f6e7c;
+    font-size: 0.86rem;
+}
+
+.school-group-summary {
+    margin: 0;
+    line-height: 1.65;
+}
+
+.school-group-tags,
+.school-group-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    align-items: center;
+}
+
+.school-group-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 9px;
+    border: 1px solid rgba(37, 89, 89, 0.16);
+    border-radius: 999px;
+    background: rgba(37, 89, 89, 0.07);
+    color: #255959;
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.school-group-tag-strong {
+    border-color: rgba(17, 17, 17, 0.92);
+    background: #111111;
+    color: #f7f4ed;
+}
+
+.school-group-tag-muted {
+    border-color: var(--site-line);
+    background: var(--site-surface-soft);
+    color: #6a7480;
+}
+
+.school-group-card-toggle {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    min-height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--site-line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: #263344;
+    font-size: 0.76rem;
+    font-weight: 800;
+    box-shadow: none;
+    z-index: 1;
+}
+
+.school-group-card-toggle:hover,
+.school-group-card-toggle:focus-visible {
+    border-color: color-mix(in srgb, var(--schools-tone-accent) 32%, transparent);
+    background: color-mix(in srgb, var(--schools-tone-accent) 10%, #ffffff);
+}
+
+.school-group-members {
+    display: grid;
+    gap: 8px;
+    padding: 12px 0 40px;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.school-group-member {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: var(--site-radius-sm);
+    background: var(--site-surface-soft);
+    color: inherit;
+    text-decoration: none;
+}
+
+.school-group-member:hover,
+.school-group-member:focus-visible {
+    border-color: color-mix(in srgb, var(--schools-tone-accent) 32%, transparent);
+    background: #ffffff;
+}
+
+.school-group-member strong {
+    display: block;
+    color: var(--site-text);
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.school-group-member span {
+    color: #65717d;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+.school-group-member > span {
+    flex: 0 0 auto;
+    max-width: 7rem;
+    color: #255959;
+    font-weight: 800;
+    text-align: right;
+}
+
+.school-groups-empty {
+    align-content: start;
+}
+
 .school-datadesk-detail-sectionhead {
     display: flex;
     justify-content: space-between;
@@ -2350,6 +2606,8 @@ body[data-page="schools"] .top-links a[href="/schools"] {
     .schools-datadesk-hero-grid,
     .schools-datadesk-layout,
     .schools-datadesk-metrics,
+    .school-groups-hero-grid,
+    .school-groups-grid,
     .district-datadesk-hero-grid,
     .district-datadesk-layout,
     .district-datadesk-summary-grid,
@@ -2409,6 +2667,11 @@ body[data-page="schools"] .top-links a[href="/schools"] {
         padding-right: 18px;
     }
 
+    .school-groups-hero {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
     .district-datadesk-hero,
     .district-datadesk-statusbar {
         padding-left: 18px;
@@ -2438,6 +2701,7 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
     .schools-datadesk-card,
     .schools-datadesk-panel,
+    .school-group-card,
     .schools-datadesk-metrics article,
     .district-datadesk-panel,
     .district-datadesk-card,
@@ -2463,6 +2727,17 @@ body[data-page="schools"] .top-links a[href="/schools"] {
 
     .school-rich-brief {
         padding: 20px 18px;
+    }
+
+    .school-group-card-head,
+    .school-group-member {
+        display: grid;
+        text-align: left;
+    }
+
+    .school-group-count,
+    .school-group-member > span {
+        text-align: left;
     }
 
     .school-rich-brief h2 {

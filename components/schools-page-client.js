@@ -319,6 +319,7 @@ export default function SchoolsPageClient({
               </div>
               <div className="schools-datadesk-hero-actions">
                 <Link className="module-link" href="/schools/district">查看 16 区专题</Link>
+                <Link className="module-link" href="/schools/groups">查看教育集团专题</Link>
               </div>
             </div>
 
@@ -469,6 +470,10 @@ export default function SchoolsPageClient({
               <span>高频学校与热门区县</span>
             </div>
             <div className="schools-datadesk-shortcuts">
+              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/groups">
+                <strong>教育集团专题</strong>
+                <span>按集团查看成员校、覆盖区域与梯队结构</span>
+              </Link>
               {featuredSchools.map((item) => (
                 <Link key={item.school.id} className="schools-datadesk-entry" href={`/schools/${item.school.id}`}>
                   <strong>{item.school.name}</strong>
