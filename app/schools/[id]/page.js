@@ -286,37 +286,60 @@ export default async function SchoolDetailPage({ params }) {
     ['官网', school.website]
   ].filter(([, value]) => String(value || '').trim());
 
+  // JSON-LD for School Schema
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "School",
+    "name": school.name,
+    "url": `https://kaonaqu.com/schools/${encodeURIComponent(school.id)}`,
+    "description": schoolSummary,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": school.districtName,
+      "streetAddress": school.address || '待补充'
+    },
+    "telephone": school.phone || '',
+    "url": school.website || '',
+    "areaServed": school.districtName,
+    "sameAs": school.website ? [school.website] : []
+  };
+
   return (
-    <SiteShell
-      hideKnowledgeNav
-      breadcrumbItems={[
-        { label: '学校信息', href: '/schools' },
-        { label: getSchoolDistrictName(school), href: `/schools/district/${school.districtId}` },
-        { label: school.name }
-      ]}
-    >
-      <header className="hero" id="top">
-        <section className="school-datadesk-detail-hero" aria-label="学校详情">
-          <div className="school-datadesk-detail-hero-grid">
-            <div className="school-datadesk-detail-main">
-              <p className="overview-label">
-                学校库 / {getSchoolDistrictName(school)} / {getSchoolStage(school)} / {schoolAttribute}
-              </p>
-              <h1>{school.name}</h1>
-              <p className="school-datadesk-detail-subtitle">
-                {renderInlineMarkdown(schoolSummary)}
-              </p>
-              <div className="school-datadesk-detail-chiprow">
-                {richProfile?.badge ? (
-                  <span className="school-datadesk-detail-chip school-datadesk-detail-chip-strong">{richProfile.badge}</span>
-                ) : null}
-                {quickTags.length ? quickTags.map((item) => (
-                  <span key={item} className="school-datadesk-detail-chip">{item}</span>
-                )) : (
-                  <span className="school-datadesk-detail-chip">信息持续补充中</span>
-                )}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SiteShell
+        hideKnowledgeNav
+        breadcrumbItems={[
+          { label: '学校信息', href: '/schools' },
+          { label: getSchoolDistrictName(school), href: `/schools/district/${school.districtId}` },
+          { label: school.name }
+        ]}
+      >
+        <header className="hero" id="top">
+          <section className="school-datadesk-detail-hero" aria-label="学校详情">
+            <div className="school-datadesk-detail-hero-grid">
+              <div className="school-datadesk-detail-main">
+                <p className="overview-label">
+                  学校库 / {getSchoolDistrictName(school)} / {getSchoolStage(school)} / {schoolAttribute}
+                </p>
+                <h1>{school.name}</h1>
+                <p className="school-datadesk-detail-subtitle">
+                  {renderInlineMarkdown(schoolSummary)}
+                </p>
+                <div className="school-datadesk-detail-chiprow">
+                  {richProfile?.badge ? (
+                    <span className="school-datadesk-detail-chip school-datadesk-detail-chip-strong">{richProfile.badge}</span>
+                  ) : null}
+                  {quickTags.length ? quickTags.map((item) => (
+                    <span key={item} className="school-datadesk-detail-chip">{item}</span>
+                  )) : (
+                    <span className="school-datadesk-detail-chip">信息持续补充中</span>
+                  )}
+                </div>
               </div>
-            </div>
             <aside className="school-datadesk-detail-sidehead">
               <article className="school-datadesk-detail-sidecard school-datadesk-detail-sidecard-strong">
                 <span>学校定位</span>
@@ -574,5 +597,6 @@ export default async function SchoolDetailPage({ params }) {
         <span>学校画像 / 招生口径 / 同区比较 / 正文判断</span>
       </footer>
     </SiteShell>
+    </>
   );
 }

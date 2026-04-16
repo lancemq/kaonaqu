@@ -204,15 +204,45 @@ export default async function NewsDetailPage({ params }) {
     notFound();
   }
 
+  // JSON-LD for NewsArticle Schema
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": item.title,
+    "description": item.summary || item.title,
+    "datePublished": item.publishedAt || '',
+    "dateModified": item.updatedAt || item.publishedAt || '',
+    "image": [], 
+    "author": {
+      "@type": "Organization",
+      "name": sourceName,
+      "url": item.source?.url || 'https://kaonaqu.com'
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "考哪去",
+      "url": "https://kaonaqu.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://kaonaqu.com/news/${encodeURIComponent(item.id)}`
+    }
+  };
+
   return (
-    <SiteShell
-      hideKnowledgeNav
-      breadcrumbItems={[
-        { label: '新闻政策', href: '/news' },
-        { label: articleType },
-        { label: item.title }
-      ]}
-    >
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SiteShell
+        hideKnowledgeNav
+        breadcrumbItems={[
+          { label: '新闻政策', href: '/news' },
+          { label: articleType },
+          { label: item.title }
+        ]}
+      >
       <header className="hero" id="top">
         <section className="search-panel news-detail-article-hero news-detail-article-shell" aria-label="新闻详情">
           <div className="news-detail-article-head">
@@ -321,5 +351,6 @@ export default async function NewsDetailPage({ params }) {
         <span>{sourceName} / {getActionReminder(item)}</span>
       </footer>
     </SiteShell>
+    </>
   );
 }

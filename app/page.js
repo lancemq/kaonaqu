@@ -170,16 +170,35 @@ export default async function HomePage() {
   ];
   const topSchools = getHomeFeaturedSchools(schools);
   const [featuredSchool, ...supportSchools] = topSchools;
+  // JSON-LD for WebSite Schema
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "考哪去",
+    "url": "https://kaonaqu.com",
+    "description": "上海升学观察 · 把复杂信息整理成更容易读懂的判断入口。涵盖政策消息、学校信息、区县差异与学习路径。",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://kaonaqu.com/schools?query={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
-    <SiteShell>
-      <header className="hero" id="top">
-        <section className="search-panel home-hero-panel home-prototype-hero" aria-label="网站概览">
-          <div className="home-prototype-grid">
-            <div className="home-prototype-main">
-              <div className="newsroom-kicker-row prototype-kicker-row">
-                <span className="newsroom-kicker">上海升学</span>
-                <span className="newsroom-edition">给家长和学生看的关键信息</span>
-              </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SiteShell>
+        <header className="hero" id="top">
+          <section className="search-panel home-hero-panel home-prototype-hero" aria-label="网站概览">
+            <div className="home-prototype-grid">
+              <div className="home-prototype-main">
+                <div className="newsroom-kicker-row prototype-kicker-row">
+                  <span className="newsroom-kicker">上海升学</span>
+                  <span className="newsroom-edition">给家长和学生看的关键信息</span>
+                </div>
               <div className="home-prototype-copy">
                 <div className="home-hero-tag-row">
                   <div className="home-hero-tag">上海 · 2026</div>
@@ -469,5 +488,6 @@ export default async function HomePage() {
         <span>政策消息 / 学校信息 / 区县差异 / 学习路径</span>
       </footer>
     </SiteShell>
+    </>
   );
 }
