@@ -474,6 +474,10 @@ export default function SchoolsPageClient({
                 <strong>学校多维对比</strong>
                 <span>支持梯队、集团、地址等全方位参数对比</span>
               </Link>
+              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/visualization">
+                <strong>数据可视化</strong>
+                <span>查看集团关系图谱与初升高升学流向</span>
+              </Link>
               <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/groups">
                 <strong>教育集团专题</strong>
                 <span>按集团查看成员校、覆盖区域与梯队结构</span>
