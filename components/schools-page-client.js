@@ -570,16 +570,6 @@ export default function SchoolsPageClient({
                       <span className="schools-datadesk-cardlink">进入学校详情</span>
                     </div>
                   </Link>
-                  {/* 查看地图按钮 - 浮在右上角 */}
-                  <a 
-                    href={mapUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="map-link-btn absolute top-2 right-2 bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded opacity-80 hover:opacity-100 transition-opacity z-10"
-                  >
-                    📍 查看地图
-                  </a>
                 </div>
               );
             })}

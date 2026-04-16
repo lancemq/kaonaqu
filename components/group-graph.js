@@ -7,13 +7,12 @@ import { useMemo, useState } from 'react';
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false });
 
 export default function GroupGraphClient({ schools }) {
-  const [selectedGroup, setSelectedGroup] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Prepare data for ECharts Graph
   const graphData = useMemo(() => {
     const nodes = [];
     const links = [];
-    const categories = [];
 
     // Group schools by group
     const groupsMap = {};
@@ -32,17 +31,33 @@ export default function GroupGraphClient({ schools }) {
       .map(([name, members]) => ({ name, members }));
 
     // Add group nodes
-    significantGroups.forEach((group, index) => {
+    significantGroups.forEach((group) => {
       nodes.push({
         id: group.name,
         name: group.name,
         category: 0,
-        symbolSize: Math.min(40, 10 + group.members.length),
+        symbolSize: Math.min(60, 20 + group.members.length * 3),
         draggable: true,
-        label: { show: true, position: 'right' },
-        itemStyle: { color: '#8884d8' }
+        label: {
+          show: true,
+          position: 'right',
+          fontSize: 13,
+          fontWeight: 'bold',
+          color: '#6f7d3b'
+        },
+        itemStyle: {
+          color: {
+            type: 'radial',
+            x: 0.5,
+            y: 0.5,
+            r: 0.5,
+            colorStops: [
+              { offset: 0, color: '#8fae5c' },
+              { offset: 1, color: '#6f7d3b' }
+            ]
+          }
+        }
       });
-      categories.push({ name: '教育集团' });
 
       // Add school nodes
       group.members.forEach(school => {
@@ -50,13 +65,13 @@ export default function GroupGraphClient({ schools }) {
           id: school.id,
           name: school.name,
           category: 1,
-          symbolSize: 6,
+          symbolSize: 8,
           draggable: true,
-          label: { show: false, position: 'right' },
-          itemStyle: { color: '#82ca9d' },
+          label: { show: false, position: 'right', fontSize: 11 },
+          itemStyle: { color: '#a8c46b' },
           group: group.name
         });
-        
+
         links.push({
           source: group.name,
           target: school.id
@@ -67,64 +82,103 @@ export default function GroupGraphClient({ schools }) {
     return {
       nodes,
       links,
-      categories: [{ name: '教育集团' }, { name: '学校' }]
+      groupCount: significantGroups.length,
+      schoolCount: nodes.filter(n => n.category === 1).length
     };
   }, [schools]);
 
   const option = {
-    title: {
-      text: '上海教育集团关系图谱',
-      subtext: '显示包含 3 所及以上成员校的教育集团',
-      left: 'center',
-      textStyle: { fontSize: 16, color: '#333' }
+    tooltip: {
+      trigger: 'item',
+      triggerOn: 'mousemove',
+      formatter: function(params) {
+        if (params.data.category === 0) {
+          return `<strong style="font-size:14px">${params.data.name}</strong><br/>教育集团<br/>成员校数量: ${Math.round((params.data.symbolSize - 20) / 3)}`;
+        }
+        return `<strong style="font-size:14px">${params.data.name}</strong><br/>所属集团: ${params.data.group}`;
+      }
     },
-    tooltip: {},
     legend: [{
-      data: graphData.categories.map(a => a.name),
+      data: ['教育集团', '成员学校'],
       selectedMode: 'single',
-      bottom: 10
+      bottom: 20,
+      textStyle: { fontSize: 12 }
     }],
+    animationDurationUpdate: 150,
+    animationEasingUpdate: 'quinticInOut',
     series: [
       {
         type: 'graph',
         layout: 'force',
         data: graphData.nodes,
         links: graphData.links,
-        categories: graphData.categories,
+        categories: [
+          { name: '教育集团' },
+          { name: '成员学校' }
+        ],
         roam: true,
+        draggable: true,
         label: {
           show: true,
           position: 'right',
           formatter: '{b}'
         },
         force: {
-          repulsion: 100,
-          edgeLength: [30, 100],
-          gravity: 0.1
+          repulsion: 200,
+          edgeLength: [50, 150],
+          gravity: 0.15,
+          friction: 0.6,
+          layoutAnimation: true
         },
         lineStyle: {
           color: 'source',
-          curveness: 0.3
+          curveness: 0.3,
+          width: 2,
+          opacity: 0.6
         },
         emphasis: {
           focus: 'adjacency',
-          lineStyle: { width: 4 }
+          lineStyle: { width: 5 }
+        },
+        edgeLabel: {
+          show: false
         }
       }
     ]
   };
 
+  if (graphData.groupCount === 0) {
+    return (
+      <div className="schools-visualization-chart-empty">
+        <div className="empty-icon">📊</div>
+        <h3>暂无集团关系数据</h3>
+        <p>当前收录的学校中，暂未发现包含 3 所及以上成员校的教育集团。</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-      <ReactECharts 
-        option={option} 
-        style={{ height: '600px', width: '100%' }} 
+    <div className="schools-visualization-chart-wrapper">
+      <div className="schools-visualization-chart-stats">
+        <span>集团数量: <strong>{graphData.groupCount}</strong></span>
+        <span>成员学校: <strong>{graphData.schoolCount}</strong></span>
+      </div>
+      <ReactECharts
+        option={option}
+        style={{ height: '650px', width: '100%' }}
         theme="light"
-        showLoading={true}
+        showLoading={isLoading}
+        loadingOption={{
+          text: '正在加载图谱数据...',
+          color: '#6f7d3b',
+          textColor: '#22241d',
+          maskColor: 'rgba(244, 239, 225, 0.8)'
+        }}
         opts={{ renderer: 'svg' }}
+        onReady={() => setIsLoading(false)}
       />
-      <div className="mt-4 text-sm text-gray-500 text-center">
-        💡 提示：滚轮缩放，拖拽节点调整布局，点击集团节点可高亮关联学校
+      <div className="schools-visualization-chart-hint">
+        💡 交互提示：滚轮缩放，拖拽节点调整布局，点击集团节点可高亮关联学校
       </div>
     </div>
   );
