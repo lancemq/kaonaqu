@@ -129,7 +129,7 @@ export default function AdmissionFlowClient({ schools }) {
           maskColor: 'rgba(244, 239, 225, 0.8)'
         }}
         opts={{ renderer: 'svg' }}
-        onReady={() => setIsLoading(false)}
+        onChartReady={() => setIsLoading(false)}
       />
       <div className="schools-visualization-chart-hint">
         💡 交互提示：左侧为初中，右侧为高中，线条宽度表示对口关系的数量，鼠标悬停查看详情

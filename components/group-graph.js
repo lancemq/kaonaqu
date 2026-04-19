@@ -175,7 +175,7 @@ export default function GroupGraphClient({ schools }) {
           maskColor: 'rgba(244, 239, 225, 0.8)'
         }}
         opts={{ renderer: 'svg' }}
-        onReady={() => setIsLoading(false)}
+        onChartReady={() => setIsLoading(false)}
       />
       <div className="schools-visualization-chart-hint">
         💡 交互提示：滚轮缩放，拖拽节点调整布局，点击集团节点可高亮关联学校
