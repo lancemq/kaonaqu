@@ -1,11 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
 import BodyPageFlag from '../components/body-page-flag';
-import '../styles/base.css';
-import '../styles/theme-home.css';
-import '../styles/theme-news.css';
-import '../styles/theme-schools.css';
-import '../styles/theme-knowledge.css';
-import '../styles/theme-unified.css';
+import '../styles/index.css';
 
 export const metadata = {
   title: '考哪去 | 上海中考高考政策、学校信息与知识体系平台',

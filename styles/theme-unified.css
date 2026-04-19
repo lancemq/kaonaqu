@@ -98,6 +98,10 @@ body::after {
 }
 
 .masthead-rail {
+    margin-bottom: 0;
+    border: 1px solid var(--site-line);
+    border-bottom: 0;
+    border-radius: 18px 18px 0 0;
     border-color: var(--site-line);
     background: rgba(247, 244, 236, 0.95);
 }
@@ -113,10 +117,22 @@ body[data-page="knowledge"] .masthead-rail-inner {
 .topbar,
 body[data-page="home"] .topbar,
 body[data-page="news"] .topbar,
+body[data-page="schools"] .topbar,
 body[data-page="knowledge"] .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 78px;
+    margin-bottom: 18px;
+    padding: 18px 22px;
+    flex-wrap: wrap;
     border-color: var(--site-line) !important;
+    border: 1px solid var(--site-line) !important;
+    border-radius: 0 0 18px 18px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 244, 236, 0.88)) !important;
     box-shadow: var(--site-shadow-sm) !important;
+    backdrop-filter: blur(0);
 }
 
 .brand-text strong {
@@ -133,13 +149,26 @@ body[data-page="knowledge"] .topbar {
 }
 
 .top-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 6px;
+    border: 1px solid var(--site-line);
+    border-radius: 999px;
     border-color: var(--site-line);
     background: rgba(247, 244, 237, 0.94);
 }
 
 .top-links a,
 body[data-page="home"] .top-links a {
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
     color: var(--site-muted-strong) !important;
+    cursor: pointer;
+    font-size: 0.84rem;
+    font-weight: 600;
     font-family: var(--font-body);
     letter-spacing: 0;
     text-transform: none;
@@ -512,6 +541,20 @@ body[data-page="knowledge"] .action-link {
     color: inherit !important;
 }
 
+body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-button-secondary {
+    border-color: rgba(247, 244, 237, 0.28) !important;
+    background: var(--site-dark-text) !important;
+    color: var(--site-dark) !important;
+    font-weight: 900;
+}
+
+body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-button-secondary:hover,
+body[data-page="schools"] .schools-datadesk-panel-dark .schools-datadesk-button-secondary:focus-visible {
+    border-color: #ffffff !important;
+    background: #ffffff !important;
+    color: var(--channel-accent-dark) !important;
+}
+
 body[data-page="home"] .home-dark-band h2,
 body[data-page="home"] .home-dark-band h3,
 body[data-page="home"] .home-dark-band strong,
@@ -556,6 +599,78 @@ body[data-page="home"] .home-editorial-side-card-dark .text-link:focus-visible {
     border-color: rgba(247, 244, 237, 0.44) !important;
     background: rgba(255, 255, 255, 0.14) !important;
     color: #ffffff !important;
+}
+
+.site-breadcrumbs {
+    margin: 16px 0 18px;
+}
+
+.site-breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    color: var(--site-muted);
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.site-breadcrumbs li + li::before {
+    content: "/";
+    margin-right: 8px;
+    color: var(--site-muted);
+    opacity: 0.48;
+}
+
+.site-breadcrumbs a,
+.site-breadcrumbs span {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    min-height: 34px;
+    padding: 0 10px;
+    border-radius: var(--site-radius-sm);
+    text-decoration: none;
+}
+
+.site-breadcrumbs a {
+    border: 1px solid rgba(36, 42, 51, 0.1);
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--site-muted-strong);
+    font-weight: 700;
+    transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.site-breadcrumbs a:hover,
+.site-breadcrumbs a:focus-visible {
+    border-color: color-mix(in srgb, var(--channel-accent) 58%, transparent);
+    background: color-mix(in srgb, var(--channel-accent) 12%, #ffffff);
+    color: var(--channel-accent-dark);
+}
+
+.site-breadcrumbs span[aria-current="page"] {
+    max-width: min(52vw, 560px);
+    overflow: hidden;
+    color: var(--channel-accent-dark);
+    font-weight: 850;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.site-breadcrumbs span:not([aria-current]) {
+    color: var(--site-muted);
+    font-weight: 700;
 }
 
 .schools-simulator-score {
@@ -887,15 +1002,119 @@ summary:focus-visible {
     outline-offset: 3px;
 }
 
+@media (max-width: 1080px) {
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .top-links {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
 @media (max-width: 720px) {
+    .page-shell {
+        width: min(100% - 20px, 1440px);
+        padding-top: 12px;
+    }
+
     .topbar,
     .masthead-rail,
+    .search-panel,
+    .panel,
     .home-prototype-hero,
     .news-channel-hero,
     .schools-datadesk-hero,
     .schools-simulator-hero,
     body[data-page="knowledge"] .knowledge-front-hero {
         border-radius: var(--site-radius-md) !important;
+    }
+
+    .top-links a {
+        flex: 1 1 auto;
+        min-width: max-content;
+    }
+
+    .news-prototype-body,
+    .news-prototype-main,
+    .news-prototype-side,
+    .news-prototype-focus-grid,
+    .news-prototype-list,
+    .news-prototype-filter-row {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .news-prototype-body {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .news-prototype-list-panel,
+    .news-prototype-focus-card,
+    .news-prototype-item {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .news-prototype-side {
+        position: static;
+        top: auto;
+    }
+
+    .news-prototype-pager {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        justify-items: stretch;
+    }
+
+    .news-prototype-pager-button,
+    .news-prototype-pager-status {
+        width: 100%;
+    }
+
+    body[data-page="home"] .home-prototype-side {
+        border-left: 0;
+    }
+
+    body[data-page="home"] .prototype-side-lead {
+        min-height: 0;
+        padding: 24px 22px;
+    }
+
+    body[data-page="home"] .prototype-side-lead h2 {
+        max-width: none;
+    }
+
+    .site-breadcrumbs {
+        margin: 12px 0 14px;
+    }
+
+    .site-breadcrumbs ol {
+        gap: 6px;
+    }
+
+    .site-breadcrumbs li {
+        font-size: 0.78rem;
+    }
+
+    .site-breadcrumbs a,
+    .site-breadcrumbs span {
+        min-height: 32px;
+        padding: 0 8px;
+    }
+
+    .site-breadcrumbs li:last-child {
+        flex: 1 1 100%;
+    }
+
+    .site-breadcrumbs span[aria-current="page"] {
+        max-width: 100%;
     }
 
     body[data-page="knowledge"] .knowledge-page-channel .knowledge-next-layout,
