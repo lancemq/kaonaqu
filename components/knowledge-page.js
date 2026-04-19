@@ -27,9 +27,10 @@ function createAnchorId(label, index) {
   return `knowledge-${index}-${normalized || 'section'}`;
 }
 
-function collectRichAnchors(nodes = [], limit = 8) {
+function collectRichAnchors(nodes = [], { limit = 8, includeTags = ['h2', 'h3'] } = {}) {
   const anchors = [];
   let headingIndex = 0;
+  const includedTags = new Set(includeTags);
 
   function visit(node) {
     if (!node || anchors.length >= limit) return;
@@ -37,7 +38,9 @@ function collectRichAnchors(nodes = [], limit = 8) {
       const label = textFromNodes(node.children);
       if (label) {
         headingIndex += 1;
-        anchors.push({ href: `#${node.id || createAnchorId(label, headingIndex)}`, label });
+        if (includedTags.has(node.tag)) {
+          anchors.push({ href: `#${node.id || createAnchorId(label, headingIndex)}`, label });
+        }
       }
     }
     node.children?.forEach(visit);
@@ -53,6 +56,9 @@ function getPageTrail(page) {
       href: `#${section.id}`,
       label: section.title
     }));
+  }
+  if (getKnowledgePageKind(page) === 'subject') {
+    return collectRichAnchors(page.richBlocks, { limit: 80, includeTags: ['h2'] });
   }
   return collectRichAnchors(page.richBlocks);
 }
