@@ -183,12 +183,14 @@ function CardGrid({ section }) {
       <h2>{section.title}</h2>
       <div className={section.type === 'cardGrid' ? 'subject-grid grade-grid' : 'grade-overview-grid'}>
         {section.cards.map((card, index) => {
+          const isLive = Boolean(card.href);
+          const statusClassName = isLive ? 'status-pill status-pill-live' : 'status-pill status-pill-muted';
           const content = (
             <>
               <span className="knowledge-card-index">{String(index + 1).padStart(2, '0')}</span>
               <div className="grade-card-top">
                 <h3>{card.title}</h3>
-                {card.status ? <span className="status-pill status-pill-live">{card.status}</span> : null}
+                {card.status ? <span className={statusClassName}>{card.status}</span> : null}
               </div>
               <p>{card.description}</p>
             </>
@@ -199,7 +201,7 @@ function CardGrid({ section }) {
               {content}
             </Link>
           ) : (
-            <article className="overview-card" data-card-index={index + 1} key={card.title}>{content}</article>
+            <article className="subject-card grade-card knowledge-card-disabled" aria-disabled="true" data-card-index={index + 1} key={card.title}>{content}</article>
           );
         })}
       </div>

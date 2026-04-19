@@ -512,12 +512,370 @@ body[data-page="knowledge"] .action-link {
     color: inherit !important;
 }
 
+body[data-page="home"] .home-dark-band h2,
+body[data-page="home"] .home-dark-band h3,
+body[data-page="home"] .home-dark-band strong,
+body[data-page="home"] .home-editorial-side-card-dark h3,
+body[data-page="home"] .home-editorial-side-card-dark strong,
+body[data-page="home"] .prototype-side-lead h2,
+body[data-page="home"] .prototype-side-readmore {
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="home"] .home-dark-band p,
+body[data-page="home"] .home-dark-band span,
+body[data-page="home"] .home-dark-feature-card p:last-child,
+body[data-page="home"] .home-editorial-side-card-dark p,
+body[data-page="home"] .home-editorial-side-card-dark span,
+body[data-page="home"] .home-editorial-side-card-dark .text-link,
+body[data-page="home"] .prototype-side-lead p:not(.overview-label),
+body[data-page="home"] .prototype-side-lead .news-date {
+    color: rgba(247, 244, 237, 0.84) !important;
+}
+
+body[data-page="home"] .home-dark-band .overview-label,
+body[data-page="home"] .home-dark-feature-label,
+body[data-page="home"] .home-editorial-side-card-dark .overview-label {
+    color: rgba(247, 244, 237, 0.78) !important;
+}
+
+body[data-page="home"] .home-dark-band-link,
+body[data-page="home"] .home-dark-quick-link,
+body[data-page="home"] .home-editorial-side-card-dark .text-link {
+    border-color: rgba(247, 244, 237, 0.22) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="home"] .home-dark-band-link:hover,
+body[data-page="home"] .home-dark-band-link:focus-visible,
+body[data-page="home"] .home-dark-quick-link:hover,
+body[data-page="home"] .home-dark-quick-link:focus-visible,
+body[data-page="home"] .home-editorial-side-card-dark .text-link:hover,
+body[data-page="home"] .home-editorial-side-card-dark .text-link:focus-visible {
+    border-color: rgba(247, 244, 237, 0.44) !important;
+    background: rgba(255, 255, 255, 0.14) !important;
+    color: #ffffff !important;
+}
+
 .schools-simulator-score {
     background: #e5ddd0 !important;
 }
 
 .schools-simulator-score span {
     background: linear-gradient(90deg, var(--channel-accent), var(--site-blueprint)) !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-sectionhead {
+    align-items: flex-start;
+}
+
+body[data-page="schools"] .school-datadesk-detail-sectionhead > span,
+body[data-page="schools"] .school-datadesk-detail-facts dt,
+body[data-page="schools"] .group-badge-label,
+body[data-page="schools"] .quota-year,
+body[data-page="schools"] .quota-type,
+body[data-page="schools"] .school-rich-card span,
+body[data-page="schools"] .school-rich-source-list span,
+body[data-page="schools"] .school-rich-subhead span,
+body[data-page="schools"] .highlight-card-header {
+    color: var(--channel-accent) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts div,
+body[data-page="schools"] .school-datadesk-detail-peerlink {
+    border-top-color: var(--site-line) !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-fact-value,
+body[data-page="schools"] .group-badge-value,
+body[data-page="schools"] .quota-link,
+body[data-page="schools"] .quota-number {
+    color: var(--site-text) !important;
+    font-weight: 800;
+}
+
+body[data-page="schools"] .school-datadesk-detail-panel-dark .school-datadesk-detail-fact-value {
+    color: var(--site-dark-text) !important;
+    text-shadow: none !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact {
+    gap: 10px;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact div,
+body[data-page="schools"] .quota-item,
+body[data-page="schools"] .group-badge-container,
+body[data-page="schools"] .highlight-card,
+body[data-page="schools"] .school-rich-history article,
+body[data-page="schools"] .school-rich-card,
+body[data-page="schools"] .school-rich-two-column > section,
+body[data-page="schools"] .school-rich-people-list article {
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-sm) !important;
+    background: var(--site-surface-soft) !important;
+    box-shadow: none !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact div {
+    padding: 12px;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact div:first-child {
+    border-top: 1px solid var(--site-line) !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact dd {
+    overflow-wrap: anywhere;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact .text-link,
+body[data-page="schools"] .school-datadesk-detail-article .text-link,
+body[data-page="schools"] .school-rich-source-list a,
+body[data-page="schools"] .highlight-card .text-link {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 34px;
+    padding: 0 10px;
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-sm);
+    background: rgba(255, 253, 248, 0.72);
+    color: var(--site-muted-strong) !important;
+    font-weight: 800;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact .text-link:hover,
+body[data-page="schools"] .school-datadesk-detail-article .text-link:hover,
+body[data-page="schools"] .school-rich-source-list a:hover,
+body[data-page="schools"] .highlight-card .text-link:hover {
+    border-color: var(--site-dark) !important;
+    background: var(--site-dark) !important;
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-map-link {
+    justify-content: stretch !important;
+    margin-top: 14px !important;
+}
+
+body[data-page="schools"] .map-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--site-dark) !important;
+    border-radius: var(--site-radius-sm) !important;
+    background: var(--site-dark) !important;
+    color: var(--site-dark-text) !important;
+    box-shadow: none !important;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-decoration: none;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+body[data-page="schools"] .map-link-button::before {
+    content: "Map";
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    margin-right: 10px;
+    padding: 0 7px;
+    border: 1px solid rgba(247, 244, 237, 0.22);
+    border-radius: 999px;
+    color: rgba(247, 244, 237, 0.8);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body[data-page="schools"] .map-link-button:hover,
+body[data-page="schools"] .map-link-button:focus-visible {
+    background: var(--channel-accent-dark) !important;
+    border-color: var(--channel-accent-dark) !important;
+    transform: translateY(-1px);
+}
+
+body[data-page="schools"] .quota-list {
+    gap: 10px;
+}
+
+body[data-page="schools"] .quota-item {
+    padding: 12px;
+    transform: none !important;
+}
+
+body[data-page="schools"] .quota-item:hover {
+    border-color: color-mix(in srgb, var(--channel-accent) 40%, transparent) !important;
+    background: var(--site-paper) !important;
+}
+
+body[data-page="schools"] .quota-type {
+    width: fit-content;
+    min-height: 26px;
+    padding: 4px 8px;
+    border: 1px solid var(--site-line);
+    border-radius: 999px;
+    background: rgba(255, 253, 248, 0.7);
+    color: var(--site-muted) !important;
+}
+
+body[data-page="schools"] .quota-note {
+    margin: 2px 0 0;
+    color: var(--site-muted) !important;
+    font-style: normal !important;
+    line-height: 1.55;
+}
+
+body[data-page="schools"] .group-badge-container {
+    padding: 14px;
+}
+
+body[data-page="schools"] .school-rich-panel,
+body[data-page="schools"] .school-rich-visual,
+body[data-page="schools"] .school-rich-image-card,
+body[data-page="schools"] .school-rich-brief {
+    border-color: var(--site-line) !important;
+    border-radius: var(--site-radius-md) !important;
+    background:
+        radial-gradient(circle at top right, var(--channel-hero-glow), transparent 32%),
+        linear-gradient(180deg, var(--site-surface-strong), var(--site-surface)) !important;
+    box-shadow: var(--site-shadow-sm) !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-next-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px) !important;
+    gap: 18px;
+    align-items: start;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-next-content {
+    display: contents;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-hero {
+    grid-column: 1 / -1;
+    min-height: 0 !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-lead-grid,
+body[data-page="knowledge"] .knowledge-page-channel .page-header,
+body[data-page="knowledge"] .knowledge-page-channel .stage-ribbon,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section {
+    grid-column: 1;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-side-rail {
+    grid-column: 2;
+    grid-row: 2 / span 5;
+    position: sticky;
+    top: 24px;
+}
+
+body[data-page="knowledge"] .knowledge-front-layout,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-layout {
+    grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.95fr) !important;
+    gap: 22px;
+    align-items: start;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-copy {
+    align-self: start !important;
+    max-width: 900px;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-stats {
+    align-self: start !important;
+}
+
+body[data-page="knowledge"] .knowledge-lead-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-high-school .subject-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+body[data-page="knowledge"] .subject-card,
+body[data-page="knowledge"] .overview-card,
+body[data-page="knowledge"] .lead-card,
+body[data-page="knowledge"] .ribbon-card,
+body[data-page="knowledge"] .knowledge-stat {
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-md) !important;
+    background: linear-gradient(180deg, var(--site-surface-strong), var(--site-surface)) !important;
+    box-shadow: var(--site-shadow-sm) !important;
+}
+
+body[data-page="knowledge"] .subject-card {
+    color: var(--site-text);
+    text-decoration: none;
+}
+
+body[data-page="knowledge"] .subject-card.active-grade:hover,
+body[data-page="knowledge"] .subject-card.active-grade:focus-visible {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--channel-accent) 42%, transparent) !important;
+    box-shadow: var(--site-shadow-md) !important;
+}
+
+body[data-page="knowledge"] .knowledge-card-disabled {
+    cursor: not-allowed;
+    opacity: 0.72;
+}
+
+body[data-page="knowledge"] .knowledge-card-disabled h3,
+body[data-page="knowledge"] .knowledge-card-disabled p {
+    color: var(--site-muted) !important;
+}
+
+body[data-page="knowledge"] .status-pill-live {
+    border-color: var(--site-dark) !important;
+    background: var(--site-dark) !important;
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="knowledge"] .status-pill-muted {
+    border-color: var(--site-line) !important;
+    background: var(--site-surface-soft) !important;
+    color: var(--site-muted) !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] {
+    border-color: var(--site-dark) !important;
+    background:
+        radial-gradient(circle at top right, rgba(217, 93, 31, 0.16), transparent 32%),
+        linear-gradient(180deg, var(--site-dark) 0%, var(--site-dark-soft) 100%) !important;
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] h3,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] p,
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] .knowledge-card-index {
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-card[data-card-index="2"] .status-pill-live {
+    border-color: rgba(247, 244, 237, 0.24) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
 }
 
 a:focus-visible,
@@ -538,5 +896,34 @@ summary:focus-visible {
     .schools-simulator-hero,
     body[data-page="knowledge"] .knowledge-front-hero {
         border-radius: var(--site-radius-md) !important;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-next-layout,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-layout,
+    body[data-page="knowledge"] .knowledge-lead-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .subject-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-high-school .subject-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-next-content {
+        display: grid;
+        gap: 18px;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-front-hero,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-lead-grid,
+    body[data-page="knowledge"] .knowledge-page-channel .page-header,
+    body[data-page="knowledge"] .knowledge-page-channel .stage-ribbon,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-section,
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-side-rail {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-channel .knowledge-side-rail {
+        position: static;
+        order: 0 !important;
     }
 }

@@ -580,7 +580,7 @@ export default async function SchoolDetailPage({ params }) {
             ) : null}
             <div className="school-datadesk-detail-map-link">
               <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="map-link-button">
-                📍 查看地图
+                打开地图
               </a>
             </div>
           </section>
