@@ -177,6 +177,32 @@ function Ribbons({ ribbons = [] }) {
   );
 }
 
+function SubjectDetailNav({ slug }) {
+  const subjectLinks = [
+    { href: '/knowledge/physics-grade8', label: '八年级物理', slug: 'physics-grade8' },
+    { href: '/knowledge/chemistry-grade8', label: '八年级化学', slug: 'chemistry-grade8' },
+    { href: '/knowledge/grade-8', label: '八年级总览', slug: 'grade-8' }
+  ];
+
+  if (!['physics-grade8', 'chemistry-grade8'].includes(slug)) return null;
+
+  return (
+    <nav className="knowledge-subject-switcher" aria-label="八年级理化学科切换">
+      <span>理化专题</span>
+      {subjectLinks.map((item) => (
+        <Link
+          aria-current={item.slug === slug ? 'page' : undefined}
+          className={item.slug === slug ? 'active' : undefined}
+          href={item.href}
+          key={item.href}
+        >
+          {item.label}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
 function CardGrid({ section }) {
   return (
     <section className={`${section.type === 'cardGrid' ? 'subjects' : 'chapter'} knowledge-section knowledge-section-${section.id}`} id={section.id}>
@@ -339,6 +365,7 @@ function RichKnowledgePage({ page }) {
   return (
     <div className="knowledge-next-layout">
       <article className="knowledge-next-content knowledge-rich-article">
+        <SubjectDetailNav slug={page.slug} />
         <RichTextNodes headingState={headingState} nodes={page.richBlocks} />
       </article>
       <KnowledgeSideRail page={page} />

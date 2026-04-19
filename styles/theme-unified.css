@@ -993,6 +993,261 @@ body[data-page="knowledge"] .knowledge-page-channel .knowledge-section-junior .s
     background: rgba(255, 255, 255, 0.08) !important;
 }
 
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] {
+    --subject-accent: #2f5b7a;
+    --subject-accent-dark: #203f58;
+    --subject-accent-soft: rgba(47, 91, 122, 0.12);
+    --subject-panel-tint: rgba(236, 244, 247, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] {
+    --subject-accent: #66743a;
+    --subject-accent-dark: #414c24;
+    --subject-accent-soft: rgba(102, 116, 58, 0.14);
+    --subject-panel-tint: rgba(242, 244, 232, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .knowledge-next-layout,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .knowledge-next-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px) !important;
+    gap: 18px;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .knowledge-rich-article,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .knowledge-rich-article {
+    gap: 18px;
+}
+
+body[data-page="knowledge"] .knowledge-subject-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid var(--site-line);
+    border-radius: var(--site-radius-md);
+    background: rgba(255, 253, 248, 0.78);
+    box-shadow: var(--site-shadow-sm);
+}
+
+body[data-page="knowledge"] .knowledge-subject-switcher span,
+body[data-page="knowledge"] .knowledge-subject-switcher a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: var(--site-radius-sm);
+    font-size: 0.84rem;
+    font-weight: 850;
+    text-decoration: none;
+}
+
+body[data-page="knowledge"] .knowledge-subject-switcher span {
+    color: var(--subject-accent, var(--channel-accent));
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body[data-page="knowledge"] .knowledge-subject-switcher a {
+    border: 1px solid var(--site-line);
+    background: var(--site-surface-soft);
+    color: var(--site-muted-strong);
+}
+
+body[data-page="knowledge"] .knowledge-subject-switcher a:hover,
+body[data-page="knowledge"] .knowledge-subject-switcher a:focus-visible,
+body[data-page="knowledge"] .knowledge-subject-switcher a.active {
+    border-color: var(--subject-accent, var(--site-dark));
+    background: var(--subject-accent, var(--site-dark));
+    color: var(--site-dark-text);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .page-header,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .page-header {
+    min-height: 0;
+    padding: clamp(28px, 4vw, 44px);
+    overflow: hidden;
+    border-color: var(--site-dark) !important;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--subject-accent) 35%, transparent), transparent 30%),
+        linear-gradient(180deg, var(--site-dark) 0%, var(--site-dark-soft) 100%) !important;
+    background-size: 28px 28px, auto, auto !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .page-header::before,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .page-header::before {
+    background: linear-gradient(180deg, var(--site-dark-text), color-mix(in srgb, var(--subject-accent) 48%, transparent));
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .page-header h1,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .page-header h1 {
+    max-width: 12em;
+    color: var(--site-dark-text) !important;
+    font-size: clamp(2.15rem, 4vw, 3.9rem) !important;
+    line-height: 1.04 !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .page-header p,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .page-header p {
+    max-width: 62rem;
+    color: rgba(247, 244, 237, 0.82) !important;
+    font-size: 1rem;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .page-header .action-link,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .page-header .action-link {
+    border-color: rgba(247, 244, 237, 0.22) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .chapter,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .chapter {
+    position: relative;
+    padding: clamp(22px, 2.4vw, 32px);
+    overflow: hidden;
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-lg) !important;
+    background:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.025) 1px, transparent 1px),
+        linear-gradient(180deg, var(--site-surface-strong), var(--subject-panel-tint, var(--site-surface))) !important;
+    background-size: 26px 26px, auto !important;
+    box-shadow: var(--site-shadow-sm) !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .chapter::before,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .chapter::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--subject-accent), transparent 72%);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .chapter > h2,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .chapter > h2 {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: none;
+    margin: 0 0 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--site-line);
+    color: var(--site-text) !important;
+    font-size: clamp(1.45rem, 2.2vw, 2.15rem);
+    line-height: 1.18;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .chapter > h2::before,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .chapter > h2::before {
+    content: "Unit";
+    flex: 0 0 auto;
+    margin-top: 0.16em;
+    padding: 5px 8px;
+    border: 1px solid color-mix(in srgb, var(--subject-accent) 34%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--subject-accent) 10%, #ffffff);
+    color: var(--subject-accent-dark);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .chapter > h3,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .chapter > h3 {
+    width: fit-content;
+    margin: 22px 0 12px;
+    padding: 6px 10px;
+    border: 1px solid color-mix(in srgb, var(--subject-accent) 28%, transparent);
+    border-radius: 999px;
+    background: rgba(255, 253, 248, 0.8);
+    color: var(--subject-accent-dark) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .important,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .important,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .formula,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .formula {
+    border: 1px solid color-mix(in srgb, var(--subject-accent) 28%, transparent) !important;
+    border-radius: var(--site-radius-md) !important;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--subject-accent) 14%, transparent), transparent 34%),
+        rgba(255, 253, 248, 0.92) !important;
+    box-shadow: none !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .concept-grid,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .concept-grid,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .case-grid,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .case-grid,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .example-grid,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .example-grid,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .lab-board,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .lab-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .concept-card,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .concept-card,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .case-card,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .case-card,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .example-card,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .example-card,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .lab-card,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .lab-card {
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-md);
+    background: rgba(255, 253, 248, 0.88) !important;
+    box-shadow: none !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .example-card,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .example-card {
+    border-color: color-mix(in srgb, var(--subject-accent) 26%, transparent) !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .case-lead,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .case-lead,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .example-lead,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .example-lead {
+    width: fit-content;
+    margin: 18px 0 10px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: var(--site-dark);
+    color: var(--site-dark-text) !important;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] table,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-radius: var(--site-radius-md);
+    background: rgba(255, 253, 248, 0.86);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] th,
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] th {
+    background: color-mix(in srgb, var(--subject-accent) 14%, #ffffff);
+    color: var(--subject-accent-dark);
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -1011,6 +1266,23 @@ summary:focus-visible {
         order: 3;
         width: 100%;
         justify-content: flex-start;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .knowledge-next-layout,
+    body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .knowledge-next-layout {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .knowledge-rich-article,
+    body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .knowledge-rich-article {
+        min-width: 0;
+    }
+
+    body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade8"] .knowledge-side-rail,
+    body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] .knowledge-side-rail {
+        display: grid;
+        grid-template-columns: 1fr;
+        order: 0;
     }
 }
 
