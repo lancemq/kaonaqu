@@ -87,15 +87,24 @@ export function buildRecommendations(
 
   const results: RecommendationResult[] = [];
   const seenIds = new Set<string>();
+  const matchesFilters = (school: SchoolRecord) => {
+    if (preferredDistrict && school.districtId !== preferredDistrict) {
+      return false;
+    }
+    if (targetTier && school.tier !== targetTier) {
+      return false;
+    }
+    return true;
+  };
 
   // 1. Official admission routes (highest priority)
   if (juniorHigh.admissionRoutes && juniorHigh.admissionRoutes.length > 0) {
     for (const route of juniorHigh.admissionRoutes) {
-      if (seenIds.has(route.high_school_id)) continue;
-      seenIds.add(route.high_school_id);
-      
       const hs = SCHOOLS_BY_ID.get(route.high_school_id);
       if (!hs) continue;
+      if (seenIds.has(hs.id) || !matchesFilters(hs)) continue;
+
+      seenIds.add(hs.id);
 
       results.push({
         school: hs,
@@ -110,7 +119,7 @@ export function buildRecommendations(
   if (juniorHigh.group) {
     for (const hs of SENIOR_HIGHS) {
       if (seenIds.has(hs.id)) continue;
-      if (hs.group === juniorHigh.group) {
+      if (hs.group === juniorHigh.group && matchesFilters(hs)) {
         seenIds.add(hs.id);
         results.push({
           school: hs,
@@ -128,13 +137,15 @@ export function buildRecommendations(
   
   for (const hs of SENIOR_HIGHS) {
     if (seenIds.has(hs.id)) continue;
-    if (targetTiers.includes(hs.tier)) {
+    if (targetTiers.includes(hs.tier) && matchesFilters(hs)) {
       let score = TIER_SCORES[hs.tier] || 50;
       
       // Bonus for same district
       if (hs.districtId === juniorHigh.districtId) {
         score += 5;
       }
+
+      seenIds.add(hs.id);
       
       results.push({
         school: hs,
@@ -149,7 +160,7 @@ export function buildRecommendations(
   if (preferredDistrict === juniorHigh.districtId || !preferredDistrict) {
     for (const hs of SENIOR_HIGHS) {
       if (seenIds.has(hs.id)) continue;
-      if (hs.districtId === juniorHigh.districtId) {
+      if (hs.districtId === juniorHigh.districtId && matchesFilters(hs)) {
         seenIds.add(hs.id);
         results.push({
           school: hs,

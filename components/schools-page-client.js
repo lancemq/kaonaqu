@@ -320,6 +320,7 @@ export default function SchoolsPageClient({
               <div className="schools-datadesk-hero-actions">
                 <Link className="module-link" href="/schools/district">查看 16 区专题</Link>
                 <Link className="module-link" href="/schools/groups">查看教育集团专题</Link>
+                <Link className="module-link" href="/schools/simulator">进入志愿模拟</Link>
               </div>
             </div>
 
@@ -473,6 +474,10 @@ export default function SchoolsPageClient({
               <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/compare">
                 <strong>学校多维对比</strong>
                 <span>支持梯队、集团、地址等全方位参数对比</span>
+              </Link>
+              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/simulator">
+                <strong>志愿模拟</strong>
+                <span>按当前初中、目标区域和学校层级生成高中候选清单</span>
               </Link>
               <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/visualization">
                 <strong>数据可视化</strong>
