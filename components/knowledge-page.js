@@ -184,7 +184,7 @@ function Ribbons({ ribbons = [] }) {
 }
 
 function SubjectDetailNav({ slug }) {
-  const subjectLinks = [
+  const grade8Links = [
     { href: '/knowledge/chinese-grade8', label: '八年级语文', slug: 'chinese-grade8' },
     { href: '/knowledge/math-grade8', label: '八年级数学', slug: 'math-grade8' },
     { href: '/knowledge/english-grade8', label: '八年级英语', slug: 'english-grade8' },
@@ -194,12 +194,24 @@ function SubjectDetailNav({ slug }) {
     { href: '/knowledge/politics-grade8', label: '八年级道法', slug: 'politics-grade8' },
     { href: '/knowledge/grade-8', label: '八年级总览', slug: 'grade-8' }
   ];
+  const grade9Links = [
+    { href: '/knowledge/chinese-grade9', label: '九年级语文', slug: 'chinese-grade9' },
+    { href: '/knowledge/math-grade9', label: '九年级数学', slug: 'math-grade9' },
+    { href: '/knowledge/english-grade9', label: '九年级英语', slug: 'english-grade9' },
+    { href: '/knowledge/physics-grade9', label: '九年级物理', slug: 'physics-grade9' },
+    { href: '/knowledge/chemistry-grade9', label: '九年级化学', slug: 'chemistry-grade9' },
+    { href: '/knowledge/history-grade9', label: '九年级历史', slug: 'history-grade9' },
+    { href: '/knowledge/politics-grade9', label: '九年级道法', slug: 'politics-grade9' },
+    { href: '/knowledge/grade-9', label: '九年级总览', slug: 'grade-9' }
+  ];
+  const subjectLinks = slug?.endsWith('grade9') ? grade9Links : grade8Links;
+  const label = slug?.endsWith('grade9') ? '九年级专题' : '八年级专题';
 
   if (!subjectLinks.some((item) => item.slug === slug)) return null;
 
   return (
-    <nav className="knowledge-subject-switcher" aria-label="八年级学科切换">
-      <span>八年级专题</span>
+    <nav className="knowledge-subject-switcher" aria-label={`${label}学科切换`}>
+      <span>{label}</span>
       {subjectLinks.map((item) => (
         <Link
           aria-current={item.slug === slug ? 'page' : undefined}

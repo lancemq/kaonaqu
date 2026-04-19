@@ -1122,11 +1122,25 @@ body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chinese
     --subject-panel-tint: rgba(250, 238, 235, 0.92);
 }
 
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chinese-grade9"] {
+    --subject-accent: #914545;
+    --subject-accent-dark: #5b2929;
+    --subject-accent-soft: rgba(145, 69, 69, 0.12);
+    --subject-panel-tint: rgba(250, 238, 236, 0.92);
+}
+
 body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="math-grade8"] {
     --subject-accent: #315f68;
     --subject-accent-dark: #1f4249;
     --subject-accent-soft: rgba(49, 95, 104, 0.12);
     --subject-panel-tint: rgba(235, 246, 247, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="math-grade9"] {
+    --subject-accent: #2d6870;
+    --subject-accent-dark: #1d464b;
+    --subject-accent-soft: rgba(45, 104, 112, 0.12);
+    --subject-panel-tint: rgba(233, 246, 247, 0.92);
 }
 
 body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="english-grade8"] {
@@ -1136,11 +1150,32 @@ body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="english
     --subject-panel-tint: rgba(245, 240, 249, 0.92);
 }
 
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="english-grade9"] {
+    --subject-accent: #76538c;
+    --subject-accent-dark: #4b315e;
+    --subject-accent-soft: rgba(118, 83, 140, 0.12);
+    --subject-panel-tint: rgba(246, 240, 249, 0.92);
+}
+
 body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade8"] {
     --subject-accent: #66743a;
     --subject-accent-dark: #414c24;
     --subject-accent-soft: rgba(102, 116, 58, 0.14);
     --subject-panel-tint: rgba(242, 244, 232, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics-grade9"] {
+    --subject-accent: #315f7a;
+    --subject-accent-dark: #213f56;
+    --subject-accent-soft: rgba(49, 95, 122, 0.12);
+    --subject-panel-tint: rgba(235, 244, 248, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chemistry-grade9"] {
+    --subject-accent: #66783e;
+    --subject-accent-dark: #404f24;
+    --subject-accent-soft: rgba(102, 120, 62, 0.14);
+    --subject-panel-tint: rgba(242, 245, 232, 0.92);
 }
 
 body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="history-grade8"] {
@@ -1150,10 +1185,24 @@ body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="history
     --subject-panel-tint: rgba(248, 241, 232, 0.92);
 }
 
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="history-grade9"] {
+    --subject-accent: #805936;
+    --subject-accent-dark: #53391f;
+    --subject-accent-soft: rgba(128, 89, 54, 0.12);
+    --subject-panel-tint: rgba(248, 241, 232, 0.92);
+}
+
 body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="politics-grade8"] {
     --subject-accent: #6b5d32;
     --subject-accent-dark: #443a1e;
     --subject-accent-soft: rgba(107, 93, 50, 0.13);
+    --subject-panel-tint: rgba(247, 244, 232, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="politics-grade9"] {
+    --subject-accent: #705f32;
+    --subject-accent-dark: #453b1f;
+    --subject-accent-soft: rgba(112, 95, 50, 0.13);
     --subject-panel-tint: rgba(247, 244, 232, 0.92);
 }
 
@@ -1341,6 +1390,33 @@ body[data-page="knowledge"] .knowledge-page-subject .lab-card {
 
 body[data-page="knowledge"] .knowledge-page-subject .example-card {
     border-color: color-mix(in srgb, var(--subject-accent) 26%, transparent) !important;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .grade9-directory-card {
+    display: grid;
+    gap: 10px;
+    color: inherit !important;
+    text-decoration: none !important;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .grade9-directory-card::after {
+    content: "进入详情";
+    width: fit-content;
+    padding: 5px 9px;
+    border: 1px solid var(--site-line);
+    border-radius: var(--site-radius-sm);
+    background: rgba(255, 253, 248, 0.82);
+    color: var(--channel-accent-dark);
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+body[data-page="knowledge"] .knowledge-page-grade .grade9-directory-card:hover,
+body[data-page="knowledge"] .knowledge-page-grade .grade9-directory-card:focus-visible {
+    border-color: var(--channel-accent) !important;
+    box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08) !important;
+    transform: translateY(-2px);
 }
 
 body[data-page="knowledge"] .knowledge-page-subject .case-lead,
