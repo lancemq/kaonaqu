@@ -1,0 +1,542 @@
+/* Final site harmonization layer.
+   Imported after all channel themes so shared visual decisions win consistently. */
+
+:root {
+    --font-display: "IBM Plex Sans", "Noto Sans SC", sans-serif;
+    --font-body: "Sora", "Noto Sans SC", sans-serif;
+    --font-serif: "Noto Serif SC", serif;
+    --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
+    --site-bg-top: #fbf8f1;
+    --site-bg-mid: #efe9de;
+    --site-bg-bottom: #e3dbcc;
+    --site-paper: #fffdf8;
+    --site-surface: #fcfaf4;
+    --site-surface-soft: #f5efe5;
+    --site-surface-strong: #ffffff;
+    --site-text: #171615;
+    --site-text-soft: #37322d;
+    --site-muted: #625c54;
+    --site-muted-strong: #46413b;
+    --site-line: rgba(17, 17, 17, 0.12);
+    --site-line-strong: rgba(17, 17, 17, 0.22);
+    --site-dark: #111111;
+    --site-dark-soft: #211d1a;
+    --site-dark-text: #f7f4ed;
+    --site-accent: #d95d1f;
+    --site-accent-dark: #8f3515;
+    --site-school-accent: #66743a;
+    --site-blueprint: #2f5b7a;
+    --site-radius-lg: 18px;
+    --site-radius-md: 14px;
+    --site-radius-sm: 8px;
+    --site-shadow-sm: 0 10px 24px rgba(42, 32, 21, 0.06);
+    --site-shadow-md: 0 18px 42px rgba(42, 32, 21, 0.1);
+    --channel-accent: var(--site-accent);
+    --channel-accent-dark: var(--site-accent-dark);
+    --channel-accent-soft: rgba(217, 93, 31, 0.12);
+    --channel-hero-glow: rgba(217, 93, 31, 0.14);
+}
+
+body[data-page="home"],
+body[data-page="knowledge"] {
+    --channel-accent: var(--site-accent);
+    --channel-accent-dark: var(--site-accent-dark);
+    --channel-accent-soft: rgba(217, 93, 31, 0.12);
+    --channel-hero-glow: rgba(217, 93, 31, 0.14);
+}
+
+body[data-page="news"] {
+    --channel-accent: #b9472a;
+    --channel-accent-dark: #7c2617;
+    --channel-accent-soft: rgba(185, 71, 42, 0.12);
+    --channel-hero-glow: rgba(185, 71, 42, 0.14);
+}
+
+body[data-page="schools"] {
+    --channel-accent: var(--site-school-accent);
+    --channel-accent-dark: #414c24;
+    --channel-accent-soft: rgba(102, 116, 58, 0.13);
+    --channel-hero-glow: rgba(102, 116, 58, 0.16);
+    --schools-tone-bg-top: var(--site-bg-top);
+    --schools-tone-bg-mid: var(--site-bg-mid);
+    --schools-tone-bg-bottom: var(--site-bg-bottom);
+    --schools-tone-panel-top: rgba(255, 253, 248, 0.98);
+    --schools-tone-panel-bottom: rgba(244, 237, 226, 0.98);
+    --schools-tone-panel-soft: var(--site-surface-soft);
+    --schools-tone-border: var(--site-line);
+    --schools-tone-text: var(--site-text);
+    --schools-tone-muted: var(--site-muted);
+    --schools-tone-accent: var(--site-school-accent);
+    --schools-tone-accent-soft: rgba(102, 116, 58, 0.14);
+    --schools-tone-dark-top: var(--site-dark);
+    --schools-tone-dark-bottom: var(--site-dark-soft);
+    --schools-tone-dark-text: var(--site-dark-text);
+    --schools-tone-shadow: rgba(42, 32, 21, 0.08);
+}
+
+body,
+body[data-page="home"],
+body[data-page="news"],
+body[data-page="schools"],
+body[data-page="knowledge"] {
+    color: var(--site-text);
+    font-family: var(--font-body);
+    background:
+        linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+        radial-gradient(circle at 88% 12%, var(--channel-hero-glow), transparent 30%),
+        linear-gradient(180deg, var(--site-bg-top) 0%, var(--site-bg-mid) 52%, var(--site-bg-bottom) 100%) !important;
+    background-size: 32px 32px, 32px 32px, auto, auto !important;
+}
+
+body::before {
+    background: radial-gradient(circle, var(--channel-hero-glow), transparent 62%) !important;
+}
+
+body::after {
+    background: radial-gradient(circle, rgba(17, 17, 17, 0.08), transparent 64%) !important;
+}
+
+.masthead-rail {
+    border-color: var(--site-line);
+    background: rgba(247, 244, 236, 0.95);
+}
+
+.masthead-rail-inner,
+body[data-page="home"] .masthead-rail-inner,
+body[data-page="knowledge"] .masthead-rail-inner {
+    border-color: var(--site-line) !important;
+    background: linear-gradient(180deg, rgba(255, 252, 247, 0.92), rgba(247, 240, 230, 0.9)) !important;
+    color: var(--site-muted) !important;
+}
+
+.topbar,
+body[data-page="home"] .topbar,
+body[data-page="news"] .topbar,
+body[data-page="knowledge"] .topbar {
+    border-color: var(--site-line) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 244, 236, 0.88)) !important;
+    box-shadow: var(--site-shadow-sm) !important;
+}
+
+.brand-text strong {
+    color: var(--site-text) !important;
+    font-family: var(--font-serif);
+}
+
+.brand-text span,
+.masthead-note,
+.masthead-tags,
+.desk-label {
+    color: var(--site-muted) !important;
+    font-family: var(--font-mono);
+}
+
+.top-links {
+    border-color: var(--site-line);
+    background: rgba(247, 244, 237, 0.94);
+}
+
+.top-links a,
+body[data-page="home"] .top-links a {
+    color: var(--site-muted-strong) !important;
+    font-family: var(--font-body);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.top-links a:hover,
+.top-links a:focus-visible,
+body[data-page="home"] .top-links a:hover,
+body[data-page="home"] .top-links a:focus-visible,
+body[data-page="knowledge"] .top-links a:hover,
+body[data-page="knowledge"] .top-links a:focus-visible,
+body[data-page="home"] .top-links a[href="/"],
+body[data-page="news"] .top-links a[href="/news"],
+body[data-page="schools"] .top-links a[href="/schools"],
+body[data-page="knowledge"] .top-links a[href="/knowledge"] {
+    background: var(--site-dark) !important;
+    color: var(--site-dark-text) !important;
+    box-shadow: none !important;
+}
+
+.topbar-desk,
+body[data-page="home"] .topbar-desk,
+body[data-page="knowledge"] .topbar-desk {
+    border-color: var(--site-line) !important;
+    background: rgba(255, 248, 239, 0.86) !important;
+    color: var(--site-text) !important;
+}
+
+.home-prototype-hero,
+.news-channel-hero,
+.school-prototype-hero,
+.news-detail-article-hero,
+.news-special-hero,
+.news-special-hero-timeline,
+.schools-datadesk-hero,
+.school-datadesk-detail-hero,
+.district-datadesk-hero,
+.schools-compare-datadesk-hero,
+.schools-visualization-hero,
+.schools-simulator-hero,
+body[data-page="knowledge"] .knowledge-front-hero,
+body[data-page="knowledge"] .page-header {
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-lg) !important;
+    background:
+        radial-gradient(circle at top right, var(--channel-hero-glow), transparent 32%),
+        linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(244, 237, 226, 0.98)) !important;
+    box-shadow: var(--site-shadow-sm) !important;
+}
+
+.home-prototype-copy h1,
+.news-channel-hero-main h1,
+.news-detail-article-head h1,
+.news-detail-copy h1,
+.news-special-hero-main h1,
+.schools-datadesk-intro h1,
+.school-datadesk-detail-main h1,
+.district-datadesk-hero-main h1,
+.schools-compare-datadesk-intro h1,
+.schools-visualization-intro h1,
+.schools-simulator-hero-copy h1,
+body[data-page="knowledge"] .knowledge-front-copy h1,
+body[data-page="knowledge"] .page-header h1 {
+    color: var(--site-text) !important;
+    font-family: var(--font-display) !important;
+    font-size: clamp(2rem, 3.2vw, 3rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: 0 !important;
+}
+
+.home-editorial-section-head h2,
+.home-dark-band-head h2,
+.news-prototype-list-title h2,
+.news-detail-article-panel h2,
+.school-prototype-panel h2,
+.schools-datadesk-results-head h2,
+.district-datadesk-results-head h2,
+.school-datadesk-detail-panel h2,
+.schools-compare-datadesk-results-head h2,
+.schools-visualization-panel-head h2,
+.schools-simulator-results h2,
+body[data-page="knowledge"] h2 {
+    color: var(--site-text) !important;
+    font-family: var(--font-display) !important;
+    letter-spacing: 0 !important;
+}
+
+.home-editorial-news-card h3,
+.home-dark-feature-card h3,
+.home-timeline-card h3,
+.home-school-featured-copy h3,
+.home-school-mini-copy h3,
+.home-editorial-side-card h3,
+.news-prototype-item h3,
+.news-prototype-focus-card h3,
+.news-channel-focus-card h2,
+.school-prototype-focus-card h2,
+.news-detail-focus-card h2,
+.news-glossary-card h3,
+.news-special-compact-card h3,
+.schools-datadesk-card h3,
+.district-datadesk-card h3,
+.schools-simulator-card h3,
+body[data-page="knowledge"] h3 {
+    color: var(--site-text) !important;
+    font-family: var(--font-serif) !important;
+    letter-spacing: 0 !important;
+}
+
+.overview-label,
+.newsroom-kicker,
+.newsroom-edition,
+.home-editorial-card-kicker,
+.home-timeline-date,
+.news-prototype-item-kicker,
+.news-prototype-focus-meta,
+.schools-datadesk-cardkicker,
+.district-datadesk-cardkicker,
+.schools-datadesk-statuslabel,
+.district-datadesk-statuslabel,
+.schools-simulator-hero-panel span,
+.schools-simulator-selected span,
+.schools-simulator-card-head span,
+body[data-page="knowledge"] .knowledge-front-kicker,
+body[data-page="knowledge"] .knowledge-next-chip,
+body[data-page="knowledge"] .action-link {
+    color: var(--channel-accent) !important;
+    font-family: var(--font-mono) !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase;
+}
+
+.home-hero-description,
+.news-channel-subtitle,
+.news-detail-article-summary,
+.school-prototype-subtitle,
+.schools-datadesk-subtitle,
+.schools-datadesk-description,
+.district-datadesk-subtitle,
+.district-datadesk-description,
+.school-datadesk-detail-subtitle,
+.schools-compare-datadesk-subtitle,
+.schools-compare-datadesk-description,
+.schools-visualization-subtitle,
+.schools-simulator-hero-copy p,
+.schools-simulator-hero-panel p,
+.home-editorial-news-card p:last-child,
+.home-timeline-card p:last-child,
+.home-school-featured-copy p:last-child,
+.home-school-mini-copy p:last-child,
+.news-prototype-item-summary,
+.news-prototype-item-copy,
+.news-prototype-side-description,
+.schools-datadesk-cardsummary,
+.district-datadesk-cardsummary,
+.school-datadesk-detail-panel > p,
+.schools-simulator-card-meta p,
+.schools-simulator-match p,
+body[data-page="knowledge"] p,
+body[data-page="knowledge"] li {
+    color: var(--site-text-soft) !important;
+    line-height: 1.68;
+}
+
+.home-decision-card,
+.home-editorial-news-card,
+.home-timeline-card,
+.home-school-featured-card,
+.home-school-mini-card,
+.home-editorial-side-card,
+.home-hero-density-card,
+.home-side-timeline,
+.prototype-side-metrics,
+.news-prototype-list-panel,
+.news-prototype-focus-card,
+.news-prototype-side-card,
+.news-prototype-item,
+.news-research-map-card,
+.school-prototype-panel,
+.school-prototype-side-card,
+.news-glossary-card,
+.news-special-panel,
+.schools-datadesk-summary-card,
+.schools-datadesk-panel,
+.schools-datadesk-card,
+.schools-datadesk-metrics,
+.district-datadesk-summary-card,
+.district-datadesk-panel,
+.district-datadesk-card,
+.district-datadesk-schoolitem,
+.school-datadesk-detail-sidecard,
+.school-datadesk-detail-stats,
+.school-datadesk-detail-panel:not(.school-datadesk-detail-panel-dark),
+.school-datadesk-detail-highlightcard,
+.schools-compare-datadesk-card,
+.schools-compare-datadesk-panel,
+.schools-visualization-panel,
+.schools-visualization-summary-card,
+.schools-simulator-card,
+.schools-simulator-hero-panel,
+.schools-simulator-selected,
+.schools-simulator-empty,
+body[data-page="knowledge"] .chapter,
+body[data-page="knowledge"] .subjects,
+body[data-page="knowledge"] .intro,
+body[data-page="knowledge"] .tips,
+body[data-page="knowledge"] .knowledge-rail-card,
+body[data-page="knowledge"] .stage-ribbon {
+    border-color: var(--site-line) !important;
+    border-radius: var(--site-radius-md) !important;
+    background: linear-gradient(180deg, var(--site-surface-strong), var(--site-surface)) !important;
+    box-shadow: var(--site-shadow-sm) !important;
+}
+
+.home-decision-card:hover,
+.home-decision-card:focus-visible,
+.home-editorial-news-card:hover,
+.home-editorial-news-card:focus-visible,
+.home-timeline-card:hover,
+.home-timeline-card:focus-visible,
+.home-school-featured-card:hover,
+.home-school-mini-card:hover,
+.news-prototype-item-link:hover,
+.news-prototype-item-link:focus-visible,
+.news-prototype-focus-card:hover,
+.news-prototype-focus-card:focus-visible,
+.schools-datadesk-card-link:hover,
+.schools-datadesk-card-link:focus-visible,
+.district-datadesk-schoolitem:hover,
+.district-datadesk-schoolitem:focus-visible,
+.schools-simulator-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--channel-accent) 42%, transparent) !important;
+    box-shadow: var(--site-shadow-md) !important;
+}
+
+.action-button,
+.button,
+.module-link,
+.home-cta-button,
+.schools-datadesk-button,
+.news-prototype-pager-button,
+.top-cta,
+.schools-visualization-link {
+    min-height: 44px;
+    border: 1px solid var(--site-dark) !important;
+    border-radius: var(--site-radius-sm) !important;
+    background: var(--site-dark) !important;
+    color: var(--site-dark-text) !important;
+    box-shadow: none !important;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.action-button:hover,
+.button:hover,
+.module-link:hover,
+.home-cta-button:hover,
+.schools-datadesk-button:hover,
+.news-prototype-pager-button:hover,
+.schools-visualization-link:hover {
+    transform: translateY(-1px);
+    background: var(--channel-accent-dark) !important;
+    border-color: var(--channel-accent-dark) !important;
+}
+
+.action-button-secondary,
+.button-secondary,
+.home-cta-button-secondary,
+.schools-datadesk-button-secondary,
+.news-special-hero .action-button-secondary,
+.news-special-hero-timeline .action-button-secondary,
+.pill,
+.meta-chip,
+.news-prototype-filter,
+.schools-datadesk-tag,
+.schools-datadesk-cardtag,
+.district-datadesk-cardtag,
+.school-datadesk-detail-chip,
+.home-hero-tag,
+.home-hero-inline-meta span,
+.home-hero-route-link,
+.home-editorial-mini-link,
+.schools-simulator-card-head strong,
+.schools-simulator-badge,
+body[data-page="knowledge"] .knowledge-next-chip,
+body[data-page="knowledge"] .action-link {
+    min-height: 34px;
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-sm) !important;
+    background: var(--site-surface-soft) !important;
+    color: var(--site-muted-strong) !important;
+    box-shadow: none !important;
+}
+
+.news-prototype-filter-active,
+.schools-datadesk-tag-active,
+.schools-simulator-badge-official,
+.schools-simulator-badge-group,
+.schools-simulator-badge-tier,
+.schools-simulator-badge-district {
+    border-color: var(--site-dark) !important;
+    background: var(--site-dark) !important;
+    color: var(--site-dark-text) !important;
+}
+
+.schools-datadesk-searchfield,
+.schools-compare-searchfield,
+.schools-simulator-panel .schools-datadesk-searchfield {
+    border-color: var(--site-line) !important;
+    border-radius: var(--site-radius-md) !important;
+    background: rgba(255, 253, 248, 0.94) !important;
+    box-shadow: none !important;
+}
+
+.schools-datadesk-searchfield:hover,
+.schools-datadesk-searchfield:focus-within,
+.schools-compare-searchfield:hover,
+.schools-compare-searchfield:focus-within {
+    border-color: color-mix(in srgb, var(--channel-accent) 42%, transparent) !important;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--channel-accent) 12%, transparent) !important;
+    transform: none !important;
+}
+
+.prototype-side-lead,
+.home-dark-band,
+.home-editorial-side-card-dark,
+.news-channel-focus-card,
+.news-prototype-item-dark,
+.news-prototype-list > :nth-child(2),
+.news-special-side-card-dark,
+.news-prototype-side-card-deep,
+.school-prototype-side-card.news-detail-side-card-dark,
+.news-detail-article-focus,
+.schools-datadesk-statusbar,
+.district-datadesk-statusbar,
+.schools-datadesk-summary-card-strong,
+.schools-datadesk-panel-dark,
+.district-datadesk-summary-card-strong,
+.district-datadesk-panel-dark,
+.school-datadesk-detail-sidecard-strong,
+.school-datadesk-detail-panel-dark,
+.schools-compare-datadesk-panel-dark {
+    border-color: var(--site-dark) !important;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--channel-accent) 18%, transparent), transparent 32%),
+        linear-gradient(180deg, var(--site-dark) 0%, var(--site-dark-soft) 100%) !important;
+    color: var(--site-dark-text) !important;
+}
+
+.prototype-side-lead *,
+.home-dark-band *,
+.home-editorial-side-card-dark *,
+.news-channel-focus-card *,
+.news-prototype-item-dark *,
+.news-prototype-list > :nth-child(2) *,
+.news-special-side-card-dark *,
+.news-prototype-side-card-deep *,
+.school-prototype-side-card.news-detail-side-card-dark *,
+.news-detail-article-focus *,
+.schools-datadesk-statusbar *,
+.district-datadesk-statusbar *,
+.schools-datadesk-summary-card-strong *,
+.schools-datadesk-panel-dark *,
+.district-datadesk-summary-card-strong *,
+.district-datadesk-panel-dark *,
+.school-datadesk-detail-sidecard-strong *,
+.school-datadesk-detail-panel-dark *,
+.schools-compare-datadesk-panel-dark * {
+    color: inherit !important;
+}
+
+.schools-simulator-score {
+    background: #e5ddd0 !important;
+}
+
+.schools-simulator-score span {
+    background: linear-gradient(90deg, var(--channel-accent), var(--site-blueprint)) !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--channel-accent);
+    outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+    .topbar,
+    .masthead-rail,
+    .home-prototype-hero,
+    .news-channel-hero,
+    .schools-datadesk-hero,
+    .schools-simulator-hero,
+    body[data-page="knowledge"] .knowledge-front-hero {
+        border-radius: var(--site-radius-md) !important;
+    }
+}
