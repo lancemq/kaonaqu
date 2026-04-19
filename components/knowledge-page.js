@@ -185,16 +185,21 @@ function Ribbons({ ribbons = [] }) {
 
 function SubjectDetailNav({ slug }) {
   const subjectLinks = [
+    { href: '/knowledge/chinese-grade8', label: '八年级语文', slug: 'chinese-grade8' },
+    { href: '/knowledge/math-grade8', label: '八年级数学', slug: 'math-grade8' },
+    { href: '/knowledge/english-grade8', label: '八年级英语', slug: 'english-grade8' },
     { href: '/knowledge/physics-grade8', label: '八年级物理', slug: 'physics-grade8' },
     { href: '/knowledge/chemistry-grade8', label: '八年级化学', slug: 'chemistry-grade8' },
+    { href: '/knowledge/history-grade8', label: '八年级历史', slug: 'history-grade8' },
+    { href: '/knowledge/politics-grade8', label: '八年级道法', slug: 'politics-grade8' },
     { href: '/knowledge/grade-8', label: '八年级总览', slug: 'grade-8' }
   ];
 
-  if (!['physics-grade8', 'chemistry-grade8'].includes(slug)) return null;
+  if (!subjectLinks.some((item) => item.slug === slug)) return null;
 
   return (
-    <nav className="knowledge-subject-switcher" aria-label="八年级理化学科切换">
-      <span>理化专题</span>
+    <nav className="knowledge-subject-switcher" aria-label="八年级学科切换">
+      <span>八年级专题</span>
       {subjectLinks.map((item) => (
         <Link
           aria-current={item.slug === slug ? 'page' : undefined}
