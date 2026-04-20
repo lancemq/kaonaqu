@@ -1115,6 +1115,34 @@ body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="physics
     --subject-panel-tint: rgba(236, 244, 247, 0.92);
 }
 
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chinese-grade7"] {
+    --subject-accent: #8b3f36;
+    --subject-accent-dark: #5f271f;
+    --subject-accent-soft: rgba(139, 63, 54, 0.12);
+    --subject-panel-tint: rgba(250, 238, 235, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="math-grade7"] {
+    --subject-accent: #2f6170;
+    --subject-accent-dark: #1e414c;
+    --subject-accent-soft: rgba(47, 97, 112, 0.12);
+    --subject-panel-tint: rgba(235, 246, 247, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="english-grade7"] {
+    --subject-accent: #69508d;
+    --subject-accent-dark: #42325f;
+    --subject-accent-soft: rgba(105, 80, 141, 0.12);
+    --subject-panel-tint: rgba(245, 240, 249, 0.92);
+}
+
+body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="science-grade7"] {
+    --subject-accent: #66743a;
+    --subject-accent-dark: #414c24;
+    --subject-accent-soft: rgba(102, 116, 58, 0.14);
+    --subject-panel-tint: rgba(242, 244, 232, 0.92);
+}
+
 body[data-page="knowledge"] .knowledge-page-subject[data-knowledge-slug="chinese-grade8"] {
     --subject-accent: #8c3f3f;
     --subject-accent-dark: #5f2727;
@@ -1261,6 +1289,22 @@ body[data-page="knowledge"] .knowledge-subject-switcher a.active {
     color: var(--site-dark-text);
 }
 
+body[data-page="knowledge"] .knowledge-rail-card-dark {
+    border-color: rgba(247, 244, 237, 0.16) !important;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--subject-accent, var(--channel-accent)) 24%, transparent), transparent 34%),
+        linear-gradient(180deg, var(--site-dark), var(--site-dark-soft)) !important;
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="knowledge"] .knowledge-rail-card-dark strong {
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="knowledge"] .knowledge-rail-card-dark p {
+    color: rgba(247, 244, 237, 0.76) !important;
+}
+
 body[data-page="knowledge"] .knowledge-page-subject .page-header {
     min-height: 0;
     padding: clamp(28px, 4vw, 44px);
@@ -1268,7 +1312,7 @@ body[data-page="knowledge"] .knowledge-page-subject .page-header {
     border-color: var(--site-dark) !important;
     background:
         linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-        radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--subject-accent) 35%, transparent), transparent 30%),
+        radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--subject-accent, var(--channel-accent)) 35%, transparent), transparent 30%),
         linear-gradient(180deg, var(--site-dark) 0%, var(--site-dark-soft) 100%) !important;
     background-size: 28px 28px, auto, auto !important;
 }
