@@ -4,6 +4,7 @@ function KnowledgeToolbar() {
   return (
     <div className="knowledge-next-toolbar" aria-label="知识体系页面操作">
       <Link href="/knowledge" className="knowledge-next-chip">知识体系首页</Link>
+      <Link href="/knowledge/grade-7" className="knowledge-next-chip">七年级总览</Link>
       <Link href="/knowledge/grade-8" className="knowledge-next-chip">八年级总览</Link>
       <Link href="/news" className="knowledge-next-chip">相关政策新闻</Link>
     </div>
@@ -184,6 +185,13 @@ function Ribbons({ ribbons = [] }) {
 }
 
 function SubjectDetailNav({ slug }) {
+  const grade7Links = [
+    { href: '/knowledge/chinese-grade7', label: '七年级语文', slug: 'chinese-grade7' },
+    { href: '/knowledge/math-grade7', label: '七年级数学', slug: 'math-grade7' },
+    { href: '/knowledge/english-grade7', label: '七年级英语', slug: 'english-grade7' },
+    { href: '/knowledge/science-grade7', label: '七年级科学与综合', slug: 'science-grade7' },
+    { href: '/knowledge/grade-7', label: '七年级总览', slug: 'grade-7' }
+  ];
   const grade8Links = [
     { href: '/knowledge/chinese-grade8', label: '八年级语文', slug: 'chinese-grade8' },
     { href: '/knowledge/math-grade8', label: '八年级数学', slug: 'math-grade8' },
@@ -204,8 +212,8 @@ function SubjectDetailNav({ slug }) {
     { href: '/knowledge/politics-grade9', label: '九年级道法', slug: 'politics-grade9' },
     { href: '/knowledge/grade-9', label: '九年级总览', slug: 'grade-9' }
   ];
-  const subjectLinks = slug?.endsWith('grade9') ? grade9Links : grade8Links;
-  const label = slug?.endsWith('grade9') ? '九年级专题' : '八年级专题';
+  const subjectLinks = slug?.endsWith('grade7') ? grade7Links : slug?.endsWith('grade9') ? grade9Links : grade8Links;
+  const label = slug?.endsWith('grade7') ? '七年级专题' : slug?.endsWith('grade9') ? '九年级专题' : '八年级专题';
 
   if (!subjectLinks.some((item) => item.slug === slug)) return null;
 
