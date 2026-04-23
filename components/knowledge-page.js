@@ -1,20 +1,5 @@
 import Link from 'next/link';
 
-function KnowledgeToolbar() {
-  return (
-    <div className="knowledge-next-toolbar" aria-label="知识体系页面操作">
-      <Link href="/knowledge" className="knowledge-next-chip">知识体系首页</Link>
-      <Link href="/knowledge/grade-7" className="knowledge-next-chip">七年级总览</Link>
-      <Link href="/knowledge/grade-8" className="knowledge-next-chip">八年级总览</Link>
-      <Link href="/knowledge/grade-9" className="knowledge-next-chip">九年级总览</Link>
-      <Link href="/knowledge/senior-1" className="knowledge-next-chip">高一总览</Link>
-      <Link href="/knowledge/senior-2" className="knowledge-next-chip">高二总览</Link>
-      <Link href="/knowledge/senior-3" className="knowledge-next-chip">高三总览</Link>
-      <Link href="/news" className="knowledge-next-chip">相关政策新闻</Link>
-    </div>
-  );
-}
-
 function textFromNodes(nodes = []) {
   return nodes.map((node) => {
     if (!node) return '';
@@ -70,7 +55,7 @@ function getPageTrail(page) {
 
 function getKnowledgePageKind(page) {
   if (page.slug === 'index') return 'channel';
-  if (page.slug?.startsWith('grade-')) return 'grade';
+  if (page.slug?.startsWith('grade-') || page.slug?.startsWith('senior-')) return 'grade';
   return 'subject';
 }
 
@@ -78,7 +63,7 @@ function KnowledgeSideRail({ page }) {
   const trail = getPageTrail(page);
   const stats = page.hero?.stats || [];
   const pageKind = getKnowledgePageKind(page);
-  const pageType = pageKind === 'channel' ? '频道地图' : pageKind === 'grade' ? '年级专题' : '学科档案';
+  const pageType = pageKind === 'channel' ? '频道地图' : pageKind === 'grade' ? '年级总览' : '学科档案';
 
   return (
     <aside className="knowledge-side-rail" aria-label="知识体系页面索引">
@@ -119,6 +104,17 @@ function Hero({ hero }) {
           <p className="knowledge-front-kicker">{hero.kicker}</p>
           <h1>{hero.title}</h1>
           <p className="knowledge-front-summary">{hero.summary}</p>
+          {hero.routes?.length ? (
+            <div className="knowledge-hero-routes" aria-label="知识体系快速路径">
+              {hero.routes.map((route) => (
+                <Link className="knowledge-hero-route" href={route.href} key={route.href}>
+                  <span>{route.label}</span>
+                  <strong>{route.title}</strong>
+                  <em>{route.description}</em>
+                </Link>
+              ))}
+            </div>
+          ) : null}
         </div>
         <div className="knowledge-front-stats" aria-label="知识体系概览">
           {hero.stats.map((stat) => (
@@ -185,83 +181,6 @@ function Ribbons({ ribbons = [] }) {
         </article>
       ))}
     </section>
-  );
-}
-
-function SubjectDetailNav({ slug }) {
-  const grade7Links = [
-    { href: '/knowledge/chinese-grade7', label: '七年级语文', slug: 'chinese-grade7' },
-    { href: '/knowledge/math-grade7', label: '七年级数学', slug: 'math-grade7' },
-    { href: '/knowledge/english-grade7', label: '七年级英语', slug: 'english-grade7' },
-    { href: '/knowledge/science-grade7', label: '七年级科学与综合', slug: 'science-grade7' },
-    { href: '/knowledge/grade-7', label: '七年级总览', slug: 'grade-7' }
-  ];
-  const grade8Links = [
-    { href: '/knowledge/chinese-grade8', label: '八年级语文', slug: 'chinese-grade8' },
-    { href: '/knowledge/math-grade8', label: '八年级数学', slug: 'math-grade8' },
-    { href: '/knowledge/english-grade8', label: '八年级英语', slug: 'english-grade8' },
-    { href: '/knowledge/physics-grade8', label: '八年级物理', slug: 'physics-grade8' },
-    { href: '/knowledge/chemistry-grade8', label: '八年级化学', slug: 'chemistry-grade8' },
-    { href: '/knowledge/history-grade8', label: '八年级历史', slug: 'history-grade8' },
-    { href: '/knowledge/politics-grade8', label: '八年级道法', slug: 'politics-grade8' },
-    { href: '/knowledge/grade-8', label: '八年级总览', slug: 'grade-8' }
-  ];
-  const grade9Links = [
-    { href: '/knowledge/chinese-grade9', label: '九年级语文', slug: 'chinese-grade9' },
-    { href: '/knowledge/math-grade9', label: '九年级数学', slug: 'math-grade9' },
-    { href: '/knowledge/english-grade9', label: '九年级英语', slug: 'english-grade9' },
-    { href: '/knowledge/physics-grade9', label: '九年级物理', slug: 'physics-grade9' },
-    { href: '/knowledge/chemistry-grade9', label: '九年级化学', slug: 'chemistry-grade9' },
-    { href: '/knowledge/history-grade9', label: '九年级历史', slug: 'history-grade9' },
-    { href: '/knowledge/politics-grade9', label: '九年级道法', slug: 'politics-grade9' },
-    { href: '/knowledge/grade-9', label: '九年级总览', slug: 'grade-9' }
-  ];
-  const senior1Links = [
-    { href: '/knowledge/chinese-senior1', label: '高一语文', slug: 'chinese-senior1' },
-    { href: '/knowledge/math-senior1', label: '高一数学', slug: 'math-senior1' },
-    { href: '/knowledge/english-senior1', label: '高一英语', slug: 'english-senior1' },
-    { href: '/knowledge/physics-senior1', label: '高一物理', slug: 'physics-senior1' },
-    { href: '/knowledge/chemistry-senior1', label: '高一化学', slug: 'chemistry-senior1' },
-    { href: '/knowledge/biology-senior1', label: '高一生物', slug: 'biology-senior1' },
-    { href: '/knowledge/senior-1', label: '高一总览', slug: 'senior-1' }
-  ];
-  const senior2Links = [
-    { href: '/knowledge/chinese-senior2', label: '高二语文', slug: 'chinese-senior2' },
-    { href: '/knowledge/math-senior2', label: '高二数学', slug: 'math-senior2' },
-    { href: '/knowledge/english-senior2', label: '高二英语', slug: 'english-senior2' },
-    { href: '/knowledge/physics-senior2', label: '高二物理', slug: 'physics-senior2' },
-    { href: '/knowledge/chemistry-senior2', label: '高二化学', slug: 'chemistry-senior2' },
-    { href: '/knowledge/biology-senior2', label: '高二生物', slug: 'biology-senior2' },
-    { href: '/knowledge/senior-2', label: '高二总览', slug: 'senior-2' }
-  ];
-  const senior3Links = [
-    { href: '/knowledge/chinese-senior3', label: '高三语文', slug: 'chinese-senior3' },
-    { href: '/knowledge/math-senior3', label: '高三数学', slug: 'math-senior3' },
-    { href: '/knowledge/english-senior3', label: '高三英语', slug: 'english-senior3' },
-    { href: '/knowledge/physics-senior3', label: '高三物理', slug: 'physics-senior3' },
-    { href: '/knowledge/chemistry-senior3', label: '高三化学', slug: 'chemistry-senior3' },
-    { href: '/knowledge/biology-senior3', label: '高三生物', slug: 'biology-senior3' },
-    { href: '/knowledge/senior-3', label: '高三总览', slug: 'senior-3' }
-  ];
-  const subjectLinks = slug?.endsWith('senior3') ? senior3Links : slug?.endsWith('senior2') ? senior2Links : slug?.endsWith('senior1') ? senior1Links : slug?.endsWith('grade7') ? grade7Links : slug?.endsWith('grade9') ? grade9Links : grade8Links;
-  const label = slug?.endsWith('senior3') ? '高三专题' : slug?.endsWith('senior2') ? '高二专题' : slug?.endsWith('senior1') ? '高一专题' : slug?.endsWith('grade7') ? '七年级专题' : slug?.endsWith('grade9') ? '九年级专题' : '八年级专题';
-
-  if (!subjectLinks.some((item) => item.slug === slug)) return null;
-
-  return (
-    <nav className="knowledge-subject-switcher" aria-label={`${label}学科切换`}>
-      <span>{label}</span>
-      {subjectLinks.map((item) => (
-        <Link
-          aria-current={item.slug === slug ? 'page' : undefined}
-          className={item.slug === slug ? 'active' : undefined}
-          href={item.href}
-          key={item.href}
-        >
-          {item.label}
-        </Link>
-      ))}
-    </nav>
   );
 }
 
@@ -423,11 +342,9 @@ function RichTextNode({ headingState, node }) {
 
 function RichKnowledgePage({ page }) {
   const headingState = { count: 0 };
-
   return (
     <div className="knowledge-next-layout">
       <article className="knowledge-next-content knowledge-rich-article">
-        <SubjectDetailNav slug={page.slug} />
         <RichTextNodes headingState={headingState} nodes={page.richBlocks} />
       </article>
       <KnowledgeSideRail page={page} />
@@ -440,7 +357,6 @@ export default function KnowledgePage({ page }) {
 
   return (
     <main className={`knowledge-next-page knowledge-page-${pageKind}`} data-knowledge-slug={page.slug}>
-      <KnowledgeToolbar />
       {page.renderMode === 'structured' ? (
         <StructuredKnowledgePage page={page} />
       ) : (
