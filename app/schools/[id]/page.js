@@ -304,6 +304,11 @@ export default async function SchoolDetailPage({ params }) {
     "sameAs": school.website ? [school.website] : []
   };
 
+  // 构建地图链接
+  const mapUrl = school.address
+    ? `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.address)}`
+    : `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + getSchoolDistrictName(school))}`;
+
   return (
     <>
       <script
@@ -573,6 +578,11 @@ export default async function SchoolDetailPage({ params }) {
                 ))}
               </dl>
             ) : null}
+            <div className="school-datadesk-detail-map-link">
+              <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="map-link-button">
+                打开地图
+              </a>
+            </div>
           </section>
 
           <section className="school-datadesk-detail-panel">

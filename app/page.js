@@ -361,14 +361,15 @@ export default async function HomePage() {
             </div>
           </section>
 
-          <section className="home-knowledge-panel" aria-label="上海八年级课程">
+          <section className="home-knowledge-panel" aria-label="上海初中知识体系课程">
             <div className="home-knowledge-head">
               <div>
                 <p className="overview-label">知识体系</p>
-                <h2>上海八年级课程先恢复到这里</h2>
-                <p>八年级是承接九年级复习的关键年级，先从学科目录进入，再看知识点、实验、例题和学习计划。</p>
+                <h2>上海初中知识体系先从七、八年级进入</h2>
+                <p>七年级适合先搭主学科框架和复盘节奏，八年级继续进入知识点、实验、例题和学习计划。</p>
               </div>
               <div className="home-knowledge-actions">
+                <Link className="home-editorial-mini-link" href="/knowledge/grade-7">七年级总览</Link>
                 <Link className="home-editorial-mini-link" href="/knowledge/grade-8">八年级总览</Link>
                 <Link className="home-editorial-mini-link" href="/knowledge/physics-grade8">物理知识点</Link>
               </div>

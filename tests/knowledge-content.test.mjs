@@ -25,6 +25,16 @@ test('resolves grade 8 as structured data with subject links', async () => {
   assert.equal(subjectSection.cards.some((card) => card.href === '/knowledge/physics-grade8'), true);
 });
 
+test('resolves grade 9 subject pages with rich study content', async () => {
+  const page = await getKnowledgePage(['math-grade9']);
+
+  assert.equal(page.slug, 'math-grade9');
+  assert.equal(page.renderMode, 'rich');
+  assert.match(page.title, /九年级数学/);
+  assert.equal(page.richBlocks.some((block) => block.tag === 'div' && block.className.includes('page-header')), true);
+  assert.equal(page.richBlocks.filter((block) => block.tag === 'section' && block.className === 'chapter').length >= 7, true);
+});
+
 test('resolves subject pages as structured rich content nodes', async () => {
   const page = await getKnowledgePage(['physics-grade8']);
 
@@ -45,7 +55,7 @@ test('returns null for unknown or unsafe knowledge slugs', async () => {
 
 test('all knowledge pages are served from the Next.js data model', async () => {
   const slugs = await listKnowledgeSlugs();
-  assert.equal(slugs.length, 23);
+  assert.equal(slugs.length, 30);
 
   for (const item of slugs) {
     const page = await getKnowledgePage(item.slug);
@@ -61,5 +71,7 @@ test('lists known knowledge slugs for static params', async () => {
 
   assert.ok(slugs.some((item) => item.slug.length === 0));
   assert.ok(slugs.some((item) => item.slug.join('/') === 'grade-8'));
+  assert.ok(slugs.some((item) => item.slug.join('/') === 'grade-9'));
   assert.ok(slugs.some((item) => item.slug.join('/') === 'physics-grade8'));
+  assert.ok(slugs.some((item) => item.slug.join('/') === 'physics-grade9'));
 });

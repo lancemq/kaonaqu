@@ -320,6 +320,7 @@ export default function SchoolsPageClient({
               <div className="schools-datadesk-hero-actions">
                 <Link className="module-link" href="/schools/district">查看 16 区专题</Link>
                 <Link className="module-link" href="/schools/groups">查看教育集团专题</Link>
+                <Link className="module-link" href="/schools/simulator">进入志愿模拟</Link>
               </div>
             </div>
 
@@ -474,6 +475,10 @@ export default function SchoolsPageClient({
                 <strong>学校多维对比</strong>
                 <span>支持梯队、集团、地址等全方位参数对比</span>
               </Link>
+              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/simulator">
+                <strong>志愿模拟</strong>
+                <span>按当前初中、目标区域和学校层级生成高中候选清单</span>
+              </Link>
               <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/visualization">
                 <strong>数据可视化</strong>
                 <span>查看集团关系图谱与初升高升学流向</span>
@@ -570,16 +575,6 @@ export default function SchoolsPageClient({
                       <span className="schools-datadesk-cardlink">进入学校详情</span>
                     </div>
                   </Link>
-                  {/* 查看地图按钮 - 浮在右上角 */}
-                  <a 
-                    href={mapUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="map-link-btn absolute top-2 right-2 bg-blue-500 hover:bg-blue-600 text-white text-xs px-2 py-1 rounded opacity-80 hover:opacity-100 transition-opacity z-10"
-                  >
-                    📍 查看地图
-                  </a>
                 </div>
               );
             })}

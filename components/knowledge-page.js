@@ -4,6 +4,7 @@ function KnowledgeToolbar() {
   return (
     <div className="knowledge-next-toolbar" aria-label="知识体系页面操作">
       <Link href="/knowledge" className="knowledge-next-chip">知识体系首页</Link>
+      <Link href="/knowledge/grade-7" className="knowledge-next-chip">七年级总览</Link>
       <Link href="/knowledge/grade-8" className="knowledge-next-chip">八年级总览</Link>
       <Link href="/news" className="knowledge-next-chip">相关政策新闻</Link>
     </div>
@@ -27,9 +28,10 @@ function createAnchorId(label, index) {
   return `knowledge-${index}-${normalized || 'section'}`;
 }
 
-function collectRichAnchors(nodes = [], limit = 8) {
+function collectRichAnchors(nodes = [], { limit = 8, includeTags = ['h2', 'h3'] } = {}) {
   const anchors = [];
   let headingIndex = 0;
+  const includedTags = new Set(includeTags);
 
   function visit(node) {
     if (!node || anchors.length >= limit) return;
@@ -37,7 +39,9 @@ function collectRichAnchors(nodes = [], limit = 8) {
       const label = textFromNodes(node.children);
       if (label) {
         headingIndex += 1;
-        anchors.push({ href: `#${node.id || createAnchorId(label, headingIndex)}`, label });
+        if (includedTags.has(node.tag)) {
+          anchors.push({ href: `#${node.id || createAnchorId(label, headingIndex)}`, label });
+        }
       }
     }
     node.children?.forEach(visit);
@@ -53,6 +57,9 @@ function getPageTrail(page) {
       href: `#${section.id}`,
       label: section.title
     }));
+  }
+  if (getKnowledgePageKind(page) === 'subject') {
+    return collectRichAnchors(page.richBlocks, { limit: 80, includeTags: ['h2'] });
   }
   return collectRichAnchors(page.richBlocks);
 }
@@ -177,18 +184,70 @@ function Ribbons({ ribbons = [] }) {
   );
 }
 
+function SubjectDetailNav({ slug }) {
+  const grade7Links = [
+    { href: '/knowledge/chinese-grade7', label: '七年级语文', slug: 'chinese-grade7' },
+    { href: '/knowledge/math-grade7', label: '七年级数学', slug: 'math-grade7' },
+    { href: '/knowledge/english-grade7', label: '七年级英语', slug: 'english-grade7' },
+    { href: '/knowledge/science-grade7', label: '七年级科学与综合', slug: 'science-grade7' },
+    { href: '/knowledge/grade-7', label: '七年级总览', slug: 'grade-7' }
+  ];
+  const grade8Links = [
+    { href: '/knowledge/chinese-grade8', label: '八年级语文', slug: 'chinese-grade8' },
+    { href: '/knowledge/math-grade8', label: '八年级数学', slug: 'math-grade8' },
+    { href: '/knowledge/english-grade8', label: '八年级英语', slug: 'english-grade8' },
+    { href: '/knowledge/physics-grade8', label: '八年级物理', slug: 'physics-grade8' },
+    { href: '/knowledge/chemistry-grade8', label: '八年级化学', slug: 'chemistry-grade8' },
+    { href: '/knowledge/history-grade8', label: '八年级历史', slug: 'history-grade8' },
+    { href: '/knowledge/politics-grade8', label: '八年级道法', slug: 'politics-grade8' },
+    { href: '/knowledge/grade-8', label: '八年级总览', slug: 'grade-8' }
+  ];
+  const grade9Links = [
+    { href: '/knowledge/chinese-grade9', label: '九年级语文', slug: 'chinese-grade9' },
+    { href: '/knowledge/math-grade9', label: '九年级数学', slug: 'math-grade9' },
+    { href: '/knowledge/english-grade9', label: '九年级英语', slug: 'english-grade9' },
+    { href: '/knowledge/physics-grade9', label: '九年级物理', slug: 'physics-grade9' },
+    { href: '/knowledge/chemistry-grade9', label: '九年级化学', slug: 'chemistry-grade9' },
+    { href: '/knowledge/history-grade9', label: '九年级历史', slug: 'history-grade9' },
+    { href: '/knowledge/politics-grade9', label: '九年级道法', slug: 'politics-grade9' },
+    { href: '/knowledge/grade-9', label: '九年级总览', slug: 'grade-9' }
+  ];
+  const subjectLinks = slug?.endsWith('grade7') ? grade7Links : slug?.endsWith('grade9') ? grade9Links : grade8Links;
+  const label = slug?.endsWith('grade7') ? '七年级专题' : slug?.endsWith('grade9') ? '九年级专题' : '八年级专题';
+
+  if (!subjectLinks.some((item) => item.slug === slug)) return null;
+
+  return (
+    <nav className="knowledge-subject-switcher" aria-label={`${label}学科切换`}>
+      <span>{label}</span>
+      {subjectLinks.map((item) => (
+        <Link
+          aria-current={item.slug === slug ? 'page' : undefined}
+          className={item.slug === slug ? 'active' : undefined}
+          href={item.href}
+          key={item.href}
+        >
+          {item.label}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
 function CardGrid({ section }) {
   return (
     <section className={`${section.type === 'cardGrid' ? 'subjects' : 'chapter'} knowledge-section knowledge-section-${section.id}`} id={section.id}>
       <h2>{section.title}</h2>
       <div className={section.type === 'cardGrid' ? 'subject-grid grade-grid' : 'grade-overview-grid'}>
         {section.cards.map((card, index) => {
+          const isLive = Boolean(card.href);
+          const statusClassName = isLive ? 'status-pill status-pill-live' : 'status-pill status-pill-muted';
           const content = (
             <>
               <span className="knowledge-card-index">{String(index + 1).padStart(2, '0')}</span>
               <div className="grade-card-top">
                 <h3>{card.title}</h3>
-                {card.status ? <span className="status-pill status-pill-live">{card.status}</span> : null}
+                {card.status ? <span className={statusClassName}>{card.status}</span> : null}
               </div>
               <p>{card.description}</p>
             </>
@@ -199,7 +258,7 @@ function CardGrid({ section }) {
               {content}
             </Link>
           ) : (
-            <article className="overview-card" data-card-index={index + 1} key={card.title}>{content}</article>
+            <article className="subject-card grade-card knowledge-card-disabled" aria-disabled="true" data-card-index={index + 1} key={card.title}>{content}</article>
           );
         })}
       </div>
@@ -337,6 +396,7 @@ function RichKnowledgePage({ page }) {
   return (
     <div className="knowledge-next-layout">
       <article className="knowledge-next-content knowledge-rich-article">
+        <SubjectDetailNav slug={page.slug} />
         <RichTextNodes headingState={headingState} nodes={page.richBlocks} />
       </article>
       <KnowledgeSideRail page={page} />
