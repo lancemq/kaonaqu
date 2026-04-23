@@ -43,6 +43,20 @@ Thumbs.db
 # Test / coverage artifacts
 coverage/
 
+# Python cache / tooling artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.coverage
+.coverage.*
+htmlcov/
+
 # Local automation or diagnostics noise
 .codex/
 

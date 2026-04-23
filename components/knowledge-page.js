@@ -6,6 +6,10 @@ function KnowledgeToolbar() {
       <Link href="/knowledge" className="knowledge-next-chip">知识体系首页</Link>
       <Link href="/knowledge/grade-7" className="knowledge-next-chip">七年级总览</Link>
       <Link href="/knowledge/grade-8" className="knowledge-next-chip">八年级总览</Link>
+      <Link href="/knowledge/grade-9" className="knowledge-next-chip">九年级总览</Link>
+      <Link href="/knowledge/senior-1" className="knowledge-next-chip">高一总览</Link>
+      <Link href="/knowledge/senior-2" className="knowledge-next-chip">高二总览</Link>
+      <Link href="/knowledge/senior-3" className="knowledge-next-chip">高三总览</Link>
       <Link href="/news" className="knowledge-next-chip">相关政策新闻</Link>
     </div>
   );
@@ -212,8 +216,35 @@ function SubjectDetailNav({ slug }) {
     { href: '/knowledge/politics-grade9', label: '九年级道法', slug: 'politics-grade9' },
     { href: '/knowledge/grade-9', label: '九年级总览', slug: 'grade-9' }
   ];
-  const subjectLinks = slug?.endsWith('grade7') ? grade7Links : slug?.endsWith('grade9') ? grade9Links : grade8Links;
-  const label = slug?.endsWith('grade7') ? '七年级专题' : slug?.endsWith('grade9') ? '九年级专题' : '八年级专题';
+  const senior1Links = [
+    { href: '/knowledge/chinese-senior1', label: '高一语文', slug: 'chinese-senior1' },
+    { href: '/knowledge/math-senior1', label: '高一数学', slug: 'math-senior1' },
+    { href: '/knowledge/english-senior1', label: '高一英语', slug: 'english-senior1' },
+    { href: '/knowledge/physics-senior1', label: '高一物理', slug: 'physics-senior1' },
+    { href: '/knowledge/chemistry-senior1', label: '高一化学', slug: 'chemistry-senior1' },
+    { href: '/knowledge/biology-senior1', label: '高一生物', slug: 'biology-senior1' },
+    { href: '/knowledge/senior-1', label: '高一总览', slug: 'senior-1' }
+  ];
+  const senior2Links = [
+    { href: '/knowledge/chinese-senior2', label: '高二语文', slug: 'chinese-senior2' },
+    { href: '/knowledge/math-senior2', label: '高二数学', slug: 'math-senior2' },
+    { href: '/knowledge/english-senior2', label: '高二英语', slug: 'english-senior2' },
+    { href: '/knowledge/physics-senior2', label: '高二物理', slug: 'physics-senior2' },
+    { href: '/knowledge/chemistry-senior2', label: '高二化学', slug: 'chemistry-senior2' },
+    { href: '/knowledge/biology-senior2', label: '高二生物', slug: 'biology-senior2' },
+    { href: '/knowledge/senior-2', label: '高二总览', slug: 'senior-2' }
+  ];
+  const senior3Links = [
+    { href: '/knowledge/chinese-senior3', label: '高三语文', slug: 'chinese-senior3' },
+    { href: '/knowledge/math-senior3', label: '高三数学', slug: 'math-senior3' },
+    { href: '/knowledge/english-senior3', label: '高三英语', slug: 'english-senior3' },
+    { href: '/knowledge/physics-senior3', label: '高三物理', slug: 'physics-senior3' },
+    { href: '/knowledge/chemistry-senior3', label: '高三化学', slug: 'chemistry-senior3' },
+    { href: '/knowledge/biology-senior3', label: '高三生物', slug: 'biology-senior3' },
+    { href: '/knowledge/senior-3', label: '高三总览', slug: 'senior-3' }
+  ];
+  const subjectLinks = slug?.endsWith('senior3') ? senior3Links : slug?.endsWith('senior2') ? senior2Links : slug?.endsWith('senior1') ? senior1Links : slug?.endsWith('grade7') ? grade7Links : slug?.endsWith('grade9') ? grade9Links : grade8Links;
+  const label = slug?.endsWith('senior3') ? '高三专题' : slug?.endsWith('senior2') ? '高二专题' : slug?.endsWith('senior1') ? '高一专题' : slug?.endsWith('grade7') ? '七年级专题' : slug?.endsWith('grade9') ? '九年级专题' : '八年级专题';
 
   if (!subjectLinks.some((item) => item.slug === slug)) return null;
 
