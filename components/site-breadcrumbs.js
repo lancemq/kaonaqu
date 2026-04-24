@@ -132,10 +132,11 @@ export default function SiteBreadcrumbs({ items }) {
           const isCurrent = index === breadcrumbs.length - 1;
           return (
             <li key={`${item.href || item.label}-${index}`}>
+              {index > 0 ? <span className="site-breadcrumbs-separator" aria-hidden="true">›</span> : null}
               {item.href && !isCurrent ? (
-                <Link href={item.href}>{item.label}</Link>
+                <Link className="site-breadcrumbs-crumb" href={item.href}>{item.label}</Link>
               ) : (
-                <span aria-current={isCurrent ? 'page' : undefined}>{item.label}</span>
+                <span className="site-breadcrumbs-crumb" aria-current={isCurrent ? 'page' : undefined}>{item.label}</span>
               )}
             </li>
           );

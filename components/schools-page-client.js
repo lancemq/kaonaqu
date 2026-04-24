@@ -503,15 +503,6 @@ export default function SchoolsPageClient({
               ))}
             </div>
           </section>
-
-          <section className="schools-datadesk-panel schools-datadesk-panel-note">
-            <div className="schools-datadesk-panel-head">
-              <p className="overview-label">数据口径</p>
-              <span>数据库说明</span>
-            </div>
-            <p>当前收录口径以学校索引和公开资料整理为主，首页优先解决“筛到哪一组学校值得继续比较”这个问题。</p>
-            <p>学段按初中、高中、完全中学区分；标签用于快速比较，不替代学校官方简章与区级招生细则。</p>
-          </section>
         </aside>
 
         <section className="schools-datadesk-results">
