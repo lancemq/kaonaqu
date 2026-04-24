@@ -4026,3 +4026,195 @@ body[data-page="schools"] .schools-visualization-chart-empty p {
         text-align: left;
     }
 }
+
+/* Migrated from theme-unified.css: schools final layer */
+body[data-page="schools"] .school-datadesk-detail-sectionhead {
+    align-items: flex-start;
+}
+
+body[data-page="schools"] .school-datadesk-detail-sectionhead > span,
+body[data-page="schools"] .school-datadesk-detail-facts dt,
+body[data-page="schools"] .group-badge-label,
+body[data-page="schools"] .quota-year,
+body[data-page="schools"] .quota-type,
+body[data-page="schools"] .school-rich-card span,
+body[data-page="schools"] .school-rich-source-list span,
+body[data-page="schools"] .school-rich-subhead span,
+body[data-page="schools"] .highlight-card-header {
+    color: var(--channel-accent) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts div,
+body[data-page="schools"] .school-datadesk-detail-peerlink {
+    border-top-color: var(--site-line) !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-fact-value,
+body[data-page="schools"] .group-badge-value,
+body[data-page="schools"] .quota-link,
+body[data-page="schools"] .quota-number {
+    color: var(--site-text) !important;
+    font-weight: 800;
+}
+
+body[data-page="schools"] .school-datadesk-detail-panel-dark .school-datadesk-detail-fact-value {
+    color: var(--site-dark-text) !important;
+    text-shadow: none !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact {
+    gap: 10px;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact div,
+body[data-page="schools"] .quota-item,
+body[data-page="schools"] .group-badge-container,
+body[data-page="schools"] .highlight-card,
+body[data-page="schools"] .school-rich-history article,
+body[data-page="schools"] .school-rich-card,
+body[data-page="schools"] .school-rich-two-column > section,
+body[data-page="schools"] .school-rich-people-list article {
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-sm) !important;
+    background: var(--site-surface-soft) !important;
+    box-shadow: none !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact div {
+    padding: 12px;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact div:first-child {
+    border-top: 1px solid var(--site-line) !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact dd {
+    overflow-wrap: anywhere;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact .text-link,
+body[data-page="schools"] .school-datadesk-detail-article .text-link,
+body[data-page="schools"] .school-rich-source-list a,
+body[data-page="schools"] .highlight-card .text-link {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 34px;
+    padding: 0 10px;
+    border: 1px solid var(--site-line) !important;
+    border-radius: var(--site-radius-sm);
+    background: rgba(255, 253, 248, 0.72);
+    color: var(--site-muted-strong) !important;
+    font-weight: 800;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+body[data-page="schools"] .school-datadesk-detail-facts-compact .text-link:hover,
+body[data-page="schools"] .school-datadesk-detail-article .text-link:hover,
+body[data-page="schools"] .school-rich-source-list a:hover,
+body[data-page="schools"] .highlight-card .text-link:hover {
+    border-color: var(--site-dark) !important;
+    background: var(--site-dark) !important;
+    color: var(--site-dark-text) !important;
+}
+
+body[data-page="schools"] .school-datadesk-detail-map-link {
+    justify-content: stretch !important;
+    margin-top: 14px !important;
+}
+
+body[data-page="schools"] .map-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--site-dark) !important;
+    border-radius: var(--site-radius-sm) !important;
+    background: var(--site-dark) !important;
+    color: var(--site-dark-text) !important;
+    box-shadow: none !important;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-decoration: none;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+body[data-page="schools"] .map-link-button::before {
+    content: "Map";
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    margin-right: 10px;
+    padding: 0 7px;
+    border: 1px solid rgba(247, 244, 237, 0.22);
+    border-radius: 999px;
+    color: rgba(247, 244, 237, 0.8);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body[data-page="schools"] .map-link-button:hover,
+body[data-page="schools"] .map-link-button:focus-visible {
+    background: var(--channel-accent-dark) !important;
+    border-color: var(--channel-accent-dark) !important;
+    transform: translateY(-1px);
+}
+
+body[data-page="schools"] .quota-list {
+    gap: 10px;
+}
+
+body[data-page="schools"] .quota-item {
+    padding: 12px;
+    transform: none !important;
+}
+
+body[data-page="schools"] .quota-item:hover {
+    border-color: color-mix(in srgb, var(--channel-accent) 40%, transparent) !important;
+    background: var(--site-paper) !important;
+}
+
+body[data-page="schools"] .quota-type {
+    width: fit-content;
+    min-height: 26px;
+    padding: 4px 8px;
+    border: 1px solid var(--site-line);
+    border-radius: 999px;
+    background: rgba(255, 253, 248, 0.7);
+    color: var(--site-muted) !important;
+}
+
+body[data-page="schools"] .quota-note {
+    margin: 2px 0 0;
+    color: var(--site-muted) !important;
+    font-style: normal !important;
+    line-height: 1.55;
+}
+
+body[data-page="schools"] .group-badge-container {
+    padding: 14px;
+}
+
+body[data-page="schools"] .school-rich-panel,
+body[data-page="schools"] .school-rich-visual,
+body[data-page="schools"] .school-rich-image-card,
+body[data-page="schools"] .school-rich-brief {
+    border-color: var(--site-line) !important;
+    border-radius: var(--site-radius-md) !important;
+    background:
+        radial-gradient(circle at top right, var(--channel-hero-glow), transparent 32%),
+        linear-gradient(180deg, var(--site-surface-strong), var(--site-surface)) !important;
+    box-shadow: var(--site-shadow-sm) !important;
+}
