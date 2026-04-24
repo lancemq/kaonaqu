@@ -13,8 +13,8 @@ const DATA_DIR = path.join(__dirname, '..', 'data');
 const ROOT_DIR = path.join(__dirname, '..');
 const VALID_DISTRICT_IDS = new Set(DISTRICT_CATALOG.map((district) => district.id));
 const ALLOWED_EXAM_TYPES = new Set(['zhongkao', 'gaokao']);
-const ALLOWED_NEWS_TYPES = new Set(['school', 'admission', 'exam']);
-const ALLOWED_PROFILE_DEPTHS = new Set(['foundation', 'priority']);
+const ALLOWED_NEWS_TYPES = new Set(['school', 'admission', 'exam', 'policy', 'guide']);
+const ALLOWED_PROFILE_DEPTHS = new Set(['foundation', 'priority', 'enhanced']);
 const DETAIL_FIELDS = ['schoolDescription', 'admissionRequirements', 'schoolHighlights', 'suitableStudents', 'applicationTips'];
 
 function readJson(filename) {
