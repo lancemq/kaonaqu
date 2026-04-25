@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CrossChannelSection from './cross-channel-section';
 
 function textFromNodes(nodes = []) {
   return nodes.map((node) => {
@@ -237,7 +238,7 @@ function Section({ section }) {
   return null;
 }
 
-function StructuredKnowledgePage({ page }) {
+function StructuredKnowledgePage({ page, journey }) {
   return (
     <div className="knowledge-next-layout">
       <div className="knowledge-next-content">
@@ -246,6 +247,7 @@ function StructuredKnowledgePage({ page }) {
         <HeaderPanel header={page.header} />
         <Ribbons ribbons={page.ribbons} />
         {page.sections.map((section) => <Section section={section} key={section.id} />)}
+        <CrossChannelSection journey={journey} variant="knowledge" />
       </div>
       <KnowledgeSideRail page={page} />
     </div>
@@ -340,27 +342,28 @@ function RichTextNode({ headingState, node }) {
   }
 }
 
-function RichKnowledgePage({ page }) {
+function RichKnowledgePage({ page, journey }) {
   const headingState = { count: 0 };
   return (
     <div className="knowledge-next-layout">
       <article className="knowledge-next-content knowledge-rich-article">
         <RichTextNodes headingState={headingState} nodes={page.richBlocks} />
+        <CrossChannelSection journey={journey} variant="knowledge" />
       </article>
       <KnowledgeSideRail page={page} />
     </div>
   );
 }
 
-export default function KnowledgePage({ page }) {
+export default function KnowledgePage({ page, journey }) {
   const pageKind = getKnowledgePageKind(page);
 
   return (
     <main className={`knowledge-next-page knowledge-page-${pageKind}`} data-knowledge-slug={page.slug}>
       {page.renderMode === 'structured' ? (
-        <StructuredKnowledgePage page={page} />
+        <StructuredKnowledgePage page={page} journey={journey} />
       ) : (
-        <RichKnowledgePage page={page} />
+        <RichKnowledgePage page={page} journey={journey} />
       )}
     </main>
   );

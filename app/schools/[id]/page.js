@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
+import CrossChannelSection from '../../../components/cross-channel-section';
 import SiteShell from '../../../components/site-shell';
+import { getSchoolChannelJourney } from '../../../lib/cross-channel-journeys.mjs';
 import { readSchoolMarkdownFile } from '../../../lib/school-content-files.mjs';
 import { getSchoolRichProfile } from '../../../lib/school-rich-profiles';
 import {
@@ -247,7 +249,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function SchoolDetailPage({ params }) {
-  const { schools } = await loadDataStore();
+  const { schools, news } = await loadDataStore();
   const { id } = await params;
   const school = resolveSchoolById(schools, id);
 
@@ -266,6 +268,7 @@ export default async function SchoolDetailPage({ params }) {
   const trainingDirections = articleInsights.directions.length ? articleInsights.directions : getSchoolTrainingDirections(school);
   const tags = getSchoolTags(school);
   const richProfile = getSchoolRichProfile(school.id);
+  const schoolJourney = getSchoolChannelJourney(school, { news });
   const schoolSummary = articleInsights.overview || getSchoolAdmissionInfo(school) || '学术强校、课程体系与校园节奏兼具，是上海家长高频检索的学校之一。';
 
   const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '学校属性待补充';
@@ -584,6 +587,8 @@ export default async function SchoolDetailPage({ params }) {
               </a>
             </div>
           </section>
+
+          <CrossChannelSection journey={schoolJourney} variant="school-side" />
 
           <section className="school-datadesk-detail-panel">
             <div className="school-datadesk-detail-sectionhead">

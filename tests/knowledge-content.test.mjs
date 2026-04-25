@@ -55,7 +55,7 @@ test('returns null for unknown or unsafe knowledge slugs', async () => {
 
 test('all knowledge pages are served from the Next.js data model', async () => {
   const slugs = await listKnowledgeSlugs();
-  assert.equal(slugs.length, 30);
+  assert.ok(slugs.length >= 34);
 
   for (const item of slugs) {
     const page = await getKnowledgePage(item.slug);

@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
+import CrossChannelSection from '../../../components/cross-channel-section';
 import SiteShell from '../../../components/site-shell';
+import { getNewsChannelJourney } from '../../../lib/cross-channel-journeys.mjs';
 import { getNewsSchoolCtaCopy, shouldShowNewsSchoolCta } from '../../../lib/news-channel-utils.mjs';
 import { readNewsMarkdownFile } from '../../../lib/news-content-files.mjs';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
@@ -196,6 +198,7 @@ export default async function NewsDetailPage({ params }) {
   const linkedSchool = item.primarySchoolId ? schoolsById.get(item.primarySchoolId) || null : null;
   const schoolCta = getNewsSchoolCtaCopy(item);
   const shouldRenderSchoolBridge = shouldShowNewsSchoolCta(item) && linkedSchool && schoolCta;
+  const newsJourney = getNewsChannelJourney(item, { schools });
   const sourceName = item.source?.name || '未知来源';
   const articleType = getNewsCategoryLabel(item);
   const articleBodyMarkdown = readNewsMarkdownFile(item);
@@ -285,6 +288,8 @@ export default async function NewsDetailPage({ params }) {
                 {renderNewsMarkdown(articleBodyMarkdown)}
               </div>
             </section>
+
+            <CrossChannelSection journey={newsJourney} variant="news" />
           </article>
 
           <aside className="school-prototype-side news-detail-article-side" id="related-policies">

@@ -3,3 +3,136 @@
 @import url("./theme-news.css");
 @import url("./theme-schools.css");
 @import url("./theme-knowledge.css");
+
+.cross-channel-panel {
+    display: grid;
+    gap: 16px;
+    padding: clamp(20px, 2.6vw, 30px);
+    border: 1px solid var(--site-line);
+    border-radius: var(--site-radius-md);
+    background: linear-gradient(180deg, var(--site-surface-strong), var(--site-surface));
+    box-shadow: var(--site-shadow-sm);
+}
+
+.cross-channel-panel-head {
+    display: grid;
+    gap: 8px;
+}
+
+.cross-channel-panel-head h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1.2;
+}
+
+.cross-channel-panel-head > p:last-child {
+    margin: 0;
+}
+
+.cross-channel-groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.cross-channel-group {
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+}
+
+.cross-channel-group-head span {
+    color: var(--channel-accent);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cross-channel-link-stack {
+    display: grid;
+    gap: 10px;
+}
+
+.cross-channel-link {
+    display: grid;
+    gap: 8px;
+    padding: 14px;
+    border: 1px solid var(--site-line);
+    border-radius: var(--site-radius-sm);
+    background: rgba(255, 253, 248, 0.84);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.cross-channel-link:hover,
+.cross-channel-link:focus-visible {
+    border-color: color-mix(in srgb, var(--channel-accent) 42%, transparent);
+    background: var(--site-paper);
+    box-shadow: var(--site-shadow-sm);
+    transform: translateY(-1px);
+}
+
+.cross-channel-link-meta {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 24px;
+    padding: 0 8px;
+    border: 1px solid var(--site-line);
+    border-radius: 999px;
+    background: rgba(255, 253, 248, 0.76);
+    color: var(--site-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.cross-channel-link strong {
+    color: var(--site-text);
+    line-height: 1.35;
+}
+
+.cross-channel-link p {
+    margin: 0;
+    color: var(--site-text-soft);
+    line-height: 1.6;
+}
+
+body[data-page="news"] .cross-channel-panel-news {
+    margin-top: 18px;
+}
+
+body[data-page="knowledge"] .cross-channel-panel-knowledge {
+    margin-top: 6px;
+    background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--subject-accent, var(--channel-accent)) 12%, transparent), transparent 28%),
+        linear-gradient(180deg, var(--site-surface-strong), var(--subject-panel-tint, var(--site-surface)));
+}
+
+body[data-page="knowledge"] .cross-channel-panel-knowledge .cross-channel-group-head span {
+    color: var(--subject-accent, var(--channel-accent));
+}
+
+body[data-page="schools"] .cross-channel-panel-school-side {
+    padding: 18px;
+}
+
+body[data-page="schools"] .cross-channel-panel-school-side .cross-channel-groups {
+    grid-template-columns: 1fr;
+}
+
+body[data-page="schools"] .cross-channel-panel-school-side .cross-channel-panel-head h2 {
+    font-size: 1.28rem;
+}
+
+@media (max-width: 1080px) {
+    .cross-channel-groups {
+        grid-template-columns: 1fr;
+    }
+}
