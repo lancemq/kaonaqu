@@ -16,55 +16,99 @@ const CORE_FEATURED_SCHOOL_NAMES = [
   '上海交通大学附属中学'
 ];
 
-const GRADE8_COURSES = [
+const HERO_DECISION_PATHS = [
+  {
+    label: '看政策',
+    title: '中考、高考、招生节点先看清',
+    description: '先看今年政策、时间线和关键问答，避免错过报名、确认、考试和录取节点。',
+    links: [
+      { label: '中考专题', href: '/news/zhongkao-special' },
+      { label: '高考专题', href: '/news/gaokao-special' },
+      { label: '招生日程', href: '/news/admission-timeline' }
+    ]
+  },
+  {
+    label: '查学校',
+    title: '按区、学段、对比查学校',
+    description: '从学校库、区县专题和学校对比进入，把目标学校放到同区和同类型里看。',
+    links: [
+      { label: '学校库', href: '/schools' },
+      { label: '区县专题', href: '/schools/district' },
+      { label: '学校对比', href: '/schools/compare' }
+    ]
+  },
+  {
+    label: '补学习',
+    title: '七八九年级学习路径接上',
+    description: '七年级打基础，八年级补主学科和理化，九年级进入中考复习和专题突破。',
+    links: [
+      { label: '九年级总览', href: '/knowledge/grade-9' },
+      { label: '八年级总览', href: '/knowledge/grade-8' },
+      { label: '知识体系', href: '/knowledge' }
+    ]
+  }
+];
+
+const HOME_KNOWLEDGE_COURSES = [
+  {
+    subject: '中考',
+    title: '九年级中考复习总览',
+    description: '把全年复习节奏、模考订正、专题突破和冲刺安排放到一条线上看。',
+    href: '/knowledge/grade-9',
+    status: '九年级已上线',
+    priority: true
+  },
+  {
+    subject: '数学',
+    title: '九年级数学',
+    description: '函数、圆与相似、动点几何、统计概率和压轴题分层突破。',
+    href: '/knowledge/math-grade9',
+    status: '中考重点',
+    priority: true
+  },
+  {
+    subject: '物理',
+    title: '九年级物理',
+    description: '力学、电学、实验设计和综合压轴，适合配合模考订正。',
+    href: '/knowledge/physics-grade9',
+    status: '中考重点',
+    priority: true
+  },
+  {
+    subject: '化学',
+    title: '九年级化学',
+    description: '化学用语、物质性质、实验探究、酸碱盐和综合计算。',
+    href: '/knowledge/chemistry-grade9',
+    status: '中考重点',
+    priority: true
+  },
+  {
+    subject: '英语',
+    title: '九年级英语',
+    description: '词汇语法、阅读完形、听说训练和中考写作一起复盘。',
+    href: '/knowledge/english-grade9',
+    status: '九年级'
+  },
   {
     subject: '物理',
     title: '沪科版八年级物理',
     description: '测量、声光、运动和力、压强浮力、简单机械与热现象，配套实验和学习计划。',
     href: '/knowledge/physics-grade8',
-    status: '重点复原'
+    status: '八年级'
   },
   {
     subject: '化学',
     title: '沪教版八年级化学',
     description: '开启化学之门、空气、氧气、水与生命、微粒观、化学用语和质量守恒。',
     href: '/knowledge/chemistry-grade8',
-    status: '重点复原'
+    status: '八年级'
   },
   {
-    subject: '数学',
-    title: '八年级数学',
-    description: '一次函数、勾股定理、平行四边形、分式和数据分析。',
-    href: '/knowledge/math-grade8',
-    status: '已恢复'
-  },
-  {
-    subject: '英语',
-    title: '八年级英语',
-    description: '核心词汇、现在完成时、过去进行时、被动语态、阅读和写作。',
-    href: '/knowledge/english-grade8',
-    status: '已恢复'
-  },
-  {
-    subject: '语文',
-    title: '八年级语文',
-    description: '古诗文、文言文、现代文阅读和写作表达。',
-    href: '/knowledge/chinese-grade8',
-    status: '已恢复'
-  },
-  {
-    subject: '历史',
-    title: '八年级历史',
-    description: '中国近现代史主线、近代化探索、抗战与解放战争。',
-    href: '/knowledge/history-grade8',
-    status: '已恢复'
-  },
-  {
-    subject: '道法',
-    title: '八年级道德与法治',
-    description: '社会规则、诚信、权利义务、法治意识和责任担当。',
-    href: '/knowledge/politics-grade8',
-    status: '已恢复'
+    subject: '七年级',
+    title: '七年级学习总览',
+    description: '语文、数学、英语和科学综合入口，适合先搭主学科框架。',
+    href: '/knowledge/grade-7',
+    status: '基础框架'
   }
 ];
 
@@ -202,58 +246,29 @@ export default async function HomePage() {
               <div className="home-prototype-copy">
                 <div className="home-hero-tag-row">
                   <div className="home-hero-tag">上海 · 2026</div>
-                  <p className="home-hero-micro-note">把今年上海升学最该看的信息，整理到一个入口</p>
+                  <p className="home-hero-micro-note">先选路径，再看细节</p>
                 </div>
-                <h1>上海升学这件事，不必再到处打听</h1>
-                <p className="home-hero-description">从今年的中考、高考政策，到上海 16 区学校信息，再到真正能用上的知识体系，考哪去把最容易让人焦虑、也最需要尽快看懂的内容放到一起，帮你少刷无效信息，更快看清下一步。</p>
+                <h1>上海升学，先从三件事看清楚</h1>
+                <p className="home-hero-description">政策决定时间和规则，学校决定目标和取舍，学习路径决定现在怎么准备。首页先帮你把这三条线分开，再把它们接起来。</p>
                 <div className="home-hero-inline-meta">
-                  <span>只看上海升学</span>
-                  <span>政策和时间一页理清</span>
-                  <span>学校信息和学习路径一起看</span>
+                  <span>看政策</span>
+                  <span>查学校</span>
+                  <span>补学习</span>
                 </div>
-                <div className="home-hero-density-grid">
-                  <article className="home-hero-density-card">
-                    <p className="home-hero-density-label">最近最该盯住</p>
-                    <div className="home-hero-density-list">
-                      {timelineItems.slice(0, 3).map((item) => (
-                        <Link key={item.title} className="home-hero-density-item" href={item.href}>
-                          <strong>{item.date}</strong>
-                          <span>{item.title}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </article>
-                  <article className="home-hero-density-card home-hero-density-card-warm">
-                    <p className="home-hero-density-label">来这里先解决</p>
-                    <div className="home-hero-density-points">
-                      <span>今年上海中高考政策到底变了什么</span>
-                      <span>接下来哪些节点最不能错过</span>
-                      <span>学校、区县和学习路径该怎么一起看</span>
-                    </div>
-                  </article>
+                <div className="home-hero-path-grid" aria-label="首页三条主路径">
+                  {HERO_DECISION_PATHS.map((path) => (
+                    <article className="home-hero-path-card" key={path.label}>
+                      <span>{path.label}</span>
+                      <h2>{path.title}</h2>
+                      <p>{path.description}</p>
+                      <div className="home-hero-path-links">
+                        {path.links.map((link) => (
+                          <Link href={link.href} key={link.href}>{link.label}</Link>
+                        ))}
+                      </div>
+                    </article>
+                  ))}
                 </div>
-                <div className="home-hero-route-strip" aria-label="首页快捷入口">
-                  <Link className="home-hero-route-link" href="/news/zhongkao-special">
-                    <span>中考专题</span>
-                    <strong>先看报名和批次</strong>
-                  </Link>
-                  <Link className="home-hero-route-link" href="/news/gaokao-special">
-                    <span>高考专题</span>
-                    <strong>先看时间线</strong>
-                  </Link>
-                  <Link className="home-hero-route-link" href="/schools">
-                    <span>学校查询</span>
-                    <strong>直接查学校</strong>
-                  </Link>
-                  <Link className="home-hero-route-link" href="/knowledge">
-                    <span>知识体系</span>
-                    <strong>补学习路径</strong>
-                  </Link>
-                </div>
-              </div>
-              <div className="home-hero-actions">
-                <Link className="home-cta-button home-cta-button-primary" href="/news">先看最新政策</Link>
-                <Link className="home-cta-button home-cta-button-secondary" href="/schools">再查学校和区县</Link>
               </div>
             </div>
             <aside className="home-prototype-side" aria-label="首页信息盒">
@@ -365,20 +380,20 @@ export default async function HomePage() {
             <div className="home-knowledge-head">
               <div>
                 <p className="overview-label">知识体系</p>
-                <h2>上海初中知识体系先从七、八年级进入</h2>
-                <p>七年级适合先搭主学科框架和复盘节奏，八年级继续进入知识点、实验、例题和学习计划。</p>
+                <h2>七八九年级学习路径，现在可以连起来看</h2>
+                <p>七年级搭框架，八年级补主学科和理化基础，九年级进入中考复习、模考订正和专题突破。</p>
               </div>
               <div className="home-knowledge-actions">
                 <Link className="home-editorial-mini-link" href="/knowledge/grade-7">七年级总览</Link>
                 <Link className="home-editorial-mini-link" href="/knowledge/grade-8">八年级总览</Link>
-                <Link className="home-editorial-mini-link" href="/knowledge/physics-grade8">物理知识点</Link>
+                <Link className="home-editorial-mini-link" href="/knowledge/grade-9">九年级总览</Link>
               </div>
             </div>
             <div className="home-grade8-course-grid">
-              {GRADE8_COURSES.map((course, index) => (
+              {HOME_KNOWLEDGE_COURSES.map((course) => (
                 <Link
                   key={course.href}
-                  className={`home-grade8-course-card${index < 2 ? ' home-grade8-course-card-priority' : ''}`}
+                  className={`home-grade8-course-card${course.priority ? ' home-grade8-course-card-priority' : ''}`}
                   href={course.href}
                 >
                   <span>{course.status}</span>
