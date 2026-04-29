@@ -62,10 +62,17 @@ function getAdmissionRoutes(school) {
   });
 }
 
-function getDistrictPeers(schools, current) {
-  return schools
+function getRelatedSchools(schools, current) {
+  const schoolById = new Map(schools.map((school) => [school.id, school]));
+  const curated = (Array.isArray(current.related_schools) ? current.related_schools : [])
+    .map((id) => schoolById.get(id))
+    .filter(Boolean)
+    .filter((school) => school.id !== current.id);
+  const fallback = schools
     .filter((school) => school.id !== current.id && school.districtId === current.districtId)
-    .slice(0, 3);
+    .filter((school) => !curated.some((item) => item.id === school.id));
+
+  return [...curated, ...fallback].slice(0, 4);
 }
 
 function renderInlineMarkdown(text) {
@@ -257,7 +264,7 @@ export default async function SchoolDetailPage({ params }) {
     notFound();
   }
 
-  const districtPeers = getDistrictPeers(schools, school);
+  const relatedSchools = getRelatedSchools(schools, school);
   const articleBodyMarkdown = readSchoolMarkdownFile(school);
   if (!articleBodyMarkdown) {
     notFound();
@@ -270,6 +277,8 @@ export default async function SchoolDetailPage({ params }) {
   const richProfile = getSchoolRichProfile(school.id);
   const schoolJourney = getSchoolChannelJourney(school, { news });
   const schoolSummary = articleInsights.overview || getSchoolAdmissionInfo(school) || '学术强校、课程体系与校园节奏兼具，是上海家长高频检索的学校之一。';
+  const decisionTags = Array.isArray(school.decisionTags) ? school.decisionTags.slice(0, 6) : [];
+  const profileSignals = school.profileSignals || {};
 
   const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '学校属性待补充';
   const schoolTemperament = trainingDirections[0] || '综合型';
@@ -569,6 +578,16 @@ export default async function SchoolDetailPage({ params }) {
             </div>
             <p className="school-datadesk-detail-sidecopy">培养方向：{trainingDirections.slice(0, 2).join('、') || '综合培养'}</p>
             <p className="school-datadesk-detail-sidecopy">核心关键词：{[...features.slice(0, 2), ...tags.slice(0, 2)].filter(Boolean).join('、') || '课程深度、校园节奏、区域关注'}</p>
+            {profileSignals.districtContext ? (
+              <p className="school-datadesk-detail-sidecopy">区域判断：{profileSignals.districtContext}</p>
+            ) : null}
+            {decisionTags.length ? (
+              <div className="school-datadesk-detail-chiprow" aria-label="择校标签">
+                {decisionTags.map((item) => (
+                  <span key={item} className="school-datadesk-detail-chip">{item}</span>
+                ))}
+              </div>
+            ) : null}
             {serviceFacts.length ? (
               <dl className="school-datadesk-detail-facts school-datadesk-detail-facts-compact">
                 {serviceFacts.map(([label, value]) => (
@@ -592,16 +611,16 @@ export default async function SchoolDetailPage({ params }) {
 
           <section className="school-datadesk-detail-panel">
             <div className="school-datadesk-detail-sectionhead">
-              <p className="overview-label">同区学校</p>
-              <span>{getSchoolDistrictName(school)}</span>
+              <p className="overview-label">相关学校</p>
+              <span>{profileSignals.system || getSchoolDistrictName(school)}</span>
             </div>
-            {districtPeers.length ? districtPeers.map((peer) => (
+            {relatedSchools.length ? relatedSchools.map((peer) => (
               <Link key={peer.id} className="school-datadesk-detail-peerlink" href={`/schools/${peer.id}`}>
                 <strong>{peer.name}</strong>
                 <span>{getSchoolStage(peer)} / {getSchoolOwnershipLabel(peer) || '学校信息'}</span>
               </Link>
             )) : (
-              <p className="school-datadesk-detail-empty">同区学校信息持续补充中，可通过上方路径进入区级专题继续查看。</p>
+              <p className="school-datadesk-detail-empty">相关学校信息持续补充中，可通过上方路径进入区级专题继续查看。</p>
             )}
           </section>
         </aside>
