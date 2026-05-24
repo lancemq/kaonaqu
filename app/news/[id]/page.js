@@ -177,11 +177,23 @@ export async function generateMetadata({ params }) {
     return { title: '新闻详情 | 考哪去' };
   }
 
+  const examType = item.examType === 'zhongkao' ? '中考' : item.examType === 'gaokao' ? '高考' : '上海升学';
+
   return {
-    title: `${item.title} | 新闻详情 | 考哪去`,
-    description: item.summary || '查看上海升学新闻与政策详情。'
+    title: `${item.title} - ${examType}政策解读 | 考哪去`,
+    description: item.summary || '查看上海升学新闻与政策详情。',
+    keywords: [examType, '上海升学', '政策解读', item.newsType === 'policy' ? '政策' : item.newsType === 'exam' ? '考试' : '招生'],
+    openGraph: {
+      type: 'article',
+      locale: 'zh_CN',
+      siteName: '考哪去',
+      title: `${item.title} - ${examType}政策解读 | 考哪去`,
+      description: item.summary || '查看上海升学新闻与政策详情。'
+    }
   };
 }
+
+export const revalidate = 3600;
 
 export default async function NewsDetailPage({ params }) {
   const { news, policies, schools } = await loadDataStore();
@@ -219,16 +231,16 @@ export default async function NewsDetailPage({ params }) {
     "author": {
       "@type": "Organization",
       "name": sourceName,
-      "url": item.source?.url || 'https://kaonaqu.com'
+      "url": item.source?.url || 'https://kaonaqu.xyz'
     },
     "publisher": {
       "@type": "Organization",
       "name": "考哪去",
-      "url": "https://kaonaqu.com"
+      "url": "https://kaonaqu.xyz"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://kaonaqu.com/news/${encodeURIComponent(item.id)}`
+      "@id": `https://kaonaqu.xyz/news/${encodeURIComponent(item.id)}`
     }
   };
 

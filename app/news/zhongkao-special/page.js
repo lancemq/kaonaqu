@@ -67,10 +67,20 @@ export default async function ZhongkaoSpecialPage() {
     { label: '考试阶段', title: '再看考试与成绩安排', description: '重点看听说、实验、笔试和成绩发布时间。', count: groups.exam.length, anchor: '#zhongkao-exam' },
     { label: '录取阶段', title: '最后看志愿与录取', description: '集中看志愿、特长生、自主招生和录取节点。', count: groups.admission.length, anchor: '#zhongkao-admission' }
   ];
+  function getCurrentPhaseLabel() {
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    if (month >= 1 && month <= 3) return '政策发布与报名阶段，建议先把总分构成、考试日期和志愿规则这三项框架看清。';
+    if (month === 4 || month === 5) return '考试准备阶段，建议把体育测试、听说实验和笔试串成一条准备线。';
+    if (month === 6) return '笔试与志愿填报阶段，考后集中关注志愿填报规则和书面确认时间。';
+    if (month >= 7 && month <= 8) return '录取阶段，重点关注批次投档结果和征求志愿安排。';
+    return '建议优先关注下一年度中招政策发布和报名信息采集。';
+  }
+
   const currentChecklist = [
-    '截至 2026 年 4 月 6 日，中招政策主文件和实施细则已经发布，先把“总分构成、考试日期、志愿规则”这三项看清。',
-    '如果你走优秀体育学生、艺术骨干或中职自主招生路径，4 月前后更要持续跟学校资格确认方案和后续测试安排。',
-    '普通中招家庭现在更适合把 4 至 5 月体育与健身测试、5 月 16 日至 17 日听说和实验、6 月 20 日至 21 日笔试串成一条准备线。'
+    getCurrentPhaseLabel(),
+    '如果你走优秀体育学生、艺术骨干或中职自主招生路径，建议持续跟踪学校资格确认方案和后续测试安排。',
+    '普通中招家庭建议把体育与健身测试、听说实验和笔试串成一条完整的准备线来规划。'
   ];
   const keyFacts = [
     { title: '录取总成绩', detail: '上海中招录取总分为 750 分，包含语数外、道法、历史、体育与健身和综合测试。' },
@@ -148,7 +158,7 @@ export default async function ZhongkaoSpecialPage() {
 
           <section className="school-prototype-panel news-glossary-panel news-special-panel">
             <p className="overview-label">当前该看什么</p>
-            <h2>截至 2026 年 4 月 6 日，中招专题更适合这样使用</h2>
+            <h2>按当前阶段，中招专题更适合这样使用</h2>
             <div className="news-special-brief-grid">
               {currentChecklist.map((item, index) => (
                 <article key={item} className="news-special-brief-card">

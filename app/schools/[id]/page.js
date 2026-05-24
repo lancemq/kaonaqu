@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
@@ -249,11 +250,26 @@ export async function generateMetadata({ params }) {
     return { title: '学校详情 | 考哪去' };
   }
 
+  const district = getSchoolDistrictName(school);
+  const stage = getSchoolStage(school);
+  const ownership = getSchoolOwnershipLabel(school);
+  const features = getSchoolFeatures(school).slice(0, 3).join('、');
+
   return {
-    title: `${school.name} | 学校详情 | 考哪去`,
-    description: `${school.name}学校详情页，查看学校画像、招生路径、课程结构和择校提示。`
+    title: `${school.name}（${district}${ownership}${stage}）招生联系方式 | 考哪去`,
+    description: `${school.name}位于${district}，${ownership}${stage}。${features ? '特色：' + features : ''}查看学校画像、招生路径与择校提示。`,
+    keywords: [school.name, district, stage, ownership, '上海学校', '招生', '择校'].filter(Boolean),
+    openGraph: {
+      type: 'article',
+      locale: 'zh_CN',
+      siteName: '考哪去',
+      title: `${school.name}（${district}${ownership}${stage}）招生联系方式 | 考哪去`,
+      description: `${school.name}位于${district}，${ownership}${stage}。查看学校画像、招生路径与择校提示。`
+    }
   };
 }
+
+export const revalidate = 86400;
 
 export default async function SchoolDetailPage({ params }) {
   const { schools, news } = await loadDataStore();
@@ -303,7 +319,7 @@ export default async function SchoolDetailPage({ params }) {
     "@context": "https://schema.org",
     "@type": "School",
     "name": school.name,
-    "url": `https://kaonaqu.com/schools/${encodeURIComponent(school.id)}`,
+    "url": `https://kaonaqu.xyz/schools/${encodeURIComponent(school.id)}`,
     "description": schoolSummary,
     "address": {
       "@type": "PostalAddress",
@@ -378,7 +394,7 @@ export default async function SchoolDetailPage({ params }) {
       {richProfile ? (
         <section className="school-rich-visual" aria-label={`${school.name}核心资料`}>
           <figure className="school-rich-image-card">
-            <img src={richProfile.image.url} alt={richProfile.image.alt} loading="lazy" />
+            <Image src={richProfile.image.url} alt={richProfile.image.alt} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
             <figcaption>{richProfile.image.caption}</figcaption>
           </figure>
           <div className="school-rich-brief">

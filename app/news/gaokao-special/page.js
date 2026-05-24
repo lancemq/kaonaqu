@@ -67,10 +67,21 @@ export default async function GaokaoSpecialPage() {
     { label: '考试与学考', title: '再看高考与学业考试', description: '重点看高考、学考、成绩和考试安排。', count: groups.exam.length, anchor: '#gaokao-exam' },
     { label: '专项路径', title: '最后看体育类和三校生', description: '集中查看体育类、三校生、保送等专项路径。', count: groups.special.length, anchor: '#gaokao-special-track' }
   ];
+  function getCurrentPhaseLabel() {
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    if (month >= 1 && month <= 3) return '春招考试与成绩公布阶段，建议优先关注春考志愿填报和自主测试安排。';
+    if (month === 4 || month === 5) return '综评和强基报名阶段，建议同步跟进高考主流程和学考等级考复习节奏。';
+    if (month === 6) return '高考笔试与校测阶段，考后重点关注综合评价校测和志愿填报准备。';
+    if (month >= 7 && month <= 8) return '录取阶段，集中关注各批次投档结果和征求志愿时间。';
+    return '建议优先关注下一年度春招、艺考和高考报名信息采集安排。';
+  }
+
   const currentChecklist = [
-    '截至 2026 年 4 月 6 日，春招和专科自主招生已经进入结果与征求志愿尾段，更适合回看是否还有补录机会，而不是再从头看政策。',
-    '体育类路径当前最关键的是把 3 月确认、考试、成绩与合格线这一条链看完整，确认自己后续是否具备填报资格。',
-    '普通高考家庭现阶段更适合把高考主流程、学业水平考试命题要求和三校生等专项路径拆开看，避免把不同通道混在一起。'
+    getCurrentPhaseLabel(),
+    '体育类路径当前最关键的是把确认、考试、成绩与合格线这一条链看完整，确认自己后续是否具备填报资格。',
+    '普通高考家庭建议把高考主流程、学业水平考试命题要求和三校生等专项路径拆开看，避免把不同通道混在一起。'
   ];
   const keyFacts = [
     { title: '高招总入口', detail: '2026 年上海普通高校考试招生包含春季考试招生、专科层次依法自主招生、三校生高考和秋季统一高考。' },
@@ -148,7 +159,7 @@ export default async function GaokaoSpecialPage() {
 
           <section className="school-prototype-panel news-glossary-panel news-special-panel">
             <p className="overview-label">当前该看什么</p>
-            <h2>截至 2026 年 4 月 6 日，高招专题更适合这样使用</h2>
+            <h2>按当前阶段，高招专题更适合这样使用</h2>
             <div className="news-special-brief-grid">
               {currentChecklist.map((item, index) => (
                 <article key={item} className="news-special-brief-card">

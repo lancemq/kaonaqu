@@ -7,7 +7,7 @@ import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getSchoolAd
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../shared/data-store');
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 const CORE_FEATURED_SCHOOL_NAMES = [
   '上海中学',
@@ -219,11 +219,11 @@ export default async function HomePage() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "考哪去",
-    "url": "https://kaonaqu.com",
+    "url": "https://kaonaqu.xyz",
     "description": "上海升学观察 · 把复杂信息整理成更容易读懂的判断入口。涵盖政策消息、学校信息、区县差异与学习路径。",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://kaonaqu.com/schools?query={search_term_string}",
+      "target": "https://kaonaqu.xyz/schools?query={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };

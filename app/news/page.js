@@ -7,11 +7,12 @@ const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../shared/data-store');
 
 export const metadata = {
-  title: '上海教育资讯频道 | 考哪去',
-  description: '把上海当年最值得先看的中招、高招、入学政策、考试安排、招生消息和学校动态放在一起，帮你少翻信息，先抓重点。'
+  title: '上海中考高考新闻政策 | 考哪去',
+  description: '上海中考、高考最新政策、考试安排、招生消息与学校动态聚合，帮你少翻信息，先抓重点。',
+  keywords: ['上海中考新闻', '上海高考政策', '中招安排', '高招消息', '上海升学动态']
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 function toTimestamp(value) {
   const timestamp = Date.parse(value || '');
@@ -62,8 +63,21 @@ export default async function NewsPage() {
       return String(left.id || '').localeCompare(String(right.id || ''));
     })[0] || null;
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'name': '上海升学新闻政策列表',
+    'description': `${currentYear}年上海中考高考新闻政策汇总`,
+    'numberOfItems': news.length
+  };
+
   return (
-    <SiteShell hideKnowledgeNav>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <SiteShell hideKnowledgeNav>
       <header className="hero">
         <section className="search-panel news-channel-hero">
           <div className="news-channel-hero-grid">
@@ -106,5 +120,6 @@ export default async function NewsPage() {
         <span>当年新闻 {currentYearNews.length} / 当年政策 {currentYearPolicies.length} / 学校动态 {schoolCount}</span>
       </footer>
     </SiteShell>
+    </>
   );
 }

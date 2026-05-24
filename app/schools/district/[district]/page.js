@@ -15,7 +15,7 @@ import {
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../../shared/data-store');
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 86400;
 
 function formatSchoolUpdate(value) {
   const text = String(value || '').trim();
@@ -81,8 +81,16 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${districtInfo.name}学校专题 | 考哪去`,
-    description: `集中查看${districtInfo.name}的学校分布、重点学校和培养方向。`
+    title: `${districtInfo.name}初中高中学校名单 - 上海16区学校查询 | 考哪去`,
+    description: `查看${districtInfo.name}学校分布、${districtInfo.name}重点初中高中名单、办学类型与培养方向，上海升学择校参考。`,
+    keywords: [districtInfo.name, '上海学校', '初中', '高中', '择校', `${districtInfo.name}教育`],
+    openGraph: {
+      type: 'article',
+      locale: 'zh_CN',
+      siteName: '考哪去',
+      title: `${districtInfo.name}初中高中学校名单 - 上海16区学校查询 | 考哪去`,
+      description: `查看${districtInfo.name}学校分布、重点初中高中与培养方向。`
+    }
   };
 }
 
@@ -123,8 +131,21 @@ export default async function DistrictSchoolsPage({ params }) {
     { id: 'complete', label: '完全中学', items: stageBuckets.complete, note: '适合关注初高中贯通培养路径。' }
   ].filter((group) => group.items.length);
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'name': `${districtInfo.name}学校列表`,
+    'description': `${districtInfo.name}初中高中学校信息`,
+    'numberOfItems': districtSchools.length
+  };
+
   return (
-    <SiteShell
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <SiteShell
       hideKnowledgeNav
       breadcrumbItems={[
         { label: '学校信息', href: '/schools' },
@@ -293,5 +314,6 @@ export default async function DistrictSchoolsPage({ params }) {
         <span>{districtInfo.name} / 区域结构 / 学段分布 / 学校详情</span>
       </footer>
     </SiteShell>
+    </>
   );
 }

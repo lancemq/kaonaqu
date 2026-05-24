@@ -25,7 +25,8 @@ function parseWindowValue(windowText) {
 
 export default function AdmissionTimelinePage() {
   const sortedTimeline = [...admissionTimeline].sort((a, b) => parseWindowValue(a.window) - parseWindowValue(b.window));
-  const todayValue = 406;
+  const now = new Date();
+  const todayValue = (now.getMonth() + 1) * 100 + now.getDate();
   const upcomingItems = sortedTimeline.filter((item) => parseWindowValue(item.window) >= todayValue);
   const recentPastItems = [...sortedTimeline]
     .filter((item) => parseWindowValue(item.window) < todayValue)

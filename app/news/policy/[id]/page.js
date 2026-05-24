@@ -272,11 +272,24 @@ export async function generateMetadata({ params }) {
     return { title: '政策详情 | 考哪去' };
   }
 
+  const examType = getPolicyExamType(item);
+  const examLabel = examType === 'zhongkao' ? '中考' : examType === 'gaokao' ? '高考' : '升学';
+
   return {
-    title: `${item.title} | 政策详情 | 考哪去`,
-    description: item.summary || '查看上海升学政策详情。'
+    title: `${item.title} - 上海${examLabel}政策原文 | 考哪去`,
+    description: item.summary || '查看上海升学政策详情。',
+    keywords: [examLabel, '上海政策', '官方文件', '招生', '考试'],
+    openGraph: {
+      type: 'article',
+      locale: 'zh_CN',
+      siteName: '考哪去',
+      title: `${item.title} - 上海${examLabel}政策原文 | 考哪去`,
+      description: item.summary || '查看上海升学政策详情。'
+    }
   };
 }
+
+export const revalidate = 86400;
 
 export default async function PolicyDetailPage({ params }) {
   const { policies, news } = await loadDataStore();

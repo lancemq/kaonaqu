@@ -1,9 +1,33 @@
 import Link from 'next/link';
 import SiteBreadcrumbs from './site-breadcrumbs';
 
+const SITE_URL = 'https://kaonaqu.xyz';
+
 export default function SiteShell({ children, hideKnowledgeNav = false, breadcrumbItems }) {
+  const breadcrumbJsonLd = Array.isArray(breadcrumbItems) && breadcrumbItems.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': SITE_URL },
+          ...breadcrumbItems.map((item, index) => ({
+            '@type': 'ListItem',
+            'position': index + 2,
+            'name': item.label,
+            ...(item.href ? { 'item': `${SITE_URL}${item.href}` } : {})
+          }))
+        ]
+      }
+    : null;
+
   return (
     <div className="page-shell">
+      {breadcrumbJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+      ) : null}
       <div className="masthead-rail" aria-label="站点导览">
         <div className="masthead-rail-inner">
           <p className="masthead-note">KAONAQU EDUCATION DESK</p>
