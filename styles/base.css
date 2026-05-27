@@ -1,27 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@500;700;800&display=swap");
 
 :root {
-    --bg: #f0f3f8;
-    --bg-strong: #e6eaf2;
-    --surface: rgba(255, 255, 255, 0.96);
-    --surface-solid: #ffffff;
-    --surface-tint: #f4f6fa;
-    --surface-strong: rgba(248, 250, 252, 0.98);
-    --text: #1a1d29;
-    --muted: #6b7384;
-    --muted-soft: #8b93a4;
-    --line: rgba(26, 29, 41, 0.08);
-    --line-strong: rgba(37, 99, 235, 0.34);
-    --ink: #1a1d29;
-    --blue: #2563eb;
-    --blue-deep: #1d4ed8;
-    --teal: #1e293b;
-    --gold: #2563eb;
-    --coral: #2563eb;
-    --danger: #b84b2a;
-    --shadow-sm: 0 1px 3px rgba(26, 29, 41, 0.04), 0 4px 12px rgba(26, 29, 41, 0.04);
-    --shadow-lg: 0 4px 16px rgba(26, 29, 41, 0.08), 0 18px 42px rgba(26, 29, 41, 0.08);
-    --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    --bg: #f2f0ea;
+    --bg-strong: #e8e4db;
+    --surface: rgba(251, 250, 246, 0.96);
+    --surface-solid: #fefdf9;
+    --surface-tint: #f4f1e8;
+    --surface-strong: rgba(248, 245, 237, 0.98);
+    --text: #121212;
+    --muted: #62605a;
+    --muted-soft: #86837c;
+    --line: rgba(18, 18, 18, 0.1);
+    --line-strong: rgba(227, 108, 46, 0.34);
+    --ink: #111111;
+    --blue: #101010;
+    --blue-deep: #111111;
+    --coral: #d95d1f;
+    --shadow-sm: 0 18px 34px rgba(17, 17, 17, 0.06);
+    --shadow-lg: 0 26px 64px rgba(17, 17, 17, 0.1);
+    --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.65);
     --radius-xl: 24px;
     --radius-lg: 18px;
     --radius-md: 14px;
@@ -359,7 +356,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 }
 
 .breadcrumb a {
-    color: var(--blue-deep);
+    color: var(--ink);
     text-decoration: none;
     font-weight: 600;
 }
@@ -450,7 +447,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 
 .overview-label {
     margin: 0;
-    color: var(--blue-deep);
+    color: var(--ink);
     font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -482,7 +479,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
     border-radius: 999px;
     border: 1px solid rgba(47, 91, 234, 0.12);
     background: rgba(47, 91, 234, 0.08);
-    color: var(--blue-deep);
+    color: var(--ink);
     font-size: 0.8rem;
     font-weight: 700;
 }
@@ -532,7 +529,7 @@ body[data-page="knowledge"] .top-links a[href="/knowledge"] {
 .text-link {
     display: inline-block;
     margin-top: 14px;
-    color: var(--blue-deep);
+    color: var(--ink);
     text-decoration: none;
     font-weight: 600;
 }
