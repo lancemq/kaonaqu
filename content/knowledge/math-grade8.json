@@ -1,8 +1,8 @@
 {
   "slug": "math-grade8",
   "href": "/knowledge/math-grade8",
-  "title": "上海初二数学知识点归纳 | 八年级数学学习资料 | 考哪去",
-  "description": "整理上海初二数学知识点与典型题型，覆盖几何、函数、方程与不等式等重点内容，适合八年级复习与查漏补缺。",
+  "title": "沪教版（上海）八年级数学知识点 | 二次根式 / 一元二次方程 / 正反比例函数 | 考哪去",
+  "description": "依据沪教版（上海）八年级数学教材，按单元整合代数与几何核心知识点。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -370,6 +370,324 @@
               "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "二次根式"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "二次根式 √a（a≥0）的核心性质是双重非负性。最简二次根式的标准：被开方数不含分母、不含能开得尽的因数或因式。同类二次根式化简后被开方数相同，可以合并。分母有理化是将分母中的根号去掉的过程。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h4",
+      "children": [
+        {
+          "type": "text",
+          "text": "运算性质"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "√ab = √a·√b (a≥0,b≥0)；√(a/b) = √a÷√b (a≥0,b>0)。混合运算顺序先乘除后加减，乘法公式同样适用。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h4",
+      "children": [
+        {
+          "type": "text",
+          "text": "典型题型"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "二次根式的化简与求值"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "分母有理化（分子分母同乘共轭根式）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "二次根式与乘法公式的综合运用"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "一元二次方程"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "ax²+bx+c=0 (a≠0) 的四种解法：直接开平方法、配方法、公式法、因式分解法。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h4",
+      "children": [
+        {
+          "type": "text",
+          "text": "判别式"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "Δ = b²-4ac。Δ>0 两个不等实根，Δ=0 两个相等实根，Δ<0 无实根。韦达定理：x₁+x₂=-b/a, x₁x₂=c/a。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h4",
+      "children": [
+        {
+          "type": "text",
+          "text": "应用题的解题步骤"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "审题：找出已知量和未知量"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "设未知数：直接设或间接设"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "列方程：找准等量关系"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "解方程并检验：检验解是否符合实际意义"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "正比例函数与反比例函数"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "正比例函数 y=kx (k≠0) 图像是过原点的直线。k>0 过一三象限，k<0 过二四象限。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "反比例函数 y=k/x (k≠0) 图像是双曲线，关于原点中心对称。x≠0, y≠0。反比例函数中 |k| 越大，双曲线离坐标轴越远。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h4",
+      "children": [
+        {
+          "type": "text",
+          "text": "待定系数法"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "设解析式 y=k/x，代入已知点坐标求出 k。常与一次函数综合考查，联立方程求交点坐标。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "平行四边形与几何证明"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "平行四边形判定：两组对边分别平行、一组对边平行且相等、两组对边分别相等、对角线互相平分。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "矩形（对角线相等）、菱形（对角线垂直且平分对角）、正方形（兼具矩形和菱形的所有性质）。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "三角形中位线平行于第三边且等于第三边的一半。梯形中位线平行于两底且等于两底和的一半。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "概率初步"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "概率 P(A) = 事件A发生的结果数 ÷ 总结果数（等可能事件）。列表法和树状图法用于求两步或三步试验的概率。频率在大量重复试验中稳定于概率。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "学习建议"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "学习贵在坚持和方法。制定合理计划，每天固定时间学习，定期复习巩固。遇到不懂的问题及时请教。"
         }
       ]
     }

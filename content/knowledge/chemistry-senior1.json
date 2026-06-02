@@ -1,8 +1,8 @@
 {
   "slug": "chemistry-senior1",
   "href": "/knowledge/chemistry-senior1",
-  "title": "上海高一化学知识点与学习说明 | 考哪去",
-  "description": "整理上海高一化学物质分类、离子反应、氧化还原、物质的量和实验基础的学习说明。",
+  "title": "上海高一化学知识点 | 物质的量/氧化还原/离子反应 | 考哪去",
+  "description": "依据沪教版高一化学教材整合物质的量氧化还原和离子反应。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -1447,6 +1447,69 @@
               "text": " 化学复盘要把现象、粒子、符号和计算分层写清楚。 "
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "物质的量"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "物质的量是七个基本物理量之一。摩尔质量气体摩尔体积物质的量浓度。阿伏加德罗常数。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "氧化还原反应"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "化合价升降判断氧化还原。氧化剂还原剂的判断。电子转移方向和数目的分析。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "离子反应"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "电解质和非电解质的区别。离子方程式的书写步骤写拆删查。离子共存的条件。"
         }
       ]
     }

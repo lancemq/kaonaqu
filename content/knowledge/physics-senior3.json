@@ -1,8 +1,8 @@
 {
   "slug": "physics-senior3",
   "href": "/knowledge/physics-senior3",
-  "title": "上海高三物理高考复习说明 | 考哪去",
-  "description": "整理上海高三物理力电综合、实验图像、模型迁移和高考冲刺复习说明。",
+  "title": "上海高三物理高考复习要点 | 力学/电磁学/热学/原子物理 | 考哪去",
+  "description": "依据上海高考物理考纲整理高三复习要点。",
   "richBlocks": [
     {
       "type": "element",
@@ -941,6 +941,90 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "力学综合"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "牛顿运动定律与运动学综合。曲线运动与万有引力。机械能守恒定律和动量守恒定律的应用。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "电磁学综合"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "带电粒子在电场和磁场中的运动。电磁感应综合问题。交流电的产生和描述。变压器和远距离输电。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "热学"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "分子动理论。气体实验定律和理想气体状态方程。热力学第一定律。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "原子物理"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "卢瑟福核式结构模型。玻尔氢原子理论。天然放射现象。核反应方程式的书写和核能计算。"
         }
       ]
     }

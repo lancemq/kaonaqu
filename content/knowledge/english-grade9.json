@@ -1,8 +1,8 @@
 {
   "slug": "english-grade9",
   "href": "/knowledge/english-grade9",
-  "title": "上海九年级英语中考复习知识体系与典型题 | 考哪去",
-  "description": "整理上海九年级英语中考复习重点，覆盖词汇语法、阅读完形、听说表达和中考写作。",
+  "title": "上海九年级英语中考复习要点 | 语法/词汇/阅读/写作/听说 | 考哪去",
+  "description": "依据上海中考英语考纲梳理语法词汇阅读写作和听说五大板块。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -454,6 +454,116 @@
               "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "语法时态"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "八大时态和被动语态。宾语从句用陈述语序。定语从句关系代词that/which/who的选用。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "词汇与完形"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考要求约2500词和500短语。完形填空先通读全文掌握大意再逐空验证。高频短语动词和近义词辨析是重点。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "阅读理解"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "主旨大意题找主题句通常在首段或末段"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "细节理解题定位关键词在文中找对应句"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "推理判断题排除绝对化选项"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "写作"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "应用文10分加话题作文10分。三段式结构引入主体总结。适当使用复合句和连接词。语言准确比华丽更重要。"
         }
       ]
     }

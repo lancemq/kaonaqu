@@ -1,8 +1,8 @@
 {
   "slug": "chemistry-senior3",
   "href": "/knowledge/chemistry-senior3",
-  "title": "上海高三化学高考复习说明 | 考哪去",
-  "description": "整理上海高三化学反应原理、有机无机综合、实验方案和高考冲刺复习说明。",
+  "title": "上海高三化学高考复习要点 | 有机化学/实验/计算 | 考哪去",
+  "description": "依据上海高考化学考纲整理高三复习要点。",
   "richBlocks": [
     {
       "type": "element",
@@ -941,6 +941,69 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "有机化学"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "官能团的识别和性质。有机反应类型取代加成消去氧化还原。有机物之间的转化关系。同分异构体的书写和数目判断。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "化学实验"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "常见气体的制备和收集。物质的检验和分离提纯。实验方案的设计和评价。实验数据的处理和分析。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "化学计算"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "物质的量在化学方程式计算中的应用。守恒法差量法关系式法等计算技巧。多步反应的计算。"
         }
       ]
     }

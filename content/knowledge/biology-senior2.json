@@ -1,8 +1,8 @@
 {
   "slug": "biology-senior2",
   "href": "/knowledge/biology-senior2",
-  "title": "上海高二生物知识点与学习说明 | 考哪去",
-  "description": "整理上海高二生物遗传规律、稳态调节、生态与实验图表分析的学习说明。",
+  "title": "上海高二生物知识点 | 遗传/基因表达/变异/进化 | 考哪去",
+  "description": "依据沪科版高二生物教材整合遗传变异和进化。",
   "richBlocks": [
     {
       "type": "element",
@@ -941,6 +941,69 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "遗传定律"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "孟德尔分离定律和自由组合定律。基因的连锁和交换定律。伴性遗传的特点和判断方法。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "基因的本质与表达"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "DNA是遗传物质的证据。DNA双螺旋结构。DNA的复制转录和翻译。中心法则及其发展。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "变异与进化"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "基因突变基因重组染色体变异的类型和影响。现代生物进化理论的核心内容。自然选择决定进化方向。"
         }
       ]
     }

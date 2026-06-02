@@ -1,8 +1,8 @@
 {
   "slug": "physics-senior2",
   "href": "/knowledge/physics-senior2",
-  "title": "上海高二物理知识点与学习说明 | 考哪去",
-  "description": "整理上海高二物理电场、电路、磁场、电磁感应前置、实验图像和综合题提升的学习说明。",
+  "title": "上海高二物理知识点 | 静电场/恒定电流/磁场/电磁感应 | 考哪去",
+  "description": "依据沪科版高二物理教材整合电磁学核心内容。",
   "richBlocks": [
     {
       "type": "element",
@@ -941,6 +941,90 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "静电场"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "电荷守恒定律库仑定律。电场强度电势电势差电势能。电容器的电容和平行板电容器。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "恒定电流"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "欧姆定律电阻定律。串联并联电路的特点。电功电功率焦耳定律。闭合电路欧姆定律。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "磁场"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "磁感应强度安培力洛伦兹力。带电粒子在匀强磁场中的圆周运动。质谱仪和回旋加速器的原理。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "电磁感应"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "法拉第电磁感应定律E=n倍delta phi/delta t。楞次定律判断感应电流方向。自感现象和互感。"
         }
       ]
     }

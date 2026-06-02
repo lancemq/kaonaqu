@@ -1,8 +1,8 @@
 {
   "slug": "chemistry-senior2",
   "href": "/knowledge/chemistry-senior2",
-  "title": "上海高二化学知识点与学习说明 | 考哪去",
-  "description": "整理上海高二化学反应速率与平衡、有机化学基础、实验方案和定量综合的学习说明。",
+  "title": "上海高二化学知识点 | 化学反应速率/化学平衡/电解质溶液 | 考哪去",
+  "description": "依据沪教版高二化学教材整合化学反应原理。",
   "richBlocks": [
     {
       "type": "element",
@@ -941,6 +941,69 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "化学反应速率"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "浓度温度压强催化剂对反应速率的影响。有效碰撞理论和活化能。速率方程和速率常数的概念。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "化学平衡"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "可逆反应和化学平衡状态。平衡常数K的表达式和意义。勒夏特列原理判断平衡移动方向。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "电解质溶液"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "强电解质和弱电解质的区别。弱电解质的电离平衡。水的离子积和pH值计算。盐类水解的规律和应用。"
         }
       ]
     }

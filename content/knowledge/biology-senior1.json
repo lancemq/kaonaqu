@@ -1,8 +1,8 @@
 {
   "slug": "biology-senior1",
   "href": "/knowledge/biology-senior1",
-  "title": "上海高一生物知识点与学习说明 | 考哪去",
-  "description": "整理上海高一生物细胞结构、物质基础、代谢、遗传前置和实验探究的学习说明。",
+  "title": "上海高一生物知识点 | 细胞分子/细胞结构/细胞代谢 | 考哪去",
+  "description": "依据沪科版高一生物教材整合细胞分子基础和代谢。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -1447,6 +1447,69 @@
               "text": " 生物复盘要看是否能用图解释过程、用结构解释功能、用数据支持结论。 "
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "细胞的分子组成"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "蛋白质氨基酸脱水缩合形成肽链。核酸DNA和RNA的区别。糖类和脂质的功能。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "细胞的结构"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "原核与真核细胞的区别。细胞膜流动镶嵌模型。细胞器的分工合作线粒体叶绿体等。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "细胞的代谢"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "酶的特性高效性专一性。ATP是直接能源物质。光合作用和呼吸作用的过程。"
         }
       ]
     }

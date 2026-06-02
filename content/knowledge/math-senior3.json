@@ -1,8 +1,8 @@
 {
   "slug": "math-senior3",
   "href": "/knowledge/math-senior3",
-  "title": "上海高三数学高考复习说明 | 考哪去",
-  "description": "整理上海高三数学函数导数、解析几何、数列概率和高考轮次复习说明。",
+  "title": "上海高三数学高考复习要点 | 函数/解析/概率/数列 | 考哪去",
+  "description": "依据上海高考数学考纲整理高三复习要点。",
   "richBlocks": [
     {
       "type": "element",
@@ -941,6 +941,90 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "函数与导数"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "导数在研究函数中的应用。函数的零点问题。不等式恒成立问题。利用导数证明不等式。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "解析几何"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "椭圆双曲线抛物线的综合问题。直线与圆锥曲线的位置关系。弦长公式。轨迹方程的求法。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "概率与统计"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "条件概率和事件的独立性。随机变量的分布列期望和方差。二项分布和正态分布。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "数列与数学归纳法"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "数列的通项公式的求法。数列求和的方法。数列与不等式的综合问题。数学归纳法的应用。"
         }
       ]
     }

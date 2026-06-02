@@ -1,8 +1,8 @@
 {
   "slug": "math-senior2",
   "href": "/knowledge/math-senior2",
-  "title": "上海高二数学知识点与学习说明 | 考哪去",
-  "description": "整理上海高二数学数列、圆锥曲线、导数前置和综合建模的学习说明。",
+  "title": "上海高二数学知识点 | 数列/向量/解析几何/导数 | 考哪去",
+  "description": "依据沪教版高二数学教材整合数列向量解析几何和导数初步。",
   "richBlocks": [
     {
       "type": "element",
@@ -941,6 +941,90 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "数列"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "等差数列和等比数列的通项公式和前n项和公式。数列求和的常用方法裂项相消错位相减。数学归纳法及其应用。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "平面向量"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "向量的线性运算和坐标表示。向量的数量积及其几何意义。向量在几何问题中的应用。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "解析几何"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "直线方程的五种形式。圆的方程。椭圆双曲线抛物线的标准方程和几何性质。直线与圆锥曲线的位置关系。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "导数初步"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "导数的定义和几何意义。基本初等函数的导数公式。导数的四则运算法则。利用导数研究函数的单调性和极值。"
         }
       ]
     }
