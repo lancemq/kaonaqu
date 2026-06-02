@@ -1,0 +1,1454 @@
+{
+  "slug": "physics-senior1",
+  "href": "/knowledge/physics-senior1",
+  "title": "上海高一物理知识点与学习说明 | 考哪去",
+  "description": "整理上海高一物理运动学、相互作用、牛顿运动定律、能量和实验建模的学习说明。",
+  "breadcrumbItems": [
+    {
+      "label": "知识体系",
+      "href": "/knowledge"
+    },
+    {
+      "label": "高一",
+      "href": "/knowledge/senior-1"
+    },
+    {
+      "label": "物理知识点"
+    }
+  ],
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海高一物理知识体系与学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "高一物理是从初中现象判断进入高中模型分析的关键阶段。运动学、受力分析和牛顿定律是后续力学、电磁学的底层语言。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "page-header-actions",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "#senior1-physics-plan",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看学习计划"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "/knowledge/senior-1",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "回到高一总览"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "/news",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看高考新闻政策"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "一、如何使用这份物理资料"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习重点："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 高一学习的核心不是把高中内容提前背完，而是完成“概念更抽象、题目更综合、表达更规范”的切换。每个专题都建议按“概念边界 - 典型模型 - 易错条件 - 例题复盘”的顺序整理。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "先明确研究对象、参考系、受力和过程，再选择公式。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考方向"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "匀变速运动、图像、受力分析、牛顿第二定律、功和能、实验误差。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "复习提醒"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理题不是套公式，必须先判断运动过程和力的关系。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "衔接提醒："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 高一上半学期决定高中学习底层习惯，下半学期开始影响选科判断和高二专题承接。不要只看单次分数，要看自己是否形成可迁移的解题和表达方法。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "tbody",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "学习模块"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "本页对应内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高一目标"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "运动学"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "位移、速度、加速度、图像"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "会用图像描述运动过程"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "相互作用"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "重力、弹力、摩擦力、受力图"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能规范画受力分析"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "牛顿定律"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "合力、加速度、连接体"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能把力和运动联系起来"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能量与实验"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "功、动能、机械能、误差"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能解释实验条件和结论"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior1-physics-motion",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "id": "senior1-physics-motion",
+          "children": [
+            {
+              "type": "text",
+              "text": "二、运动学：用图像和公式描述过程"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "1. 核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "速度、加速度和位移要区分物理意义。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "v-t 图像的斜率表示加速度，面积表示位移。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "公式使用前要确认是否为匀变速直线运动。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "2. 学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "运动学题先画过程图或图像。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "追及相遇、刹车问题、图像信息、平均速度和瞬时速度。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错内容"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "把路程和位移混淆，或刹车后仍代入负速度继续算。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "本节抓手："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 每题先写“初速度、加速度、时间、位移、末速度”五个量。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "3. 典型例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例题：匀加速运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "典型例题：物体从静止开始以 2m/s² 加速度运动 5s，位移是多少？\n解题思路：从静止开始，s=1/2at²=1/2×2×25=25m。\n提醒：先确认初速度为 0，再选公式。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior1-physics-force",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "id": "senior1-physics-force",
+          "children": [
+            {
+              "type": "text",
+              "text": "三、受力分析与牛顿定律：把力和运动连起来"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "1. 核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "受力分析只画研究对象受到的力，不画它对别人的力。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "摩擦力方向要根据相对运动或相对运动趋势判断。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "牛顿第二定律的方向通常按加速度方向建立坐标轴。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "2. 学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高中力学的核心是受力图。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "斜面、连接体、摩擦、弹簧、超重失重和临界问题。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错内容"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "多画不存在的力，或把平衡和非平衡混在一起。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "本节抓手："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 每道力学题都先隔离研究对象，再画受力图。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "3. 典型例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例题：合力与加速度"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "典型例题：质量 2kg 的物体受合力 6N，求加速度。\n解题思路：由 F=ma 得 a=F/m=6/2=3m/s²。\n提醒：这里的 F 必须是合力，不是某一个分力。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior1-physics-energy-experiment",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "id": "senior1-physics-energy-experiment",
+          "children": [
+            {
+              "type": "text",
+              "text": "四、能量与实验：从过程守恒看问题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "1. 核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "功和能量变化要对应力和位移方向。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "机械能守恒要确认只有重力或弹力做功。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实验题要说明测量量、控制量和误差来源。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "2. 学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能量方法适合处理过程，不只处理瞬间。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "功、动能定理、机械能守恒、实验数据处理。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错内容"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "没有判断守恒条件就直接套机械能守恒。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "本节抓手："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 能量题先问：有哪些力做功，是否有非保守力做功。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "3. 典型例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例题：机械能守恒条件"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "典型例题：物体下落过程中受空气阻力，机械能是否守恒？\n解题思路：不守恒。空气阻力做负功，机械能转化为内能等其他形式。\n提醒：机械能守恒有条件，不能看到下落就套。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior1-physics-plan",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "id": "senior1-physics-plan",
+          "children": [
+            {
+              "type": "text",
+              "text": "六、高一物理学习计划"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "这份计划适合高一物理阶段复盘，也适合期中、期末前集中梳理力学主线。目标是会建模、会画图、会解释公式条件。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "适合谁"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "公式会背但题目不会建模、受力图总漏力、实验题不会说明的学生。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "执行方式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "每周整理一个模型：运动图像、受力图、牛顿定律或能量过程。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "完成标志"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能独立画过程图和受力图，能说明公式适用条件。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "四周执行建议"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "tbody",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "周次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "任务重点"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成标准"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 1 周"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "运动学量和图像"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成 8 道图像题复盘"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 2 周"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "受力分析和摩擦"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "每题画规范受力图"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 3 周"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "牛顿定律综合"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能建立坐标轴并列方程"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 4 周"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能量与实验"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "整理守恒条件和误差来源"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "复盘标准："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 物理复盘要保留图：过程图、受力图、图像和实验装置图，比单纯抄公式更重要。 "
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

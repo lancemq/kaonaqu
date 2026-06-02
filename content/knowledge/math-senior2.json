@@ -1,0 +1,951 @@
+{
+  "slug": "math-senior2",
+  "href": "/knowledge/math-senior2",
+  "title": "上海高二数学知识点与学习说明 | 考哪去",
+  "description": "整理上海高二数学数列、圆锥曲线、导数前置和综合建模的学习说明。",
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海高二数学知识体系与学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "高二数学是高中数学综合度明显上升的阶段。数列、解析几何和函数导数前置内容要从公式记忆转向模型识别。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "page-header-actions",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "#senior2-math-plan",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看学习计划"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "/knowledge/senior-2",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "回到高二总览"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "一、如何使用这份数学资料"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习重点："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 高二学习的核心不是提前刷高三压轴，而是把专题知识、题型模型和表达步骤连成稳定链路。每个专题建议按“核心概念 - 典型模型 - 易错条件 - 综合迁移”的顺序整理。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建立“条件翻译、模型选择、运算控制、结论检验”的解题流程。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考方向"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "数列通项与求和、圆锥曲线性质、直线联立、参数范围和导数综合。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "复习提醒"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高二不要只追难题，基础模型和计算稳定性决定后续提分空间。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "如果是选科科目，建议把本页当作阶段复盘清单：先补概念断点，再练中档综合题，最后整理能迁移到高三一轮复习的模型卡片。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior2-math-sequence",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "二、数列与递推"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "数列题要同时处理代数运算和结构识别，是高二综合题的基础训练场。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "掌握等差、等比、递推、前 n 项和的基本关系。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "会用累加、累乘、错位相减、裂项相消等方法。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "注意通项、求和和证明题之间的转换。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "观察递推结构 - 选择变形方法 - 验证首项和范围。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "忽略 n 的取值范围，或求和后没有检查首末项。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题训练："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 把错题按“通项、求和、证明、应用”四类归档，每类保留 2 道代表题。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior2-math-conic",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "三、圆锥曲线与解析几何"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "解析几何的难点在于把图形关系转化成可计算的代数关系。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "熟悉椭圆、双曲线、抛物线的定义、方程和几何性质。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "直线与曲线联立时注意韦达定理和判别式条件。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "处理定点、定值、最值问题时先判断变量和不变量。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "设点设线 - 联立消元 - 韦达替换 - 几何条件回译。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "只会硬算，不先判断对称性、范围和特殊位置。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题训练："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 每做一道解析几何题，补写一行“为什么这样设变量”。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior2-math-derivative",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "四、导数前置与综合模型"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "导数相关内容要提前建立函数观点，为高三综合复习减少断点。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "复习函数单调性、零点、最值和参数范围。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "理解导数是研究函数变化趋势的工具。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "参数题先分清恒成立、存在性和最值转化。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "函数化 - 求导/判单调 - 找临界点 - 回到参数条件。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "没有定义域意识，或把必要条件当充分条件。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题训练："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 选 5 道含参函数题，统一写出定义域、目标转化和分类理由。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior2-math-plan",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "五、高二数学阶段提升计划"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "建议用“专题模型 + 计算训练 + 错题复盘”三线并行。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型卡"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "每个专题沉淀 4-6 张模型卡，记录触发条件和常见变形。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "计算线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "每天保留 15 分钟做代数变形、方程和不等式训练。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "复盘线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "错题必须写出断点：概念、方法、计算还是审题。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "阶段"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "主要任务"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成标志"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 1 阶段"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "补齐数列和函数基础模型"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "中档题能独立完成主要步骤"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 2 阶段"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "攻克解析几何联立与参数"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能控制运算量并解释设法"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 3 阶段"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "导数前置和综合题迁移"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "形成高三一轮可复用的模型清单"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    "data/knowledge-pages.json"
+  ]
+}

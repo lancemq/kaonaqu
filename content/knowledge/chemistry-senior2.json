@@ -1,0 +1,951 @@
+{
+  "slug": "chemistry-senior2",
+  "href": "/knowledge/chemistry-senior2",
+  "title": "上海高二化学知识点与学习说明 | 考哪去",
+  "description": "整理上海高二化学反应速率与平衡、有机化学基础、实验方案和定量综合的学习说明。",
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海高二化学知识体系与学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "高二化学要把微粒观、平衡观和有机结构观连起来。学习重点从“会写方程式”转向“能解释变化趋势和实验依据”。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "page-header-actions",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "#senior2-chemistry-plan",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看学习计划"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "/knowledge/senior-2",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "回到高二总览"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "一、如何使用这份化学资料"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习重点："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 高二学习的核心不是提前刷高三压轴，而是把专题知识、题型模型和表达步骤连成稳定链路。每个专题建议按“核心概念 - 典型模型 - 易错条件 - 综合迁移”的顺序整理。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "围绕“结构决定性质、条件影响平衡、实验验证结论”建立知识网络。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考方向"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "反应速率、化学平衡、电离水解、有机物结构性质、实验方案和计算。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "复习提醒"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高二化学最怕碎片化，建议把方程式、现象、条件和结论放在同一张表里。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "如果是选科科目，建议把本页当作阶段复盘清单：先补概念断点，再练中档综合题，最后整理能迁移到高三一轮复习的模型卡片。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior2-chemistry-equilibrium",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "二、反应速率与化学平衡"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "平衡专题要理解条件改变如何影响速率、转化率和体系状态。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "掌握浓度、温度、压强、催化剂对速率和平衡的影响。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "理解平衡常数、转化率和勒夏特列原理的使用边界。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "图像题要先判断横纵轴和变量关系。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "条件改变 - 速率变化 - 平衡移动 - 结果判断。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "把速率变快等同于平衡一定右移。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题训练："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 整理 6 类平衡图像，写出每类图像的判断顺序。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior2-chemistry-organic",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "三、有机化学基础"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "有机化学要从官能团、结构和反应类型建立主线。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "识别烃、卤代烃、醇、醛、羧酸、酯等官能团。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "理解取代、加成、氧化、酯化等常见反应。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "同分异构体书写要按碳链、位置、类别有序枚举。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "官能团识别 - 性质预测 - 反应条件 - 产物判断。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "只记反应方程式，不理解官能团变化。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题训练："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 每学一个官能团，补一张“结构 - 性质 - 反应 - 实验现象”卡片。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior2-chemistry-experiment",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "四、实验方案与定量综合"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "实验综合题要求把原理、操作、现象和数据处理串起来。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "明确实验目的、试剂作用和操作顺序。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "离子检验要写清排除干扰和确认依据。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "定量题要围绕守恒关系建立计算路径。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "目的 - 原理 - 操作 - 现象 - 结论 - 误差。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "现象描述不准确，或忽略过量、少量、酸碱环境。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题训练："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 每道实验题都补写“为什么这样操作”和“可能误差来源”。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior2-chemistry-plan",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "五、高二化学阶段提升计划"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "建议用专题表格把平衡、有机和实验贯通起来。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平衡线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "重点整理条件、图像、常数和转化率。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "有机线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "用官能团串起结构性质和反应类型。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "实验线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "每个实验写清原理、操作、现象和误差。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "阶段"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "主要任务"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成标志"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 1 阶段"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "补反应速率和平衡基础"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能解释条件改变后的体系变化"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 2 阶段"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "建立有机官能团主线"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能由结构预测主要性质"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 3 阶段"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "训练实验和定量综合"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能写出完整实验逻辑和计算依据"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    "data/knowledge-pages.json"
+  ]
+}

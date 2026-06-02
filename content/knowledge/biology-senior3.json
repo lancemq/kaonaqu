@@ -1,0 +1,951 @@
+{
+  "slug": "biology-senior3",
+  "href": "/knowledge/biology-senior3",
+  "title": "上海高三生物高考复习说明 | 考哪去",
+  "description": "整理上海高三生物遗传、稳态、生态、实验图表和高考冲刺复习说明。",
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海高三生物高考复习体系与冲刺说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "高三生物要把概念、过程、图表和实验设计统一起来。最后阶段尤其要注意答案边界和术语表达准确。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "page-header-actions",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "#senior3-biology-plan",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看复习计划"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "/knowledge/senior-3",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "回到高三总览"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "一、如何使用这份生物资料"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "复习重点："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 高三复习的核心不是无限加题量，而是按轮次完成“知识回收 - 模型强化 - 模考订正 - 考前收口”。每个专题都建议保留最后能回看的知识清单、典型题和易错提醒。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "围绕生命过程、调节机制、遗传推理和实验证据建立最后回看体系。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考方向"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "细胞代谢、遗传变异、稳态调节、生态系统、实验设计和图表分析。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "复习提醒"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物冲刺要防止“背得很熟但答不到点”，训练题干信息和术语对应。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "如果当前已经进入模考阶段，建议先用本页定位反复失分的专题，再反查对应知识点和模型；如果还在一轮复习，则按章节和题型同步整理。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior3-biology-genetics-metabolism",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "二、遗传、代谢与核心过程"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "遗传和代谢是高三生物综合度较高的基础模块。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心任务"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遗传题先写遗传图解，再算概率。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "代谢题关注物质变化、能量变化和条件影响。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "概念题要区分相近术语和适用范围。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "过程图 - 条件判断 - 变量关系 - 术语表达。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "概率计算缺少条件，或过程图中方向和场所写错。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "模考订正："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 模考后把遗传和代谢错题重画流程图，标注关键条件。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior3-biology-homeostasis-ecology",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "三、稳态调节与生态系统"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "稳态和生态题强调系统关系、反馈调节和信息流动。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心任务"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "稳态题整理神经、体液、免疫三类调节路径。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生态题关注种群、群落、生态系统和能量流动。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "图表题先读坐标、单位、变量和趋势。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "刺激/变量 - 调节路径 - 反馈结果 - 生态意义。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "结论超出图表证据，或混淆调节方式。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "模考订正："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 每次图表题订正时，写清“数据支持了哪个结论”。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior3-biology-experiment",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "四、实验设计与答题规范"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "实验题是生物冲刺阶段最适合精修表达的模块。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "核心任务"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "区分自变量、因变量、无关变量和对照组。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实验结论必须对应实验目的和数据。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "答案使用教材术语，避免口语化表达。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "问题 - 假设 - 变量 - 对照 - 结果 - 结论。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "实验组和对照组设置不完整，或结论写得过大。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "模考订正："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 把实验题答案改成变量表，再反推自己的表述是否完整。 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior3-biology-plan",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "五、高三生物轮次复习计划"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "生物复习要把术语、流程图和实验表结合起来。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "概念线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "相近概念用对照表区分。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "过程线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "遗传、调节、生态用流程图回看。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "实验线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "变量、对照和结论用固定模板表达。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "主要任务"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成标志"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一轮"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "回收模块概念和核心过程"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能准确使用术语和流程图"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "二轮"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "专题突破遗传、稳态、实验"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "图表和实验题失分减少"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "冲刺"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "压缩最后错题和术语清单"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "答案边界和表达更稳定"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    "data/knowledge-pages.json"
+  ]
+}

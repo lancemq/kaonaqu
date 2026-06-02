@@ -1,0 +1,1454 @@
+{
+  "slug": "math-grade7",
+  "href": "/knowledge/math-grade7",
+  "title": "上海七年级数学知识点与学习说明 | 考哪去",
+  "description": "整理上海七年级数学有理数、整式、方程、几何初步和数据意识的学习说明，帮助学生建立初中数学方法。",
+  "breadcrumbItems": [
+    {
+      "label": "知识体系",
+      "href": "/knowledge"
+    },
+    {
+      "label": "七年级",
+      "href": "/knowledge/grade-7"
+    },
+    {
+      "label": "数学知识点"
+    }
+  ],
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海七年级数学知识体系与学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "七年级数学是初中计算、符号和几何语言的起点。本页按计算、代数、方程和几何初步整理知识说明，重点帮助学生把步骤写规范。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "page-header-actions",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "#grade7-math-plan",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看学习计划"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "/knowledge/grade-7",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "回到七年级总览"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "href": "/knowledge/grade-8",
+              "className": "action-link",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "衔接八年级内容"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "一、如何使用这份数学资料"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习重点："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 七年级的核心任务不是提前刷难题，而是把课堂概念、题型语言和订正方法稳定下来。每一节建议按“先看知识说明，再看例题，再做错题归因”的顺序使用。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "先保证有理数运算、符号变形和方程步骤准确，再谈综合题。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考方向"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "正负数运算、整式加减、一元一次方程、线段角度和简单几何表达。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "复习提醒"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "错题要分清是概念错、符号错、计算错还是审题错。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "衔接提醒："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 七年级形成的笔记结构、审题习惯和表达规范，会直接影响八年级理化、几何和综合阅读的学习效率。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "tbody",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "学习模块"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "本页对应内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "七年级目标"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "数与运算"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "有理数、绝对值、科学记数法"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "计算稳定，符号不乱"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "代数表达"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "整式、合并同类项、去括号"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能把文字关系转成式子"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "方程模型"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一元一次方程和应用题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能设未知数并解释等量关系"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "几何初步"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "线段、角、相交线和平行线"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "会用图形语言说明理由"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "grade7-math-number",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "id": "grade7-math-number",
+          "children": [
+            {
+              "type": "text",
+              "text": "二、有理数与计算：先解决符号和顺序"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "1. 核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "正负数意义要和实际情境对应，如收入支出、海拔和温度。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "混合运算按先乘方、再乘除、后加减，有括号先算括号。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "绝对值题要区分“距离”和“数本身”。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "2. 学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "七年级计算的核心是符号意识。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "相反数、绝对值、数轴比较、混合运算、科学记数法。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错内容"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "负号和减号混淆，括号前是负号时漏变号。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "本节抓手："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 每天少量高质量计算，比临考刷一堆题更有效。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "3. 典型例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例题：有理数混合运算"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "典型例题：计算 -3² + (-2) × 5 - 6 ÷ (-3)。\n解题思路：先算乘方 -3² = -9，再算乘除得到 -10 和 +2，最后合并为 -17。\n提醒：-3² 与 (-3)² 不同，括号决定底数。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "grade7-math-algebra",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "id": "grade7-math-algebra",
+          "children": [
+            {
+              "type": "text",
+              "text": "三、整式与方程：把文字关系翻译成数学语言"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "1. 核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "整式加减先找同类项，合并时只合并系数。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "去括号要看括号前的符号，特别是负号。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "应用题要先写等量关系，再列方程。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "2. 学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "代数不是套公式，而是用符号表示关系。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "合并同类项、去括号、求值、列一元一次方程。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错内容"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "把不同字母项合并，或方程移项后符号错误。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "本节抓手："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 应用题先写“谁 = 谁”，再列式，能减少无效试错。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "3. 典型例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例题：列方程"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "典型例题：某数的 3 倍比它的 2 倍多 7，求这个数。\n解题思路：设这个数为 x，根据“3 倍比 2 倍多 7”列 3x = 2x + 7，解得 x = 7。\n提醒：先找等量关系，不要急着凭感觉算。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "grade7-math-geometry",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "id": "grade7-math-geometry",
+          "children": [
+            {
+              "type": "text",
+              "text": "四、几何初步：学会看图、标图和说理"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "1. 核心知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "线段、角、垂直和平行都要会用符号语言表示。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "几何题先把已知条件标到图上，再看要证明或计算什么。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "角度计算要保存过程，不能只写答案。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "2. 学习说明"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "关键点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "七年级几何重在语言和图形习惯。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常考点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "线段和差、角平分线、邻补角、对顶角、平行线角关系。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "易错内容"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "图看对了但理由写不清，或把看起来相等当成已知。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "本节抓手："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 每道几何题至少写清“已知、根据、所以”三步。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "3. 典型例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例题：角度计算"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "典型例题：已知两个角互补，其中一个角为 65°，另一个角是多少？\n解题思路：互补两角和为 180°，所以另一个角为 180° - 65° = 115°。\n提醒：互余是 90°，互补是 180°，不要混淆。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "grade7-math-plan",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "id": "grade7-math-plan",
+          "children": [
+            {
+              "type": "text",
+              "text": "六、七年级数学学习计划"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "这份计划适合七年级数学阶段复盘。目标是让计算、代数和几何表达都形成稳定步骤。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "适合谁"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "计算容易错、方程不会列、几何题看得懂但写不出的学生。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "执行方式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "每周固定整理一类错题，写清错误原因和正确步骤。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "完成标志"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "计算正确率稳定，方程能列出等量关系，几何能写出基本理由。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "children": [
+            {
+              "type": "text",
+              "text": "四周执行建议"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "tbody",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "周次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "任务重点"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成标准"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 1 周"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "有理数和混合运算"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成符号错题归因"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 2 周"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "整式加减和去括号"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "能解释每一步变形"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 3 周"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一元一次方程与应用题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "每题先写等量关系"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第 4 周"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "几何初步和综合复盘"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "角度题过程完整"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "复盘标准："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 数学复盘的重点是过程，不是只看答案对错；每道错题都要写出错在概念、计算、符号还是审题。 "
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

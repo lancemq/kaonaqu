@@ -1,0 +1,56 @@
+{
+  "slug": "physics-grade8-plan",
+  "href": "/knowledge/physics-grade8-plan",
+  "title": "跳转中 - 八年级物理学习计划",
+  "description": "考哪去知识体系频道，按学段、年级和学科整理学习内容。",
+  "breadcrumbItems": [
+    {
+      "label": "知识体系",
+      "href": "/knowledge"
+    },
+    {
+      "label": "physics-grade8-plan"
+    }
+  ],
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "物理学习计划已并入八年级物理知识页"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "如果没有自动跳转，请点击下方链接进入八年级物理页中的学习计划章节。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "a",
+          "className": "action-link",
+          "href": "/knowledge/physics-grade8#physics-study-plan",
+          "children": [
+            {
+              "type": "text",
+              "text": "进入八年级物理学习计划"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

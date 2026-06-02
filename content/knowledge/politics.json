@@ -1,0 +1,65 @@
+{
+  "slug": "politics",
+  "href": "/knowledge/politics",
+  "title": "跳转中 - 八年级道德与法治知识点",
+  "description": "考哪去知识体系频道，按学段、年级和学科整理学习内容。",
+  "breadcrumbItems": [
+    {
+      "label": "知识体系",
+      "href": "/knowledge"
+    },
+    {
+      "label": "politics"
+    }
+  ],
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "页面已迁移到八年级专属道德与法治页"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "如果没有自动跳转，请点击下方链接进入新版命名页面。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "a",
+          "className": "action-link",
+          "href": "/knowledge/politics-grade8",
+          "children": [
+            {
+              "type": "text",
+              "text": "进入八年级道法页"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "children": [
+            {
+              "className": "page-header"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

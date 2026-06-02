@@ -1,0 +1,377 @@
+{
+  "slug": "math-grade8",
+  "href": "/knowledge/math-grade8",
+  "title": "上海初二数学知识点归纳 | 八年级数学学习资料 | 考哪去",
+  "description": "整理上海初二数学知识点与典型题型，覆盖几何、函数、方程与不等式等重点内容，适合八年级复习与查漏补缺。",
+  "breadcrumbItems": [
+    {
+      "label": "知识体系",
+      "href": "/knowledge"
+    },
+    {
+      "label": "八年级",
+      "href": "/knowledge/grade-8"
+    },
+    {
+      "label": "数学知识点"
+    }
+  ],
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海九年级数学中考复习要点"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "依据沪教版八年级数学教材整理，涵盖二次根式、一元二次方程、正比例函数与反比例函数、几何证明等重点内容。"
+            }
+          ]
+        }
+      ],
+      "className": "page-header"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "二次根式"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "二次根式的性质与运算是八年级代数学习的重点，也是中考的基础性考点。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "√a ≥0 (a≥0)，双重非负性是二次根式的核心性质"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "最简二次根式：被开方数不含分母、不含能开得尽的因数或因式"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "同类二次根式：化简后被开方数相同的二次根式可以合并"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "化简：√48 - √12 + 2√3"
+            }
+          ]
+        }
+      ],
+      "className": "example-card"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "一元二次方程"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "一元二次方程是初中代数的重要内容，四种解法都需要熟练掌握。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "直接开平方法：适用于 (x+a)² = b 的形式"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "配方法：x² + px + q = 0 → (x + p/2)² = (p/2)² - q"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "公式法：x = [-b ± √(b²-4ac)] / 2a"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "因式分解法：十字相乘法是最高效的方法"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "解方程：x² - 6x + 8 = 0（用两种不同方法求解）"
+            }
+          ]
+        }
+      ],
+      "className": "example-card"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "函数初步"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "正比例函数 y = kx (k≠0) 和反比例函数 y = k/x (k≠0) 是初中函数学习的起点。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "正比例函数图像过原点，k > 0 过一三象限，k < 0 过二四象限"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "反比例函数图像是双曲线，与坐标轴无交点"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "待定系数法是求函数解析式的核心方法"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "已知 y 与 x 成反比例，当 x = 2 时 y = 6，求 y 与 x 的函数关系式。"
+            }
+          ]
+        }
+      ],
+      "className": "example-card"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考备考建议"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "九年级 math-grade8 的复习要紧紧围绕中考要求展开。建议制定三轮复习计划：第一轮全面梳理知识点，第二轮专题突破重难点，第三轮真题模拟查漏补缺。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "重视基础：中考试卷中基础题占比约 60%，基础不丢分是取得好成绩的前提"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "整理错题：每做完一套练习，花同等时间整理错题和分析原因"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "限时训练：平时练习要限时完成，培养考试时间感"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,824 @@
+{
+  "slug": "grade-8",
+  "href": "/knowledge/grade-8",
+  "title": "上海八年级知识点总览与学科入口 | 考哪去",
+  "description": "汇总上海八年级语文、数学、英语、物理、化学、历史、道德与法治等学科入口，适合按学科建立系统复习路径。",
+  "breadcrumbItems": [
+    {
+      "label": "知识体系",
+      "href": "/knowledge"
+    },
+    {
+      "label": "八年级"
+    }
+  ],
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-front-hero grade-front-hero",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "knowledge-front-layout",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "knowledge-front-copy",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "knowledge-front-kicker",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "八年级专题页"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "h1",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "上海八年级重点学科内容总览"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "knowledge-front-summary",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "八年级是从基础掌握走向综合应用的关键阶段。本页先给出整体节奏和重点方向，再进入各学科页查看知识点、实验、例题和学习计划。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "knowledge-front-stats",
+              "aria-label": "八年级概览",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "article",
+                  "className": "knowledge-stat",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "重点学科"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "7"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "语数英理化史道法"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "article",
+                  "className": "knowledge-stat",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "优先模块"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "理化"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "实验、例题和学习计划更完整"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "article",
+                  "className": "knowledge-stat",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "当前目标"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "过渡年"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "为九年级复习提前搭框架"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "先搭结构，再按学科深入复习"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "建议先用本页判断当前要补哪一门学科，再进入对应页面查看详细知识说明、关键点、易错点、实验要求和例题训练。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "page-header-actions",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "action-link",
+              "href": "/knowledge/physics-grade8#physics-study-plan",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看物理学习计划"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "action-link",
+              "href": "/news",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看考试新闻政策"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "stage-ribbon",
+      "aria-label": "八年级阅读重点",
+      "children": [
+        {
+          "type": "element",
+          "tag": "article",
+          "className": "ribbon-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学科入口"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "先看结构"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "从本页进入单科页，先判断知识结构，再做题。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "article",
+          "className": "ribbon-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "复习顺序"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "理化优先"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理和化学建议先完成知识框架、实验和例题梳理。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "article",
+          "className": "ribbon-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "阶段任务"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "衔接九年级"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "八年级末要形成稳定的章节清单、错题清单和实验清单。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "八年级学科目录"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "subject-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/chinese-grade8",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "语文"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "古诗文阅读、现代文阅读、写作技巧"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/math-grade8",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "数学"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "几何代数、函数、方程与不等式"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/english-grade8",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "英语"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "语法词汇、阅读理解、写作范文"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/physics-grade8",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "声、光、运动、力、压强浮力、简单机械与热现象"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/chemistry-grade8",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学入门、实验基础、空气氧气、水与微粒观、化学用语"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/history-grade8",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "历史"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "中国近现代史、世界古代史"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/politics-grade8",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "道德与法治"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "法治教育、公民素养、责任担当"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "八年级复习重点板块"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "grade-overview-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "article",
+              "className": "overview-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "语数英"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "保持基础题稳定，同时逐步增加阅读、表达和综合应用训练，不要只刷单一题型。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "article",
+              "className": "overview-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "围绕教材章节建立概念、规律、实验和例题四条线，尤其重视测量、运动和力、压强浮力。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "article",
+              "className": "overview-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "重点整理实验操作、空气与水、微粒观、化学用语和质量守恒，注意现象与结论区分。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "article",
+              "className": "overview-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "历史与道法"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "适合用专题小结和时政、史实结合的方法复盘，避免只看知识点不做表达训练。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "八年级使用方式"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "先进入学科页查看“知识点 + 典型例题 + 资料入口”，再回到本页安排复习顺序。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "建议每个学科保留一份“章节重点 + 典型例题 + 错题”三栏清单。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理适合按专题滚动复盘，化学适合边做实验现象归纳边记化学用语。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "tips",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "八年级学习建议"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "八年级是从“基础掌握”过渡到“综合应用”的关键阶段，建议固定每周复盘一次。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "使用本页时优先点进学科页，不要只停留在入口卡片层。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "如果准备向九年级过渡，可先搭建各学科知识结构图，便于后续总复习接续。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

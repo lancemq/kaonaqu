@@ -1,0 +1,548 @@
+{
+  "slug": "math-grade9",
+  "href": "/knowledge/math-grade9",
+  "title": "上海九年级数学中考复习知识体系与典型题 | 考哪去",
+  "description": "整理上海九年级数学中考复习重点，覆盖函数、几何证明、圆、相似、统计概率和综合压轴题。",
+  "breadcrumbItems": [
+    {
+      "label": "知识体系",
+      "href": "/knowledge"
+    },
+    {
+      "label": "九年级",
+      "href": "/knowledge/grade-9"
+    },
+    {
+      "label": "数学知识点"
+    }
+  ],
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海九年级数学中考复习要点"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "依据上海中考数学考试要求，梳理数与运算、方程与代数、函数与分析、数据整理与概率统计、图形与几何五大板块的复习要点。"
+            }
+          ]
+        }
+      ],
+      "className": "page-header"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "数与运算"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考数学基础板块，约占总分 20%。核心考点包括实数运算、整式与分式、二次根式等。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "实数分类：有理数和无理数，注意 π 和开方开不尽的数是无理数"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "幂的运算：aᵐ·aⁿ = aⁿ⁻ⁿ, (aᵐ)ⁿ = aᵐⁿ, a⁻ᵐ = 1/aᵐ"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "二次根式化简：√ab = √a·√b (a≥0,b≥0)，分母有理化是高频考点"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "化简 √12 + √48 - √27 = 2√3 + 4√3 - 3√3 = 3√3"
+            }
+          ]
+        }
+      ],
+      "className": "example-card"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "方程与不等式"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考核心板块，包括一元二次方程、二元一次方程组、分式方程、不等式（组）的解法及应用。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "一元二次方程：ax² + bx + c = 0 (a≠0)，判别式 Δ = b² - 4ac"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "Δ > 0 有两个不等实根，Δ = 0 有两个相等实根，Δ < 0 无实根"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "韦达定理：x₁ + x₂ = -b/a, x₁x₂ = c/a"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "应用题列方程的关键：找准等量关系，合理设未知数"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "某商店将进货价 40 元的商品以 60 元售出，平均每周可卖出 300 件。经调查，每涨价 1 元每周少卖 10 件。要使每周利润达到 6240 元，应涨价多少元？"
+            }
+          ]
+        }
+      ],
+      "className": "example-card"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "函数与分析"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考重点压轴板块，涵盖正比例函数、反比例函数、一次函数、二次函数的图像和性质。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "二次函数 y = a(x-h)² + k 的顶点坐标 (h,k)，对称轴 x = h"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "a > 0 开口向上，a < 0 开口向下"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "图像平移规律：左加右减（x），上加下减（y）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "函数综合题常结合几何图形，考查数形结合能力"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "已知二次函数 y = x² - 4x + 3，求其顶点坐标和与 x 轴的交点坐标。"
+            }
+          ]
+        }
+      ],
+      "className": "example-card"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "图形与几何"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考第二大板块，约占总分 35%。涉及三角形、四边形、圆的性质和证明，以及相似三角形和锐角三角比。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "三角形全等判定：SSS、SAS、ASA、AAS、HL（直角三角形）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "三角形相似判定：两角对应相等、两边对应成比例且夹角相等、三边对应成比例"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "圆的垂径定理：垂直于弦的直径平分弦且平分弦所对的两条弧"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "切线判定：过半径外端且垂直于半径的直线是圆的切线"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "children": [
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "如图，在 △ABC 中，∠C = 90°，AC = 3，BC = 4，CD ⊥ AB 于 D，求 CD 的长。"
+            }
+          ]
+        }
+      ],
+      "className": "example-card"
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "数据整理与概率"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考基础板块，主要考查统计量计算（平均数、中位数、众数、方差）和简单概率计算。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "方差公式：s² = Σ(xᵢ - x̄)²/n，反映数据的离散程度"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "概率 P(A) = 事件 A 发生的结果数 / 总结果数"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "树状图和列表法是计算概率的两种基本方法"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "统计图表题要注意单位、刻度和数据完整性"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考备考建议"
+        }
+      ],
+      "className": "section-title"
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "九年级 math-grade9 的复习要紧紧围绕中考要求展开。建议制定三轮复习计划：第一轮全面梳理知识点，第二轮专题突破重难点，第三轮真题模拟查漏补缺。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "重视基础：中考试卷中基础题占比约 60%，基础不丢分是取得好成绩的前提"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "整理错题：每做完一套练习，花同等时间整理错题和分析原因"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "限时训练：平时练习要限时完成，培养考试时间感"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "children": [
+            {
+              "type": "text",
+              "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

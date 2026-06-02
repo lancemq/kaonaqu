@@ -1,0 +1,728 @@
+{
+  "slug": "senior-1",
+  "href": "/knowledge/senior-1",
+  "title": "上海高一知识点与学习规划 | 考哪去",
+  "description": "整理上海高一阶段知识点框架、学科重点与学习规划，帮助完成初高衔接和高中学习体系搭建。",
+  "breadcrumbItems": [
+    {
+      "label": "知识体系",
+      "href": "/knowledge"
+    },
+    {
+      "label": "高一"
+    }
+  ],
+  "richBlocks": [
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "page-header",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海高一学习结构"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "高一不是“初中延长版”，重点在于完成学科深度切换、适应高中节奏，并逐步形成高考视角的长期规划。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "page-header-actions",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "action-link",
+              "href": "/news",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "查看高考新闻政策"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "action-link",
+              "href": "/knowledge#high-school",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "返回高中学段"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "高一学科目录"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "subject-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/chinese-senior1",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "语文"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "现代文、古诗文、整本书阅读、议论文表达"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/math-senior1",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "数学"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "集合、函数、三角函数、向量和模型应用"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/english-senior1",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "英语"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "长阅读、语法、翻译、概要和写作"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/physics-senior1",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "运动学、受力分析、牛顿定律、能量与实验"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/chemistry-senior1",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物质分类、离子反应、氧化还原、物质的量"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge/biology-senior1",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "细胞结构、生命物质、代谢过程和实验探究"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior1-chinese",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "语文重点知识与例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "建立现代文信息筛选、论述类文本逻辑梳理和古诗文理解的统一阅读方法。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "议论文写作要先学会提出观点、分层论证和使用材料，不要只停留在抒情表达。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "典型例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "论述类文本中“作者反对的观点”通常如何定位？ "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "方法：先看转折词和评价词，再回到前后文寻找与作者立场对立的信息句。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior1-math",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "数学重点知识与例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "集合与函数是高一数学主轴，重点掌握定义域、单调性、奇偶性和图像变换。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三角函数和向量为高二综合题打基础，要从公式记忆转向图像和模型理解。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "典型例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "函数 `f(x)=2x+3`，求 `f(2)` 并判断其增减性。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "答案：`f(2)=7`；一次函数斜率为正，因此函数在定义域内单调递增。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior1-english",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "英语重点知识与例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一英语应从单句语法切换到语篇理解，重点抓长阅读、语法分析和书面表达。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "固定积累主题词汇和常用句型，提高翻译与作文的可调动性。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "典型例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "将 “因为天气恶劣，比赛被推迟了。” 翻译成英语。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考表达：`Because of the bad weather, the game was put off.` 重点掌握被动结构与短语 `put off`。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "id": "senior1-science",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "理化生重点知识与例题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理重点是受力分析、牛顿定律和运动学模型；化学重点是物质结构与基础反应；生物重在概念框架。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "所有理科都要按“概念 - 条件 - 公式/过程 - 应用题型”建立统一笔记方式。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "典型例题："
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "质量为 2kg 的物体受 6N 合力作用，求加速度。 "
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "根据牛顿第二定律 `a = F/m`，得 `a = 6/2 = 3m/s²`。关键是先确认“合力”而不是某一个分力。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "当前可用资源"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "subject-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/news",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "新闻政策模块"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "查看上海高考、春考和考试院动态，尽早理解高中阶段的时间线和规则。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/knowledge",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "知识体系总览"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "从初一到高三统一查看学习路径，后续高二、高三内容也会在这里补齐。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "a",
+              "className": "subject-card",
+              "href": "/schools",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h3",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "学校信息模块"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "如果处于择校或了解学校特色阶段，可进一步查看区域和学校介绍。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "tips",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "children": [
+            {
+              "type": "text",
+              "text": "高一使用建议"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一各科重点是完成从“记住”到“理解并表达”的切换，整理笔记和做典型题同样重要。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遇到断层时优先回到定义、定理和基础模型，不要直接用高难综合题硬顶。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "建议每个单元至少保留 2-3 道典型例题，方便后续高二高三快速回顾。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
