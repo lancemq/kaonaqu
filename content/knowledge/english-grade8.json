@@ -1,8 +1,8 @@
 {
   "slug": "english-grade8",
   "href": "/knowledge/english-grade8",
-  "title": "沪教版（上海）八年级英语知识点 | 时态深化 / 被动语态 / 从句 | 考哪去",
-  "description": "依据沪教版八年级英语教材，梳理时态深化、被动语态、状语从句和阅读写作策略。",
+  "title": "沪教版上海八年级英语知识点 | 时态/语态/从句/词汇/读写 | 考哪去",
+  "description": "依据沪教版八年级英语教材按单元系统梳理八种时态被动语态状语从句核心词汇和阅读写作策略含大量例句。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -20,6 +20,7 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "page-header",
       "children": [
         {
           "type": "element",
@@ -27,7 +28,7 @@
           "children": [
             {
               "type": "text",
-              "text": "上海九年级英语中考复习要点"
+              "text": "沪教版上海八年级英语知识点 | 时态/语态/从句/词汇/读写 | 考哪去"
             }
           ]
         },
@@ -37,317 +38,7 @@
           "children": [
             {
               "type": "text",
-              "text": "依据沪教版八年级英语教材整理，梳理时态深化、状语从句、被动语态和阅读写作策略。"
-            }
-          ]
-        }
-      ],
-      "className": "page-header"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "时态巩固与深化"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "八年级英语时态从四种扩展到八种，现在完成时和过去进行时是学习难点。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "现在完成时：have/has + 过去分词，标志词 ever/never/already/yet/just"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "现在完成时与一般过去时的区别：前者强调对现在的影响，后者强调过去的时间点"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "过去进行时：was/were + doing，表示过去某时刻正在进行的动作"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "I _ (finish) my homework already. (用适当形式填空)"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "状语从句"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "状语从句是八年级语法的重点，包括时间、原因、条件、结果和让步状语从句。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "时间状语从句：when/while/as/before/after/until"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "条件状语从句：if/unless，主将从现原则"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "原因状语从句：because/since/as"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "If it _ (rain) tomorrow, we _ (stay) at home."
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "阅读与写作"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "八年级英语阅读篇幅增长、词汇量加大。写作从段落到短文过渡。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "阅读策略：skimming（略读获取大意）、scanning（扫读寻找细节）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "写作结构：topic sentence（主题句）+ supporting details（支撑细节）+ concluding sentence（总结句）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "推荐积累 10 个高级连接词：however/therefore/moreover/furthermore/in addition"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "英语学习贵在坚持。每天 30 分钟的持续输入（阅读+听力）比周末学 3 小时效果更好。"
-            }
-          ]
-        }
-      ],
-      "className": "knowledge-note-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考备考建议"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "九年级 english-grade8 的复习要紧紧围绕中考要求展开。建议制定三轮复习计划：第一轮全面梳理知识点，第二轮专题突破重难点，第三轮真题模拟查漏补缺。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "重视基础：中考试卷中基础题占比约 60%，基础不丢分是取得好成绩的前提"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "整理错题：每做完一套练习，花同等时间整理错题和分析原因"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "限时训练：平时练习要限时完成，培养考试时间感"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
+              "text": "依据沪教版八年级英语教材按单元系统梳理八种时态被动语态状语从句核心词汇和阅读写作策略含大量例句。"
             }
           ]
         }
@@ -360,7 +51,7 @@
       "children": [
         {
           "type": "text",
-          "text": "时态深化（八种时态）"
+          "text": "时态深化八种时态对比"
         }
       ]
     },
@@ -370,27 +61,7 @@
       "children": [
         {
           "type": "text",
-          "text": "现在完成时是学习难点（have/has+过去分词），表示过去动作对现在的影响。标志词 ever/never/already/yet/just/since/for。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "现在完成时和一般过去时的区别：前者强调对现在的影响不涉具体时间，后者强调过去动作涉及具体时间。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "过去进行时 was/were+doing，表示过去某时刻正在进行的动作。常与 when/while 连用。"
+          "text": "一般现在时表示经常性习惯性动作或客观真理。现在进行时表示现在正在进行的动作。现在完成时have/has加过去分词表示过去动作对现在的影响或持续到现在的动作。标志词ever/never/already/yet/just/since/for等。现在完成时和一般过去时的根本区别前者重在影响不涉具体时间后者重在动作涉及具体时间。过去进行时was/were加doing表示过去某时刻正在进行的动作。过去完成时had加过去分词表示过去的过去。一般将来时will加动词原形和be going to的区别。过去将来时would加动词原形用于宾语从句中。"
         }
       ]
     },
@@ -411,17 +82,7 @@
       "children": [
         {
           "type": "text",
-          "text": "结构 be+过去分词 (+by+执行者)。一般现在时 am/is/are+done，一般过去时 was/were+done，情态动词 can/must/should+be+done。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "不及物动词 happen/take place/appear 无被动语态。感官动词 feel/sound/taste 用主动表被动。"
+          "text": "被动语态结构be加过去分词加by执行者。一般现在时被动am/is/are加done。一般过去时被动was/were加done。情态动词被动can/must/should加be加done。主动表被动的特殊用法某些动词如sell/write/cut/wash用主动形式表示被动含义如This book sells well。不及物动词如happen/take place/appear等没有被动语态。感官动词如feel/sound/taste/smell用主动表被动。"
         }
       ]
     },
@@ -442,7 +103,7 @@
       "children": [
         {
           "type": "text",
-          "text": "时间状语从句 when/while/as/before/after/until，条件状语从句 if/unless，主将从现原则。原因状语从句 because/since/as，让步状语从句 although/though（不与but连用）。"
+          "text": "时间状语从句when/while/as/before/after/until/assoonas。主将从现原则在主句用将来时从句用一般现在时。条件状语从句if/unless。unless等于ifnot。原因状语从句because/since/as语气从强到弱。结果状语从句so...that.../such...that...其中so接形容词副词such接名词。让步状语从句although/though/evenif。although不与but连用。注意状语从句连接词的准确选用是语法填空和写作的常见考点。"
         }
       ]
     },
@@ -459,47 +120,11 @@
     },
     {
       "type": "element",
-      "tag": "ul",
+      "tag": "p",
       "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "look for/take care of/give up/put on/turn off 等动词短语"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "at first/in fact/by the way/in a hurry 等介词短语"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "not only...but also.../either...or.../neither...nor... 等连词短语"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "be good at/be afraid of/be interested in/be proud of 等固定搭配"
-            }
-          ]
+          "type": "text",
+          "text": "高频动词短语look系列lookfor寻找lookafter照顾lookforwardto期待lookup查阅。turn系列turnon打开turnoff关闭turnup调大turnover翻转。短语介词atfirst起初infact事实上bytheway顺便说一下inaurry匆忙。连词短语notonly...butalso...连接主语时谓语动词就近一致either...or.../neither...nor...也是就近原则。besides和except的区别besides包括后面的对象except排除后面的对象。"
         }
       ]
     },
@@ -510,7 +135,7 @@
       "children": [
         {
           "type": "text",
-          "text": "阅读与写作"
+          "text": "阅读与写作策略"
         }
       ]
     },
@@ -520,7 +145,18 @@
       "children": [
         {
           "type": "text",
-          "text": "skimming（略读）获取大意，scanning（扫读）定位细节。阅读先看题目再读文章，带着问题更高效。"
+          "text": "阅读策略skimming略读获取文章大意scanning扫读定位特定信息。阅读文章时先浏览题目再回到文中定位答案提高效率。主旨大意题找主题句通常在首段末段或各段首句。细节理解题注意同义替换和否定表达。推理判断题基于文章内容合理推断避免加入主观想法。写作掌握基本段落结构主题句加支撑细节加总结句。学会使用连接词first/second/finally表示顺序however/ontheotherhand表示转折therefore/asaresult表示因果让文章连贯流畅。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "重点语法补充"
         }
       ]
     },
@@ -530,7 +166,7 @@
       "children": [
         {
           "type": "text",
-          "text": "写作结构主题句+支撑细节+总结句。使用连接词 first/second/finally/however/therefore 使文章更流畅。"
+          "text": "形容词副词的比较级和最高级规则变化er/est和more/most和不规则变化good/well→better→best,bad/badly→worse→worst,many/much→more→most。同级比较as...as中间用形容词副词原级。修饰比较级可用much/even/far/alittle表示程度。感叹句What+a/an加形容词加名词加主谓语和How加形容词副词加主谓语两种结构。反意疑问句前肯后否前否后肯的规则及其回答注意事实决定回答方向。"
         }
       ]
     },
@@ -551,7 +187,217 @@
       "children": [
         {
           "type": "text",
-          "text": "学习贵在坚持和方法。制定合理计划，每天固定时间学习，定期复习巩固。遇到不懂的问题及时请教。"
+          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "现在完成时的深度掌握"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "现在完成时是八年级语法的重中之重也是中考的高频考点。现在完成时表示过去发生或已经完成的某一动作对现在造成的影响或结果也可以表示过去已经开始持续到现在的动作或状态。现在完成时的标志词包括ever/never/already/yet/just/recently/lately/since/for等注意already用于肯定句yet用于否定句和疑问句。现在完成时和一般过去时的区别是中考的常考易错点现在完成时强调过去动作与现在的联系不涉具体时间一般过去时只强调过去的动作涉及具体时间。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "被动语态的全面学习"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "被动语态表示主语是动作的承受者而非执行者。含情态动词的被动语态结构can/must/should/may加be加过去分词。注意被动语态中的by短语有时可以省略当动作的执行者不明显或不重要时。主动语态变被动语态的方法首先将主动的宾语改为被动的主语然后将谓语动词改为be加过去分词形式再根据时态变化be动词最后用by加主动主语。感官动词和使役动词的被动语态是难点let/make/see/hear等词在主动语态中后接不带to的不定式变成被动语态时要还原to。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "状语从句的全面梳理"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "状语从句在主从复合句中作状语修饰主句的动词形容词或副词。时间状语从句的连接词有when/while/as/before/after/until/assoonas/since等。when引导的从句既可表示时间点也可表示时间段while只能表示时间段且从句动词常用进行时态。条件状语从句中unless等于ifnot是常考点。原因状语从句中because不能和so同时出现在同一个句子中。所以so的用法区别because用于从句so用于主句。结果状语从句中so和such的区别so加形容词副词such加名词。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "八种时态系统对比"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一般现在时表示经常性习惯性动作和客观真理\\uff0c标志词always/usually/often/sometimes/everyday\\u3002现在进行时表示现在正在进行的动作\\uff0c标志词now/atthemoment/listen/look\\u3002现在完成时have/has+过去分词\\uff0c标志词ever/never/already/yet/just/since/for\\u3002现在完成时和一般过去时的区别是中考常考点\\uff1a前者强调对现在的影响不涉及具体时间后者强调过去动作涉及具体时间。过去进行时was/were+doing\\uff0c常与when/while引导的时间状语从句连用表示过去某时刻正在进行的动作。过去完成时had+过去分词表示过去的过去。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "被动语态的应用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "被动语态be+过去分词+\\uff08by+执行者\\uff09。各种时态的被动语态变化都体现在be动词上。情态动词的被动语态can/must/should/may+be+done。主动语态变被动语态的步骤：把主动的宾语改为被动的主语把主动的谓语改为be+过去分词by+主动主语。注意不及物动词没有被动语态happen/takeplace/appear等。某些动词用主动形式表示被动含义如Thisbooksellswell中的sell。感官动词feel/sound/taste/smell也用主动表被动。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "状语从句的灵活运用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时间状语从句when/while/as/before/after/until/assoonas。条件状语从句if/unless\\uff0cunless=ifnot。原因状语从句because/since/as语气从强到弱。结果状语从句so...that.../such...that...。让步状语从句although/though/evenif。状语从句的学习重点是连接词的选择以及主从句的时态搭配。特别是条件状语从句和时间状语从句的主将从现原则：主句用将来时从句用一般现在时。"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

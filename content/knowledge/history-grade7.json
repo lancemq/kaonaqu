@@ -1,8 +1,8 @@
 {
   "slug": "history-grade7",
   "href": "/knowledge/history-grade7",
-  "title": "上海七年级中国古代史知识点 | 夏商周 / 秦汉 / 三国 | 考哪去",
-  "description": "依据部编版（人教社）七年级历史教材整理，涵盖史前时期至南北朝的中国古代史核心知识点。",
+  "title": "部编版上海七年级历史知识点 | 史前/夏商周/秦汉/三国两晋南北朝 | 考哪去",
+  "description": "依据部编版七年级历史教材系统梳理中国古代史上册史前时期夏商周秦汉和三国两晋南北朝。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -20,6 +20,7 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "page-header",
       "children": [
         {
           "type": "element",
@@ -27,7 +28,7 @@
           "children": [
             {
               "type": "text",
-              "text": "上海七年级（上册）中国古代史知识点"
+              "text": "部编版上海七年级历史知识点 | 史前/夏商周/秦汉/三国两晋南北朝 | 考哪去"
             }
           ]
         },
@@ -37,115 +38,7 @@
           "children": [
             {
               "type": "text",
-              "text": "依据部编版（人教社）七年级历史教材整理，涵盖史前时期至南北朝的核心知识点。"
-            }
-          ]
-        }
-      ],
-      "className": "page-header"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "史前时期"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "元谋人："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "我国境内目前已确认的最早古人类，距今约 170 万年，云南元谋县。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "北京人："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "距今约 70 万—20 万年，北京周口店，学会使用火，使用打制石器。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "山顶洞人："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "距今约 3 万年，掌握磨光和钻孔技术，有审美意识。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "河姆渡人（长江流域）：种植水稻，住干栏式房屋"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "半坡居民（黄河流域）：种植粟，住半地穴式房屋"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "黄帝和炎帝：传说中中华民族的人文初祖"
+              "text": "依据部编版七年级历史教材系统梳理中国古代史上册史前时期夏商周秦汉和三国两晋南北朝。"
             }
           ]
         }
@@ -154,21 +47,11 @@
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "夏商周时期"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "夏朝（约前 2070—前 1600 年）：禹建立，“世袭制”代替“禅让制”，标志早期国家产生。"
+          "text": "史前时期中国早期人类"
         }
       ]
     },
@@ -178,141 +61,20 @@
       "children": [
         {
           "type": "text",
-          "text": "商朝（约前 1600—前 1046 年）：盘庚迁殷后稳定发展，甲骨文是中国已发现的古代文字中年代最早、体系较为完整的文字。"
+          "text": "元谋人是我国境内目前已确认的最早古人类距今约170万年。北京人距今约70万至20万年能够使用火使用打制石器从事狩猎和采集生活群居生活。山顶洞人距今约3万年掌握磨光和钻孔技术有审美意识。河姆渡人距今约7000年种植水稻住干栏式房屋使用磨制石器是长江流域原始农耕的代表。半坡居民距今约6000年种植粟住半地穴式房屋制作彩陶是黄河流域原始农耕的代表。炎帝黄帝是传说中中华民族的人文初祖通过阪泉之战和涿鹿之战形成华夏族主体。"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "西周（前 1046—前 771 年）：分封制和宗法制，确立了周天子的统治秩序。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "春秋战国：王室衰微、诸侯争霸。铁制农具和牛耕出现，生产力大发展。百家争鸣（儒、道、法、墨等）。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "“退避三舍”“卧薪尝胆”这些成语分别出自春秋时期的晋楚争霸和越王勾践的故事。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "秦汉时期"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "秦统一六国（前 221 年）：秦始皇建立中央集权制度，统一文字、货币、度量衡"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "汉武帝大一统：“罢黜百家，独尊儒术”，张骞通西域开辟丝绸之路"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "东汉末年到三国：官渡之战、赤壁之战，魏蜀吴鼎立"
-            }
-          ]
+          "text": "夏商周时期早期国家的建立和发展"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "丝绸之路从长安出发，经河西走廊、西域到中亚、西亚，最远到达欧洲的大秦（罗马）。这条商路促进了东西方文化和技术交流。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "三国两晋南北朝"
-        }
-      ],
-      "className": "section-title"
     },
     {
       "type": "element",
@@ -320,62 +82,156 @@
       "children": [
         {
           "type": "text",
-          "text": "西晋短暂统一后，中国进入南北朝对峙时期。北方民族大交融，江南经济得到开发。"
+          "text": "夏朝约公元前2070年禹建立中国历史上第一个王朝。世袭制代替禅让制公天下变为家天下。夏朝建立了军队制定刑法设置监狱标志着早期国家的产生。商朝汤灭夏后建立盘庚迁殷后商朝稳定发展。甲骨文是商朝人刻写在龟甲和兽骨上的文字是中国已发现的古代文字中年代最早体系较为完整的文字。西周分封制周天子把土地和人民分给诸侯诸侯服从周天子定期朝觐纳贡服役。宗法制规定了嫡长子继承制维护贵族内部秩序。春秋时期王室衰微诸侯争霸齐桓公晋文公楚庄王先后称霸。战国七雄齐楚秦燕赵魏韩。铁制农具和牛耕在春秋战国时期出现和推广促进了生产力发展。商鞅变法在秦国的推行是战国时期最彻底的变法使秦国成为最强大的诸侯国。"
         }
       ]
     },
     {
       "type": "element",
-      "tag": "ul",
+      "tag": "h2",
+      "className": "section-title",
       "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "北魏孝文帝改革：迁都洛阳、推行汉化政策，促进民族融合"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "《齐民要术》贾思勰：现存最早最完整的农书"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "祖冲之：精确计算圆周率到小数点后第七位"
-            }
-          ]
+          "type": "text",
+          "text": "秦汉时期统一多民族国家的建立和巩固"
         }
       ]
     },
     {
       "type": "element",
-      "tag": "div",
+      "tag": "p",
       "children": [
         {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "七年级历史学习的重点是建立时间轴和朝代更替框架，这是一切历史分析的基础。建议用思维导图的方式画出每个朝代的“时间——人物——事件”结构。"
-            }
-          ]
+          "type": "text",
+          "text": "秦统一六国公元前221年秦王嬴政建立秦朝定都咸阳。确立中央集权制度最高统治者称皇帝中央设三公丞相御史大夫太尉地方推行郡县制。统一文字以小篆为标准字体统一货币用圆形方孔钱统一度量衡。修筑长城西起临洮东到辽东。秦的暴政导致农民起义陈胜吴广起义是中国历史上第一次农民大起义。西汉汉高祖推行休养生息政策文景之治出现治世。汉武帝大一统政治上推恩令削弱王国势力思想上罢黜百家独尊儒术经济上盐铁专卖军事上北击匈奴。张骞通西域开辟丝绸之路从长安出发经河西走廊到中亚西亚最远到达大秦。丝绸之路促进了东西方经济文化交流。东汉蔡伦改进造纸术对世界文化传播作出巨大贡献。"
         }
-      ],
-      "className": "knowledge-note-card"
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "三国两晋南北朝政权分立和民族交融"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "官渡之战200年曹操以少胜多打败袁绍奠定统一北方基础。赤壁之战208年孙刘联军以少胜多打败曹操奠定三国鼎立基础。三国魏蜀吴分别建立。西晋280年统一全国但统治短暂。八王之乱导致西晋衰落。北方进入十六国时期南方为东晋。淝水之战383年前秦苻坚进攻东晋东晋以少胜多。北魏孝文帝改革494年迁都洛阳推行汉化政策穿汉服说汉语改汉姓通婚姻促进了北方民族大交融。贾思勰的《齐民要术》是现存最早最完整的农书。祖冲之把圆周率精确到小数点后第七位南朝时领先世界近千年。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "古代科技和文化"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "甲骨文是中国已知最早的文字。青铜器代表作品司母戊鼎和四羊方尊。都江堰是战国时期李冰父子主持修建的综合性水利工程。孔子儒家学派创始人核心思想仁提倡礼治主张以德治国。老子道家学派创始人主张道法自然无为而治。百家争鸣春秋战国时期各学派纷纷著书立说互相辩论学术繁荣。汉赋唐诗是代表性文学形式。司马迁《史记》是中国古代第一部纪传体通史。蔡伦改进造纸术张衡发明地动仪。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "学习方法建议"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "学习历史要建立清晰的时间轴用思维导图梳理朝代更替顺序和重大事件。每个朝代的起止时间建立者都城主要成就和灭亡原因要熟练记忆。分析历史事件从背景经过结果影响四个维度思考。将中国历史与世界历史对照学习有助于建立全球化视野。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考历史备考建议"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "上海中考历史为开卷考试重点考查材料分析能力。平时学习时要熟悉教材目录和重点史料的分布位置。考试时先浏览全部题目再带着问题回到教材和资料中查找答案。注意审题看清题目要求是据材料概括还是结合所学知识回答。史料类型区分第一手史料直接真实的证据如出土文物和原始档案和第二手史料后人整理的资料如史书和传记。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "七年级上册重点事件年代尺"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "距今约170万年元谋人距今约70-20万年北京人约公元前2070年夏朝建立约公元前1600年商汤灭夏公元前1046年武王伐纣西周建立公元前770年东周开始春秋时期公元前356年商鞅变法公元前221年秦始皇统一六国公元前202年西汉建立公元前138年张骞第一次出使西域25年东汉建立200年官渡之战208年赤壁之战280年西晋统一383年淝水之战494年北魏孝文帝迁都洛阳"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "学习建议"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
+        }
+      ]
     }
   ]
 }

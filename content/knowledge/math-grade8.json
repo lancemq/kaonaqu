@@ -1,8 +1,8 @@
 {
   "slug": "math-grade8",
   "href": "/knowledge/math-grade8",
-  "title": "沪教版（上海）八年级数学知识点 | 二次根式 / 一元二次方程 / 正反比例函数 | 考哪去",
-  "description": "依据沪教版（上海）八年级数学教材，按单元整合代数与几何核心知识点。",
+  "title": "沪教版上海八年级数学知识点 | 代数/函数/几何/概率 | 考哪去",
+  "description": "依据沪教版八年级数学教材系统梳理二次根式一元二次方程正反比例函数几何证明和概率等板块含大量例题。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -20,6 +20,7 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "page-header",
       "children": [
         {
           "type": "element",
@@ -27,7 +28,7 @@
           "children": [
             {
               "type": "text",
-              "text": "上海九年级数学中考复习要点"
+              "text": "沪教版上海八年级数学知识点 | 代数/函数/几何/概率 | 考哪去"
             }
           ]
         },
@@ -37,337 +38,7 @@
           "children": [
             {
               "type": "text",
-              "text": "依据沪教版八年级数学教材整理，涵盖二次根式、一元二次方程、正比例函数与反比例函数、几何证明等重点内容。"
-            }
-          ]
-        }
-      ],
-      "className": "page-header"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "二次根式"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "二次根式的性质与运算是八年级代数学习的重点，也是中考的基础性考点。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "√a ≥0 (a≥0)，双重非负性是二次根式的核心性质"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "最简二次根式：被开方数不含分母、不含能开得尽的因数或因式"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "同类二次根式：化简后被开方数相同的二次根式可以合并"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "化简：√48 - √12 + 2√3"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "一元二次方程"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "一元二次方程是初中代数的重要内容，四种解法都需要熟练掌握。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "直接开平方法：适用于 (x+a)² = b 的形式"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "配方法：x² + px + q = 0 → (x + p/2)² = (p/2)² - q"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "公式法：x = [-b ± √(b²-4ac)] / 2a"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "因式分解法：十字相乘法是最高效的方法"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "解方程：x² - 6x + 8 = 0（用两种不同方法求解）"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "函数初步"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "正比例函数 y = kx (k≠0) 和反比例函数 y = k/x (k≠0) 是初中函数学习的起点。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "正比例函数图像过原点，k > 0 过一三象限，k < 0 过二四象限"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "反比例函数图像是双曲线，与坐标轴无交点"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "待定系数法是求函数解析式的核心方法"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "已知 y 与 x 成反比例，当 x = 2 时 y = 6，求 y 与 x 的函数关系式。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考备考建议"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "九年级 math-grade8 的复习要紧紧围绕中考要求展开。建议制定三轮复习计划：第一轮全面梳理知识点，第二轮专题突破重难点，第三轮真题模拟查漏补缺。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "重视基础：中考试卷中基础题占比约 60%，基础不丢分是取得好成绩的前提"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "整理错题：每做完一套练习，花同等时间整理错题和分析原因"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "限时训练：平时练习要限时完成，培养考试时间感"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
+              "text": "依据沪教版八年级数学教材系统梳理二次根式一元二次方程正反比例函数几何证明和概率等板块含大量例题。"
             }
           ]
         }
@@ -390,73 +61,7 @@
       "children": [
         {
           "type": "text",
-          "text": "二次根式 √a（a≥0）的核心性质是双重非负性。最简二次根式的标准：被开方数不含分母、不含能开得尽的因数或因式。同类二次根式化简后被开方数相同，可以合并。分母有理化是将分母中的根号去掉的过程。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h4",
-      "children": [
-        {
-          "type": "text",
-          "text": "运算性质"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "√ab = √a·√b (a≥0,b≥0)；√(a/b) = √a÷√b (a≥0,b>0)。混合运算顺序先乘除后加减，乘法公式同样适用。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h4",
-      "children": [
-        {
-          "type": "text",
-          "text": "典型题型"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "二次根式的化简与求值"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "分母有理化（分子分母同乘共轭根式）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "二次根式与乘法公式的综合运用"
-            }
-          ]
+          "text": "二次根式√a(a≥0)的双重非负性是核心性质。最简二次根式的标准是被开方数不含分母不含能开得尽的因数或因式。同类二次根式化简后被开方数相同可以合并。分母有理化是将分母中的根号去掉的常用方法。二次根式的乘除运算用√ab=√a·√b和√a/b=√a÷√b。加减运算是合并同类二次根式。混合运算顺序先乘除后加减有括号先算括号内乘法公式同样适用。配方法在二次根式中的应用如化简√(7±4√3)=2√3±1。"
         }
       ]
     },
@@ -477,83 +82,7 @@
       "children": [
         {
           "type": "text",
-          "text": "ax²+bx+c=0 (a≠0) 的四种解法：直接开平方法、配方法、公式法、因式分解法。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h4",
-      "children": [
-        {
-          "type": "text",
-          "text": "判别式"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "Δ = b²-4ac。Δ>0 两个不等实根，Δ=0 两个相等实根，Δ<0 无实根。韦达定理：x₁+x₂=-b/a, x₁x₂=c/a。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h4",
-      "children": [
-        {
-          "type": "text",
-          "text": "应用题的解题步骤"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "审题：找出已知量和未知量"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "设未知数：直接设或间接设"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "列方程：找准等量关系"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "解方程并检验：检验解是否符合实际意义"
-            }
-          ]
+          "text": "一元二次方程ax²+bx+c=0(a≠0)的四种解法各有所长。直接开平方法适用于(x+m)²=n(n≥0)的形式。配方法通过配方将方程转化为完全平方形式步骤移常数项化二次项系数为1两边加一次项系数一半的平方。公式法x=[–b±√(b²–4ac)]/2a是万能解法。因式分解法用十字相乘法最快捷。判别式Δ=b²–4ac决定根的情况Δ>0两个不等实根Δ=0两个相等实根Δ<0无实根。韦达定理x₁+x₂=–b/a,x₁x₂=c/a用于求与两根有关的对称式值。一元二次方程应用题解题步骤审题设未知数列方程解方程检验作答。"
         }
       ]
     },
@@ -564,7 +93,7 @@
       "children": [
         {
           "type": "text",
-          "text": "正比例函数与反比例函数"
+          "text": "正比例函数和反比例函数"
         }
       ]
     },
@@ -574,37 +103,7 @@
       "children": [
         {
           "type": "text",
-          "text": "正比例函数 y=kx (k≠0) 图像是过原点的直线。k>0 过一三象限，k<0 过二四象限。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "反比例函数 y=k/x (k≠0) 图像是双曲线，关于原点中心对称。x≠0, y≠0。反比例函数中 |k| 越大，双曲线离坐标轴越远。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h4",
-      "children": [
-        {
-          "type": "text",
-          "text": "待定系数法"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "设解析式 y=k/x，代入已知点坐标求出 k。常与一次函数综合考查，联立方程求交点坐标。"
+          "text": "正比例函数y=kx(k≠0)图像是过原点的直线。k>0时y随x增大而增大图像过一三象限k<0时y随x增大而减小图像过二四象限。正比例函数的性质就是比例系数k决定函数增减性。反比例函数y=k/x(k≠0)图像是双曲线关于原点中心对称且不与坐标轴相交。k>0时两支双曲线在一三象限k<0时在二四象限。|k|越大双曲线离坐标轴越远。待定系数法设解析式y=k/x代入已知坐标求出k。反比例函数常与一次函数综合联立方程求交点再用几何条件构造面积或线段问题。"
         }
       ]
     },
@@ -615,7 +114,7 @@
       "children": [
         {
           "type": "text",
-          "text": "平行四边形与几何证明"
+          "text": "几何证明与平行四边形"
         }
       ]
     },
@@ -625,27 +124,7 @@
       "children": [
         {
           "type": "text",
-          "text": "平行四边形判定：两组对边分别平行、一组对边平行且相等、两组对边分别相等、对角线互相平分。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "矩形（对角线相等）、菱形（对角线垂直且平分对角）、正方形（兼具矩形和菱形的所有性质）。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "三角形中位线平行于第三边且等于第三边的一半。梯形中位线平行于两底且等于两底和的一半。"
+          "text": "八年级几何从实验几何过渡到推理几何证明的三段论推理格式必须规范。平行四边形的判定五法两组对边分别平行一组对边平行且相等两组对边分别相等对角线互相平分两组对角分别相等。矩形平行四边形加一个直角对角线相等。菱形平行四边形加一组邻边相等对角线垂直。正方形是矩形和菱形的交集兼具所有性质。三角形的中位线平行于第三边且等于它的一半。梯形中位线平行于两底且等于两底和的一半。"
         }
       ]
     },
@@ -666,7 +145,7 @@
       "children": [
         {
           "type": "text",
-          "text": "概率 P(A) = 事件A发生的结果数 ÷ 总结果数（等可能事件）。列表法和树状图法用于求两步或三步试验的概率。频率在大量重复试验中稳定于概率。"
+          "text": "确定事件有必然事件概率为1和不可能事件概率为0。随机事件概率在0和1之间。等可能事件概率P(A)=A包含的结果数÷总结果数。列表法和树状图法解决两步及以上试验的概率问题。用频率估计概率在大量重复试验中事件发生的频率会逐渐稳定在一个常数附近这个常数就是概率。概率在生活中的应用彩票抽奖天气预报保险精算等领域。"
         }
       ]
     },
@@ -687,7 +166,217 @@
       "children": [
         {
           "type": "text",
-          "text": "学习贵在坚持和方法。制定合理计划，每天固定时间学习，定期复习巩固。遇到不懂的问题及时请教。"
+          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "二次根式的深入理解"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "二次根式是八年级代数的重要工具也是中考的必考基础内容。双重非负性是二次根式的核心性质即被开方数必须大于等于0且根式本身也必须大于等于0。二次根式的乘除用公式根号下a乘b等于根号a乘根号b和根号下a除以b等于根号a除以根号b分母有理化是化简的关键步骤。同类二次根式合并时系数相加被开方数不变。混合运算顺序先乘除后加减注意乘法公式同样适用。中考典型题根式化简求值根式与乘法公式的综合应用。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "一元二次方程在实际问题中的应用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一元二次方程的应用题类型丰富包括面积问题增长率问题销售利润问题和动点问题等。解题的关键是找等量关系。增长率问题公式原来数量乘以1加减增长率的n次方等于现在数量n是年数。销售利润问题总利润等于每件利润乘以销售量。面积问题常常需要利用面积公式建立方程。注意解的取舍要根据实际意义判断。判别式不仅可以判断根的情况还可用于求参数的取值范围。韦达定理的应用非常广泛可求与两根有关的对称式值和构造方程等。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "函数图像和性质的灵活运用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "正比例函数y等于kx的图像是经过原点的直线k决定函数增减性。反比例函数y等于k除以x的图像是双曲线关于原点对称。函数图像的位置与比例系数k有着密切的关系。待定系数法是求函数解析式的通用方法设出函数形式代入已知条件求出待定系数。函数综合题常出现在中考的压轴位置需要灵活运用数形结合思想将函数图像与几何图形结合起来分析。一次函数和反比例函数的综合是高频考点联立方程求交点坐标再用几何条件求解面积或距离问题。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "二次根式的综合应用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "二次根式\\u221aa\\uff08a\\u22650\\uff09的核心是双重非负性。最简二次根式标准：被开方数不含分母、不含能开得尽的因数或因式。同类二次根式可合并。分母有理化常用方法：分子分母同乘共轭根式。二次根式与乘法公式的综合应用是中考常见题型，完全平方公式\\uff08a\\u00b1b\\uff09\\u00b2 = a\\u00b2\\u00b12ab+b\\u00b2和平方差公式\\uff08a+b\\uff09\\uff08a-b\\uff09 = a\\u00b2-b\\u00b2同样适用于二次根式。配方法在二次根式中的应用如化简\\u221a\\uff087\\u00b14\\u221a3\\uff09需要熟练掌握。根式大小比较常用方法有平方法和差值法。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "一元二次方程四种解法的灵活选用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "直接开平方法适用于\\uff08x+m\\uff09\\u00b2 = n\\uff08n\\u22650\\uff09的形式。配方法是基础方法通过配方转化为完全平方。公式法x = [-b \\u00b1 \\u221a\\uff08b\\u00b2-4ac\\uff09] / 2a是万能解法，判别式\\u0394 = b\\u00b2-4ac决定根的情况：\\u0394>0两个不等实根\\u0394=0两个相等实根\\u0394<0无实根。因式分解法中的十字相乘法最快捷。应用题的解题口诀：审题设未知数列方程解方程检验作答。常见问题类型包括增长率问题、面积问题、利润问题和动点问题。增长率公式：原来数量\\u00d7\\uff081\\u00b1x\\uff09\\u207f = 现在数量。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "正反比例函数的图像和性质"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "正比例函数y=kx\\uff08k\\u22600\\uff09图像过原点，k>0时过一三象限y随x增大而增大，k<0时过二四象限y随x增大而减小。反比例函数y=k/x\\uff08k\\u22600\\uff09图像是双曲线，|k|越大双曲线离坐标轴越远。|k|的几何意义：双曲线上任一点向两坐标轴作垂线所围矩形面积等于|k|。反比例函数常与一次函数综合，联立方程求交点，再用面积为条件列式。数形结合是解决函数问题的核心思想。待定系数法是求函数解析式的标准方法。"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

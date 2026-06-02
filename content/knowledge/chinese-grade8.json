@@ -1,8 +1,8 @@
 {
   "slug": "chinese-grade8",
   "href": "/knowledge/chinese-grade8",
-  "title": "部编版（上海）八年级语文知识点 | 新闻 / 散文 / 古诗文 / 说明文 | 考哪去",
-  "description": "依据部编版八年级语文教材，整合新闻阅读、传记散文、说明文阅读和古诗文积累。",
+  "title": "部编版上海八年级语文知识点 | 新闻/散文/说明文/古诗文/写作 | 考哪去",
+  "description": "依据部编版八年级语文教材按单元系统整合新闻阅读传记散文说明文阅读古诗文积累和写作训练。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -20,6 +20,7 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "page-header",
       "children": [
         {
           "type": "element",
@@ -27,7 +28,7 @@
           "children": [
             {
               "type": "text",
-              "text": "上海九年级语文中考复习要点"
+              "text": "部编版上海八年级语文知识点 | 新闻/散文/说明文/古诗文/写作 | 考哪去"
             }
           ]
         },
@@ -37,317 +38,7 @@
           "children": [
             {
               "type": "text",
-              "text": "依据部编版八年级语文教材整理，涵盖新闻阅读、传记散文、说明文和古诗文等重点内容。"
-            }
-          ]
-        }
-      ],
-      "className": "page-header"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "新闻阅读与写作"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "八年级上册第一单元专题学习新闻。新闻六要素（5W1H）：何时、何地、何事、何因、何人、如何。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "消息的结构：标题→导语→主体→背景→结语"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "标题要求：准确概括内容、吸引读者"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "导语是消息的第一句或第一段，包含最核心的信息"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "为学校运动会写一篇 200 字左右的短消息，要求包含标题和导语。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "传记与散文阅读"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "八年级教材选入大量传记和散文，如《藤野先生》《背影》《苏州园林》等。这些篇目既是阅读重点，也是写作范本。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "传记阅读：关注人物生平和主要成就，理解作者选取典型事例的用意"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "散文阅读：形散神不散，找到贯穿全文的思想感情线索"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "语言赏析：从用词、句式、修辞三个角度品味语言"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "朱自清《背影》中“他用两手攀着上面，两脚再向上缩”这段描写运用了什么描写方法？表现了父亲怎样的情感？"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "古诗文积累"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "八年级是古诗文积累量最大的年级，需要背诵的篇目包括唐诗（李白、杜甫、白居易）、宋词和《孟子》《史记》选段。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "杜甫“安得广厦千万间，大庇天下寒士俱欢颜”表达了忧国忧民的情怀"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "孟子“富贵不能淫，贫贱不能移，威武不能屈”是大丈夫精神的经典表达"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "定期默写、及时纠错是古诗文积累最有效的方法"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "八年级古诗文背诵任务重、时间跨度大，建议采用“滚动背诵法”：每天背诵新的同时复习前三天内容。"
-            }
-          ]
-        }
-      ],
-      "className": "knowledge-note-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考备考建议"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "九年级 chinese-grade8 的复习要紧紧围绕中考要求展开。建议制定三轮复习计划：第一轮全面梳理知识点，第二轮专题突破重难点，第三轮真题模拟查漏补缺。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "重视基础：中考试卷中基础题占比约 60%，基础不丢分是取得好成绩的前提"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "整理错题：每做完一套练习，花同等时间整理错题和分析原因"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "限时训练：平时练习要限时完成，培养考试时间感"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
+              "text": "依据部编版八年级语文教材按单元系统整合新闻阅读传记散文说明文阅读古诗文积累和写作训练。"
             }
           ]
         }
@@ -360,7 +51,7 @@
       "children": [
         {
           "type": "text",
-          "text": "新闻阅读与写作"
+          "text": "新闻阅读和写作"
         }
       ]
     },
@@ -370,17 +61,7 @@
       "children": [
         {
           "type": "text",
-          "text": "新闻六要素（5W1H）：时间、地点、人物、事件、原因、经过。消息结构：标题→导语→主体→背景→结语。导语是消息最核心的句子。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "标题可以引题+主标题+副标题三层。主体按“倒金字塔”结构安排——重要性递减。新闻语言要求客观准确简洁。"
+          "text": "新闻六要素5W1H即时间地点人物事件原因和结果是新闻的基本构成。消息结构有标题导语主体背景结语五部分。标题可引题加主标题加副标题三层导语是消息第一句包含最核心信息。主体按倒金字塔结构重要性递减安排材料。新闻特点真实性时效性准确性简明性。语言客观准确简洁不带个人感情色彩。为学校写新闻消息的要点标题醒目概括全篇导语讲清核心事实主体补充细节。"
         }
       ]
     },
@@ -401,17 +82,7 @@
       "children": [
         {
           "type": "text",
-          "text": "传记阅读关注人物事迹和精神品质，理解选材的典型性。散文“形散神不散”，找到贯穿全文的情感主线是关键。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "语言赏析从用词（动词形容词的准确传神）、句式（长短句变化）、修辞（比喻拟人排比）三个角度切入。"
+          "text": "传记阅读关注人物生平事迹和精神品格理解作者选择典型事例的用意。传记真实性和文学性的统一是阅读欣赏的关键。散文形散神不散形散指取材广泛结构灵活表达方式多样神不散指主题明确情感集中意蕴深刻。赏析散文从语言入手品味用词句式修辞感受作者情感把握文章主旨。回忆性散文如《藤野先生》《背影》是重点篇目。"
         }
       ]
     },
@@ -428,37 +99,11 @@
     },
     {
       "type": "element",
-      "tag": "ul",
+      "tag": "p",
       "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "说明方法及作用：打比方（生动形象）、列数字（准确具体）、作比较（突出特征）、举例子（具体说明）、分类别（条理清晰）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "说明顺序：时间顺序、空间顺序、逻辑顺序"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "说明语言：准确是生命，注意修饰限制词的作用"
-            }
-          ]
+          "type": "text",
+          "text": "说明文以说明为主要表达方式。说明方法打比方生动形象列数字准确具体作比较突出特征举例子具体说明分类别条理清晰下定义科学准确画图表直观明了。说明顺序有时间顺序空间顺序和逻辑顺序由主到次由因到果由表及里由现象到本质。说明语言准确平实科学注意大约左右主要等限制性词语的表达效果。苏州园林中国石拱桥等是经典说明文篇目。"
         }
       ]
     },
@@ -469,7 +114,7 @@
       "children": [
         {
           "type": "text",
-          "text": "古诗文积累"
+          "text": "古诗文积累与鉴赏"
         }
       ]
     },
@@ -479,60 +124,7 @@
       "children": [
         {
           "type": "text",
-          "text": "重点篇目《三峡》《答谢中书书》《记承天寺夜游》《生于忧患死于安乐》《饮酒》《春望》《雁门太守行》《赤壁》等。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "通假字“略无阙处”“阙”通“缺”"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "词类活用“每至晴初霜旦”“霜”名词作动词"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "古今异义“或王命急宣”“或”古义为有时"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "className": "knowledge-note-card",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "八年级古诗文背诵量大，建议用“滚动循环法”：每天背一篇新课文，同时复习前三天背过的内容。"
-            }
-          ]
+          "text": "八年级古诗文背诵量大需要熟练掌握约20篇重点篇目。通假字略无阙处的阙通缺。词类活用每至晴初霜旦的霜名词用作动词下霜。古今异义虽乘奔御风的奔古义指飞奔的马。文言虚词之其而以及于在不同语境中的用法归类整理。诗歌鉴赏从意象意境手法情感四维度切入。"
         }
       ]
     },
@@ -553,43 +145,7 @@
       "children": [
         {
           "type": "text",
-          "text": "记叙文选材要新颖，开头用设问式/场景式/引用式吸引人，结尾用点题式/升华式意味深长。细节描写是让作文生动的关键。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "每周至少写一篇练笔（日记、读后感或随笔）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "准备素材本随时记录生活观察和感悟"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "好文章是改出来的，写完后从字词句到结构逐层修改"
-            }
-          ]
+          "text": "八年级写作在记叙文基础上增加说明文写作。记叙文选材新颖开头精彩结尾有力细节生动。说明文写作抓住事物特征合理安排说明顺序灵活运用说明方法。语言准确生动。每周坚持练笔不辍注重修改好文章是改出来的。准备素材本随时记录生活和阅读中的观察感悟。"
         }
       ]
     },
@@ -610,7 +166,217 @@
       "children": [
         {
           "type": "text",
-          "text": "学习贵在坚持和方法。制定合理计划，每天固定时间学习，定期复习巩固。遇到不懂的问题及时请教。"
+          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "新闻阅读的深层理解"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "新闻阅读不仅是中考的考点也是现代公民必备的媒介素养。消息的标题要准确概括内容吸引读者导语要包含最核心的信息。消息写作讲究真实客观不加入个人观点和感情色彩。新闻评论与传统新闻的区别在于评论允许有观点和立场但必须有理有据。综合性学习中常涉及新闻采访和新闻写作的实践任务要求掌握采访问题的设计技巧和新闻写作文体的基本规范。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "散文的鉴赏方法"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "散文的鉴赏需要从语言文字入手透过表象把握作者的情感和思想。品味语言是散文鉴赏的第一步关注动词形容词的准确传神关注修辞手法的巧妙运用。散文的主要类型有叙事散文抒情散文和写景散文等不同类型有不同的鉴赏方法。叙事散文重点把握叙事线索和人物形象抒情散文重点品味情感和意境写景散文重点欣赏景物特征和语言之美。背诵经典散文段落可以提高语感和写作水平。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "说明文阅读全面解析"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "说明文是中考现代文阅读的必考文体之一阅读重点把握说明对象及其特征。常见的说明方法有举例子列数字作比较打比方分类别下定义和画图表等。每种说明方法都有自己的独特作用举例子使说明具体化列数字使说明准确化作比较使说明突出化打比方使说明生动化。说明顺序的选择取决于被说明事物的特点和读者认知规律。说明语言的准确性是说明文语言的生命中考常考加点词语能否删去此类题型。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "新闻阅读与写作的系统训练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "新闻六要素5W1H是阅读和写作新闻的基础。消息结构包括标题\\u2192导语\\u2192主体\\u2192背景\\u2192结语五部分。标题可设计为引题+主标题+副标题三层结构，引题揭示意义主标题概括事实副标题补充细节。导语是消息的核心包含最紧要的信息。主体按倒金字塔结构展开最重要的信息放在最前面。新闻语言的特点是真实准确简洁客观。写作消息的基本功练习包括标题的拟写导语的概括和主体的扩展。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "散文的语言赏析"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "散文的语言可以从三个角度赏析：用词的准确传神\\u2014\\u2014动词形容词的锤炼效果；句式的变化\\u2014\\u2014长短句整散句的节奏效果；修辞的巧妙运用\\u2014\\u2014比喻拟人排比等的表达效果。朱自清的散文语言清新优美善于用朴素的语言表达真挚的情感。鲁迅的散文语言犀利深刻善用讽刺和反语。学习散文语言的最佳方法是反复朗读在朗读中感受语言的韵律和情感。背诵经典段落可以内化为自己的语言能力。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "说明文的深层阅读"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "说明文以说明为主要表达方式目的是给读者传递知识。说明方法的识别和分析是中考必考题型。打比方的作用是生动形象地说明事物特征；列数字的作用是准确具体地说明事物；作比较的作用是突出强调事物特征。说明顺序的选用取决于说明对象的特点和读者的认知规律。说明文语言的准确性体现在修饰限制性词语的使用上如大约左右主要几乎等这些词语体现了说明文语言的严谨性。中考常见题型：指出说明方法并分析其作用；分析加点词语的表达效果；概括说明对象和说明内容。"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

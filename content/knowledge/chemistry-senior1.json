@@ -1512,6 +1512,41 @@
           "text": "电解质和非电解质的区别。离子方程式的书写步骤写拆删查。离子共存的条件。"
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "物质的量的核心概念"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物质的量是国际单位制七个基本物理量之一单位摩尔\\uff08mol\\uff09。阿伏加德罗常数NA=6.02\\u00d710\\u00b2\\u00b3是把微观粒子数和宏观物质的量联系起来的桥梁。摩尔质量M=g/mol数值上等于该物质的相对分子质量。气体摩尔体积Vm=22.4L/mol\\uff08标准状况下\\uff09适用于气体。物质的量浓度cB=nB/V单位mol/L。溶液稀释公式c1V1=c2V2。一定物质的量浓度溶液的配制步骤：计算称量溶解冷却转移洗涤定容摇匀装瓶。配制过程中的误差分析是考试常考内容。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

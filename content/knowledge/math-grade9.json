@@ -1,8 +1,8 @@
 {
   "slug": "math-grade9",
   "href": "/knowledge/math-grade9",
-  "title": "上海九年级数学中考复习知识体系与典型题 | 考哪去",
-  "description": "整理上海九年级数学中考复习重点，覆盖函数、几何证明、圆、相似、统计概率和综合压轴题。",
+  "title": "上海九年级数学中考复习要点 | 代数/函数/几何/概率全板块 | 考哪去",
+  "description": "依据上海中考数学考纲系统梳理数与式方程不等式函数与分析图形与几何概率与统计五大板块含典型例题。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -20,6 +20,7 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "page-header",
       "children": [
         {
           "type": "element",
@@ -27,7 +28,7 @@
           "children": [
             {
               "type": "text",
-              "text": "上海九年级数学中考复习要点"
+              "text": "上海九年级数学中考复习要点 | 代数/函数/几何/概率全板块 | 考哪去"
             }
           ]
         },
@@ -37,23 +38,22 @@
           "children": [
             {
               "type": "text",
-              "text": "依据上海中考数学考试要求，梳理数与运算、方程与代数、函数与分析、数据整理与概率统计、图形与几何五大板块的复习要点。"
+              "text": "依据上海中考数学考纲系统梳理数与式方程不等式函数与分析图形与几何概率与统计五大板块含典型例题。"
             }
           ]
         }
-      ],
-      "className": "page-header"
+      ]
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "数与运算"
+          "text": "数与式"
         }
-      ],
-      "className": "section-title"
+      ]
     },
     {
       "type": "element",
@@ -61,83 +61,9 @@
       "children": [
         {
           "type": "text",
-          "text": "中考数学基础板块，约占总分 20%。核心考点包括实数运算、整式与分式、二次根式等。"
+          "text": "实数分类有理数和无理数无理数常见形式圆周率开方开不尽和无限不循环小数。相反数绝对值和倒数的基础概念是代数运算的起点。幂的运算性质同底数幂相乘a的m次方乘a的n次方等于a的m加n次方幂的乘方a的m次方的n次方等于a的mn次方积的乘方ab的n次方等于a的n次方乘以b的n次方同底数幂相除a的m次方除以a的n次方等于a的m减n次方。整式乘法多项式乘多项式法则完全平方公式a加减b的平方等于a方加减2ab加b方平方差公式a加b乘a减b等于a方减b方。因式分解首先提公因式然后用公式法每组分解要彻底。"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "实数分类：有理数和无理数，注意 π 和开方开不尽的数是无理数"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "幂的运算：aᵐ·aⁿ = aⁿ⁻ⁿ, (aᵐ)ⁿ = aᵐⁿ, a⁻ᵐ = 1/aᵐ"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "二次根式化简：√ab = √a·√b (a≥0,b≥0)，分母有理化是高频考点"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "化简 √12 + √48 - √27 = 2√3 + 4√3 - 3√3 = 3√3"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "方程与不等式"
-        }
-      ],
-      "className": "section-title"
     },
     {
       "type": "element",
@@ -145,93 +71,41 @@
       "children": [
         {
           "type": "text",
-          "text": "中考核心板块，包括一元二次方程、二元一次方程组、分式方程、不等式（组）的解法及应用。"
+          "text": "二次根式双重非负性a大于等于0且根号a大于等于0。最简二次根式条件被开方数不含分母不含能开得尽的因数或因式同类二次根式合并二次根式加减。分母有理化传统方法分子分母同乘共轭根式。二次根式混合运算顺序先乘除后加减有括号先算括号内。中考典型题根式化简求值根式与乘法公式综合运用。分式混合运算通分约分和最简公分母的应用。分式化简求值中考必考题注意代入的数是使分式有意义的数。"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "一元二次方程：ax² + bx + c = 0 (a≠0)，判别式 Δ = b² - 4ac"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "Δ > 0 有两个不等实根，Δ = 0 有两个相等实根，Δ < 0 无实根"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "韦达定理：x₁ + x₂ = -b/a, x₁x₂ = c/a"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "应用题列方程的关键：找准等量关系，合理设未知数"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "某商店将进货价 40 元的商品以 60 元售出，平均每周可卖出 300 件。经调查，每涨价 1 元每周少卖 10 件。要使每周利润达到 6240 元，应涨价多少元？"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "方程与不等式组"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "一元二次方程ax方加bx加c等于0。判别式delta等于b方减4ac。解法直接开平方法配方法公式法因式分解十字相乘法。韦达定理两根之和等于负a分之b两根之积等于a分之c用于求对称式值和构造方程。分式方程解题步骤去分母乘最简公分母解整式方程检验代入公分母是否为零。检验步骤不能省略是分式方程的必考点。无理方程解题思路两边平方转化为有理方程同样需要检验。方程组代入消元法和加减消元法是解二元一次方程组的基本方法。不等式性质两边同乘负数不等号方向要改变。解不等式组借助数轴确定公共部分口诀同大取大同小取小大小小大中间找大大小小找不到。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
           "text": "函数与分析"
         }
-      ],
-      "className": "section-title"
+      ]
     },
     {
       "type": "element",
@@ -239,93 +113,20 @@
       "children": [
         {
           "type": "text",
-          "text": "中考重点压轴板块，涵盖正比例函数、反比例函数、一次函数、二次函数的图像和性质。"
+          "text": "正比例函数y等于kx。反比例函数y等于k比x。一次函数y等于kx加b与坐标轴交点求法和图像平移。二次函数一般式y等于ax方加bx加c顶点式y等于a乘x减h的平方加k交点式y等于a乘x减x1乘x减x2。顶点坐标横坐标负2a分之b纵坐标4a分之4ac减b方对称轴x等于负2a分之b。a大于0开口向上有最小值a小于0开口向下有最大值。二次函数图像平移左加右改变x上加下改变整体。二次函数与一元二次方程的关系图像与x轴交点对应方程的根。函数综合应用二次函数与三角形四边形面积最值存在性等问题分类讨论思想的应用。"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "二次函数 y = a(x-h)² + k 的顶点坐标 (h,k)，对称轴 x = h"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "a > 0 开口向上，a < 0 开口向下"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "图像平移规律：左加右减（x），上加下减（y）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "函数综合题常结合几何图形，考查数形结合能力"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "已知二次函数 y = x² - 4x + 3，求其顶点坐标和与 x 轴的交点坐标。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
           "text": "图形与几何"
         }
-      ],
-      "className": "section-title"
+      ]
     },
     {
       "type": "element",
@@ -333,160 +134,20 @@
       "children": [
         {
           "type": "text",
-          "text": "中考第二大板块，约占总分 35%。涉及三角形、四边形、圆的性质和证明，以及相似三角形和锐角三角比。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "三角形全等判定：SSS、SAS、ASA、AAS、HL（直角三角形）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "三角形相似判定：两角对应相等、两边对应成比例且夹角相等、三边对应成比例"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "圆的垂径定理：垂直于弦的直径平分弦且平分弦所对的两条弧"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "切线判定：过半径外端且垂直于半径的直线是圆的切线"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "如图，在 △ABC 中，∠C = 90°，AC = 3，BC = 4，CD ⊥ AB 于 D，求 CD 的长。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "数据整理与概率"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考基础板块，主要考查统计量计算（平均数、中位数、众数、方差）和简单概率计算。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "方差公式：s² = Σ(xᵢ - x̄)²/n，反映数据的离散程度"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "概率 P(A) = 事件 A 发生的结果数 / 总结果数"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "树状图和列表法是计算概率的两种基本方法"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "统计图表题要注意单位、刻度和数据完整性"
-            }
-          ]
+          "text": "三角形全等判定SSS边边边SAS边角边ASA角边角AAS角角边HL直角边斜边。相似三角形判定两角对应相等两边对应成比例且夹角相等三边对应成比例。相似三角形性质对应边成比例对应角相等周长比等于相似比面积比等于相似比平方。解直角三角形锐角三角比正弦对边比斜边余弦邻边比斜边正切对边比邻边。特殊角30度45度60度的三角比值必须熟记。仰角俯角坡度坡角方向角的应用问题。圆的垂径定理垂直于弦的直径平分弦且平分弦所对的两条弧。圆周角定理一条弧所对的圆周角等于它所对的圆心角的一半。直线与圆的位置关系相离相切相交。切线的判定和性质。"
         }
       ]
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "中考备考建议"
+          "text": "统计与概率"
         }
-      ],
-      "className": "section-title"
+      ]
     },
     {
       "type": "element",
@@ -494,53 +155,91 @@
       "children": [
         {
           "type": "text",
-          "text": "九年级 math-grade9 的复习要紧紧围绕中考要求展开。建议制定三轮复习计划：第一轮全面梳理知识点，第二轮专题突破重难点，第三轮真题模拟查漏补缺。"
+          "text": "统计量中位数将数据排序后中间位置的数众数出现次数最多的数平均数算术平均数和加权平均数方差s方等于各数据与平均数的差的平方和除以n反映数据波动大小方差越大数据越不稳定。概率P等于A包含的结果数除以总结果数。两步试验用列表法三步试验用树状图法。大量重复试验频率稳定于概率用频率估计概率是解决非等可能事件的方法。统计图表扇形图条形图折线图频数分布直方图的读取与分析。中考统计题注重结合实际情境理解统计量的实际意义。"
         }
       ]
     },
     {
       "type": "element",
-      "tag": "ul",
+      "tag": "h2",
+      "className": "section-title",
       "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "重视基础：中考试卷中基础题占比约 60%，基础不丢分是取得好成绩的前提"
-            }
-          ]
-        },
+          "type": "text",
+          "text": "中考数学解题策略"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "整理错题：每做完一套练习，花同等时间整理错题和分析原因"
-            }
-          ]
-        },
+          "type": "text",
+          "text": "基础题审题清晰计算准确确保不丢分。中档题掌握通性通法灵活运用数学模型。压轴题先易后难能写几步写几步分步得分。时间分配选择填空约30分钟解答题约60分钟检查约30分钟。常见失分原因审题不仔细计算粗心分类讨论不完整。考前一个月回归课本看例题重做错题限时训练模拟考场节奏。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "限时训练：平时练习要限时完成，培养考试时间感"
-            }
-          ]
-        },
+          "type": "text",
+          "text": "上海中考特色题型"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
-            }
-          ]
+          "type": "text",
+          "text": "上海中考数学压轴题常考几何综合题函数综合题和新定义题。几何综合题以三角形和四边形为背景结合相似圆三角比进行综合推理。函数综合题以二次函数为背景结合几何条件求坐标面积最值存在性。新定义题现场学习新定义新运算然后用新知识解决问题考查即时学习能力。近几年上海中考注重数学建模和应用意识阅读理解和实际情境融合题比重加大。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "中考三年考点分布"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "数与运算约15分方程与代数约18分函数与分析约30分图形与几何约40分数据整理与概率统计约15分总分150分。函数和几何两大板块占比最高是拉开分差的关键。近三年函数与几何综合题的难度和区分度保持稳定。二次函数与动点问题几何图形中的分类讨论是最高频的压轴考点。注重数学思想方法的应用数形结合分类讨论方程思想转化思想贯穿全卷。"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "学习建议"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
+        {
+          "type": "text",
+          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
         }
       ]
     }

@@ -1,8 +1,8 @@
 {
   "slug": "physics-grade7",
   "href": "/knowledge/physics-grade7",
-  "title": "沪科版（上海）七年级物理初步知识点 | 力和运动 / 声音与光 | 考哪去",
-  "description": "依据沪科版（上海）七年级科学课程物理模块整理，涵盖力的概念、声音传播、光学初步与热现象等物理基础知识。",
+  "title": "沪科版上海七年级物理初步知识点 | 力/声/光/热/运动 | 考哪去",
+  "description": "依据沪科版七年级科学课程物理模块整理涵盖力的概念声音传播光学初步热现象和运动学基础知识。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -20,6 +20,7 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "page-header",
       "children": [
         {
           "type": "element",
@@ -27,7 +28,7 @@
           "children": [
             {
               "type": "text",
-              "text": "沪科版（上海）七年级物理初步知识"
+              "text": "沪科版上海七年级物理初步知识点 | 力/声/光/热/运动 | 考哪去"
             }
           ]
         },
@@ -37,221 +38,20 @@
           "children": [
             {
               "type": "text",
-              "text": "依据沪科版（上海）七年级科学课程中的物理模块整理，为八年级系统学习物理打下基础。"
+              "text": "依据沪科版七年级科学课程物理模块整理涵盖力的概念声音传播光学初步热现象和运动学基础知识。"
             }
           ]
-        }
-      ],
-      "className": "page-header"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "为什么要学好物理"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "物理是研究物质结构、相互作用和运动规律的自然科学。在上海市初中课程中，七年级的科学课已经涉及物理基本概念，如力、运动、声音、光和热。提前建立物理思维方式，能为八年级系统学习沪科版物理做好充分准备。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "物理学习的关键不是死记公式，而是培养\"观察现象→提出假设→实验验证→得出结论\"的科学思维链条。"
         }
       ]
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "力和运动初步"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "h3",
-      "children": [
-        {
-          "type": "text",
-          "text": "力的概念"
-        }
-      ],
-      "className": "subsection-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "力的定义："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "力是物体对物体的作用，不能脱离物体而存在。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "力的单位："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "牛顿（N），简称\"牛\"。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "力的作用效果："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "改变物体的形状；改变物体的运动状态（速度大小或方向）。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "力的三要素："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "大小、方向、作用点。力的图示需要标出三要素。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h3",
-      "children": [
-        {
-          "type": "text",
-          "text": "常见的力"
-        }
-      ],
-      "className": "subsection-title"
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "重力：地球对物体的吸引力，方向竖直向下。重力 G = mg（g=9.8N/kg）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "弹力：物体发生弹性形变后产生的力，如弹簧测力计的原理。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "摩擦力：两个相互接触的物体在发生相对运动时产生的阻碍力。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "浮力：浸入液体或气体中的物体受到向上的托力。"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h3",
-      "children": [
-        {
-          "type": "text",
-          "text": "运动和力"
-        }
-      ],
-      "className": "subsection-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "牛顿第一定律（惯性定律）：一切物体在不受外力作用时，总保持静止状态或匀速直线运动状态。"
+          "text": "力的初步概念"
         }
       ]
     },
@@ -261,65 +61,18 @@
       "children": [
         {
           "type": "text",
-          "text": "惯性是物体保持原有运动状态的性质，与质量有关，质量越大惯性越大。"
+          "text": "力是物体对物体的作用不能离开物体而单独存在。力的作用效果改变物体的形状和改变物体的运动状态。力的三要素大小方向作用点力的示意图需要标出三要素。力的单位是牛顿简称牛符号N。弹力物体发生弹性形变后产生的力弹簧测力计是测量力的工具原理是在弹性限度内弹簧的伸长量与所受拉力成正比。重力由于地球吸引而使物体受到的力方向竖直向下作用点叫重心。重力和质量的关系G=mg其中g=9.8N/kg。摩擦力两个相互接触的物体在发生相对运动或有相对运动趋势时在接触面产生的阻碍力。增大有益摩擦和减小有害摩擦的方法举例说明。"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "行驶中的汽车突然刹车时，乘客身体会向前倾，这是因为乘客具有惯性，仍然保持原来的运动状态。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "声音的产生与传播"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "声音的产生："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "声音由物体振动产生。振动停止，发声停止。"
+          "text": "声音的产生和传播"
         }
       ]
     },
@@ -328,152 +81,19 @@
       "tag": "p",
       "children": [
         {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "声音的传播："
-            }
-          ]
-        },
-        {
           "type": "text",
-          "text": "需要介质（固体、液体、气体均可传声），真空不能传声。声音在固体中传播最快，气体中最慢。"
+          "text": "声音由物体的振动产生振动停止发声停止。声音的传播需要介质固体液体气体都能传声真空不能传声。声音在固体中传播最快气体中最慢常温下空气中声速约340m/s。回声声音遇到障碍物反射回来人耳能区分原声和回声的条件是回声到达人耳比原声晚0.1s以上即障碍物距发声体至少17m。利用回声可以测距如声呐探测海底深度。乐音三要素音调由频率决定频率越高音调越高响度由振幅和距离决定振幅越大响度越大音色由发声体本身决定不同乐器不同人的声音音色不同。"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "声速：15℃ 空气中约 340 m/s"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "回声：声音遇到障碍物反射回来。回声到达时间差 > 0.1s 才能与原声区分（距离 > 17m）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "三大特征：音调（频率）、响度（振幅）、音色（发声体材料结构）"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "向暖水瓶中倒水时，随着水位升高，瓶内空气柱变短，振动频率升高，音调变高。所以可以根据音调判断水位高低。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "光的初步知识"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "光源："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "自身能发光的物体。太阳、电灯、蜡烛等。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "光的直线传播："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "光在同种均匀介质中沿直线传播。应用：影子、日食、月食、小孔成像。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "光速："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "真空中光速 c = 3×10⁸ m/s，空气中接近此值。"
+          "text": "光的直线传播和反射"
         }
       ]
     },
@@ -483,75 +103,18 @@
       "children": [
         {
           "type": "text",
-          "text": "光的反射定律：反射光线、入射光线和法线在同一平面内；反射光线和入射光线分居法线两侧；反射角等于入射角。"
+          "text": "光源自身能发光的物体如太阳电灯烛焰等。月亮和镜子不是光源。光在同种均匀介质中沿直线传播。光速在真空中的速度约为3×10⁸m/s。光线用带箭头的直线表示光传播的路径和方向。日食月食影子小孔成像和激光准直都是光沿直线传播的应用。光的反射定律反射光线入射光线和法线在同一平面内反射光线和入射光线分居法线两侧反射角等于入射角。反射时光路是可逆的。镜面反射反射面平滑光线平行反射漫反射反射面粗糙光线向各个方向反射都遵守反射定律。平面镜成像特点像与物大小相等到镜面距离相等连线与镜面垂直。"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "镜面反射：平行光射到平滑表面，反射光仍然平行。漫反射：平行光射到粗糙表面，反射光向各个方向。漫反射也遵循反射定律。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "晚上在路灯下行走，影子方向会随着人移动而变化。这是因为光是沿直线传播的，当人移动时，光线的遮挡角度发生变化。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "温度与热现象"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "温度："
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "表示物体冷热程度的物理量。常用单位：摄氏度（℃）。"
+          "text": "温度和物态变化"
         }
       ]
     },
@@ -560,94 +123,21 @@
       "tag": "p",
       "children": [
         {
-          "type": "element",
-          "tag": "strong",
-          "children": [
-            {
-              "type": "text",
-              "text": "温度计原理："
-            }
-          ]
-        },
-        {
           "type": "text",
-          "text": "常用温度计（如体温计、实验室温度计）利用液体热胀冷缩的性质制成。"
+          "text": "温度表示物体的冷热程度测量工具是温度计原理利用液体的热胀冷缩。摄氏温度规定标准大气压下冰水混合物的温度为0沸水温度为100之间分成100等份。三种温度计实验用温度计体温计寒暑表的结构和使用方法各有不同。体温计量程35-42分度值0.1。物态变化六种熔化固变液吸热凝固液变固放热汽化液变气吸热方式蒸发和沸腾液化气变液放热升华固变气吸热凝华气变固放热。晶体的熔化和凝固图像分析熔化过程吸收热量温度保持不变。蒸发和沸腾的区别和联系。"
         }
       ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "物态变化六种：熔化（固→液）、凝固（液→固）、汽化（液→气）、液化（气→液）、升华（固→气）、凝华（气→固）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "晶体熔化条件：达到熔点，继续吸热"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "蒸发在任何温度下都能发生，沸腾需要达到沸点且继续吸热"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "夏天从冰箱中拿出饮料，瓶壁上会出现小水珠，这是因为空气中的水蒸气遇到冷的瓶壁液化成小水滴。"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
     },
     {
       "type": "element",
       "tag": "h2",
+      "className": "section-title",
       "children": [
         {
           "type": "text",
-          "text": "学习方法建议"
+          "text": "运动和力初步"
         }
-      ],
-      "className": "section-title"
+      ]
     },
     {
       "type": "element",
@@ -655,53 +145,28 @@
       "children": [
         {
           "type": "text",
-          "text": "七年级物理（科学课中的物理模块）是物理学习的启蒙阶段，关键不在于做难题，而在于建立正确的物理思维方式。"
+          "text": "机械运动物体位置随时间的变化。参照物被选作标准的物体同一物体选择不同参照物运动情况可能不同运动和静止的相对性。速度表示物体运动快慢的物理量v=s/t匀速直线运动是最简单的机械运动。路程时间图像和速度时间图像的认识。牛顿第一定律一切物体在不受外力作用时总保持静止状态或匀速直线运动状态。惯性是物体保持原有运动状态的性质一切物体都有惯性。惯性大小只与质量有关质量越大惯性越大。惯性不是力不能与力比较大小。惯性现象和安全行车的关系如系安全带保持车距等。"
         }
       ]
     },
     {
       "type": "element",
-      "tag": "ul",
+      "tag": "h2",
+      "className": "section-title",
       "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "多观察生活现象，尝试用物理原理解释身边的现象"
-            }
-          ]
-        },
+          "type": "text",
+          "text": "学习建议"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "children": [
         {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "重视实验探究过程，理解控制变量法的应用"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "学会画力的示意图和光路图，培养空间想象能力"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "准备好错题本，及时记录和整理易混淆的概念"
-            }
-          ]
+          "type": "text",
+          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
         }
       ]
     }
