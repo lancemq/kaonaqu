@@ -1,8 +1,8 @@
 {
   "slug": "history-grade7",
   "href": "/knowledge/history-grade7",
-  "title": "部编版上海七年级历史知识点 | 史前/夏商周/秦汉/三国两晋南北朝 | 考哪去",
-  "description": "依据部编版七年级历史教材系统梳理中国古代史上册史前时期夏商周秦汉和三国两晋南北朝。",
+  "title": "上海七年级历史知识点 | 史前·夏商周·秦汉·三国两晋南北朝 | 考哪去",
+  "description": "依据部编版七年级历史上册，按朝代顺序梳理史前时期、夏商周、秦汉、三国两晋南北朝四个单元的核心史实、人物与制度。",
   "breadcrumbItems": [
     {
       "label": "知识体系",
@@ -13,7 +13,7 @@
       "href": "/knowledge/grade-7"
     },
     {
-      "label": "历史"
+      "label": "上海七年级历史知识点"
     }
   ],
   "richBlocks": [
@@ -25,20 +25,22 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "部编版上海七年级历史知识点 | 史前/夏商周/秦汉/三国两晋南北朝 | 考哪去"
+              "text": "上海七年级历史知识点 | 史前·夏商周·秦汉·三国两晋南北朝 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "依据部编版七年级历史教材系统梳理中国古代史上册史前时期夏商周秦汉和三国两晋南北朝。"
+              "text": "依据部编版七年级历史上册，按朝代顺序梳理史前时期、夏商周、秦汉、三国两晋南北朝四个单元的核心史实、人物与制度。"
             }
           ]
         }
@@ -46,190 +48,2152 @@
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
-          "type": "text",
-          "text": "史前时期中国早期人类"
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材版本"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "部编版·上册"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习朝代"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "4 大时期"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时间跨度"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "约 170 万年前—589 年"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "核心素养"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时空观念 / 史料实证"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "元谋人是我国境内目前已确认的最早古人类距今约170万年。北京人距今约70万至20万年能够使用火使用打制石器从事狩猎和采集生活群居生活。山顶洞人距今约3万年掌握磨光和钻孔技术有审美意识。河姆渡人距今约7000年种植水稻住干栏式房屋使用磨制石器是长江流域原始农耕的代表。半坡居民距今约6000年种植粟住半地穴式房屋制作彩陶是黄河流域原始农耕的代表。炎帝黄帝是传说中中华民族的人文初祖通过阪泉之战和涿鹿之战形成华夏族主体。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "史前时期 · 中国早期人类"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "从 170 万年前的元谋人到 1 万年前的新石器时代，梳理人类起源、农业起源和文明起源的脉络。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "timeline",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "约 170 万年前"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "元谋人"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 我国境内目前已确认的最早古人类，云南元谋人。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "约 70—20 万年前"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "北京人"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 周口店龙骨山，使用打制石器，保留猿的某些特征，已会用火。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "约 3 万年前"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "山顶洞人"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 北京周口店龙骨山顶，使用磨制石器、钻孔技术，会人工取火，会缝制衣服。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "约 6000 年前"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "半坡 / 河姆渡"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 长江流域（河姆渡）种水稻、黄河流域（半坡）种粟，住干栏式 / 半地穴式房屋。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "约 5000 年前"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "黄帝炎帝时期"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 传说中部落联盟首领，黄帝被尊为\"人文初祖\"，涿鹿之战击败蚩尤。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "打制石器 vs 磨制石器"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "打制石器（旧石器）粗糙、效率低；磨制石器（新石器）精细、可定型。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "北京人 vs 山顶洞人"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "北京人尚保留猿的特征，山顶洞人模样与现代人基本相同。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原始农业的标志"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "农作物种植、家畜饲养、聚落（村落）出现。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "传说时代"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "炎帝、黄帝、尧舜禹的禅让、鲧禹治水，是中华文明的奠基期。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习建议"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "史前时期靠时间轴和遗址分布图（南稻北粟）双线学习；把每个遗址的\"地点 + 距今年代 + 关键发现\"做成小卡片。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "夏商周时期早期国家的建立和发展"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "夏商周 · 早期国家的建立与发展"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "从中国第一个王朝夏，到商周两代，理解\"国家形态\"如何从部落联盟走向奴隶制王国。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "timeline",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "约公元前 2070 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "夏朝建立"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 禹建立中国第一个王朝，启世袭制代替禅让制，都城在阳城。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "约公元前 1600 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "商汤灭夏"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 商部落首领汤在鸣条之战中灭夏，商朝建立，多次迁都。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "约公元前 1300 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "盘庚迁殷"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 盘庚迁都至殷（今安阳），此后商朝稳定下来，称\"殷商\"。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "公元前 1046 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "武王伐纣"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 周武王在牧野之战中击败商纣王，灭亡商朝，建立周朝。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "公元前 1046—771 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "西周"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 定都镐京（今西安），实行分封制和宗法制，礼乐制度严格。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "公元前 770—256 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "东周（春秋战国）"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 周平王东迁洛邑，分为春秋（770—476）和战国（475—221）两段。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "制度"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "作用"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "禅让制"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "部落联盟首领由推选产生，尧→舜→禹"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "原始社会末期民主制"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "世袭制"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "王位父子相传，\"家天下\"开始"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "国家形态确立"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "分封制"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "周王分封诸侯到各地建立诸侯国，镇守疆土"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "扩大周王朝统治范围"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "宗法制"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "嫡长子继承制为核心"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "巩固分封制，形成等级秩序"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "礼乐制"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "不同等级使用不同规格的礼器和音乐"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "维护贵族等级制度"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "青铜文明代表"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "司母戊鼎（迄今世界上出土最大、最重的青铜礼器，重 832.84 公斤）、四羊方尊、三星堆青铜面具/神树。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "朝代记忆口诀"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "夏商与西周，东周分两段；春秋和战国，一统秦两汉；三分魏蜀吴，二晋前后延；南北朝并立，隋唐五代传。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "夏朝约公元前2070年禹建立中国历史上第一个王朝。世袭制代替禅让制公天下变为家天下。夏朝建立了军队制定刑法设置监狱标志着早期国家的产生。商朝汤灭夏后建立盘庚迁殷后商朝稳定发展。甲骨文是商朝人刻写在龟甲和兽骨上的文字是中国已发现的古代文字中年代最早体系较为完整的文字。西周分封制周天子把土地和人民分给诸侯诸侯服从周天子定期朝觐纳贡服役。宗法制规定了嫡长子继承制维护贵族内部秩序。春秋时期王室衰微诸侯争霸齐桓公晋文公楚庄王先后称霸。战国七雄齐楚秦燕赵魏韩。铁制农具和牛耕在春秋战国时期出现和推广促进了生产力发展。商鞅变法在秦国的推行是战国时期最彻底的变法使秦国成为最强大的诸侯国。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "秦汉 · 统一多民族国家的建立和巩固"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "公元前 221 年秦统一六国，到公元 220 年汉朝结束，中国第一次形成大一统中央集权国家。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "朝代"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "建立时间 / 人物"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "都城"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "重大事件"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "秦朝"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "前 221 / 嬴政"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "咸阳"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "统一六国、书同文车同轨、北击匈奴、修长城、焚书坑儒"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "西汉"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "前 202 / 刘邦"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "长安"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "文景之治、汉武帝大一统、张骞通西域、设西域都护府"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "东汉"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "25 / 刘秀"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "洛阳"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "光武中兴、黄巾之乱、班超经营西域"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "秦始皇巩固统一措施"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "政治：创立中央集权制度（皇帝制度、三公九卿、郡县制）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "经济：统一度量衡、统一货币（圆形方孔半两钱）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "文化：统一文字（小篆）、焚书坑儒"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "思想：推崇法家"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "军事：北击匈奴修万里长城、南征百越开灵渠"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "key-points",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "汉武帝大一统："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "\"罢黜百家，独尊儒术\"（董仲舒）、颁布推恩令削弱诸侯、派卫青霍去病北击匈奴、派张骞通西域、设盐铁官。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "丝绸之路："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "长安—河西走廊—西域—中亚—西亚—欧洲大秦（罗马）。促进东西方经济文化交流。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "西域都护府："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "前 60 年西汉设立，标志着今新疆地区正式纳入中央政权管辖。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "汉代科技文化："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "蔡伦改进造纸术、张衡发明地动仪、《九章算术》、司马迁《史记》。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "秦亡汉兴的启示"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "秦朝速亡的根本原因是暴政（赋税、徭役、刑法严酷），汉初吸取教训推行休养生息政策，才出现\"文景之治\"。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "秦汉时期统一多民族国家的建立和巩固"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "三国两晋南北朝 · 政权分立与民族交融"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "从 220 年曹丕代汉，到 589 年隋灭陈，370 年的分裂与民族大融合是这一时期的主旋律。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "timeline",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "220 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "曹魏建立"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 曹丕代汉称帝，三国时代开始。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "221 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "蜀汉建立"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 刘备在成都称帝，诸葛亮辅政。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "222 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "孙吴建立"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 孙权在建业（今南京）称帝。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "263 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "魏灭蜀"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 蜀汉灭亡。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "265 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "西晋建立"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 司马炎代魏称帝，280 年灭吴统一全国。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "316 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "西晋灭亡"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 匈奴攻破长安，西晋结束。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "317 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "东晋建立"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 司马睿在江南重建晋朝。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "420—589 年"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "南北朝对峙"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 南朝：宋齐梁陈；北朝：北魏（后分裂为东魏西魏→北齐北周），最终北周灭北齐，隋代北周。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "三国鼎立"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "魏在北（黄河流域）、蜀在西南（益州）、吴在东南（江东）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "西晋统一"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "短暂统一 280—316 年，因\"八王之乱\"和\"五胡内迁\"瓦解。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "北魏孝文帝改革"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "迁都洛阳、说汉话、穿汉服、改汉姓、与汉族通婚，是民族交融的标志性事件。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "南北朝趋势"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "江南得到开发、北方民族大融合，为隋唐统一奠基。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "key-points",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "三国史实纠正："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "\"草船借箭\"是孙权（不是诸葛亮）；\"空城计\"是演义虚构。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "江南开发："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "东晋南朝时期，北方人口南迁，带来劳动力和先进技术，江南经济开始赶上北方。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "科技文化："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "祖冲之（圆周率）、贾思勰（《齐民要术》）、郦道元（《水经注》）、王羲之（《兰亭集序》）、顾恺之（《女史箴图》《洛神赋图》）、云冈石窟、龙门石窟。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "民族交融："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "北魏孝文帝改革是典型案例；\"胡人汉服\"\"汉人胡食\"是日常写照。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "秦统一六国公元前221年秦王嬴政建立秦朝定都咸阳。确立中央集权制度最高统治者称皇帝中央设三公丞相御史大夫太尉地方推行郡县制。统一文字以小篆为标准字体统一货币用圆形方孔钱统一度量衡。修筑长城西起临洮东到辽东。秦的暴政导致农民起义陈胜吴广起义是中国历史上第一次农民大起义。西汉汉高祖推行休养生息政策文景之治出现治世。汉武帝大一统政治上推恩令削弱王国势力思想上罢黜百家独尊儒术经济上盐铁专卖军事上北击匈奴。张骞通西域开辟丝绸之路从长安出发经河西走廊到中亚西亚最远到达大秦。丝绸之路促进了东西方经济文化交流。东汉蔡伦改进造纸术对世界文化传播作出巨大贡献。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "学习方法 · 时间轴 + 大事年表"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "三国两晋南北朝政权分立和民族交融"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "历史学科的精髓是\"时空观念\"，把时间、空间、人物、事件四要素结合是初中历史的核心方法。"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "官渡之战200年曹操以少胜多打败袁绍奠定统一北方基础。赤壁之战208年孙刘联军以少胜多打败曹操奠定三国鼎立基础。三国魏蜀吴分别建立。西晋280年统一全国但统治短暂。八王之乱导致西晋衰落。北方进入十六国时期南方为东晋。淝水之战383年前秦苻坚进攻东晋东晋以少胜多。北魏孝文帝改革494年迁都洛阳推行汉化政策穿汉服说汉语改汉姓通婚姻促进了北方民族大交融。贾思勰的《齐民要术》是现存最早最完整的农书。祖冲之把圆周率精确到小数点后第七位南朝时领先世界近千年。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "ul",
+          "className": "step-list",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第一步："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "画时间轴：170 万年前—公元 589 年，按朝代分段。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第二步："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "每个朝代记 4 件大事：建立、鼎盛、衰亡、代表人物/文化。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第三步："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "分析原因：朝代更替的直接原因（战争/暴政）和根本原因（生产关系/民族矛盾）。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第四步："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "横向比较：秦汉的\"统一\"、三国两晋南北朝的\"分裂与交融\"、隋唐的\"繁荣\"是不同主题。"
+                }
+              ]
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "古代科技和文化"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "甲骨文是中国已知最早的文字。青铜器代表作品司母戊鼎和四羊方尊。都江堰是战国时期李冰父子主持修建的综合性水利工程。孔子儒家学派创始人核心思想仁提倡礼治主张以德治国。老子道家学派创始人主张道法自然无为而治。百家争鸣春秋战国时期各学派纷纷著书立说互相辩论学术繁荣。汉赋唐诗是代表性文学形式。司马迁《史记》是中国古代第一部纪传体通史。蔡伦改进造纸术张衡发明地动仪。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "学习方法建议"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "学习历史要建立清晰的时间轴用思维导图梳理朝代更替顺序和重大事件。每个朝代的起止时间建立者都城主要成就和灭亡原因要熟练记忆。分析历史事件从背景经过结果影响四个维度思考。将中国历史与世界历史对照学习有助于建立全球化视野。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考历史备考建议"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "上海中考历史为开卷考试重点考查材料分析能力。平时学习时要熟悉教材目录和重点史料的分布位置。考试时先浏览全部题目再带着问题回到教材和资料中查找答案。注意审题看清题目要求是据材料概括还是结合所学知识回答。史料类型区分第一手史料直接真实的证据如出土文物和原始档案和第二手史料后人整理的资料如史书和传记。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "七年级上册重点事件年代尺"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "距今约170万年元谋人距今约70-20万年北京人约公元前2070年夏朝建立约公元前1600年商汤灭夏公元前1046年武王伐纣西周建立公元前770年东周开始春秋时期公元前356年商鞅变法公元前221年秦始皇统一六国公元前202年西汉建立公元前138年张骞第一次出使西域25年东汉建立200年官渡之战208年赤壁之战280年西晋统一383年淝水之战494年北魏孝文帝迁都洛阳"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "学习建议"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考历史答题技巧"
+                }
+              ]
+            },
+            "原因分析题：先写\"根本原因\"（经济/制度/阶级），再写\"直接原因\"（导火索/事件）。",
+            "影响评价题：用\"一方面……另一方面……\"或\"短期……长期……\"两段式。",
+            "材料题：先概括材料中心，再结合所学知识回答。",
+            "时间计算：公元前+公元后年代数字相加后减 1（如公元前 221 年到公元 220 年 = 221+220-1 = 440 年）。"
+          ]
         }
       ]
     }

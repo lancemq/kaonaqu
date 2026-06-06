@@ -299,6 +299,8 @@ function RichTextNode({ headingState, node }) {
   switch (node.tag) {
     case 'article':
       return <article {...props}>{children}</article>;
+    case 'aside':
+      return <aside {...props}>{children}</aside>;
     case 'br':
       return <br />;
     case 'code':
@@ -313,6 +315,8 @@ function RichTextNode({ headingState, node }) {
       return <h3 {...props}>{children}</h3>;
     case 'h4':
       return <h4 {...props}>{children}</h4>;
+    case 'h5':
+      return <h5 {...props}>{children}</h5>;
     case 'li':
       return <li {...props}>{children}</li>;
     case 'ol':
@@ -325,6 +329,8 @@ function RichTextNode({ headingState, node }) {
       return <span {...props}>{children}</span>;
     case 'strong':
       return <strong {...props}>{children}</strong>;
+    case 'em':
+      return <em {...props}>{children}</em>;
     case 'table':
       return <table {...props}>{children}</table>;
     case 'tbody':
