@@ -12,51 +12,22 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海高二物理知识体系与学习说明"
+              "text": "上海高二物理 | 电场·电路·磁场·电磁感应·交变电流 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "高二物理从力学主线进入电磁学主线，抽象程度更高。要把场、能量、图像和实验误差连成同一套分析语言。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "page-header-actions",
-          "children": [
-            {
-              "type": "element",
-              "tag": "a",
-              "href": "#senior2-physics-plan",
-              "className": "action-link",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "查看学习计划"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "a",
-              "href": "/knowledge/senior-2",
-              "className": "action-link",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "回到高二总览"
-                }
-              ]
+              "text": "依据沪科版高二物理选择性必修第一册/第二册与上海高考物理考纲，按\"电场·恒定电流·磁场·电磁感应·交变电流\"五大板块系统整合高二物理全部重点、难点和考点。"
             }
           ]
         }
@@ -64,123 +35,62 @@
     },
     {
       "type": "element",
-      "tag": "section",
-      "className": "chapter",
+      "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
           "type": "element",
-          "tag": "h2",
+          "tag": "div",
+          "className": "summary-item",
           "children": [
             {
-              "type": "text",
-              "text": "一、如何使用这份物理资料"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "学习重点："
+                  "text": "高二同步"
                 }
               ]
-            },
-            {
-              "type": "text",
-              "text": " 高二学习的核心不是提前刷高三压轴，而是把专题知识、题型模型和表达步骤连成稳定链路。每个专题建议按“核心概念 - 典型模型 - 易错条件 - 综合迁移”的顺序整理。 "
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "concept-grid",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "用“对象 - 过程 - 规律 - 图像 - 能量”五步分析电磁学问题。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "考试时长"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考方向"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "电场、电势、电路、磁场、带电粒子、感应前置和实验数据处理。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "复习提醒"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "电磁学不能只背公式，必须画图并说明方向、正负号和适用条件。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "120 分钟"
                 }
               ]
             }
@@ -188,11 +98,117 @@
         },
         {
           "type": "element",
-          "tag": "p",
+          "tag": "div",
+          "className": "summary-item",
           "children": [
             {
-              "type": "text",
-              "text": "如果是选科科目，建议把本页当作阶段复盘清单：先补概念断点，再练中档综合题，最后整理能迁移到高三一轮复习的模型卡片。"
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "100 分（合格考）/ 150 分（高考）"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "85+ 合格 / 115+ 高考"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "沪科版选择性必修"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考关联"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电磁学 + 电路实验"
+                }
+              ]
             }
           ]
         }
@@ -202,69 +218,97 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "id": "senior2-physics-electric-field",
       "children": [
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "二、电场、电势与电路模型"
+              "text": "第一单元 · 电场总复习（25 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "电学的第一关是把抽象场量和具体电路量区分清楚。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心知识"
+              "text": "电场是高二物理的起点，是电磁学的基础。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "ul",
+          "className": "topic-stats",
           "children": [
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "理解电场强度、电势、电势能、电压之间的关系。"
+                  "text": " 20-25 分"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "电路题先判断串并联、等效电路和电表影响。"
+                  "text": " ★★★★"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "会用能量观点处理带电粒子在电场中的运动。"
+                  "text": " 5 周"
                 }
               ]
             }
@@ -283,20 +327,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "模型"
+                      "text": "电荷"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "受力方向 - 电势变化 - 能量转化 - 运动结果。"
+                      "text": "正电荷（丝绸摩擦玻璃棒）/ 负电荷（毛皮摩擦橡胶棒）。\n元电荷 e = 1.6×10⁻¹⁹ C。\n电荷守恒定律：电荷既不能创造也不能消失，只能转移。"
                     }
                   ]
                 }
@@ -310,20 +356,254 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "易错点"
+                      "text": "库仑定律"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "混淆电场线方向、电势高低和电荷正负。"
+                      "text": "真空中两个静止点电荷间的作用力 F = kQ₁Q₂/r²。\nk = 9.0×10⁹ N·m²/C²。\n方向：连线上，同种相斥，异种相吸。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电场强度"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "E = F/q（定义式）。单位 N/C = V/m。\n方向：正电荷受力方向。\n点电荷电场：E = kQ/r²。\n匀强电场：E = U/d。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电场线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "形象描述电场。\n特点：① 从正电荷出发到负电荷终止；② 不闭合；③ 任意两条不相交；④ 密处场强大。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电势差"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "U = W/q（电场力做的功/电荷量）。单位 V。\nU_AB = φ_A - φ_B。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电势"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "φ = Eₚ/q。单位 V。\n沿电场线方向电势降低。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "等势面"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电势相等的点构成的面。\n特点：① 垂直电场线；② 同一等势面移动电荷不做功。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电容器"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "C = Q/U（定义式）。单位 F（法拉）。\n平行板电容器：C = εS/(4πkd)。\n决定式：与 S、εᵣ 成正比，与 d 成反比。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "带电粒子在电场中"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "加速：qU = ½mv² → v = √(2qU/m)。\n偏转：y = qU L²/(2mdv₀²)，tanθ = qUL/(mdv₀²)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "静电感应"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "导体放入电场后，自由电子定向移动，导体两端出现等量异种电荷。"
                     }
                   ]
                 }
@@ -333,22 +613,150 @@
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "important",
+          "tag": "aside",
+          "className": "formula",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题训练："
+                  "text": "电场 6 大公式"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 每道电场题都画出电场线、受力方向和能量变化表。 "
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "库仑定律：F = kQ₁Q₂/r²"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电场强度：E = F/q = kQ/r² = U/d"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电势差：U_AB = W_AB/q"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电容：C = Q/U = εS/(4πkd)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "加速：qU = ½mv²"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "偏转：y = qUL²/(2mdv₀²)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电场 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 电场强度是矢量（带方向）；② 库仑定律只适用于点电荷；③ 沿电场线方向电势降低；④ 电场力做正功电势能减小；⑤ 电容器充电后断开关关 U 不变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电场易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 库仑定律和万有引力公式混（都用反平方）；② 正负电荷电场方向搞反；③ 电势能正负判断（Eₚ = qφ）；④ 等势面不垂直电场线漏看；⑤ 偏转问题中 v₀ 不变。"
+                }
+              ]
             }
           ]
         }
@@ -358,69 +766,97 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "id": "senior2-physics-magnetism",
       "children": [
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "三、磁场与电磁感应前置"
+              "text": "第二单元 · 恒定电流总复习（20 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "磁场题重在方向判断和运动过程分析，是高二后段的重要综合点。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心知识"
+              "text": "恒定电流是连接电场和磁场的桥梁。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "ul",
+          "className": "topic-stats",
           "children": [
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "掌握左手定则、右手定则和感应电流方向判断。"
+                  "text": " 15-20 分"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "带电粒子在磁场中运动要找圆心、半径和周期。"
+                  "text": " ★★★"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "电磁感应题先判断磁通量变化，再判断电流和受力。"
+                  "text": " 4 周"
                 }
               ]
             }
@@ -439,20 +875,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "模型"
+                      "text": "电流"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "区域图 - 方向判断 - 几何关系 - 动力学/能量。"
+                      "text": "I = Q/t。方向：正电荷定向移动方向。单位 A。"
                     }
                   ]
                 }
@@ -466,20 +904,254 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "易错点"
+                      "text": "电阻"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "方向定则混用，或忽略粒子速度方向与磁场方向关系。"
+                      "text": "R = U/I（定义式）。R = ρL/S（决定式）。\nρ 电阻率（与材料、温度有关）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "欧姆定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "I = U/R。适用：金属导电、电解液导电（不适用：气体导电、半导体）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电阻定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "R = ρL/S。L 长度，S 横截面积。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电功和电功率"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "W = UIt = I²Rt = U²/R · t。\nP = UI = I²R = U²/R。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "焦耳定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Q = I²Rt（电热）。\n纯电阻电路：Q = W；非纯电阻：Q < W。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "串并联电路"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "串联：I = I₁ = I₂，U = U₁ + U₂，R = R₁ + R₂。\n并联：U = U₁ = U₂，I = I₁ + I₂，1/R = 1/R₁ + 1/R₂。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电动势"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "ε = W/q（非静电力做的功/电荷量）。单位 V。\n与电压表的区别：电动势是电源本身的属性，电压是电势差。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "闭合电路欧姆定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "I = ε/(R + r)。\nU_端 = ε - Ir。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "伏安特性曲线"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "I-U 图象：线性元件是直线，非线性元件是曲线。\n斜率 = 1/R。"
                     }
                   ]
                 }
@@ -489,22 +1161,172 @@
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "important",
+          "tag": "aside",
+          "className": "formula",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题训练："
+                  "text": "恒定电流 8 大公式"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 整理一页方向判断清单，配 6 个典型示意图反复复盘。 "
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "欧姆定律：I = U/R"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电阻定律：R = ρL/S"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电功：W = UIt = I²Rt = U²/R · t"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电功率：P = UI = I²R = U²/R"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "焦耳定律：Q = I²Rt"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "串联分压：U₁/U₂ = R₁/R₂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "并联分流：I₁/I₂ = R₂/R₁"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "闭合电路：I = ε/(R+r)，U_端 = ε - Ir"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电路 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 串并联判错；② 滑动变阻器接法（限流/分压）；③ 电源内阻忽略；④ 电动势和电压混；⑤ 非纯电阻电路 Q ≠ W。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电路易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 电压表电流表内阻假设反了（理想电压表内阻∞，理想电流表内阻0）；② 量程选错；③ 滑动变阻器接成定值电阻（接错下端）；④ 电源有内阻时路端电压变化；⑤ 改装电表计算。"
+                }
+              ]
             }
           ]
         }
@@ -514,69 +1336,97 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "id": "senior2-physics-experiment",
       "children": [
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "四、实验、图像与综合题"
+              "text": "第三单元 · 磁场总复习（20 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "高二物理实验更强调图像斜率、截距和误差来源的解释。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心知识"
+              "text": "磁场是电磁学的核心，与电场并称\"电磁两支柱\"。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "ul",
+          "className": "topic-stats",
           "children": [
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "会把实验数据转化为图像并解释物理意义。"
+                  "text": " 15-20 分"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "理解仪器读数、有效数字和系统误差。"
+                  "text": " ★★★★"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "综合题中明确每一段过程适用的物理规律。"
+                  "text": " 4 周"
                 }
               ]
             }
@@ -595,20 +1445,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "模型"
+                      "text": "磁场"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "实验目的 - 控制变量 - 数据处理 - 误差分析。"
+                      "text": "磁体或电流周围存在的一种特殊物质。方向：小磁针 N 极指向。\n单位：T（特斯拉）。"
                     }
                   ]
                 }
@@ -622,20 +1474,254 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "易错点"
+                      "text": "磁感线"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "只代公式，不说明图像斜率或截距代表什么。"
+                      "text": "形象描述磁场。\n特点：① 闭合曲线；② 外部 N→S，内部 S→N；③ 不相交；④ 密处磁场强。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "安培定则（右手螺旋）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "直导线：右手握导线，大拇指指电流方向，四指指磁场环绕方向。\n螺线管：右手握螺线管，四指指电流方向，大拇指指 N 极。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "安培力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "F = BIL sinθ（θ 是 B 与 I 夹角）。\n方向：用左手定则（F、B、I 三者两两垂直）。\n最大：θ = 90° 时 F = BIL。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "洛伦兹力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "f = qvB sinθ。\n方向：用左手定则（正电荷四指指 v 方向）。\n最大：θ = 90° 时 f = qvB。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "带电粒子在磁场中"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "匀速圆周运动：qvB = mv²/r → r = mv/(qB)。\nT = 2πm/(qB)。\n几何关系：入射速度、出射速度、圆心构成等腰三角形。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "速度选择器"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电场力 = 洛伦兹力：qE = qvB → v = E/B。\n只对特定速度的粒子直线通过。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "质谱仪"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "加速：qU = ½mv²；磁场：r = mv/(qB)。\n由 r 可求质量 m。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "回旋加速器"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高频电压反复加速；磁场使粒子做圆周运动。\n最大动能：Eₖ = q²B²R²/(2m)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "霍尔效应"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "导体中电流方向与磁场方向垂直时，导体两侧产生电势差。\nU_H = IB/(ned)（n 载流子浓度）。\n应用：测磁场、判载流子类型。"
                     }
                   ]
                 }
@@ -645,22 +1731,150 @@
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "important",
+          "tag": "aside",
+          "className": "formula",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题训练："
+                  "text": "磁场 6 大公式"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 每周复盘 1 个电学实验，写出电路图、数据表和误差说明。 "
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "安培力：F = BIL sinθ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "洛伦兹力：f = qvB sinθ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "磁场圆周：r = mv/(qB)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "周期：T = 2πm/(qB)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "最大动能：Eₖ = q²B²R²/(2m)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "霍尔电压：U_H = IB/(ned)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "磁场 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 左手定则 vs 右手定则混（左手力，右手电流生磁）；② 安培力和洛伦兹力方向判断错；③ 磁场圆周运动中几何关系搞错；④ 速度选择器 E 和 B 方向搞反；⑤ 霍尔效应载流子正负影响 U_H 方向。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "磁场易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 磁场方向判断错（地磁场 N 极在地理南极附近）；② 安培力最小值（θ = 0°）；③ 洛伦兹力不做功（永远垂直速度）；④ 圆周运动方向（正电荷逆时针，负电荷顺时针）；⑤ 速度选择器只能用一种极性粒子。"
+                }
+              ]
             }
           ]
         }
@@ -670,25 +1884,99 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "id": "senior2-physics-plan",
       "children": [
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "五、高二物理阶段提升计划"
+              "text": "第四单元 · 电磁感应总复习（20 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "建议把电磁学和实验图像同步推进，避免公式孤岛。"
+              "text": "电磁感应是法拉第发现的核心规律。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 15-20 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 5 周"
+                }
+              ]
             }
           ]
         },
@@ -705,20 +1993,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "概念线"
+                      "text": "电磁感应现象"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "场、电势、磁通量等概念要配图记忆。"
+                      "text": "穿过闭合回路的磁通量发生变化时，回路中产生感应电流。"
                     }
                   ]
                 }
@@ -732,20 +2022,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "模型线"
+                      "text": "磁通量"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "带电粒子、电路等效和感应过程各建模型卡。"
+                      "text": "Φ = BS cosθ（θ 是 B 与 S 法线夹角）。单位 Wb（韦伯）。"
                     }
                   ]
                 }
@@ -759,66 +2051,1425 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "实验线"
+                      "text": "法拉第电磁感应定律"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "每个实验保留原理、图像和误差三栏。"
+                      "text": "ε = -nΔΦ/Δt。\n大小：|ε| = n|ΔΦ/Δt|。\n方向：由楞次定律或右手定则判断。"
                     }
                   ]
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "楞次定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "感应电流的磁场总要阻碍引起感应电流的磁通量的变化。\n口诀：\"增反减同\"（磁通量增加时感应磁场反向，减少时同向）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "右手定则"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "导体切割磁感线：伸开右手，让磁感线穿入掌心，拇指指运动方向，四指指感应电流方向。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "导体切割"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "ε = BLv sinθ（θ 是 B 与 v 夹角）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "自感"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "由于导体自身电流变化而产生的电磁感应现象。\n自感电动势：ε = LΔI/Δt。\nL 自感系数，单位 H（亨利）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "互感"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "两个线圈之间，一个线圈电流变化引起另一个线圈产生感应电动势。\n应用：变压器。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "涡流"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "块状导体在变化磁场中产生的感应电流。\n应用：电磁炉、电磁制动。\n防止：变压器铁芯用硅钢片（增大电阻，减小涡流）。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电磁感应 5 大公式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "磁通量：Φ = BS cosθ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "法拉第：ε = nΔΦ/Δt"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "切割：ε = BLv sinθ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "自感：ε = LΔI/Δt"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "楞次：\"增反减同\"（感应磁场总是阻碍变化）"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电磁感应 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 法拉第 ε 和切割 ε 混；② 楞次定律\"阻碍\"不是\"阻止\"；③ 导体切割时 BLv 三者方向要两两垂直；④ 自感不能突变（电流连续性）；⑤ 涡流应用与防止搞反。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电磁感应易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 磁通量变化 ΔΦ 而不是 Φ；② 法拉第定律负号（楞次定律数学表达）；③ 右手定则和楞次定律混用；④ 导体棒转动切割 ε 公式不同；⑤ 线圈磁通量不变时无感应电流。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第五单元 · 交变电流总复习（15 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "交变电流是电磁感应的应用。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 10-15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "交变电流"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "大小和方向随时间周期性变化的电流。\n正弦式：e = εₘ sin(ωt)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "峰值与有效值"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "峰值 εₘ（最大瞬时值）。\n有效值 ε = εₘ/√2 ≈ 0.707εₘ（正弦交流电）。\n注意：电表读数、计算电功电热都用有效值。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "周期和频率"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "T = 1/f = 2π/ω。\n我国交流电：f = 50 Hz，T = 0.02 s。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "变压器"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "工作原理：互感。\nU₁/U₂ = n₁/n₂。\nI₁/I₂ = n₂/n₁。\n理想变压器：P₁ = P₂。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电能的输送"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高压输电减少损失。\n损失功率：P_损 = I²R = (P/U)²R。\nU 越高，I 越小，损失越小。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电感电容对交流电的影响"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电感：通低频阻高频（感抗 X_L = ωL）。\n电容：通高频阻低频（容抗 X_C = 1/(ωC)）。\n应用：滤波、调谐。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电磁振荡（LC 回路）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "L（电感）+ C（电容）产生周期性电磁振荡。\n周期：T = 2π√(LC)。\n麦克斯韦电磁理论：变化的电场产生磁场，变化的磁场产生电场。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "交变电流 6 大公式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "瞬时值：e = εₘ sin(ωt)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "峰值：εₘ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "有效值：ε = εₘ/√2"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "周期：T = 1/f = 2π/ω"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "变压器：U₁/U₂ = n₁/n₂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高压输电：P_损 = I²R = (P/U)²R"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "交变电流 4 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 峰值和有效值混（计算电功用有效值）；② 变压器只改变电压不改变功率（理想）；③ 输电损失与电压平方成反比（U 越大越省）；④ 电磁振荡周期公式 T = 2π√(LC)。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "交变电流易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 交流电通过电阻的功率 P = U²/R（U 是有效值）；② 变压器不能接直流（恒定电流无互感）；③ 互感器分电压互感器（并联）和电流互感器（串联）；④ 高压输电要升压和降压两个变压器；⑤ 麦克斯韦电磁场理论：变化的电场产生磁场（不是静电场）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 典型例题（电场+磁场+电磁感应）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选电场、磁场、电磁感应综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电场综合"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "平行板电容器两板间距 d = 2 cm，板长 L = 10 cm，电压 U = 100 V。电子从一板静止释放，求：(1) 板间场强；(2) 电子出板时速度。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】(1) E = U/d = 100/0.02 = 5000 V/m\n(2) qU = ½mv² → v = √(2qU/m) = √(2 × 1.6×10⁻¹⁹ × 100 / 9.1×10⁻³¹) ≈ 5.93×10⁶ m/s\n【考点】匀强电场场强公式 + 动能定理（电场力做功）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "磁场圆周运动"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "质子（质量 m，电荷 q）以速度 v 垂直进入磁感应强度 B 的磁场。求：(1) 轨道半径；(2) 运动周期。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】(1) qvB = mv²/r → r = mv/(qB)\n(2) T = 2πm/(qB)\n【考点】洛伦兹力提供向心力。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电磁感应"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "长 0.5 m 的导体棒垂直于磁场方向以 2 m/s 匀速运动，磁感应强度 B = 0.4 T。求：(1) 感应电动势；(2) 若回路电阻 R = 0.5 Ω，求电流。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】(1) ε = BLv = 0.4 × 0.5 × 2 = 0.4 V\n(2) I = ε/R = 0.4/0.5 = 0.8 A\n【考点】导体切割磁感线 + 闭合电路欧姆定律。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求）→ ② 受力分析或运动分析 → ③ 选用公式（电场/磁场/感应）→ ④ 代入求解（带单位）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海/全国高考物理真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年高考物理真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海/全国高考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 40 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海高考·选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "3 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：真空中两个点电荷 Q₁ = 2q，Q₂ = -q，相距 r。库仑力大小为（  ）\nA. kq²/r²   B. 2kq²/r²   C. kq²/(2r²)   D. 0"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】F = k|Q₁||Q₂|/r² = k(2q)(q)/r² = 2kq²/r²。\n【技巧】库仑定律大小公式 F = kQ₁Q₂/r²，方向由电性决定。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 全国高考·计算"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "8 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：电动势 12 V 电源，内阻 1 Ω，外接 5 Ω 电阻。求：(1) 电流；(2) 端电压；(3) 电源输出功率。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) I = ε/(R+r) = 12/(5+1) = 2 A\n(2) U_端 = ε - Ir = 12 - 2×1 = 10 V\n(3) P_出 = U_端I = 10 × 2 = 20 W\n【解析】闭合电路欧姆定律 + 端电压 + 输出功率。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 全国高考·实验"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：用多用电表测电阻的实验：\n（1）多用电表表盘上的中值电阻代表什么？\n（2）为什么测电阻时要换挡并重新调零？\n（3）测电阻时为什么手不能接触表笔金属部分？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 中值电阻代表该挡内阻。读数最准确在中值附近（指针偏转到表盘中央）。\n(2) 不同挡内阻不同，换挡后内阻改变，需要重新调零（短接表笔调\"0Ω\"）。\n(3) 人体电阻（约 1kΩ-几 MΩ）会与被测电阻并联，测量不准确（特别是测大电阻时影响大）。\n【技巧】多用电表使用：① 机械调零；② 选挡；③ 欧姆调零；④ 测量；⑤ 读数。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考物理命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择题 8 题（基础+电磁学辨析）；② 实验题 2 道（电学+力学）；③ 计算题 3-4 道（电磁学为主）。热点：电磁感应/带电粒子在复合场/变压器。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：高二物理学习策略与高考衔接"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供高二物理学习策略和高考衔接指南。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "table",
+          "className": "unit-table",
           "children": [
             {
               "type": "element",
               "tag": "thead",
+              "className": "",
               "children": [
                 {
                   "type": "element",
                   "tag": "tr",
+                  "className": "",
                   "children": [
                     {
                       "type": "element",
                       "tag": "th",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "阶段"
+                          "text": "轮次"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "th",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "主要任务"
+                          "text": "时间"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "th",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "完成标志"
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
                         }
                       ]
                     }
@@ -829,38 +3480,54 @@
             {
               "type": "element",
               "tag": "tbody",
+              "className": "",
               "children": [
                 {
                   "type": "element",
                   "tag": "tr",
+                  "className": "",
                   "children": [
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "第 1 阶段"
+                          "text": "第一学期（上）"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "补电场和电路基础模型"
+                          "text": "9 月-1 月"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "能准确画图并判断方向"
+                          "text": "电场 + 恒定电流 + 磁场"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成课内 50% 内容"
                         }
                       ]
                     }
@@ -869,34 +3536,49 @@
                 {
                   "type": "element",
                   "tag": "tr",
+                  "className": "",
                   "children": [
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "第 2 阶段"
+                          "text": "第二学期（下）"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "训练磁场和感应前置"
+                          "text": "2 月-6 月"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "过程分析不再只靠套公式"
+                          "text": "电磁感应 + 交变电流 + 选修"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "接轨高考 115+ 分"
                         }
                       ]
                     }
@@ -905,34 +3587,49 @@
                 {
                   "type": "element",
                   "tag": "tr",
+                  "className": "",
                   "children": [
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "第 3 阶段"
+                          "text": "暑假"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "整合实验与综合题"
+                          "text": "7 月-8 月"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "能解释图像、误差和规律适用条件"
+                          "text": "电磁学综合 + 高考真题 5 套"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高三冲刺 130+ 分"
                         }
                       ]
                     }
@@ -941,165 +3638,126 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "静电场"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "电荷守恒定律库仑定律。电场强度电势电势差电势能。电容器的电容和平行板电容器。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "恒定电流"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "欧姆定律电阻定律。串联并联电路的特点。电功电功率焦耳定律。闭合电路欧姆定律。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "磁场"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "磁感应强度安培力洛伦兹力。带电粒子在匀强磁场中的圆周运动。质谱仪和回旋加速器的原理。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "电磁感应"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "法拉第电磁感应定律E=n倍delta phi/delta t。楞次定律判断感应电流方向。自感现象和互感。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
-      "children": [
+        },
         {
           "type": "element",
-          "tag": "h2",
-          "className": "section-title",
+          "tag": "aside",
+          "className": "method",
           "children": [
             {
-              "type": "text",
-              "text": "静电场"
-            }
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高二物理每日学习 60 分钟"
+                }
+              ]
+            },
+            "① 课前 10 分钟（预习概念+示意图）。",
+            "② 课堂 45 分钟（紧跟老师+记笔记）。",
+            "③ 课后 20 分钟（做题+订正）。",
+            "④ 错题本 10 分钟（按\"电场/磁场/感应\"分类）。",
+            "⑤ 周末 1 套模拟卷。"
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "compare",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "compare-cell",
               "children": [
                 {
-                  "type": "text",
-                  "text": "电荷守恒定律电荷既不会被创造也不会被消灭它只能从一个物体转移到另一个物体或者从物体的一部分转移到另一部分在转移过程中电荷的总量保持不变。库仑定律F=kq1q2/r²真空中两个静止点电荷之间的相互作用力与它们的电荷量的乘积成正比与它们距离的二次方成反比。电场强度E=F/q描述电场力的性质的物理量。电场线从正电荷或无限远出发终止于负电荷或无限远电场线的疏密表示场强的大小。电势描述电场能的性质沿电场线方向电势逐渐降低。电势差UAB=WAB/q电场力做功与路径无关。电容C=Q/U平行板电容器的电容与正对面积成正比与两极板间距离成反比与电介质的介电常数有关。"
-                }
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "电磁学概念图梳理（电场/磁场/感应）",
+                  "左手定则+右手定则分清",
+                  "复合场问题画力图",
+                  "实验题按 7 步模板写全"
+                ]
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "className": "section-title",
-          "children": [
+            },
             {
-              "type": "text",
-              "text": "磁场和带电粒子运动"
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "正负电荷电场方向判断错",
+                  "楞次定律\"阻碍\"理解错",
+                  "复合场受力分析漏力",
+                  "实验题步骤漏写\"多次测求平均\""
+                ]
+              ]
             }
           ]
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "section-body",
+          "tag": "aside",
+          "className": "important",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "h5",
+              "className": "callout-title",
               "children": [
                 {
                   "type": "text",
-                  "text": "磁感应强度B=F/IL描述磁场强弱的物理量。安培力F=BILsinθ方向用左手定则判断。洛伦兹力f=qvBsinθ方向也用左手定则正电荷四指指向运动方向负电荷四指指向运动反方向。带电粒子在匀强磁场中的匀速圆周运动半径r=mv/qB周期T=2πm/qB与速度无关。质谱仪利用电场加速和磁场偏转测量带电粒子的质量和比荷。回旋加速器利用电场加速和磁场偏转使带电粒子获得高能量。霍尔效应是磁场对载流子的洛伦兹力引起的。带电粒子在复合场中的运动综合了电场力和洛伦兹力是高考的难点。"
+                  "text": "物理学习本质"
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电磁学不是\"背\"出来的，是\"画图+理解\"出来的。每天 20 分钟做题 + 30 分钟看错题 + 1 个概念图，坚持 9 个月必有质变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：沪科版物理选择性必修第一册/第二册 + 2022-2024 上海/全国高考物理真题 + 上海市教委考试院命题分析"
             }
           ]
         }
       ]
     }
-  ],
-  "sourceFiles": [
-    "data/knowledge-pages.json"
   ]
 }

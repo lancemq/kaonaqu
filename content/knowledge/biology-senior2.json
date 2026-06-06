@@ -12,51 +12,22 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海高二生物知识体系与学习说明"
+              "text": "上海高二生物 | 遗传分子·变异·生物技术·生态深化·现代生物 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "高二生物开始进入遗传、稳态和生态等综合模块。学习重点是把生命过程、实验变量和图表证据对应起来。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "page-header-actions",
-          "children": [
-            {
-              "type": "element",
-              "tag": "a",
-              "href": "#senior2-biology-plan",
-              "className": "action-link",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "查看学习计划"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "a",
-              "href": "/knowledge/senior-2",
-              "className": "action-link",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "回到高二总览"
-                }
-              ]
+              "text": "依据沪科版高二生物选择性必修（遗传与分子基础/生物变异/生物技术/生态深化/现代生物科技）与上海高考生物考纲。"
             }
           ]
         }
@@ -64,123 +35,62 @@
     },
     {
       "type": "element",
-      "tag": "section",
-      "className": "chapter",
+      "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
           "type": "element",
-          "tag": "h2",
+          "tag": "div",
+          "className": "summary-item",
           "children": [
             {
-              "type": "text",
-              "text": "一、如何使用这份生物资料"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "学习重点："
+                  "text": "高二同步"
                 }
               ]
-            },
-            {
-              "type": "text",
-              "text": " 高二学习的核心不是提前刷高三压轴，而是把专题知识、题型模型和表达步骤连成稳定链路。每个专题建议按“核心概念 - 典型模型 - 易错条件 - 综合迁移”的顺序整理。 "
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "concept-grid",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "用“结构基础 - 过程机制 - 调节反馈 - 实验证据”整理每个专题。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "考试时长"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考方向"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "遗传规律、伴性遗传、内环境稳态、神经体液免疫调节、生态系统和实验设计。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "复习提醒"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "生物题不能只背结论，图表信息和实验条件往往决定答案边界。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "100 分钟"
                 }
               ]
             }
@@ -188,11 +98,117 @@
         },
         {
           "type": "element",
-          "tag": "p",
+          "tag": "div",
+          "className": "summary-item",
           "children": [
             {
-              "type": "text",
-              "text": "如果是选科科目，建议把本页当作阶段复盘清单：先补概念断点，再练中档综合题，最后整理能迁移到高三一轮复习的模型卡片。"
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "100 分（合格考）"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "85+ 合格"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "沪科版选择性必修"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考关联"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "分子+变异+生态"
+                }
+              ]
             }
           ]
         }
@@ -202,69 +218,97 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "id": "senior2-biology-genetics",
       "children": [
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "二、遗传规律与伴性遗传"
+              "text": "第一单元 · 遗传的分子基础总复习（25 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "遗传题要把基因型、表现型、亲子代关系和概率计算串起来。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心知识"
+              "text": "遗传的分子基础揭示了遗传的本质。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "ul",
+          "className": "topic-stats",
           "children": [
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "掌握分离定律、自由组合定律和伴性遗传判断。"
+                  "text": " 20-25 分"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "会用亲代、子代比例反推基因型。"
+                  "text": " ★★★★"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "概率题注意独立事件、互斥事件和条件概率。"
+                  "text": " 5 周"
                 }
               ]
             }
@@ -283,20 +327,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "模型"
+                      "text": "DNA 是遗传物质"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "性状判断 - 基因设定 - 亲子代推理 - 概率计算。"
+                      "text": "证据：① 肺炎双球菌转化实验（Avery 1944，DNA 是转化因子）；② 噬菌体侵染细菌实验（Hershey-Chase 1952，DNA 进入细菌）；③ 烟草花叶病毒重建实验（TMV）。"
                     }
                   ]
                 }
@@ -310,20 +356,196 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "易错点"
+                      "text": "DNA 结构"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "忽略性别差异，或把表现型比例直接当基因型比例。"
+                      "text": "双螺旋结构（Watson-Crick 1953）。\n基本单位：脱氧核苷酸（磷酸+脱氧核糖+含氮碱基）。\n碱基：A-T，G-C。\n特点：① 反向平行双螺旋；② 外侧磷酸-脱氧核糖骨架；③ 内侧碱基互补配对；④ 直径 2nm，螺距 3.4nm。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "DNA 复制"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "场所：细胞核（主要）、线粒体、叶绿体。\n时间：有丝分裂/减数分裂间期。\n方式：半保留复制。\n过程：① 解旋（解旋酶）；② 互补配对（DNA 聚合酶）；③ 形成新链。\n特点：边解旋边复制，多起点复制。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "有遗传效应的 DNA 片段。\n基因是有遗传效应的：基因通过控制蛋白质的合成控制生物性状。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "转录"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "场所：细胞核。\n模板：DNA 的一条链（模板链）。\n原料：4 种核糖核苷酸。\n产物：mRNA（信使 RNA）。\n酶：RNA 聚合酶。\n特点：边解旋边转录。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "翻译"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "场所：核糖体（细胞质）。\n模板：mRNA。\n原料：20 种氨基酸。\n产物：多肽/蛋白质。\n工具：tRNA（转运 RNA，一端携带氨基酸，另一端有反密码子）。\n密码子：mRNA 上 3 个相邻碱基决定 1 个氨基酸（64 种密码子，61 种决定 20 种氨基酸，3 种终止密码子 UAA/UAG/UGA）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "中心法则"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "DNA → DNA（复制）\nDNA → RNA（转录）\nRNA → 蛋白质（翻译）\nRNA → RNA（RNA 复制，如 RNA 病毒）\nRNA → DNA（逆转录，如 HIV）"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因控制性状"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 直接控制：通过控制蛋白质的结构直接控制生物体的性状（如镰刀型细胞贫血症）。\n② 间接控制：通过控制酶的合成来控制代谢过程，进而控制生物体的性状（如白化病）。"
                     }
                   ]
                 }
@@ -333,22 +555,139 @@
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "important",
+          "tag": "aside",
+          "className": "formula",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题训练："
+                  "text": "遗传分子 5 大计算"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 每道遗传题先写遗传图解，再进行概率计算。 "
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "DNA 复制 n 次产生 DNA 数 = 2ⁿ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "含亲代链的 DNA 数 = 2（始终是 2 条）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "游离脱氧核苷酸消耗 = (2ⁿ - 1) × 模板链碱基数"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例：1 个 DNA 复制 3 次 → 8 个 DNA；7 个新合成的 + 1 个模板（含 1 条亲代链 + 1 条新链）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "翻译产物多肽长度 = 氨基酸数 + 肽键数（每脱 1 个水形成 1 个肽键）"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遗传分子 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① DNA 和 RNA 区别（T/U）；② DNA 复制\"半保留\"不是\"全保留\"；③ 密码子 64 种决定 20 种氨基酸（有简并性）；④ tRNA 数量多（61 种）；⑤ 中心法则 5 个方向记全。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遗传分子易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① DNA 双链碱基 A=T, G=C（不是 A=U）；② 复制 n 次后亲代链只占 1/2ⁿ⁻¹；③ 翻译以 mRNA 为模板不是 DNA；④ 同义密码子决定同一氨基酸（如 UUU 和 UUC 都是苯丙氨酸）；⑤ 中心法则的逆转录是 HIV 病毒特有。"
+                }
+              ]
             }
           ]
         }
@@ -358,69 +697,97 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "id": "senior2-biology-homeostasis",
       "children": [
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "三、稳态与生命活动调节"
+              "text": "第二单元 · 生物变异总复习（20 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "稳态专题要理解机体如何通过反馈调节维持相对稳定。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心知识"
+              "text": "生物变异是进化的原材料，含基因突变、基因重组、染色体变异。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "ul",
+          "className": "topic-stats",
           "children": [
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "理解内环境组成和稳态意义。"
+                  "text": " 15-20 分"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "掌握神经调节、体液调节、免疫调节的基本过程。"
+                  "text": " ★★★"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "注意激素、受体、靶细胞和反馈机制。"
+                  "text": " 4 周"
                 }
               ]
             }
@@ -439,20 +806,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "模型"
+                      "text": "基因突变"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "刺激 - 感受器 - 调节中枢 - 效应器 - 反馈。"
+                      "text": "DNA 分子中发生碱基对的替换、增添或缺失，而引起的基因结构的改变。\n特点：① 普遍性（随机发生）；② 稀有性（频率低）；③ 不定向性；④ 多方向性（一个基因可向不同方向突变）。\n意义：是新基因产生的途径，是生物变异的根本来源。"
                     }
                   ]
                 }
@@ -466,20 +835,167 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "易错点"
+                      "text": "基因突变类型"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "混淆神经调节和体液调节的速度、途径和作用范围。"
+                      "text": "① 碱基替换：镰刀型细胞贫血症（CTT→CAT）；② 碱基增添：长链突变；③ 碱基缺失：移码突变。\n注：替换影响小，增添/缺失影响大（移码）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因重组"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 自由组合型（非同源染色体上的非等位基因自由组合，减数分裂形成配子时）；② 交叉互换型（同源染色体上的非姐妹染色单体交叉互换，减数分裂四分体时期）。\n意义：产生多样化的基因组合，是生物变异的重要来源。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "染色体变异"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 染色体结构变异：缺失、重复、倒位、易位；\n② 染色体数目变异：\n  - 个别染色体增减（如 21 三体综合征）；\n  - 染色体组成倍增加或减少（如多倍体、单倍体）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "二倍体/多倍体/单倍体"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "二倍体：由受精卵发育而来，体细胞含 2 个染色体组。\n多倍体：由受精卵发育而来，体细胞含 3 个或以上染色体组（如 4 倍体小麦）。\n单倍体：由配子直接发育而来，体细胞含本物种配子染色体数（如蜜蜂雄蜂）。\n注：判断单倍体不看染色体组数（看发育起点）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "人类遗传病"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 单基因遗传病：常染色体显/隐性（如白化病/多指）、X 染色体显/隐性（如抗维生素 D 佝偻病/色盲）；\n② 多基因遗传病：如原发性高血压、青少年型糖尿病；\n③ 染色体异常遗传病：如 21 三体综合征（47,XX/XY,+21）、猫叫综合征。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "遗传病预防"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 禁止近亲结婚（降低隐性遗传病发病率）；\n② 遗传咨询（分析原因）；\n③ 产前诊断（羊水检查/B 超/基因诊断）；\n④ 性别鉴定（伴性遗传）。"
                     }
                   ]
                 }
@@ -489,22 +1005,128 @@
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "important",
+          "tag": "aside",
+          "className": "formula",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题训练："
+                  "text": "生物变异 4 大计算"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 用流程图整理血糖调节、体温调节和免疫应答各一例。 "
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因突变：DNA 碱基对替换/增添/缺失"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因重组：减数分裂自由组合 + 交叉互换"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "染色体组数判断：细胞内形态大小相同的染色体有几条就是几个染色体组"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "单倍体：含本物种配子染色体数（不一定 1 个组）"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物变异 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 基因突变 vs 基因重组（基因突变是基因结构改变，基因重组是基因组合改变）；② 多倍体 vs 单倍体（看发育起点不看染色体组数）；③ 染色体组 vs 染色体（形态大小相同的几条为一组）；④ 21 三体是染色体异常不是基因；⑤ 单倍体高度不育。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物变异易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 突变频率低但普遍存在；② 易位发生在非同源染色体之间；③ 倒位是染色体片段位置颠倒；④ 单倍体育种（花药离体培养 → 秋水仙素 → 纯合二倍体）；⑤ 多倍体茎秆粗壮营养多（如无籽西瓜是三倍体）。"
+                }
+              ]
             }
           ]
         }
@@ -514,69 +1136,97 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "id": "senior2-biology-experiment",
       "children": [
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "四、实验设计与图表分析"
+              "text": "第三单元 · 生物技术总复习（20 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "生物实验题需要明确变量、对照、结果和结论之间的关系。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心知识"
+              "text": "生物技术是现代生物学的应用，含基因工程、细胞工程、胚胎工程。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "ul",
+          "className": "topic-stats",
           "children": [
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "区分自变量、因变量、无关变量和对照组。"
+                  "text": " 15-20 分"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "图表题先读标题、坐标、单位和变化趋势。"
+                  "text": " ★★★★"
                 }
               ]
             },
             {
               "type": "element",
               "tag": "li",
+              "className": "",
               "children": [
                 {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "text": "结论必须对应实验数据，不能超出证据范围。"
+                  "text": " 4 周"
                 }
               ]
             }
@@ -595,20 +1245,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "模型"
+                      "text": "基因工程（DNA 重组技术）"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "提出问题 - 设置变量 - 控制条件 - 记录结果 - 得出结论。"
+                      "text": "原理：基因重组。\n工具：① 限制性核酸内切酶（限制酶，\"分子手术刀\"）；② DNA 连接酶（\"分子缝合针\"）；③ 运载体（质粒/噬菌体/动植物病毒，\"分子运输车\"）。\n基本步骤：① 获取目的基因；② 目的基因与运载体结合（基因表达载体的构建）；③ 目的基因导入受体细胞；④ 目的基因的检测与表达（DNA 分子杂交/抗原-抗体杂交）。"
                     }
                   ]
                 }
@@ -622,20 +1274,196 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "易错点"
+                      "text": "基因工程应用"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "实验结论写得过大，或没有说明对照组作用。"
+                      "text": "① 医药：生产胰岛素、干扰素、疫苗（乙肝疫苗）；\n② 农业：抗虫棉、抗除草剂大豆；\n③ 环境：超级菌分解石油；\n④ 伦理：转基因食品安全、克隆人伦理。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "植物组织培养"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原理：植物细胞全能性。\n过程：离体器官/组织/细胞 → 脱分化 → 愈伤组织 → 再分化 → 丛芽/胚状体 → 试管苗。\n条件：无菌、适宜温度、营养（MS 培养基）、植物激素（生长素/细胞分裂素比例决定分化方向）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "植物体细胞杂交"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原理：植物细胞膜的流动性和植物细胞全能性。\n过程：去壁（纤维素酶+果胶酶）→ 原生质体 → 融合（物理/化学方法）→ 杂种细胞 → 愈伤组织 → 杂种植株。\n应用：培育新品种（如\"番茄马铃薯\"——失败）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动物细胞培养"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原理：细胞增殖。\n过程：动物组织 → 剪碎 → 胰蛋白酶处理 → 细胞悬液 → 原代培养 → 传代培养（10 代以内保持正常核型，50 代后衰老死亡）。\n条件：无菌环境、营养（合成培养基）、温度（37℃）、pH（7.2-7.4）、气体（95% 空气+5% CO₂）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动物体细胞核移植（克隆）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原理：动物细胞核全能性。\n过程：去核卵母细胞 + 体细胞核 → 重组细胞 → 早期胚胎 → 克隆动物。\n应用：克隆羊多利（1997，第一例体细胞克隆哺乳动物）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "胚胎工程"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 体外受精：获能精子 + 成熟卵子 → 受精卵。\n② 早期胚胎培养：受精卵 → 桑椹胚/囊胚。\n③ 胚胎移植：早期胚胎 → 同期发情代孕母体 → 试管动物。\n④ 胚胎分割：桑椹胚或囊胚 → 2/4/8 等分 → 同卵双胎或多胎。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生态工程"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原理：物质循环再生原理、物种多样性原理、协调与平衡原理、整体性原理、系统学和工程学原理。\n基本过程：环境问题 → 整体设计 → 关键技术 → 优化结构 → 整体功能。"
                     }
                   ]
                 }
@@ -645,22 +1473,128 @@
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "important",
+          "tag": "aside",
+          "className": "formula",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题训练："
+                  "text": "生物技术 4 大要点"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 每周拆解 2 道实验题，固定写变量表和结论边界。 "
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因工程：限制酶切 + DNA 连接酶 + 运载体"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "植物组织培养：脱分化 + 再分化"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动物体细胞核移植：去核卵母细胞 + 体细胞核"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "胚胎工程：体外受精 + 早期胚胎培养 + 胚胎移植"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物技术 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 限制酶切识别特定序列（回文序列）；② DNA 连接酶连接磷酸二酯键；③ 目的基因是否表达要检测 mRNA/蛋白质；④ 植物组织培养关键是激素比例；⑤ 动物细胞培养 10 代后开始衰老。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物技术易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 限制酶不切 RNA；② 运载体必须有标记基因（抗药性/显色）；③ 单倍体育种比杂交育种快（多代才能纯合的，单倍体 1 代即可）；④ 植物体细胞杂交失败原因：杂种细胞染色体丢失；⑤ 克隆动物不一定完全相同（细胞质基因来自卵母细胞）。"
+                }
+              ]
             }
           ]
         }
@@ -670,25 +1604,99 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "id": "senior2-biology-plan",
       "children": [
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "五、高二生物阶段提升计划"
+              "text": "第四单元 · 生态系统深化总复习（20 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "建议把遗传计算、调节流程和实验图表分成三条线复盘。"
+              "text": "生态系统深化是高考的稳定板块。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 15-20 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 4 周"
+                }
+              ]
             }
           ]
         },
@@ -705,20 +1713,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "遗传线"
+                      "text": "生态系统的结构"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "用图解和比例表训练推理。"
+                      "text": "① 生态系统的组成成分：非生物的物质和能量 + 生产者 + 消费者 + 分解者。\n② 食物链和食物网：营养结构。\n③ 营养级：每一种生物为一个营养级。"
                     }
                   ]
                 }
@@ -732,20 +1742,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "调节线"
+                      "text": "能量流动"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "用流程图整理稳态和反馈。"
+                      "text": "起点：生产者固定的太阳能。\n流动：单向，逐级递减。\n效率：10%-20%。\n研究意义：合理调整生态系统中能量流动关系，使能量持续高效流向对人类最有益的部分。"
                     }
                   ]
                 }
@@ -759,66 +1771,1276 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "实验线"
+                      "text": "物质循环"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "用变量表训练实验题表达。"
+                      "text": "特点：全球性、反复利用、循环流动。\n碳循环：形式 CO₂，途径光合和呼吸。\n氮循环：形式 N₂/NH₃/NO₃⁻，关键过程固氮/硝化/反硝化。\n水循环：海陆间大循环 + 陆地内循环 + 海上内循环。"
                     }
                   ]
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "信息传递"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理信息：光、声、温度、湿度。\n化学信息：性外激素（引诱异性）。\n行为信息：蜜蜂跳舞。\n作用：① 维持生命活动正常进行；② 维持生物种群的繁衍；③ 调节种间关系以维持生态系统的稳定。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生态系统的稳定性"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 抵抗力稳定性：抵抗外界干扰保持原状的能力。\n② 恢复力稳定性：遭到破坏后恢复原状的能力。\n关系：一般呈负相关（抵抗力高则恢复力低），但也有特殊情况（如森林 vs 草原）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物多样性"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 基因多样性（遗传多样性）：同种生物不同种群的基因差异。\n② 物种多样性：一定区域内生物种类的丰富度。\n③ 生态系统多样性：生物群落和生态环境的类型多样化。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物多样性保护"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 就地保护：建立自然保护区（最有效）。\n② 易地保护：动物园、植物园、种子库、精子库。\n③ 立法保护：野生动物保护法、森林法。\n④ 防止外来物种入侵。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "可持续发展"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "定义：既满足当代人需求又不损害后代人满足其需求的能力的发展。\n措施：① 保护生物多样性；② 合理利用资源；③ 发展生态农业；④ 控制人口增长。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生态系统 5 大计算"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能量传递效率 = 下一营养级同化量 / 上一营养级同化量"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一般效率 10%-20%"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "最高营养级含能量 = 第一营养级 × (10%-20%)ⁿ⁻¹"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "同化量 = 摄入量 - 粪便量"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "净生产量 = 同化量 - 呼吸量"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生态系统 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 能量单向流动（不是循环）；② 物质循环是全球性；③ 信息传递 3 类（物理/化学/行为）；④ 抵抗力 + 恢复力反向关系；⑤ 保护\"最有效\"是就地保护。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生态系统易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 分解者不参与食物链但参与物质循环；② 食物网越复杂抵抗力稳定性越高；③ 碳循环中\"碳返回大气\"主要靠呼吸和分解；④ 引入外来物种要看是否会破坏生态平衡；⑤ 人类活动破坏生态系统的稳定性。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第五单元 · 现代生物科技专题（10 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "现代生物科技专题含生态工程、生物安全、转基因。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 8-10 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生态工程"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基本原理：物质循环再生原理、物种多样性原理、协调与平衡原理、整体性原理、系统学和工程学原理（系统的结构决定功能、系统整体性）。\n基本过程：环境问题 → 整体设计 → 关键技术 → 优化结构 → 整体功能。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物安全"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 转基因食品安全（致敏性/营养改变/抗药性）；\n② 基因歧视；\n③ 外来物种入侵（破坏当地生态）；\n④ 克隆人伦理。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物伦理"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 试管婴儿：解决不育问题；\n② 设计试管婴儿（PGD）：避免遗传病，但要避免性别选择；\n③ 克隆技术：克隆人是被禁止的；\n④ 基因治疗：治疗遗传病，但有伦理问题。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物多样性价值"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 直接价值：药用/工业原料/旅游/科研；\n② 间接价值：生态功能（水土保持/调节气候）；\n③ 潜在价值：未发现的价值。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生态农业"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原理：物质循环再生 + 物种多样性 + 整体性。\n案例：桑基鱼塘（桑叶养蚕→蚕沙喂鱼→鱼塘泥肥桑）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物入侵"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原因：人为引入 + 自然扩散。\n危害：① 破坏当地食物网；② 与本地物种竞争；③ 改变生态平衡。\n案例：水葫芦、紫茎泽兰、斑马贻贝。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "现代生物科技 4 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 就地保护是\"最有效\"；② 试管婴儿不是克隆人；③ 外来物种入侵危害生态；④ 生态工程要遵循整体性原理。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "现代生物科技易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 三类生物多样性关系：基因→物种→生态系统；② 就地保护是保护生态系统不是只保护物种；③ 试管婴儿技术是体外受精-胚胎移植；④ 转基因不改变生物多样性（可能增加或减少）；⑤ 桑基鱼塘是物质循环利用的典型。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 典型例题（分子+变异+生物技术）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选分子、变异、生物技术综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "DNA 复制"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "1 个含 1000 个碱基对的 DNA 分子连续复制 3 次，共需要多少个游离的脱氧核苷酸？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n复制 3 次后产生 2³ = 8 个 DNA。\n共含碱基数 = 8 × 2 × 1000 = 16000 个。\n模板链（含亲代链）碱基数 = 2 × 1000 = 2000 个。\n游离脱氧核苷酸数 = 16000 - 2000 = 14000 个。\n公式：(2ⁿ - 1) × 模板碱基数 = (2³ - 1) × 2000 = 7 × 2000 = 14000。\n【技巧】DNA 复制 n 次后：① DNA 数 = 2ⁿ；② 含亲代链 DNA 数 = 2；③ 游离脱氧核苷酸数 = (2ⁿ - 1) × 模板链碱基数。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遗传变异"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一个白化病基因型为 aa 的女性（白化病是常染色体隐性遗传）与基因型为 Aa 的男性结婚，生一个白化病孩子的概率是多少？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n母亲 aa × 父亲 Aa\n子代：1/2 Aa（正常），1/2 aa（白化）\n生一个白化病孩子概率 = 1/2 = 50%。\n【技巧】遗传概率计算：① 确定双亲基因型；② 列出 Punnett 方格；③ 计算目标基因型比例。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "基因工程"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "基因工程的核心步骤是什么？限制酶的作用特点是什么？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n核心步骤：基因表达载体的构建（目的基因 + 启动子 + 终止子 + 标记基因）。\n限制酶特点：① 识别特定 DNA 序列（一般是 4-8 个碱基对的回文序列）；② 在特定位点切割（产生黏性末端或平末端）；③ 切割 DNA 分子中的磷酸二酯键。\n【技巧】基因工程三步走：① 获取目的基因（基因文库/PCR）；② 构建基因表达载体（限制酶切 + DNA 连接酶）；③ 导入受体细胞（农杆菌转化法/显微注射/钙处理）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求）→ ② 联知识（分子/变异/技术/生态）→ ③ 规范答题（\"现象+本质\"）→ ④ 检查（单位/比例/特例）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海/全国高考生物真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年高考生物真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海/全国高考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 30 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海高考·选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "3 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：DNA 复制是（  ）\nA. 全保留复制   B. 半保留复制   C. 多保留复制   D. 随机复制"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】DNA 复制是半保留复制：每个子代 DNA 含一条母链和一条新链。\n【拓展】半保留复制的证据：密度梯度离心实验（Meselson-Stahl 1958）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 全国高考·遗传"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：人类色盲是 X 染色体隐性遗传。某男性色盲（XᵇY）和正常女性（XᴮXᴮ）结婚，生了一个色盲儿子，原因最可能是（  ）\nA. 父亲突变   B. 母亲突变   C. 父亲基因重组   D. 母亲基因重组"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】\n父亲 XᵇY + 母亲 XᴮXᴮ → 女儿 XᴮXᵇ，XᴮY 儿子。\n生出 XᵇY 儿子，需要 Xᵇ 来自母亲。\n母亲基因型本应是 XᴮXᴮ，但她生出了 Xᵇ 配子，说明卵原细胞发生了基因突变（Xᴮ → Xᵇ）。\n【技巧】遗传\"意外\"分析：先按常理推导 Punnett 方格，对比实际结果，反推原因。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 全国高考·生态"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "8 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：某生态系统有 4 个营养级，传递效率 10%，第一营养级含能量 10000 kJ。求：第四营养级最多获得多少能量？若人类希望获得更多能量，应如何调整食物链？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n第四营养级最多获得：10000 × 10% × 10% × 10% = 10 kJ。\n调整：① 缩短食物链（让人类直接以第二营养级为食，如种植业/养殖业）；② 提高传递效率（技术上减少中间损耗）；③ 合理调整生态系统中能量流动关系，使能量持续高效流向对人类最有益的部分。\n【技巧】能量流动规律：单向流动，逐级递减。提高能量利用率的措施：① 缩短食物链；② 充分利用残枝败叶等。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考生物命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择题 25 题（基础+实验分析）；② 简答题（遗传图解+实验设计+生态图表）；③ 探究题（控制变量+数据分析）。热点：基因工程/细胞工程/生态保护。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：高二生物学习策略与高考衔接"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供高二生物学习策略和高考衔接指南。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "table",
+          "className": "unit-table",
           "children": [
             {
               "type": "element",
               "tag": "thead",
+              "className": "",
               "children": [
                 {
                   "type": "element",
                   "tag": "tr",
+                  "className": "",
                   "children": [
                     {
                       "type": "element",
                       "tag": "th",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "阶段"
+                          "text": "轮次"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "th",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "主要任务"
+                          "text": "时间"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "th",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "完成标志"
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
                         }
                       ]
                     }
@@ -829,38 +3051,54 @@
             {
               "type": "element",
               "tag": "tbody",
+              "className": "",
               "children": [
                 {
                   "type": "element",
                   "tag": "tr",
+                  "className": "",
                   "children": [
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "第 1 阶段"
+                          "text": "第一学期（上）"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "补遗传规律和概率基础"
+                          "text": "9 月-1 月"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "能独立写出遗传图解"
+                          "text": "遗传的分子基础 + 生物变异"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成课内 50% 内容"
                         }
                       ]
                     }
@@ -869,34 +3107,49 @@
                 {
                   "type": "element",
                   "tag": "tr",
+                  "className": "",
                   "children": [
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "第 2 阶段"
+                          "text": "第二学期（下）"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "整理稳态调节流程"
+                          "text": "2 月-6 月"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "能解释反馈机制和调节路径"
+                          "text": "生物技术 + 生态系统深化 + 现代生物"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "接轨高考 90+ 分"
                         }
                       ]
                     }
@@ -905,34 +3158,49 @@
                 {
                   "type": "element",
                   "tag": "tr",
+                  "className": "",
                   "children": [
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "第 3 阶段"
+                          "text": "暑假"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "强化实验图表分析"
+                          "text": "7 月-8 月"
                         }
                       ]
                     },
                     {
                       "type": "element",
                       "tag": "td",
+                      "className": "",
                       "children": [
                         {
                           "type": "text",
-                          "text": "答案能严格对应变量和证据"
+                          "text": "分子+遗传+生态综合 + 高考真题 5 套"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高三冲刺 110+ 分"
                         }
                       ]
                     }
@@ -941,144 +3209,126 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "遗传定律"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "孟德尔分离定律和自由组合定律。基因的连锁和交换定律。伴性遗传的特点和判断方法。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "基因的本质与表达"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "DNA是遗传物质的证据。DNA双螺旋结构。DNA的复制转录和翻译。中心法则及其发展。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "变异与进化"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "基因突变基因重组染色体变异的类型和影响。现代生物进化理论的核心内容。自然选择决定进化方向。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
-      "children": [
+        },
         {
           "type": "element",
-          "tag": "h2",
-          "className": "section-title",
+          "tag": "aside",
+          "className": "method",
           "children": [
             {
-              "type": "text",
-              "text": "孟德尔遗传定律的深入理解"
-            }
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高二生物每日学习 60 分钟"
+                }
+              ]
+            },
+            "① 课前 10 分钟（预习概念+示意图）。",
+            "② 课堂 45 分钟（紧跟老师+画图）。",
+            "③ 课后 20 分钟（做题+订正）。",
+            "④ 概念图 10 分钟（按章节梳理）。",
+            "⑤ 周末 1 套模拟卷。"
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "compare",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "compare-cell",
               "children": [
                 {
-                  "type": "text",
-                  "text": "分离定律的实质在减数分裂形成配子时等位基因会随着同源染色体的分开而分离分别进入两个配子中。自由组合定律的实质在减数分裂过程中同源染色体上的等位基因彼此分离的同时非同源染色体上的非等位基因自由组合。基因分离定律和自由组合定律发生在减数第一次分裂的后期。孟德尔成功的原因选择豌豆作为实验材料相对性状明显先研究一对相对性状再研究两对或多对。基因型和表现型的关系表现型是基因型和环境共同作用的结果。基因的连锁和交换定律基因在染色体上呈线性排列交换率的大小反映基因间距离的远近。"
-                }
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "概念图梳理（分子/变异/技术/生态）",
+                  "遗传计算 Punnett 方格必画",
+                  "实验题 4 要素（原理/变量/设计/结果）",
+                  "DNA 复制 n 次 = 2ⁿ 公式必背"
+                ]
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "className": "section-title",
-          "children": [
+            },
             {
-              "type": "text",
-              "text": "基因表达和中心法则"
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "DNA 复制 n 次公式记错",
+                  "单倍体判断看发育起点不看染色体组数",
+                  "限制酶和 DNA 连接酶功能混",
+                  "生态系统能量计算错"
+                ]
+              ]
             }
           ]
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "section-body",
+          "tag": "aside",
+          "className": "important",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "h5",
+              "className": "callout-title",
               "children": [
                 {
                   "type": "text",
-                  "text": "DNA复制发生在细胞分裂间期边解旋边复制半保留复制。转录以DNA的一条链为模板以游离的核糖核苷酸为原料在RNA聚合酶的催化下合成RNA的过程。翻译以mRNA为模板以tRNA为运输工具将氨基酸合成多肽链的过程。密码子mRNA上决定一个氨基酸的三个相邻的碱基。中心法则DNA→RNA→蛋白质遗传信息从DNA流向RNA进而流向蛋白质。基因对性状的控制直接途径基因通过控制蛋白质的结构直接控制性状间接途径基因通过控制酶的合成来控制代谢过程进而控制性状。基因突变是生物变异的根本来源基因重组是生物变异的重要来源。"
+                  "text": "生物学习本质"
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物不是\"背\"出来的，是\"理解+图示+做题\"出来的。概念图是根基；遗传计算画 Punnett 方格；实验题按 4 要素写。每天 30 分钟（10 概念+10 图示+10 做题），坚持 9 个月必有质变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：沪科版生物选择性必修 + 2022-2024 上海/全国高考生物真题 + 上海市教委考试院命题分析"
             }
           ]
         }
       ]
     }
-  ],
-  "sourceFiles": [
-    "data/knowledge-pages.json"
   ]
 }
