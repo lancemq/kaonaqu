@@ -239,6 +239,76 @@
           ]
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "基础语法强化训练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "名词的学习重点可数和不可数名词的区分单复数变化规则及名词所有格。代词的分类人称代词物主代词反身代词和指示代词的用法。冠词a/an用于泛指单数可数名词a用于辅音音素开头的单词前an用于元音音素开头的单词前。the用于特指上文提到过的人或物。基数词和序数词的用法和变化规律。介词in/on/at/under/behind/infrontof等表示位置和时间的用法。一般现在时和现在进行时的区别一般现在时表示经常性习惯性动作现在进行时表示此刻正在进行的动作。be动词和实义动词的肯定句否定句疑问句的转换规律要记牢。therebe句型表示某处有某物be动词的数要与后面最近的名词保持一致。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "英语阅读策略培养"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "七年级英语阅读能力培养从每天15分钟的简单阅读开始。阅读材料可以选择课本同步阅读英语分级读物或适合青少年的英语短文。阅读方法先快速浏览全文了解大意再查找细节遇到生词先尝试根据上下文猜测词义不要立即查字典。做阅读题时先看题目再读文章带着问题在文中找答案可以大大提高效率。阅读理解的常见题型包括主旨大意题考查理解和概括能力；细节理解题考查定位和提取信息的能力；推理判断题考查根据文章内容进行合理推断的能力。每周坚持阅读2-3篇短文并完成相关的理解练习长期坚持必有收获。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

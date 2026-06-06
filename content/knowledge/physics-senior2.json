@@ -1027,6 +1027,76 @@
           "text": "法拉第电磁感应定律E=n倍delta phi/delta t。楞次定律判断感应电流方向。自感现象和互感。"
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "静电场"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电荷守恒定律电荷既不会被创造也不会被消灭它只能从一个物体转移到另一个物体或者从物体的一部分转移到另一部分在转移过程中电荷的总量保持不变。库仑定律F=kq1q2/r²真空中两个静止点电荷之间的相互作用力与它们的电荷量的乘积成正比与它们距离的二次方成反比。电场强度E=F/q描述电场力的性质的物理量。电场线从正电荷或无限远出发终止于负电荷或无限远电场线的疏密表示场强的大小。电势描述电场能的性质沿电场线方向电势逐渐降低。电势差UAB=WAB/q电场力做功与路径无关。电容C=Q/U平行板电容器的电容与正对面积成正比与两极板间距离成反比与电介质的介电常数有关。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "磁场和带电粒子运动"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "磁感应强度B=F/IL描述磁场强弱的物理量。安培力F=BILsinθ方向用左手定则判断。洛伦兹力f=qvBsinθ方向也用左手定则正电荷四指指向运动方向负电荷四指指向运动反方向。带电粒子在匀强磁场中的匀速圆周运动半径r=mv/qB周期T=2πm/qB与速度无关。质谱仪利用电场加速和磁场偏转测量带电粒子的质量和比荷。回旋加速器利用电场加速和磁场偏转使带电粒子获得高能量。霍尔效应是磁场对载流子的洛伦兹力引起的。带电粒子在复合场中的运动综合了电场力和洛伦兹力是高考的难点。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "sourceFiles": [

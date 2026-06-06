@@ -1027,6 +1027,76 @@
           "text": "数列的通项公式的求法。数列求和的方法。数列与不等式的综合问题。数学归纳法的应用。"
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "函数与导数的综合应用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "导数在研究函数中的应用是高考数学的核心考点。利用导数研究函数的单调性f'(x)>0时函数递增f'(x)<0时函数递减。利用导数求函数的极值先求导数f'(x)=0的根再判断根两侧导数的符号左正右负为极大值左负右正为极小值。利用导数求函数的最值比较极值与区间端点函数值的大小。利用导数证明不等式构造函数转化为求函数最值。导数与不等式的恒成立问题分离参数法构造函数法数形结合法。导数与零点问题利用导数和图像判断零点个数。导数的综合应用常与函数的性质不等式的证明和参数的取值相结合是压轴题的重要方向。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "解析几何综合"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "解析几何综合题是高考数学的经典压轴题型。解题的核心思想是用代数方法研究几何问题。联立方程法是解决直线与圆锥曲线位置关系的基本方法。弦长公式中点弦问题点差法定点定值问题对称问题和面积最值问题。设而不求的思想设出点的坐标但不求出具体值利用韦达定理整体代入。数形结合是解析几何最重要的解题策略将抽象的代数问题转化为直观的几何图形。参数的选择要根据题目条件灵活选取直线方程可以用点斜式也可以设参数方程。动静转化和分类讨论的思想在解析几何中也有广泛应用。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "sourceFiles": [

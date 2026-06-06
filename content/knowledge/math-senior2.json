@@ -1027,6 +1027,76 @@
           "text": "导数的定义和几何意义。基本初等函数的导数公式。导数的四则运算法则。利用导数研究函数的单调性和极值。"
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "等差数列和等比数列"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "等差数列的通项公式an=a1+(n-1)d前n项和Sn=n(a1+an)/2=na1+n(n-1)d/2。等比数列的通项公式an=a1×qⁿ⁻¹前n项和Sn=a1(1-qⁿ)/(1-q)(q≠1)。等差中项和等比中项的性质。数列求和方法公式法倒序相加法错位相减法裂项相消法分组求和法。数学归纳法证明与正整数有关的命题步骤是验证n取第一个值命题成立归纳假设n=k时命题成立证明n=k+1时命题也成立。数列与函数的综合是高考的高频考点数列的单调性和最值问题通常转化为函数的性质来研究。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "圆锥曲线综合"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "椭圆的标准方程x²/a²+y²/b²=1(a>b>0)焦点在长轴上a²=b²+c²。双曲线的标准方程x²/a²-y²/b²=1(a>0,b>0)c²=a²+b²渐近线y=±(b/a)x。抛物线的标准方程y²=2px(p>0)焦点F(p/2,0)准线x=-p/2。直线与圆锥曲线的位置关系联立方程消元后根据判别式的符号判断。弦长公式|AB|=√(1+k²)|x1-x2|。中点弦问题点差法处理。圆锥曲线的定义是解题的出发点椭圆到两焦点距离之和为常数双曲线到两焦点距离之差的绝对值为常数抛物线到焦点距离等于到准线距离。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "sourceFiles": [

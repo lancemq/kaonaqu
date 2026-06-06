@@ -1027,6 +1027,76 @@
           "text": "卢瑟福核式结构模型。玻尔氢原子理论。天然放射现象。核反应方程式的书写和核能计算。"
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "电磁学综合"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "带电粒子在磁场中的圆周运动是高考必考内容解题关键是确定圆心画出轨迹利用几何关系求半径。复合场问题中粒子同时受电场力和洛伦兹力需分析受力情况判断运动性质。电磁感应综合题导体棒切割磁感线产生感应电动势闭合回路产生感应电流通电导体在磁场中受安培力。解决电磁感应综合题的基本思路确定研究对象分析受力情况分析运动过程建立力和运动的关系根据能量转化和守恒定律列式求解。动量定理和动量守恒定律在电磁感应中的应用可以简化复杂问题。感生电动势和动生电动势的区别产生原因和计算方法。自感现象和涡流的产生条件应用和防止。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "热学综合"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "分子动理论的内容物体由大量分子组成分子永不停息地做无规则运动分子间存在引力和斥力。温度是分子平均动能的标志扩散现象和布朗运动是分子热运动的证据。分子力随分子间距离变化的关系当r=r0时分子力为零当r<r0时分子力表现为斥力当r>r0时分子力表现为引力。理想气体状态方程pV=nRT。气体实验定律玻意耳定律pV=常数查理定律p/T=常数盖吕萨克定律V/T=常数。热力学第一定律ΔU=Q+W。热力学第二定律的两种表述克劳修斯表述和开尔文普朗克表述。能量守恒定律在热学中的应用。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "sourceFiles": [

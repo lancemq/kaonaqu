@@ -239,6 +239,76 @@
           ]
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "物质的性质和变化"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理变化和化学变化的本质区别有无新物质生成。物理性质是不需要发生化学变化就能表现出来的性质如颜色状态气味熔点沸点密度硬度溶解性等。化学性质是在化学变化中才能表现出来的性质如可燃性稳定性氧化性还原性酸性碱性等。催化剂能改变其他物质的化学反应速率而本身的质量和化学性质在反应前后都不改变。质量守恒定律参加化学反应的各物质的质量总和等于反应后生成的各物质的质量总和。质量守恒的原因化学反应前后原子的种类数目和质量都不变。化学方程式的书写以客观事实为基础遵循质量守恒定律。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "生物的基础知识"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物的特征有共同的营养方式呼吸方式排泄方式对外界刺激的反应生长现象生殖和发育等。生物分类的七个等级界门纲目科属种。植物分为藻类植物苔藓植物蕨类植物和种子植物。种子植物又分为裸子植物和被子植物。动物的分类根据体内有无脊柱分为脊椎动物和无脊椎动物。脊椎动物包括鱼类两栖类爬行类鸟类和哺乳类。无脊椎动物包括腔肠动物扁形动物线形动物环节动物软体动物节肢动物等。人体系统包括运动系统消化系统呼吸系统循环系统泌尿系统神经系统内分泌系统和生殖系统。每个系统都有其特定的结构和功能共同维持人体正常的生命活动。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

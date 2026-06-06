@@ -456,6 +456,111 @@
           ]
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "金属活动性顺序的深入理解"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "金属活动性顺序表K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au是中考必考内容。排在H前面的金属能置换出酸中的氢元素生成氢气排在后面的金属不能。排在前面的金属能把排在后面的金属从它的盐溶液中置换出来。金属活动性顺序的判断方法可以通过金属与酸反应的速度金属与盐溶液的反应以及金属氧化物被还原的难易程度综合判断。中考常见题型包括金属与酸反应产生氢气的图像分析、金属与盐溶液反应后滤液滤渣成分的判断等。活动性越强的金属与酸反应越剧烈产生氢气的速率越快。等质量的金属与足量酸反应相对原子质量越小的金属产生氢气越多。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "溶液的综合计算"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "溶质质量分数的计算w=m溶质/m溶液×100%是中考必考的计算类型。溶液稀释问题遵循稀释前后溶质质量不变的原则。配制一定质量分数的溶液步骤计算称量溶解装瓶。溶解度曲线的意义点表示某温度下该物质的溶解度；线表示溶解度随温度的变化趋势；交点表示在该温度下两种物质的溶解度相等。结晶方法降温结晶适用于溶解度随温度升高显著增大的物质蒸发结晶适用于溶解度随温度变化不大的物质。分离提纯的方法过滤适用于不溶性固体与液体的分离；结晶适用于可溶性固体与液体的分离；蒸馏适用于沸点不同的液体混合物的分离。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "酸碱盐的鉴别和推断"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "酸碱盐的鉴别是中考化学的经典题型。鉴别题的解题思路根据物质的性质差异选择适当的试剂通过明显的实验现象进行区分。常见离子的检验方法H+用石蕊变红或活泼金属产生氢气；OH-用酚酞变红或紫色石蕊变蓝；Cl-用AgNO3溶液和稀硝酸产生白色沉淀；SO42-用BaCl2溶液和稀盐酸产生白色沉淀；CO32-用稀盐酸产生气体通入澄清石灰水变浑浊。离子共存问题离子之间不能发生反应生成沉淀气体或水时才能大量共存。物质推断题要从特征颜色特征现象和物质间的转化关系入手。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

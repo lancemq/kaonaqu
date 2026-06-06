@@ -1006,6 +1006,76 @@
           "text": "强电解质和弱电解质的区别。弱电解质的电离平衡。水的离子积和pH值计算。盐类水解的规律和应用。"
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "化学反应速率和化学平衡"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学反应速率用单位时间内反应物浓度的减少或生成物浓度的增加来表示。影响化学反应速率的因素浓度越大速率越大温度越高速率越大压强越大速率越大对有气体参加的反应催化剂可以极大地改变反应速率。活化能发生有效碰撞所必须的最低能量催化剂通过降低活化能加快反应速率。化学平衡常数K=cⁿ(C)cⁿ(D)/cⁿ(A)cⁿ(B)K只与温度有关与浓度无关。平衡移动的判断勒夏特列原理改变影响平衡的一个条件平衡就向减弱这种改变的方向移动。平衡常数的应用判断反应进行程度和计算平衡浓度。合成氨工业温度选择铁催化剂活性最大的温度压强以提高平衡转化率。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "knowledge-section",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "电离平衡和水解平衡"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "section-body",
+          "children": [
+            {
+              "type": "element",
+              "tag": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "强电解质和弱电解质的区别前者在水溶液中完全电离后者部分电离。弱电解质的电离平衡是动态平衡电离程度用电离度表示。电离常数Ka或Kb越大酸性或碱性越强。水的离子积常数Kw=1.0×10⁻¹⁴（25℃）pH=-lg[H+]。盐类水解的实质盐中的弱酸根或弱碱离子与水反应使水的电离平衡发生移动。水解的规律谁弱谁水解谁强显谁性。盐溶液中的物料守恒和电荷守恒是解决离子浓度大小比较问题的基本工具。离子浓度比较题的解题思路先判断溶液的酸碱性再分析离子的来源和电离水解程度。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "sourceFiles": [
