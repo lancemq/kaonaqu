@@ -20,92 +20,27 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "page-header",
       "children": [
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海九年级化学中考复习要点"
+              "text": "上海九年级化学中考冲刺 | 基础理论·元素·实验·中考真题 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "依据沪教版（上海）九年级化学教材和中考要求，梳理金属、溶液、酸碱盐和化学与社会等核心知识。"
-            }
-          ]
-        }
-      ],
-      "className": "page-header"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "金属与金属材料"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "金属的物理共性：有金属光泽、能导电导热、有延展性。化学性质：易失去电子成为阳离子。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "金属活动性顺序：K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "置换反应：Fe + CuSO₄ → FeSO₄ + Cu（湿法炼铜原理）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "炼铁原理：3CO + Fe₂O₃ → 2Fe + 3CO₂（高炉炼铁）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "金属资源的保护：防止生锈、回收利用、合理开采"
+              "text": "依据上海中考化学考纲（沪教版），按\"基础理论·物质构成·常见化合物·化学实验·化学计算\"五大板块系统整合。"
             }
           ]
         }
@@ -114,377 +49,177 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
           "type": "element",
-          "tag": "p",
+          "tag": "div",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题："
+                  "text": "学习阶段"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": "将铁钉分别放入 CuSO₄ 溶液和 ZnSO₄ 溶液中，分别有什么现象？为什么？"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "溶液"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "溶液由溶质和溶剂组成。饱和溶液与不饱和溶液的相互转化条件是核心考点。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "溶解度：在一定温度下，100g 溶剂中达到饱和状态时所溶解的溶质的质量"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "溶质质量分数 = 溶质质量 / 溶液质量 × 100%"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "结晶方法：降温结晶（适用于溶解度随温度变化大的物质）和蒸发结晶"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题："
+                  "text": "中考冲刺"
                 }
               ]
-            },
-            {
-              "type": "text",
-              "text": "20℃ 时 NaCl 的溶解度为 36g，该温度下将 30g NaCl 放入 100g 水中，充分搅拌后所得溶液的溶质质量分数是多少？"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "常见的酸和碱"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "酸（H⁺）：盐酸 HCl、硫酸 H₂SO₄、硝酸 HNO₃。碱（OH⁻）：NaOH、Ca(OH)₂。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "酸碱指示剂：石蕊遇酸变红遇碱变蓝，酚酞遇碱变红遇酸不变"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "中和反应：酸 + 碱 → 盐 + 水，放热反应"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "pH 值：pH < 7 为酸性，pH = 7 为中性，pH > 7 为碱性"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "氢氧化钠俗称烧碱/火碱，氢氧化钙俗称熟石灰/消石灰"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "例题："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "如何用 pH 试纸测定生活中常见液体的酸碱性？测定时要注意哪些问题？"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "化学与社会发展"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "化学在能源、材料、环境和健康等领域的应用是中考的常考方向，贴近生活实际。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "三大化石燃料：煤（主要含 C）、石油（主要含 C、H）、天然气（主要成分 CH₄）"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "乙醇汽油：减少尾气污染，是可再生能源"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "白色污染：废弃塑料造成的环境污染，可采取减少使用、回收利用等措施"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "上海中考化学注重联系实际，建议多关注与化学相关的社会热点问题，如新能源开发、垃圾分类处理中的化学原理。"
-            }
-          ]
-        }
-      ],
-      "className": "knowledge-note-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考备考建议"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "九年级 chemistry-grade9 的复习要紧紧围绕中考要求展开。建议制定三轮复习计划：第一轮全面梳理知识点，第二轮专题突破重难点，第三轮真题模拟查漏补缺。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "重视基础：中考试卷中基础题占比约 60%，基础不丢分是取得好成绩的前提"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "整理错题：每做完一套练习，花同等时间整理错题和分析原因"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "限时训练：平时练习要限时完成，培养考试时间感"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "className": "section-title",
-          "children": [
-            {
-              "type": "text",
-              "text": "金属活动性顺序的深入理解"
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "金属活动性顺序表K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au是中考必考内容。排在H前面的金属能置换出酸中的氢元素生成氢气排在后面的金属不能。排在前面的金属能把排在后面的金属从它的盐溶液中置换出来。金属活动性顺序的判断方法可以通过金属与酸反应的速度金属与盐溶液的反应以及金属氧化物被还原的难易程度综合判断。中考常见题型包括金属与酸反应产生氢气的图像分析、金属与盐溶液反应后滤液滤渣成分的判断等。活动性越强的金属与酸反应越剧烈产生氢气的速率越快。等质量的金属与足量酸反应相对原子质量越小的金属产生氢气越多。"
+                  "text": "考试时长"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "60 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "60 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "55+ 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "沪教版"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "新学科"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "初三新开"
                 }
               ]
             }
@@ -495,7 +230,7 @@
     {
       "type": "element",
       "tag": "section",
-      "className": "knowledge-section",
+      "className": "chapter",
       "children": [
         {
           "type": "element",
@@ -504,22 +239,455 @@
           "children": [
             {
               "type": "text",
-              "text": "溶液的综合计算"
+              "text": "第一单元 · 基础理论总复习（15 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "化学基础理论是上海中考化学的核心。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 周"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物质的变化"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理变化：无新物质生成（水的三态变化、矿石粉碎）；化学变化：有新物质生成（燃烧、铁生锈、食物腐烂）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物质的性质"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理性质：颜色、状态、气味、密度、熔沸点、硬度、溶解性（不需要发生化学变化就能表现出来的性质）。\n化学性质：可燃性、氧化性、还原性、酸碱性、稳定性（要在化学变化中才能表现出来）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分子与原子"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分子是保持物质化学性质的最小粒子。原子是化学变化中的最小粒子。\n区别：分子可分，原子不可分（化学变化中）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原子的构成"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原子 = 原子核（质子+中子）+ 核外电子。\n质子数 = 核外电子数 = 核电荷数 = 元素种类。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "元素"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "元素是质子数相同的一类原子的总称。\n地壳中含量前 4：O（氧）> Si（硅）> Al（铝）> Fe（铁）。\n生物体中前 3：O > C > H。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "用元素符号表示物质组成的式子。\n书写：金属 + 非金属（HCl、NaCl）；氧化物（先读后写，如 CuO）；由原子团构成（NH₄NO₃）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化合价"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常见元素化合价口诀：\n一价氢氯钾钠银；二价氧钙镁钡锌；\n三铝四硅五价磷；二三铁，二四碳；\n二四六硫都齐全；铜汞二价最常见。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学方程式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "用化学式表示化学反应的式子。\n书写原则：以客观事实为依据；遵循质量守恒定律。\n配平方法：最小公倍数法、奇偶法、定一法。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "溶质质量分数的计算w=m溶质/m溶液×100%是中考必考的计算类型。溶液稀释问题遵循稀释前后溶质质量不变的原则。配制一定质量分数的溶液步骤计算称量溶解装瓶。溶解度曲线的意义点表示某温度下该物质的溶解度；线表示溶解度随温度的变化趋势；交点表示在该温度下两种物质的溶解度相等。结晶方法降温结晶适用于溶解度随温度升高显著增大的物质蒸发结晶适用于溶解度随温度变化不大的物质。分离提纯的方法过滤适用于不溶性固体与液体的分离；结晶适用于可溶性固体与液体的分离；蒸馏适用于沸点不同的液体混合物的分离。"
+                  "text": "质量守恒定律"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "内容：参加化学反应的各物质的质量总和等于反应后生成的各物质的质量总和。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "微观解释：化学反应前后，原子的种类、数目、质量都不变。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "应用：化学反应前后元素种类不变；原子个数不变；物质总质量不变。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常见陷阱：没有参加反应的物质质量不算；气体参加/生成要算。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学方程式配平 3 步"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 写出反应物和生成物化学式 → ② 配平系数 → ③ 标注反应条件（点燃/加热/催化剂）和气体/沉淀符号（↑/↓）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学基础易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 物理变化和化学变化混淆；② 元素和原子不分；③ 化学方程式忘配平扣 1 分；④ 条件漏写；⑤ 气体沉淀符号漏标。"
                 }
               ]
             }
@@ -530,7 +698,7 @@
     {
       "type": "element",
       "tag": "section",
-      "className": "knowledge-section",
+      "className": "chapter",
       "children": [
         {
           "type": "element",
@@ -539,24 +707,2960 @@
           "children": [
             {
               "type": "text",
-              "text": "酸碱盐的鉴别和推断"
+              "text": "第二单元 · 物质构成与分类（10 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "物质的构成和分类是化学的骨架。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "纯净物 vs 混合物"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "纯净物：只含一种物质（O₂、N₂、Fe、H₂O）。\n混合物：含两种或两种以上物质（空气、海水、合金、溶液）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "单质 vs 化合物"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "单质：由同种元素组成的纯净物（O₂、Fe、C）。\n化合物：由不同种元素组成的纯净物（H₂O、NaCl、CO₂）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "氧化物"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "由两种元素组成且其中一种是氧元素的化合物。\nCO₂、SO₂、Fe₂O₃、H₂O 都是氧化物。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "酸"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电离时产生的阳离子全部是 H⁺ 的化合物。\n常见：盐酸 HCl、硫酸 H₂SO₄、硝酸 HNO₃。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "碱"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电离时产生的阴离子全部是 OH⁻ 的化合物。\n常见：NaOH、Ca(OH)₂、Cu(OH)₂、Fe(OH)₃。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "盐"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "由金属离子（或 NH₄⁺）和酸根离子组成的化合物。\n常见：NaCl、CaCO₃、Na₂CO₃、CuSO₄。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "金属活动性顺序"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au\n由强到弱，前面的金属能从后面金属的盐溶液中置换出金属。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "溶液"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一种或几种物质分散到另一种物质里形成的均一、稳定的混合物。\n溶质 + 溶剂 = 溶液。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "类别"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "判断特征"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "常见物质"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "单质"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "同种元素纯净物"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "O₂、N₂、Fe、Cu"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "氧化物"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "两种元素含 O"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "H₂O、CO₂、Fe₂O₃"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "酸"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "阳离子全是 H⁺"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "HCl、H₂SO₄、HNO₃"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "碱"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "阴离子全是 OH⁻"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "NaOH、Ca(OH)₂"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "盐"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "金属+酸根（NH₄⁺+酸根）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "NaCl、CaCO₃、NH₄NO₃"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
               "children": [
                 {
                   "type": "text",
-                  "text": "酸碱盐的鉴别是中考化学的经典题型。鉴别题的解题思路根据物质的性质差异选择适当的试剂通过明显的实验现象进行区分。常见离子的检验方法H+用石蕊变红或活泼金属产生氢气；OH-用酚酞变红或紫色石蕊变蓝；Cl-用AgNO3溶液和稀硝酸产生白色沉淀；SO42-用BaCl2溶液和稀盐酸产生白色沉淀；CO32-用稀盐酸产生气体通入澄清石灰水变浑浊。离子共存问题离子之间不能发生反应生成沉淀气体或水时才能大量共存。物质推断题要从特征颜色特征现象和物质间的转化关系入手。"
+                  "text": "物质分类口诀"
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "单质一种元素纯净物；化合物不同元素纯净物；酸阳全氢，碱阴全氢氧根，盐金属酸根组合。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物质分类易错 3 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 混淆\"含氧\"和\"氧化物\"；② 把混合物当成纯净物；③ 把单质和化合物混为一谈。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第三单元 · 常见化合物（15 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "初中阶段重点掌握 8 种核心物质。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "氧气 O₂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理性质：无色无味气体，不易溶于水，密度比空气略大。\n化学性质：助燃性（C + O₂ = CO₂；S + O₂ = SO₂；P + O₂ = P₂O₅；Fe + O₂ = Fe₃O₄；Mg + O₂ = MgO）。\n制取：双氧水分解（MnO₂ 催化）或加热高锰酸钾或氯酸钾。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "水 H₂O"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理性质：无色无味液体，4℃ 密度最大 1 g/cm³，凝固点 0℃，沸点 100℃。\n化学性质：通电分解 2H₂O = 2H₂↑ + O₂↑（正氧负氢，氢二氧一）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "二氧化碳 CO₂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理性质：无色无味气体，能溶于水，密度比空气大。\n化学性质：不燃烧不支持燃烧；与水反应 CO₂ + H₂O = H₂CO₃；与碱反应 CO₂ + Ca(OH)₂ = CaCO₃↓ + H₂O。\n制取：大理石 + 稀盐酸 CaCO₃ + 2HCl = CaCl₂ + H₂O + CO₂↑。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一氧化碳 CO"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理性质：无色无味气体，难溶于水，密度比空气略小。\n化学性质：可燃性（2CO + O₂ = 2CO₂，蓝色火焰）；还原性（3CO + Fe₂O₃ = 2Fe + 3CO₂）；毒性。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "盐酸 HCl"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理性质：浓盐酸有挥发性，打开瓶盖有白雾（盐酸小液滴）。\n化学性质：与活泼金属反应（Zn + 2HCl = ZnCl₂ + H₂↑）；与碱反应（HCl + NaOH = NaCl + H₂O）；与盐反应（CaCO₃ + 2HCl = CaCl₂ + H₂O + CO₂↑）；与金属氧化物反应（Fe₂O₃ + 6HCl = 2FeCl₃ + 3H₂O）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "硫酸 H₂SO₄"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理性质：浓硫酸有吸水性、脱水性、腐蚀性，溶于水放热。\n化学性质：稀硫酸与活泼金属反应（Zn + H₂SO₄ = ZnSO₄ + H₂↑）；与金属氧化物反应（CuO + H₂SO₄ = CuSO₄ + H₂O）。\n特性：使紫色石蕊变红；与 BaCl₂ 反应生成不溶于酸的白色沉淀 BaSO₄。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "氢氧化钠 NaOH"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "俗称烧碱、火碱、苛性钠。\n物理性质：白色固体，易溶于水（放热），易潮解（有吸水性，可作干燥剂）。\n化学性质：使紫色石蕊变蓝，无色酚酞变红；与非金属氧化物反应（2NaOH + CO₂ = Na₂CO₃ + H₂O）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "氢氧化钙 Ca(OH)₂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "俗称熟石灰、消石灰。\n物理性质：白色粉末，微溶于水，澄清石灰水是 Ca(OH)₂ 的水溶液。\n化学性质：与 CO₂ 反应（Ca(OH)₂ + CO₂ = CaCO₃↓ + H₂O，用于检验 CO₂）。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "物质"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "俗名"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "主要用途"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "NaCl"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "食盐"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "调味、腌制、生理盐水（0.9%）"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "Na₂CO₃"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "纯碱、苏打"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "玻璃、纺织、洗涤（不是碱，是盐）"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "NaHCO₃"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "小苏打"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "发酵粉、治疗胃酸过多"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "CaCO₃"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "石灰石、大理石"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "建筑、制水泥、补钙剂"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "CaO"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "生石灰"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "干燥剂"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "Ca(OH)₂"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "熟石灰"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "中和酸性土壤、砌砖抹墙"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学方程式速记"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 氢气还原氧化铜：H₂ + CuO = Cu + H₂O（\"氢气早出晚归\"）；② 碳还原氧化铜：C + 2CuO = 2Cu + CO₂↑；③ 一氧化碳还原氧化铁：3CO + Fe₂O₃ = 2Fe + 3CO₂。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化合物易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 烧碱和纯碱混；② Na₂CO₃ 当作碱；③ 浓硫酸稀释先水后酸；④ CO₂ 通入石灰水过量/少量不同产物；⑤ 检验 CO₂ 用澄清石灰水不用燃着的木条（不严谨）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第四单元 · 化学实验（10 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "化学实验是上海中考的重点。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "实验"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "考查频率"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "核心考点"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "分值"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "氧气的制取"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高锰酸钾加热（棉花塞）/ 双氧水 + MnO₂"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "3 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "二氧化碳的制取"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "大理石 + 稀盐酸（不能用稀硫酸）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "3 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "粗盐提纯"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "溶解-过滤-蒸发（4 步）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一定溶质质量分数溶液配制"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "计算-称量-溶解（3 步）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "金属活动性探究"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "控制变量法 + 现象 + 结论"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "O₂ 制取实验 7 步"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 查：检查装置气密性"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "② 装：装入药品（先固后液）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "③ 定：固定试管（试管口略向下倾斜）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "④ 点：点燃酒精灯加热"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "⑤ 收：收集气体（排水法/向上排空气法）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "⑥ 离：将导管移出水面"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "⑦ 熄：熄灭酒精灯（\"先离后熄\"防倒吸）"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实验题答题模板"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 实验目的 → ② 实验原理（化学方程式）→ ③ 实验装置图 → ④ 实验步骤（操作 + 现象）→ ⑤ 实验结论 → ⑥ 误差分析。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实验题易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 试管口忘塞棉花（高锰酸钾）；② 试管口方向错（向上倾斜会冷凝水倒流炸裂）；③ 排水法收集时集气瓶未装满水；④ 制 CO₂ 用了稀硫酸（CaSO₄ 微溶覆盖大理石阻止反应）；⑤ \"先离后熄\"反了导致水倒吸。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第五单元 · 化学计算（10 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "化学计算是上海中考必考。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学计算 6 类"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 相对分子质量：Mr(X) = Σ相对原子质量 × 原子个数。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "② 元素质量比：m元素1 : m元素2 = Ar元素1 × 原子数1 : Ar元素2 × 原子数2。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "③ 元素质量分数：ω(元素) = (Ar元素 × 原子数) / Mr(化合物) × 100%。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "④ 化学方程式计算：设未知数 → 写方程式 → 标已知 → 列比例 → 解方程 → 答。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "⑤ 溶液计算：溶质质量分数 = 溶质质量 / 溶液质量 × 100%。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "⑥ 质量守恒定律：反应前总质量 = 反应后总质量。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学方程式计算"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实验室用 16.8 g 碳酸氢钠加热分解（2NaHCO₃ = Na₂CO₃ + H₂O + CO₂↑），可生成 CO₂ 多少克？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】设生成 CO₂ 质量为 x。\n2NaHCO₃ = Na₂CO₃ + H₂O + CO₂↑\n   168                44\n   16.8 g              x\n168/16.8 = 44/x\nx = 16.8 × 44 / 168 = 4.4 g\n答：可生成 4.4 g CO₂。\n【技巧】先配平方程式，再标已知未知，最后列比例（左右对应上下相等）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "溶液计算"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "把 50 g 质量分数 20% 的硝酸钾溶液加水稀释到 200 g，求稀释后溶质质量分数。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】稀释前后溶质质量不变。\n稀释前溶质 = 50 × 20% = 10 g\n稀释后溶液 = 200 g\n稀释后质量分数 = 10/200 × 100% = 5%\n答：稀释后质量分数为 5%。\n【技巧】稀释类问题抓住\"溶质不变\"。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "元素质量分数"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "求硝酸铵 NH₄NO₃ 中氮元素的质量分数。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】Mr(NH₄NO₃) = 14 + 1×4 + 14 + 16×3 = 80\nω(N) = 14×2/80 × 100% = 35%\n答：NH₄NO₃ 中氮元素质量分数为 35%。\n【技巧】先算相对分子质量，再算元素总质量，最后除以相对分子质量。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学计算 5 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 设未知数（带单位）→ ② 写方程式（必须配平）→ ③ 标已知（相对分子质量 + 已知未知数）→ ④ 列比例（左右对应上下相等）→ ⑤ 解方程（结果带单位）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学计算易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 化学方程式未配平；② 相对分子质量算错；③ 列比例时左右颠倒；④ 答案忘带单位；⑤ 体积质量不分（用体积当质量）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 典型例题（实验+计算）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选化学实验和计算综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "氧气的实验室制取"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "加热高锰酸钾制取氧气并用排水法收集，回答下列问题：\n（1）写出该反应的化学方程式；\n（2）试管口为什么要塞一团棉花？\n（3）试管口为什么要略向下倾斜？\n（4）实验结束时为什么要先把导管移出水面，再熄灭酒精灯？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 2KMnO₄ = K₂MnO₄ + MnO₂ + O₂↑（条件：加热）\n(2) 防止高锰酸钾粉末随气流进入导管，堵塞导管。\n(3) 防止冷凝水倒流到试管底部使试管炸裂。\n(4) 防止水倒吸进入热的试管底部，导致试管炸裂。\n【考点】实验装置细节 + 安全操作。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "CO₂ 检验和除杂"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实验室常用澄清石灰水检验 CO₂，用 NaOH 溶液除去 CO₂。回答：\n（1）检验 CO₂ 的化学方程式；\n（2）NaOH 溶液除去 CO₂ 的化学方程式；\n（3）能否用 NaOH 溶液检验 CO₂？为什么？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) CO₂ + Ca(OH)₂ = CaCO₃↓ + H₂O（现象：石灰水变浑浊）\n(2) 2NaOH + CO₂ = Na₂CO₃ + H₂O（无明显现象）\n(3) 不能。NaOH 溶液与 CO₂ 反应无明显现象，无法判断是否有 CO₂。\n【技巧】检验物质必须有明显现象（沉淀、气体、颜色变化）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "金属活动性探究"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "为了验证 Mg、Fe、Cu 三种金属的活动性顺序，某同学设计如下实验：\n① 将 Mg、Fe、Cu 分别放入稀盐酸中；\n② 将 Mg 放入 FeSO₄ 溶液中；\n③ 将 Fe 放入 CuSO₄ 溶液中。\n请分析：(1) 实验 ① 的现象；(2) 综合三个实验能否得出正确结论？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) Mg 与盐酸剧烈反应产生气泡；Fe 与盐酸缓慢反应产生气泡；Cu 与盐酸不反应。说明 Mg > Fe > (H) > Cu。\n(2) 能。三个实验综合：Mg 置换 Fe 成功，Fe 置换 Cu 成功，说明 Mg > Fe > Cu。\n【技巧】金属活动性验证三种方法：① 与酸反应；② 金属 + 盐溶液；③ 金属 + 盐溶液。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求）→ ② 写方程式（配平+条件+符号）→ ③ 计算（设+列+解）→ ④ 答（带单位）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海中考化学真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年上海中考化学真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海中考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 25 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海中考·选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "下列变化中，属于化学变化的是（  ）\nA. 冰雪融化   B. 蜡烛燃烧   C. 矿石粉碎   D. 干冰升华"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】A 物理变化（状态改变）；B 化学变化（生成 CO₂ 和 H₂O）；C 物理变化（形状改变）；D 物理变化（状态改变）。\n【技巧】判断化学变化关键看是否有新物质生成。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 上海中考·填空"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "4 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "写出下列反应的化学方程式：\n(1) 镁在氧气中燃烧；\n(2) 稀盐酸除铁锈（主要成分 Fe₂O₃）；\n(3) 硫酸铜溶液与氢氧化钠溶液反应；\n(4) 高温煅烧石灰石制取生石灰。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 2Mg + O₂ = 2MgO（条件：点燃）\n(2) Fe₂O₃ + 6HCl = 2FeCl₃ + 3H₂O\n(3) CuSO₄ + 2NaOH = Cu(OH)₂↓ + Na₂SO₄\n(4) CaCO₃ = CaO + CO₂↑（条件：高温）\n【解析】所有方程式必须配平；沉淀气体符号不能漏；反应条件要标。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海中考·计算"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "用 200 g 稀盐酸恰好与 13 g 锌完全反应（Zn + 2HCl = ZnCl₂ + H₂↑）。求：\n(1) 生成 H₂ 的质量；\n(2) 稀盐酸中溶质 HCl 的质量分数。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n设生成 H₂ 质量为 x，HCl 质量为 y。\nZn + 2HCl = ZnCl₂ + H₂↑\n65    73           2\n13 g   y            x\n(1) 65/13 = 2/x → x = 0.4 g\n(2) 65/13 = 73/y → y = 14.6 g\n质量分数 = 14.6/200 × 100% = 7.3%\n答：(1) 生成 H₂ 0.4 g；(2) 稀盐酸质量分数为 7.3%。\n【技巧】先配平方程式，再标已知未知数，最后列比例求解。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考化学命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择题 25 题 × 1 分（基础概念）；② 填空题（化学方程式、物质检验、除杂）；③ 实验题（制取气体的装置和操作）；④ 计算题（方程式计算 + 溶液计算）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：三轮复习策略与考前 30 天冲刺"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供中考化学三轮复习策略。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第一轮（基础）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "9 月-1 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "基础理论（15 分）+ 物质构成（10 分）+ 常见化合物（15 分）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "基础概念不丢分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二轮（专题）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 月-4 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "实验专题（10 分）+ 计算专题（10 分）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "中等题全突破"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第三轮（模拟）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "5 月-6 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "近 5 年真题 + 模拟卷 + 化学方程式默写"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "冲击 55+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "考前 30 天冲刺"
+                }
+              ]
+            },
+            "① 每天 30 分钟：10 分钟默写 10 个化学方程式 + 10 分钟计算 + 10 分钟错题。",
+            "② 每周 1 套真题（严格按 60 分钟）。",
+            "③ 化学方程式卡片（80 个必背方程式）。",
+            "④ 错题本按\"基础/物质/实验/计算\"分类。",
+            "⑤ 实验装置图 5 个常考必背（O₂、H₂、CO₂ 制取）。"
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "化学方程式必配平（漏配扣 1 分）",
+                  "沉淀气体符号不能漏（↑/↓）",
+                  "反应条件必标注（点燃/加热/催化剂）",
+                  "计算题列比例 + 带单位（不跳步）"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "方程式未配平扣 1 分",
+                  "↑/↓ 漏标扣 0.5 分",
+                  "条件漏写扣 0.5 分",
+                  "计算不写方程式直接列比例扣 2 分"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学学习本质"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学不是\"背\"出来的，是\"理解+记忆+做题\"出来的。80 个必背化学方程式是根基；每天默写 10 个 + 每周刷 1 套卷，坚持 9 个月必有质变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：上海中考化学近 5 年真题 + 沪教版教材 + 上海市教委考试院命题分析"
             }
           ]
         }

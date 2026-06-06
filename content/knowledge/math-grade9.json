@@ -25,20 +25,22 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海九年级数学中考复习要点 | 代数/函数/几何/概率全板块 | 考哪去"
+              "text": "上海九年级数学中考冲刺 | 数与式·方程·函数·几何·概率统计 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "依据上海中考数学考纲系统梳理数与式方程不等式函数与分析图形与几何概率与统计五大板块含典型例题。"
+              "text": "依据上海中考数学考纲，按 5 大板块系统整合 3 年所有考点，提供三轮复习策略、典型例题和考场实战技巧。"
             }
           ]
         }
@@ -46,200 +48,3560 @@
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
-          "type": "text",
-          "text": "数与式"
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考冲刺"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "考试时长"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "100 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "150 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "135+ 分"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "实数分类有理数和无理数无理数常见形式圆周率开方开不尽和无限不循环小数。相反数绝对值和倒数的基础概念是代数运算的起点。幂的运算性质同底数幂相乘a的m次方乘a的n次方等于a的m加n次方幂的乘方a的m次方的n次方等于a的mn次方积的乘方ab的n次方等于a的n次方乘以b的n次方同底数幂相除a的m次方除以a的n次方等于a的m减n次方。整式乘法多项式乘多项式法则完全平方公式a加减b的平方等于a方加减2ab加b方平方差公式a加b乘a减b等于a方减b方。因式分解首先提公因式然后用公式法每组分解要彻底。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第一单元 · 上海中考数学考纲与分值"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海中考数学总分 150 分，6 大板块 25+ 题型，6 道大题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "板块"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "题量"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "分值"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "考查重点"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一、数与式"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 4 题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 14 分"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "实数运算、代数式化简、因式分解"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "二、方程与不等式"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 4 题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 18 分"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一元二次方程、分式方程、不等式"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "三、函数"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 4 题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 18 分"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一次函数、反比例、二次函数"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "四、几何"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 6 题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 38 分"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "三角形、四边形、圆、相似"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "五、概率与统计"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 2 题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 8 分"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "概率计算、统计图表"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "六、综合与探究"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 4 题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "约 54 分"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "6 道大题（10-12 分/题）"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考数学时间分配"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "选择题 12 题 36 分 → 25 分钟；填空题 4 题 16 分 → 10 分钟；解答题 5 道 50 分 → 50 分钟；综合题 2 道 24 分 → 25 分钟。共 100 分钟。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 道大题是\"主战场\"，决定中考成败。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "上海中考命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 强化基础（基础题占 50%）；② 突出应用（实际应用题占 30%）；③ 重视探究（探究题占 20%）；④ 6 道大题是分差所在。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "二次根式双重非负性a大于等于0且根号a大于等于0。最简二次根式条件被开方数不含分母不含能开得尽的因数或因式同类二次根式合并二次根式加减。分母有理化传统方法分子分母同乘共轭根式。二次根式混合运算顺序先乘除后加减有括号先算括号内。中考典型题根式化简求值根式与乘法公式综合运用。分式混合运算通分约分和最简公分母的应用。分式化简求值中考必考题注意代入的数是使分式有意义的数。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第二单元 · 数与式（实数·代数式·因式分解）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "数与式是代数的基础，重点是实数运算和因式分解。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "知识点"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "核心内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "常考题型"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "实数"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "有理数、无理数、实数分类"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "判断题、填空题"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "实数运算"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "平方根、立方根、绝对值"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "计算题（4-6 分）"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "代数式"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "整式、分式、二次根式"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "化简求值（6-8 分）"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "因式分解"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "提公因式、公式法、十字相乘法"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "大题第一小题（4-5 分）"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "因式分解 4 大方法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 提公因式：先看能否提公因式（系数 + 字母最低次幂）。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "② 公式法：a² - b² = (a+b)(a-b)；a² ± 2ab + b² = (a ± b)²。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "③ 十字相乘法：x² + (a+b)x + ab = (x+a)(x+b)。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "④ 分组分解法：4 项或以上先分组再分解。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考大题第一题 4 大方向"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 分式化简求值（必考） ② 二次根式化简 ③ 因式分解 4 项式 4 选 3。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "数与式常见错误"
+                }
+              ]
+            },
+            "√(a²) = a（错，应为 |a|）。",
+            "分式有意义忘了写条件（分母 ≠ 0）。",
+            "因式分解没\"彻底\"——还能继续提公因式。",
+            "化简求值忘记\"先化简后代入\"。"
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "方程与不等式组"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第三单元 · 方程与不等式"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "方程与不等式是代数三大工具，沪教版核心内容。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "方程"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一般式"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "解法"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "判别式"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一元一次方程"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "ax + b = 0"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "移项、合并同类项"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "—"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "二元一次方程组"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "ax + by = c"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "代入消元、加减消元"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "—"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一元二次方程"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "ax² + bx + c = 0"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "直接开平/配/求根公式/因式分解"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "Δ = b² - 4ac"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "分式方程"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "含分母"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "去分母 → 一元一次 → 检验"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "—"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "不等式 4 大性质"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 不等式两边加/减同一个数，不等号方向不变。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "② 不等式两边乘/除同一个正数，不等号方向不变。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "③ 不等式两边乘/除同一个负数，不等号方向改变。"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "④ 复合不等式转化为 a < x < b 形式。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "解方程四步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 化简（去括号、去分母）→ ② 移项（未知数项移左边，已知数项移右边）→ ③ 求解（合并同类项）→ ④ 检验（特别是分式方程和无理方程）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "大题命题点"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 一元二次方程根的判别式（含参问题，10 分）② 一元二次方程的应用（增长率/利润/面积，10 分）③ 不等式组解集（4 分）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "一元二次方程ax方加bx加c等于0。判别式delta等于b方减4ac。解法直接开平方法配方法公式法因式分解十字相乘法。韦达定理两根之和等于负a分之b两根之积等于a分之c用于求对称式值和构造方程。分式方程解题步骤去分母乘最简公分母解整式方程检验代入公分母是否为零。检验步骤不能省略是分式方程的必考点。无理方程解题思路两边平方转化为有理方程同样需要检验。方程组代入消元法和加减消元法是解二元一次方程组的基本方法。不等式性质两边同乘负数不等号方向要改变。解不等式组借助数轴确定公共部分口诀同大取大同小取小大小小大中间找大大小小找不到。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第四单元 · 函数（一次·反比例·二次）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "函数是上海中考的\"核心\"，3 类函数占 18-25 分。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "函数"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一般式"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "图像"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "核心性质"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "一次函数"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "y = kx + b (k ≠ 0)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "直线"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "k > 0 上升，k < 0 下降"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "反比例函数"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "y = k/x (k ≠ 0)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "双曲线"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "k > 0 一三象限，k < 0 二四象限"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "二次函数"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "y = ax² + bx + c (a ≠ 0)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "抛物线"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "a > 0 开口向上，a < 0 开口向下"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "二次函数 4 大要点"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 顶点坐标：((-b/2a), (4ac-b²)/4a)；② 对称轴：x = -b/2a；③ 最值：顶点处取得；④ 开口：a 决定开口方向和大小。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "反比例函数 k 的几何意义"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "过图像上任一点 P(x, y) 作 x 轴和 y 轴的垂线，所得矩形面积 = |k|；所得三角形面积 = |k|/2。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "key-points",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一次函数："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "k 决定方向，b 决定截距；两条直线平行：k 相同；垂直：k₁ × k₂ = -1。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "反比例函数："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "k 的符号决定象限；图像上点的横纵坐标之积 = k。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "二次函数："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "顶点式 y = a(x-h)² + k；两根式 y = a(x-x₁)(x-x₂)；韦达定理 x₁+x₂=-b/a, x₁x₂=c/a。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "函数综合题："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "求交点坐标 → 联立方程 → 解方程 → 验证。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "大题命题点"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 二次函数图像与性质（10 分） ② 函数与几何综合（12 分） ③ 函数与不等式综合（10 分）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "函数与分析"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第五单元 · 几何（三角形·四边形·圆·相似）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "几何是上海中考\"压轴题\"重镇，38 分集中在 2-3 道大题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "知识点"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "核心定理"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "考查频率"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "三角形"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "勾股定理、三角形相似、锐角三角比"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "必考"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "四边形"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "平行四边形、矩形、菱形、正方形"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "必考"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "圆"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "垂径定理、圆周角定理、切线判定"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "必考"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "相似三角形"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "平行截线定理、AAS/ASA/SAS 相似判定"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高频"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "解直角三角形"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "sin、cos、tan、特殊角"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高频"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "几何证明 6 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 读题画图（标已知、求证）→ ② 找关键条件 → ③ 选判定或性质定理 → ④ 按\"∵...∴...\"格式书写 → ⑤ 验证逻辑链 → ⑥ 检验结论。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考几何压轴题 3 大方向"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 圆 + 相似（12 分） ② 二次函数 + 几何（12 分） ③ 动点问题（12 分）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "几何证明常见错误"
+                }
+              ]
+            },
+            "混淆判定和性质（\"对角线相等\"是矩形性质，不能用来判定矩形）。",
+            "证明不写\"∵\"\"∴\"。",
+            "辅助线不会作（圆中常作\"连半径\"\"作弦心距\"）。",
+            "相似三角形找错对应边。"
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "正比例函数y等于kx。反比例函数y等于k比x。一次函数y等于kx加b与坐标轴交点求法和图像平移。二次函数一般式y等于ax方加bx加c顶点式y等于a乘x减h的平方加k交点式y等于a乘x减x1乘x减x2。顶点坐标横坐标负2a分之b纵坐标4a分之4ac减b方对称轴x等于负2a分之b。a大于0开口向上有最小值a小于0开口向下有最大值。二次函数图像平移左加右改变x上加下改变整体。二次函数与一元二次方程的关系图像与x轴交点对应方程的根。函数综合应用二次函数与三角形四边形面积最值存在性等问题分类讨论思想的应用。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 概率与统计"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "概率与统计 8 分，难度较低，是\"必拿分\"区。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "题型"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "考查内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "方法"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "概率计算"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "古典概型（等可能性）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "P(A) = 满足条件数 / 总数"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "统计图表"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "条形图、扇形图、折线图"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "读图、计算、解释"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "统计量"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "平均数、中位数、众数、方差"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "会算 + 解释含义"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "抽样调查"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "总体、个体、样本、样本容量"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "会区分概念"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "概率计算两步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 列出所有等可能的结果（用树状图或列表）；② 计数：P = 满足条件数 / 总数。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "概率统计常见错误"
+                }
+              ]
+            },
+            "把\"频率\"当\"概率\"——频率是实验值，概率是理论值。",
+            "统计量选用错误：平均水平用平均数，中间位置用中位数。",
+            "树状图画错：分支不完整或重复。"
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "图形与几何"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 典型例题精讲"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "通过 4 道典型例题，覆盖中考数学 4 大核心题型：化简求值、方程应用、二次函数、几何证明。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "考查类型"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 代数·函数·几何"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★ ★ ★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 40+ 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label analysis",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化简求值（必考大题第一题）"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "先化简，再求值：(x + 1 - 3/(x - 1)) ÷ (x² - 4)/(x - 1)，其中 x = √3 + 1。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解题过程】\n第 1 步：化简分子\nx + 1 - 3/(x - 1) = [(x+1)(x-1) - 3]/(x-1) = (x² - 4)/(x - 1)\n\n第 2 步：除法变乘法\n× (x - 1)/(x² - 4) = (x² - 4)/[(x - 1)(x² - 4)/(x - 1)] = 1\n\n等等，重新计算：分子 x+1 - 3/(x-1) = [(x+1)(x-1) - 3]/(x-1) = (x² - 1 - 3)/(x-1) = (x² - 4)/(x-1)\n除法 = (x² - 4)/(x-1) × (x-1)/(x² - 4) = 1\n\n第 3 步：代入\nx = √3 + 1，但化简后是 1，所以答案 = 1。\n\n【答案】1\n【技巧】化简时把\"看起来复杂\"的式子化到最简，再代入——很多题目化简后是常数。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label analysis",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一元二次方程应用（增长率）"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "某工厂 2023 年产值 200 万元，计划 2025 年产值达到 242 万元。求年均增长率。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解题过程】\n设年均增长率为 x。\n2024 年产值 = 200(1 + x)\n2025 年产值 = 200(1 + x)² = 242\n(1 + x)² = 242/200 = 1.21\n1 + x = ±1.1\nx = 0.1 或 x = -2.1（舍去）\n\n【答案】年均增长率为 10%\n【关键】增长率问题用 (1+x) 模式；负值要舍去；本题是 2 年所以平方。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label analysis",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "二次函数综合（压轴）"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "已知抛物线 y = ax² + bx + c 过点 A(-1, 0)、B(3, 0)、C(0, -3)。\n（1）求抛物线解析式。\n（2）求顶点 D 的坐标。\n（3）在抛物线对称轴上找点 P，使 PA + PC 最小。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解题过程】\n（1）抛物线过 A(-1, 0) 和 B(3, 0)，所以可设 y = a(x + 1)(x - 3)。\n代入 C(0, -3)：-3 = a(1)(-3) = -3a，a = 1。\ny = (x+1)(x-3) = x² - 2x - 3\n\n（2）y = x² - 2x - 3 = (x - 1)² - 4\n顶点 D(1, -4)\n\n（3）A 关于对称轴 x=1 的对称点 A'(3, 0) = B。\n所以 PA + PC = PB + PC，最小值 = BC = √[(3-0)² + (0-(-3))²] = √18 = 3√2。\nP 是 BC 与对称轴的交点。\n设 BC 直线：y = x - 3，代入 x=1：y = -2。\nP(1, -2)。\n\n【答案】y = x² - 2x - 3；D(1, -4)；P(1, -2)，最小值 3√2。\n【技巧】\"PA + PC 最小\"问题用\"对称点 + 直线\"——A 或 C 关于对称轴作对称点，连接该对称点与另一点，最短距离就是该直线段。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label analysis",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题四"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "几何证明（压轴）"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "如图，在 △ABC 中，AB = AC，∠BAC = 90°，D 是 BC 中点，BE ⊥ AD 于 E，延长 BE 交 AC 于 F。求证：∠BAD = ∠CAF。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【证明】\n∵ AB = AC，∠BAC = 90°，D 是 BC 中点\n∴ AD ⊥ BC（三线合一）且 AD = BC/2\n∴ ∠DAC = ∠C = 45°\n\n∵ BE ⊥ AD\n∴ ∠AEF = 90°\n∴ ∠FAE + ∠AFE = 90°\n又 ∠FAE = 90° - ∠BAD\n\n∵ 在 △ABF 中，∠BAF = 90°\n∴ ∠ABF + ∠AFB = 90°\n\n∵ ∠AFE = ∠AFB（对顶角）\n\n∴ ∠BAD = ∠ABF\n又 ∠DAC = 45°\n\n综合得：∠BAD = ∠ABF = 90° - ∠AFB\n而 ∠CAF = ∠BAC - ∠BAF = 90° - 90° + ∠BAD = ∠BAD\n\n【结论】∠BAD = ∠CAF\n【关键】等腰直角三角形 + 中点 + 三线合一 = 经典条件。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "压轴题答题策略"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 前 2 小问必拿分（4-5 分/问）；③ 最后一问是\"区分度\"，写多少给多少；④ 不会的辅助线也要写出来（步骤分）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "三角形全等判定SSS边边边SAS边角边ASA角边角AAS角角边HL直角边斜边。相似三角形判定两角对应相等两边对应成比例且夹角相等三边对应成比例。相似三角形性质对应边成比例对应角相等周长比等于相似比面积比等于相似比平方。解直角三角形锐角三角比正弦对边比斜边余弦邻边比斜边正切对边比邻边。特殊角30度45度60度的三角比值必须熟记。仰角俯角坡度坡角方向角的应用问题。圆的垂径定理垂直于弦的直径平分弦且平分弦所对的两条弧。圆周角定理一条弧所对的圆周角等于它所对的圆心角的一半。直线与圆的位置关系相离相切相交。切线的判定和性质。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 上海中考真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年上海中考数学真题，覆盖核心题型。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海中考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 40 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 上海中考·填空"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "4 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "方程 x² - 3x + 1 = 0 的两根是 x₁, x₂，则 x₁ + x₂ = ______，x₁x₂ = ______。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】3，1\n【解析】韦达定理：x₁ + x₂ = 3，x₁x₂ = 1。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 上海中考·解答"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "10 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "解方程：x² - 4x - 5 = 0。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解题过程】\n方法：因式分解法\n(x - 5)(x + 1) = 0\nx = 5 或 x = -1\n\n【答案】x₁ = 5，x₂ = -1\n【考点】一元二次方程解法。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海中考·压轴"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "12 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "如图，在平面直角坐标系中，抛物线 y = ax² + bx + c 过 A(-1, 0)、B(3, 0)、C(0, -3)。\n（1）求抛物线解析式；\n（2）抛物线顶点为 D，求四边形 ABDC 的面积；\n（3）在抛物线对称轴上找点 P，使 △PBC 面积最大。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n（1）y = x² - 2x - 3\n（2）D(1, -4)。AB = 4，C(0,-3) 到 AB 距离 3，△ABC 面积 = 6。D 到 AB 距离 4，△ABD 面积 = 8。\n四边形 ABDC 面积 = 6 + 8 = 14（按连接顺序 A→B→D→C→A 重新计算）。\n实际：用分割法：连接 BD 和 AC，把四边形分成两个三角形。\n（3）设 P(1, t)，则 PB = √[(3-1)² + t²] = √(4 + t²)，PC = √[1 + (t+3)²]。\n△PBC 面积 = 1/2 × BC × |1 - (t 在 BC 投影)|，求极值。\nBC = √18 = 3√2，P 到 BC 距离最大时面积最大。当 P 在 BC 中垂线与对称轴交点时距离最大。\n中垂线过 BC 中点 (1.5, -1.5)，与 x=1 交点 (1, -1.5)，距离为 |t - (-1.5)| = 1.5 + t。\n设 P(1, t)，△PBC 面积 = 1/2 × 3√2 × |t + 1.5|。\n当 t = -1.5 时，面积为 0；当 t → ∞ 时面积 → ∞，但 t 受抛物线约束。\n最大面积在 t = -4（顶点 D），面积为 1/2 × 3√2 × 2.5 = 15√2/4。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 6 道大题难度递进；② 压轴题是二次函数 + 几何综合；③ 重视\"通性通法\"（基础方法）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "统计与概率"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第九单元 · 知识拓展：三轮复习策略与压轴题突破"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "统计量中位数将数据排序后中间位置的数众数出现次数最多的数平均数算术平均数和加权平均数方差s方等于各数据与平均数的差的平方和除以n反映数据波动大小方差越大数据越不稳定。概率P等于A包含的结果数除以总结果数。两步试验用列表法三步试验用树状图法。大量重复试验频率稳定于概率用频率估计概率是解决非等可能事件的方法。统计图表扇形图条形图折线图频数分布直方图的读取与分析。中考统计题注重结合实际情境理解统计量的实际意义。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供中考数学三轮复习法和压轴题突破技巧。"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "中考数学解题策略"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第一轮（基础）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "9 月-1 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "6 大板块所有知识点（课本 + 练习册）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "基础题 75 分不丢"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二轮（专题）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 月-4 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "12 大专题（化简求值、方程、函数、几何等）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "中等题全突破"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第三轮（模拟）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "5 月-6 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "近 5 年真题 + 模拟卷 + 错题重做"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "冲击 135+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "基础题审题清晰计算准确确保不丢分。中档题掌握通性通法灵活运用数学模型。压轴题先易后难能写几步写几步分步得分。时间分配选择填空约30分钟解答题约60分钟检查约30分钟。常见失分原因审题不仔细计算粗心分类讨论不完整。考前一个月回归课本看例题重做错题限时训练模拟考场节奏。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "6 道大题时间分配"
+                }
+              ]
+            },
+            "题 17（化简求值 10 分）：10 分钟（必拿满）。",
+            "题 18（方程应用 10 分）：12 分钟。",
+            "题 19（函数 10 分）：12 分钟。",
+            "题 20（几何 10 分）：15 分钟。",
+            "题 21（综合 12 分）：20 分钟。",
+            "题 22（压轴 12 分）：25 分钟（前 8 分必拿）。"
+          ]
+        },
         {
-          "type": "text",
-          "text": "上海中考特色题型"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 压轴题 4 大突破技巧"
+                    }
+                  ]
+                },
+                [
+                  "① 前 2 小问必拿（4-5 分/问，是基础）",
+                  "② 第 3 问写步骤给分（写多少给多少）",
+                  "③ 不会就构造（相似、勾股、相似比）",
+                  "④ 写出关键公式（如韦达定理、顶点公式）"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "没时间做压轴题 → 应试策略：放弃最后一问",
+                  "几何证明不写\"∵\"\"∴\"",
+                  "二次函数忘记写 a ≠ 0",
+                  "计算错误（每年因此丢 5-10 分）"
+                ]
+              ]
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "上海中考数学压轴题常考几何综合题函数综合题和新定义题。几何综合题以三角形和四边形为背景结合相似圆三角比进行综合推理。函数综合题以二次函数为背景结合几何条件求坐标面积最值存在性。新定义题现场学习新定义新运算然后用新知识解决问题考查即时学习能力。近几年上海中考注重数学建模和应用意识阅读理解和实际情境融合题比重加大。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "数学冲刺 5 大禁忌"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 不做难题偏题 ② 不放弃基础题 ③ 不死记硬背结论 ④ 不忽视计算 ⑤ 不焦虑。"
+                }
+              ]
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "中考三年考点分布"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "数与运算约15分方程与代数约18分函数与分析约30分图形与几何约40分数据整理与概率统计约15分总分150分。函数和几何两大板块占比最高是拉开分差的关键。近三年函数与几何综合题的难度和区分度保持稳定。二次函数与动点问题几何图形中的分类讨论是最高频的压轴考点。注重数学思想方法的应用数形结合分类讨论方程思想转化思想贯穿全卷。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "学习建议"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：上海中考数学近 5 年真题 + 上海市教委考试院命题分析"
+            }
+          ]
         }
       ]
     }

@@ -20,92 +20,27 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "page-header",
       "children": [
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海九年级历史中考复习要点"
+              "text": "上海九年级历史中考冲刺 | 中国近现代史·世界史·中考真题 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "依据上海中考历史和部编版九年级教材，梳理世界古代史、世界近代史和世界现代史的核心知识点。"
-            }
-          ]
-        }
-      ],
-      "className": "page-header"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "世界古代史"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "从早期人类文明到文艺复兴前，涵盖古埃及、古希腊、古罗马和西欧中世纪社会。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "古埃及：尼罗河的赠礼，金字塔是古代世界七大奇迹之一"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "古希腊雅典民主政治：伯里克利时代达到顶峰，成年男性公民有参政权利"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "古罗马：《十二铜表法》是罗马法制建设的第一步"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "中世纪：封君封臣制、庄园经济、基督教会的统治地位"
+              "text": "依据上海中考历史考纲（部编版），按\"中国古代·中国近现代·世界史\"三大板块系统整合。"
             }
           ]
         }
@@ -114,463 +49,1055 @@
     {
       "type": "element",
       "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
           "type": "element",
-          "tag": "p",
+          "tag": "div",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题："
+                  "text": "学习阶段"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": "如何理解“古希腊民主政治是奴隶制民主”这句话？"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "世界近代史（上）"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "从文艺复兴到工业革命，资本主义产生、发展和壮大的历史。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "文艺复兴（14-17 世纪）：人文主义思潮，但丁《神曲》、达·芬奇《蒙娜丽莎》"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "新航路开辟（15-16 世纪）：迪亚士、达·伽马、哥伦布、麦哲伦"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "英国资产阶级革命（1640-1688）：光荣革命，君主立宪制确立"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "美国独立战争（1775-1783）：《独立宣言》的发表，三权分立原则"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题："
+                  "text": "中考冲刺"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "考试时长"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": "“人人生而平等，造物者赋予他们不可剥夺的权利”出自哪部文献？它的发表有什么历史意义？"
-            }
-          ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "世界近代史（下）"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "从法国大革命到一战前，资产阶级革命和改革在全球范围内扩展。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "法国大革命（1789）：巴士底狱被攻占、《人权宣言》的发表"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "工业革命（18 世纪 60 年代）：蒸汽机的改进和广泛应用改变了生产方式"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "马克思主义诞生（1848）：《共产党宣言》的发表"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "日本明治维新（1868）：明治政府推行全面西化改革"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "例题："
+                  "text": "60 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": "工业革命对中国近代史产生了什么影响？（提示：从鸦片战争和自然经济解体角度思考）"
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "60 分"
+                }
+              ]
             }
           ]
-        }
-      ],
-      "className": "example-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
+        },
         {
-          "type": "text",
-          "text": "世界现代史"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "55+ 分"
+                }
+              ]
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "从一战到冷战结束，国际格局经历了剧烈变革。"
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "部编版"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "ul",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
           "type": "element",
-          "tag": "li",
+          "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "第一次世界大战（1914-1918）：凡尔赛—华盛顿体系"
+              "text": "第一单元 · 中国近代史总复习（25 分）"
             }
           ]
         },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "第二次世界大战（1939-1945）：雅尔塔会议、联合国成立"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "冷战（1947-1991）：北约与华约对峙、柏林墙的修建与倒塌"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "经济全球化：WTO 的建立、跨国公司的发展"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "div",
-      "children": [
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "上海中考历史是开卷考试，重点考查信息提取和材料分析能力。平时学习时要熟悉教材目录和重点史料的位置，考试时才能快速定位。"
-            }
-          ]
-        }
-      ],
-      "className": "knowledge-note-card"
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考备考建议"
-        }
-      ],
-      "className": "section-title"
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "九年级 history-grade9 的复习要紧紧围绕中考要求展开。建议制定三轮复习计划：第一轮全面梳理知识点，第二轮专题突破重难点，第三轮真题模拟查漏补缺。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
-            {
-              "type": "text",
-              "text": "重视基础：中考试卷中基础题占比约 60%，基础不丢分是取得好成绩的前提"
+              "text": "中国近代史（1840-1949）是上海中考历史的核心。"
             }
           ]
         },
         {
           "type": "element",
-          "tag": "li",
+          "tag": "ul",
+          "className": "topic-stats",
           "children": [
             {
-              "type": "text",
-              "text": "整理错题：每做完一套练习，花同等时间整理错题和分析原因"
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 25 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 5 周"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
-          "tag": "li",
+          "tag": "ul",
+          "className": "timeline",
           "children": [
             {
-              "type": "text",
-              "text": "限时训练：平时练习要限时完成，培养考试时间感"
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1840-1842"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "鸦片战争"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 中国近代史开端，《南京条约》签订，中国开始沦为半殖民地半封建社会。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1851-1864"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "太平天国运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 洪秀全领导的反封建反侵略农民运动，《天朝田亩制度》。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1856-1860"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第二次鸦片战争"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 英法联军火烧圆明园，中国半殖民地化程度进一步加深。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1894-1895"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "甲午中日战争"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 《马关条约》签订，大大加深了中国半殖民地化程度。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1898"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "戊戌变法"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 康有为、梁启超领导的百日维新，思想启蒙运动。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1900"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "八国联军侵华"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 《辛丑条约》签订，中国完全沦为半殖民地半封建社会。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1911"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "辛亥革命"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 孙中山领导，推翻清朝统治，结束 2000 多年封建帝制。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1919"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "五四运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 中国新民主主义革命开端，\"外争主权内除国贼\"。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1921"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "中共一大"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 中国共产党成立，宣告中国革命面貌焕然一新。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1927"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "南昌起义"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 打响武装反抗国民党反动派第一枪。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1934-1936"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "红军长征"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 遵义会议是党的历史上生死攸关的转折点。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1937-1945"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "抗日战争"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 九一八事变开始局部抗战，七七事变开始全面抗战。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1946-1949"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "解放战争"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 三大战役（辽沈/淮海/平津）基本消灭国民党主力。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1949.10.1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "新中国成立"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 中华人民共和国成立，中国进入新纪元。"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
-          "tag": "li",
+          "tag": "aside",
+          "className": "important",
           "children": [
             {
-              "type": "text",
-              "text": "关注变化：留意上海市教育考试院发布的命题要求和样题变化"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "世界古代史"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "古埃及古希腊雅典民主古罗马十二铜表法中世纪的封建庄园经济。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "世界近代史"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "文艺复兴新航路开辟英法美资产阶级革命工业革命马克思主义诞生日本明治维新。资本主义产生发展和壮大的历史。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "世界现代史"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "ul",
-      "children": [
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中国近代史主线"
+                }
+              ]
+            },
             {
-              "type": "text",
-              "text": "一战凡尔赛华盛顿体系"
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "两条线索 + 三大阶级 + 五次高峰。\n两条线索：① 列强侵华（5 次战争 + 11 个条约）；② 民族救亡（地主→农民→资产阶级→无产阶级）。\n三次高峰：太平天国（农民）/ 辛亥革命（资产阶级）/ 中共革命（无产阶级）。"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
-          "tag": "li",
+          "tag": "table",
+          "className": "unit-table",
           "children": [
             {
-              "type": "text",
-              "text": "二战雅尔塔会议联合国成立"
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "战争"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "条约"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "影响"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "鸦片战争"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "1840-1842"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "《南京条约》"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "中国近代史开端"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二次鸦片战争"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "1856-1860"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "《天津条约》《北京条约》"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "加深半殖民地化"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "甲午中日战争"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "1894-1895"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "《马关条约》"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "大大加深半殖民地化"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "八国联军侵华"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "1900"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "《辛丑条约》"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完全半殖民地半封建"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
-          "tag": "li",
+          "tag": "aside",
+          "className": "mistakes",
           "children": [
             {
-              "type": "text",
-              "text": "冷战北约与华约对峙"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "li",
-          "children": [
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "近代史易错 5 大陷阱"
+                }
+              ]
+            },
             {
-              "type": "text",
-              "text": "经济全球化WTO的建立"
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 鸦片战争和甲午战争开始时间混；② 戊戌变法和辛亥革命性质混（思想启蒙 vs 政治革命）；③ 五四运动是新民主主义革命开端（旧民主止于 1919）；④ 中共一大是 1921 不是 1927；⑤ 抗日战争开始时间：九一八（1931）还是七七（1937）？"
+                }
+              ]
             }
           ]
         }
@@ -578,49 +1105,421 @@
     },
     {
       "type": "element",
-      "tag": "div",
-      "className": "knowledge-note-card",
+      "tag": "section",
+      "className": "chapter",
       "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第二单元 · 中国现代史总复习（15 分）"
+            }
+          ]
+        },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "上海中考历史开卷考试重点考查信息提取和材料分析能力。"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "className": "section-title",
-          "children": [
-            {
-              "type": "text",
-              "text": "世界史复习的系统框架"
+              "text": "中国现代史（1949 至今）分三大阶段。"
             }
           ]
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "section-body",
+          "tag": "ul",
+          "className": "timeline",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1949-1956"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "新民主主义向社会主义过渡"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 三大改造（农业/手工业/资本主义工商业）+ 一五计划（1953-1957）+ 第一部宪法 1954。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1956-1966"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "全面建设社会主义"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 中共八大（1956）正确路线；\"大跃进\"和人民公社化运动（左倾错误）。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1966-1976"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "文化大革命"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 林彪、江青反革命集团，党和国家遭受严重损失。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1978"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "十一届三中全会"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 改革开放起点，邓小平理论的形成基础。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1980"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "设立经济特区"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 深圳、珠海、汕头、厦门、海南（1988）。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1992"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "邓小平南巡讲话"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 建立社会主义市场经济体制目标。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1997/1999"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "港澳回归"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 1997 香港回归（英国）；1999 澳门回归（葡萄牙）。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2001"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "加入 WTO"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 中国对外开放进入新阶段。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2008"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "北京奥运会"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 中国国际地位显著提升。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2013"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "\"一带一路\"倡议"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 丝绸之路经济带 + 21 世纪海上丝绸之路。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
               "children": [
                 {
                   "type": "text",
-                  "text": "世界历史可以按照阶段分为世界古代史世界近代史和世界现代史三个部分。世界古代史的重点是亚非文明古国古希腊罗马文明和中世纪欧洲。世界近代史是资本主义产生发展和壮大的历史高考重点包括文艺复兴新航路开辟英法美资产阶级革命两次工业革命。世界现代史包括两次世界大战冷战和当代世界格局演变。按照横向和纵向两条线索梳理横向是同一时期不同国家和地区的发展纵向是同一主题在不同时期的发展演变。"
+                  "text": "中国现代史三大阶段"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 1949-1978：社会主义建设探索（有成就也有曲折）；② 1978-2012：改革开放（邓小平理论）；③ 2012 至今：中国特色社会主义新时代（习近平新时代中国特色社会主义思想）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "现代史易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 三大改造时间记错（1953-1956）；② 一五计划是 1953-1957（不是 1956 提前完成）；③ 改革开放起点是 1978 十一届三中全会（不是 1979）；④ 香港 1997 回归（不是 1999）；⑤ 经济特区 1980 设立（不是 1984）。"
                 }
               ]
             }
@@ -631,7 +1530,7 @@
     {
       "type": "element",
       "tag": "section",
-      "className": "knowledge-section",
+      "className": "chapter",
       "children": [
         {
           "type": "element",
@@ -640,22 +1539,510 @@
           "children": [
             {
               "type": "text",
-              "text": "世界近代史的重大事件"
+              "text": "第三单元 · 世界史总复习（15 分）"
             }
           ]
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "section-body",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "世界近现代史是中考另一核心。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "timeline",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "14-16 世纪"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "文艺复兴"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 资产阶级思想解放运动，核心人文主义，代表：但丁《神曲》、达芬奇《蒙娜丽莎》。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1487-1522"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "新航路开辟"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 迪亚士、哥伦布、达伽马、麦哲伦，资本主义世界市场雏形。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1640-1688"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "英国资产阶级革命"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 君主立宪制确立，《权利法案》1689 颁布。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1775-1783"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "美国独立战争"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 华盛顿领导，1787 宪法确立联邦制。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1789-1794"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "法国大革命"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 《人权宣言》颁布，资产阶级革命最高峰。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1848"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "《共产党宣言》发表"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 马克思主义诞生，社会主义从空想走向科学。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1861-1865"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "美国南北战争"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 林肯领导，废除黑人奴隶制，扫除资本主义发展障碍。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1861-1885"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "俄国农奴制改革"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 亚历山大二世自上而下资产阶级改革。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1868"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "日本明治维新"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 自上而下资产阶级改革，走上资本主义道路。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1914-1918"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第一次世界大战"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 帝国主义掠夺战争，导火索萨拉热窝事件。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1917"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "俄国十月革命"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 列宁领导，世界上第一个社会主义国家诞生。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1929-1933"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "经济大危机"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 美国罗斯福新政，开创国家干预经济新模式。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "timeline-year",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1939-1945"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第二次世界大战"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " — 反法西斯同盟，1945 年 5 月 8 日德国投降，9 月 2 日日本投降。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
               "children": [
                 {
                   "type": "text",
-                  "text": "英国资产阶级革命确立了君主立宪制为英国资本主义的发展扫清了道路影响了世界历史进程。美国独立战争发表了独立宣言确立了三权分立原则对欧洲和拉丁美洲的革命起了推动作用。法国大革命摧毁了法国的封建统治传播了资产阶级民主自由的进步思想。工业革命使人类进入蒸汽时代工厂制度取代手工工场社会分裂为工业资产阶级和工业无产阶级两大对立阶级。马克思主义的诞生使国际工人运动有了科学理论的指导。"
+                  "text": "世界近现代史主线"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三条线索：① 资本主义发展（从萌芽到确立到调整）；② 社会主义运动（从空想到科学到实践）；③ 民族解放运动（殖民地半殖民地国家独立）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "世界史易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 文艺复兴核心是人文主义（不是理性主义）；② 工业革命第一次是 18 世纪 60 年代（不是 17 世纪）；③ 十月革命是 1917 年（不是 1919）；④ 罗斯福新政是 1933 年开始（不是 1929 大危机同期）；⑤ 二战开始时间 1939.9.1 德国闪击波兰（不是 1937 七七事变）。"
                 }
               ]
             }
@@ -666,7 +2053,7 @@
     {
       "type": "element",
       "tag": "section",
-      "className": "knowledge-section",
+      "className": "chapter",
       "children": [
         {
           "type": "element",
@@ -675,22 +2062,197 @@
           "children": [
             {
               "type": "text",
-              "text": "世界历史发展脉络"
+              "text": "第四单元 · 史料分析专题（5 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "史料分析是上海中考的常考题型。"
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "史料类型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "文献史料：史书、档案、报刊、日记。\n实物史料：文物、遗址、遗迹、墓葬。\n口述史料：访谈、回忆录。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "史料价值"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "直接史料 vs 间接史料。\n直接史料价值 > 间接史料（一手 > 二手）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "史观"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "革命史观（旧）/ 现代化史观（新）/ 文明史观 / 全球史观 / 唯物史观（马）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "时代特征"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "近代中国：半殖民地半封建 + 民族救亡。\n现代中国：社会主义建设 + 改革开放。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
               "children": [
                 {
                   "type": "text",
-                  "text": "世界古代史：人类的起源\\u2192四大文明古国\\u2192古希腊罗马\\u2192中古时期亚欧文明。世界近代史：文艺复兴\\u2192新航路开辟\\u2192资产阶级革命\\u2192工业革命\\u2192殖民扩张\\u2192马克思主义\\u2192民族解放运动。世界现代史：一战\\u2192俄国革命\\u2192二战\\u2192冷战\\u2192多极化趋势\\u2192全球化。重要转折点：英国资产阶级革命开启了资本主义时代；工业革命使人类进入蒸汽时代；十月革命开辟了人类探索社会主义道路的新时代。近代早期西欧的兴起新航路的开辟最终使世界连为一个整体。第一次工业革命使人类进入蒸汽时代工厂制度代替了手工工场。第二次工业革命使人类进入电气时代促进了生产力的巨大飞跃。"
+                  "text": "史料分析 3 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 读材料（提取时间/人物/事件/观点）→ ② 联所学（与教材对应章节联系）→ ③ 规范答题（\"材料+观点\"或\"材料+所学\"）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "史料题易错 3 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 只抄材料不答观点；② 答非所问（答的跟问题无关）；③ 时间计算错（公元前/后换算）。"
                 }
               ]
             }
@@ -701,7 +2263,7 @@
     {
       "type": "element",
       "tag": "section",
-      "className": "knowledge-section",
+      "className": "chapter",
       "children": [
         {
           "type": "element",
@@ -710,24 +2272,899 @@
           "children": [
             {
               "type": "text",
-              "text": "两次世界大战对比"
+              "text": "第六单元 · 典型例题（时空定位+材料分析）"
             }
           ]
         },
         {
           "type": "element",
-          "tag": "div",
-          "className": "section-body",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选历史时空定位和材料分析综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "span",
+              "className": "example-label ",
               "children": [
                 {
                   "type": "text",
-                  "text": "第一次世界大战1914至1918年导火索萨拉热窝事件。性质是帝国主义掠夺战争。主要战役马恩河战役凡尔登战役被称为绞肉机。战后形成凡尔赛华盛顿体系。第二次世界大战1939至1945年性质是世界反法西斯战争。重大事件德国突袭波兰日本偷袭珍珠港斯大林格勒战役诺曼底登陆。战后成立联合国。两次世界大战的启示：和平来之不易要珍惜和平反对战争。任何形式的侵略行为都是不得人心的。"
+                  "text": "例题一"
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时空定位"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "将下列事件按时间先后排序：\n① 鸦片战争 ② 辛亥革命 ③ 五四运动 ④ 中共一大 ⑤ 抗日战争\n正确的顺序是（  ）"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】① ② ③ ④ ⑤（1840→1911→1919→1921→1937）\n【技巧】时空定位靠\"年代+事件\"双线索。背诵大事年表：1840、1894、1898、1911、1919、1921、1927、1931、1937、1949、1978、1992、1997。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "材料分析"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "材料一：梁启超在《变法通议》中写道：\"变者，天下之公理也。\"\n材料二：康有为说：\"变法之要，在育人才；人才之兴，在开学校；学校之立，在变科举。\"\n问题：\n（1）材料反映的是什么历史事件？\n（2）这一事件的结果如何？\n（3）这一事件有何历史意义？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 戊戌变法（百日维新）。\n(2) 结果：在慈禧太后为首的顽固派镇压下失败，维新派领袖康有为、梁启超逃往国外，谭嗣同等\"戊戌六君子\"被杀害。\n(3) 意义：是一次思想启蒙运动，在思想文化方面产生了广泛而持久的影响；激发了人民的爱国思想和民族意识；为辛亥革命的爆发奠定了思想基础。\n【技巧】材料分析题 3 步：① 读材料提取关键信息（梁启超、康有为、变法）→ ② 联所学（戊戌变法）→ ③ 答问题（背景+结果+意义）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "历史评价"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "怎样评价辛亥革命？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 性质：一次比较完全意义上的资产阶级民主革命。\n(2) 功绩：① 推翻了清王朝的反动统治，宣告了中国 2000 多年封建帝制历史的终结；② 建立了资产阶级共和国——中华民国；③ 使民主共和的观念深入人心。\n(3) 局限：没有完成反帝反封建的革命任务，没有改变中国半殖民地半封建社会的性质。\n【技巧】历史评价按\"性质+功绩+局限\"三段式回答。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "历史大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求）→ ② 列时间轴（定位）→ ③ 联所学（教材内容）→ ④ 规范答题（\"材料+观点\"或分段答题）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海中考历史真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年上海中考历史真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海中考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 25 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海中考·选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中国近代史的开端是（  ）\nA. 虎门销烟   B. 鸦片战争   C. 第二次鸦片战争   D. 甲午中日战争"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】鸦片战争（1840-1842）和《南京条约》的签订，标志中国近代史开端。\n【拓展】虎门销烟是鸦片战争的前奏，不是近代史开端；中国半殖民地化完全形成是八国联军侵华（1901）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2022 上海中考·材料分析"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "材料：\"改革开放是我们党的历史上一次伟大觉醒，正是这个伟大觉醒孕育了我们党从理论到实践的伟大创造。\"\n问题：\n（1）\"改革开放\"的起点是什么会议？\n（2）我国第一批经济特区有哪些？\n（3）\"改革开放\"有何历史意义？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 中共十一届三中全会（1978 年）。\n(2) 深圳、珠海、汕头、厦门、海南（1988 年增设）。\n(3) 意义：① 极大地解放和发展了社会生产力；② 人民生活水平显著提高；③ 综合国力大幅提升；④ 推动了中国特色社会主义事业的发展。\n【技巧】改革开放相关时间必背：1978、1980、1992、1997、1999、2001。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 上海中考·论述"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "8 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "论述题：习近平主席说：\"历史是最好的老师，它忠实记录下每一个国家走过的足迹，也给每一个国家未来的发展提供启示。\"\n请结合中国近代史（1840-1949）的史实，论述\"民族独立\"与\"国家富强\"的关系。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n民族独立是国家富强的前提；国家富强是民族独立的保障。\n史实：\n① 鸦片战争后中国沦为半殖民地半封建社会，国家积贫积弱，人民生活在水深火热之中（如《南京条约》后关税主权丧失）。\n② 为实现民族独立，先进的中国人进行了不懈探索：太平天国运动（旧式农民起义失败）、戊戌变法（资产阶级改良失败）、辛亥革命（资产阶级革命未改变中国性质）、五四运动 + 中共建党（新民主主义革命开端）。\n③ 1921 年中国共产党成立后，领导中国人民经过 28 年艰苦斗争（北伐战争、土地革命、抗日战争、解放战争），于 1949 年建立中华人民共和国，实现民族独立。\n④ 结论：没有民族独立，就没有国家富强；只有中国共产党才能救中国，只有社会主义才能发展中国。\n【技巧】论述题 4 步：① 亮观点 → ② 举史实（3-4 个）→ ③ 作分析 → ④ 总结升华。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考历史命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择题 25 题（时空定位+概念辨析）；② 材料分析题（3-4 题，提取信息+联系所学）；③ 论述题（1 题，史实+观点）。热点：改革开放、一带一路、抗日战争胜利 80 周年（2025）、建党 100 周年（2021）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：三轮复习策略与考前 30 天冲刺"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供中考历史三轮复习策略。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第一轮（基础）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "9 月-1 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "中国近现代史（40 分）+ 世界史（20 分）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时空定位不丢分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二轮（专题）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 月-4 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "事件专题 + 人物专题 + 改革专题 + 史料分析"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "中等题全突破"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第三轮（模拟）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "5 月-6 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "近 5 年真题 + 模拟卷 + 论述题模板"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "冲击 55+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "考前 30 天冲刺"
+                }
+              ]
+            },
+            "① 每天 30 分钟：15 分钟看大事年表 + 15 分钟做 1 道论述题。",
+            "② 每周 1 套真题（严格按 60 分钟）。",
+            "③ 时空轴默写：近代 14 个时间 + 现代 10 个时间 + 世界 12 个时间。",
+            "④ 错题本按\"时空/事件/材料/论述\"分类。",
+            "⑤ 论述题 4 段式模板：观点 + 史实 + 分析 + 总结。"
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "时空定位 4 步：年代→事件→意义→影响",
+                  "材料分析 3 步：读材料→联所学→规范答",
+                  "论述题 4 段式：观点→史实→分析→总结",
+                  "大事年表随身带，每天默写 5 个"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "时间算错（公元前/后）",
+                  "事件名写错（甲午 vs 甲辰）",
+                  "材料题只抄材料不答观点",
+                  "论述题没史实只说空话"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "历史学习本质"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "历史不是\"背\"出来的，是\"时空轴+事件链+因果链\"三链整合。每天 20 分钟大事年表 + 30 分钟做题 + 1 个历史故事，坚持 9 个月必有质变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：上海中考历史近 5 年真题 + 部编版教材 + 上海市教委考试院命题分析"
             }
           ]
         }

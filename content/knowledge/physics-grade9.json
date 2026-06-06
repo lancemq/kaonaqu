@@ -25,20 +25,22 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海九年级物理中考复习要点 | 压强/电学/电磁/能量全板块 | 考哪去"
+              "text": "上海九年级物理中考冲刺 | 力学·电学·热学·光学·中考真题 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "依据沪科版九年级物理和上海中考考纲系统梳理压强浮力欧姆定律电功率电磁学和能量板块含典型例题和实验。"
+              "text": "依据上海中考物理考纲，按\"力学·电学·热学·光学\"四大板块系统整合初中物理全部重点、难点和易错点。"
             }
           ]
         }
@@ -46,221 +48,3553 @@
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
-          "type": "text",
-          "text": "压强"
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考冲刺"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "考试时长"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "90 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "90 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "80+ 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "沪科版"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "压强定义p等于F比S单位帕斯卡简称帕符号Pa。增大压强的方法增大压力或减小受力面积减小压强的方法减小压力或增大受力面积。液体压强特点液体对容器底和侧壁都有压强液体内部向各个方向都有压强同一液体内部压强随深度增加而增大不同液体的压强还与其密度有关。液体压强公式p等于密度乘g乘h。连通器原理静止在连通器内的同种液体液面保持相平。大气压强马德堡半球实验证明大气压强的存在托里拆利实验精确测量了大气压的大小标准大气压等于1.013乘10的5次方Pa。大气压随高度增加而减小。沸点与气压的关系液面气压越高沸点越高。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第一单元 · 力学总复习（40 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "力学是上海中考物理的重头戏，分值占比 40-45%。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 40 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 6 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "力的概念"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "力是物体对物体的作用。单位：牛顿（N）。力的三要素：大小、方向、作用点。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "重力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "G = mg，g = 9.8 N/kg（粗算 10 N/kg）。方向竖直向下，作用点重心。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "二力平衡"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "同体、等大、反向、共线。两个力作用在同一物体上。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "牛顿第一定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一切物体在没有受到外力作用时，总保持静止或匀速直线运动状态。一切物体都有惯性。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "液体压强"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "p = ρgh。h 是深度（从液面竖直向下）。连通器装同种液体液面相平。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "浮力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "F浮 = ρ液 g V排（阿基米德原理）。物体浮沉：F浮 > G 上浮；= G 悬浮；< G 下沉。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "杠杆原理"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "F1L1 = F2L2。省力杠杆：L1 > L2（动力臂 > 阻力臂），费距离。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "滑轮组"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "n 股绳子承重，F = G/n（不计摩擦和动滑轮重）；s = nh。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "力学公式速查"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "重力：G = mg"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "密度：ρ = m/V"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "压强：p = F/S（固体）/ p = ρgh（液体）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "浮力：F浮 = ρ液 g V排"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "杠杆：F1L1 = F2L2"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "滑轮：F = G总/n，s = nh"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "功：W = Fs"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "功率：P = W/t = Fv"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "力学解题 3 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 受力分析 → ② 列方程（F合=0 平衡 / F合=ma 加速）→ ③ 代入求解。画受力图是关键。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "力学易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 混淆 G 和 F压；② 浮力忘了算排开液体；③ 杠杆画错力臂；④ 滑轮 n 数错（承重绳股）；⑤ 功和功率混用。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "流体的压强与流速的关系在气体和液体中流速越大的位置压强越小。飞机升力的产生机翼上方空气流速大压强小下方空气流速小压强大形成向上的升力。生活应用喷雾器火车站台安全线等。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第二单元 · 电学总复习（35 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "电学是中考第二大板块，欧姆定律是核心。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 35 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 8 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电荷"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "正电荷（丝绸摩擦过的玻璃棒）/ 负电荷（毛皮摩擦过的橡胶棒）。同种相斥，异种相吸。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电流"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "I = Q/t，单位 A（安培）。方向：正电荷定向移动方向。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电压"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "U = IR，单位 V（伏特）。电源是提供电压的装置。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电阻"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "R = U/I，单位 Ω（欧姆）。决定式：R = ρL/S。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "欧姆定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "I = U/R。变形：U = IR，R = U/I。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电功"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "W = UIt = Pt = I²Rt = U²/R × t。单位 J（焦耳）和 kW·h（度）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电功率"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "P = UI = I²R = U²/R。额定功率和实际功率的区分。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "焦耳定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Q = I²Rt（电流通过导体产生的热量）。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "电路"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "电流特点"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "电压特点"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "电阻关系"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "串联"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "I = I1 = I2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "U = U1 + U2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "R = R1 + R2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "并联"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "I = I1 + I2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "U = U1 = U2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "1/R = 1/R1 + 1/R2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "混联"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "先化简再求"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "同节点等电势"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "分段计算后合并"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电学公式速查"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "欧姆定律：I = U/R"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电功：W = UIt = Pt"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电功率：P = UI = I²R = U²/R"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "焦耳定律：Q = I²Rt"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "串联分压：U1/U2 = R1/R2"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "并联分流：I1/I2 = R2/R1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电路故障分析 3 步"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 看现象（灯不亮/电流表无示数/电压表满偏）→ ② 假设故障（断路/短路）→ ③ 用欧姆定律验算。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "电学易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 电压表电流表量程选错；② 滑动变阻器接错（接成定值电阻）；③ 并联电路忘了分流；④ 额定功率和实际功率混用；⑤ 不画等效电路图。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "浮力"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第三单元 · 热学总复习（10 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "热学是上海中考的小板块，但概念易混。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 10 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "温度"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "表示物体冷热程度。单位 ℃。测量：温度计（量程 + 分度值 + 读数）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "热量"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Q = cmΔt。单位 J。比热容 c 是物质特性，水 c = 4.2×10³ J/(kg·℃)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "内能"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物体内所有分子动能 + 分子势能。改变内能的两种方式：做功和热传递。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "比热容"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "c = Q/(mΔt)。水的比热容大，所以沿海地区昼夜温差小。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "热值"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "q = Q/m（固体液体）/ q = Q/V（气体）。单位 J/kg 或 J/m³。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "热机效率"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "η = Q有/Q总 × 100% = W有/Q总。汽油机效率 20-30%，柴油机 30-45%。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "热学公式速查"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "吸热：Q吸 = cm(t - t0)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "放热：Q放 = cm(t0 - t)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "热平衡：Q吸 = Q放"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "燃料：Q = mq（固体液体）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "效率：η = Q有/Q总"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "比热容的应用"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 水冷系统（汽车水箱）；② 暖气片（用水循环）；③ 沿海温差小；④ 稻田灌水保温（晚上灌水白天放）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "热学易错 3 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 混淆温度、热量、内能；② 比热容公式搞错（c = Q/mΔt vs Q = cmΔt）；③ 热量计算不带单位换算。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "浮力产生原因浸在液体中的物体受到液体对它向上和向下的压力差。方向竖直向上。阿基米德原理F浮等于G排等于密度液乘g乘V排。浸入液体中的物体所受浮力的大小等于它排开的液体所受的重力。浮力只与液体密度和物体排开液体的体积有关与物体浸没深度和形状无关。浮沉条件F浮大于G上浮最终漂浮F浮等于G悬浮F浮小于G下沉最终沉底。密度判断法物体密度小于液体密度上浮等于液体密度悬浮大于液体密度下沉。浮力的应用轮船从江入海浮力不变排水体积变小上浮。潜水艇靠改变自身重力实现浮沉。气球和飞艇靠充入密度小于空气的气体升空。密度计漂浮时浮力等于重力密度计浸入液体的体积越小液体密度越大。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第四单元 · 光学·声学·其他（5 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "声光小知识点多但分值低，稳拿即可。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "光的反射"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "反射角 = 入射角。法线垂直于镜面。漫反射和镜面反射都遵循反射定律。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平面镜成像"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "等大、等距、虚像、左右相反。像距 = 物距。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "光的折射"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "光从空气斜射入水/玻璃时，折射角 < 入射角；从水/玻璃斜射入空气时相反。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "凸透镜成像"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "u > 2f：倒立缩小实像（照相机）；f < u < 2f：倒立放大实像（投影仪）；u < f：正立放大虚像（放大镜）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "声音"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "声速：空气 340 m/s，固体 > 液体 > 气体。音调：频率；响度：振幅；音色：材料。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电磁波"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "c = λf。c = 3×10⁸ m/s。可见光：红橙黄绿蓝靛紫（波长由长到短）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能源"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化石能源（煤/石油/天然气，不可再生）/ 新能源（太阳能/风能/核能，可再生）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "信息"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模拟信号 vs 数字信号。光纤通信：光在光纤中全反射。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "凸透镜成像口诀"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一倍焦距分虚实，二倍焦距分大小；物近像远像变大，物远像近像变小；实像倒立虚像正。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "光学易错 3 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 凸透镜成像规律搞混；② 反射和折射不分；③ 平面镜成虚像不是实际光线会聚。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "简单电路和欧姆定律"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第五单元 · 物理实验 24 分（中考压轴）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "上海中考物理实验题占 24 分，是中等难度拿分点。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "实验"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "考查频率"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "核心考点"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "分值"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "测密度"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "天平 + 量筒 + ρ = m/V"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "4 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "测电阻"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "电压表 + 电流表 + 滑动变阻器 + R = U/I"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "4 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "测小灯泡功率"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "P = UI，额定功率和实际功率"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "4 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "探究杠杆平衡"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "F1L1 = F2L2，多次测求平均"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "3 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "探究浮力"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "称重法 F浮 = G - F示"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "3 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "探究凸透镜成像"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "u = 2f、f < u < 2f、u < f 三种情况"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "3 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "探究比热容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "★★★"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "控制变量法（m、Q、Δt）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "3 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实验题答题模板"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 实验目的 → ② 实验原理 → ③ 实验器材 → ④ 实验步骤（画电路图 / 装置图）→ ⑤ 数据记录表格 → ⑥ 数据分析（公式 + 单位）→ ⑦ 误差分析。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实验题 5 大失分点"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 表格漏单位；② 电路图错（电压表电流表位置）；③ 滑动变阻器接错（接成限流或分压搞混）；④ 多次测求平均忘写\"求平均减小误差\"；⑤ 误差分析只写\"误差\"不写\"原因+改进\"。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "电荷量元电荷e等于1.6乘10的负19次方C。摩擦起电的实质是电子的转移。电流电荷定向移动形成电流规定正电荷定向移动的方向为电流方向。电压是使自由电荷定向移动形成电流的原因电源是提供电压的装置。电阻导体对电流的阻碍作用大小与材料长度横截面积和温度有关。滑动变阻器原理通过改变接入电路中电阻丝的长度来改变电阻。串联电路电流处处相等总电压等于各用电器电压之和总电阻等于各电阻之和。串联分压U1比U2等于R1比R2。并联电路各支路电压相等总电流等于各支路电流之和总电阻倒数等于各电阻倒数之和。并联分流I1比I2等于R2比R1。欧姆定律I等于U比R。伏安法测电阻的实验电路设计步骤和数据处理。测量小灯泡的电阻时注意灯丝电阻随温度升高而增大。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 典型例题（力学+电学）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选力学、电学综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "杠杆平衡计算"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一根杠杆 AB 长 1.2 m，支点 O 在距 A 端 0.4 m 处。A 端挂 30 N 物体，B 端施加力 F 杠杆水平平衡。求 F 的大小和方向。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】L1 = OA = 0.4 m；L2 = OB = 1.2 - 0.4 = 0.8 m。\n根据杠杆原理：F1L1 = F2L2\n30 × 0.4 = F × 0.8\nF = 15 N\n方向：竖直向下（与 A 端重物方向相同，杠杆才能平衡）。\n【考点】杠杆平衡条件；力臂的正确画法。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "欧姆定律综合"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "如图，R1 = 10 Ω，R2 = 20 Ω 串联接在 6 V 电源上。求：(1) 电路总电流；(2) R1 和 R2 两端电压；(3) 10 秒内 R2 消耗的电功。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】(1) R总 = R1 + R2 = 10 + 20 = 30 Ω\nI = U/R总 = 6/30 = 0.2 A\n(2) U1 = IR1 = 0.2 × 10 = 2 V\nU2 = IR2 = 0.2 × 20 = 4 V\n(3) W2 = U2It = 4 × 0.2 × 10 = 8 J\n【考点】串联电路特点 + 欧姆定律 + 电功公式。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "浮力综合"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "体积 100 cm³ 的物体浸没水中（ρ水 = 1.0×10³ kg/m³），求：(1) 物体所受浮力；(2) 若物体密度 2.5×10³ kg/m³，则物体在水中的状态。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】(1) F浮 = ρ水 g V排 = 1.0×10³ × 10 × 100×10⁻⁶ = 1 N\n(2) m = ρV = 2.5×10³ × 100×10⁻⁶ = 0.25 kg\nG = mg = 0.25 × 10 = 2.5 N\n因为 F浮 (1 N) < G (2.5 N)，所以物体下沉到水底。\n【考点】阿基米德原理 + 物体浮沉条件。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求）→ ② 画图（受力图/电路图）→ ③ 公式（先列后数）→ ④ 代入（带单位）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "电功率和焦耳定律"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海中考物理真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年上海中考物理真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海中考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 30 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海中考·选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "下列现象中，属于光的反射的是（  ）\nA. 雨后彩虹   B. 水中倒影   C. 海市蜃楼   D. 铅笔在水中变弯"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】A 彩虹是色散（折射）；B 水中倒影是平面镜成像（反射）；C 海市蜃楼是折射；D 铅笔变弯是折射。\n【拓展】区分反射和折射的关键：看光是否在同种介质中传播。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 上海中考·计算"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "小灯泡标有\"2.5V 0.5A\"，接入电路后电压表示数 2V，电流表示数 0.4A。求：(1) 此时小灯泡的实际功率；(2) 小灯泡的电阻（近似认为不变）；(3) 若要使小灯泡正常发光，串联的滑动变阻器接入电路的阻值应为多少？电源电压 6V。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) P实 = UI = 2 × 0.4 = 0.8 W\n(2) R = U额/I额 = 2.5/0.5 = 5 Ω\n(3) 串联分压：U滑 = U - U额 = 6 - 2.5 = 3.5 V\nI = I额 = 0.5 A\nR滑 = U滑/I = 3.5/0.5 = 7 Ω\n【解析】额定电压电流 vs 实际电压电流要分清；串联分压是核心。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海中考·实验"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "8 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "用天平和量筒测量小石块密度的实验：\n（1）实验原理：______\n（2）实验步骤：\n   ① 用天平测出小石块的质量 m；\n   ② 在量筒中倒入适量水，读出体积 V1；\n   ③ 用细线系住小石块放入量筒中，读出体积 V2。\n（3）实验中\"适量水\"的含义是什么？\n（4）小石块密度表达式：ρ = ______"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) ρ = m/V\n(3) 适量水的含义：水面要能浸没小石块，且放入石块后水面不超过量筒的最大量程。\n(4) ρ = m/(V2 - V1)\n【拓展】如果先测体积后测质量会导致石块带水，测得质量偏大，密度偏大。要先测质量后测体积。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考物理命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择题偏基础（15 题 × 2 分 = 30 分）；② 填空题（5-7 题 × 2 分）；③ 作图题（光学反射/折射/凸透镜成像 3 道）；④ 计算题（力学+电学 2 道 = 16 分）；⑤ 实验题（24 分）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "电功W等于UIt电流做功的过程是将电能转化为其他形式能的过程。电功率P等于UI等于U方比R等于I方R表示电流做功的快慢。额定功率和实际功率用电器在额定电压下工作时的功率是额定功率实际电压不等于额定电压时实际功率不等于额定功率。灯泡的亮暗由实际功率决定。串联电路中电阻越大功率越大并联电路中电阻越小功率越大。焦耳定律Q等于I方Rt热量与电流的平方电阻和通电时间成正比。电热器利用电流的热效应工作如电饭煲电热毯电暖器等。家庭电路220V火线零线地线三脚插头三孔插座左零右火上接地。电能表读数前后两次读数差就是这段时间消耗的电能单位千瓦时。安全用电原则不接触低压带电体不靠近高压带电体发现有人触电先切断电源再施救。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：三轮复习策略与考前 30 天冲刺"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "磁现象和电磁感应"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供中考物理三轮复习策略。"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "磁体有N和S两个磁极同名磁极相斥异名磁极相吸。磁感线从N极出发回到S极是闭合曲线不相交。地磁场地磁场的南极在地理北极附近。奥斯特实验通电导线周围存在磁场证明了电与磁的联系。通电螺线管的磁场用安培定则右手握住螺线管四指指向电流方向拇指指向N极。电磁铁插入铁芯的螺线管磁性强弱由电流大小和线圈匝数控制。电磁继电器利用低电压弱电流控制高电压强电流电路。电磁感应现象闭合电路的一部分导体做切割磁感线运动时导体中产生感应电流。发电机原理。影响感应电流方向的因素导体运动方向和磁场方向。发电机将机械能转化为电能。通电导体在磁场中受力的作用电动机原理。电动机将电能转化为机械能。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第一轮（基础）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "9 月-1 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "声光热力电五大板块基础概念 + 公式"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "基础概念不丢分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二轮（专题）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 月-4 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "力学综合（35 分）+ 电学综合（35 分）+ 实验（24 分）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "中等题全突破"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第三轮（模拟）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "5 月-6 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "近 5 年真题 + 模拟卷 + 错题本回顾"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "冲击 80+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "功和能"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "考前 30 天冲刺"
+                }
+              ]
+            },
+            "① 每天 30 分钟：15 分钟计算 + 15 分钟错题。",
+            "② 每周 1 套真题（严格按 90 分钟）。",
+            "③ 错题本按\"力学/电学/热学/光学/实验\"分类。",
+            "④ 公式卡片随身带，每天默写 5 个。",
+            "⑤ 答题规范：先列公式后代数据，最后带单位。"
+          ]
+        },
         {
-          "type": "text",
-          "text": "功W等于F乘s等于FS做功的两个必要因素一是作用在物体上的力二是物体在力的方向上移动的距离。功率P等于W比t表示做功快慢的物理量。机械效率有用功与总功的比值eta等于W有用比W总。提高机械效率的方法减小额外功增加有用功。动能大小与质量和速度有关重力势能大小与质量和高度有关弹性势能大小与弹性形变程度有关。机械能守恒动能和势能相互转化总机械能守恒不计空气阻力和摩擦时。内能物体内部所有分子做热运动的动能和分子势能的总和。改变内能的途径做功和热传递。比热容c等于Q比m乘以deltaT。水的比热容最大4.2乘10的3次方J每kg摄氏度常用作冷却剂。热值q等于Q比m。能量的转化和守恒定律能量既不会凭空消失也不会凭空产生它只会从一种形式转化为其他形式或者从一个物体转移到其他物体而在转化和转移的过程中能量的总量保持不变。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "公式先列后代（防止跳步失分）",
+                  "电路图画出后再做题（不画易错）",
+                  "单位换算先做（10³、10⁻³、10⁶）",
+                  "实验题按 7 步模板写全"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "公式不写直接代数据扣 2 分",
+                  "电路图画错导致全题 0 分",
+                  "单位忘记换算（cm³→m³, mA→A）",
+                  "实验步骤漏写\"求平均减小误差\""
+                ]
+              ]
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "中考物理实验专题"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理学习本质"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理不是\"背\"出来的，是\"做题+理解\"出来的。每天 20 分钟做题 + 30 分钟看错题 + 1 个概念图，坚持 9 个月必有质变。"
+                }
+              ]
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "重点实验测平均速度用刻度尺和停表探究液体内部压强特点用压强计探究阿基米德原理用弹簧测力计和量筒探究电流与电压电阻的关系用控制变量法伏安法测电阻用电流表和电压表测量小灯泡的电功率用P等于UI探究电磁感应现象用灵敏电流计。实验操作规范电流表电压表滑动变阻器的使用方法。实验数据处理列表法图像法计算法。实验误差分析系统误差和偶然误差多次测量取平均值减小误差。实验结论的表述要完整严谨控制变量法的表述模式在研究什么和什么的关系时保持什么不变。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考物理答题策略"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "选择题8道24分注意排除法极限法图像法。填空题14空28分关键词要准确单位要写完整。作图题注重规范力的示意图用箭头标方向力臂用大括号光路图用实线。计算题25分要写必要的文字说明公式代入数值带单位计算结果。实验题23分注重实验步骤现象分析和结论表述。合理分配时间选择题12分钟填空题12分钟作图题3分钟计算题20分钟实验题13分钟。检查重点单位换算结果合理性公式正确性。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "中考物理高频考点统计"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "压强和浮力约14分电流电路和欧姆定律约16分电功率约12分电磁学约10分功和能机械效率约12分运动和力约10分声光热约6分实验约20分。电学板块总分最高约38分是复习的重中之重。综合计算题集中在压强浮力综合和电学综合两类。实验题侧重考查电路连接实验方案设计和实验数据处理。近三年上海中考物理注重联系生活实际家电中的物理环保和新能源等社会热点。难度分布基础题约60%中档题约25%较难题约15%。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "学习建议"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "建议制定合理的学习计划分阶段推进。基础阶段全面覆盖知识点不留死角；提升阶段专题突破重难点形成知识网络；冲刺阶段限时训练查漏补缺。学习中多动笔多思考多总结遇到问题及时请教。"
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：上海中考物理近 5 年真题 + 沪科版教材 + 上海市教委考试院命题分析"
+            }
+          ]
         }
       ]
     }
