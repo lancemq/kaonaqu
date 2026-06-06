@@ -12,51 +12,22 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海高三语文高考复习体系与冲刺说明"
+              "text": "上海高三语文 | 现代文·古诗文·作文·高考真题 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "高三语文要把阅读答题、古诗文基础和作文素材压缩成可回看的清单。冲刺阶段比拼的是稳定审题、规范表达和素材调用能力。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "page-header-actions",
-          "children": [
-            {
-              "type": "element",
-              "tag": "a",
-              "href": "#senior3-chinese-plan",
-              "className": "action-link",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "查看复习计划"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "a",
-              "href": "/knowledge/senior-3",
-              "className": "action-link",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "回到高三总览"
-                }
-              ]
+              "text": "依据上海高考语文考纲，按\"现代文阅读·古诗文·语言文字运用·作文\"四大板块系统整合高三语文全部重点、难点和考点，含高考真题和临考策略。"
             }
           ]
         }
@@ -64,207 +35,33 @@
     },
     {
       "type": "element",
-      "tag": "section",
-      "className": "chapter",
+      "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
           "type": "element",
-          "tag": "h2",
+          "tag": "div",
+          "className": "summary-item",
           "children": [
             {
-              "type": "text",
-              "text": "一、如何使用这份语文资料"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "复习重点："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高三复习的核心不是无限加题量，而是按轮次完成“知识回收 - 模型强化 - 模考订正 - 考前收口”。每个专题都建议保留最后能回看的知识清单、典型题和易错提醒。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "阅读按题型整理答题路径，作文按主题整理观点、材料和论证结构。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考方向"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "现代文阅读、文言文翻译、古诗鉴赏、名句默写、语言运用和议论文写作。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "复习提醒"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "不要把语文复习变成只背素材，必须保留题干识别和答案组织训练。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "如果当前已经进入模考阶段，建议先用本页定位反复失分的专题，再反查对应知识点和模型；如果还在一轮复习，则按章节和题型同步整理。"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior3-chinese-reading",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "二、现代文阅读与答题结构"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "现代文复习要把题型、文本依据和答案语言三者对应起来。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心任务"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "按论述类、文学类、实用类文本分别整理题型。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "每道题先定位文本层次，再判断答题角度。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "答案保持“判断 + 依据 + 作用/效果”的结构。"
+                  "text": "高考冲刺"
                 }
               ]
             }
@@ -273,154 +70,27 @@
         {
           "type": "element",
           "tag": "div",
-          "className": "concept-grid",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "模型"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "题干关键词 - 文本定位 - 层次判断 - 语言组织。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "考试时长"
                 }
               ]
             },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "只写术语，不回到具体文本；或答案角度少一层。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "模考订正："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每次模考后选 2 道阅读失分题，重写答案并标注缺失角度。 "
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior3-chinese-classical",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "三、古诗文、默写与语言运用"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "古诗文和语言运用适合用短频快方式每天回收。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心任务"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "文言文保留高频实词、虚词、句式和翻译错点。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "诗歌鉴赏按意象、情感、手法和语言风格整理。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "默写和语言运用要固定小周期滚动。"
+                  "text": "150 分钟"
                 }
               ]
             }
@@ -429,154 +99,27 @@
         {
           "type": "element",
           "tag": "div",
-          "className": "concept-grid",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "模型"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "字词落实 - 语境判断 - 情感手法 - 规范表达。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "总分"
                 }
               ]
             },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "默写错字、翻译漏关键词、诗歌情感判断过泛。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "模考订正："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 把古诗文错题拆成“字词、句式、情感、表达”四类，考前只看错因清单。 "
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior3-chinese-writing",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "四、作文素材与论证收口"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "高三作文要形成少而精的素材库和稳定论证框架。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心任务"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "按主题整理 10-15 组高质量素材，不追求数量。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "每组素材配 2-3 个可迁移论点。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "练习审题时先确定核心关系和写作立场。"
+                  "text": "150 分"
                 }
               ]
             }
@@ -585,82 +128,116 @@
         {
           "type": "element",
           "tag": "div",
-          "className": "concept-grid",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "模型"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "审题关系 - 中心观点 - 分论点递进 - 材料分析 - 现实回扣。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "目标"
                 }
               ]
             },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "素材堆砌但没有分析，或分论点之间没有递进关系。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "模考订正："
+                  "text": "120+ 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "古诗文"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 每次作文讲评后重写一个主体段，重点补“材料之后的分析”。 "
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "60 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "现代文"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "40 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "作文"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "70 分（60+10 写作+1 审题）"
+                }
+              ]
             }
           ]
         }
@@ -668,277 +245,17 @@
     },
     {
       "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior3-chinese-plan",
+      "tag": "div",
+      "className": "chinese",
       "children": [
         {
           "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "五、高三语文轮次复习计划"
-            }
-          ]
-        },
-        {
-          "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "建议语文复习保持每日小回收、每周一整合。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "阅读线"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "每周复盘 3-4 道典型阅读题，整理答题角度。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "基础线"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "古诗文、默写和语言运用每天 15 分钟滚动。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "作文线"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "每两周完成一次素材主题重组和段落改写。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "thead",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "轮次"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "主要任务"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成标志"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "一轮"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "补齐知识点和题型清单"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "每类题有明确答题路径"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "二轮"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "按失分专题强化模考订正"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "同类错误明显减少"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "冲刺"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "压缩最后回看清单和作文素材"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "考前能快速调用结构和材料"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+              "text": "上海高考语文总分 150 分，考试时长 150 分钟。试卷结构为：①现代文阅读 40 分（社科文/文学类/实用类文本）；②古诗文 60 分（文言文 30+古诗鉴赏 15+名句默写 15）；③语言文字运用 20 分；④作文 70 分（1 道 60+ 写作，1 道 10 分审题/微写作）。高三全年按\"读懂文本—积累素材—真题练手—限时模拟\"四步走，目标 120+ 稳进 211，130+ 冲刺 985。"
             }
           ]
         }
@@ -951,90 +268,137 @@
       "children": [
         {
           "type": "text",
-          "text": "古诗文复习"
+          "text": "一、现代文阅读（40 分）"
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "h3",
+      "className": "",
       "children": [
         {
           "type": "text",
-          "text": "巩固120个文言实词和18个虚词的用法。掌握常见特殊句式判断句被动句省略句倒装句。诗歌鉴赏的答题模板。"
+          "text": "1.1 社科文阅读（10 分）"
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "div",
+      "className": "concept-grid",
       "children": [
-        {
-          "type": "text",
-          "text": "现代文阅读"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "社科文论述文和文学类文本的阅读方法。信息筛选整合概括。分析概括作者的观点态度。赏析作品的形象语言和表达技巧。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "作文冲刺"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "审题立意是作文的生命线。论证方法举例论证道理论证对比论证比喻论证。素材运用要做到典型新颖贴切。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "className": "section-title",
-          "children": [
-            {
-              "type": "text",
-              "text": "高考语文论述类文本阅读"
-            }
-          ]
-        },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-card",
           "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "论述特点"
+                }
+              ]
+            },
             {
               "type": "element",
               "tag": "p",
+              "className": "",
               "children": [
                 {
                   "type": "text",
-                  "text": "论述类文本阅读是高考语文的重要题型。阅读的方法先快速浏览文章把握核心观点和论证思路重点关注首段末段和各段首句。论证方法的识别举例论证用典型事例证明论点道理论证用经典论述和公理证明论点对比论证通过正反对比突出论点比喻论证用打比方的方式论证观点。论证结构包括总分式并列式递进式和对照式。常见题型理解文中重要概念的含义筛选并整合文中的信息分析文章结构和论证思路。论述类文本的选择题常见错误类型偷换概念以偏概全无中生有因果倒置绝对化等。"
+                  "text": "议论文体裁特征：论点—论据—论证三要素；论证方法有举例/道理论证/对比/比喻/引用/类比；行文逻辑有总分/并列/递进/对照。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "概念理解"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "社科文核心能力：从文本中提取关键概念，理解概念的内涵外延，辨析概念间关系（并列/包含/对立/递进）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "论证分析"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "论证分析四步：①找论点（位置：标题/开头/结尾/反复出现句）；②梳结构（总分/递进/并列/对照）；③析论证（方法+作用）；④评观点（合理性+局限性）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "答题规范"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "主观题答题三要素：①观点明确（直接答是/不是/有/没有）；②引用原文（用引号标出关键句）；③分析到位（方法+效果+作用）。"
                 }
               ]
             }
@@ -1044,41 +408,2669 @@
     },
     {
       "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "1.2 文学类文本阅读（15 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
       "children": [
         {
           "type": "element",
-          "tag": "h2",
-          "className": "section-title",
+          "tag": "div",
+          "className": "concept-card",
           "children": [
             {
-              "type": "text",
-              "text": "高考语文写作高分策略"
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "小说阅读"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三要素：人物（言行举止心理）+情节（开端发展高潮结局）+环境（自然社会）。主题：透过现象看本质，挖掘社会意义。"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-card",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "h4",
+              "className": "",
               "children": [
                 {
                   "type": "text",
-                  "text": "高考作文的审题立意是所有环节的重中之重。新材料作文的审题方法从材料中提取关键词把握命题意图确定写作方向。议论文的结构模式引论提出中心论点本论展开论证结论总结全文。常见的议论文结构并列式三个分论点平行展开递进式层层深入由表及里对比式正反对比论证。论据的选用要典型新颖贴切最好结合时事热点和经典素材。论证要严谨推理要清晰论点和论据之间要有必然的逻辑联系不能简单堆砌例子。"
+                  "text": "散文阅读"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "形散神聚：题材广泛（人事景物），中心集中（情感/哲理）。线索：情感/物/人/地点/时间/行踪。"
                 }
               ]
             }
           ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "赏析语言"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "修辞+句式+用词三角度。修辞看比喻拟人排比反复反问设问；句式看长短整散；用词看动词形容词副词叠词。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "探究题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三步：①亮观点（同意/不同意/辩证）；②引原文（用引号）；③析原因（情节+人物+主题+艺术）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "1.3 实用类文本阅读（15 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "传记阅读"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "传记核心：传主事迹+精神品质+社会影响。注意\"事—人—魂\"三层次：事迹体现精神，精神体现时代。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "新闻阅读"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "新闻六要素：何时何地何事何人何因何果。结构：标题—导语—主体—背景—结语。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "图表阅读"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三步：①看标题（明确主题）；②读图例（区分系列）；③比数据（找规律、算差异、析原因）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "探究题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "实用类文本探究更注重\"社会价值\"和\"现实意义\"，结合时代背景和主流价值观。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "二、古诗文（60 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "2.1 文言文阅读（30 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高频实词"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "120 个高频实词必须掌握：爱、安、倍、毕、诚、辞、从、殆、党、道、得、度、非、复、负、盖、故、顾、固、归、过、恨、后、胡、患、或、疾、及、即、既、假、间、见、进、尽、举、俱、遽、具、距、举、遽、克、类、怜、弥、莫、乃、内、期、奇、迁、请、穷、趋、然、任、是、适、书、孰、属、数、遂、率、说、私、素、汤、徒、亡、王、望、为、恶、闻、悉、相、谢、信、行、幸、休、许、业、一、宜、遗、夷、贻、易、阴、引、盈、应、游、于、与、欲、喻、援、缘、远、云、载、则、章、知、致、质、治、诸、逐、属、坐。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高频虚词"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "18 个高频虚词：而、何、乎、乃、其、且、然、若、使、虽、遂、所为、所以、焉、也、以、矣、于。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "词类活用"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "五类：①名词作动词；②动词/形容词作名词；③形容词作动词；④名词作状语；⑤使动/意动/为动用法。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "特殊句式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "五类：①判断句（…者…也/乃/为/即）；②被动句（于/受…于/被/见…于）；③倒装句（主谓倒装/宾语前置/定语后置/介词短语后置）；④省略句（省略主/谓/宾/介词）；⑤固定句式（无乃…乎/何…为/如…何/奈…何/得无…乎）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "2.2 古诗鉴赏（15 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题材分类"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "山水田园、边塞征战、咏物言志、怀古咏史、羁旅思乡、爱情闺怨、讽喻抒怀、送别赠答、悼亡游仙。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "表现手法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "表达方式（抒情/描写/议论/说明）；修辞手法（比喻/拟人/借代/夸张/对比/用典/双关）；表现手法（联想/想象/衬托/渲染/象征/动静结合/虚实相生/借古讽今/托物言志）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "语言风格"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "豪放派（苏轼辛弃疾：气势磅礴雄浑奔放）；婉约派（李清照柳永：含蓄蕴藉细腻柔美）；山水派（王维孟浩然：清新自然意境幽远）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "答题思路"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "四步：①点题材（送别/边塞/山水）；②明手法（修辞+表现+表达）；③析情感（家国/怀才/思乡/爱情/哲理）；④评结构（承上启下/卒章显志/以景结情）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "2.3 名句默写（15 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "必背篇目"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "60 篇必背：初中 50 篇+高中 10 篇。高中重点：《劝学》《师说》《赤壁赋》《阿房宫赋》《滕王阁序》《兰亭集序》《归去来兮辞》《逍遥游》《离骚》《诗经·氓》。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "默写技巧"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三记法：①理解记忆（懂文意记关键字）；②对比记忆（相似篇目放一起）；③默写检测（每天 10 分钟 5 句默写）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "易错字"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "常见 100 易错字：傲（骜）、拔（跋）、敝（弊）、敝（蔽）、辩（辨）、搏（博）、采（彩）、偿（尝）、弛（驰）、刺（刺）、粹（萃）、惰（坠）、废（费）、辐（幅）、概（盖）、鼓（股）、亨（烹）、迹（绩）、籍（藉）、箭（剑）、灸（炙）、竣（峻）、滥（烂）、厉（利）、练（炼）、矛（茅）、恼（脑）、篇（遍）、仆（扑）、气（汽）、曲（屈）、揉（柔）、疏（输）、撕（嘶）、塑（溯）、沓（踏）、颓（蜕）、弦（舷）、享（亨）、泻（泄）、绎（译）、萤（荧）、映（印）、赢（盈）、障（嶂）、振（震）、炙（灸）、皱（绉）、诛（株）、瞩（嘱）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "默写规范"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三不写：①不写错别字；②不漏字多字；③不颠倒顺序。规范：题目问上句写下句，问下句写上句，问全篇默写连写。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "三、语言文字运用（20 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "3.1 成语辨析（4 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "望文生义"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "如\"不刊之论\"（不能改动，不是不能刊登）；\"差强人意\"（大体使人满意，不是使人失望）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "对象误用"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "如\"豆蔻年华\"专指女子十三四岁；\"而立之年\"指三十岁；\"耳提面命\"用于长辈对晚辈。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "色彩不当"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "如\"始作俑者\"含贬义（首开恶劣先例的人）；\"擢发难数\"形容罪恶多。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "语境不符"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "结合上下文语境选词，注意感情色彩和语体色彩。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "3.2 病句辨析（4 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "六类病句"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①成分残缺或赘余（主/谓/宾/定/状/中心词）；②搭配不当（主谓/动宾/定中/状中/关联词）；③语序不当（定语/状语/并列/关联词位置）；④句式杂糅（两种句式混用）；⑤逻辑问题（自相矛盾/强加因果/重复）；⑥表意不明（指代不明/歧义）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "辨析方法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "四步：①凭语感（读着别扭处必有病）；②审主干（主谓宾）；③查修饰（定状补）；④看逻辑（关联词/并列/因果）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "常见标志"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "介词开头（通过/对于/关于）— 缺主语；关联词位置（无论…都/不但…而且）— 前后主语不同则关联词放主语后；并列短语（和/以及/、）— 各项结构须一致。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "修改原则"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "四不：①不改变原意；②不增减成分；③不调换位置（如无必要）；④不搞\"修修补补\"（必须实质性修改）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "3.3 语句衔接（4 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "话题一致"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "前后句主语/话题保持一致，转换话题时用过渡词。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "逻辑连贯"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时间/空间/事理/逻辑顺序合理：时间先后、空间转换、由因到果、由现象到本质。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "句式统一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "整句散句、长句短句要协调，主动被动要一致。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "感情色彩"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "语境感情色彩统一：褒贬一致，语体一致（口语书面语）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "3.4 标点与修辞（4 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "标点规范"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "常见考点：①顿号/逗号（并列短语层级）；②分号（并列分句）；③问号（连续问句只一个）；④引号（直接引语）；⑤括号（注释说明）；⑥破折号（解释/转折/递进）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "修辞辨析"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "八种修辞：比喻（明/暗/借喻）、拟人、排比、反复、反问、设问、借代、双关、对偶、夸张。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "修辞作用"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "比喻：形象生动；拟人：亲切可感；排比：增强语势；反问：加强语气；设问：引人思考；借代：含蓄形象。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "3.5 逻辑推断（4 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "推断原则"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "基于原文+合理推断+不超原文+不反原文。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "推断方向"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "由具体到一般（归纳）；由一般到具体（演绎）；由因到果（推理）；由果到因（溯因）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "推断依据"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①原文原句；②关键信息（时间地点人物事件）；③逻辑关系（因果/并列/递进/转折）；④隐含信息（言外之意）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "四、作文（70 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "4.1 高考作文评分标准"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "className": "topic-stats",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一类文（60 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 立意深刻+结构严谨+语言优美+卷面整洁"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "二类文（54-59 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 立意明确+结构完整+语言通顺+卷面清楚"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三类文（48-53 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 立意基本正确+结构基本完整+语言基本通顺"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "四类文（42-47 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 立意偏颇+结构混乱+语病较多+卷面不整"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "五类文（<42 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 立意错误+结构残缺+语病严重"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "4.2 高考作文命题趋势（2020-2025）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "table",
+      "className": "comparison-table",
+      "children": [
+        {
+          "type": "element",
+          "tag": "thead",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "年份"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "上海卷题目"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "命题类型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "核心立意"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "tbody",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2020"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "世上许多重要的转折是在意想不到的..."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "哲理思辨"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "偶然与必然/转折与坚守"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2021"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "有人说，经过时间的沉淀，事物的..."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "哲理思辨"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "沉淀与价值/时间与认知"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2022"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "小时候人们喜欢发问，长大后往往..."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "成长反思"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "好奇心/提问与探索"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一个人乐意去探索陌生世界..."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "人生选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "探索与好奇心"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生活中，人们难免会遭遇挫折..."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "成长励志"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "挫折与成长"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2025"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模拟题：关于\"沉淀\"与\"绽放\"..."
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "哲理思辨"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "积累与突破"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "4.3 议论文写作结构（5 段式）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "引论"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "1 段（约 150 字）：①引材料（复述+概括+观点）；②亮观点（中心论点）；③作铺垫（过渡到下文）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "本论 1"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "2-3 段（约 600 字）：分论点 1 + 事例 + 分析 + 总结。每段 200 字左右，结构一致（提出—论证—小结）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "本论 2"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "4 段（约 250 字）：分论点 2 + 事例 + 分析 + 总结。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "结论"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "5 段（约 150 字）：①总结全文（呼应开头）；②升华主题（时代/社会/人生）；③发出号召（鼓舞/警示/期望）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "4.4 高考作文素材库"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "人物素材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "100+ 经典人物：屈原（爱国）/司马迁（忍辱）/陶渊明（隐逸）/李白（豪迈）/杜甫（忧国）/苏轼（豁达）/文天祥（忠贞）/鲁迅（犀利）/钱学森（奉献）/袁隆平（创新）/钟南山（担当）/张桂梅（大爱）/屠呦呦（执着）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时事素材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "近 3 年热点：①科技：神舟/嫦娥/天宫/C919/5G/AI/DeepSeek；②文化：故宫文创/敦煌/三星堆/《典籍里的中国》/国潮兴起；③生态：碳中和/绿水青山/长江保护；④社会：乡村振兴/共同富裕/老龄化；⑤体育：冬奥会/亚运会/世界杯/郑钦文/全红婵。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "哲理素材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "经典名句：①\"路漫漫其修远兮，吾将上下而求索\"（屈原）；②\"长风破浪会有时，直挂云帆济沧海\"（李白）；③\"沉舟侧畔千帆过，病树前头万木春\"（刘禹锡）；④\"不畏浮云遮望眼，自缘身在最高层\"（王安石）；⑤\"少年心事当拏云\"（李贺）；⑥\"博观而约取，厚积而薄发\"（苏轼）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "结构技巧"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "5 种高级结构：①递进式（是什么—为什么—怎么做）；②并列式（分论点 1+2+3）；③对照式（正反对比）；④引议联结（引材料—议论—联系实际—总结）；⑤辩证式（一分为二看问题）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "4.5 高考语文常见失分点"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "mistakes",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "高考语文失分陷阱"
+            }
+          ]
+        },
+        "现代文阅读答案只抄原文，不做分析",
+        "古诗鉴赏只翻译不分析手法和情感",
+        "文言文断句错在不熟悉词类活用和虚词",
+        "名句默写错别字多（注意同音字/形近字）",
+        "成语只看字面意思（望文生义）",
+        "病句修改不彻底，留下\"半截子\"病句",
+        "作文偏题/跑题（材料理解不准）",
+        "作文结构失衡（头重脚轻/虎头蛇尾）",
+        "作文字数不足 800（每少 50 字扣 1 分）",
+        "作文卷面不整洁（涂改/字迹潦草扣 2-3 分）"
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "五、高考真题示例"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "example",
+      "children": [
+        {
+          "type": "element",
+          "tag": "span",
+          "className": "example-label ",
+          "children": [
+            {
+              "type": "text",
+              "text": "真题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h4",
+          "className": "example-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "2023 上海高考·现代文阅读"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-q",
+          "children": [
+            {
+              "type": "text",
+              "text": "阅读《江南的春雨》一文，回答：(1) 文章第 3 段描写春雨\"细密\"\"轻柔\"有何作用？(2) 文章结尾\"我愿做一滴春雨\"表达了作者怎样的情感？"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-a",
+          "children": [
+            {
+              "type": "text",
+              "text": "（1）①生动形象地写出江南春雨的特点，营造朦胧柔美的意境；②与下文\"润物细无声\"相呼应，为抒发赞美之情铺垫；③化用杜甫诗句，增添诗意。（2）①表达对江南春雨的喜爱和赞美；②愿像春雨一样默默奉献，润泽万物；③寄托对故乡/春天的眷恋之情。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "example",
+      "children": [
+        {
+          "type": "element",
+          "tag": "span",
+          "className": "example-label ",
+          "children": [
+            {
+              "type": "text",
+              "text": "真题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h4",
+          "className": "example-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "2022 上海高考·古诗鉴赏"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-q",
+          "children": [
+            {
+              "type": "text",
+              "text": "阅读杜甫《登高》，回答：(1) \"无边落木萧萧下，不尽长江滚滚来\"运用了哪些表现手法？有何效果？(2) 全诗抒发了诗人怎样的情感？"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-a",
+          "children": [
+            {
+              "type": "text",
+              "text": "（1）①对偶（\"无边\"对\"不尽\"，\"落木\"对\"长江\"，\"萧萧\"对\"滚滚\"），形式整齐；②借景抒情（落叶长江之景），寓情于景；③动静结合（落木飘零为动，长江奔涌为静）。效果：营造雄浑苍凉意境，凸显宇宙永恒而人生短暂的感慨。（2）①羁旅之苦（首联）；②孤独之感（颔联）；③年老多病之悲（颈联）；④忧国伤时之情（尾联）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "example",
+      "children": [
+        {
+          "type": "element",
+          "tag": "span",
+          "className": "example-label ",
+          "children": [
+            {
+              "type": "text",
+              "text": "真题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h4",
+          "className": "example-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "2021 上海高考·作文"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-q",
+          "children": [
+            {
+              "type": "text",
+              "text": "阅读材料：经过时间的沉淀，事物的价值才能被人们认识；有的人对事物的价值需要反复认识才能发现。 根据材料，自选角度，自拟题目，写一篇不少于 800 字的文章。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-a",
+          "children": [
+            {
+              "type": "text",
+              "text": "立意参考：①沉淀方显价值（积累/坚持/历史检验）；②发现价值需慧眼（独立思考/辩证看待）；③时间与认知的关系（成长/阅历/智慧）。结构：引论（材料+观点）—本论（分论点：沉淀的意义+发现的价值+成长的启示）—结论（呼吁+升华）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "六、冲刺策略与方法"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "important",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "高三语文学习要点"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "语文提分核心是\"积累+练手+规范\"。每天 90 分钟：①古诗文默写 10 分钟；②现代文阅读 1 篇 30 分钟；③作文素材积累 20 分钟；④真题限时训练 30 分钟。高三一年要完成 50 篇现代文+50 篇古诗文+30 篇作文。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "method",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "古诗鉴赏四步法"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "①读标题（明题材/知背景）；②看作者（明风格/知流派）；③析意象（找景物/品意境）；④明情感（悟主旨/找警句）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "method",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "现代文阅读答题公式"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "①审题（问什么答什么）；②定位（找区间/抓关键）；③提取（原文+概括）；④加工（分析+术语+规范）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "method",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "文言文阅读三步"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "①先看题目（明确考点）；②再读文本（边读边断句）；③回头解题（结合语境+词类活用+特殊句式）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "method",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "作文 5 段式结构"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "引论（150 字）—本论 1（200 字）—本论 2（250 字）—本论 3（200 字）—结论（150 字）= 950 字。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "compare",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare-cell",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "✓ 高分关键"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "现代文阅读答题要\"原文+分析\""
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "古诗鉴赏要\"手法+情感+结构\""
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "文言文要\"虚词+活用+句式\""
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "作文要\"立意深+结构严+语言美\""
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "限时训练每天 90 分钟必做"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare-cell",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "✗ 失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "现代文只抄原文不分析"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "古诗只翻译不抒情"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "文言文忽略语境"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "默写错别字"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "作文偏题/字数不足/卷面脏"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "important",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "语文学习本质"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "语文不是\"背\"出来的，是\"读+思+写\"出来的。每天 30 分钟晨读（古诗文+素材）+ 30 分钟阅读（现代文）+ 30 分钟写作（片段/整篇），坚持 9 个月必有质变。高三的关键是\"积累\"+\"限时\"+\"规范\"，三者缺一不可。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "className": "source",
+      "children": [
+        {
+          "type": "text",
+          "text": "参考：人教版/沪教版语文必修+选修 + 2020-2025 上海/全国高考语文真题 + 上海市教委考试院命题分析 + 高考语文评分标准"
         }
       ]
     }
-  ],
-  "sourceFiles": [
-    "data/knowledge-pages.json"
   ]
 }

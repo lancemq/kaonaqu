@@ -12,51 +12,22 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海高三英语高考复习体系与冲刺说明"
+              "text": "上海高三英语 | 语法·阅读·完形·写作·高考真题 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "高三英语要稳定阅读节奏、翻译表达和写作结构。最终目标不是认识更多难词，而是在限时内稳定理解和输出。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "page-header-actions",
-          "children": [
-            {
-              "type": "element",
-              "tag": "a",
-              "href": "#senior3-english-plan",
-              "className": "action-link",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "查看复习计划"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "a",
-              "href": "/knowledge/senior-3",
-              "className": "action-link",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "回到高三总览"
-                }
-              ]
+              "text": "依据上海高考英语考纲，按\"语法·阅读·完形·写作\"四大板块系统整合高三英语全部重点、难点和考点，含高考真题和临考策略。"
             }
           ]
         }
@@ -64,207 +35,33 @@
     },
     {
       "type": "element",
-      "tag": "section",
-      "className": "chapter",
+      "tag": "div",
+      "className": "subject-summary",
       "children": [
         {
           "type": "element",
-          "tag": "h2",
+          "tag": "div",
+          "className": "summary-item",
           "children": [
             {
-              "type": "text",
-              "text": "一、如何使用这份英语资料"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "复习重点："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高三复习的核心不是无限加题量，而是按轮次完成“知识回收 - 模型强化 - 模考订正 - 考前收口”。每个专题都建议保留最后能回看的知识清单、典型题和易错提醒。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "阅读看结构，翻译看句型，写作看任务完成度和语言准确度。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考方向"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "阅读理解、完形填空、语法词汇、翻译、概要写作和应用文/议论文表达。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "复习提醒"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "高三英语应固定每日输入输出，不要只刷选择题。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "如果当前已经进入模考阶段，建议先用本页定位反复失分的专题，再反查对应知识点和模型；如果还在一轮复习，则按章节和题型同步整理。"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior3-english-reading",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "二、阅读、完形与篇章逻辑"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "阅读复习要把文章结构、题干定位和选项陷阱结合起来。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心任务"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "先判断文章类型和段落功能。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "完形题结合上下文逻辑、词义辨析和固定搭配。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "错题重点记录误选原因，而不只是生词。"
+                  "text": "高考冲刺"
                 }
               ]
             }
@@ -273,154 +70,27 @@
         {
           "type": "element",
           "tag": "div",
-          "className": "concept-grid",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "模型"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "主旨判断 - 定位依据 - 选项比较 - 回文验证。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "考试时长"
                 }
               ]
             },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "只凭熟词选答案，忽略转折、让步和指代关系。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "模考订正："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每次模考后整理 5 个误选选项，写清它为什么错。 "
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior3-english-translation-summary",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "三、翻译与概要写作"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "翻译和概要是高三输出能力的核心，需要长期小步修正。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心任务"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "翻译先拆中文信息，再选择英语句型。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "概要先抓主旨和要点，避免照抄原句。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "检查时重点看谓语、时态、从句和连接词。"
+                  "text": "120 分钟"
                 }
               ]
             }
@@ -429,154 +99,27 @@
         {
           "type": "element",
           "tag": "div",
-          "className": "concept-grid",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "模型"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "信息拆分 - 句型选择 - 语序重组 - 语法检查。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "总分"
                 }
               ]
             },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "中文式直译，或概要缺少逻辑连接。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "模考订正："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每周固定复盘 8 个翻译错句，按动词、从句、搭配分类。 "
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior3-english-writing",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "四、写作模板与表达收口"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "高三写作模板不是套话，而是保证任务完成和结构稳定。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "核心任务"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "应用文先明确对象、目的和语气。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "议论表达保持主题句、解释、例证和总结。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "考前保留高频场景表达和可替换句式。"
+                  "text": "150 分"
                 }
               ]
             }
@@ -585,82 +128,145 @@
         {
           "type": "element",
           "tag": "div",
-          "className": "concept-grid",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "div",
-              "className": "concept-card",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "模型"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "审题任务 - 段落功能 - 句式准确 - 表达润色。"
-                    }
-                  ]
+                  "type": "text",
+                  "text": "目标"
                 }
               ]
             },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "模板痕迹太重，或高级表达导致语法错误。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
             {
               "type": "element",
               "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "模考订正："
+                  "text": "130+ 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "听力"
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 把每次作文批改意见转成 3 条下次写作前必看的提醒。 "
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "30 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "语法词汇"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "30 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "阅读"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "40 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "翻译+写作"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "50 分（10 翻译+40 写作）"
+                }
+              ]
             }
           ]
         }
@@ -668,277 +274,17 @@
     },
     {
       "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior3-english-plan",
+      "tag": "div",
+      "className": "english",
       "children": [
         {
           "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "五、高三英语轮次复习计划"
-            }
-          ]
-        },
-        {
-          "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "英语冲刺适合用每日固定配方保持手感。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "输入"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "每天阅读或完形保持篇章理解。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "输出"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "翻译、概要和写作轮流训练。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "错因"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "所有错题按词汇、逻辑、语法、表达归类。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "thead",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "轮次"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "主要任务"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成标志"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "一轮"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "补词汇搭配、语法和长句"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "阅读定位和句子分析更稳"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "二轮"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "强化翻译、概要和完形逻辑"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "输出错误类型减少"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "冲刺"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "固定整卷顺序和写作模板"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "限时完成度和准确率稳定"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+              "text": "上海高考英语总分 150 分，考试时长 120 分钟（含听力 30 分钟）。试卷结构为：①听力 30 分（短对话+长对话+短文）；②语法词汇 30 分（语法填空+选词填空/词性转换）；③阅读 40 分（4 篇阅读+1 篇 5选5）；④翻译 10 分（5 句中译英）；⑤写作 40 分（含概要 20+ 续写 20，或 1 篇大作文）。高三全年按\"词汇+语法—专题突破—真题实战—模拟冲刺\"四步走，目标 130+ 稳进 985。"
             }
           ]
         }
@@ -951,90 +297,137 @@
       "children": [
         {
           "type": "text",
-          "text": "语法词汇"
+          "text": "一、语法专题（重点）"
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "h3",
+      "className": "",
       "children": [
         {
           "type": "text",
-          "text": "高中语法体系系统梳理。高频词汇和短语的辨析。构词法的应用扩大词汇量。"
+          "text": "1.1 时态语态"
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "div",
+      "className": "concept-grid",
       "children": [
-        {
-          "type": "text",
-          "text": "阅读理解"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "说明文议论文记叙文新闻等文体特点。长难句分析提高阅读速度。主旨大意推理判断词义猜测等题型的解题策略。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "翻译和写作"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "中译英的评分标准和解题方法。应用文话题作文读后续写的写作要点。语言准确性和得体性的统一。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "className": "section-title",
-          "children": [
-            {
-              "type": "text",
-              "text": "高考英语完形填空"
-            }
-          ]
-        },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-card",
           "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "16 种时态"
+                }
+              ]
+            },
             {
               "type": "element",
               "tag": "p",
+              "className": "",
               "children": [
                 {
                   "type": "text",
-                  "text": "完形填空的命题特点以记叙文和夹叙夹议文为主文章长度约250词设空15至20个。考查重点语境理解搭配辨析和逻辑推理。解题步骤第一遍通读全文忽略空格了解文章大意第二遍逐题作答注意上下文线索第三遍带入答案复读全文检查逻辑是否通顺。动词题的解题技巧注意时态语态和非谓语动词的变化注意动词短语的固定搭配。名词题的解题技巧注意可数和不可数注意名词的复数和所有格。形容词和副词题注意比较级最高级和修饰关系。连词题注意前后句的逻辑关系判断是并列转折因果还是条件。介词题注意固定搭配和介词的基本用法。"
+                  "text": "一般现在/过去/将来（will/be going to/be to）+进行时（现在/过去/将来）+完成时（现在/过去/将来）+完成进行时。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "被动语态"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "be + 过去分词。常见：一般现在/过去/将来 + 完成时被动。注意情态动词被动 (can/may/must + be done)。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时态判断"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时间状语（yesterday/tomorrow/now/for+一段时间/so far/by+时间点）+ 语境（动作先后/持续/完成）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "主谓一致"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三原则：①语法一致（主语单数谓语单数）；②意义一致（集合名词/复数意义用复数）；③就近一致（either…or/neither…nor/not only…but also/there be）。"
                 }
               ]
             }
@@ -1044,41 +437,3063 @@
     },
     {
       "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "1.2 非谓语动词"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
       "children": [
         {
           "type": "element",
-          "tag": "h2",
-          "className": "section-title",
+          "tag": "div",
+          "className": "concept-card",
           "children": [
             {
-              "type": "text",
-              "text": "高考英语写作"
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "不定式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "to do：表将来/目的/原因/结果/未做。主动/被动 (to do/to be done)。"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-card",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "h4",
+              "className": "",
               "children": [
                 {
                   "type": "text",
-                  "text": "应用文写作的格式要点书信格式包括称呼正文和落款三个部分。邮件格式类似于书信但更加简洁。通知格式包括标题正文和落款。演讲稿格式包括称呼开场白正文和结束语。应用文的内容要点要完整不能遗漏题目要求的信息点。英语写作的段落结构主题句支撑句和结论句。主题句概括全段内容支撑句展开论述结论句总结全段或过渡到下一段。句式的多样性适当运用倒装句强调句和虚拟语气可以提升文章档次。词汇的准确性选用恰当的词汇表达准确的意思避免使用过于简单或不当的词汇。语言的得体性根据不同的写作对象和场合选择恰当的语言风格。写作检查的步骤内容是否完整语法是否正确拼写是否有误标点是否规范字数是否符合要求。"
+                  "text": "动名词"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "doing：表习惯/抽象/已有/被动 (being done)/完成 (having done)。"
                 }
               ]
             }
           ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "现在分词"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "doing/done：表主动/被动/伴随/原因/时间/条件/结果。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "过去分词"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "done：表被动/完成/状态。常作定语/状语/补语/表语。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "悬垂分词"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "逻辑主语须与主句主语一致，否则改为完整从句。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "1.3 三大从句"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "宾语从句"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "连接词 that/whether/if/特殊疑问词；语序陈述句；时态主从一致。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "定语从句"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "关系词：人 who/whom/whose/that；物 which/that/whose；时间 when；地点 where；原因 why。限定/非限定。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "状语从句"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时间 when/while/as/until/before/after/as soon as；原因 because/as/since/now that；条件 if/unless/as long as；让步 although/though/even if/while；结果 so…that/such…that；目的 so that/in order that。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "1.4 特殊句式"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "虚拟语气"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三类：①if 虚拟（与现在/过去/将来事实相反）；②wish/as if/would rather + 虚拟；③suggest/insist/order + should do。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "倒装句"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①全部倒装（here/there/now/then + 动词 + 主语）；②部分倒装（否定副词开头/only+状语/so…that/no sooner…than/hardly…when）；③虚拟倒装（were/had/should 提前）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "强调句"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "It is/was + 强调部分 + that/who + 剩余部分。注意区分 it 强调和 it 主语/形式宾语。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "省略句"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "省略主语/谓语/宾语/从句。常见：if/when/while + 分词；the more…the more…；to/doing 做伴随状语。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "二、阅读理解（40 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "2.1 阅读题型"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "细节题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "问什么答什么，定位原文。注意同义替换（词性/近义/反义/概括/具体）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "主旨题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①找主题句（首段/末段/段落首尾句）；②概括全文（最高频词/反复出现主题）；③排除法（细节/例子/次要信息）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "推断题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①推作者态度/意图（褒贬词/语气词/例证）；②推深层含义（言外之意/未说出口的）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "词义猜测题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①构词法（前缀/后缀/词根）；②上下文（同义/反义/举例/解释/定义）；③逻辑关系（因果/并列/转折）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "结构题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①段落作用（承上启下/总结/举例/对比/递进）；②作者思路（提出—分析—解决）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "2.2 阅读速度"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "className": "topic-stats",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考要求"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 50-60 wpm（每分钟 50-60 词）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "A 篇（应用文）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 5 分钟（短文，事实细节）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "B/C 篇（记叙/说明）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 8 分钟"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "D 篇（议论/科普）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 10 分钟"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "5 选 5（七选五）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 6 分钟"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "2.3 阅读策略"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "略读 Skimming"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "快速读首段、每段首句、末段、转折词后、结尾。把握主旨和大意。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "扫读 Scanning"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "带着问题找答案，定位关键信息（数字/专有名词/关键词）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "精读 Intensive"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "逐句读长难句，分析结构，攻克难点。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "推断 Inferring"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "结合上下文、生活常识、作者态度推断隐含信息。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "三、完形填空（30 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "3.1 完形题型"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "记叙文"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "故事性强，情节清晰，人物情感鲜明。考词义辨析+上下文推断。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "夹叙夹议"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "故事+感悟。考主旨+作者态度。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "说明文"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "考词义+逻辑+主旨。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "议论文"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "考观点+论据+主旨+作者态度。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "3.2 解题步骤"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "第一步"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "通读全文（不看选项），把握主旨（5 分钟）。注意首句+段首句+结尾句。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "第二 步"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "逐题分析（结合上下文/语境/语法/常识）。先易后难。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "第三步"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "回看检查（代入选项复读全文，看逻辑/情感/语法是否通顺）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "3.3 解题技巧"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "上下文语境"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "找复现词/同义/反义/代词指代。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "词义辨析"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "四角度：①词性（n/v/adj/adv）；②搭配（动词+介词/形容词+名词）；③感情色彩（褒贬）；④语体（口语/书面语）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "逻辑关系"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "因果/转折/并列/递进/让步。注意 however/therefore/in addition/however/yet/although 等逻辑词。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生活常识"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "结合常识判断（如\"人在冬天穿厚衣服\"）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "四、语法填空与词汇运用（30 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "4.1 语法填空"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "纯空格"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "填实词（动词/名词/形容词/副词）。考虑词性变化（n↔adj/adj↔adv）和语法功能（谓语/非谓语/定语/状语/补语/主语/宾语/表语）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "括号词"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①提示词给动词（时态/语态/非谓语）；②提示词给名词（数/所有格）；③提示词给形容词/副词（比较级/最高级/反义词）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "常考点"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "时态语态、非谓语、词性转换、形容词/副词比较级、定冠词/不定冠词/零冠词、介词、并列连词、从属连词。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "4.2 词汇记忆方法"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "构词法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①派生（前缀+词根+后缀）；②合成（两个词合成）；③转化（词性转换）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "语境法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "放在句子/文章中记，结合上下文理解用法。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "词根法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "常见词根：spect(看)、port(运)、dict(说)、vis(看)、aud(听)、mit(送)、pose(放)、vert(转)、sign(记)、fer(带)。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高频词汇"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "3500 考纲词必须熟练，5000 词汇助力阅读。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "搭配记忆"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "记动词短语（take off/put on/look forward to）+ 形容词短语（be fond of/be aware of）+ 名词搭配（make a decision/take responsibility）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "五、翻译（10 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "5.1 翻译评分标准"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "className": "topic-stats",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "准确（4 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 时态/语态/词性/搭配/语法正确"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "通顺（3 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 句意通达，逻辑清晰，符合英语表达习惯"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "优美（3 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 用词高级，句式多变，有文采"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "5.2 翻译技巧"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "主谓宾定状补"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "先找主干（主谓宾），再添枝叶（定状补）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "长句拆短"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中文长句拆为 2-3 个英文分句或简单句。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "变通译法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "无对应词时：①意译（抽象→具体/具体→抽象）；②词性转换（n↔v↔adj）；③句式转换（主动↔被动/正说↔反说）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "常见句型"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①it 句型 (it is + adj + to do/that…); ②there be 句型; ③强调句 (it is…that…); ④倒装句; ⑤从句套从句。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "常用词组"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "make full use of（充分利用）/play an important role in（起重要作用）/attach great importance to（重视）/take…into consideration（考虑）/in addition to（除…之外）/owing to/due to（因为）/in spite of（尽管）/as well as（和…一样）/be bound to（一定）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "六、写作（40 分）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "6.1 高考作文评分标准"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "ul",
+      "className": "topic-stats",
+      "children": [
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一类文（32-40 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 内容完整+结构严谨+语言丰富+书写漂亮"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "二类文（24-31 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 内容完整+结构清晰+语言流畅+书写工整"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三类文（16-23 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 内容基本完整+结构基本清晰+语言基本通顺"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "li",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "四类文（8-15 分）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " 内容不完整+结构混乱+语病多"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "6.2 高考作文命题趋势（2020-2025）"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "table",
+      "className": "comparison-table",
+      "children": [
+        {
+          "type": "element",
+          "tag": "thead",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "年份"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "上海卷题目"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "命题类型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "th",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "核心立意"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "tbody",
+          "className": "",
+          "children": [
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2020"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Describe an experience…"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "记叙文"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "经历感悟"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2021"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "My View on…"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "议论文"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "观点表达"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2022"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "A Letter to…"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "应用文"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "沟通交流"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "A Story About…"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "记叙文"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "故事叙述"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "An Argumentative Essay"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "议论文"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "思辨能力"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tr",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2025"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "模拟：图表+议论"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "图表作文"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "td",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "数据分析"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "6.3 高分作文模板"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "议论文模板"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "第一段（点题）：引出话题+亮观点（3-4 句）。第二段（论据 1）：论点+例子+分析（8-10 句）。第三段（论据 2）：论点+例子+分析（8-10 句）。第四段（论据 3）：反面论证或让步（5-7 句）。第五段（结论）：重申观点+呼吁号召（3-4 句）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "记叙文模板"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "开头（设悬念/倒叙）。中段（事件经过：开端—发展—高潮—结局，人物言行举止+环境烘托+心理描写）。结尾（点题/感悟/启发）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "应用文模板"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①称呼；②开头（点明目的）；③正文（理由/请求/感谢等 2-3 点）；④结尾（礼貌用语）；⑤署名。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "图表作文模板"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①描述图表（数据+趋势）；②分析原因（2-3 点）；③预测趋势；④给出建议。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h3",
+      "className": "",
+      "children": [
+        {
+          "type": "text",
+          "text": "6.4 高分写作技巧"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "concept-grid",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "词汇升级"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "good→excellent/outstanding/remarkable；important→vital/essential/crucial；help→assist/facilitate/contribute to；think→believe/hold the view that/conclude that。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "句式升级"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①用从句 (what/that/which/who/when/where)；②用非谓语 (doing/done/to do)；③用倒装 (Only by…can we…)；④用强调 (It is…that…)；⑤用虚拟 (If I were you, I would…)；⑥用被动 (It is generally accepted that…)。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "过渡词"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "表顺序：first/furthermore/in addition；表转折：however/nevertheless/on the contrary；表因果：therefore/consequently/as a result；表举例：for example/for instance/take…as an example；表总结：in conclusion/to sum up/in short。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-card",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "书写规范"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "①字迹工整（衡水体最佳）；②段首缩进 4 字母；③段间空 1 行；④不写涂改（错了轻轻划一笔）；⑤字数 120-150（写多了啰嗦，写少了扣分）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "七、高考真题示例"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "example",
+      "children": [
+        {
+          "type": "element",
+          "tag": "span",
+          "className": "example-label ",
+          "children": [
+            {
+              "type": "text",
+              "text": "真题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h4",
+          "className": "example-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "2023 上海高考·翻译"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-q",
+          "children": [
+            {
+              "type": "text",
+              "text": "翻译：随着科技的发展，人工智能已广泛应用于教育领域，这不仅改变了传统的学习方式，也带来了新的挑战。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-a",
+          "children": [
+            {
+              "type": "text",
+              "text": "With the development of science and technology, AI has been widely used in the field of education, which not only changes the traditional way of learning but also brings new challenges.（关键词：with the development of / AI / widely used in the field of education / which 引导非限定性定语从句 / not only…but also…）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "example",
+      "children": [
+        {
+          "type": "element",
+          "tag": "span",
+          "className": "example-label ",
+          "children": [
+            {
+              "type": "text",
+              "text": "真题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h4",
+          "className": "example-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "2022 上海高考·概要写作"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-q",
+          "children": [
+            {
+              "type": "text",
+              "text": "阅读短文（关于网络对青少年的影响，约 350 词），写 60 词左右的概要。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-a",
+          "children": [
+            {
+              "type": "text",
+              "text": "结构：①主题句（Topic sentence：网络对青少年影响深远）；②扩展句 1（Arguments 1：方便学习开阔视野）；③扩展句 2（Arguments 2：可能沉迷影响健康）；④结论句（Conclusion：合理利用方能受益）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "example",
+      "children": [
+        {
+          "type": "element",
+          "tag": "span",
+          "className": "example-label ",
+          "children": [
+            {
+              "type": "text",
+              "text": "真题"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h4",
+          "className": "example-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "2021 上海高考·读后续写"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-q",
+          "children": [
+            {
+              "type": "text",
+              "text": "阅读短文（关于主人公在博物馆迷路遇到一位老人，情节继续发展），续写 150 词左右。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "example-a",
+          "children": [
+            {
+              "type": "text",
+              "text": "技巧：①顺着原文情节线（不偏离主题/人物性格）；②加上环境/动作/心理/对话描写；③结尾点题或首尾呼应；④续写第一段为高潮前，第二段为高潮+结局。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "h2",
+      "className": "section-title",
+      "children": [
+        {
+          "type": "text",
+          "text": "八、冲刺策略与方法"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "important",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "高三英语学习要点"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "英语提分核心是\"词汇+阅读+写作\"。每天 90 分钟：①词汇 20 分钟（高中 3500+ 短语）；②阅读 30 分钟（2 篇精读+2 篇泛读）；③写作 20 分钟（背范文+练写 1 篇）；④语法/翻译 20 分钟。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "method",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "阅读三遍法"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "①第一遍（5 分钟）通读抓主旨；②第二遍（10 分钟）定位找答案；③第三遍（5 分钟）回看检查。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "method",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "完形填空三步"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "①通读全文（5 分钟抓主旨）；②逐题分析（10 分钟）；③复读检查（5 分钟）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "method",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "写作三段训练法"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "①抄写范文（5 篇 5 分）；②改写范文（用同义词/同义句替换）；③独立写作（每周 1-2 篇）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "method",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "翻译三步法"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "①拆分中文句子（找主干）；②确定核心词/短语；③连词成句（注意时态语态/主谓一致/非谓语）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "compare",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare-cell",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "✓ 高分关键"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "3500 词汇熟练运用"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "语法体系完整（16 时态/3 从句/3 非谓语）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "阅读速度 60+ wpm"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "写作 5 段式 + 高级句式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "书写工整（衡水体）"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare-cell",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "✗ 失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "词汇量不足看不懂文章"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "语法错误（时态/主谓/非谓语）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "阅读速度慢/定位不准"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "写作中式英语/句式单一"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "书写潦草/字数不足/涂改"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "aside",
+      "className": "important",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h5",
+          "className": "callout-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "英语学习本质"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "",
+          "children": [
+            {
+              "type": "text",
+              "text": "英语不是\"背\"会的，是\"用\"会的。每天 30 分钟晨读（词汇+范文）+ 30 分钟阅读（精读+泛读）+ 30 分钟写作（仿写+原创），坚持 9 个月必有质变。高三的关键是\"词汇\"+\"限时\"+\"规范\"，三者缺一不可。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "p",
+      "className": "source",
+      "children": [
+        {
+          "type": "text",
+          "text": "参考：人教版/沪教版英语必修+选修 + 2020-2025 上海/全国高考英语真题 + 上海市教委考试院命题分析 + 高考英语评分标准"
         }
       ]
     }
-  ],
-  "sourceFiles": [
-    "data/knowledge-pages.json"
   ]
 }
