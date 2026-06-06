@@ -3023,3 +3023,231 @@ body[data-page="knowledge"] .knowledge-rich-article .unit-table td:first-child {
         font-size: 0.85rem;
     }
 }
+
+/* ============================================
+   Worked Examples + Real Exam Questions
+   ============================================ */
+
+/* Example problem block (Q + analysis + solution) */
+body[data-page="knowledge"] .knowledge-rich-article .example {
+    display: grid;
+    gap: 8px;
+    padding: 16px 18px;
+    border: 1px solid var(--knowledge-line);
+    border-radius: var(--site-radius-md);
+    background: linear-gradient(180deg, rgba(255, 252, 246, 0.96), rgba(245, 238, 224, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    margin: 4px 0;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .example .example-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--knowledge-accent);
+    color: #fff7ee;
+    font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .example .example-label.analysis {
+    background: rgba(196, 130, 14, 0.95);
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .example .example-label.solution {
+    background: rgba(15, 117, 80, 0.95);
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .example .example-label.insight {
+    background: rgba(17, 17, 17, 0.85);
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .example .example-label.exam {
+    background: linear-gradient(180deg, #b00020, #8a0019);
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .example h4.example-title {
+    margin: 0;
+    color: var(--knowledge-ink);
+    font-family: "Noto Serif SC", serif;
+    font-size: 1.04rem;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .example p.example-q {
+    margin: 0;
+    color: var(--knowledge-ink);
+    font-size: 0.96rem;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .example p.example-a {
+    margin: 0;
+    color: var(--knowledge-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+/* Real exam question (上海中考真题) - distinct from worked example */
+body[data-page="knowledge"] .knowledge-rich-article .exam {
+    display: grid;
+    gap: 8px;
+    padding: 16px 18px;
+    border: 1px solid rgba(176, 0, 32, 0.18);
+    border-left: 4px solid #b00020;
+    border-radius: var(--site-radius-md);
+    background:
+        linear-gradient(90deg, rgba(176, 0, 32, 0.04), transparent 60%),
+        rgba(255, 252, 246, 0.92);
+    margin: 6px 0;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .exam .exam-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .exam .exam-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #b00020;
+    color: #fff;
+    font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .exam .exam-tag.answer {
+    background: #0f7550;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .exam .exam-tag.difficulty {
+    background: rgba(17, 17, 17, 0.85);
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .exam .exam-tag.points {
+    background: rgba(196, 130, 14, 0.95);
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .exam h4.exam-title {
+    margin: 0;
+    color: var(--knowledge-ink);
+    font-family: "Noto Serif SC", serif;
+    font-size: 1.02rem;
+    line-height: 1.4;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .exam p.exam-q,
+body[data-page="knowledge"] .knowledge-rich-article .exam p.exam-a {
+    margin: 0;
+    color: var(--knowledge-muted);
+    font-size: 0.94rem;
+    line-height: 1.72;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .exam .exam-answer {
+    padding: 8px 12px;
+    border-radius: var(--site-radius-sm);
+    background: rgba(15, 117, 80, 0.06);
+    color: #0a5238;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+/* Quote / source citation */
+body[data-page="knowledge"] .knowledge-rich-article .source {
+    display: block;
+    margin: 4px 0 0;
+    color: rgba(17, 17, 17, 0.5);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    font-style: italic;
+    letter-spacing: 0.01em;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .source::before {
+    content: "—— ";
+    font-style: normal;
+    letter-spacing: 0;
+}
+
+/* Chapter / topic stats row */
+body[data-page="knowledge"] .knowledge-rich-article .topic-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 4px;
+    padding: 0;
+    list-style: none;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .topic-stats li {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: 1px solid var(--knowledge-line);
+    border-radius: 999px;
+    background: rgba(255, 252, 246, 0.7);
+    color: var(--knowledge-muted);
+    font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .topic-stats li strong {
+    color: var(--knowledge-accent-deep);
+    font-weight: 800;
+    margin-right: 2px;
+}
+
+/* Comparison: 2-column compare box */
+body[data-page="knowledge"] .knowledge-rich-article .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 4px 0;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .compare > .compare-cell {
+    display: grid;
+    gap: 6px;
+    padding: 12px 14px;
+    border: 1px solid var(--knowledge-line);
+    border-radius: var(--site-radius-sm);
+    background: rgba(255, 252, 246, 0.78);
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .compare > .compare-cell > .compare-title {
+    color: var(--knowledge-accent-deep);
+    font-family: "Noto Serif SC", serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+body[data-page="knowledge"] .knowledge-rich-article .compare > .compare-cell > ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--knowledge-muted);
+    font-size: 0.9rem;
+    line-height: 1.62;
+}
+
+@media (max-width: 720px) {
+    body[data-page="knowledge"] .knowledge-rich-article .compare {
+        grid-template-columns: 1fr;
+    }
+}

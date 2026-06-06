@@ -1914,6 +1914,881 @@
           ]
         }
       ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六章 · 典型例题精讲"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "通过 3 道典型例题，掌握整式化简求值、分式化简、几何运动坐标三大核心考法。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "考查类型"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 整式·分式·图形运动"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★ ★ ★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "上海分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 约 12-18 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label analysis",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "整式化简求值"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化简并求值：3a²b - 2ab² + 5a²b - ab² - 4a²b，其中 a = -1，b = 2。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解题过程】\n第 1 步：合并同类项\n= (3 + 5 - 4)a²b + (-2 - 1)ab²\n= 4a²b - 3ab²\n\n第 2 步：代入求值\n= 4 × (-1)² × 2 - 3 × (-1) × 2²\n= 4 × 1 × 2 - 3 × (-1) × 4\n= 8 - (-12)\n= 8 + 12\n= 20\n\n【答案】20\n【技巧提示】\"先化简后代入\"是核心原则，符号最容易出错，建议把每一步单独成行。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label analysis",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "分式化简"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化简：(x² - 1) / (x² - 2x + 1)。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解题过程】\n第 1 步：因式分解分子分母\n分子：x² - 1 = (x + 1)(x - 1)\n分母：x² - 2x + 1 = (x - 1)²\n\n第 2 步：写成同底数的因式乘积\n= (x + 1)(x - 1) / (x - 1)(x - 1)\n\n第 3 步：约分（x ≠ 1）\n= (x + 1) / (x - 1)\n\n【答案】(x + 1) / (x - 1)\n【关键】分母 (x - 1)² 要拆成 (x - 1)·(x - 1) 才能约掉一个 (x - 1)。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label analysis",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "图形运动中的坐标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "在平面直角坐标系中，点 A(1, 3) 先向右平移 2 个单位，再向下平移 4 个单位得到点 A'''。求点 A''' 的坐标。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解题过程】\n平移口诀：右加左减，上加下减。\n\n第 1 步：向右平移 2 个单位（横坐标 +2）\nA(1, 3) → A'(1 + 2, 3) = (3, 3)\n\n第 2 步：再向下平移 4 个单位（纵坐标 -4）\nA'(3, 3) → A''(3, 3 - 4) = (3, -1)\n\n【答案】A''(3, -1)\n【技巧】把\"先平移后旋转\"分成几步单独算；如果是关于 x 轴对称，(x, y) → (x, -y)；关于 y 轴对称：(x, y) → (-x, y)；关于原点对称：(x, y) → (-x, -y)。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题规范书写"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化简题必须\"先化简后代入\"；因式分解要先观察能否提公因式，再看是否套公式（平方差/完全平方）；坐标题分步画图，标注平移方向和距离。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七章 · 上海中考真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年上海中考数学卷中与七年级内容相关的真题，感受中考难度。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2020-2024 上海中考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 25 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2021 上海中考·填空题"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "4 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "计算：(√5 + 1)² - √20 = ______。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】6 + 2√5 - 2√5 = 6\n【解析】(√5 + 1)² = 5 + 2√5 + 1 = 6 + 2√5；√20 = 2√5，相减抵消。\n【考点】实数运算中的完全平方公式。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2022 上海中考·选择题"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "4 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "下列各式是最简分式的是（  ）\nA. (x² - 1) / (x - 1)   B. (x + 1) / (x² - 1)   C. x / (x² + x)   D. (x² + x) / (x² - 1)"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】A 化为 x + 1 不是分式；B 分子可约分；C 分子分母可约去 x；D = x(x+1)/[(x+1)(x-1)] = x/(x-1) 可约分。\n【考点】最简分式定义：分子分母没有公因式。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 上海中考·解答题"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "8 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "先化简，再求值：(x + 1 - 4/(x - 1)) ÷ ((x² - 1)/(x - 1))，其中 x = √2 + 1。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解题过程】\n化简：(x + 1) - 4/(x - 1) = [(x + 1)(x - 1) - 4] / (x - 1) = (x² - 5)/(x - 1)\n除法变乘法：× (x - 1)/(x² - 1) = (x² - 5)/(x² - 1) = (x² - 5)/[(x + 1)(x - 1)]\n代入 x = √2 + 1：x² = 3 + 2√2，x + 1 = √2 + 2 = √2(√2 + 1)\n=(3 + 2√2 - 5) / [√2(√2 + 1)·(√2 + 1 - 1)] = (2√2 - 2) / [√2(√2 + 1)·√2]\n= 2(√2 - 1) / [2(√2 + 1)] = (√2 - 1)/(√2 + 1) = (√2 - 1)² / 1 = 3 - 2√2\n【考点】分式化简求值 + 二次根式分母有理化。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "中考命题趋势"
+                }
+              ]
+            },
+            "填空 14-16 题：实数、整式、分式概念辨析（4 分 × 3 = 12 分）。",
+            "解答 17-19 题：化简求值、方程（不等式）、几何综合。",
+            "七上内容占比约 25%，分数约 30-40 分，是\"必拿分\"区。"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：数学思想方法"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元介绍初中阶段最重要的 4 种数学思想：数形结合、分类讨论、整体代入、化归转化。这些思想在七年级已经\"种子\"，八、九年级会\"开花结果\"。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "数形结合"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "把抽象的数与直观的形相互转化。例如数轴上的点表示实数，二维坐标表示有序数对。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分类讨论"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "当问题有多种情况时，按某个标准把情况分完，分别求解，避免遗漏。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "整体代入"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "把具有相同结构的部分看作一个整体，简化计算（如 (a+b) 整体、a² + 2a + 1 = (a+1)²）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化归转化"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "把新问题转化为已学过的旧问题（如分式化简用因式分解、分式方程用去分母化为一元一次方程）。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 用数形结合"
+                    }
+                  ]
+                },
+                [
+                  "√5 在数轴上的位置（介于 2 和 3 之间）",
+                  "行程问题画线段图分析速度、时间和路程"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 死算硬算"
+                    }
+                  ]
+                },
+                [
+                  "反复算 √5 的近似值",
+                  "列文字算式但分不清谁比谁快"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化归思想示范"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "解方程：x/(x-1) - 1 = 2/(x+1)"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【化归路径】分式方程 → 去分母 → 一元一次方程\n第 1 步：去分母（两边同乘 (x-1)(x+1)）\nx(x+1) - (x-1)(x+1) = 2(x-1)\nx² + x - x² + 1 = 2x - 2\nx + 1 = 2x - 2\nx = 3\n\n第 2 步：检验（x ≠ ±1）\nx = 3 时分母均不为 0，原方程成立。\n\n【答案】x = 3\n【思想】把没学过的\"分式方程\"化成学过的\"一元一次方程\"——这就是化归。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "analysis"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "七年级数学的核心目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "不仅是会算题，更是建立\"看到问题想到方法\"的思维模式。建议每做完一题问自己：\"这道题用了什么思想？换个数字、换个问法还能做吗？\"。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
