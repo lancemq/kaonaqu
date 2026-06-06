@@ -25,61 +25,201 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海高一物理知识体系与学习说明"
+              "text": "上海高一物理 | 运动学·力学·功和能·动量·曲线运动 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "高一物理是从初中现象判断进入高中模型分析的关键阶段。运动学、受力分析和牛顿定律是后续力学、电磁学的底层语言。"
+              "text": "依据沪科版高一物理必修第一册/第二册与上海高考物理考纲，按\"运动学·力学·功和能·动量·曲线运动\"五大板块系统整合高一物理全部重点、难点和考点。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "subject-summary",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一同步"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "page-header-actions",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "a",
-              "href": "#senior1-physics-plan",
-              "className": "action-link",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "查看学习计划"
+                  "text": "考试时长"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "a",
-              "href": "/knowledge/senior-1",
-              "className": "action-link",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "回到高一总览"
+                  "text": "120 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "a",
-              "href": "/news",
-              "className": "action-link",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "查看高考新闻政策"
+                  "text": "100 分（合格考）/ 150 分（高考）"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "80+ 合格 / 110+ 高考"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "沪科版"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考关联"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "力学主线 + 实验"
                 }
               ]
             }
@@ -91,1432 +231,6 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "一、如何使用这份物理资料"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "学习重点："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高一学习的核心不是把高中内容提前背完，而是完成“概念更抽象、题目更综合、表达更规范”的切换。每个专题都建议按“概念边界 - 典型模型 - 易错条件 - 例题复盘”的顺序整理。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "先明确研究对象、参考系、受力和过程，再选择公式。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考方向"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "匀变速运动、图像、受力分析、牛顿第二定律、功和能、实验误差。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "复习提醒"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "物理题不是套公式，必须先判断运动过程和力的关系。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "衔接提醒："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高一上半学期决定高中学习底层习惯，下半学期开始影响选科判断和高二专题承接。不要只看单次分数，要看自己是否形成可迁移的解题和表达方法。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "学习模块"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "本页对应内容"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "高一目标"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "运动学"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "位移、速度、加速度、图像"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "会用图像描述运动过程"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "相互作用"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "重力、弹力、摩擦力、受力图"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能规范画受力分析"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "牛顿定律"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "合力、加速度、连接体"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能把力和运动联系起来"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能量与实验"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "功、动能、机械能、误差"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能解释实验条件和结论"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-physics-motion",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-physics-motion",
-          "children": [
-            {
-              "type": "text",
-              "text": "二、运动学：用图像和公式描述过程"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "速度、加速度和位移要区分物理意义。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "v-t 图像的斜率表示加速度，面积表示位移。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "公式使用前要确认是否为匀变速直线运动。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "运动学题先画过程图或图像。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "追及相遇、刹车问题、图像信息、平均速度和瞬时速度。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "把路程和位移混淆，或刹车后仍代入负速度继续算。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每题先写“初速度、加速度、时间、位移、末速度”五个量。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：匀加速运动"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：物体从静止开始以 2m/s² 加速度运动 5s，位移是多少？\n解题思路：从静止开始，s=1/2at²=1/2×2×25=25m。\n提醒：先确认初速度为 0，再选公式。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-physics-force",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-physics-force",
-          "children": [
-            {
-              "type": "text",
-              "text": "三、受力分析与牛顿定律：把力和运动连起来"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "受力分析只画研究对象受到的力，不画它对别人的力。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "摩擦力方向要根据相对运动或相对运动趋势判断。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "牛顿第二定律的方向通常按加速度方向建立坐标轴。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "高中力学的核心是受力图。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "斜面、连接体、摩擦、弹簧、超重失重和临界问题。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "多画不存在的力，或把平衡和非平衡混在一起。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每道力学题都先隔离研究对象，再画受力图。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：合力与加速度"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：质量 2kg 的物体受合力 6N，求加速度。\n解题思路：由 F=ma 得 a=F/m=6/2=3m/s²。\n提醒：这里的 F 必须是合力，不是某一个分力。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-physics-energy-experiment",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-physics-energy-experiment",
-          "children": [
-            {
-              "type": "text",
-              "text": "四、能量与实验：从过程守恒看问题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "功和能量变化要对应力和位移方向。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "机械能守恒要确认只有重力或弹力做功。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "实验题要说明测量量、控制量和误差来源。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "能量方法适合处理过程，不只处理瞬间。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "功、动能定理、机械能守恒、实验数据处理。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "没有判断守恒条件就直接套机械能守恒。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 能量题先问：有哪些力做功，是否有非保守力做功。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：机械能守恒条件"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：物体下落过程中受空气阻力，机械能是否守恒？\n解题思路：不守恒。空气阻力做负功，机械能转化为内能等其他形式。\n提醒：机械能守恒有条件，不能看到下落就套。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-physics-plan",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-physics-plan",
-          "children": [
-            {
-              "type": "text",
-              "text": "六、高一物理学习计划"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "这份计划适合高一物理阶段复盘，也适合期中、期末前集中梳理力学主线。目标是会建模、会画图、会解释公式条件。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "适合谁"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "公式会背但题目不会建模、受力图总漏力、实验题不会说明的学生。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "执行方式"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "每周整理一个模型：运动图像、受力图、牛顿定律或能量过程。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "完成标志"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "能独立画过程图和受力图，能说明公式适用条件。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "四周执行建议"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "周次"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "任务重点"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成标准"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 1 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "运动学量和图像"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成 8 道图像题复盘"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 2 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "受力分析和摩擦"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "每题画规范受力图"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 3 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "牛顿定律综合"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能建立坐标轴并列方程"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 4 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能量与实验"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "整理守恒条件和误差来源"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "复盘标准："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 物理复盘要保留图：过程图、受力图、图像和实验装置图，比单纯抄公式更重要。 "
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "运动的描述"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "质点参考系位移路程速度加速度。匀变速直线运动三大公式。自由落体运动。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "相互作用与力的平衡"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "重力弹力摩擦力。力的合成与分解平行四边形定则。共点力平衡条件的应用。正交分解法。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "牛顿运动定律"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "牛顿第一定律第二定律F=ma第三定律。超重与失重。连接体问题的分析方法。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
       "children": [
         {
           "type": "element",
@@ -1525,22 +239,524 @@
           "children": [
             {
               "type": "text",
-              "text": "匀变速直线运动"
+              "text": "第一单元 · 运动学总复习（25 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "运动学是高一物理的起点，含质点、参考系、位移、速度、加速度等核心概念。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 20-25 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 4 周"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "质点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "忽略物体形状和大小，只用一个有质量的点表示物体的理想模型。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "参考系"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "描述物体运动时选作标准的另一个物体。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "位移"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "从初位置指向末位置的有向线段（矢量）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "速度"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "v = Δx/Δt。描述运动快慢和方向（矢量）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "加速度"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "a = Δv/Δt。描述速度变化快慢（矢量）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "匀速直线运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "v = 恒量。x = vt。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "匀变速直线运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "a = 恒量。v = v₀ + at；x = v₀t + ½at²；v² - v₀² = 2ax。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "自由落体"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "v₀ = 0，a = g。v = gt；h = ½gt²。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "竖直上抛"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "a = -g。v = v₀ - gt；h = v₀t - ½gt²；最高点 v = 0。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "打点计时器"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电磁打点 0.02s/点；电火花 0.02s/点。测瞬时速度：vₙ = (xₙ + xₙ₊₁)/2T。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "匀变速直线运动是高中物理运动学的基础。三个基本公式v=v0+at\\uff0cx=v0t+\\u00bdat\\u00b2\\uff0cv\\u00b2-v0\\u00b2=2ax。平均速度公式v\\u0305=\\uff08v0+v\\uff09/2\\u3002自由落体运动v=gt\\uff0ch=\\u00bdgt\\u00b2\\uff0cv\\u00b2=2gh。竖直上抛运动分为上升和下降两个阶段对称性t\\u4e0a=v0/g\\uff0chm=v0\\u00b2/2g。解题方法：选定正方向确定已知量和未知量选择合适公式求解。注意公式的矢量性加速度方向与初速度方向一致时为正相反时为负。用v-t图像分析运动问题直观方便面积表示位移斜率表示加速度。"
+                  "text": "匀变速直线运动 5 大公式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "速度公式：v = v₀ + at"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "位移公式：x = v₀t + ½at²"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "速度位移：v² - v₀² = 2ax"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平均速度：v̄ = (v₀ + v)/2 = x/t"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "位移差：Δx = aT²（恒定）"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "运动学 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 平均速度不等于速度平均；② 刹车问题末速度为 0；③ 减速运动 a 方向与 v 方向相反；④ 时间多解（先减速后反向）；⑤ 单位换算（km/h → m/s 乘 1/3.6）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "运动学易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 平均速度用错（v̄ = x/t 不是 (v₁+v₂)/2 除非匀变速）；② 刹车时间算错（减速到 0 即停）；③ 末速度方向判断错（减速到 0 后再反向）；④ 位移和路程混（往复运动位移为 0）；⑤ 比例式搞错（初速为 0 的匀变速：1:3:5:7）。"
                 }
               ]
             }
@@ -1551,7 +767,7 @@
     {
       "type": "element",
       "tag": "section",
-      "className": "knowledge-section",
+      "className": "chapter",
       "children": [
         {
           "type": "element",
@@ -1560,24 +776,2993 @@
           "children": [
             {
               "type": "text",
-              "text": "相互作用与共点力平衡"
+              "text": "第二单元 · 力学总复习（30 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "力学是高中物理的核心，含力的概念、三种力、力的合成与分解、牛顿定律。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 25-30 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 6 周"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物体对物体的作用。单位：N（牛顿）。三要素：大小、方向、作用点。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "重力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "G = mg（g = 9.8 N/kg）。方向竖直向下。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "弹力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "发生弹性形变的物体对与它接触物体的力。胡克定律：F = kx（k 劲度系数）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "摩擦力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "滑动摩擦力：F = μFₙ（μ 动摩擦因数）。方向：与相对运动方向相反。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "静摩擦力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "0 < F ≤ Fₘₐₓ。方向：与相对运动趋势方向相反。大小由平衡条件求。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "力的合成"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平行四边形定则。合力范围：|F₁ - F₂| ≤ F ≤ F₁ + F₂。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "力的分解"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "按效果分解（水平+竖直）。正交分解：Fx = Fcosθ, Fy = Fsinθ。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "牛顿第一定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一切物体总保持匀速直线运动或静止状态，直到外力迫使它改变运动状态。惯性。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "牛顿第二定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "F = ma。F 合外力，m 质量，a 加速度（方向与 F 一致）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "牛顿第三定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "作用力与反作用力：等大、反向、共线、异体。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "受力分析"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "重力 + 弹力 + 摩擦力 + 其他（电场/磁场）。按顺序：场力→接触力→其他。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "共点力平衡"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "F合 = 0。∑Fx = 0；∑Fy = 0。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "重力的本质是地球对物体的万有引力方向竖直向下大小G=mg。弹力发生在直接接触且发生弹性形变的物体之间大小用胡克定律F=kx计算方向与形变方向相反。摩擦力分静摩擦力和滑动摩擦力滑动摩擦力f=\\u03bcN方向与相对运动方向相反。力的合成遵循平行四边形定则合力范围|F1-F2|\\u2264F\\u2264|F1+F2|。力的分解按实际效果分解常用正交分解法。共点力平衡条件合力为零解题步骤：确定研究对象受力分析建立坐标系列平衡方程求解。正交分解法的应用是将不在坐标轴上的力分解为x和y方向的分量然后列Fx=0和Fy=0求解。"
+                  "text": "力学 3 大定律 + 平衡"
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "牛顿第一定律：F合 = 0 ⇔ 静止或匀速"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "牛顿第二定律：F合 = ma"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "牛顿第三定律：F = -F'"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平衡条件：∑Fx = 0；∑Fy = 0"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "力学 3 大解题策略"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 受力分析（按顺序：场力→接触力）→ ② 力的合成或正交分解 → ③ 列方程（F合 = ma 或 F合 = 0）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "力学易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 受力分析漏力（漏摩擦力/弹力）；② 摩擦力方向判断错（\"相对\"不是\"绝对\"）；③ 弹簧弹力 F = kx 中 x 是形变量；④ 超重/失重视加速度方向；⑤ 共点力平衡三角形法则和正交分解混。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第三单元 · 功和能总复习（25 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "功和能是高一物理的升华，含功、功率、动能定理、机械能守恒。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 20-25 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 5 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "功"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "W = Fs cosθ（θ 是 F 与 s 夹角）。标量。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "功率"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "P = W/t = Fv（瞬时功率）。平均功率：P̄ = W/t。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动能"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Eₖ = ½mv²。标量。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动能定理"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "合外力做的功 = 动能变化：W合 = ΔEₖ = ½mv² - ½mv₀²。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "重力势能"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Eₚ = mgh（h 相对参考面）。标量。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "弹性势能"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Eₚ = ½kx²。标量。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "机械能"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "E = Eₖ + Eₚ。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "机械能守恒定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "只有重力/弹力做功时，E 机械能守恒。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "功能关系"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "W合 = ΔEₖ；W重 = -ΔEₚ；W弹 = -ΔEₚ弹；W外 - W克 = ΔE。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能量守恒定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能量既不能凭空产生，也不能凭空消失，只能转化或转移。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "功和能 6 大公式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "W = Fs cosθ（恒力做功）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "P = W/t = Fv cosθ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Eₖ = ½mv²"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Eₚ = mgh"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "W合 = ΔEₖ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "机械能守恒：Eₖ₁ + Eₚ₁ = Eₖ₂ + Eₚ₂"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "功和能 3 大解题策略"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 恒力做功用 W = Fs cosθ；② 变力做功用动能定理（W合 = ΔEₖ）；③ 守恒问题用机械能守恒（E初 = E末）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "功和能易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 功的正负判断错（θ < 90° 正功，θ > 90° 负功）；② 功率瞬时和平均混；③ 势能零势面选错（影响计算但不影响力差）；④ 摩擦生热 Q = f·Δs（相对位移）；⑤ 机械能守恒条件漏（除重力/弹力外其他力不做功）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第四单元 · 动量总复习（10 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "动量是高一末尾引入的板块，含动量、冲量、动量定理、动量守恒。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 10-15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动量"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "p = mv。矢量（方向与 v 相同）。单位 kg·m/s。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "冲量"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "I = F·t。矢量（方向与 F 相同）。单位 N·s。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动量定理"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "合外力的冲量 = 动量变化：F合·t = Δp = mv - mv₀。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动量守恒定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "系统不受外力或合外力为 0 时，系统动量守恒：p初 = p末（mv₁ + mv₂）初 = (mv₁ + mv₂)末。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "碰撞"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 弹性碰撞：动量守恒 + 动能守恒；② 非弹性碰撞：动量守恒 + 动能损失；③ 完全非弹性碰撞：碰后共速，动能损失最大。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "反冲运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "系统内力远大于外力，动量近似守恒。如火箭、枪反冲。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "动量 5 大公式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "p = mv"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "I = F·t"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "F合·t = Δp"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动量守恒：m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "动能损失：ΔEₖ = Eₖ初 - Eₖ末（碰撞中）"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "动量 3 大解题策略"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 碰撞问题用动量守恒；② 缓冲问题用动量定理（F·t = Δp）；③ 反冲问题用动量守恒。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "动量易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 动量矢量方向混；② 动量守恒条件漏（合外力=0）；③ 碰撞动能不会增加（ΔEₖ ≤ 0）；④ 弹性 vs 非弹性判断错（碰后能否分离）；⑤ 反冲速度方向反。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第五单元 · 曲线运动（10 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "曲线运动是高一末尾，含平抛运动和圆周运动。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 10-15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "曲线运动条件"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "速度方向与合力方向不共线。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "运动的合成与分解"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "合运动 = 分运动的矢量和。等时性、独立性。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平抛运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "水平：匀速（vₓ = v₀）；竖直：自由落体（v_y = gt, y = ½gt²）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平抛规律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "落地时间 t = √(2h/g)；水平距离 x = v₀t；速度 v = √(v₀² + (gt)²)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "圆周运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "v、ω、T、f、a、n 关系：v = ωr = 2πr/T；a = v²/r = ω²r。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "向心力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "F = mv²/r = mω²r。方向：指向圆心。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "万有引力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "F = GMm/r²。地表附近：mg = GMm/R² → gR² = GM。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "天体运动"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "v = √(GM/r)；T = 2πr/v = 2π√(r³/GM)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "人造卫星"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第一宇宙速度 v₁ = 7.9 km/s。地球同步卫星 T = 24h, h = 36000 km。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "平抛+圆周 8 大公式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平抛时间：t = √(2h/g)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平抛射程：x = v₀√(2h/g)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "线速度：v = ωr = 2πr/T"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "角速度：ω = 2π/T = 2πf"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "向心加速度：a = v²/r = ω²r"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "向心力：F = mv²/r = mω²r"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "万有引力：F = GMm/r²"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "第一宇宙速度：v = √(gR) ≈ 7.9 km/s"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "曲线运动 4 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 平抛时间只由高度决定；② 圆周运动向心力是合力的径向分量；③ 万有引力提供向心力；④ 卫星越高越慢（v、T 都大，但 Eₖ 减小）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "曲线运动易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 平抛速度分解搞错（vₓ = v₀, v_y = gt）；② 圆周运动切向力改变 v 大小；③ 失重状态 a = g；④ 同步卫星周期固定 24h；⑤ 第一宇宙速度是最大环绕速度。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 典型例题（力学+运动学+功和能）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选力学、运动学、功和能综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "牛顿第二定律"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "质量 2 kg 的物体在水平面上受到 10 N 水平推力。物体与平面动摩擦因数 0.2。求：物体的加速度。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】受力分析：重力 2×10 = 20 N，地面支持力 20 N，水平推力 10 N，摩擦力 0.2×20 = 4 N。\nF合 = 10 - 4 = 6 N\na = F合/m = 6/2 = 3 m/s²\n【考点】受力分析 + 牛顿第二定律。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "匀变速直线运动"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "汽车以 20 m/s 行驶，发现前 50 m 处有障碍物紧急刹车，刹车加速度大小 5 m/s²。问：是否撞上障碍物？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】设刹车距离 s。\nv² - v₀² = 2as\n0 - 20² = 2 × (-5) × s\ns = 400/10 = 40 m\n因为 40 m < 50 m，所以不会撞上障碍物。\n【考点】匀变速直线运动公式 + 临界条件（末速度=0）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "机械能守恒"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "质量 1 kg 物体从 5 m 高处自由下落（不计空气阻力）。求：落地时的动能和速度。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】下落过程机械能守恒。\nE初 = mgh = 1 × 10 × 5 = 50 J\nE末 = Eₖ = 50 J\n½mv² = 50 → v = √(2 × 50/1) = 10 m/s\n【考点】机械能守恒定律应用。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求+临界）→ ② 受力分析（画图）→ ③ 列方程（牛顿第二定律/动能定理/守恒定律）→ ④ 解方程（带单位+检验）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海/全国高考物理真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年高考物理真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海/全国高考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 35 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海高考·选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "3 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：物体做匀加速直线运动，加速度为 2 m/s²，初速度为 0。则 2 秒末的速度和位移分别是（  ）\nA. 2 m/s，2 m   B. 4 m/s，4 m   C. 4 m/s，8 m   D. 2 m/s，4 m"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】v = v₀ + at = 0 + 2×2 = 4 m/s；x = ½at² = ½×2×4 = 4 m。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 全国高考·计算"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "8 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：质量 0.5 kg 物体在水平推力 F 作用下，从静止开始做匀加速直线运动，2 秒内位移 4 m。物体与地面动摩擦因数 0.2。求：水平推力 F。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n设加速度 a。x = ½at² → 4 = ½a × 4 → a = 2 m/s²\nF合 = ma = 0.5 × 2 = 1 N\nF合 = F - f = F - μmg\nF = F合 + μmg = 1 + 0.2×0.5×10 = 1 + 1 = 2 N\n【解析】先求加速度（运动学公式），再求合力（牛顿第二定律），最后求 F（受力分析）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 全国高考·实验"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：用打点计时器测匀变速直线运动加速度的实验：\n（1）实验原理是什么？\n（2）如何处理实验数据求加速度？\n（3）逐差法的优点是什么？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 原理：匀变速直线运动 Δx = aT²（连续相等时间内位移差恒定）。\n(2) 数据处理：① 测出每段位移 x₁, x₂, x₃, ...; ② 用逐差法 a = (x₄+x₅+x₆) - (x₁+x₂+x₃) / (9T²); ③ 多次测量求平均。\n(3) 逐差法优点：充分利用所有数据，减小偶然误差。\n【技巧】打点计时器实验必背：① 电源（交流 4-6V）；② 时间间隔 0.02s；③ 逐差法处理数据。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考物理命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择题 8 题（基础概念辨析）；② 实验题 2 道（力学/电学）；③ 计算题 3-4 道（力学+电磁学）。热点：天体运动/能量守恒/电学实验。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：高一物理学习策略与高考衔接"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供高一物理学习策略和高考衔接指南。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第一学期（上）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "9 月-1 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "运动学 + 力学基础"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成课内 50% 内容"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二学期（下）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 月-6 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "功和能 + 动量 + 曲线运动"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "接轨高考 110+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "暑假"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "7 月-8 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "力学综合 + 高考真题 5 套"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高三冲刺 130+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一物理每日学习 60 分钟"
+                }
+              ]
+            },
+            "① 课前 10 分钟（预习概念+公式）。",
+            "② 课堂 45 分钟（紧跟老师+记笔记）。",
+            "③ 课后 20 分钟（做题+订正）。",
+            "④ 错题本 10 分钟（按\"概念/受力/方程\"分类）。",
+            "⑤ 周末 1 套模拟卷。"
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "受力分析画图（不画易错）",
+                  "运动学公式先列后代",
+                  "单位换算先做（km/h→m/s）",
+                  "实验题按 7 步模板写全"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "受力分析漏力（漏摩擦力/弹力）",
+                  "公式不写直接代数据扣 2 分",
+                  "单位忘记换算（cm→m, km/h→m/s）",
+                  "实验题步骤漏写\"求平均减小误差\""
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理学习本质"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物理不是\"背\"出来的，是\"做题+理解\"出来的。每天 20 分钟做题 + 30 分钟看错题 + 1 个概念图，坚持 9 个月必有质变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：沪科版物理必修第一册/第二册 + 2022-2024 上海/全国高考物理真题 + 上海市教委考试院命题分析"
             }
           ]
         }

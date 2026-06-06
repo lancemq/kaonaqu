@@ -25,61 +25,201 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海高一数学知识体系与学习说明"
+              "text": "上海高一数学 | 集合·不等式·函数·三角·数列 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "高一数学的核心是函数主线和符号化思维。集合、函数、三角、向量看似分散，但都在训练定义意识、图像意识和模型意识。"
+              "text": "依据沪教版高一数学教材（必修第一册/第二册），按\"集合·不等式·函数·三角·数列\"五大板块系统整合高一数学全部重点、难点和考点。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "subject-summary",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一同步"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "page-header-actions",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "a",
-              "href": "#senior1-math-plan",
-              "className": "action-link",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "查看学习计划"
+                  "text": "考试时长"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "a",
-              "href": "/knowledge/senior-1",
-              "className": "action-link",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "回到高一总览"
+                  "text": "120 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "a",
-              "href": "/news",
-              "className": "action-link",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "查看高考新闻政策"
+                  "text": "150 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "120+ 分"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "沪教版"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考关联"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "函数主线 + 代数几何"
                 }
               ]
             }
@@ -95,1045 +235,95 @@
         {
           "type": "element",
           "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "一、如何使用这份数学资料"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "学习重点："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高一学习的核心不是把高中内容提前背完，而是完成“概念更抽象、题目更综合、表达更规范”的切换。每个专题都建议按“概念边界 - 典型模型 - 易错条件 - 例题复盘”的顺序整理。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "先掌握定义域、值域、单调性、奇偶性和图像变换，再进入综合题。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考方向"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "集合运算、函数性质、指数对数、三角函数图像、向量运算和应用题建模。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "复习提醒"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "高中数学错题要记录“条件没看清、定义没用上、图像没画出、计算没收住”。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "衔接提醒："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高一上半学期决定高中学习底层习惯，下半学期开始影响选科判断和高二专题承接。不要只看单次分数，要看自己是否形成可迁移的解题和表达方法。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "学习模块"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "本页对应内容"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "高一目标"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "集合与逻辑"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "集合关系、运算、充分必要条件"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能准确处理条件边界"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "函数主线"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "定义域、值域、单调性、奇偶性"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "会用定义和图像双线分析"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "三角与向量"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "三角函数图像、向量数量积"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "建立周期、方向和几何模型"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "综合应用"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "分段函数、实际情境、参数问题"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能拆条件并选择方法"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-math-set-function",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-math-set-function",
-          "children": [
-            {
-              "type": "text",
-              "text": "二、集合与函数：先抓定义和边界"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "集合题要注意元素范围、空集和包含关系。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "函数题第一步通常是求定义域，不能直接代公式。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "单调性、奇偶性、值域都要结合图像或定义说明。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "函数是高一数学主轴。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "集合运算、定义域、值域、单调区间、奇偶性、图像变换。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "忽略定义域，或把图像直觉当作证明。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每道函数题先写“定义域、结构、图像特征、要求什么”。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：定义域"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：函数 f(x)=√(x-2) 的定义域是什么？\n解题思路：根号内必须大于等于 0，所以 x-2 ≥ 0，得 x ≥ 2，定义域为 [2,+∞)。\n提醒：定义域是函数题的入口，不能省略。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-math-triangle-vector",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-math-triangle-vector",
-          "children": [
-            {
-              "type": "text",
-              "text": "三、三角函数与向量：从公式转向图像和几何"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "三角函数要把单位圆、图像、周期和最值放在一起理解。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "诱导公式和恒等变形要注意角的范围。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "向量题要同时会坐标运算和几何意义。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "三角和向量都是“公式 + 图形”的双线内容。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "周期、最值、图像平移、数量积、夹角和投影。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "公式记住了但不知道适用条件，或角度弧度混用。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 三角题先画一个简图，向量题先判断用坐标还是几何。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：周期判断"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：函数 y=sin(2x) 的最小正周期是多少？\n解题思路：sin(wx) 的周期为 2π/|w|，这里 w=2，所以周期为 π。\n提醒：周期变化看 x 前面的系数。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-math-model",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-math-model",
-          "children": [
-            {
-              "type": "text",
-              "text": "四、模型与应用：把文字条件翻译成式子"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "应用题先列变量和限制条件，不急着算。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "参数题要分清固定量和变化量。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "分段函数要分区间讨论，答案要回到原条件检查。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "高中数学建模更重条件拆解。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "分段函数、最值应用、参数范围、实际情境函数模型。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "只求出代数结果，忘记验证范围和实际意义。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 应用题统一写“变量、范围、关系式、目标量、检验”。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：最值模型"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：某变量 x 有范围 0≤x≤10，求表达式 x(10-x) 的最大值。\n解题思路：配方得 x(10-x)=25-(x-5)^2，所以最大值为 25，在 x=5 时取得。\n提醒：最值题要写出取到最大值的条件。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-math-plan",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-math-plan",
-          "children": [
-            {
-              "type": "text",
-              "text": "六、高一数学学习计划"
+              "text": "第一单元 · 集合与逻辑（10 分）"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "section-lead",
           "children": [
             {
               "type": "text",
-              "text": "这份计划适合高一数学期中、期末前 4 周复盘。目标是让函数主线、三角向量和应用模型形成稳定方法。"
+              "text": "集合是高中数学的\"语言\"，是所有数学分支的基础。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 5-10 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2 周"
+                }
+              ]
             }
           ]
         },
@@ -1150,20 +340,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "适合谁"
+                      "text": "集合定义"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "函数题一变形就不会、三角向量靠背公式、应用题不会列式的学生。"
+                      "text": "一般地，我们把研究对象统称为元素，把一些元素组成的总体叫做集合（简称集）。"
                     }
                   ]
                 }
@@ -1177,20 +369,22 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "执行方式"
+                      "text": "集合 3 要素"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "每周按专题整理定义、模型、错题和 2 道代表例题。"
+                      "text": "① 确定性（元素是否属于集合明确）；② 互异性（集合中元素互不相同）；③ 无序性（元素顺序无关）。"
                     }
                   ]
                 }
@@ -1204,20 +398,167 @@
                 {
                   "type": "element",
                   "tag": "h4",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "完成标志"
+                      "text": "集合表示法"
                     }
                   ]
                 },
                 {
                   "type": "element",
                   "tag": "p",
+                  "className": "",
                   "children": [
                     {
                       "type": "text",
-                      "text": "能先写条件边界，能画图辅助判断，能解释每一步变形。"
+                      "text": "① 列举法：{1,2,3}；② 描述法：{x | x > 0}；③ Venn 图（韦恩图）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "集合关系"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "子集：A ⊆ B（包含或等于）；真子集：A ⊊ B；相等：A = B；空集：∅（是任何集合的子集）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "集合运算"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "并集：A ∪ B = {x | x ∈ A 或 x ∈ B}；交集：A ∩ B = {x | x ∈ A 且 x ∈ B}；补集：∁ᵤA = {x | x ∈ U 且 x ∉ A}。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "常用数集"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "自然数 N；正整数 N*（N+）；整数 Z；有理数 Q；实数 R。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "命题"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能判断真假的陈述句。分真命题和假命题。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "充分必要条件"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "充分条件：P ⇒ Q；必要条件：Q ⇒ P；充要条件：P ⇔ Q。"
                     }
                   ]
                 }
@@ -1227,201 +568,228 @@
         },
         {
           "type": "element",
-          "tag": "h3",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "集合运算律"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "交换律：A ∪ B = B ∪ A；A ∩ B = B ∩ A"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "结合律：(A ∪ B) ∪ C = A ∪ (B ∪ C)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分配律：A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "德摩根律：∁ᵤ(A ∪ B) = ∁ᵤA ∩ ∁ᵤB；∁ᵤ(A ∩ B) = ∁ᵤA ∪ ∁ᵤB"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "集合 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 漏掉空集；② 集合元素重复；③ 区间端点开闭；④ 子集和真子集混；⑤ 补集忘了全集。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "集合易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 混淆\"∈\"和\"⊆\"（元素 vs 集合）；② 忽略空集；③ 交集并集搞反；④ 描述法中\"竖线后条件\"漏；⑤ 充分必要条件判断错。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
           "children": [
             {
               "type": "text",
-              "text": "四周执行建议"
+              "text": "第二单元 · 不等式（15 分）"
             }
           ]
         },
         {
           "type": "element",
-          "tag": "table",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "不等式是高中代数的核心工具，含一元二次不等式、均值不等式等。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
           "children": [
             {
               "type": "element",
-              "tag": "tbody",
+              "tag": "li",
+              "className": "",
               "children": [
                 {
                   "type": "element",
-                  "tag": "tr",
+                  "tag": "strong",
+                  "className": "",
                   "children": [
                     {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "周次"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "任务重点"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成标准"
-                        }
-                      ]
+                      "type": "text",
+                      "text": "高考分值"
                     }
                   ]
                 },
                 {
+                  "type": "text",
+                  "text": " 10-15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
                   "type": "element",
-                  "tag": "tr",
+                  "tag": "strong",
+                  "className": "",
                   "children": [
                     {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 1 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "集合、逻辑和函数定义域"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "函数题先写定义域成为固定动作"
-                        }
-                      ]
+                      "type": "text",
+                      "text": "难度"
                     }
                   ]
                 },
                 {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
                   "type": "element",
-                  "tag": "tr",
+                  "tag": "strong",
+                  "className": "",
                   "children": [
                     {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 2 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "函数性质和图像"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成单调性、奇偶性、值域错题清单"
-                        }
-                      ]
+                      "type": "text",
+                      "text": "建议用时"
                     }
                   ]
                 },
                 {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 3 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "三角函数与向量"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "公式、图像和几何意义能互相转换"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 4 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "应用题和综合卷"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "每道综合题写出条件拆解过程"
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "text",
+                  "text": " 3 周"
                 }
               ]
             }
@@ -1430,21 +798,377 @@
         {
           "type": "element",
           "tag": "div",
-          "className": "important",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "strong",
+              "tag": "div",
+              "className": "concept-card",
               "children": [
                 {
-                  "type": "text",
-                  "text": "复盘标准："
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "不等式性质"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 对称性：a > b ⇔ b < a；② 传递性：a > b, b > c ⇒ a > c；③ 同加性：a > b ⇒ a + c > b + c；④ 同乘性（c > 0）：a > b ⇒ ac > bc。"
+                    }
+                  ]
                 }
               ]
             },
             {
-              "type": "text",
-              "text": " 数学复盘要保留过程：错在哪里、用到了哪个定义、为什么这个条件不能丢。 "
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一元二次不等式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "解法：① 化标准 ax² + bx + c > 0；② 求判别式 Δ = b² - 4ac；③ 求根 x₁, x₂；④ 画抛物线（a > 0 开口向上）→ 写出解集。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "均值不等式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "对正数 a, b：(a + b)/2 ≥ √(ab)，当且仅当 a = b 时取等。推广：n 个正数的算术平均 ≥ 几何平均。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基本不等式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "a² + b² ≥ 2ab（当且仅当 a = b 时取等）。变式：a² + b² ≥ (a + b)²/2。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "柯西不等式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "(a₁b₁ + a₂b₂)² ≤ (a₁² + a₂²)(b₁² + b₂²)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分式不等式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "移项通分 → 不等式组 → 分区间讨论 → 取交集。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "绝对值不等式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "|x| < a ⇔ -a < x < a；|x| > a ⇔ x > a 或 x < -a。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "不等式应用"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 求最值（配凑均值不等式）；② 比较大小；③ 实际应用（成本/利润/几何）。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "均值不等式 5 大变形"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① (a+b)/2 ≥ √(ab) → ab ≤ (a+b)²/4"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "② a² + b² ≥ 2ab"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "③ (a+b+c)/3 ≥ ∛(abc)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "④ 1/a + 1/b ≥ 4/(a+b) (a,b > 0)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "⑤ a/b + b/a ≥ 2 (a,b 同号)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "均值不等式 3 大使用前提"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 一正（正数）；② 二定（乘积/和为定值）；③ 三相等（等号成立条件）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "不等式易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 不等号方向忘变（乘负数）；② 一元二次不等式解集顺序反；③ 均值不等式漏\"一正二定三相等\"；④ 分式不等式直接通分；⑤ 绝对值不等式\"或\"和\"且\"混。"
+                }
+              ]
             }
           ]
         }
@@ -1452,85 +1176,2511 @@
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "集合与逻辑"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第三单元 · 函数（30 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "函数是高中数学的核心主线，含基本初等函数、函数性质、函数应用。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 25-35 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 8 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "函数定义"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "设 A, B 是非空数集，如果按照某种对应法则 f，使 A 中任意一个 x 在 B 中都有唯一确定的 y 与之对应，则称 f: A → B 为函数。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "定义域"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "函数 f(x) 的自变量 x 的取值范围。求法：分母 ≠ 0；偶次根式内 ≥ 0；对数真数 > 0；0 的 0 次方无意义。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "值域"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "函数 f(x) 的因变量 y 的取值范围。求法：观察法、配方法、换元法、单调性法、不等式法。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "单调性"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "设 x₁ < x₂：f(x₁) < f(x₂) 为增；f(x₁) > f(x₂) 为减。求法：定义法、导数法、图像法。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "奇偶性"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "奇函数：f(-x) = -f(x)，图像关于原点对称。偶函数：f(-x) = f(x)，图像关于 y 轴对称。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一次函数"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "f(x) = kx + b（k ≠ 0）。k > 0 增，k < 0 减。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "二次函数"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "f(x) = ax² + bx + c（a ≠ 0）。顶点 (-b/2a, (4ac-b²)/4a)。a > 0 开口向上有最小值；a < 0 开口向下有最大值。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "反比例函数"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "f(x) = k/x（k ≠ 0）。图像为双曲线，k > 0 一三象限，k < 0 二四象限。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "指数函数"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "f(x) = aˣ（a > 0, a ≠ 1）。a > 1 增，0 < a < 1 减。恒过 (0, 1)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "对数函数"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "f(x) = logₐx（a > 0, a ≠ 1）。与指数互为反函数。a > 1 增，0 < a < 1 减。恒过 (1, 0)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "幂函数"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "f(x) = xᵅ。α > 0 过 (0,0)、(1,1)；α < 0 过 (1,1)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "函数零点"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "f(x) = 0 的实数根。零点存在定理：f(a)·f(b) < 0 ⇒ (a,b) 内有零点。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "函数性质速查"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "单调性：f(x₁) - f(x₂) 与 (x₁ - x₂) 同号 ⇒ 增；反之减"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "奇偶性：f(x) + f(-x) = 0 奇；f(x) - f(-x) = 0 偶"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "对数运算：logₐ(MN) = logₐM + logₐN"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "指数运算：aᵐ · aⁿ = aᵐ⁺ⁿ"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "函数 3 大核心思想"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 定义意识（每个函数都问定义域/值域/单调/奇偶）；② 图像意识（图像能解决 80% 的问题）；③ 模型意识（实际应用要建模）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "函数易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 定义域漏（分母/根式/对数）；② 单调性用错（x₁ < x₂ 是前提）；③ 奇偶性要先看定义域对称；④ 复合函数单调性\"同增异减\"；⑤ 反函数定义域和值域互换。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "集合的交并补运算。充分条件必要条件充要条件的判断。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第四单元 · 三角函数（20 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "三角函数是高一数学的重要板块，含任意角、弧度制、三角函数图像与性质。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 15-20 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 5 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "任意角"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "正角（逆时针）/ 负角（顺时针）/ 零角。与终边相同的角：{α + k·360° | k ∈ Z}。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "弧度制"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "1 弧度 = 180°/π。弧长 l = |α|·r。扇形面积 S = (1/2)lr = (1/2)|α|r²。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "三角函数定义"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "设角 α 终边与单位圆交于 P(x, y)：sin α = y；cos α = x；tan α = y/x（x ≠ 0）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "同角三角函数关系"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平方关系：sin²α + cos²α = 1；商数关系：tan α = sin α / cos α；倒数关系：tan α · cot α = 1。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "诱导公式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "奇变偶不变，符号看象限。sin(-α) = -sinα；cos(-α) = cosα；sin(π - α) = sinα；cos(π - α) = -cosα。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "正弦函数图像"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "y = sin x。周期 2π。值域 [-1, 1]。增区间 [-π/2 + 2kπ, π/2 + 2kπ]；减区间 [π/2 + 2kπ, 3π/2 + 2kπ]。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "余弦函数图像"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "y = cos x。周期 2π。值域 [-1, 1]。增区间 [-π + 2kπ, 2kπ]；减区间 [2kπ, π + 2kπ]。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "正切函数图像"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "y = tan x。周期 π。值域 R。增区间 (-π/2 + kπ, π/2 + kπ)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "和差角公式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "sin(α±β) = sinαcosβ ± cosαsinβ；cos(α±β) = cosαcosβ ∓ sinαsinβ。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "二倍角公式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "sin 2α = 2 sinα cosα；cos 2α = cos²α - sin²α = 1 - 2sin²α = 2cos²α - 1；tan 2α = 2tanα/(1-tan²α)。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三角函数 6 大恒等变换"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "sin(α+β) + sin(α-β) = 2 sinα cosβ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "cos(α+β) + cos(α-β) = 2 cosα cosβ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "sin(α+β) - sin(α-β) = 2 cosα sinβ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "cos(α+β) - cos(α-β) = -2 sinα sinβ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "辅助角：a sinα + b cosα = √(a²+b²) sin(α+φ)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "升幂：1 - cos 2α = 2 sin²α；1 + cos 2α = 2 cos²α"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三角函数 4 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 弧度角度混用；② 诱导公式符号搞错（\"符号看象限\"）；③ 周期 T = 2π/ω；④ 复合函数 y = sin(ωx + φ) 图像平移忘 φ。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三角函数易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 终边相同的角写成 ±；② 同角关系漏定义域；③ 诱导公式\"奇变偶不变\"判断错；④ 二倍角公式记错（tan 2α 分母是 1-tan²α 不是 1+tan²α）；⑤ 辅助角公式 φ 象限判断错。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "不等式"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第五单元 · 数列（15 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "数列是高一末尾引入的板块，含等差数列和等比数列。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 10-15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "数列定义"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "按一定顺序排列的一列数。aₙ = f(n) 是函数思想。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "通项公式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "数列第 n 项 aₙ 的表达式。如 aₙ = 2n + 1。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "前 n 项和"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Sₙ = a₁ + a₂ + ... + aₙ。递推关系：aₙ = Sₙ - Sₙ₋₁（n ≥ 2）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "等差数列"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "aₙ₊₁ - aₙ = d（公差）。通项：aₙ = a₁ + (n-1)d。前 n 项和：Sₙ = na₁ + n(n-1)/2 · d = n(a₁ + aₙ)/2。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "等差中项"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2aₙ = aₙ₋₁ + aₙ₊₁。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "等比数列"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "aₙ₊₁ / aₙ = q（公比，q ≠ 0）。通项：aₙ = a₁ · qⁿ⁻¹。前 n 项和：Sₙ = a₁(1-qⁿ)/(1-q) = (a₁ - aₙq)/(1-q)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "等比中项"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "aₙ² = aₙ₋₁ · aₙ₊₁。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "数列求和方法"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 公式法（等差等比）；② 错位相减（等差 × 等比）；③ 裂项相消（1/(n(n+1)) = 1/n - 1/(n+1)）；④ 分组求和（多种数列组合）。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "数列速查"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "等差：aₙ = a₁ + (n-1)d；Sₙ = n(a₁+aₙ)/2 = na₁ + n(n-1)d/2"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "等比：aₙ = a₁qⁿ⁻¹；Sₙ = a₁(1-qⁿ)/(1-q)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "裂项：1/(n(n+k)) = (1/k) · (1/n - 1/(n+k))"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "错位：aₙ = (an+b) · qⁿ⁻¹ → Sₙ 用错位相减"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "数列 4 大解题策略"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 已知 aₙ 求 Sₙ 用公式；② 已知 Sₙ 求 aₙ 用 aₙ = Sₙ - Sₙ₋₁（检验 a₁）；③ 证明等差/等比用定义；④ 求通项先看类型（已知 aₙ₊₁ - aₙ = f(n) → 累加；aₙ₊₁ / aₙ = f(n) → 累乘）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "数列易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 等比数列 q = 1 要单独讨论；② 裂项漏掉 1/k 系数；③ 错位相减后漏乘 q；④ 已知 Sₙ 求 aₙ 不验 a₁；⑤ 等差数列 Sₙ 不一定是二次函数（d=0 时是一次）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "一元二次不等式解法。基本不等式a+b>=2根号ab的灵活运用。"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 典型例题（函数+三角+不等式）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选函数、三角、不等式综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "函数综合"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "已知函数 f(x) = x² - 2x + 3。求：(1) 定义域、值域；(2) 单调区间；(3) 最小值；(4) 当 x ∈ [-1, 3] 时，f(x) 的值域。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】f(x) = (x-1)² + 2。\n(1) 定义域 R；值域 [2, +∞)。\n(2) 增区间 [1, +∞)；减区间 (-∞, 1]。\n(3) 最小值 f(1) = 2。\n(4) f(-1) = 6；f(1) = 2；f(3) = 6。值域 [2, 6]。\n【考点】二次函数图像与性质 + 闭区间求值域。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "三角函数"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "已知 sin α = 4/5，α 是第二象限角，求 cos α 和 tan α。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】因为 α 在第二象限，所以 cos α < 0。\ncos²α = 1 - sin²α = 1 - 16/25 = 9/25\ncos α = -3/5\ntan α = sin α / cos α = (4/5) / (-3/5) = -4/3\n【考点】同角三角函数关系 + 象限符号。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "均值不等式"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "已知 x > 0，求 x + 1/x 的最小值。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【解】因为 x > 0，所以 1/x > 0。\n根据均值不等式：x + 1/x ≥ 2√(x · 1/x) = 2\n当且仅当 x = 1/x 即 x = 1 时取等。\n所以 x + 1/x 的最小值为 2。\n【考点】均值不等式\"一正二定三相等\"。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "数学大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求+条件）→ ② 选方法（公式/定义/数形结合）→ ③ 规范书写（步骤+单位）→ ④ 检验（特殊情况/边界）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "h2",
-      "className": "section-title",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "函数"
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海/全国高考数学真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年高考数学真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海/全国高考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 40 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海高考·集合"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "5 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：已知集合 A = {x | x² - 3x + 2 < 0}，B = {x | 0 < x < 3}，求 A ∩ B 和 A ∪ B。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】A = {x | 1 < x < 2}。\nA ∩ B = {x | 1 < x < 2}。\nA ∪ B = {x | 0 < x < 3}。\n【解析】一元二次不等式解集要写区间。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 全国高考·三角函数"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：已知函数 f(x) = sin(2x + π/3)。求：(1) 最小正周期；(2) 对称轴方程；(3) 当 x ∈ [0, π/2] 时，f(x) 的值域。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) T = 2π/2 = π\n(2) 令 2x + π/3 = kπ + π/2 → x = kπ/2 + π/12，对称轴 x = kπ/2 + π/12 (k ∈ Z)\n(3) 当 x ∈ [0, π/2] 时，2x + π/3 ∈ [π/3, 4π/3]，sin 在 [π/3, π/2] 增、[π/2, 4π/3] 减。\n最大 f(π/12) = sin(π/2) = 1；最小 f(0) = sin(π/3) = √3/2。\n值域 [√3/2, 1]。\n【解析】复合函数求值域先求内层范围。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 全国高考·数列"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "12 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：已知 {aₙ} 是等差数列，Sₙ 是前 n 项和。S₅ = 25，a₅ + a₇ = 26。求：(1) 通项 aₙ；(2) 当 n 为何值时，Sₙ 取得最大值。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 设公差为 d。S₅ = 5a₁ + 10d = 25，即 a₁ + 2d = 5。\na₅ + a₇ = 2a₁ + 10d = 26，即 a₁ + 5d = 13。\n解得 d = 8/3，a₁ = -1/3。\naₙ = -1/3 + (n-1) · 8/3 = (8n - 9)/3\n(2) 令 aₙ ≥ 0：(8n - 9)/3 ≥ 0 → n ≥ 9/8，所以 n ≥ 2 时 aₙ > 0。\nS₁ = -1/3 < 0；S₂ = 5；Sₙ 单调递增。\n所以 Sₙ 在 n = 1 时取最大值 -1/3（注：题目可能要\"最大值\"指 n → ∞，但有限数列 Sₙ 持续增大，所以\"最大值\"是 S₁ = -1/3；若指当 aₙ < 0 之前，则 S₁ = -1/3 最大）。\n【解析】等差数列的通项和最值。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考数学命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择填空 70 分（基础+中等）；② 解答题 80 分（5-6 道）；③ 函数+三角+数列+解析几何+立体几何+概率统计 6 大板块。热点：新高考情境题（数学建模/数据分析）。"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "type": "element",
-      "tag": "p",
+      "tag": "section",
+      "className": "chapter",
       "children": [
         {
-          "type": "text",
-          "text": "函数三要素定义域值域对应法则。指数对数幂函数的图像和性质。函数的单调性奇偶性周期性。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：高一数学学习策略与高考衔接"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "三角函数"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供高一数学学习策略和高考衔接指南。"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "text": "任意角三角比定义。同角三角比关系。诱导公式和三角恒等变换。正弦余弦函数的图像和性质。"
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第一学期（上）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "9 月-1 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "集合+不等式+函数+三角"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成课内 70% 内容"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二学期（下）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 月-6 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "数列+平面向量+解析几何入门"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "接轨高考 120+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "暑假"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "7 月-8 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "必修 1-5 综合复习 + 高考真题"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高三冲刺 130+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一数学每日学习 90 分钟"
+                }
+              ]
+            },
+            "① 课前 10 分钟（预习公式+概念）。",
+            "② 课堂 45 分钟（紧跟老师+记笔记）。",
+            "③ 课后 20 分钟（做题+订正）。",
+            "④ 错题本 10 分钟（按章节分类）。",
+            "⑤ 周末 1 套模拟卷（严格 120 分钟）。"
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "概念先于做题（每个公式都要理解来源）",
+                  "图像辅助解题（函数/三角/数列都能画图）",
+                  "错题本按\"概念/计算/方法\"分类",
+                  "高考真题 5 套起步"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "公式不背直接做题",
+                  "计算错（符号/系数/移项）",
+                  "答题不写\"解\"或\"因为\"",
+                  "难题跳过不算（难题往往简单）"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "数学学习本质"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "数学不是\"看\"出来的，是\"做题+总结\"出来的。每天 20 道题 + 30 分钟总结 + 1 个错题复盘，坚持 2 年必有质变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：沪教版数学必修第一册/第二册 + 2022-2024 上海/全国高考数学真题 + 上海市教委考试院命题分析"
+            }
+          ]
         }
       ]
     }

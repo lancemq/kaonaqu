@@ -25,61 +25,201 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海高一化学知识体系与学习说明"
+              "text": "上海高一化学 | 化学反应原理·物质结构·元素化合物·有机化学 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "高一化学要从初中现象记忆进入高中“分类、守恒、微粒、定量”的体系。物质的量、离子反应和氧化还原是后续化学学习的底层工具。"
+              "text": "依据沪教版高一化学必修第一册/第二册与上海高考化学考纲，按\"化学反应原理·物质结构·元素化合物·有机化学\"四大板块系统整合高一化学全部重点、难点和考点。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "subject-summary",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一同步"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "page-header-actions",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "a",
-              "href": "#senior1-chemistry-plan",
-              "className": "action-link",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "查看学习计划"
+                  "text": "考试时长"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "a",
-              "href": "/knowledge/senior-1",
-              "className": "action-link",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "回到高一总览"
+                  "text": "100 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "a",
-              "href": "/news",
-              "className": "action-link",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "查看高考新闻政策"
+                  "text": "100 分（合格考）"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "80+ 合格"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "沪教版"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考关联"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学原理+元素+有机"
                 }
               ]
             }
@@ -91,1432 +231,6 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "一、如何使用这份化学资料"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "学习重点："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高一学习的核心不是把高中内容提前背完，而是完成“概念更抽象、题目更综合、表达更规范”的切换。每个专题都建议按“概念边界 - 典型模型 - 易错条件 - 例题复盘”的顺序整理。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "建立“宏观现象 - 微观粒子 - 符号表达 - 定量计算”的四层连接。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考方向"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "物质分类、离子方程式、氧化还原、物质的量、实验操作和计算。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "复习提醒"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "化学题要分清现象、结论、原因和方程式，不要混写。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "衔接提醒："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高一上半学期决定高中学习底层习惯，下半学期开始影响选科判断和高二专题承接。不要只看单次分数，要看自己是否形成可迁移的解题和表达方法。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "学习模块"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "本页对应内容"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "高一目标"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "物质分类"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "混合物、纯净物、酸碱盐氧化物"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能按标准分类并说明原因"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "离子反应"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "电解质、离子方程式、离子共存"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能拆写并判断反应实质"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "氧化还原"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "化合价、电子转移、氧化剂还原剂"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能用化合价判断反应类型"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "物质的量"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "n、M、Vm、c 的关系"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能进行基础定量计算"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-chemistry-classification",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-chemistry-classification",
-          "children": [
-            {
-              "type": "text",
-              "text": "二、物质分类与离子反应：看清反应实质"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "分类题要先确定分类标准。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "强电解质拆成离子，弱电解质、沉淀、气体和水通常保留化学式。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "离子方程式要检查原子守恒和电荷守恒。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "离子反应考的是水溶液中的真实粒子变化。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "电解质判断、离子方程式书写、离子共存和反应实质。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "该拆的不拆，不该拆的拆，或漏掉电荷守恒。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 写离子方程式按“写化学方程式 - 拆强电解质 - 删旁观离子 - 查守恒”四步。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：离子方程式"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：盐酸和氢氧化钠溶液反应的离子方程式是什么？\n解题思路：实质是 H⁺ 和 OH⁻ 生成水，所以离子方程式为 H⁺ + OH⁻ = H₂O。\n提醒：Na⁺ 和 Cl⁻ 是旁观离子。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-chemistry-redox",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-chemistry-redox",
-          "children": [
-            {
-              "type": "text",
-              "text": "三、氧化还原：用化合价追踪电子转移"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "化合价升高表示失电子，被氧化。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "化合价降低表示得电子，被还原。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "氧化剂得电子，还原剂失电子。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "氧化还原题先标化合价。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "氧化剂还原剂判断、电子转移方向、配平前置理解。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "把氧化剂和被氧化的物质混淆。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每道氧化还原题都先画化合价变化箭头。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：氧化剂判断"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：反应中 Cl₂ 变为 Cl⁻，氯元素发生什么变化？\n解题思路：Cl 的化合价从 0 降到 -1，得到电子，被还原，所以 Cl₂ 作氧化剂。\n提醒：氧化剂自身被还原。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-chemistry-amount",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-chemistry-amount",
-          "children": [
-            {
-              "type": "text",
-              "text": "四、物质的量与实验：把化学关系变成定量关系"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "物质的量 n 是联系微粒数、质量、气体体积和浓度的中心量。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "计算题先写公式关系，再代单位。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "实验题要说明试剂作用、操作目的和误差方向。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "高一化学计算从 n 出发。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "n=m/M、气体摩尔体积、物质的量浓度、配制溶液。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "单位不统一，或把质量浓度和物质的量浓度混淆。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 定量题先把已知量都转成物质的量，再看反应比例。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：物质的量计算"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：18g 水的物质的量是多少？已知水的摩尔质量为 18g/mol。\n解题思路：n=m/M=18/18=1mol。\n提醒：先确认摩尔质量单位是 g/mol。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-chemistry-plan",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-chemistry-plan",
-          "children": [
-            {
-              "type": "text",
-              "text": "六、高一化学学习计划"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "这份计划适合高一化学阶段复盘。目标是建立分类、离子、氧化还原和定量计算四条主线。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "适合谁"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "方程式会背但不会拆离子、氧化还原判断乱、计算题单位易错的学生。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "执行方式"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "每周整理一类反应和一组计算模型，配套错题归因。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "完成标志"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "能写离子方程式，能判断氧化剂还原剂，能用 n 进行基础计算。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "四周执行建议"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "周次"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "任务重点"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成标准"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 1 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "物质分类和电解质"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成分类标准表"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 2 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "离子反应和共存"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "每题检查原子和电荷守恒"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 3 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "氧化还原"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "标出化合价变化和电子转移"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 4 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "物质的量和实验"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "整理公式、单位和误差方向"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "复盘标准："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 化学复盘要把现象、粒子、符号和计算分层写清楚。 "
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "物质的量"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "物质的量是七个基本物理量之一。摩尔质量气体摩尔体积物质的量浓度。阿伏加德罗常数。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "氧化还原反应"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "化合价升降判断氧化还原。氧化剂还原剂的判断。电子转移方向和数目的分析。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "离子反应"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "电解质和非电解质的区别。离子方程式的书写步骤写拆删查。离子共存的条件。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
       "children": [
         {
           "type": "element",
@@ -1525,24 +239,2942 @@
           "children": [
             {
               "type": "text",
-              "text": "物质的量的核心概念"
+              "text": "第一单元 · 化学反应原理总复习（25 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "化学反应原理是高一化学的核心，含反应热、反应速率、反应限度。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 20-25 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 4 周"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "反应热 ΔH"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学反应中吸收或释放的热量。放热反应 ΔH < 0；吸热反应 ΔH > 0。单位 kJ/mol。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "热化学方程式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "标明物质状态和 ΔH 的化学方程式。例：2H₂(g) + O₂(g) = 2H₂O(l) ΔH = -571.6 kJ/mol。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "盖斯定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学反应的反应热只与反应物和生成物的始态和终态有关，与反应途径无关。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学反应速率"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "v = Δc/Δt。单位 mol/(L·s) 或 mol/(L·min)。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "影响反应速率因素"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 浓度（增大反应物浓度，速率加快）；② 温度（升温加快）；③ 压强（气体反应，增大压强加快）；④ 催化剂（加快）；⑤ 接触面积（增大加快）；⑥ 光/超声/射线。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学平衡"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "可逆反应中，正反应速率 = 逆反应速率时达到平衡。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "平衡特征"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 动（动态平衡）；② 定（浓度不变）；③ 变（条件改变化学平衡移动）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "勒夏特列原理"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "如果改变影响平衡的一个条件（浓度/温度/压强），平衡就向能够减弱这种改变的方向移动。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学平衡常数 K"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生成物浓度幂之积 / 反应物浓度幂之积。K 越大，反应越完全。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "物质的量是国际单位制七个基本物理量之一单位摩尔\\uff08mol\\uff09。阿伏加德罗常数NA=6.02\\u00d710\\u00b2\\u00b3是把微观粒子数和宏观物质的量联系起来的桥梁。摩尔质量M=g/mol数值上等于该物质的相对分子质量。气体摩尔体积Vm=22.4L/mol\\uff08标准状况下\\uff09适用于气体。物质的量浓度cB=nB/V单位mol/L。溶液稀释公式c1V1=c2V2。一定物质的量浓度溶液的配制步骤：计算称量溶解冷却转移洗涤定容摇匀装瓶。配制过程中的误差分析是考试常考内容。"
+                  "text": "化学反应原理 5 大公式"
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "ΔH = H(生成物) - H(反应物)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "v = Δc/Δt"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "盖斯定律：ΔH = ΔH₁ + ΔH₂ + ΔH₃"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学平衡常数 K = [C]ᶜ[D]ᵈ / [A]ᵃ[B]ᵇ"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "转化率 = 已转化 / 初始 × 100%"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学平衡 3 大判断方法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 看速率（v正 = v逆）；② 看浓度（各物质浓度不变）；③ 看宏观（颜色/压强/密度不变）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学平衡易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 反应速率混淆平均和瞬时；② 平衡常数 K 与温度有关（不写单位）；③ 勒夏特列原理只减弱不消除；④ 催化剂不改变化学平衡；⑤ 转化率 α 与温度/压强关系。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第二单元 · 物质结构总复习（20 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "物质结构是高一化学的重点，含原子结构、元素周期律、化学键、分子结构。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 15-20 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 4 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原子结构"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原子 = 原子核（质子 + 中子）+ 核外电子。\n质子数 Z = 核外电子数 = 原子序数。\n质量数 A = 质子数 Z + 中子数 N。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "同位素"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "质子数相同，中子数不同的同种元素的不同原子。例：¹H、²H、³H 是氢的三种同位素。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "核外电子排布"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 能量最低原理；② 泡利不相容原理（一个轨道最多 2 个电子，自旋相反）；③ 洪特规则（电子在等价轨道上分占轨道自旋平行）。\n排布顺序：1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p 6s 4f 5d 6p 7s 5f 6d 7p。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "元素周期律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "同周期从左到右：金属性减弱，非金属性增强；原子半径减小。\n同主族从上到下：金属性增强，非金属性减弱；原子半径增大。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "元素周期表"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "周期（横）：7 个；族（纵）：16 个（含 7 主族 + 7 副族 + 1 零族 + 1 VIII 族）。\n主族序数 = 最外层电子数 = 最高正价。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "化学键"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 离子键（金属 + 非金属，如 NaCl）；② 共价键（非金属 + 非金属，如 HCl）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "电子式"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "用小黑点或×表示原子最外层电子的式子。\nNaCl：Na⁺[:Cl:]⁻\nHCl：H:Cl:"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分子间作用力"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "分子间作用力（范德华力）：分子聚集状态。影响熔沸点。\n氢键：H 与 N/O/F 之间的特殊作用。影响水的沸点。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "晶体类型"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 离子晶体（NaCl）：熔沸点高，硬度大；② 分子晶体（冰）：熔沸点低；③ 原子晶体（金刚石）：熔沸点很高；④ 金属晶体（Fe）：导电导热。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物质结构 5 大规律"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "同周期从左到右：金属性↓，非金属性↑，原子半径↓"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "同主族从上到下：金属性↑，非金属性↓，原子半径↑"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "主族序数 = 最外层电子数 = 最高正价"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "非金属性 = 得电子能力 = 氧化性"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "金属性 = 失电子能力 = 还原性"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学键 4 大判断"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 活泼金属 + 活泼非金属 = 离子键；② 非金属 + 非金属 = 共价键（除铵盐）；③ 含 NH₄⁺ 是离子键；④ 金属氧化物是离子键，非金属氧化物是共价键。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "物质结构易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 原子半径比较搞错（同周期反方向 vs 同主族同方向）；② 共价化合物 vs 离子化合物搞混；③ 电子式漏孤对电子；④ 化学键类型判断错（含 NH₄⁺ 是离子键）；⑤ 同位素 vs 同素异形体混。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第三单元 · 元素化合物总复习（30 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "元素化合物是高一化学的重点，含卤素、氧族、氮族、碱金属等。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 25-30 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 6 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "卤素（F, Cl, Br, I）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 与 H₂ 反应：F₂ 爆炸；Cl₂ 光照；Br₂ 加热；I₂ 高温。\n② 与水反应：Cl₂ + H₂O ⇌ HCl + HClO。\n③ 卤素置换：Cl₂ + 2NaBr = 2NaCl + Br₂。\n④ 氧化性：F₂ > Cl₂ > Br₂ > I₂。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "氯气 Cl₂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物理性质：黄绿色气体，密度比空气大，能溶于水（氯水），有刺激性气味。\n化学性质：① 与金属（2Fe + 3Cl₂ = 2FeCl₃）；② 与非金属（H₂ + Cl₂ = 2HCl）；③ 与水（Cl₂ + H₂O ⇌ HCl + HClO）；④ 与碱（Cl₂ + 2NaOH = NaCl + NaClO + H₂O）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "氧族元素（O, S, Se, Te）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 氧族元素原子最外层 6 个电子。\n② 氧气 O₂：无色无味，助燃。\n③ 硫 S：黄色固体，难溶于水，易溶于 CS₂。\n④ 硫酸 H₂SO₄：强酸，强氧化性，吸水脱水性。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "硫的化合物"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① SO₂：无色有刺激性气味，溶于水生成 H₂SO₃（亚硫酸），还原性 + 氧化性。\n② 浓硫酸：强氧化性，脱水性和吸水性，金属钝化。\n③ 硫酸根检验：加盐酸无沉淀，加 BaCl₂ 生成白色沉淀（BaSO₄）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "氮族元素（N, P, As, Sb, Bi）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 氮族元素原子最外层 5 个电子。\n② N₂：无色无味，难溶于水，稳定（不活泼）。\n③ 氨气 NH₃：无色有刺激性气味，极易溶于水，碱性。\n④ 硝酸 HNO₃：强酸，强氧化性。\n⑤ NH₄⁺ 检验：加碱加热产生气体使湿润红色石蕊试纸变蓝。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "碱金属（Li, Na, K, Rb, Cs）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 碱金属原子最外层 1 个电子。\n② 钠 Na：银白色固体，质软，密度比水小（0.97）。\n③ Na 与水反应：2Na + 2H₂O = 2NaOH + H₂↑。\n④ Na₂O₂：淡黄色固体，与水：2Na₂O₂ + 2H₂O = 4NaOH + O₂↑（氧化剂）。\n⑤ Na₂CO₃ vs NaHCO₃：纯碱（苏打）vs 小苏打。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "铝 Al"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 银白色金属。\n② 与酸：2Al + 6HCl = 2AlCl₃ + 3H₂↑。\n③ 与碱：2Al + 2NaOH + 2H₂O = 2NaAlO₂ + 3H₂↑（两性金属）。\n④ Al₂O₃：两性氧化物，与酸碱都反应。\n⑤ Al(OH)₃：两性氢氧化物，受热分解：2Al(OH)₃ = Al₂O₃ + 3H₂O。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "铁 Fe"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 银白色金属。\n② 化合物：FeO（黑色）+2，Fe₂O₃（红色）+3，Fe₃O₄（黑色）混合。\n③ Fe²⁺：浅绿色；Fe³⁺：黄色。\n④ Fe²⁺ 检验：加 KSCN 不变红，加氯水变红。\n⑤ Fe³⁺ 检验：加 KSCN 变红。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "元素化合物 5 大反应"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Na + H₂O：2Na + 2H₂O = 2NaOH + H₂↑"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Cl₂ + NaOH：Cl₂ + 2NaOH = NaCl + NaClO + H₂O"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Al + NaOH：2Al + 2NaOH + 2H₂O = 2NaAlO₂ + 3H₂↑"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Fe + Cl₂：2Fe + 3Cl₂ = 2FeCl₃"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Cu + HNO₃：3Cu + 8HNO₃ = 3Cu(NO₃)₂ + 2NO↑ + 4H₂O"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "元素化合物 5 大颜色"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 淡黄色：Na₂O₂、S；② 红棕色：Fe(OH)₃、Fe₂O₃、NO₂；③ 黑色：FeO、Fe₃O₄、CuO、MnO₂；④ 蓝色：Cu(OH)₂、CuSO₄ 溶液；⑤ 紫红色：KMnO₄ 溶液。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "元素化合物易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① Na₂O₂ 与 Na₂O 混（过氧化物 vs 氧化物）；② Fe²⁺ vs Fe³⁺ 颜色记反；③ 浓硫酸稀释方法错（酸入水不是水入酸）；④ NH₄⁺ 检验漏加碱加热；⑤ 铝的两性忘了。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第四单元 · 有机化学基础总复习（15 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "有机化学基础是高一末尾引入的板块，含烃和烃的衍生物。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 10-15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 4 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "有机化合物"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "含碳化合物（除 CO、CO₂、碳酸盐等少数）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "甲烷 CH₄"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "最简单的烃。无色无味气体，密度比空气小，难溶于水。\n空间结构：正四面体，C 在中心，H 在四个顶点。\n化学性质：① 取代反应（光照）；② 燃烧：CH₄ + 2O₂ = CO₂ + 2H₂O。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "烷烃"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "通式：CₙH₂ₙ₊₂。饱和烃。\n代表：甲烷、乙烷、丙烷、丁烷、戊烷……\n性质：难溶于水，密度比水小，燃烧放热。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "乙烯 C₂H₄"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "最简单的烯烃。无色稍有气味气体，密度比空气略小，难溶于水。\n空间结构：平面六原子，C=C 双键不能旋转。\n化学性质：① 加成反应（与 H₂、Br₂、HCl、H₂O）；② 燃烧：C₂H₄ + 3O₂ = 2CO₂ + 2H₂O；③ 加聚反应。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "烯烃"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "通式：CₙH₂ₙ（n ≥ 2）。含 C=C 双键。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "乙炔 C₂H₂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "最简单的炔烃。无色无味气体，密度比空气略小，微溶于水。\n空间结构：直线型，碳碳三键。\n化学性质：① 加成反应（与 H₂、Br₂、HCl）；② 燃烧：2C₂H₂ + 5O₂ = 4CO₂ + 2H₂O（高温火焰用于气焊）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "苯 C₆H₆"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "无色有特殊气味的液体，有毒，密度比水小，不溶于水。\n空间结构：平面正六边形，介于单键和双键之间的特殊键。\n化学性质：① 取代反应（卤代/硝化/磺化）；② 燃烧：2C₆H₆ + 15O₂ = 12CO₂ + 6H₂O（火焰明亮有浓烟）；③ 不与溴水/酸性 KMnO₄ 反应。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "乙醇 C₂H₅OH"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "无色有特殊香味的液体，密度比水小，与水以任意比互溶。\n官能团：-OH（羟基）。\n化学性质：① 燃烧；② 与 Na 反应：2CH₃CH₂OH + 2Na = 2CH₃CH₂ONa + H₂↑；③ 催化氧化：2CH₃CH₂OH + O₂ = 2CH₃CHO + 2H₂O；④ 酯化反应。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "乙酸 CH₃COOH"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "无色有强烈刺激性气味的液体，沸点 117.9℃，易凝结成冰状（冰醋酸）。\n官能团：-COOH（羧基）。\n化学性质：① 酸性（强于碳酸）；② 酯化反应：CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "酯"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "通式：RCOOR'。\n代表：乙酸乙酯（CH₃COOC₂H₅）— 有香味液体，密度比水小，难溶于水。\n化学性质：水解：CH₃COOC₂H₅ + H₂O ⇌ CH₃COOH + C₂H₅OH。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "有机化学 6 大反应"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "甲烷取代：CH₄ + Cl₂ → CH₃Cl + HCl（光照）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "乙烯加成：C₂H₄ + Br₂ → CH₂BrCH₂Br"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "乙炔加成：C₂H₂ + 2Br₂ → CHBr₂CHBr₂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "乙醇与 Na：2CH₃CH₂OH + 2Na → 2CH₃CH₂ONa + H₂↑"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "乙酸+乙醇：CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "酯水解：CH₃COOC₂H₅ + H₂O ⇌ CH₃COOH + C₂H₅OH"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "有机化学 4 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 结构简式忘写（CH₃CH₂OH 不写 -OH）；② 酯化反应漏写条件（浓 H₂SO₄ 催化加热）；③ 取代 vs 加成判断错；④ 有机物与无机物方程式格式不同。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "有机化学易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 同分异构体漏写；② 官能团判断错（-OH 可能是醇/酚/羧酸）；③ 燃烧通式记错；④ 加聚反应条件漏；⑤ 苯不与溴水反应但能萃取。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 典型例题（化学反应原理+元素+有机）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选化学反应原理、元素、有机综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学平衡"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "在密闭容器中，2SO₂ + O₂ ⇌ 2SO₃ 反应达到平衡。下列措施能加快反应速率但不改变平衡转化率的是（  ）\nA. 增大 O₂ 浓度   B. 升高温度   C. 使用催化剂   D. 增大压强"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】C\n【解析】A 增大 O₂ 浓度，速率加快，平衡正移，SO₂ 转化率增大；B 升温（正反应放热），速率加快，平衡逆移，转化率减小；C 催化剂加快速率，平衡不移动；D 增大压强，速率加快，平衡正移（气体分子数减小），SO₂ 转化率增大。\n【技巧】催化剂是唯一不改变化学平衡的因素。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "元素化合物"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "如何除去 CO₂ 中混有的少量 SO₂ 杂质？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】将混合气体通过盛有饱和 NaHCO₃ 溶液的洗气瓶。\n反应：SO₂ + 2NaHCO₃ = Na₂SO₃ + H₂O + 2CO₂↑（或 SO₂ + NaHCO₃ = NaHSO₃ + CO₂↑）\nCO₂ 不与饱和 NaHCO₃ 反应。\n【技巧】除杂原则：① 杂质被吸收；② 主体不被吸收；③ 引入新杂质。饱和 NaHCO₃ 是除 SO₂ 的标准方法。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "有机化学"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "写出乙酸和乙醇反应生成乙酸乙酯的化学方程式，并标出反应类型。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\nCH₃COOH + CH₃CH₂OH ⇌ CH₃COOCH₂CH₃ + H₂O（条件：浓 H₂SO₄ 催化 + 加热）\n反应类型：酯化反应（也属于取代反应）。\n【技巧】酯化反应方程式特点：① 标\"⇌\"（可逆）；② 标\"浓 H₂SO₄\"和\"△\"；③ 酸脱-OH 醇脱-H（同位素示踪法）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求）→ ② 写方程式（配平+条件+↑↓）→ ③ 计算或解释 → ④ 答（带单位）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海/全国高考化学真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年高考化学真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海/全国高考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 30 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海高考·选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "3 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：下列变化中，属于化学变化的是（  ）\nA. 冰雪融化   B. 蜡烛燃烧   C. 矿石粉碎   D. 干冰升华"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】A 物理变化（状态改变）；B 化学变化（生成 CO₂ 和 H₂O）；C 物理变化（形状改变）；D 物理变化（状态改变）。\n【技巧】判断化学变化关键看是否有新物质生成。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 全国高考·填空"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "4 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：写出下列反应的化学方程式：\n(1) 钠在氧气中燃烧；\n(2) 实验室用氯酸钾制氧气；\n(3) 铝与氢氧化钠溶液反应；\n(4) 乙烯与溴加成。"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 2Na + O₂ = Na₂O₂（条件：点燃）（注：钠在空气中燃烧生成 Na₂O₂，缓慢氧化生成 Na₂O）\n(2) 2KClO₃ = 2KCl + 3O₂↑（条件：MnO₂ 催化 + 加热）\n(3) 2Al + 2NaOH + 2H₂O = 2NaAlO₂ + 3H₂↑\n(4) CH₂=CH₂ + Br₂ → CH₂BrCH₂Br\n【解析】所有方程式必须配平；沉淀气体符号不能漏；反应条件要标。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 全国高考·实验"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "8 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：实验室用浓盐酸和 MnO₂ 制取 Cl₂：\n（1）写出反应的化学方程式；\n（2）为什么必须用浓盐酸而不能用稀盐酸？\n（3）尾气如何处理？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) MnO₂ + 4HCl(浓) = MnCl₂ + Cl₂↑ + 2H₂O（条件：加热）\n(2) 稀盐酸与 MnO₂ 不反应。MnO₂ 的氧化性较弱，只能氧化浓盐酸中的 Cl⁻，不能氧化稀盐酸中的 Cl⁻。\n(3) 尾气用 NaOH 溶液吸收：Cl₂ + 2NaOH = NaCl + NaClO + H₂O。\n【技巧】实验室制 Cl₂ 必背：① 浓盐酸 + MnO₂；② 加热；③ 尾气吸收。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考化学命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择题 15 题（基础概念辨析）；② 填空题（化学方程式/物质检验/除杂）；③ 实验题（物质制备/性质探究）；④ 计算题（化学方程式计算 + 化学平衡）。热点：环保/能源/材料。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：高一化学学习策略与高考衔接"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供高一化学学习策略和高考衔接指南。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第一学期（上）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "9 月-1 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "化学反应原理 + 物质结构"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成课内 50% 内容"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二学期（下）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 月-6 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "元素化合物 + 有机化学基础"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "接轨高考 90+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "暑假"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "7 月-8 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "化学反应原理综合 + 高考真题 5 套"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高三冲刺 110+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一化学每日学习 60 分钟"
+                }
+              ]
+            },
+            "① 课前 10 分钟（预习方程式+性质）。",
+            "② 课堂 45 分钟（紧跟老师+记笔记）。",
+            "③ 课后 20 分钟（做题+订正）。",
+            "④ 化学方程式卡片 10 分钟（每天默写 10 个）。",
+            "⑤ 周末 1 套模拟卷。"
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "化学方程式必配平（漏配扣 1 分）",
+                  "沉淀气体符号不能漏（↑/↓）",
+                  "反应条件必标注（点燃/加热/催化剂）",
+                  "元素化合物按\"单质+氧化物+酸+碱+盐\"梳理"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "方程式未配平扣 1 分",
+                  "↑/↓ 漏标扣 0.5 分",
+                  "条件漏写扣 0.5 分",
+                  "化学键类型判断错"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学学习本质"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "化学不是\"背\"出来的，是\"理解+记忆+做题\"出来的。化学方程式卡片是根基；每天默写 10 个 + 每周刷 1 套卷，坚持 9 个月必有质变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：沪教版化学必修第一册/第二册 + 2022-2024 上海/全国高考化学真题 + 上海市教委考试院命题分析"
             }
           ]
         }

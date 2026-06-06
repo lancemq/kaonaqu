@@ -25,61 +25,201 @@
         {
           "type": "element",
           "tag": "h1",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "上海高一生物知识体系与学习说明"
+              "text": "上海高一生物 | 细胞结构·新陈代谢·遗传·进化·生态 | 考哪去"
             }
           ]
         },
         {
           "type": "element",
           "tag": "p",
+          "className": "",
           "children": [
             {
               "type": "text",
-              "text": "高一生物要从背概念转向理解生命系统的结构和功能关系。细胞、物质基础、代谢和实验探究是后续遗传、稳态和生态学习的基础。"
+              "text": "依据沪科版高一生物必修第一册/第二册与上海高考生物考纲，按\"细胞结构·新陈代谢·遗传·进化·生态\"五大板块系统整合高一生物全部重点、难点和考点。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "div",
+      "className": "subject-summary",
+      "children": [
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "学习阶段"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一同步"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "page-header-actions",
+          "className": "summary-item",
           "children": [
             {
               "type": "element",
-              "tag": "a",
-              "href": "#senior1-biology-plan",
-              "className": "action-link",
+              "tag": "span",
+              "className": "summary-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "查看学习计划"
+                  "text": "考试时长"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "a",
-              "href": "/knowledge/senior-1",
-              "className": "action-link",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "回到高一总览"
+                  "text": "100 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "总分"
                 }
               ]
             },
             {
               "type": "element",
-              "tag": "a",
-              "href": "/news",
-              "className": "action-link",
+              "tag": "strong",
+              "className": "summary-value",
               "children": [
                 {
                   "type": "text",
-                  "text": "查看高考新闻政策"
+                  "text": "100 分（合格考）"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "目标"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "80+ 合格"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "教材"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "沪科版"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "summary-item",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "summary-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考关联"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "strong",
+              "className": "summary-value",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "细胞+代谢+遗传"
                 }
               ]
             }
@@ -91,1432 +231,6 @@
       "type": "element",
       "tag": "section",
       "className": "chapter",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "children": [
-            {
-              "type": "text",
-              "text": "一、如何使用这份生物资料"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "学习重点："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高一学习的核心不是把高中内容提前背完，而是完成“概念更抽象、题目更综合、表达更规范”的切换。每个专题都建议按“概念边界 - 典型模型 - 易错条件 - 例题复盘”的顺序整理。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "用“结构决定功能、物质支撑生命活动、实验验证假设”三条线整理。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考方向"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "细胞结构、蛋白质和核酸、酶和 ATP、光合作用呼吸作用、实验变量。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "复习提醒"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "生物不是只背名词，要能解释结构、功能和过程之间的关系。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "衔接提醒："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 高一上半学期决定高中学习底层习惯，下半学期开始影响选科判断和高二专题承接。不要只看单次分数，要看自己是否形成可迁移的解题和表达方法。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "学习模块"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "本页对应内容"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "高一目标"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "细胞结构"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "细胞器、膜结构、功能分工"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能联系结构和功能"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "物质基础"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "蛋白质、核酸、糖类脂质"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能说明组成和作用"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "代谢过程"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "酶、ATP、光合、呼吸"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能画流程并比较条件"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "实验探究"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "变量、对照、结果分析"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "能设计并解释实验"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-biology-cell",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-biology-cell",
-          "children": [
-            {
-              "type": "text",
-              "text": "二、细胞结构：用结构功能关系理解概念"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "细胞膜、细胞核和细胞器要联系功能记忆。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "原核细胞和真核细胞比较要抓有无成形细胞核。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "结构图题要会识别位置、名称和功能。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "细胞是生命活动的基本单位。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "细胞器功能、细胞膜结构、原核真核比较、显微镜观察。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "只背名称，不会说明结构为什么适合功能。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每个细胞器整理“位置、结构、功能、常见题眼”。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：结构功能"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：线粒体为什么被称为细胞的动力车间？\n解题思路：线粒体是有氧呼吸的主要场所，能释放有机物中的能量并形成 ATP。\n提醒：回答功能题要联系具体生命活动。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-biology-molecule-metabolism",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-biology-molecule-metabolism",
-          "children": [
-            {
-              "type": "text",
-              "text": "三、物质基础与代谢：把过程画成流程图"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "蛋白质结构与氨基酸种类、数目和排列有关。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "酶具有高效性、专一性，活性受温度和 pH 影响。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "光合作用和呼吸作用要比较场所、条件、物质变化和能量变化。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "代谢内容适合用流程图学习。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "蛋白质、核酸、酶、ATP、光合作用、细胞呼吸。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "把场所、条件、产物和能量变化混在一起。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 每个代谢过程都画“反应物 - 条件 - 场所 - 产物 - 能量”。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：酶活性"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：高温为什么会使酶失活？\n解题思路：高温会破坏酶的空间结构，使其不能与底物正常结合，催化功能下降或消失。\n提醒：酶的本质多数是蛋白质，结构改变会影响功能。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-biology-experiment",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-biology-experiment",
-          "children": [
-            {
-              "type": "text",
-              "text": "四、实验探究：用变量和对照组织答案"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "1. 核心知识"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "ul",
-          "children": [
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "实验设计要明确自变量、因变量和无关变量。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "对照组用于排除其他因素影响。"
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "li",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "分析结果时要先描述数据，再得出结论。"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "2. 学习说明"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "关键点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "生物实验题考查科学探究思维。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "常考点"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "变量控制、对照实验、材料选择、图表分析和结论表达。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "易错内容"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "没有控制无关变量，或直接写结论不描述结果。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "本节抓手："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 实验题统一写“目的、变量、对照、结果、结论”。 "
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "3. 典型例题"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "例题：变量判断"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "典型例题：研究温度对酶活性的影响，自变量和因变量分别是什么？\n解题思路：自变量是温度，因变量是酶活性，可通过反应速率或产物量体现。\n提醒：无关变量如底物浓度、pH 等要保持一致。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "chapter",
-      "id": "senior1-biology-plan",
-      "children": [
-        {
-          "type": "element",
-          "tag": "h2",
-          "id": "senior1-biology-plan",
-          "children": [
-            {
-              "type": "text",
-              "text": "六、高一生物学习计划"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "p",
-          "children": [
-            {
-              "type": "text",
-              "text": "这份计划适合高一生物阶段复盘。目标是把细胞结构、生命物质、代谢过程和实验探究连成系统。"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "concept-grid",
-          "children": [
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "适合谁"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "概念背了容易忘、过程题不会比较、实验题表达不完整的学生。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "执行方式"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "每周整理一张结构图或流程图，并配 2 道实验分析题。"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "element",
-              "tag": "div",
-              "className": "concept-card",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "h4",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "完成标志"
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "p",
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "能联系结构功能，能画代谢流程，能说明变量和对照。"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "h3",
-          "children": [
-            {
-              "type": "text",
-              "text": "四周执行建议"
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "table",
-          "children": [
-            {
-              "type": "element",
-              "tag": "tbody",
-              "children": [
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "周次"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "任务重点"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "th",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成标准"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 1 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "细胞结构和功能"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成细胞器功能表"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 2 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "生命物质和酶"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "整理蛋白质、核酸、酶和 ATP"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 3 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "光合与呼吸"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "完成两个过程对比图"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "element",
-                  "tag": "tr",
-                  "children": [
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "第 4 周"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "实验探究和图表题"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "element",
-                      "tag": "td",
-                      "children": [
-                        {
-                          "type": "text",
-                          "text": "每题写清变量、结果和结论"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "element",
-          "tag": "div",
-          "className": "important",
-          "children": [
-            {
-              "type": "element",
-              "tag": "strong",
-              "children": [
-                {
-                  "type": "text",
-                  "text": "复盘标准："
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " 生物复盘要看是否能用图解释过程、用结构解释功能、用数据支持结论。 "
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "细胞的分子组成"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "蛋白质氨基酸脱水缩合形成肽链。核酸DNA和RNA的区别。糖类和脂质的功能。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "细胞的结构"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "原核与真核细胞的区别。细胞膜流动镶嵌模型。细胞器的分工合作线粒体叶绿体等。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "h2",
-      "className": "section-title",
-      "children": [
-        {
-          "type": "text",
-          "text": "细胞的代谢"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "p",
-      "children": [
-        {
-          "type": "text",
-          "text": "酶的特性高效性专一性。ATP是直接能源物质。光合作用和呼吸作用的过程。"
-        }
-      ]
-    },
-    {
-      "type": "element",
-      "tag": "section",
-      "className": "knowledge-section",
       "children": [
         {
           "type": "element",
@@ -1525,22 +239,455 @@
           "children": [
             {
               "type": "text",
-              "text": "细胞的分子组成"
+              "text": "第一单元 · 细胞结构总复习（15 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "细胞是生命的基本单位，含细胞膜、细胞质、细胞核。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 10-15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 周"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "细胞学说"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "施莱登、施旺提出：一切动植物都由细胞构成，细胞是生命活动的基本单位。\n魏尔肖补充：细胞通过分裂产生新细胞。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原核细胞 vs 真核细胞"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "原核：无成形的细胞核（核区），无复杂细胞器（只有核糖体）。如细菌、蓝藻。\n真核：有成形的细胞核，有复杂细胞器。如动物、植物、真菌。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "细胞膜（生物膜）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "结构：磷脂双分子层（基本骨架）+ 蛋白质（镶嵌/贯穿/附着）+ 糖类（糖被）。\n功能：① 将细胞与外界环境分开；② 控制物质进出；③ 进行细胞间信息交流。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "细胞器 8 种"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 线粒体（有氧呼吸主要场所，\"动力车间\"）；② 叶绿体（光合作用场所，\"能量转换站\"）；③ 内质网（蛋白质合成加工 + 脂质合成）；④ 高尔基体（蛋白质加工分类包装）；⑤ 核糖体（蛋白质合成场所）；⑥ 中心体（动物细胞，与有丝分裂有关）；⑦ 液泡（植物细胞，调节渗透压）；⑧ 溶酶体（细胞内消化）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "细胞核"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "结构：核膜（双层膜）+ 核孔（大分子通道）+ 核仁（与 rRNA 合成有关）+ 染色质（DNA+蛋白质）。\n功能：细胞代谢和遗传的控制中心。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "物质跨膜运输"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 自由扩散（O₂、CO₂、H₂O）：高→低，不需载体，不耗能；\n② 协助扩散（葡萄糖进入红细胞）：高→低，需载体，不耗能；\n③ 主动运输（Na⁺/K⁺泵、葡萄糖进入小肠细胞）：低→高，需载体，耗能。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "渗透作用"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "水分子通过半透膜的扩散。条件：① 半透膜；② 浓度差。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "质壁分离"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "植物细胞失水时，原生质层与细胞壁分离。\n复原：加水后能自动恢复。\n应用：判断细胞死活（死的细胞不能发生质壁分离复原）。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "组成细胞的元素含量最高的四种是C\\u3001H\\u3001O\\u3001N。蛋白质的基本单位是氨基酸共有20种。氨基酸通过脱水缩合形成肽键连接成多肽链。蛋白质结构多样性的原因：氨基酸种类数量排列顺序不同以及肽链的空间结构不同。核酸分为DNA和RNA。DNA由脱氧核苷酸组成双螺旋结构。RNA由核糖核苷酸组成单链。糖类是主要能源物质其中葡萄糖是细胞生命活动所需的主要能源。脂质包括脂肪\\u4f53储能物质\\u3001磷脂\\u7ec6胞膜主要成分和固醇\\u5305括胆固醇性激素维生素D\\u3002"
+                  "text": "物质跨膜运输 3 类对比"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "自由扩散：顺浓度梯度，不耗能，不需要载体（小分子/气体）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "协助扩散：顺浓度梯度，不耗能，需要载体（部分小分子）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "主动运输：逆浓度梯度，耗能，需要载体（小分子/离子）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "胞吞/胞吐：大分子进出，依赖膜的流动性，需要能量"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "细胞结构 5 大易错点"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 原核细胞有细胞膜和核糖体（无其他细胞器）；② 核糖体不是所有原核生物都没有（其实是所有细胞都有）；③ 中心体只存在于动物细胞和低等植物细胞；④ 蓝藻是原核生物能进行光合作用（因为有叶绿素和藻蓝素）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "细胞结构易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 病毒无细胞结构（既非原核也非真核）；② 蓝藻是原核但能光合（无叶绿体）；③ 核糖体不是原核特有；④ 自由扩散 vs 协助扩散 vs 主动运输搞混；⑤ 质壁分离\"质\"是原生质层不是细胞质。"
                 }
               ]
             }
@@ -1551,7 +698,7 @@
     {
       "type": "element",
       "tag": "section",
-      "className": "knowledge-section",
+      "className": "chapter",
       "children": [
         {
           "type": "element",
@@ -1560,24 +707,2742 @@
           "children": [
             {
               "type": "text",
-              "text": "细胞器的结构和功能"
+              "text": "第二单元 · 新陈代谢总复习（25 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "新陈代谢是生命的本质，含光合作用和细胞呼吸。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 20-25 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 5 周"
+                }
+              ]
             }
           ]
         },
         {
           "type": "element",
           "tag": "div",
-          "className": "section-body",
+          "className": "concept-grid",
           "children": [
             {
               "type": "element",
-              "tag": "p",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "酶"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "活细胞产生的具有催化作用的有机物（绝大多数是蛋白质，少数是 RNA）。\n特性：① 高效性（比无机催化剂高 10⁷-10¹³ 倍）；② 专一性（一种酶催化一种或一类反应）；③ 作用条件温和（常温常压）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "影响酶活性因素"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "温度：最适温度（约 37℃），过高失活，过低活性低。\npH：最适 pH 约 7，过酸过碱失活。\n酶浓度：在底物充足时，酶越多反应越快。\n底物浓度：在酶充足时，底物越多反应越快（饱和后不变）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "ATP"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "三磷酸腺苷。结构：A-P~P~P（~ 是高能磷酸键）。\n功能：直接能源物质（不是储能物质，储能是脂肪/糖原/淀粉）。\n合成：ADP + Pi + 能量 ⇌ ATP。\n能量来源：动物（呼吸作用）/ 植物（光合作用+呼吸作用）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "总反应：6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂（光能，叶绿体）。\n光反应（类囊体薄膜）：① 水的光解：2H₂O → 4H⁺ + 4e⁻ + O₂↑；② ATP 合成：ADP + Pi + 能量 → ATP。\n暗反应（叶绿体基质）：① CO₂ 固定：CO₂ + C₅ → 2C₃；② C₃ 还原：2C₃ + [H] + ATP → (CH₂O) + C₅。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "细胞呼吸（有氧呼吸）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "总反应：C₆H₁₂O₆ + 6O₂ + 6H₂O → 6CO₂ + 12H₂O + 能量（细胞质基质+线粒体）。\n第一阶段（细胞质基质）：葡萄糖 → 2 丙酮酸 + 4[H] + 少量 ATP。\n第二阶段（线粒体基质）：2 丙酮酸 + 6H₂O → 6CO₂ + 20[H] + 少量 ATP。\n第三阶段（线粒体内膜）：24[H] + 6O₂ → 12H₂O + 大量 ATP。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "无氧呼吸"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 植物：无氧 → C₂H₅OH（酒精）+ CO₂。\n② 动物/人体：无氧 → C₃H₆O₃（乳酸）。\n场所：细胞质基质。\n能量：少量。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "光合作用 vs 呼吸作用"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "光合：储能（光能→化学能）。\n呼吸：放能（化学能→ATP+热能）。\n关系：呼吸作用提供光合作用原料（CO₂），光合作用提供呼吸作用原料（O₂）。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
               "children": [
                 {
                   "type": "text",
-                  "text": "线粒体是有氧呼吸的主要场所为细胞生命活动提供能量被称为细胞的动力车间。叶绿体是光合作用的场所能将光能转化为化学能。内质网是蛋白质合成和加工以及脂质合成的场所。高尔基体对蛋白质进行加工分类和包装与分泌蛋白的形成有关。核糖体是蛋白质的合成场所。溶酶体含有多种水解酶能分解衰老损伤的细胞器。液泡主要存在于植物细胞中调节细胞内的环境。中心体与动物细胞的有丝分裂有关。"
+                  "text": "光合呼吸 4 大计算"
                 }
               ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "总光合速率 = 净光合速率 + 呼吸速率"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "表观光合速率 = O₂ 释放量 / CO₂ 吸收量"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "黑暗下测呼吸速率：O₂ 吸收量 / CO₂ 释放量"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真正光合速率 = 表观光合 + 呼吸"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "光合呼吸 3 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 表观光合（净光合）vs 真正光合（总光合）混；② 有氧呼吸 3 阶段场所和产物记错；③ 净光合 = 真光合 - 呼吸。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "光合呼吸易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 光反应产生 [H] 用于暗反应；② 有氧呼吸 3 阶段都产 ATP；③ 无氧呼吸不产 O₂（不放氧）；④ 酵母菌无氧产 CO₂（植物无氧也产）；⑤ 哺乳动物红细胞无线粒体（只无氧呼吸）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第三单元 · 遗传总复习（25 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "遗传是高一生物的核心，含孟德尔定律、减数分裂、伴性遗传。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 20-25 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 6 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "遗传学基本概念"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 相对性状：同种生物同一性状的不同表现类型。\n② 等位基因：位于同源染色体相同位置控制相对性状的基因。\n③ 显性/隐性：DD/Dd 表现显性，dd 表现隐性。\n④ 纯合子/杂合子：DD/dd 是纯合，Dd 是杂合。\n⑤ 基因型/表现型：基因型 + 环境 = 表现型。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因分离定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "内容：在杂合子细胞中，位于一对同源染色体上的等位基因，具有一定的独立性；减数分裂形成配子时，等位基因随同源染色体的分开而分离，分别进入两个配子中，独立地随配子遗传给后代。\n比例：杂合子自交后代 3:1，测交 1:1。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因自由组合定律"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "内容：位于非同源染色体上的非等位基因的分离或组合是互不干扰的；在减数分裂形成配子时，同源染色体上的等位基因彼此分离，非同源染色体上的非等位基因自由组合。\n比例：双杂合自交 9:3:3:1，测交 1:1:1:1。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "减数分裂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "场所：睾丸（精子）/ 卵巢（卵子）。\n过程：染色体复制 1 次，细胞分裂 2 次，结果染色体数目减半。\n关键：同源染色体联会（前期 I）→ 分离（后期 I）→ 自由组合（后期 I）。\n结果：1 个精母细胞 → 4 个精子；1 个卵母细胞 → 1 个卵子 + 3 个极体。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "有丝分裂 vs 减数分裂"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "有丝：1 次复制 1 次分裂，染色体不变。\n减数：1 次复制 2 次分裂，染色体减半。\n关键区别：减数有同源染色体联会和分离。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "伴性遗传"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "X 染色体隐性遗传：色盲、血友病。\nX 染色体显性遗传：抗维生素 D 佝偻病。\nY 染色体遗传：外耳道多毛症。\n特点：① 男女发病率不同；② 交叉遗传（父→女→子）；③ 有隔代遗传现象（X 隐性）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "人类基因组"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "22 条常染色体 + X + Y = 24 种 DNA 分子。\n测定：HGP（人类基因组计划）。\n意义：遗传病诊断、基因治疗、个性化医疗。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "中心法则"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "DNA → DNA（复制）\nDNA → RNA（转录）\nRNA → 蛋白质（翻译）\nRNA → RNA（RNA 复制）\nRNA → DNA（逆转录，如 HIV）"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遗传计算 4 类"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一对相对性状：Aa × Aa → 1AA:2Aa:1aa → 显:隐 = 3:1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "两对相对性状：AaBb × AaBb → 9:3:3:1（双显:一显一隐:另一显一隐:双隐）"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "测交：AaBb × aabb → 1:1:1:1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "X 隐性：XᴬXᵃ × XᵃY → XᴬXᵃ（女正常携带）:XᵃXᵃ（女色盲）:XᴬY（男正常）:XᵃY（男色盲）= 1:1:1:1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遗传 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 显性/隐性判断搞反；② 等位基因 vs 非等位基因混；③ 减数分裂时期判断错；④ 自由组合是 9:3:3:1 但要算全；⑤ 伴 X 隐性遗传要分开看男/女比例。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遗传易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 测交和自交混；② XY 染色体非同源（X 和 Y 不能配对）；③ 减数分裂同源染色体分离；④ 多对基因时用分支法；⑤ X 显遗传女多男少，X 隐遗传男多女少。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第四单元 · 进化总复习（10 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "现代生物进化理论是高一生物的重点。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 8-10 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "现代生物进化理论"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "核心：种群是生物进化的基本单位，突变和基因重组产生进化的原材料，自然选择决定生物进化的方向，隔离导致新物种形成。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "种群"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "在一定区域内同种生物个体的总和。是进化的基本单位。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因库"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一个种群中全部个体所含有的全部基因。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "基因频率"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "某基因在种群中所占的比例。\n例：AA 30%, Aa 50%, aa 20%，则 A 频率 = 0.3 + 0.25 = 0.55，a 频率 = 0.45。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "突变和基因重组"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "突变（基因突变 + 染色体变异）+ 基因重组 = 进化的原材料。\n特点：不定向（突变），提供原材料，自然选择决定方向。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "自然选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "过度繁殖 → 生存斗争 → 遗传变异 → 适者生存。\n类型：① 稳定性选择（中间型）；② 方向性选择（向某一方向）；③ 间断性选择（中间型被淘汰）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "隔离"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 地理隔离：不同种群因地理障碍无法基因交流。\n② 生殖隔离：不同种群不能交配或交配后不能产生可育后代。\n新物种形成标志：出现生殖隔离。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "共同进化"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "不同物种之间、生物与无机环境之间在相互影响中不断进化和发展。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "基因频率计算"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "显性基因频率 = (2×纯合显 + 杂合) / (2 × 总个体数)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "隐性基因频率 = (2×纯合隐 + 杂合) / (2 × 总个体数)"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例：100 个个体中 AA 30, Aa 50, aa 20"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "A = (60 + 50) / 200 = 0.55；a = (40 + 50) / 200 = 0.45"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "进化 4 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 进化的基本单位是种群不是个体；② 突变为不定向（自然选择定向）；③ 新物种形成的标志是生殖隔离不是地理隔离；④ 基因频率改变是进化的实质。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "进化易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 进化 ≠ 形成新物种（基因频率改变就是进化）；② 自然选择作用于表现型不是基因型；③ 隔离不等于生殖隔离（地理隔离不是物种形成标志）；④ 物种是能交配产生可育后代的群体；⑤ 共同进化是双向的（生物之间、生物与环境）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第五单元 · 生态总复习（15 分）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "生态系统是高一生物的收官板块。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "高考分值"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 10-15 分"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " ★★★"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 4 周"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "concept-grid",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生态系统"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生物群落 + 无机环境。最大生态系统：生物圈。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "组成成分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 非生物的物质和能量（阳光、空气、水）；② 生产者（绿色植物，自养型）；③ 消费者（动物，异养型）；④ 分解者（细菌、真菌，异养型）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "食物链与食物网"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "食物链：生产者 → 初级消费者 → 次级消费者 → ... → 最高级消费者。\n起点：生产者（第一营养级）。\n营养级：每一种生物为一个营养级。\n最高营养级：不被任何生物捕食。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能量流动"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "单向流动，逐级递减。\n效率：10%-20%（相邻两营养级）。\n起点：生产者固定的太阳能。\n特点：单向流动 + 逐级递减。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "碳循环"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "形式：CO₂。\n途径：光合作用（CO₂ → 有机物）+ 呼吸作用（有机物 → CO₂）。\n关键：CO₂ 库（大气/海洋）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "氮循环"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "形式：N₂、NH₃、NO₃⁻。\n关键过程：固氮（生物固氮 + 高能固氮 + 工业固氮）+ 硝化 + 反硝化。\n固氮菌：根瘤菌（与豆科植物共生）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生态系统的稳定性"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 抵抗力稳定性：抵抗外界干扰保持原状的能力（与物种数目、营养结构复杂程度正相关）。\n② 恢复力稳定性：遭到破坏后恢复原状的能力（与物种数目负相关）。\n一般规律：抵抗力 + 恢复力 = 常数。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "concept-card",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "h4",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "生态保护"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "① 就地保护（建立自然保护区，最有效）；② 易地保护（动物园、植物园）；③ 利用生物技术保护（精子库、种子库）。\n生物多样性：基因多样性 + 物种多样性 + 生态系统多样性。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "formula",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "formula-label",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "能量流动 3 大计算"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "formula-body",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "能量传递效率 = 下一营养级同化量 / 上一营养级同化量 × 100%"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "一般效率：10%-20%"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "最高营养级含能量 = 第一营养级含能量 × (10%-20%)ⁿ⁻¹"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "例：第一营养级 10000 kJ，传递效率 10%，第四营养级 = 10000 × 10% × 10% × 10% = 10 kJ"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生态 5 大失分陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 食物链起点是生产者不是分解者；② 能量流动单向（不是循环）；③ 物质循环是全球性（如碳循环）；④ 抵抗力 + 恢复力反向关系；⑤ 生态保护\"最有效\"是就地保护。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "mistakes",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生态易错 5 大陷阱"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 食物网中最高营养级有多个；② 能量流动\"逐级递减\"原因：每个营养级都呼吸消耗+分解者分解；③ 物质可循环但能量不可循环；④ 抵抗力高则恢复力低（一般规律）；⑤ 引进物种要看是否会破坏生态平衡。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第六单元 · 典型例题（细胞+代谢+遗传+生态）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选细胞、代谢、遗传、生态综合题 3 道。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题一"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "细胞呼吸"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "有氧呼吸和无氧呼吸的共同点是（  ）\nA. 都需要氧气   B. 都在线粒体中进行   C. 都产生 ATP   D. 都产生 CO₂"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】C\n【解析】A 错（无氧呼吸不需要氧气）；B 错（无氧呼吸在细胞质基质）；C 对（有氧和无氧呼吸都产 ATP）；D 错（动物无氧呼吸只产乳酸不产 CO₂）。\n【技巧】有氧呼吸 vs 无氧呼吸对比：① 场所（有氧：细胞质基质+线粒体；无氧：细胞质基质）；② 产物（有氧：CO₂+H₂O；无氧植物：CO₂+酒精；无氧动物：乳酸）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题二"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "遗传计算"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "一对正常夫妇生了一个白化病孩子（常染色体隐性遗传）。再生一个孩子患白化病的概率是多少？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n设白化病基因为 a，正常基因为 A。\n孩子是白化病（aa），所以父母各提供一个 a。\n父母正常但生白化孩子，所以父母基因型都是 Aa。\n再生孩子基因型：1AA:2Aa:1aa，患病（aa）概率 = 1/4 = 25%。\n【技巧】遗传计算三步：① 判断显隐性；② 推断父母基因型；③ 列 Punnett 方格求概率。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "example",
+          "children": [
+            {
+              "type": "element",
+              "tag": "span",
+              "className": "example-label ",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "例题三"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "example-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生态系统能量流动"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "某生态系统第一营养级同化量 10000 kJ，传递效率 10%。求第四营养级获得的能量最多是多少？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "example-a",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n第一营养级 10000 kJ\n第二营养级 ≤ 10000 × 10% = 1000 kJ\n第三营养级 ≤ 1000 × 10% = 100 kJ\n第四营养级 ≤ 100 × 10% = 10 kJ\n答：第四营养级最多获得 10 kJ。\n【技巧】求\"最多\"用 20%，求\"最少\"用 10%。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物大题 4 步法"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 审题（已知+求）→ ② 联知识（细胞/代谢/遗传/生态）→ ③ 规范答题（\"现象+本质\"）→ ④ 检查（单位/比例/特例）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第七单元 · 上海/全国高考生物真题演练"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "精选近年高考生物真题。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "className": "topic-stats",
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "真题来源"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 2022-2024 上海/全国高考"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "题量"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 3 题"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "li",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "建议用时"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " 30 分钟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 上海高考·选择"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "3 分"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：下列关于细胞膜的叙述，正确的是（  ）\nA. 细胞膜的主要成分是蛋白质和糖类\nB. 细胞膜是选择透过性膜\nC. 所有小分子都能自由通过细胞膜\nD. 细胞膜的流动性与温度无关"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】B\n【解析】A 错（细胞膜主要成分是磷脂+蛋白质，不是糖类）；B 对（细胞膜是选择透过性膜，水分子和部分小分子可自由通过）；C 错（不是所有小分子都自由通过，如 Na⁺/K⁺ 需要主动运输）；D 错（细胞膜流动性与温度有关，温度升高流动性增强）。\n【技巧】细胞膜 3 大功能：① 边界；② 控制物质进出；③ 信息交流。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2023 全国高考·实验"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "6 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：探究酶的最适 pH 实验：\n（1）实验原理是什么？\n（2）自变量、因变量、无关变量分别是什么？\n（3）如何设计实验？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n(1) 原理：酶的活性受 pH 影响，在最适 pH 下酶活性最高，反应速率最快。\n(2) 自变量：pH；因变量：酶活性（用底物分解速率或产物生成速率表示）；无关变量：温度、酶浓度、底物浓度、反应时间。\n(3) 实验设计：① 取 5 支试管编号；② 各加入等量淀粉酶溶液，调节 pH 分别为 1、3、5、7、9；③ 各加入等量淀粉溶液；④ 相同温度下保温相同时间；⑤ 加碘液观察颜色变化（颜色越浅，酶活性越高）。\n【技巧】探究实验 4 要素：① 原理；② 变量（自/因/无关）；③ 设计（控制变量+对照）；④ 预期结果。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "exam",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "exam-meta",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag exam-tag",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "2024 全国高考·遗传"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag points",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "8 分"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "className": "exam-tag difficulty",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "难度 ★★★★"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "className": "exam-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "题目：人类的红绿色盲是 X 染色体隐性遗传病。某男性色盲患者（基因型 XᵇY）与正常女性（基因型 XᴮXᴮ）结婚，后代中儿子的色盲概率和女儿携带色盲基因的概率分别是多少？"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "exam-q",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "【答案】\n父亲：XᵇY\n母亲：XᴮXᴮ\n女儿：XᴮXᵇ（100% 携带者）\n儿子：XᴮY（100% 正常）\n答：儿子色盲概率 = 0；女儿携带色盲基因概率 = 100%。\n【解析】X 隐性遗传的交叉遗传特点：父亲色盲基因只传给女儿不传给儿子。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高考生物命题趋势"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "① 选择题 25 题（基础概念+实验分析）；② 简答题（遗传图解+实验设计+生态图表）；③ 探究题（控制变量+数据分析）。热点：基因工程/细胞工程/生态保护。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "tag": "section",
+      "className": "chapter",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h2",
+          "className": "section-title",
+          "children": [
+            {
+              "type": "text",
+              "text": "第八单元 · 知识拓展：高一生物学习策略与高考衔接"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "section-lead",
+          "children": [
+            {
+              "type": "text",
+              "text": "本单元提供高一生物学习策略和高考衔接指南。"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "className": "unit-table",
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "轮次"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "时间"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "内容"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "目标"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "className": "",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第一学期（上）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "9 月-1 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "细胞结构 + 新陈代谢"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "完成课内 50% 内容"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "第二学期（下）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2 月-6 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "遗传 + 进化 + 生态"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "接轨高考 90+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "className": "",
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "暑假"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "7 月-8 月"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "遗传+生态综合 + 高考真题 5 套"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "className": "",
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "高三冲刺 110+ 分"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "method",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "高一生物每日学习 60 分钟"
+                }
+              ]
+            },
+            "① 课前 10 分钟（预习概念+示意图）。",
+            "② 课堂 45 分钟（紧跟老师+画图）。",
+            "③ 课后 20 分钟（做题+订正）。",
+            "④ 概念图 10 分钟（按章节梳理）。",
+            "⑤ 周末 1 套模拟卷。"
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "div",
+          "className": "compare",
+          "children": [
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✓ 高分策略"
+                    }
+                  ]
+                },
+                [
+                  "概念图梳理（细胞/代谢/遗传/生态）",
+                  "遗传计算 Punnett 方格必画",
+                  "实验题 4 要素（原理/变量/设计/结果）",
+                  "图像信息题先读横纵坐标"
+                ]
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "className": "compare-cell",
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "className": "compare-title",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "✗ 失分陷阱"
+                    }
+                  ]
+                },
+                [
+                  "遗传计算 Punnett 方格漏画",
+                  "原核生物特征记错",
+                  "减数分裂时期判断错",
+                  "生态能量流动计算错"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "aside",
+          "className": "important",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h5",
+              "className": "callout-title",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物学习本质"
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "className": "",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "生物不是\"背\"出来的，是\"理解+图示+做题\"出来的。概念图是根基；遗传计算画 Punnett 方格；实验题按 4 要素写。每天 30 分钟（10 概念+10 图示+10 做题），坚持 9 个月必有质变。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "p",
+          "className": "source",
+          "children": [
+            {
+              "type": "text",
+              "text": "参考：沪科版生物必修第一册/第二册 + 2022-2024 上海/全国高考生物真题 + 上海市教委考试院命题分析"
             }
           ]
         }
