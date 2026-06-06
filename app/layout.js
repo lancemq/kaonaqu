@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import Script from 'next/script';
 import BodyPageFlag from '../components/body-page-flag';
 import '../styles/index.css';
 
@@ -24,6 +25,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="zh-CN">
       <body>
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7712476875404468"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
         <BodyPageFlag />
         {children}
         <Analytics />
