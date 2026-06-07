@@ -518,6 +518,63 @@ export default async function SchoolDetailPage({ params }) {
                   </a>
                 ) : null}
               </div>
+
+              {richProfile.competitions ? (
+                <div className="school-rich-competitions">
+                  <div className="school-rich-subhead">
+                    <p className="overview-label">五大学科奥赛</p>
+                    <span>近 5 年记录</span>
+                  </div>
+                  <div className="school-rich-competition-list">
+                    {richProfile.competitions.map((item) => (
+                      <article key={item.name} className="school-rich-competition-item">
+                        <header>
+                          <strong>{item.name}</strong>
+                          <span className="school-rich-competition-strength">{item.strength}</span>
+                        </header>
+                        <p>{item.records}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {richProfile.specialtyClasses ? (
+                <div className="school-rich-classes">
+                  <div className="school-rich-subhead">
+                    <p className="overview-label">特色班级与项目</p>
+                    <span>公开培养路径</span>
+                  </div>
+                  <div className="school-rich-classes-grid">
+                    {richProfile.specialtyClasses.map((item) => (
+                      <article key={item.name} className="school-rich-class-item">
+                        <h3>{item.name}</h3>
+                        <p>{item.desc}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {richProfile.graduateDestinations ? (
+                <div className="school-rich-graduates">
+                  <div className="school-rich-subhead">
+                    <p className="overview-label">毕业生去向</p>
+                    <span>近 5 年趋势</span>
+                  </div>
+                  <div className="school-rich-graduates-list">
+                    {richProfile.graduateDestinations.map((item) => (
+                      <article key={item.destination} className="school-rich-graduate-item">
+                        <header>
+                          <strong>{item.destination}</strong>
+                          <span className="school-rich-graduate-ratio">{item.ratio}</span>
+                        </header>
+                        <p>{item.desc}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </section>
           ) : null}
 

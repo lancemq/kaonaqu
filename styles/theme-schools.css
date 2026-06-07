@@ -1766,6 +1766,122 @@ body[data-page="schools"] .schools-datadesk-entry-feature strong {
     color: #255959;
 }
 
+.school-rich-competitions,
+.school-rich-classes,
+.school-rich-graduates {
+    margin-top: 24px;
+    padding: 20px 22px;
+    border-radius: var(--site-radius-lg);
+    background: var(--site-surface-soft);
+    border: 1px solid var(--site-line);
+}
+
+.school-rich-competition-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.school-rich-competition-item {
+    padding: 12px 14px;
+    border-radius: var(--site-radius-sm);
+    background: #ffffff;
+    border: 1px solid var(--site-line);
+}
+
+.school-rich-competition-item header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.school-rich-competition-item strong {
+    font-size: 0.95rem;
+    color: #1f4d4d;
+}
+
+.school-rich-competition-strength {
+    font-size: 0.85rem;
+    color: #d2691e;
+    letter-spacing: 0.05em;
+}
+
+.school-rich-competition-item p {
+    margin: 0;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+}
+
+.school-rich-classes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.school-rich-class-item {
+    padding: 14px 16px;
+    border-radius: var(--site-radius-sm);
+    background: #ffffff;
+    border: 1px solid var(--site-line);
+}
+
+.school-rich-class-item h3 {
+    margin: 0 0 6px;
+    font-size: 0.98rem;
+    color: #1f4d4d;
+    font-weight: 800;
+}
+
+.school-rich-class-item p {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.school-rich-graduates-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.school-rich-graduate-item {
+    padding: 12px 14px;
+    border-radius: var(--site-radius-sm);
+    background: #ffffff;
+    border: 1px solid var(--site-line);
+}
+
+.school-rich-graduate-item header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.school-rich-graduate-item strong {
+    font-size: 0.92rem;
+    color: #1f4d4d;
+}
+
+.school-rich-graduate-ratio {
+    font-size: 0.86rem;
+    color: #c0392b;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.school-rich-graduate-item p {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #4a4a4a;
+}
+
 /* Education Groups Topic */
 .school-groups-hero {
     padding: 28px 30px 24px;
