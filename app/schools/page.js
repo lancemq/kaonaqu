@@ -19,6 +19,7 @@ export default async function SchoolsPage({ searchParams }) {
   const initialDistrict = typeof params?.district === 'string' ? params.district : 'all';
   const initialStage = typeof params?.stage === 'string' ? params.stage : 'all';
   const initialOwnership = typeof params?.ownership === 'string' ? params.ownership : 'all';
+  const initialCategory = typeof params?.category === 'string' ? params.category : 'all';
   const initialTag = typeof params?.tag === 'string' ? params.tag : 'all';
   const initialDirection = typeof params?.direction === 'string' ? params.direction : 'all';
   const initialQuery = typeof params?.query === 'string' ? params.query : '';
@@ -45,6 +46,7 @@ export default async function SchoolsPage({ searchParams }) {
         initialDistrict={initialDistrict}
         initialStage={initialStage}
         initialOwnership={initialOwnership}
+        initialCategory={initialCategory}
         initialTag={initialTag}
         initialDirection={initialDirection}
         initialQuery={initialQuery}

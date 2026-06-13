@@ -5,10 +5,14 @@ import { useMemo, useState } from 'react';
 import {
   filterSchools,
   getSchoolAdmissionInfo,
+  getSchoolCategory,
+  getSchoolCategoryLabel,
   getSchoolDistrictName,
   getSchoolStage,
+  getSchoolSpecializationLabels,
   getSchoolTrainingDirections,
-  getSchoolType
+  getSchoolType,
+  SCHOOL_CATEGORY_LIST
 } from '../lib/site-utils';
 
 const STAGE_OPTIONS = [
@@ -48,6 +52,11 @@ const DIRECTION_FILTER_OPTIONS = [
   '外语特色'
 ];
 
+const CATEGORY_FILTER_OPTIONS = SCHOOL_CATEGORY_LIST.map((cat) => ({
+  value: cat.id,
+  label: cat.shortLabel
+}));
+
 const SCHOOLS_PER_PAGE = 10;
 
 function resolveFeaturedSchool(schools, keyword, preferredName) {
@@ -84,6 +93,8 @@ function getSchoolPositioning(school) {
 
 function buildCardTags(school) {
   const values = [
+    getSchoolCategoryLabel(school),
+    ...getSchoolSpecializationLabels(school),
     ...(school.tags || []),
     ...(school.features || []),
     ...getSchoolTrainingDirections(school)
@@ -131,6 +142,7 @@ export default function SchoolsPageClient({
   initialDistrict = 'all',
   initialStage = 'all',
   initialOwnership = 'all',
+  initialCategory = 'all',
   initialTag = 'all',
   initialDirection = 'all',
   initialQuery = ''
@@ -138,6 +150,7 @@ export default function SchoolsPageClient({
   const [activeDistrict, setActiveDistrict] = useState(initialDistrict);
   const [activeStage, setActiveStage] = useState(initialStage);
   const [activeOwnership, setActiveOwnership] = useState(initialOwnership);
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [activeTag, setActiveTag] = useState(initialTag);
   const [activeDirection, setActiveDirection] = useState(initialDirection);
   const [queryInput, setQueryInput] = useState(initialQuery);
@@ -145,15 +158,21 @@ export default function SchoolsPageClient({
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredSchools = useMemo(
-    () => filterSchools(schools, {
-      district: activeDistrict,
-      query: searchQuery,
-      stage: activeStage,
-      ownership: activeOwnership,
-      tag: activeTag,
-      direction: activeDirection
-    }),
-    [schools, activeDistrict, searchQuery, activeStage, activeOwnership, activeTag, activeDirection]
+    () => {
+      let result = filterSchools(schools, {
+        district: activeDistrict,
+        query: searchQuery,
+        stage: activeStage,
+        ownership: activeOwnership,
+        tag: activeTag,
+        direction: activeDirection
+      });
+      if (activeCategory !== 'all') {
+        result = result.filter((school) => (school.category || getSchoolCategory(school)?.id) === activeCategory);
+      }
+      return result;
+    },
+    [schools, activeDistrict, searchQuery, activeStage, activeOwnership, activeCategory, activeTag, activeDirection]
   );
 
   const tagOptions = useMemo(() => {
@@ -209,6 +228,10 @@ export default function SchoolsPageClient({
     }
     if (activeOwnership !== 'all') {
       lines.push(`办学性质：${OWNERSHIP_OPTIONS.find((item) => item.value === activeOwnership)?.label || activeOwnership}`);
+    }
+    if (activeCategory !== 'all') {
+      const cat = SCHOOL_CATEGORY_LIST.find((c) => c.id === activeCategory);
+      lines.push(`分类：${cat?.label || activeCategory}`);
     }
     if (activeTag !== 'all') {
       lines.push(`特色：${activeTag}`);
@@ -273,6 +296,7 @@ export default function SchoolsPageClient({
     setActiveDistrict('all');
     setActiveStage('all');
     setActiveOwnership('all');
+    setActiveCategory('all');
     setActiveTag('all');
     setActiveDirection('all');
     setQueryInput('');
@@ -319,6 +343,7 @@ export default function SchoolsPageClient({
               </div>
               <div className="schools-datadesk-hero-actions">
                 <Link className="module-link" href="/schools/district">查看 16 区专题</Link>
+                <Link className="module-link" href="/schools/category">查看学校分类</Link>
                 <Link className="module-link" href="/schools/groups">查看教育集团专题</Link>
                 <Link className="module-link" href="/schools/simulator">进入志愿模拟</Link>
               </div>
@@ -422,6 +447,18 @@ export default function SchoolsPageClient({
                   <span className="visually-hidden">按办学性质筛选</span>
                   <select id="prototype-ownership-filter" value={activeOwnership} onChange={(event) => { setActiveOwnership(event.target.value); setCurrentPage(1); }}>
                     {OWNERSHIP_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <div className="schools-datadesk-controlblock">
+                <span>学校分类</span>
+                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-category-filter">
+                  <span className="visually-hidden">按学校分类筛选</span>
+                  <select id="prototype-category-filter" value={activeCategory} onChange={(event) => { setActiveCategory(event.target.value); setCurrentPage(1); }}>
+                    <option value="all">全部分类</option>
+                    {CATEGORY_FILTER_OPTIONS.map((option) => (
                       <option key={option.value} value={option.value}>{option.label}</option>
                     ))}
                   </select>
