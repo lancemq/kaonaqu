@@ -827,7 +827,35 @@ body[data-page="knowledge"] .knowledge-page-subject .knowledge-rail-nav a:nth-of
     --channel-hero-glow: rgba(217, 93, 31, 0.14);
 }
 
-body[data-page="home"],
+body[data-page="home"] {
+    --site-bg-top: #f8f9fb;
+    --site-bg-mid: #f0f3f8;
+    --site-bg-bottom: #e6eaf2;
+    --site-paper: #ffffff;
+    --site-surface: #ffffff;
+    --site-surface-soft: #f4f6fa;
+    --site-surface-strong: #ffffff;
+    --site-text: #1a1d29;
+    --site-text-soft: #4a5263;
+    --site-muted: #6b7384;
+    --site-muted-strong: #4a5263;
+    --site-line: rgba(26, 29, 41, 0.08);
+    --site-line-strong: rgba(26, 29, 41, 0.14);
+    --site-dark: #1a1d29;
+    --site-dark-soft: #252a3a;
+    --site-dark-text: #f0f3f8;
+    --site-accent: #2563eb;
+    --site-accent-dark: #1d4ed8;
+    --site-school-accent: #2563eb;
+    --site-blueprint: #2563eb;
+    --site-shadow-sm: 0 1px 3px rgba(26, 29, 41, 0.04), 0 4px 12px rgba(26, 29, 41, 0.03);
+    --site-shadow-md: 0 4px 16px rgba(26, 29, 41, 0.08), 0 8px 32px rgba(26, 29, 41, 0.06);
+    --channel-accent: #2563eb;
+    --channel-accent-dark: #1d4ed8;
+    --channel-accent-soft: rgba(37, 99, 235, 0.08);
+    --channel-hero-glow: rgba(37, 99, 235, 0.05);
+}
+
 body[data-page="knowledge"] {
     --channel-accent: var(--site-accent);
     --channel-accent-dark: var(--site-accent-dark);
