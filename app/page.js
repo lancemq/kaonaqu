@@ -19,8 +19,8 @@ const CORE_FEATURED_SCHOOL_NAMES = [
 const HERO_DECISION_PATHS = [
   {
     label: '政策解读',
-    title: '中考高考政策先看明白',
-    description: '今年怎么报名、怎么考、怎么录，一页讲清楚。',
+    title: '中招高招政策一页看懂',
+    description: '报名条件、批次顺序、名额分配、录取规则，帮你理清时间线和关键节点。',
     links: [
       { label: '中考专题', href: '/news/zhongkao-special' },
       { label: '高考专题', href: '/news/gaokao-special' },
@@ -29,22 +29,22 @@ const HERO_DECISION_PATHS = [
   },
   {
     label: '学校查询',
-    title: '按区、学段、类型查学校',
-    description: '883所学校按区县、办学性质、培养方向快速筛选。',
+    title: '883 所学校按需筛选',
+    description: '按区县、办学性质、特色方向查找，比较分数线和升学去向。',
     links: [
       { label: '学校库', href: '/schools' },
-      { label: '区县专题', href: '/schools/district' },
-      { label: '学校对比', href: '/schools/compare' }
+      { label: '按分类', href: '/schools/category' },
+      { label: '区县专题', href: '/schools/district' }
     ]
   },
   {
     label: '知识体系',
-    title: '七八九年级学习路径全覆盖',
-    description: '七年级搭框架，八年级补主学科和理化，九年级进入中考复习。',
+    title: '初一到高三学习路径',
+    description: '按年级和学科整理知识点、例题和中考真题，配套复习计划。',
     links: [
-      { label: '九年级总览', href: '/knowledge/grade-9' },
-      { label: '八年级总览', href: '/knowledge/grade-8' },
-      { label: '全部科目', href: '/knowledge' }
+      { label: '九年级', href: '/knowledge/grade-9' },
+      { label: '高中', href: '/knowledge/senior-1' },
+      { label: '全部', href: '/knowledge' }
     ]
   }
 ];
@@ -88,20 +88,6 @@ const HOME_KNOWLEDGE_COURSES = [
     description: '词汇语法、阅读完形、听说训练和中考写作一起复盘。',
     href: '/knowledge/english-grade9',
     status: '九年级'
-  },
-  {
-    subject: '物理',
-    title: '沪科版八年级物理',
-    description: '测量、声光、运动和力、压强浮力、简单机械与热现象。',
-    href: '/knowledge/physics-grade8',
-    status: '八年级'
-  },
-  {
-    subject: '化学',
-    title: '沪教版八年级化学',
-    description: '开启化学之门、空气、氧气、水与生命、微粒观、化学用语。',
-    href: '/knowledge/chemistry-grade8',
-    status: '八年级'
   },
   {
     subject: '高中衔接',
@@ -175,43 +161,43 @@ export default async function HomePage() {
     .sort((left, right) => (right.visibleSchoolCount || 0) - (left.visibleSchoolCount || 0))
     .slice(0, 8);
   const timelineItems = [
-    { date: '4月10日', title: '义务教育入学系统开放', description: '信息登记、报名和核验开始集中进行。', href: '/news/admission-2026-compulsory-education-opinion' },
-    { date: '5月16日-17日', title: '中招听说与理化实验', description: '外语听说测试及理化实验操作考试。', href: '/news/exam-2026-zhongzhao-opinion' },
-    { date: '6月7日-9日', title: '全国统一高考', description: '高三考生进入年度最关键考试窗口。', href: '/news/exam-2026-shmeea-calendar' },
-    { date: '6月20日-21日', title: '上海中考笔试', description: '初三考生进行初中学业水平考试笔试。', href: '/news/exam-2026-zhongzhao-opinion' },
-    { date: '7月-8月', title: '中考录取与报到', description: '各批次录取、民办学校补录和新生报到。', href: '/news/admission-timeline' }
+    { date: '6月7-9日', title: '全国统一高考', description: '高三考生进入年度最关键考试窗口。', href: '/news/exam-2026-gaokao-timeline' },
+    { date: '6月20-21日', title: '上海中考笔试', description: '初三考生进行初中学业水平考试笔试。', href: '/news/exam-2026-zhongkao-timeline' },
+    { date: '6月23日', title: '高考成绩查询', description: '预计6月23日左右公布高考成绩。', href: '/news/exam-2026-gaokao-score-preview' },
+    { date: '7月上旬', title: '中考查分+分数线', description: '中考成绩公布，各批次分数线陆续发布。', href: '/news/exam-2026-zhongkao-chafen' },
+    { date: '7-8月', title: '录取与报到', description: '各批次录取、民办补录和新生报到。', href: '/news/admission-timeline' }
   ];
   const decisionEntries = [
-    { label: '中考', title: '今年中招怎么招，先从这里看明白', description: '报名、志愿、批次顺序和关键问答，适合家长先看全局。', href: '/news/zhongkao-special' },
-    { label: '高考', title: '春考、高考、成绩和录取节点一页看全', description: '把今年高招最容易错过的时间和政策集中放在一起。', href: '/news/gaokao-special' },
-    { label: '学校库', title: '哪所学校更适合孩子，先查真实信息', description: '按区县、学段和办学类型筛学校，少走弯路。', href: '/schools' },
-    { label: '16区', title: '先看区，再看学校，择校会快很多', description: '不同区的学校资源和升学氛围差别很大，值得先看一眼。', href: '/schools/district/xuhui' }
+    { label: '中考', title: '中招全流程：报名到录取', description: '报名条件、志愿批次、名额分配和分数线查询。', href: '/news/zhongkao-special' },
+    { label: '高考', title: '高招关键节点和时间线', description: '春考、秋考、综评、强基，别错过每个截止日期。', href: '/news/gaokao-special' },
+    { label: '学校库', title: '按区按类型筛选学校', description: '883 所学校，比较分数线、特色班和升学去向。', href: '/schools' },
+    { label: '16区', title: '先看区，再选学校', description: '各区教育资源分布和升学氛围差异一览。', href: '/schools/district/xuhui' }
   ];
   const darkFeatureCards = [
     {
       label: '本周重点',
-      title: '先盯住会影响报名和录取的那几件事',
-      description: '有些消息只是热闹，有些节点会直接影响后面的选择，这里先帮你挑出来。',
+      title: '影响报名和录取的关键节点',
+      description: '从所有动态中挑出真正影响选择的信息，帮你抓住时间窗口。',
       href: '/news'
     },
     {
       label: '政策速查',
-      title: '看不懂术语、拿不准规则，就从这里开始',
-      description: '先搞懂概念，再看常见问题，最后回到原文，很多焦虑会一下子清楚不少。',
+      title: '术语看不懂？从这里开始',
+      description: '先搞懂概念，再看常见问题，最后回到原文核对。',
       href: '/news/policy-glossary'
     },
     {
       label: '区县判断',
-      title: '很多择校问题，答案其实先藏在区里',
-      description: '先看区县教育格局，再去比较具体学校，判断会更稳。',
+      title: '择校问题，答案先藏在区里',
+      description: '先看区县教育格局，再比较具体学校，判断会更稳。',
       href: '/schools/district/xuhui'
     }
   ];
   const darkQuickLinks = [
-    { label: '政策概念', value: '先把关键词看懂', href: '/news/policy-glossary' },
-    { label: '常见问答', value: '先解答最常见疑问', href: '/news/policy-faq' },
-    { label: '政策深读', value: '再回到正式文件核对', href: '/news/policy-deep-dive' },
-    { label: '招生日程', value: '最后盯紧关键日期', href: '/news/admission-timeline' }
+    { label: '政策概念', value: '关键词先看懂', href: '/news/policy-glossary' },
+    { label: '常见问答', value: '疑问先解答', href: '/news/policy-faq' },
+    { label: '政策深读', value: '原文再核对', href: '/news/policy-deep-dive' },
+    { label: '招生日程', value: '日期盯紧', href: '/news/admission-timeline' }
   ];
   const topSchools = getHomeFeaturedSchools(schools);
   const [featuredSchool, ...supportSchools] = topSchools;
@@ -249,8 +235,8 @@ export default async function HomePage() {
                   <div className="home-hero-tag">2026 上海升学指南</div>
                   <p className="home-hero-micro-note">覆盖 16 区 883 所学校</p>
                 </div>
-                <h1>上海升学<br/>先从三件事看清楚</h1>
-                <p className="home-hero-description">政策决定时间和规则，学校决定目标和取舍，学习路径决定现在怎么准备。这里帮你把三条线分开，再接起来。</p>
+                <h1>上海升学<br/>三件事看清楚</h1>
+                <p className="home-hero-description">政策决定时间和规则，学校决定目标和取舍，知识路径决定现在怎么准备。三条线分开看，再接起来。</p>
                 <div className="home-hero-inline-meta">
                   <span>政策解读</span>
                   <span>学校查询</span>
@@ -329,7 +315,7 @@ export default async function HomePage() {
           <div className="home-editorial-section-head home-editorial-news-head">
             <div>
               <p className="overview-label">升学动态</p>
-              <h2>真正会影响选择的消息，先帮你挑出来</h2>
+              <h2>影响选择的消息，先帮你挑出来</h2>
             </div>
             <div className="home-editorial-section-tools">
               <Link className="home-editorial-mini-link" href="/news">全部新闻</Link>
@@ -354,7 +340,7 @@ export default async function HomePage() {
             <div className="home-dark-band-head">
               <div>
                 <p className="overview-label">本周判断重点</p>
-                <h2>当信息太多的时候，先抓住这几件最重要的事。</h2>
+                <h2>信息太多，先抓住这几件事</h2>
               </div>
               <Link className="home-dark-band-link" href="/news">全部专题</Link>
             </div>
@@ -381,8 +367,8 @@ export default async function HomePage() {
             <div className="home-knowledge-head">
               <div>
                 <p className="overview-label">知识体系</p>
-                <h2>七八九年级学习路径，现在可以连起来看</h2>
-                <p>七年级搭框架，八年级补主学科和理化基础，九年级进入中考复习、模考订正和专题突破。高中衔接预备也在准备中。</p>
+                <h2>初一到高三，学习路径连起来看</h2>
+                <p>七年级搭框架，八年级补理化基础，九年级进入中考复习。高中三段按高考衔接、专题突破和冲刺逐年推进。</p>
               </div>
               <div className="home-knowledge-actions">
                 <Link className="home-editorial-mini-link" href="/knowledge/grade-7">七年级</Link>
@@ -411,7 +397,7 @@ export default async function HomePage() {
               <div className="home-editorial-section-head">
                 <div>
                   <p className="overview-label">升学时间线</p>
-                  <h2>接下来这些时间点，最好提前记下来</h2>
+                  <h2>接下来的关键时间点</h2>
                 </div>
                 <div className="home-editorial-section-tools">
                   <Link className="home-editorial-mini-link" href="/news/admission-timeline">完整日程</Link>
@@ -431,7 +417,7 @@ export default async function HomePage() {
               <div className="home-editorial-section-head">
                 <div>
                   <p className="overview-label">学校信息</p>
-                  <h2>先从这几所最重点的学校开始看</h2>
+                  <h2>重点学校，先看这几所</h2>
                 </div>
                 <div className="home-editorial-section-tools">
                   <Link className="home-editorial-mini-link" href="/schools">全部学校</Link>
@@ -491,7 +477,7 @@ export default async function HomePage() {
           <div className="home-editorial-cta">
             <div className="home-editorial-cta-copy">
               <p className="overview-label">继续往下看</p>
-              <h2>如果你已经知道自己下一步要看什么，就从这里继续。</h2>
+              <h2>知道下一步看什么，就从这里继续</h2>
             </div>
             <div className="home-editorial-cta-actions">
               <Link className="home-cta-button home-cta-button-primary" href="/news">查看升学动态</Link>
