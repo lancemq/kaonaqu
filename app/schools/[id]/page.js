@@ -404,9 +404,39 @@ export default async function SchoolDetailPage({ params }) {
             <figcaption>{richProfile.image.caption}</figcaption>
           </figure>
           <div className="school-rich-brief">
-            <p className="overview-label">核心资料包</p>
-            <h2>历史、特色、校友与录取参考</h2>
-            <p>这部分优先整理头部学校的公开信息。分数线为录取参考，不同年份、区、批次和计划类型口径不同，填报前仍要回到当年官方发布核对。</p>
+            <p className="overview-label">核心资料速览</p>
+            <h2>{school.name}</h2>
+            <p>{richProfile.generated
+              ? '该校 rich profile 由系统按 tier 模板生成；硬性指标若无公开来源会以正式占位提示，请以学校官方发布为准。'
+              : '该校 rich profile 为人工整理；分数线为录取参考，不同年份、区、批次和计划类型口径不同，填报前仍要回到当年官方发布核对。'}</p>
+            <dl className="school-rich-metric-grid">
+              <div>
+                <dt>办学属性</dt>
+                <dd>{schoolAttribute}</dd>
+              </div>
+              <div>
+                <dt>所在区域</dt>
+                <dd>{getSchoolDistrictName(school)}</dd>
+              </div>
+              <div>
+                <dt>学段</dt>
+                <dd>{getSchoolStage(school)}</dd>
+              </div>
+              <div>
+                <dt>建校年份</dt>
+                <dd>{school.foundingYear || '资料待补'}</dd>
+              </div>
+              {school.group ? (
+                <div>
+                  <dt>教育集团</dt>
+                  <dd>{school.group}</dd>
+                </div>
+              ) : null}
+              <div>
+                <dt>最近更新</dt>
+                <dd>{formatSchoolUpdate(school.updatedAt)}</dd>
+              </div>
+            </dl>
           </div>
         </section>
       ) : null}
@@ -453,134 +483,196 @@ export default async function SchoolDetailPage({ params }) {
               <div className="school-rich-panel-head">
                 <p className="overview-label">深度资料</p>
                 <h2>{school.name}核心信息</h2>
-              </div>
-
-              <div className="school-rich-history">
-                {richProfile.history.map((item) => (
-                  <article key={`${item.year}-${item.text}`}>
-                    <span>{item.year}</span>
-                    <p>{item.text}</p>
-                  </article>
-                ))}
-              </div>
-
-              <div className="school-rich-card-grid">
-                {richProfile.programs.map((item) => (
-                  <article key={item.title} className="school-rich-card">
-                    <span>办学特色</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </article>
-                ))}
-              </div>
-
-              <div className="school-rich-two-column">
-                <section>
-                  <div className="school-rich-subhead">
-                    <p className="overview-label">相关名人与校友线索</p>
-                    <span>公开资料口径</span>
-                  </div>
-                  <div className="school-rich-people-list">
-                    {richProfile.notablePeople.map((item) => (
-                      <article key={item.name}>
-                        <strong>{item.name}</strong>
-                        <p>{item.role}</p>
-                      </article>
-                    ))}
-                  </div>
-                </section>
-
-                <section>
-                  <div className="school-rich-subhead">
-                    <p className="overview-label">历年入学分数线</p>
-                    <span>录取参考</span>
-                  </div>
-                  <div className="school-rich-score-table" role="table" aria-label={`${school.name}录取参考分数线`}>
-                    <div role="row" className="school-rich-score-row school-rich-score-head">
-                      <span role="columnheader">年份</span>
-                      <span role="columnheader">批次</span>
-                      <span role="columnheader">分数</span>
-                    </div>
-                    {richProfile.scoreLines.map((item) => (
-                      <div key={`${item.year}-${item.batch}`} role="row" className="school-rich-score-row">
-                        <span role="cell">{item.year}</span>
-                        <span role="cell">{item.batch}<small>{item.scope}</small></span>
-                        <strong role="cell">{item.score}</strong>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="school-rich-note">{richProfile.scoreLines[0]?.source?.note}</p>
-                </section>
-              </div>
-
-              <div className="school-rich-source-list">
-                <span>资料入口</span>
-                {richProfile.sources.map((item) => (
-                  <a key={item.url} href={item.url} target="_blank" rel="noreferrer">{item.label}</a>
-                ))}
-                {richProfile.scoreLines[0]?.source ? (
-                  <a href={richProfile.scoreLines[0].source.url} target="_blank" rel="noreferrer">
-                    {richProfile.scoreLines[0].source.label}
-                  </a>
+                {richProfile.badge ? (
+                  <span className="school-rich-badge">{richProfile.badge}</span>
                 ) : null}
               </div>
 
-              {richProfile.competitions ? (
-                <div className="school-rich-competitions">
-                  <div className="school-rich-subhead">
-                    <p className="overview-label">五大学科奥赛</p>
-                    <span>近 5 年记录</span>
+              {/* 1. 学校与办学 */}
+              <details className="school-rich-group" open>
+                <summary>
+                  <span className="school-rich-group-label">学校与办学</span>
+                  <span className="school-rich-group-hint">校史 · 办学特色</span>
+                </summary>
+                <div className="school-rich-group-body">
+                  <div className="school-rich-history">
+                    {richProfile.history.map((item) => (
+                      <article key={`${item.year}-${item.text}`}>
+                        <span>{item.year}</span>
+                        <p>{item.text}</p>
+                      </article>
+                    ))}
                   </div>
-                  <div className="school-rich-competition-list">
-                    {richProfile.competitions.map((item) => (
-                      <article key={item.name} className="school-rich-competition-item">
-                        <header>
+                  <div className="school-rich-card-grid">
+                    {richProfile.programs.map((item) => (
+                      <article key={item.title} className="school-rich-card">
+                        <span>办学特色</span>
+                        <h3>{item.title}</h3>
+                        <p>{item.text}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </details>
+
+              {/* 2. 学术表现 */}
+              {(richProfile.competitions || richProfile.specialtyClasses) ? (
+                <details className="school-rich-group" open>
+                  <summary>
+                    <span className="school-rich-group-label">学术表现</span>
+                    <span className="school-rich-group-hint">学科竞赛 · 特色班级</span>
+                  </summary>
+                  <div className="school-rich-group-body school-rich-group-body-two">
+                    {richProfile.competitions ? (
+                      <section className="school-rich-subblock">
+                        <div className="school-rich-subhead">
+                          <p className="overview-label">五大学科奥赛</p>
+                          <span>近 5 年公开</span>
+                        </div>
+                        <div className="school-rich-competition-list">
+                          {richProfile.competitions.map((item) => (
+                            <article key={item.name} className="school-rich-competition-item">
+                              <header>
+                                <strong>{item.name}</strong>
+                                <span className="school-rich-competition-strength">{item.strength}</span>
+                              </header>
+                              <p>{item.records}</p>
+                            </article>
+                          ))}
+                        </div>
+                      </section>
+                    ) : null}
+
+                    {richProfile.specialtyClasses ? (
+                      <section className="school-rich-subblock">
+                        <div className="school-rich-subhead">
+                          <p className="overview-label">特色班级与项目</p>
+                          <span>公开培养路径</span>
+                        </div>
+                        <div className="school-rich-classes-grid">
+                          {richProfile.specialtyClasses.map((item) => (
+                            <article key={item.name} className="school-rich-class-item">
+                              <h3>{item.name}</h3>
+                              <p>{item.desc}</p>
+                            </article>
+                          ))}
+                        </div>
+                      </section>
+                    ) : (
+                      <div className="school-rich-empty">特色班级公开资料整理中，建议查阅学校官网招生栏目或区教育局发布。</div>
+                    )}
+                  </div>
+                </details>
+              ) : (
+                <details className="school-rich-group">
+                  <summary>
+                    <span className="school-rich-group-label">学术表现</span>
+                    <span className="school-rich-group-hint">学科竞赛 · 特色班级</span>
+                  </summary>
+                  <div className="school-rich-group-body">
+                    <div className="school-rich-empty">该校学术表现公开数据有限，建议查阅 SHCS / 上海赛区官方公示或学校官网。</div>
+                  </div>
+                </details>
+              )}
+
+              {/* 3. 录取与去向 */}
+              <details className="school-rich-group" open>
+                <summary>
+                  <span className="school-rich-group-label">录取与去向</span>
+                  <span className="school-rich-group-hint">分数线 · 升学路径</span>
+                </summary>
+                <div className="school-rich-group-body school-rich-group-body-two">
+                  <section className="school-rich-subblock">
+                    <div className="school-rich-subhead">
+                      <p className="overview-label">历年入学分数线</p>
+                      <span>录取参考</span>
+                    </div>
+                    {richProfile.scoreLines ? (
+                      <>
+                        <div className="school-rich-score-table" role="table" aria-label={`${school.name}录取参考分数线`}>
+                          <div role="row" className="school-rich-score-row school-rich-score-head">
+                            <span role="columnheader">年份</span>
+                            <span role="columnheader">批次</span>
+                            <span role="columnheader">分数</span>
+                          </div>
+                          {richProfile.scoreLines.map((item) => (
+                            <div key={`${item.year}-${item.batch}`} role="row" className="school-rich-score-row">
+                              <span role="cell">{item.year}</span>
+                              <span role="cell">{item.batch}<small>{item.scope}</small></span>
+                              <strong role="cell">{item.score}</strong>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="school-rich-note">{richProfile.scoreLines[0]?.source?.note}</p>
+                      </>
+                    ) : (
+                      <div className="school-rich-empty">该校分数线公开数据有限，请查阅上海市教育考试院（shmeea.edu.cn）当年发布。</div>
+                    )}
+                  </section>
+
+                  <section className="school-rich-subblock">
+                    <div className="school-rich-subhead">
+                      <p className="overview-label">毕业生去向</p>
+                      <span>升学结构</span>
+                    </div>
+                    {richProfile.graduateDestinations ? (
+                      <div className="school-rich-graduates-list">
+                        {richProfile.graduateDestinations.map((item) => (
+                          <article key={item.destination} className="school-rich-graduate-item">
+                            <header>
+                              <strong>{item.destination}</strong>
+                              <span className="school-rich-graduate-ratio">{item.ratio}</span>
+                            </header>
+                            <p>{item.desc}</p>
+                          </article>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="school-rich-empty">该校毕业生去向公开数据有限，建议查阅学校公开年报或区教育局发布的高招简讯。</div>
+                    )}
+                  </section>
+                </div>
+              </details>
+
+              {/* 4. 校友与资料 */}
+              <details className="school-rich-group" open>
+                <summary>
+                  <span className="school-rich-group-label">校友与资料</span>
+                  <span className="school-rich-group-hint">名人线索 · 资料入口</span>
+                </summary>
+                <div className="school-rich-group-body school-rich-group-body-two">
+                  <section className="school-rich-subblock">
+                    <div className="school-rich-subhead">
+                      <p className="overview-label">相关名人与校友线索</p>
+                      <span>公开资料口径</span>
+                    </div>
+                    <div className="school-rich-people-list">
+                      {richProfile.notablePeople.map((item) => (
+                        <article key={item.name}>
                           <strong>{item.name}</strong>
-                          <span className="school-rich-competition-strength">{item.strength}</span>
-                        </header>
-                        <p>{item.records}</p>
-                      </article>
-                    ))}
-                  </div>
+                          <p>{item.role}</p>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                  <section className="school-rich-subblock">
+                    <div className="school-rich-subhead">
+                      <p className="overview-label">资料入口</p>
+                      <span>官方/公开来源</span>
+                    </div>
+                    <div className="school-rich-source-list">
+                      {richProfile.sources.map((item) => (
+                        <a key={item.url} href={item.url} target="_blank" rel="noreferrer">{item.label}</a>
+                      ))}
+                      {richProfile.scoreLines?.[0]?.source ? (
+                        <a href={richProfile.scoreLines[0].source.url} target="_blank" rel="noreferrer">
+                          {richProfile.scoreLines[0].source.label}
+                        </a>
+                      ) : null}
+                    </div>
+                  </section>
                 </div>
-              ) : null}
-
-              {richProfile.specialtyClasses ? (
-                <div className="school-rich-classes">
-                  <div className="school-rich-subhead">
-                    <p className="overview-label">特色班级与项目</p>
-                    <span>公开培养路径</span>
-                  </div>
-                  <div className="school-rich-classes-grid">
-                    {richProfile.specialtyClasses.map((item) => (
-                      <article key={item.name} className="school-rich-class-item">
-                        <h3>{item.name}</h3>
-                        <p>{item.desc}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              {richProfile.graduateDestinations ? (
-                <div className="school-rich-graduates">
-                  <div className="school-rich-subhead">
-                    <p className="overview-label">毕业生去向</p>
-                    <span>近 5 年趋势</span>
-                  </div>
-                  <div className="school-rich-graduates-list">
-                    {richProfile.graduateDestinations.map((item) => (
-                      <article key={item.destination} className="school-rich-graduate-item">
-                        <header>
-                          <strong>{item.destination}</strong>
-                          <span className="school-rich-graduate-ratio">{item.ratio}</span>
-                        </header>
-                        <p>{item.desc}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
+              </details>
             </section>
           ) : null}
 
