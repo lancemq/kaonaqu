@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import CompareBagCheckbox from './compare-bag-checkbox';
+import { dataQualityBadge, dataQualityScore, getSchoolDataQuality } from '../lib/school-data-quality';
 import {
   filterSchools,
   getSchoolAdmissionInfo,
@@ -156,6 +158,9 @@ export default function SchoolsPageClient({
   const [queryInput, setQueryInput] = useState(initialQuery);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [currentPage, setCurrentPage] = useState(1);
+  const [advancedOpen, setAdvancedOpen] = useState(
+    initialCategory !== 'all' || initialTag !== 'all' || initialDirection !== 'all'
+  );
 
   const filteredSchools = useMemo(
     () => {
@@ -280,6 +285,11 @@ export default function SchoolsPageClient({
   }, [schools]);
 
   const activeFilterCount = activeFilterSummary.length;
+  const advancedCount = [
+    activeCategory !== 'all',
+    activeTag !== 'all',
+    activeDirection !== 'all'
+  ].filter(Boolean).length;
 
   const resultDescriptor = activeFilterSummary.length
     ? `${currentDistrictLabel}下匹配 ${filteredSchools.length} 所学校`
@@ -452,55 +462,81 @@ export default function SchoolsPageClient({
                   </select>
                 </label>
               </div>
-              <div className="schools-datadesk-controlblock">
-                <span>学校分类</span>
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-category-filter">
-                  <span className="visually-hidden">按学校分类筛选</span>
-                  <select id="prototype-category-filter" value={activeCategory} onChange={(event) => { setActiveCategory(event.target.value); setCurrentPage(1); }}>
-                    <option value="all">全部分类</option>
-                    {CATEGORY_FILTER_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>{option.label}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
             </div>
+            <button
+              type="button"
+              className={`schools-datadesk-advanced-toggle${advancedOpen ? ' schools-datadesk-advanced-toggle-open' : ''}`}
+              onClick={() => setAdvancedOpen((open) => !open)}
+              aria-expanded={advancedOpen}
+              aria-controls="schools-datadesk-advanced"
+            >
+              <span>{advancedOpen ? '收起高级筛选' : '展开高级筛选'}</span>
+              <span
+                className={`schools-datadesk-advanced-badge${advancedCount > 0 ? ' schools-datadesk-advanced-badge-active' : ''}`}
+                aria-label={`已激活 ${advancedCount} 项高级筛选`}
+              >{advancedCount}</span>
+            </button>
           </section>
 
-          <section className="schools-datadesk-panel">
-            <div className="schools-datadesk-panel-head">
-              <p className="overview-label">学校特征</p>
-              <span>用标签快速缩小比较范围</span>
+          {advancedOpen ? (
+            <div id="schools-datadesk-advanced" className="schools-datadesk-advanced">
+              <section className="schools-datadesk-panel">
+                <div className="schools-datadesk-panel-head">
+                  <p className="overview-label">学校分类</p>
+                  <span>梯队 / 系列细分</span>
+                </div>
+                <div className="schools-datadesk-controls">
+                  <div className="schools-datadesk-controlblock">
+                    <span>学校分类</span>
+                    <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-category-filter">
+                      <span className="visually-hidden">按学校分类筛选</span>
+                      <select id="prototype-category-filter" value={activeCategory} onChange={(event) => { setActiveCategory(event.target.value); setCurrentPage(1); }}>
+                        <option value="all">全部分类</option>
+                        {CATEGORY_FILTER_OPTIONS.map((option) => (
+                          <option key={option.value} value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                </div>
+              </section>
+
+              <section className="schools-datadesk-panel">
+                <div className="schools-datadesk-panel-head">
+                  <p className="overview-label">学校特征</p>
+                  <span>用标签快速缩小比较范围</span>
+                </div>
+                <div className="schools-datadesk-taggroup" aria-label="学校特色筛选">
+                  <div className="schools-datadesk-tagrow">
+                    {tagOptions.map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        className={`schools-datadesk-tag${activeTag === option ? ' schools-datadesk-tag-active' : ''}`}
+                        onClick={() => { setActiveTag(option); setCurrentPage(1); }}
+                      >
+                        {option === 'all' ? '全部特色' : option}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="schools-datadesk-taggroup" aria-label="培养方向筛选">
+                  <div className="schools-datadesk-tagrow">
+                    {directionOptions.map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        className={`schools-datadesk-tag${activeDirection === option ? ' schools-datadesk-tag-active' : ''}`}
+                        onClick={() => { setActiveDirection(option); setCurrentPage(1); }}
+                      >
+                        {option === 'all' ? '全部方向' : option}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </section>
             </div>
-            <div className="schools-datadesk-taggroup" aria-label="学校特色筛选">
-              <div className="schools-datadesk-tagrow">
-                {tagOptions.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    className={`schools-datadesk-tag${activeTag === option ? ' schools-datadesk-tag-active' : ''}`}
-                    onClick={() => { setActiveTag(option); setCurrentPage(1); }}
-                  >
-                    {option === 'all' ? '全部特色' : option}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="schools-datadesk-taggroup" aria-label="培养方向筛选">
-              <div className="schools-datadesk-tagrow">
-                {directionOptions.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    className={`schools-datadesk-tag${activeDirection === option ? ' schools-datadesk-tag-active' : ''}`}
-                    onClick={() => { setActiveDirection(option); setCurrentPage(1); }}
-                  >
-                    {option === 'all' ? '全部方向' : option}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </section>
+          ) : null}
 
           <section className="schools-datadesk-panel">
             <div className="schools-datadesk-panel-head">
@@ -573,10 +609,12 @@ export default function SchoolsPageClient({
           <div className="schools-datadesk-cardlist">
             {(pagedSchools.length ? pagedSchools : emptyStateSchools).map((school) => {
               const cardTags = buildCardTags(school);
-              const mapUrl = school.address 
+              const quality = getSchoolDataQuality(school);
+              const badge = dataQualityBadge(dataQualityScore(quality));
+              const mapUrl = school.address
                 ? `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.address)}`
                 : `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.districtName)}`;
-              
+
               return (
                 <div key={school.id} className="schools-datadesk-card-wrapper relative group">
                   <Link href={`/schools/${school.id}`} className="schools-datadesk-card schools-datadesk-card-link block">
@@ -589,6 +627,11 @@ export default function SchoolsPageClient({
                         <span>{getSchoolType(school)}</span>
                         <span>{school.tier || '梯队信息待补充'}</span>
                         <span>更新于 {formatSchoolUpdate(school.updatedAt)}</span>
+                        {badge ? (
+                          <span className={`schools-datadesk-cardquality schools-datadesk-cardquality-${badge.tone}`}>
+                            {badge.label}
+                          </span>
+                        ) : null}
                       </div>
                     </div>
                     <p className="schools-datadesk-cardsummary">{getSchoolPositioning(school)}</p>
@@ -603,6 +646,7 @@ export default function SchoolsPageClient({
                       <span className="schools-datadesk-cardlink">进入学校详情</span>
                     </div>
                   </Link>
+                  <CompareBagCheckbox schoolId={school.id} schoolName={school.name} />
                 </div>
               );
             })}

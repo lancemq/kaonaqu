@@ -34,10 +34,24 @@ assert.ok(hsefzMarkdown.includes('## 适合谁'));
 assert.ok(hsefzMarkdown.includes('## 阅读提示'));
 
 const ordinary = getSchool('上海市崇明区城桥中学');
-assert.equal(ordinary.profileDepth, 'foundation');
+// 数据已统一升级到 enhanced/priority 两档，foundation 不再使用
+assert.ok(
+  ordinary.profileDepth === 'enhanced' || ordinary.profileDepth === 'priority',
+  `unexpected profileDepth for ${ordinary.name}: ${ordinary.profileDepth}`
+);
 assert.ok(Array.isArray(ordinary.tags) && ordinary.tags.length >= 2);
 const ordinaryMarkdown = readSchoolMarkdown(ordinary);
 assert.ok(ordinaryMarkdown.includes('## 学校概览'));
 assert.ok(String(ordinaryMarkdown || '').trim().length >= 200);
+
+// 数据现状全局检查：所有学校的 profileDepth 必须是 enhanced 或 priority
+const invalidDepth = schools.filter(
+  (s) => s.profileDepth !== 'enhanced' && s.profileDepth !== 'priority'
+);
+assert.equal(
+  invalidDepth.length,
+  0,
+  `schools with invalid profileDepth: ${invalidDepth.map((s) => `${s.name}(${s.profileDepth})`).join(', ')}`
+);
 
 console.log('school enrichment checks passed');

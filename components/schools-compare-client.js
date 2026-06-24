@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useCompareBag } from './compare-bag';
 import {
   getSchoolDistrictName,
   getSchoolStage,
@@ -43,11 +44,41 @@ function formatSchoolUpdate(value) {
 
 export default function SchoolsCompareClient({ schools, initialSchools }) {
   const router = useRouter();
+  const { ids: bagIds, ready: bagReady, replaceAll, remove, clear: clearBag, max } = useCompareBag();
 
-  // 初始选中的学校 ID 列表
-  const initialIds = initialSchools ? initialSchools.split(',') : [];
+  // 初始选中的学校 ID 列表（来自 URL）
+  const initialIds = useMemo(
+    () => (initialSchools ? initialSchools.split(',').filter(Boolean) : []),
+    [initialSchools]
+  );
   const [selectedIds, setSelectedIds] = useState(initialIds);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // URL 与比较篮同步：
+  // - URL 有值 → 用 URL 覆盖比较篮（支持分享链接进入）
+  // - URL 无值 → 用比较篮回填（直接进入 /schools/compare 时延续之前的选择）
+  useEffect(() => {
+    if (!bagReady) return;
+    if (initialIds.length > 0) {
+      const sanitized = initialIds.slice(0, max);
+      replaceAll(sanitized.map((id) => {
+        const school = schools.find((s) => s.id === id);
+        return { id, name: school?.name || id };
+      }));
+      setSelectedIds(sanitized);
+    } else if (bagIds.length > 0) {
+      setSelectedIds(bagIds);
+    }
+    // 仅在初始化时跑一次；后续以下面的 sync effect 维护
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bagReady]);
+
+  // 比较篮变更（如 dock 内移除、跨标签同步）→ 联动选中态
+  useEffect(() => {
+    if (!bagReady) return;
+    if (initialIds.length > 0) return; // URL 已经显式声明顺序时不打架
+    setSelectedIds(bagIds);
+  }, [bagIds, bagReady, initialIds.length]);
 
   // 获取选中的学校对象
   const selectedSchools = useMemo(() => {
@@ -66,13 +97,18 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
 
   // 添加学校
   const addSchool = (id) => {
-    if (selectedIds.length >= 3) {
-      alert('最多只能对比 3 所学校');
+    if (selectedIds.length >= max) {
+      alert(`最多只能对比 ${max} 所学校`);
       return;
     }
     if (!selectedIds.includes(id)) {
+      const school = schools.find((s) => s.id === id);
       const newIds = [...selectedIds, id];
       setSelectedIds(newIds);
+      replaceAll(newIds.map((nid) => {
+        const s = schools.find((item) => item.id === nid);
+        return { id: nid, name: s?.name || nid };
+      }));
       router.push(`/schools/compare?schools=${newIds.join(',')}`);
       setSearchQuery('');
     }
@@ -82,12 +118,14 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
   const removeSchool = (id) => {
     const newIds = selectedIds.filter(sid => sid !== id);
     setSelectedIds(newIds);
-    router.push(`/schools/compare?schools=${newIds.join(',')}`);
+    remove(id);
+    router.push(newIds.length ? `/schools/compare?schools=${newIds.join(',')}` : '/schools/compare');
   };
 
   // 清空
   const clearAll = () => {
     setSelectedIds([]);
+    clearBag();
     router.push('/schools/compare');
   };
 
@@ -104,7 +142,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
             <div className="schools-compare-datadesk-intro">
               <p className="overview-label">School Comparison</p>
               <h1>学校多维对比</h1>
-              <p className="schools-compare-datadesk-subtitle">最多选择 3 所学校进行全方位参数对比，包括梯队、集团、地址、联系方式与特色标签。</p>
+              <p className="schools-compare-datadesk-subtitle">最多选择 {max} 所学校进行全方位参数对比，包括梯队、集团、地址、联系方式与特色标签。</p>
               <div className="schools-compare-datadesk-search-row">
                 <label className="schools-compare-datadesk-searchfield" htmlFor="compare-school-search">
                   <span className="visually-hidden">搜索学校添加对比</span>
@@ -121,7 +159,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
                 </label>
                 <div className="schools-compare-datadesk-status">
                   <span>已选</span>
-                  <strong>{selectedIds.length}/3</strong>
+                  <strong>{selectedIds.length}/{max}</strong>
                 </div>
               </div>
               {suggestions.length > 0 && (
@@ -160,8 +198,8 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
             <div className="schools-compare-datadesk-summary-grid">
               <article className="schools-compare-datadesk-summary-card">
                 <span>对比容量</span>
-                <strong>最多 3 所</strong>
-                <p>同时对比 3 所学校的核心参数</p>
+                <strong>最多 {max} 所</strong>
+                <p>同时对比 {max} 所学校的核心参数</p>
               </article>
               <article className="schools-compare-datadesk-summary-card">
                 <span>数据库总量</span>

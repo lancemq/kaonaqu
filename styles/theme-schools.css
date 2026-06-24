@@ -43,7 +43,7 @@ body[data-page="schools"] .district-datadesk-hero {
     border-color: var(--schools-tone-border);
     background:
         radial-gradient(circle at top right, var(--schools-tone-accent-soft), transparent 34%),
-        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(239, 231, 214, 0.98));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 246, 250, 0.98));
     box-shadow: 0 20px 40px var(--schools-tone-shadow);
 }
 
@@ -53,7 +53,7 @@ body[data-page="schools"] .schools-datadesk-searchfield {
     min-height: 64px;
     border: 1px solid rgba(68, 66, 48, 0.12);
     border-radius: 999px;
-    background: rgba(255, 250, 243, 0.98);
+    background: rgba(255, 255, 255, 0.98);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 10px 24px rgba(24, 44, 37, 0.04);
     transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
@@ -512,7 +512,7 @@ body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-
     margin: 2px 0 0;
     padding: 14px 18px 14px 2.4rem;
     border: 1px solid rgba(58, 58, 43, 0.08);
-    background: linear-gradient(180deg, rgba(251, 247, 239, 0.88), rgba(243, 236, 223, 0.72));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(244, 246, 250, 0.72));
 }
 
 body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-list li {
@@ -1041,7 +1041,7 @@ body[data-page="schools"] .schools-datadesk-district {
     padding: 12px 14px;
     border-radius: 12px;
     border: 1px solid var(--schools-tone-border);
-    background: linear-gradient(180deg, rgba(255, 250, 243, 0.6), rgba(240, 232, 217, 0.4));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(244, 246, 250, 0.4));
     color: inherit;
     text-decoration: none;
     transition: all 180ms ease;
@@ -1050,7 +1050,7 @@ body[data-page="schools"] .schools-datadesk-district {
 body[data-page="schools"] .schools-datadesk-entry:hover,
 body[data-page="schools"] .schools-datadesk-district:hover {
     border-color: rgba(111, 125, 59, 0.3);
-    background: linear-gradient(180deg, rgba(255, 250, 243, 0.9), rgba(240, 232, 217, 0.7));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(244, 246, 250, 0.7));
     box-shadow: 0 4px 12px rgba(32, 24, 17, 0.08);
     transform: translateX(3px);
 }
@@ -1085,7 +1085,7 @@ body[data-page="schools"] .schools-datadesk-entry-feature {
     border-radius: 14px;
     background:
         radial-gradient(circle at top right, var(--schools-tone-accent-soft), transparent 36%),
-        linear-gradient(180deg, rgba(251, 247, 238, 0.95), rgba(236, 228, 212, 0.85));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(244, 246, 250, 0.85));
     box-shadow: 0 2px 8px rgba(32, 24, 17, 0.04);
 }
 
@@ -1093,7 +1093,7 @@ body[data-page="schools"] .schools-datadesk-entry-feature:hover {
     border-color: rgba(111, 125, 59, 0.35);
     background:
         radial-gradient(circle at top right, rgba(111, 125, 59, 0.18), transparent 36%),
-        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(240, 232, 217, 0.92));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 246, 250, 0.92));
     box-shadow: 0 6px 16px rgba(32, 24, 17, 0.1);
 }
 
@@ -1386,7 +1386,7 @@ body[data-page="schools"] .schools-datadesk-entry-feature strong {
     height: 100%;
     min-height: 300px;
     object-fit: cover;
-    background: #ece7dc;
+    background: var(--site-surface-soft);
 }
 
 .school-rich-image-card figcaption {
@@ -1535,7 +1535,7 @@ body[data-page="schools"] .schools-datadesk-entry-feature strong {
     padding: 14px;
     border-radius: var(--site-radius-sm);
     border: 1px solid var(--site-line);
-    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 246, 250, 0.95));
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -1586,7 +1586,7 @@ body[data-page="schools"] .schools-datadesk-entry-feature strong {
 .school-rich-people-list article {
     border: 1px solid var(--site-line);
     border-radius: var(--site-radius-sm);
-    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 246, 250, 0.95));
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -1689,7 +1689,7 @@ body[data-page="schools"] .schools-datadesk-entry-feature strong {
     overflow: hidden;
     border: 1px solid var(--site-line);
     border-radius: var(--site-radius-sm);
-    background: linear-gradient(180deg, rgba(252, 249, 243, 0.98), rgba(241, 233, 220, 0.95));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 246, 250, 0.95));
 }
 
 .school-rich-score-row {
@@ -1803,7 +1803,7 @@ body[data-page="schools"] .schools-datadesk-entry-feature strong {
 
 .school-rich-competition-strength {
     font-size: 0.85rem;
-    color: #d2691e;
+    color: var(--channel-accent);
     letter-spacing: 0.05em;
 }
 
@@ -2605,7 +2605,7 @@ body[data-page="schools"] .schools-datadesk-entry-feature strong {
     padding: 16px;
     border: 1px solid rgba(58, 58, 43, 0.08);
     border-radius: 8px;
-    background: linear-gradient(180deg, rgba(251, 247, 239, 0.92), rgba(238, 230, 214, 0.9));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 246, 250, 0.9));
     color: inherit;
     text-decoration: none;
     transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
@@ -3012,7 +3012,7 @@ body[data-page="schools"] .schools-compare-datadesk-hero {
     backdrop-filter: blur(18px);
     background:
         radial-gradient(circle at top right, var(--schools-tone-accent-soft), transparent 34%),
-        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(239, 231, 214, 0.98));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 246, 250, 0.98));
     box-shadow: 0 20px 40px var(--schools-tone-shadow);
 }
 
@@ -3048,7 +3048,7 @@ body[data-page="schools"] .schools-compare-datadesk-searchfield {
     padding: 0 20px;
     border: 1px solid rgba(68, 66, 48, 0.12);
     border-radius: 999px;
-    background: rgba(255, 250, 243, 0.98);
+    background: rgba(255, 255, 255, 0.98);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94), 0 10px 24px rgba(24, 44, 37, 0.04);
     transition: box-shadow 180ms ease, border-color 180ms ease;
 }
@@ -3106,7 +3106,7 @@ body[data-page="schools"] .schools-compare-suggestions {
     margin: 12px 0 0;
     padding: 0;
     list-style: none;
-    background: rgba(255, 250, 243, 0.98);
+    background: rgba(255, 255, 255, 0.98);
     border: 1px solid var(--schools-tone-border);
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(32, 24, 17, 0.08);
@@ -3129,7 +3129,7 @@ body[data-page="schools"] .schools-compare-suggestions li:last-child {
 }
 
 body[data-page="schools"] .schools-compare-suggestions li:hover {
-    background: rgba(240, 232, 217, 0.6);
+    background: rgba(255, 255, 255, 0.6);
 }
 
 body[data-page="schools"] .schools-compare-suggestions li strong {
@@ -3272,7 +3272,7 @@ body[data-page="schools"] .schools-compare-datadesk-card:hover {
 body[data-page="schools"] .schools-compare-datadesk-cardhead {
     padding: 20px;
     border-bottom: 1px solid var(--schools-tone-border);
-    background: linear-gradient(180deg, rgba(251, 247, 238, 0.6), rgba(236, 228, 212, 0.4));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(244, 246, 250, 0.4));
 }
 
 body[data-page="schools"] .schools-compare-datadesk-cardhead-main {
@@ -3498,7 +3498,7 @@ body[data-page="schools"] .schools-compare-tag-empty {
 body[data-page="schools"] .schools-compare-datadesk-cardfoot {
     padding: 16px 20px;
     border-top: 1px solid var(--schools-tone-border);
-    background: linear-gradient(180deg, rgba(236, 228, 212, 0.4), rgba(236, 228, 212, 0.6));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(244, 246, 250, 0.6));
 }
 
 body[data-page="schools"] .schools-compare-datadesk-button {
@@ -3529,7 +3529,7 @@ body[data-page="schools"] .schools-compare-datadesk-button-secondary {
 }
 
 body[data-page="schools"] .schools-compare-datadesk-button-secondary:hover {
-    background: rgba(240, 232, 217, 0.8);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 /* 空状态 */
@@ -3601,7 +3601,7 @@ body[data-page="schools"] .schools-visualization-hero {
     backdrop-filter: blur(18px);
     background:
         radial-gradient(circle at top right, var(--schools-tone-accent-soft), transparent 34%),
-        linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(239, 231, 214, 0.98));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 246, 250, 0.98));
     box-shadow: 0 20px 40px var(--schools-tone-shadow);
 }
 
@@ -3765,7 +3765,7 @@ body[data-page="schools"] .schools-visualization-chart-wrapper {
 
 body[data-page="schools"] .schools-visualization-chart-stats {
     padding: 12px 16px;
-    background: linear-gradient(180deg, rgba(244, 239, 225, 0.6), rgba(232, 224, 204, 0.4));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(244, 246, 250, 0.4));
     border-bottom: 1px solid var(--schools-tone-border);
     display: flex;
     gap: 20px;
@@ -3780,7 +3780,7 @@ body[data-page="schools"] .schools-visualization-chart-stats strong {
 
 body[data-page="schools"] .schools-visualization-chart-hint {
     padding: 12px 16px;
-    background: linear-gradient(180deg, rgba(232, 224, 204, 0.4), rgba(244, 239, 225, 0.6));
+    background: linear-gradient(180deg, rgba(244, 246, 250, 0.4), rgba(244, 246, 250, 0.6));
     border-top: 1px solid var(--schools-tone-border);
     text-align: center;
     font-size: 0.84rem;
@@ -4225,7 +4225,7 @@ body[data-page="schools"] .highlight-card .text-link {
     padding: 0 10px;
     border: 1px solid var(--site-line) !important;
     border-radius: var(--site-radius-sm);
-    background: rgba(255, 253, 248, 0.72);
+    background: rgba(255, 255, 255, 0.72);
     color: var(--site-muted-strong) !important;
     font-weight: 800;
     line-height: 1.35;
@@ -4308,7 +4308,7 @@ body[data-page="schools"] .quota-type {
     padding: 4px 8px;
     border: 1px solid var(--site-line);
     border-radius: 999px;
-    background: rgba(255, 253, 248, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     color: var(--site-muted) !important;
 }
 
@@ -4333,4 +4333,250 @@ body[data-page="schools"] .school-rich-brief {
         radial-gradient(circle at top right, var(--channel-hero-glow), transparent 32%),
         linear-gradient(180deg, var(--site-surface-strong), var(--site-surface)) !important;
     box-shadow: var(--site-shadow-sm) !important;
+}
+
+/* ===== 高级筛选抽屉 ===== */
+.schools-datadesk-advanced-toggle {
+    margin-top: 14px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px dashed var(--site-line);
+    border-radius: var(--site-radius-sm);
+    background: transparent;
+    color: var(--site-text);
+    font: 500 13px/1.4 var(--font-display, inherit);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+.schools-datadesk-advanced-toggle:hover,
+.schools-datadesk-advanced-toggle-open {
+    border-style: solid;
+    border-color: var(--site-line-strong);
+    background: var(--site-surface-strong);
+}
+.schools-datadesk-advanced-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 7px;
+    border-radius: 999px;
+    background: var(--site-line);
+    color: var(--site-muted);
+    font: 600 11px/1 var(--font-mono, monospace);
+}
+.schools-datadesk-advanced-badge-active {
+    background: var(--site-accent);
+    color: #fff;
+}
+.schools-datadesk-advanced {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 14px;
+}
+
+/* ===== 列表卡片信息齐全角标 ===== */
+.schools-datadesk-cardquality {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font: 600 11px/1.4 var(--font-mono, monospace);
+    letter-spacing: 0.02em;
+}
+.schools-datadesk-cardquality-strong {
+    background: rgba(102, 116, 58, 0.16);
+    color: #4a541f;
+}
+.schools-datadesk-cardquality-muted {
+    background: var(--site-line);
+    color: var(--site-muted);
+}
+
+/* ===== 详情页占位降级 ===== */
+.school-datadesk-detail-missing {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font: 400 13px/1.5 var(--font-display, inherit);
+    color: var(--site-muted);
+}
+.school-datadesk-detail-missing li::before {
+    content: "·";
+    margin-right: 6px;
+    color: var(--site-muted);
+}
+.map-link-button-disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--site-line);
+    color: var(--site-muted);
+    border-color: var(--site-line);
+}
+
+/* ===== 比较篮悬浮 dock ===== */
+.compare-bag-dock {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 60;
+    width: 280px;
+    max-width: calc(100vw - 32px);
+    background: var(--site-surface-strong, #fff);
+    border: 1px solid var(--site-line-strong, rgba(0,0,0,0.18));
+    border-radius: var(--site-radius-md, 14px);
+    box-shadow: var(--site-shadow-md, 0 18px 42px rgba(0,0,0,0.12));
+    padding: 12px 14px;
+    color: var(--site-text);
+    font: 400 13px/1.5 var(--font-display, inherit);
+}
+.compare-bag-dock-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.compare-bag-dock-title {
+    font: 700 13px/1.2 var(--font-display, inherit);
+    letter-spacing: 0.04em;
+}
+.compare-bag-dock-count {
+    font: 600 12px/1 var(--font-mono, monospace);
+    color: var(--site-muted);
+}
+.compare-bag-dock-list {
+    list-style: none;
+    margin: 0 0 10px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+.compare-bag-dock-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    background: var(--site-surface-soft, rgba(0,0,0,0.03));
+}
+.compare-bag-dock-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    font-size: 12.5px;
+}
+.compare-bag-dock-remove {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--site-muted);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+.compare-bag-dock-remove:hover {
+    color: var(--site-accent);
+    background: rgba(217, 93, 31, 0.1);
+}
+.compare-bag-dock-actions {
+    display: flex;
+    gap: 8px;
+}
+.compare-bag-dock-primary {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: var(--site-radius-sm, 8px);
+    background: var(--site-accent, #d95d1f);
+    color: #fff;
+    text-decoration: none;
+    font: 600 12px/1.2 var(--font-display, inherit);
+}
+.compare-bag-dock-primary:hover {
+    background: var(--site-accent-dark, #8f3515);
+}
+.compare-bag-dock-secondary {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--site-line);
+    color: var(--site-muted);
+    border-radius: var(--site-radius-sm, 8px);
+    padding: 8px 12px;
+    cursor: pointer;
+    font: 500 12px/1.2 var(--font-display, inherit);
+}
+.compare-bag-dock-secondary:hover {
+    border-color: var(--site-line-strong);
+    color: var(--site-text);
+}
+
+/* ===== 卡片上的"加入比较"勾选 ===== */
+.schools-datadesk-card-wrapper {
+    position: relative;
+}
+.compare-bag-checkbox {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px 5px 8px;
+    border: 1px solid var(--site-line);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+    border-radius: 999px;
+    color: var(--site-muted);
+    font: 600 11.5px/1.2 var(--font-display, inherit);
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.compare-bag-checkbox:hover {
+    border-color: var(--site-accent);
+    color: var(--site-accent);
+}
+.compare-bag-checkbox-checked {
+    border-color: var(--site-accent);
+    background: var(--site-accent);
+    color: #fff;
+}
+.compare-bag-checkbox-checked:hover {
+    background: var(--site-accent-dark);
+    border-color: var(--site-accent-dark);
+    color: #fff;
+}
+.compare-bag-checkbox-disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+@media (max-width: 720px) {
+    .compare-bag-dock {
+        right: 12px;
+        bottom: 12px;
+        width: calc(100vw - 24px);
+    }
+    .compare-bag-checkbox-text {
+        display: none;
+    }
 }

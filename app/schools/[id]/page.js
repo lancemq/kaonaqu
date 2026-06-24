@@ -7,6 +7,7 @@ import SiteShell from '../../../components/site-shell';
 import { getSchoolChannelJourney } from '../../../lib/cross-channel-journeys.mjs';
 import { readSchoolMarkdownFile } from '../../../lib/school-content-files.mjs';
 import { getSchoolRichProfile } from '../../../lib/school-rich-profiles';
+import { getSchoolDataQuality } from '../../../lib/school-data-quality';
 import {
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
@@ -308,34 +309,39 @@ export default async function SchoolDetailPage({ params }) {
     ['学段', getSchoolStage(school)],
     ['更新时间', formatSchoolUpdate(school.updatedAt)]
   ].filter(([, value]) => String(value || '').trim());
+  const dataQuality = getSchoolDataQuality(school);
   const serviceFacts = [
-    ['地址', school.address],
-    ['电话', school.phone],
-    ['官网', school.website]
-  ].filter(([, value]) => String(value || '').trim());
+    dataQuality.hasRealAddress ? ['地址', school.address] : null,
+    dataQuality.hasRealPhone ? ['电话', school.phone] : null,
+    dataQuality.hasRealWebsite ? ['官网', school.website] : null
+  ].filter(Boolean);
+  const missingServiceFacts = [
+    !dataQuality.hasRealAddress ? '地址暂未收录' : null,
+    !dataQuality.hasRealPhone ? '电话暂未收录' : null,
+    !dataQuality.hasRealWebsite ? '官网暂未收录' : null
+  ].filter(Boolean);
 
-  // JSON-LD for School Schema
+  // JSON-LD for School Schema —— 占位字段不输出，避免给搜索引擎"死链"。
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "School",
-    "name": school.name,
-    "url": `https://kaonaqu.xyz/schools/${encodeURIComponent(school.id)}`,
-    "description": schoolSummary,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": school.districtName,
-      "streetAddress": school.address || '待补充'
+    '@context': 'https://schema.org',
+    '@type': 'School',
+    'name': school.name,
+    'url': `https://kaonaqu.xyz/schools/${encodeURIComponent(school.id)}`,
+    'description': schoolSummary,
+    'address': {
+      '@type': 'PostalAddress',
+      'addressLocality': school.districtName,
+      ...(dataQuality.hasRealAddress ? { 'streetAddress': school.address } : {})
     },
-    "telephone": school.phone || '',
-    "url": school.website || '',
-    "areaServed": school.districtName,
-    "sameAs": school.website ? [school.website] : []
+    ...(dataQuality.hasRealPhone ? { 'telephone': school.phone } : {}),
+    'areaServed': school.districtName,
+    ...(dataQuality.hasRealWebsite ? { 'sameAs': [school.website] } : {})
   };
 
-  // 构建地图链接
-  const mapUrl = school.address
+  // 构建地图链接（仅当有真实地址时启用）
+  const mapUrl = dataQuality.hasRealAddress
     ? `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.address)}`
-    : `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + getSchoolDistrictName(school))}`;
+    : null;
 
   return (
     <>
@@ -673,10 +679,23 @@ export default async function SchoolDetailPage({ params }) {
                 ))}
               </dl>
             ) : null}
+            {missingServiceFacts.length ? (
+              <ul className="school-datadesk-detail-missing">
+                {missingServiceFacts.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            ) : null}
             <div className="school-datadesk-detail-map-link">
-              <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="map-link-button">
-                打开地图
-              </a>
+              {mapUrl ? (
+                <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="map-link-button">
+                  打开地图
+                </a>
+              ) : (
+                <span className="map-link-button map-link-button-disabled" aria-disabled="true">
+                  地址暂未收录
+                </span>
+              )}
             </div>
           </section>
 

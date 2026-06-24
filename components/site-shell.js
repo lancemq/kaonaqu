@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import SiteBreadcrumbs from './site-breadcrumbs';
+import CompareBagDock from './compare-bag';
 
 const SITE_URL = 'https://kaonaqu.xyz';
 
@@ -65,6 +66,7 @@ export default function SiteShell({ children, hideKnowledgeNav = false, breadcru
       </header>
       <SiteBreadcrumbs items={breadcrumbItems} />
       {children}
+      <CompareBagDock />
     </div>
   );
 }
