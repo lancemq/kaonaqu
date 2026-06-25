@@ -73,8 +73,8 @@ export default async function SchoolCategoriesPage() {
             <div className="district-datadesk-hero-main">
               <p className="overview-label">School Categories</p>
               <h1>上海学校分类大全</h1>
-              <p className="district-datadesk-subtitle">按学校层级和办学性质分类浏览上海初中、高中。从四校八大到市重点、区重点、民办、国际课程，逐层定位适合的学校。</p>
-              <p className="district-datadesk-description">这一页把 {formatNumber(schools.length)} 所学校按 {totalCategories} 个核心分类重组，先看分类导航，再进入具体分类查看学校列表与培养方向。</p>
+              <p className="district-datadesk-subtitle">按层级和办学性质分类浏览上海初高中：四校八大、市重点、区重点、民办、国际课程。</p>
+              <p className="district-datadesk-description">{formatNumber(schools.length)} 所学校按 {totalCategories} 个核心分类重组。</p>
               <div className="district-datadesk-inline-meta">
                 <span>层级分类</span>
                 <span>覆盖 16 区</span>

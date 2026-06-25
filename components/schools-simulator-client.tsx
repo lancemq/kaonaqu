@@ -88,12 +88,12 @@ export default function SchoolsSimulatorClient() {
         <div className="schools-simulator-hero-copy">
           <span className="overview-label">Volunteer Simulator</span>
           <h1>初升高志愿模拟</h1>
-          <p>先选当前初中，再按区域和目标层级缩小范围，生成一份可继续比较的高中候选清单。</p>
+          <p>选当前初中，按区域和目标层级生成高中候选清单。</p>
         </div>
         <div className="schools-simulator-hero-panel">
           <span>当前数据</span>
           <strong>2026 年 4 月</strong>
-          <p>结果用于择校前筛选，最终招生规则以官方当年发布为准。</p>
+          <p>择校前筛选参考，招生规则以官方当年发布为准。</p>
         </div>
       </section>
 
@@ -140,7 +140,7 @@ export default function SchoolsSimulatorClient() {
                 {selectedJunior.group ? <p>{selectedJunior.group}</p> : null}
               </div>
             ) : (
-              <p className="schools-datadesk-panel-copy">输入学校名或区域后，从下拉框选择当前就读初中。</p>
+              <p className="schools-datadesk-panel-copy">输入学校名或区域，选择当前就读初中。</p>
             )}
           </section>
 
@@ -206,14 +206,14 @@ export default function SchoolsSimulatorClient() {
           {!selectedJuniorId ? (
             <div className="schools-simulator-empty">
               <strong>先选择当前初中</strong>
-              <p>模拟结果会按匹配度排序，并按推荐来源分组。</p>
+              <p>结果按匹配度排序并按来源分组。</p>
             </div>
           ) : null}
 
           {selectedJuniorId && recommendations.length === 0 ? (
             <div className="schools-simulator-empty">
               <strong>暂无匹配学校</strong>
-              <p>可以放宽区域或层级条件，再重新查看候选清单。</p>
+              <p>放宽区域或层级条件后重试。</p>
             </div>
           ) : null}
 

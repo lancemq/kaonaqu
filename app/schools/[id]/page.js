@@ -26,7 +26,7 @@ const { loadDataStore } = require('../../../shared/data-store');
 function formatSchoolUpdate(value) {
   const text = String(value || '').trim();
   if (!text) {
-    return '时间待补充';
+    return '—';
   }
   const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
   if (!match) {
@@ -297,7 +297,7 @@ export default async function SchoolDetailPage({ params }) {
   const decisionTags = Array.isArray(school.decisionTags) ? school.decisionTags.slice(0, 6) : [];
   const profileSignals = school.profileSignals || {};
 
-  const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '学校属性待补充';
+  const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '—';
   const schoolTemperament = trainingDirections[0] || '综合型';
   const schoolHeat = tags.length >= 4 ? '高关注' : '持续关注';
   const summaryPoints = [highlights[0], highlights[1], trainingDirections[0] || features[0]].filter(Boolean).slice(0, 3);
@@ -375,20 +375,20 @@ export default async function SchoolDetailPage({ params }) {
                   {quickTags.length ? quickTags.map((item) => (
                     <span key={item} className="school-datadesk-detail-chip">{item}</span>
                   )) : (
-                    <span className="school-datadesk-detail-chip">信息持续补充中</span>
+                    <span className="school-datadesk-detail-chip">—</span>
                   )}
                 </div>
               </div>
             <aside className="school-datadesk-detail-sidehead">
               <article className="school-datadesk-detail-sidecard school-datadesk-detail-sidecard-strong">
                 <span>学校定位</span>
-                <strong>{highlights[0] || '适合先用课程、招生与培养方向来判断学校节奏。'}</strong>
-                <p>先确认招生口径，再看课程方向、校园节奏和家庭适配度。</p>
+                <strong>{highlights[0] || '结合课程、招生与培养方向判断学校节奏。'}</strong>
+                <p>招生口径、课程方向、校园节奏与家庭适配度。</p>
               </article>
               <article className="school-datadesk-detail-sidecard">
                 <span>最近更新时间</span>
                 <strong>{formatSchoolUpdate(school.updatedAt)}</strong>
-                <p>详情页与数据库索引统一按本地收录时间展示。</p>
+                <p>本地收录时间。</p>
               </article>
             </aside>
           </div>
@@ -407,8 +407,8 @@ export default async function SchoolDetailPage({ params }) {
             <p className="overview-label">核心资料速览</p>
             <h2>{school.name}</h2>
             <p>{richProfile.generated
-              ? '该校 rich profile 由系统按 tier 模板生成；硬性指标若无公开来源会以正式占位提示，请以学校官方发布为准。'
-              : '该校 rich profile 为人工整理；分数线为录取参考，不同年份、区、批次和计划类型口径不同，填报前仍要回到当年官方发布核对。'}</p>
+              ? '按 tier 模板生成，硬指标无公开来源时以占位提示，以学校官方发布为准。'
+              : '人工整理；分数线为录取参考，以当年官方发布为准。'}</p>
             <dl className="school-rich-metric-grid">
               <div>
                 <dt>办学属性</dt>
@@ -527,7 +527,6 @@ export default async function SchoolDetailPage({ params }) {
                       <section className="school-rich-subblock">
                         <div className="school-rich-subhead">
                           <p className="overview-label">五大学科奥赛</p>
-                          <span>近 5 年公开</span>
                         </div>
                         <div className="school-rich-competition-list">
                           {richProfile.competitions.map((item) => (
@@ -547,7 +546,6 @@ export default async function SchoolDetailPage({ params }) {
                       <section className="school-rich-subblock">
                         <div className="school-rich-subhead">
                           <p className="overview-label">特色班级与项目</p>
-                          <span>公开培养路径</span>
                         </div>
                         <div className="school-rich-classes-grid">
                           {richProfile.specialtyClasses.map((item) => (
@@ -585,7 +583,6 @@ export default async function SchoolDetailPage({ params }) {
                   <section className="school-rich-subblock">
                     <div className="school-rich-subhead">
                       <p className="overview-label">历年入学分数线</p>
-                      <span>录取参考</span>
                     </div>
                     {richProfile.scoreLines ? (
                       <>
@@ -613,7 +610,6 @@ export default async function SchoolDetailPage({ params }) {
                   <section className="school-rich-subblock">
                     <div className="school-rich-subhead">
                       <p className="overview-label">毕业生去向</p>
-                      <span>升学结构</span>
                     </div>
                     {richProfile.graduateDestinations ? (
                       <div className="school-rich-graduates-list">
@@ -644,7 +640,6 @@ export default async function SchoolDetailPage({ params }) {
                   <section className="school-rich-subblock">
                     <div className="school-rich-subhead">
                       <p className="overview-label">相关名人与校友线索</p>
-                      <span>公开资料口径</span>
                     </div>
                     <div className="school-rich-people-list">
                       {richProfile.notablePeople.map((item) => (
@@ -658,7 +653,6 @@ export default async function SchoolDetailPage({ params }) {
                   <section className="school-rich-subblock">
                     <div className="school-rich-subhead">
                       <p className="overview-label">资料入口</p>
-                      <span>官方/公开来源</span>
                     </div>
                     <div className="school-rich-source-list">
                       {richProfile.sources.map((item) => (
@@ -689,7 +683,6 @@ export default async function SchoolDetailPage({ params }) {
           <section className="school-datadesk-detail-panel school-datadesk-detail-panel-dark">
             <div className="school-datadesk-detail-sectionhead">
               <p className="overview-label">学校速览</p>
-              <span>核心口径</span>
             </div>
             <dl className="school-datadesk-detail-facts">
               {profileFacts.map(([label, value]) => (
@@ -705,7 +698,6 @@ export default async function SchoolDetailPage({ params }) {
             <section className="school-datadesk-detail-panel">
               <div className="school-datadesk-detail-sectionhead">
                 <p className="overview-label">教育集团</p>
-                <span>集团化办学</span>
               </div>
               <div className="group-badge-container">
                 <div className="group-badge-text">
@@ -720,7 +712,6 @@ export default async function SchoolDetailPage({ params }) {
             <section className="school-datadesk-detail-panel">
               <div className="school-datadesk-detail-sectionhead">
                 <p className="overview-label">名额分配去向</p>
-                <span>升学出口</span>
               </div>
               <div className="quota-list">
                 {getAdmissionRoutes(school).slice(0, 5).map((route) => (
@@ -745,10 +736,9 @@ export default async function SchoolDetailPage({ params }) {
           <section className="school-datadesk-detail-panel">
             <div className="school-datadesk-detail-sectionhead">
               <p className="overview-label">培养与检索</p>
-              <span>数据库摘要</span>
             </div>
             <p className="school-datadesk-detail-sidecopy">培养方向：{trainingDirections.slice(0, 2).join('、') || '综合培养'}</p>
-            <p className="school-datadesk-detail-sidecopy">核心关键词：{[...features.slice(0, 2), ...tags.slice(0, 2)].filter(Boolean).join('、') || '课程深度、校园节奏、区域关注'}</p>
+            <p className="school-datadesk-detail-sidecopy">核心关键词：{[...features.slice(0, 2), ...tags.slice(0, 2)].filter(Boolean).join('、') || '—'}</p>
             {profileSignals.districtContext ? (
               <p className="school-datadesk-detail-sidecopy">区域判断：{profileSignals.districtContext}</p>
             ) : null}
@@ -804,7 +794,7 @@ export default async function SchoolDetailPage({ params }) {
                 <span>{getSchoolStage(peer)} / {getSchoolOwnershipLabel(peer) || '学校信息'}</span>
               </Link>
             )) : (
-              <p className="school-datadesk-detail-empty">相关学校信息持续补充中，可通过上方路径进入区级专题继续查看。</p>
+              <p className="school-datadesk-detail-empty">暂无相关学校。</p>
             )}
           </section>
         </aside>

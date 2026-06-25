@@ -29,7 +29,7 @@ const tierColors = {
 function formatSchoolUpdate(value) {
   const text = String(value || '').trim();
   if (!text) {
-    return '时间待补充';
+    return '—';
   }
   const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
   if (match) {
@@ -142,7 +142,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
             <div className="schools-compare-datadesk-intro">
               <p className="overview-label">School Comparison</p>
               <h1>学校多维对比</h1>
-              <p className="schools-compare-datadesk-subtitle">最多选择 {max} 所学校进行全方位参数对比，包括梯队、集团、地址、联系方式与特色标签。</p>
+              <p className="schools-compare-datadesk-subtitle">最多选择 {max} 所学校，对比梯队、集团、地址、联系方式与特色标签。</p>
               <div className="schools-compare-datadesk-search-row">
                 <label className="schools-compare-datadesk-searchfield" htmlFor="compare-school-search">
                   <span className="visually-hidden">搜索学校添加对比</span>
@@ -190,7 +190,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
                     <button className="schools-compare-datadesk-button schools-compare-datadesk-button-secondary" type="button" onClick={clearAll}>清空全部</button>
                   </>
                 ) : (
-                  <p className="schools-compare-datadesk-empty">暂未选择学校，请在上方搜索添加</p>
+                  <p className="schools-compare-datadesk-empty">暂未选择学校，在上方搜索添加</p>
                 )}
               </div>
             </div>
@@ -274,17 +274,17 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
                       {school.address ? (
                         <p><span className="schools-compare-contact-label">地址</span> {school.address}</p>
                       ) : (
-                        <p className="schools-compare-contact-empty">地址暂未录入</p>
+                        <p className="schools-compare-contact-empty">地址 —</p>
                       )}
                       {school.phone ? (
                         <p><span className="schools-compare-contact-label">电话</span> {school.phone}</p>
                       ) : (
-                        <p className="schools-compare-contact-empty">电话暂未录入</p>
+                        <p className="schools-compare-contact-empty">电话 —</p>
                       )}
                       {school.website ? (
                         <p><span className="schools-compare-contact-label">官网</span> <a href={school.website} target="_blank" rel="noopener noreferrer" className="text-link">{school.website}</a></p>
                       ) : (
-                        <p className="schools-compare-contact-empty">官网暂未录入</p>
+                        <p className="schools-compare-contact-empty">官网 —</p>
                       )}
                     </div>
                   </section>
@@ -298,7 +298,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
                         </span>
                       ))}
                       {(school.features?.length || school.tags?.length || 0) === 0 && (
-                        <span className="schools-compare-tag-empty">标签待补充</span>
+                        <span className="schools-compare-tag-empty">—</span>
                       )}
                     </div>
                   </section>

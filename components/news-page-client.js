@@ -42,7 +42,7 @@ function clipText(text, maxLength) {
 function getPolicySummaryText(policy) {
   const summary = sanitizePolicyText(policy.summary, policy.title);
   const content = sanitizePolicyText(policy.content, policy.title);
-  return clipText(summary || content || '暂无摘要', 120);
+  return clipText(summary || content || '—', 120);
 }
 
 function getCurrentYear(news, policies) {
@@ -152,15 +152,15 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
               <div className="news-prototype-list-head news-prototype-list-head-secondary">
                 <div className="news-prototype-list-title">
                   <p className="overview-label">本周重点</p>
-                  <h2>这几条消息，最值得家长先看</h2>
+                  <h2>本周值得先看</h2>
                 </div>
               </div>
               <div className={`news-prototype-focus-grid news-prototype-focus-grid-count-${Math.min(weeklyFocus.length, 3)}`}>
                 {weeklyFocus.map((item, index) => (
                   <Link key={item.id} className={`news-prototype-focus-card${index === 0 ? ' news-prototype-focus-card-lead' : ''}`} href={`/news/${item.id}`}>
-                    <p className="news-prototype-item-kicker">{getNewsCategoryLabel(item)} / {item.publishedAt || '暂无日期'}</p>
+                    <p className="news-prototype-item-kicker">{getNewsCategoryLabel(item)} / {item.publishedAt || '—'}</p>
                     <h3>{item.title}</h3>
-                    <p>{item.summary || '暂无摘要'}</p>
+                    <p>{item.summary || '—'}</p>
                     <span className="news-prototype-focus-meta">{getAudienceLabel(item)}</span>
                   </Link>
                 ))}
@@ -170,8 +170,8 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
 
           <section className="panel news-prototype-list-panel">
             <div className="news-prototype-filter-meta">
-              <p className="overview-label">按你现在最关心的内容看</p>
-              <span>政策、指南、考试、招生和学校动态，一键切换</span>
+              <p className="overview-label">按内容分类</p>
+              <span>政策 / 指南 / 考试 / 招生 / 学校动态</span>
             </div>
             <div className="news-prototype-filter-row" aria-label="新闻分类筛选">
               {[
@@ -230,7 +230,7 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
                             {showAdmissionSchoolSignal ? (
                               <p className="news-prototype-item-signal">涉及学校 / {linkedSchoolName}</p>
                             ) : null}
-                            <p className="news-prototype-item-summary">{item.summary || '暂无摘要'}</p>
+                            <p className="news-prototype-item-summary">{item.summary || '—'}</p>
                             <p className="news-prototype-item-copy">{getNewsCardValueLine(item)}</p>
                             <span className="news-prototype-item-action">{getNewsCardActionLabel(item)}</span>
                           </>
@@ -243,9 +243,9 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
                 </>
               ) : (
                 <article className="news-prototype-item news-prototype-item-empty">
-                  <p className="news-prototype-item-kicker">这一栏暂时还没有新消息</p>
-                  <h3>换个分类看看，可能你关心的内容正在别处更新</h3>
-                  <p>可以切换到“全部”“政策文件”“升学指南”“考试新闻”“招生新闻”或“学校动态”，先把最近的重要信息补齐。</p>
+                  <p className="news-prototype-item-kicker">暂无消息</p>
+                  <h3>换个分类看看</h3>
+                  <p>切换到“全部”或其他分类查看。</p>
                 </article>
               )}
             </div>
@@ -306,16 +306,16 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
           <Link className="news-prototype-side-link-card" href="/news/zhongkao-special">
             <section className="news-prototype-side-card news-prototype-side-card-zhongkao">
               <p className="overview-label">中招专题</p>
-              <h3 className="news-prototype-side-title">孩子今年参加中考，先把这些关键事看明白</h3>
-              <p className="news-prototype-side-description">报名怎么走、批次怎么看、录取顺序是什么，这一页帮你先把中招主线理清楚。</p>
+              <h3 className="news-prototype-side-title">中招主线：报名、批次与录取顺序</h3>
+              <p className="news-prototype-side-description">报名、批次、录取顺序一次理清。</p>
             </section>
           </Link>
 
           <Link className="news-prototype-side-link-card" href="/news/gaokao-special">
             <section className="news-prototype-side-card news-prototype-side-card-gaokao">
               <p className="overview-label">高招专题</p>
-              <h3 className="news-prototype-side-title">春考、高考、出分和录取，哪些节点最不能错过</h3>
-              <p className="news-prototype-side-description">把高招阶段最容易让人慌的时间点和规则放在一起，方便你按顺序往下看。</p>
+              <h3 className="news-prototype-side-title">高招节点：春考、高考、出分与录取</h3>
+              <p className="news-prototype-side-description">高招关键时间点与规则按顺序排列。</p>
             </section>
           </Link>
 
@@ -324,7 +324,7 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
               <section className="news-prototype-side-card news-prototype-side-card-glossary">
                 <p className="overview-label">政策概念速查</p>
                 <h3 className="news-prototype-side-title">{conceptItems[0].title}</h3>
-                <p className="news-prototype-side-description">看新闻总被术语卡住，就先来这里。把词看懂了，后面的规则才不会越看越乱。</p>
+                <p className="news-prototype-side-description">政策术语速查，看懂词再看规则。</p>
               </section>
             </Link>
           ) : null}
@@ -333,8 +333,8 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
             <Link className="news-prototype-side-link-card" href="/news/policy-faq">
               <section className="news-prototype-side-card news-prototype-side-card-deep">
                 <p className="overview-label">高频政策问答</p>
-                <h3 className="news-prototype-side-title">最常见的疑问，先帮你问到点子上</h3>
-                <p className="news-prototype-side-description">很多家长反复确认的，其实就是这几类问题。先看这里，能少走不少弯路。</p>
+                <h3 className="news-prototype-side-title">高频政策问答</h3>
+                <p className="news-prototype-side-description">家长反复确认的几类问题。</p>
                 <div className="news-prototype-faq-list">
                   {faqBullets.slice(0, 2).map((item) => (
                     <p key={item}>{item}</p>
@@ -349,7 +349,7 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {} })
               <section className="news-prototype-side-card news-prototype-side-card-faq">
                 <p className="overview-label">政策深读</p>
                 <h3 className="news-prototype-side-title">{deepPolicyItems[0].title}</h3>
-                <p className="news-prototype-side-description">想知道新闻背后的正式规则，就直接看这里。先抓关键文件，再判断今年到底变了什么。</p>
+                <p className="news-prototype-side-description">新闻背后的正式规则与关键文件。</p>
               </section>
             </Link>
           ) : null}

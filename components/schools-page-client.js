@@ -78,7 +78,7 @@ function clipText(text, maxLength = 120) {
 
 function getOwnershipLabel(school) {
   const label = String(school?.schoolTypeLabel || '').trim();
-  return label || '办学性质待补充';
+  return label || '—';
 }
 
 function getSchoolPositioning(school) {
@@ -108,7 +108,7 @@ function buildCardTags(school) {
 function formatSchoolUpdate(value) {
   const text = String(value || '').trim();
   if (!text) {
-    return '时间待补充';
+    return '—';
   }
   const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
   if (match) {
@@ -293,7 +293,7 @@ export default function SchoolsPageClient({
 
   const resultDescriptor = activeFilterSummary.length
     ? `${currentDistrictLabel}下匹配 ${filteredSchools.length} 所学校`
-    : `当前数据库收录 ${schools.length} 所学校，可按区域和学段逐步缩小范围`;
+    : `数据库收录 ${schools.length} 所学校`;
 
   const emptyStateSchools = featuredSchools.map((item) => item.school);
 
@@ -322,8 +322,8 @@ export default function SchoolsPageClient({
             <div className="schools-datadesk-intro">
               <p className="overview-label">School Database</p>
               <h1>上海学校数据库</h1>
-              <p className="schools-datadesk-subtitle">先按区域、学段、办学性质与学校特征缩小范围，再进入学校详情做判断。</p>
-              <p className="schools-datadesk-description">这一页优先解决“先把候选学校缩到可比较范围内”这个问题。搜索适合已知目标学校，左侧控制台适合还在缩范围的家庭。</p>
+              <p className="schools-datadesk-subtitle">按区域、学段、办学性质与特征缩小范围，再进入学校详情。</p>
+              <p className="schools-datadesk-description">搜索已知目标学校，或用左侧控制台逐步缩范围。</p>
               <div className="schools-datadesk-search-row">
                 <label className="schools-datadesk-searchfield schools-datadesk-searchfield-main schools-datadesk-search" htmlFor="prototype-school-search">
                   <span className="visually-hidden">搜索学校、区域或关键词</span>
@@ -347,9 +347,9 @@ export default function SchoolsPageClient({
                 <button className="schools-datadesk-button" type="button" onClick={applySearch}>执行检索</button>
               </div>
               <div className="schools-datadesk-inline-meta">
-                <span>区域优先</span>
-                <span>学段与性质并排判断</span>
-                <span>标签用于快速比较</span>
+                <span>区域</span>
+                <span>学段 / 性质</span>
+                <span>标签比较</span>
               </div>
               <div className="schools-datadesk-hero-actions">
                 <Link className="module-link" href="/schools/district">查看 16 区专题</Link>
@@ -363,17 +363,17 @@ export default function SchoolsPageClient({
               <article className="schools-datadesk-summary-card schools-datadesk-summary-card-strong">
                 <span>学校总量</span>
                 <strong>{schools.length}</strong>
-                <p>当前数据库收录的可检索学校条目</p>
+                <p>可检索学校条目</p>
               </article>
               <article className="schools-datadesk-summary-card">
                 <span>覆盖区域</span>
                 <strong>{districts.length}</strong>
-                <p>上海 16 区学校检索入口</p>
+                <p>上海 16 区</p>
               </article>
               <article className="schools-datadesk-summary-card">
                 <span>当前结果</span>
                 <strong>{filteredSchools.length}</strong>
-                <p>{activeFilterSummary.length ? '筛选后的可比较范围' : '尚未添加筛选条件'}</p>
+                <p>{activeFilterSummary.length ? '筛选后范围' : '未筛选'}</p>
               </article>
               <article className="schools-datadesk-summary-card schools-datadesk-summary-card-stack">
                 <span>学段分布</span>
@@ -382,8 +382,8 @@ export default function SchoolsPageClient({
               </article>
             </div>
             <div className="schools-datadesk-hero-footnote">
-              <span>数据更新时间 {latestUpdated}</span>
-              <span>来源以学校索引与公开资料整理为主</span>
+              <span>更新于 {latestUpdated}</span>
+              <span>来源：公开资料整理</span>
             </div>
           </div>
         </section>
@@ -413,7 +413,7 @@ export default function SchoolsPageClient({
                 ))}
               </div>
             ) : (
-              <p className="schools-datadesk-panel-copy">当前未添加具体筛选条件，建议先从区域和学段开始缩小范围。</p>
+              <p className="schools-datadesk-panel-copy">未添加筛选条件。</p>
             )}
             <div className="schools-datadesk-panel-meta">
               <span>最近更新时间</span>
@@ -425,7 +425,6 @@ export default function SchoolsPageClient({
           <section className="schools-datadesk-panel">
             <div className="schools-datadesk-panel-head">
               <p className="overview-label">控制台</p>
-              <span>先缩范围，再看学校</span>
             </div>
             <div className="schools-datadesk-controls">
               <div className="schools-datadesk-controlblock">
@@ -483,7 +482,6 @@ export default function SchoolsPageClient({
               <section className="schools-datadesk-panel">
                 <div className="schools-datadesk-panel-head">
                   <p className="overview-label">学校分类</p>
-                  <span>梯队 / 系列细分</span>
                 </div>
                 <div className="schools-datadesk-controls">
                   <div className="schools-datadesk-controlblock">
@@ -504,7 +502,6 @@ export default function SchoolsPageClient({
               <section className="schools-datadesk-panel">
                 <div className="schools-datadesk-panel-head">
                   <p className="overview-label">学校特征</p>
-                  <span>用标签快速缩小比较范围</span>
                 </div>
                 <div className="schools-datadesk-taggroup" aria-label="学校特色筛选">
                   <div className="schools-datadesk-tagrow">
@@ -541,7 +538,6 @@ export default function SchoolsPageClient({
           <section className="schools-datadesk-panel">
             <div className="schools-datadesk-panel-head">
               <p className="overview-label">快速入口</p>
-              <span>高频学校与热门区县</span>
             </div>
             <div className="schools-datadesk-shortcuts">
               <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/compare">
@@ -584,7 +580,7 @@ export default function SchoolsPageClient({
               <p className="overview-label">检索结果</p>
               <h2>当前可比较范围</h2>
             </div>
-            <p>{activeFilterSummary.length ? activeFilterSummary.join(' · ') : '未添加筛选条件时，默认展示全量结果。'}</p>
+            <p>{activeFilterSummary.length ? activeFilterSummary.join(' · ') : '未筛选，展示全量结果。'}</p>
           </div>
 
           <div className="schools-datadesk-metrics">
@@ -625,7 +621,7 @@ export default function SchoolsPageClient({
                       </div>
                       <div className="schools-datadesk-cardmeta">
                         <span>{getSchoolType(school)}</span>
-                        <span>{school.tier || '梯队信息待补充'}</span>
+                        <span>{school.tier || '—'}</span>
                         <span>更新于 {formatSchoolUpdate(school.updatedAt)}</span>
                         {badge ? (
                           <span className={`schools-datadesk-cardquality schools-datadesk-cardquality-${badge.tone}`}>
@@ -640,7 +636,7 @@ export default function SchoolsPageClient({
                         {cardTags.length ? cardTags.map((tag) => (
                           <span key={tag} className="schools-datadesk-cardtag">{tag}</span>
                         )) : (
-                          <span className="schools-datadesk-cardtag schools-datadesk-cardtag-muted">标签待补充</span>
+                          <span className="schools-datadesk-cardtag schools-datadesk-cardtag-muted">—</span>
                         )}
                       </div>
                       <span className="schools-datadesk-cardlink">进入学校详情</span>

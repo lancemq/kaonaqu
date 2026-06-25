@@ -83,28 +83,28 @@ export default async function NewsPage() {
           <div className="news-channel-hero-grid">
             <div className="news-channel-hero-main">
               <p className="overview-label">上海升学新闻</p>
-              <h1>{currentYear} 上海升学，这里先看最重要的消息</h1>
+              <h1>{currentYear} 上海升学新闻</h1>
               <p className="news-channel-subtitle">
-                报名、考试、录取、学校动态每天都在更新，但真正会影响选择的消息，不该靠你自己一点点翻。
+                报名、考试、录取、学校动态每日更新，挑出真正影响选择的消息。
               </p>
-              <p>先看这周最值得关注的消息，再去专题页把政策、时间线和关键规则看明白。</p>
+              <p>本周重点 + 政策与时间线专题。</p>
               <div className="news-channel-tag-row">
-                <Link className="pill news-channel-tag-link" href="/news/zhongkao-special">先看中考重点</Link>
-                <Link className="pill news-channel-tag-link" href="/news/gaokao-special">先看高考重点</Link>
-                <Link className="pill news-channel-tag-link" href="/news/admission-timeline">先看关键时间</Link>
-                <Link className="pill news-channel-tag-link" href="/schools">再看上海学校</Link>
+                <Link className="pill news-channel-tag-link" href="/news/zhongkao-special">中考重点</Link>
+                <Link className="pill news-channel-tag-link" href="/news/gaokao-special">高考重点</Link>
+                <Link className="pill news-channel-tag-link" href="/news/admission-timeline">关键时间</Link>
+                <Link className="pill news-channel-tag-link" href="/schools">上海学校</Link>
               </div>
             </div>
             <aside className="news-channel-hero-side">
               {latestLocalHeadline ? (
                 <Link className="news-channel-focus-link" href={`/news/${latestLocalHeadline.id}`}>
                   <article className="news-channel-focus-card">
-                    <span className="overview-label">这条最值得先看</span>
+                    <span className="overview-label">最新一条</span>
                     <h2>{latestLocalHeadline.title}</h2>
-                    <p className="news-channel-focus-summary">{latestLocalHeadline.summary || '这条消息和最近的上海升学节奏最相关，适合先看清楚再安排下一步。'}</p>
+                    <p className="news-channel-focus-summary">{latestLocalHeadline.summary || '与近期上海升学节奏相关。'}</p>
                     <div className="news-channel-focus-meta">
-                      <span>{latestLocalHeadline.publishedAt || '暂无日期'}</span>
-                      <span>现在去看</span>
+                      <span>{latestLocalHeadline.publishedAt || '—'}</span>
+                      <span>查看</span>
                     </div>
                   </article>
                 </Link>
@@ -116,7 +116,7 @@ export default async function NewsPage() {
       <NewsPageClient news={news} policies={policies} schoolNamesById={schoolNamesById} />
 
       <footer className="prototype-page-footer">
-        <span>上海升学观察 / {currentYear} 最值得先看的消息与政策</span>
+        <span>上海升学观察 / {currentYear} 新闻与政策</span>
         <span>当年新闻 {currentYearNews.length} / 当年政策 {currentYearPolicies.length} / 学校动态 {schoolCount}</span>
       </footer>
     </SiteShell>

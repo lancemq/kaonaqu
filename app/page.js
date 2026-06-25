@@ -262,13 +262,13 @@ export default async function HomePage() {
               {headline ? (
                 <div className="prototype-side-stack">
                   <Link className="prototype-side-card prototype-side-lead prototype-side-card-link" href={getNewsDetailHref(headline)}>
-                    <p className="overview-label">这周最值得先看</p>
+                    <p className="overview-label">本周重点</p>
                     <div className="news-meta-row">
                       <span className="pill">{getNewsCategoryLabel(headline)}</span>
-                      <span className="news-date">{headline.publishedAt || '暂无日期'}</span>
+                      <span className="news-date">{headline.publishedAt || '—'}</span>
                     </div>
                     <h2>{headline.title}</h2>
-                    <p>{headline.summary || '暂无摘要'}</p>
+                    <p>{headline.summary || '—'}</p>
                     <span className="prototype-side-readmore">阅读全文</span>
                   </Link>
                   <div className="home-side-timeline">
@@ -329,9 +329,9 @@ export default async function HomePage() {
                 className={`home-editorial-news-card home-editorial-news-card-stage${index === 1 ? ' home-editorial-news-card-warm' : ''}`}
                 href={getNewsDetailHref(item)}
               >
-                <p className="home-editorial-card-kicker">{getNewsCategoryLabel(item)} / {item.publishedAt || '暂无日期'}</p>
+                <p className="home-editorial-card-kicker">{getNewsCategoryLabel(item)} / {item.publishedAt || '—'}</p>
                 <h3>{item.title}</h3>
-                <p>{item.summary || '暂无摘要'}</p>
+                <p>{item.summary || '—'}</p>
               </Link>
             ))}
           </div>
@@ -476,8 +476,8 @@ export default async function HomePage() {
 
           <div className="home-editorial-cta">
             <div className="home-editorial-cta-copy">
-              <p className="overview-label">继续往下看</p>
-              <h2>知道下一步看什么，就从这里继续</h2>
+              <p className="overview-label">下一步</p>
+              <h2>继续探索</h2>
             </div>
             <div className="home-editorial-cta-actions">
               <Link className="home-cta-button home-cta-button-primary" href="/news">查看升学动态</Link>

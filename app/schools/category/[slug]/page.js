@@ -189,8 +189,8 @@ export default async function CategoryDetailPage({ params }) {
                 <p className="district-datadesk-subtitle">{target.description}</p>
                 <p className="district-datadesk-description">
                   {cat
-                    ? `这一页把上海${target.label}学校按区域与学段重组，先看区域内学校分布，再进入具体学校详情做判断。`
-                    : `这一页把在${target.label}方向上具有突出办学特色的学校汇总，按区域查看学校分布。`}
+                    ? `上海${target.label}学校按区域与学段重组。`
+                    : `${target.label}方向办学特色突出的学校汇总，按区域查看。`}
                 </p>
                 <div className="district-datadesk-inline-meta">
                   <span>区域优先</span>

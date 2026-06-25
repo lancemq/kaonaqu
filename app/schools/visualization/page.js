@@ -40,22 +40,22 @@ export default async function VisualizationPage() {
               <article className="schools-visualization-summary-card">
                 <span>收录学校</span>
                 <strong>{schools.length}</strong>
-                <p>当前数据库可检索学校</p>
+                <p>可检索学校</p>
               </article>
               <article className="schools-visualization-summary-card">
                 <span>覆盖区域</span>
                 <strong>{districts.length}</strong>
-                <p>上海 16 区学校覆盖</p>
+                <p>上海 16 区</p>
               </article>
               <article className="schools-visualization-summary-card">
                 <span>教育集团</span>
                 <strong>{new Set(schools.filter(s => s.group).map(s => s.group)).size}</strong>
-                <p>已收录教育集团数量</p>
+                <p>已收录集团</p>
               </article>
               <article className="schools-visualization-summary-card">
                 <span>升学路线</span>
                 <strong>{schools.reduce((sum, s) => sum + (s.admissionRoutes?.length || 0), 0)}</strong>
-                <p>初升高对口升学路径</p>
+                <p>初升高对口路径</p>
               </article>
             </div>
           </div>

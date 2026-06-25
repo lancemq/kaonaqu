@@ -208,8 +208,8 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
             <div className="school-groups-intro">
               <p className="overview-label">School Groups</p>
               <h1>上海教育集团专题</h1>
-              <p className="school-groups-subtitle">把可信的多校教育集团放在一张图里看，先判断核心校、分校、区域扩展和学段覆盖。</p>
-              <p className="school-groups-description">本页已排除区域名归并、泛化类别和单校伪集团；集团化办学不能直接等同于升学结果，仍建议进入学校详情核对官方口径。</p>
+              <p className="school-groups-subtitle">多校教育集团一张图：核心校、分校、区域扩展与学段覆盖。</p>
+              <p className="school-groups-description">已排除区域名归并、泛化类别与单校伪集团；集团化办学不等于升学结果，以学校官方口径为准。</p>
               <div className="schools-datadesk-search-row">
                 <label className="schools-datadesk-searchfield schools-datadesk-searchfield-main schools-datadesk-search" htmlFor="school-group-search">
                   <span className="visually-hidden">搜索教育集团、成员校或区域</span>
@@ -276,14 +276,13 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
               <p className="overview-label">当前条件</p>
               <span>{activeFilterCount} 项激活</span>
             </div>
-            <p className="schools-datadesk-panel-copy">用区域、学段和梯队先缩小集团范围，再展开成员校逐个查看详情。区域系、单校系和泛化类别已从本页隐藏。</p>
+            <p className="schools-datadesk-panel-copy">已隐藏区域系、单校系与泛化类别。</p>
             <button className="schools-datadesk-button schools-datadesk-button-secondary" type="button" onClick={resetFilters}>清空全部条件</button>
           </section>
 
           <section className="schools-datadesk-panel">
             <div className="schools-datadesk-panel-head">
               <p className="overview-label">筛选控制台</p>
-              <span>集团维度</span>
             </div>
             <div className="schools-datadesk-controls">
               <div className="schools-datadesk-controlblock">
@@ -346,7 +345,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
               <p className="overview-label">集团结果</p>
               <h2>可展开的教育集团</h2>
             </div>
-            <p>{activeFilterCount ? '已按当前条件筛选。展开卡片可查看成员校，并进入学校详情页继续判断。' : '默认按头部梯队和成员校数量排序，只展示通过基础校验的多校集团候选。'}</p>
+            <p>{activeFilterCount ? '已按当前条件筛选，展开卡片查看成员校。' : '按头部梯队与成员校数量排序。'}</p>
           </div>
 
           {filteredGroups.length ? (
@@ -365,7 +364,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
             <section className="schools-datadesk-panel school-groups-empty">
               <p className="overview-label">没有匹配项</p>
               <h2>暂未找到符合条件的教育集团</h2>
-              <p>可以放宽区域、学段或梯队条件，也可以直接搜索学校名来定位对应集团。</p>
+              <p>放宽筛选条件，或搜索学校名定位集团。</p>
               <button className="schools-datadesk-button" type="button" onClick={resetFilters}>重置筛选</button>
             </section>
           )}
@@ -400,10 +399,10 @@ function GroupCard({ group, districts, isExpanded, onToggle }) {
       <div className="school-group-tags" aria-label={`${group.name}覆盖梯队`}>
         {group.tiers.length ? group.tiers.slice(0, 6).map((tier) => (
           <span key={tier} className={TOP_TIER_SET.has(tier) ? 'school-group-tag school-group-tag-strong' : 'school-group-tag'}>{TIER_LABELS[tier] || tier}</span>
-        )) : <span className="school-group-tag school-group-tag-muted">梯队待补充</span>}
+        )) : <span className="school-group-tag school-group-tag-muted">—</span>}
       </div>
       <div className="school-group-meta">
-        <span>{group.stages.join('、') || '学段待补充'}</span>
+        <span>{group.stages.join('、') || '—'}</span>
         <span>{group.districtIds.length} 个区域</span>
       </div>
 

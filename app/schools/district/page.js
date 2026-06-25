@@ -77,8 +77,8 @@ export default async function DistrictIndexPage() {
             <div className="district-datadesk-hero-main">
               <p className="overview-label">District Topics</p>
               <h1>上海学校区域专题</h1>
-              <p className="district-datadesk-subtitle">先从区域进入，再看这个区的学校结构、优先学校和学段分布。</p>
-              <p className="district-datadesk-description">如果还没有明确目标学校，先按区浏览会更快：看学校密度、初高中结构和区域特点，再跳到对应区专题继续筛。</p>
+              <p className="district-datadesk-subtitle">从区域进入，看这个区的学校结构、优先学校与学段分布。</p>
+              <p className="district-datadesk-description">没有明确目标学校时，按区浏览更快：学校密度、初高中结构与区域特点。</p>
               <div className="district-datadesk-inline-meta">
                 <span>16 区入口</span>
                 <span>区域专题直达</span>

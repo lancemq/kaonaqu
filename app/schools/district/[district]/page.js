@@ -160,7 +160,7 @@ export default async function DistrictSchoolsPage({ params }) {
               <p className="overview-label">District Database</p>
               <h1>{districtInfo.name}学校专题</h1>
               <p className="district-datadesk-subtitle">{getDistrictSchoolTopic(districtInfo)}</p>
-              <p className="district-datadesk-description">这页把 {districtInfo.name} 的学校按区域数据库方式重组，先看区内学校结构和优先学校，再进入具体学校详情继续判断。</p>
+              <p className="district-datadesk-description">{districtInfo.name} 学校按区域数据库方式重组：区内学校结构与优先学校。</p>
               <div className="district-datadesk-inline-meta">
                 <span>区域结构优先</span>
                 <span>先看学段分布</span>

@@ -146,19 +146,19 @@ function findNewsItem(id) {
       );
       expect(
         this.id,
-        getNewsCardActionLabel(item) === '继续看这条的学校线索',
-        `getNewsCardActionLabel should return 继续看这条的学校线索 for ${this.id}`
+        getNewsCardActionLabel(item) === '查看学校线索',
+        `getNewsCardActionLabel should return 查看学校线索 for ${this.id}`
       );
       const valueLine = String(getNewsCardValueLine(item) || '');
       expect(
         this.id,
-        valueLine.includes('学校'),
-        `getNewsCardValueLine for ${this.id} should mention 学校`
+        valueLine.includes('学校') || valueLine.includes(getSchoolObservationTag(item)),
+        `getNewsCardValueLine for ${this.id} should mention 学校 or the observation tag`
       );
       const schoolCta = getNewsSchoolCtaCopy(item);
       expect(
         this.id,
-        schoolCta && schoolCta.title === '这条新闻说明了这所学校什么',
+        schoolCta && schoolCta.title === '这条新闻与这所学校',
         `getNewsSchoolCtaCopy should return the school CTA title for ${this.id}`
       );
       expect(
@@ -183,8 +183,8 @@ function findNewsItem(id) {
       );
       expect(
         this.id,
-        getNewsCardActionLabel(item) === '进去看完整安排',
-        `getNewsCardActionLabel should return 进去看完整安排 for ${this.id}`
+        getNewsCardActionLabel(item) === '查看完整安排',
+        `getNewsCardActionLabel should return 查看完整安排 for ${this.id}`
       );
       expect(
         this.id,
@@ -194,17 +194,17 @@ function findNewsItem(id) {
       const admissionCta = getNewsSchoolCtaCopy(item);
       expect(
         this.id,
-        admissionCta && admissionCta.title === '这条招生安排和这所学校有什么关系',
+        admissionCta && admissionCta.title === '这条招生安排与这所学校',
         `getNewsSchoolCtaCopy should return the admission CTA title for ${this.id}`
       );
       expect(
         this.id,
-        admissionCta && admissionCta.body === '这条新闻已经明确提到具体学校，继续看学校页可以补齐办学定位、招生口径和公开特征。',
+        admissionCta && admissionCta.body === '新闻已明确提到具体学校。',
         `getNewsSchoolCtaCopy should return the admission CTA body for ${this.id}`
       );
       expect(
         this.id,
-        admissionCta && admissionCta.action === '查看这所学校的招生与定位',
+        admissionCta && admissionCta.action === '查看学校招生与定位',
         `getNewsSchoolCtaCopy should return the admission CTA for ${this.id}`
       );
     }
