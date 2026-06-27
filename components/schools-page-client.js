@@ -556,6 +556,10 @@ export default function SchoolsPageClient({
                 <strong>教育集团专题</strong>
                 <span>按集团查看成员校、覆盖区域与梯队结构</span>
               </Link>
+              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/score-match">
+                <strong>估分择校</strong>
+                <span>输入分数与区域，给出冲刺/匹配/保底建议</span>
+              </Link>
               {featuredSchools.map((item) => (
                 <Link key={item.school.id} className="schools-datadesk-entry" href={`/schools/${item.school.id}`}>
                   <strong>{item.school.name}</strong>
