@@ -83,14 +83,14 @@ function getOwnershipLabel(school) {
 
 function getSchoolPositioning(school) {
   const admission = clipText(getSchoolAdmissionInfo(school), 84);
-  if (admission) {
+  if (admission && admission !== '暂无') {
     return admission;
   }
   const directions = getSchoolTrainingDirections(school);
   if (directions.length) {
-    return `${school.name}更值得关注的培养方向包括${directions.slice(0, 2).join('、')}。`;
+    return `培养方向：${directions.slice(0, 2).join('、')}`;
   }
-  return `${school.name}已收录到学校数据库，可继续查看详情、标签和招生相关线索。`;
+  return '';
 }
 
 function buildCardTags(school) {
@@ -634,7 +634,10 @@ export default function SchoolsPageClient({
                         ) : null}
                       </div>
                     </div>
-                    <p className="schools-datadesk-cardsummary">{getSchoolPositioning(school)}</p>
+                    {(() => {
+                      const positioning = getSchoolPositioning(school);
+                      return positioning ? <p className="schools-datadesk-cardsummary">{positioning}</p> : null;
+                    })()}
                     <div className="schools-datadesk-cardfooter">
                       <div className="schools-datadesk-cardtags">
                         {cardTags.length ? cardTags.map((tag) => (

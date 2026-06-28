@@ -114,11 +114,20 @@ function renderSchoolMarkdown(markdown) {
   const nodes = [];
   let listItems = [];
   let key = 0;
-  
+
+  // 这些 section 由长尾校的 enrich 模板生成，内容是对所有学校套同一句的空话，
+  // 无独立信息价值，整段跳过不渲染（头部校人工内容不含这些标题，不受影响）。
+  const SKIP_SECTIONS = new Set([
+    '历史沿革（公开资料）',
+    '办学特色（公开资料）',
+    '课程与培养路径解读'
+  ]);
+
   // Section tracking for highlights
   let activeSectionType = null; // 'catchment', 'group', or null
   let currentSectionTitle = '';
   let currentSectionNodes = [];
+  let skipping = false;
 
   const flushSection = () => {
     if (currentSectionNodes.length === 0) return;
@@ -171,8 +180,13 @@ function renderSchoolMarkdown(markdown) {
     if (line.startsWith('## ')) {
       flushList();
       flushSection();
-      
-      const title = line.slice(3);
+
+      const title = line.slice(3).trim();
+      if (SKIP_SECTIONS.has(title)) {
+        skipping = true;
+        continue;
+      }
+      skipping = false;
       if (title.includes('官方对口查询')) {
         activeSectionType = 'catchment';
         currentSectionTitle = title;
@@ -187,6 +201,7 @@ function renderSchoolMarkdown(markdown) {
       }
       continue;
     }
+    if (skipping) continue;
     if (line.startsWith('### ')) {
       flushList();
       pushToSection(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
@@ -293,13 +308,11 @@ export default async function SchoolDetailPage({ params }) {
   const tags = getSchoolTags(school);
   const richProfile = getSchoolRichProfile(school.id);
   const schoolJourney = getSchoolChannelJourney(school, { news });
-  const schoolSummary = articleInsights.overview || getSchoolAdmissionInfo(school) || '学术强校、课程体系与校园节奏兼具，是上海家长高频检索的学校之一。';
+  const schoolSummary = articleInsights.overview || getSchoolAdmissionInfo(school) || '';
   const decisionTags = Array.isArray(school.decisionTags) ? school.decisionTags.slice(0, 6) : [];
   const profileSignals = school.profileSignals || {};
 
   const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '—';
-  const schoolTemperament = trainingDirections[0] || '综合型';
-  const schoolHeat = tags.length >= 4 ? '高关注' : '持续关注';
   const summaryPoints = [highlights[0], highlights[1], trainingDirections[0] || features[0]].filter(Boolean).slice(0, 3);
   const quickTags = Array.from(new Set([...tags, ...features, ...trainingDirections])).filter(Boolean).slice(0, 6);
   const profileFacts = [
@@ -327,7 +340,7 @@ export default async function SchoolDetailPage({ params }) {
     '@type': 'School',
     'name': school.name,
     'url': `https://kaonaqu.xyz/schools/${encodeURIComponent(school.id)}`,
-    'description': schoolSummary,
+    ...(schoolSummary ? { 'description': schoolSummary } : {}),
     'address': {
       '@type': 'PostalAddress',
       'addressLocality': school.districtName,
@@ -451,13 +464,15 @@ export default async function SchoolDetailPage({ params }) {
           <span>所在区域</span>
         </article>
         <article>
-          <strong>{schoolTemperament}</strong>
-          <span>培养气质</span>
+          <strong>{getSchoolStage(school)}</strong>
+          <span>学段</span>
         </article>
-        <article>
-          <strong>{schoolHeat}</strong>
-          <span>家长检索热度</span>
-        </article>
+        {school.group ? (
+          <article>
+            <strong>{school.group}</strong>
+            <span>教育集团</span>
+          </article>
+        ) : null}
       </section>
 
       <div className="school-datadesk-detail-main-gap" aria-hidden="true" />
@@ -467,15 +482,17 @@ export default async function SchoolDetailPage({ params }) {
           <section className="school-datadesk-detail-panel">
             <p className="overview-label">学校概览</p>
             <h2>{school.name}</h2>
-            <p>{renderInlineMarkdown(schoolSummary || '学校基础信息已整理，可结合培养方向和招生路径继续判断。')}</p>
-            <div className="school-datadesk-detail-highlightgrid">
-              {summaryPoints.map((item, index) => (
-                <article key={`${item}-${index}`} className="school-datadesk-detail-highlightcard">
-                  <span>重点 {index + 1}</span>
-                  <strong>{item}</strong>
-                </article>
-              ))}
-            </div>
+            {schoolSummary ? <p>{renderInlineMarkdown(schoolSummary)}</p> : null}
+            {summaryPoints.length ? (
+              <div className="school-datadesk-detail-highlightgrid">
+                {summaryPoints.map((item, index) => (
+                  <article key={`${item}-${index}`} className="school-datadesk-detail-highlightcard">
+                    <span>重点 {index + 1}</span>
+                    <strong>{item}</strong>
+                  </article>
+                ))}
+              </div>
+            ) : null}
           </section>
 
           {richProfile ? (
