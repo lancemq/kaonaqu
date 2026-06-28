@@ -298,14 +298,6 @@ export default async function PolicyDeepDivePage() {
                     <span>先看什么</span>
                     <p>{buildPolicyLens(leadPolicy).focus}</p>
                   </article>
-                  <article>
-                    <span>适合谁读</span>
-                    <p>{buildPolicyLens(leadPolicy).audience}</p>
-                  </article>
-                  <article>
-                    <span>为什么先读</span>
-                    <p>{buildPolicyPriority(leadPolicy).description}</p>
-                  </article>
                 </div>
               </div>
               <p>{buildReadingHint(leadPolicy)}</p>

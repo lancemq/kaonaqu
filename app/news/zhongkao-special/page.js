@@ -101,13 +101,6 @@ export default async function ZhongkaoSpecialPage() {
                 <a className="action-button" href="#zhongkao-list">查看专题内容</a>
               </div>
             </div>
-            <aside className="school-prototype-hero-side">
-              <article className="school-prototype-focus-card">
-                <p className="overview-label">适合谁看</p>
-                <h2>适合正在准备 2026 上海中考、想先分清报名、考试、录取节奏的家庭。</h2>
-                <p>这页不是单纯新闻汇总，而是按当前阶段整理好的中招专题入口。</p>
-              </article>
-            </aside>
           </div>
         </section>
       </header>
@@ -124,10 +117,6 @@ export default async function ZhongkaoSpecialPage() {
         <article>
           <strong>报名 / 录取</strong>
           <span>按专题集中查看</span>
-        </article>
-        <article>
-          <strong>适合当前阶段</strong>
-          <span>初中升学家庭优先阅读</span>
         </article>
       </section>
 

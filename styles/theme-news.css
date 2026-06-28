@@ -1163,6 +1163,11 @@ body[data-page="news"] .news-prototype-pager {
     gap: 24px;
 }
 
+/* 仅剩主栏时（侧栏"适合谁看"卡已移除），主栏占满整行 */
+.school-prototype-hero-grid > :only-child {
+    grid-column: 1 / -1;
+}
+
 .school-prototype-hero-main h1 {
     margin-top: 8px;
 }

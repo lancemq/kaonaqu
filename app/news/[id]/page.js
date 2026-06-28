@@ -43,6 +43,15 @@ function renderNewsMarkdown(markdown) {
   const nodes = [];
   let listItems = [];
   let key = 0;
+  let skipping = false;
+
+  // 这些 section 属于编辑口径的"导读"提示，无独立信息价值，整段跳过不渲染。
+  const SKIP_SECTIONS = new Set([
+    '这条信息为什么值得看',
+    '适合谁先看',
+    '适合谁看',
+    '适合谁读'
+  ]);
 
   const flushList = () => {
     if (!listItems.length) return;
@@ -64,9 +73,16 @@ function renderNewsMarkdown(markdown) {
     }
     if (line.startsWith('## ')) {
       flushList();
-      nodes.push(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{line.slice(3)}</h3>);
+      const title = line.slice(3).trim();
+      if (SKIP_SECTIONS.has(title)) {
+        skipping = true;
+        continue;
+      }
+      skipping = false;
+      nodes.push(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{title}</h3>);
       continue;
     }
+    if (skipping) continue;
     if (line.startsWith('### ')) {
       flushList();
       nodes.push(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);

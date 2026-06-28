@@ -102,13 +102,6 @@ export default async function GaokaoSpecialPage() {
                 <a className="action-button" href="#gaokao-list">查看专题内容</a>
               </div>
             </div>
-            <aside className="school-prototype-hero-side">
-              <article className="school-prototype-focus-card">
-                <p className="overview-label">适合谁看</p>
-                <h2>适合正在准备 2026 上海高招、想先分清不同升学路径和当前阶段任务的家庭。</h2>
-                <p>这页会把高招内容按路径拆开，而不是只按时间顺序堆叠。</p>
-              </article>
-            </aside>
           </div>
         </section>
       </header>
@@ -125,10 +118,6 @@ export default async function GaokaoSpecialPage() {
         <article>
           <strong>考试 / 录取</strong>
           <span>按专题集中查看</span>
-        </article>
-        <article>
-          <strong>适合当前阶段</strong>
-          <span>高中升学家庭优先阅读</span>
         </article>
       </section>
 
