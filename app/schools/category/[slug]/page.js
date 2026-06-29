@@ -5,6 +5,9 @@ import SiteShell from '../../../../components/site-shell';
 import {
   findSchoolCategoryBySlug,
   findSpecializationBySlug,
+  clipText,
+  formatSchoolUpdate,
+  getUpdateSortValue,
   SCHOOL_CATEGORY_LIST,
   SPECIALIZATION_CATEGORY_LIST,
   getSchoolsByCategory,
@@ -36,30 +39,6 @@ export async function generateStaticParams() {
 
 function formatNumber(value) {
   return Number(value || 0).toLocaleString('zh-CN');
-}
-
-function formatSchoolUpdate(value) {
-  const text = String(value || '').trim();
-  if (!text) return '时间待补充';
-  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
-  if (!match) return text;
-  const [, year, month, day, hour, minute] = match;
-  if (hour && minute) return `${year}.${month}.${day} ${hour}:${minute}`;
-  return `${year}.${month}.${day}`;
-}
-
-function getUpdateSortValue(value) {
-  const text = String(value || '').trim();
-  if (!text) return 0;
-  const parsed = Date.parse(text);
-  if (!Number.isNaN(parsed)) return parsed;
-  return 0;
-}
-
-function clipText(text, maxLength = 84) {
-  const value = String(text || '').trim();
-  if (!value || value.length <= maxLength) return value;
-  return `${value.slice(0, maxLength).trim()}...`;
 }
 
 function buildCardTags(school) {

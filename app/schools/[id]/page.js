@@ -10,6 +10,7 @@ import { getSchoolRichProfile } from '../../../lib/school-rich-profiles';
 import { getSchoolDataQuality } from '../../../lib/school-data-quality';
 import {
   getSchoolAdmissionInfo,
+  formatSchoolUpdate,
   getSchoolDistrictName,
   getSchoolFeatures,
   getSchoolHighlights,
@@ -22,22 +23,6 @@ import {
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
-
-function formatSchoolUpdate(value) {
-  const text = String(value || '').trim();
-  if (!text) {
-    return '—';
-  }
-  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
-  if (!match) {
-    return text;
-  }
-  const [, year, month, day, hour, minute] = match;
-  if (hour && minute) {
-    return `${year}.${month}.${day} ${hour}:${minute}`;
-  }
-  return `${year}.${month}.${day}`;
-}
 
 function resolveSchoolById(schools, rawId) {
   const id = Array.isArray(rawId) ? rawId[0] : rawId;

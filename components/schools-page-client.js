@@ -6,6 +6,9 @@ import CompareBagCheckbox from './compare-bag-checkbox';
 import { dataQualityBadge, dataQualityScore, getSchoolDataQuality } from '../lib/school-data-quality';
 import {
   filterSchools,
+  clipText,
+  formatSchoolUpdate,
+  getUpdateSortValue,
   getSchoolAdmissionInfo,
   getSchoolCategory,
   getSchoolCategoryLabel,
@@ -68,14 +71,6 @@ function resolveFeaturedSchool(schools, keyword, preferredName) {
     || null;
 }
 
-function clipText(text, maxLength = 120) {
-  const value = String(text || '').trim();
-  if (!value || value.length <= maxLength) {
-    return value;
-  }
-  return `${value.slice(0, maxLength).trim()}...`;
-}
-
 function getOwnershipLabel(school) {
   const label = String(school?.schoolTypeLabel || '').trim();
   return label || '—';
@@ -103,39 +98,6 @@ function buildCardTags(school) {
   ].filter(Boolean);
 
   return Array.from(new Set(values)).slice(0, 4);
-}
-
-function formatSchoolUpdate(value) {
-  const text = String(value || '').trim();
-  if (!text) {
-    return '—';
-  }
-  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
-  if (match) {
-    const [, year, month, day, hour, minute] = match;
-    if (hour && minute) {
-      return `${year}.${month}.${day} ${hour}:${minute}`;
-    }
-    return `${year}.${month}.${day}`;
-  }
-  return text;
-}
-
-function getUpdateSortValue(value) {
-  const text = String(value || '').trim();
-  if (!text) {
-    return 0;
-  }
-  const parsed = Date.parse(text);
-  if (!Number.isNaN(parsed)) {
-    return parsed;
-  }
-  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2})(?::(\d{2}))?)?/);
-  if (!match) {
-    return 0;
-  }
-  const [, year, month, day, hour = '00', minute = '00', second = '00'] = match;
-  return Number(`${year}${month}${day}${hour}${minute}${second}`);
 }
 
 export default function SchoolsPageClient({

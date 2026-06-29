@@ -26,22 +26,6 @@ const tierColors = {
   '民办初中': 'schools-compare-tier-private-junior',
 };
 
-function formatSchoolUpdate(value) {
-  const text = String(value || '').trim();
-  if (!text) {
-    return '—';
-  }
-  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
-  if (match) {
-    const [, year, month, day, hour, minute] = match;
-    if (hour && minute) {
-      return `${year}.${month}.${day} ${hour}:${minute}`;
-    }
-    return `${year}.${month}.${day}`;
-  }
-  return text;
-}
-
 export default function SchoolsCompareClient({ schools, initialSchools }) {
   const router = useRouter();
   const { ids: bagIds, ready: bagReady, replaceAll, remove, clear: clearBag, max } = useCompareBag();
