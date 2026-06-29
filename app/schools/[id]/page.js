@@ -397,7 +397,7 @@ export default async function SchoolDetailPage({ params }) {
 
       {richProfile ? (
         <section className="school-rich-visual" aria-label={`${school.name}核心资料`}>
-          <figure className="school-rich-image-card">
+          <figure className={`school-rich-image-card${richProfile.image.url.includes('/placeholder-') ? '' : ' is-photo'}`}>
             <Image src={richProfile.image.url} alt={richProfile.image.alt} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
             <figcaption>{richProfile.image.caption}</figcaption>
           </figure>

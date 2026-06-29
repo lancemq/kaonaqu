@@ -71,13 +71,13 @@ export default function AdmissionFlowClient({ schools }) {
         levels: [
           {
             depth: 0,
-            itemStyle: { color: '#4a6fa5' },
+            itemStyle: { color: '#1d4ed8' },
             lineStyle: { color: 'source', opacity: 0.4 },
             label: { fontSize: 11 }
           },
           {
             depth: 1,
-            itemStyle: { color: '#6f7d3b' },
+            itemStyle: { color: '#3b82f6' },
             lineStyle: { color: 'source', opacity: 0.4 },
             label: { fontSize: 11 }
           }
@@ -91,7 +91,7 @@ export default function AdmissionFlowClient({ schools }) {
         label: {
           position: 'right',
           fontSize: 11,
-          color: '#22241d'
+          color: '#1a1d29'
         },
         left: '10%',
         right: '10%',
@@ -124,9 +124,9 @@ export default function AdmissionFlowClient({ schools }) {
         showLoading={isLoading}
         loadingOption={{
           text: '正在加载桑基图数据...',
-          color: '#6f7d3b',
-          textColor: '#22241d',
-          maskColor: 'rgba(244, 239, 225, 0.8)'
+          color: '#2563eb',
+          textColor: '#1a1d29',
+          maskColor: 'rgba(240, 243, 248, 0.8)'
         }}
         opts={{ renderer: 'svg' }}
         onChartReady={() => setIsLoading(false)}

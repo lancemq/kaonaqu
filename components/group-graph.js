@@ -43,7 +43,7 @@ export default function GroupGraphClient({ schools }) {
           position: 'right',
           fontSize: 13,
           fontWeight: 'bold',
-          color: '#6f7d3b'
+          color: '#2563eb'
         },
         itemStyle: {
           color: {
@@ -52,8 +52,8 @@ export default function GroupGraphClient({ schools }) {
             y: 0.5,
             r: 0.5,
             colorStops: [
-              { offset: 0, color: '#8fae5c' },
-              { offset: 1, color: '#6f7d3b' }
+              { offset: 0, color: '#3b82f6' },
+              { offset: 1, color: '#1d4ed8' }
             ]
           }
         }
@@ -68,7 +68,7 @@ export default function GroupGraphClient({ schools }) {
           symbolSize: 8,
           draggable: true,
           label: { show: false, position: 'right', fontSize: 11 },
-          itemStyle: { color: '#a8c46b' },
+          itemStyle: { color: '#93c5fd' },
           group: group.name
         });
 
@@ -170,9 +170,9 @@ export default function GroupGraphClient({ schools }) {
         showLoading={isLoading}
         loadingOption={{
           text: '正在加载图谱数据...',
-          color: '#6f7d3b',
-          textColor: '#22241d',
-          maskColor: 'rgba(244, 239, 225, 0.8)'
+          color: '#2563eb',
+          textColor: '#1a1d29',
+          maskColor: 'rgba(240, 243, 248, 0.8)'
         }}
         opts={{ renderer: 'svg' }}
         onChartReady={() => setIsLoading(false)}
