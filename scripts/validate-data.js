@@ -142,6 +142,14 @@ function validatePolicies(policies) {
 function validateNews(news, validSchoolIds) {
   const errors = [];
   const seenIds = new Set();
+  const NEWS_CONTENT_TYPES = new Set(['policy', 'guide', 'admission', 'exam', 'school']);
+
+  function getNewsContentRelativePath(item) {
+    const type = item.newsType && NEWS_CONTENT_TYPES.has(item.newsType)
+      ? item.newsType
+      : (NEWS_CONTENT_TYPES.has(String(item.id || '').split('-')[0]) ? String(item.id || '').split('-')[0] : 'uncategorized');
+    return `content/news/${type}/${String(item.id || '').trim()}.md`;
+  }
 
   news.forEach((item, index) => {
     const newsTypeRaw = cleanString(item.newsType);
@@ -214,6 +222,15 @@ function validateNews(news, validSchoolIds) {
       errors.push(`news[${index}]: duplicate news id ${item.id}`);
     }
     seenIds.add(item.id);
+
+    // 校验 news 详情 markdown 文件存在（与 lib/news-content-files.mjs 路径推算一致）
+    const contentRelativePath = item.contentFile || getNewsContentRelativePath(item);
+    const contentAbsPath = path.join(ROOT_DIR, contentRelativePath);
+    if (!fs.existsSync(contentAbsPath)) {
+      errors.push(`news[${index}]: missing content file ${contentRelativePath}`);
+    } else if (!fs.readFileSync(contentAbsPath, 'utf8').trim()) {
+      errors.push(`news[${index}]: empty content file ${contentRelativePath}`);
+    }
   });
 
   return errors;
