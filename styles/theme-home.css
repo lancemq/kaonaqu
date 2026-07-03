@@ -10,7 +10,7 @@
     --home-font-body: "Geist", "Noto Sans SC", sans-serif;
     --home-font-caption: "Newsreader", "Noto Serif SC", serif;
     --home-font-data: "Geist Mono", "SFMono-Regular", Consolas, monospace;
-    --home-hero-height: 380px;
+    --home-hero-height: 420px;
     --home-hero-padding: 80px 80px 60px;
     --home-hero-grid-size: 120px 92px;
 }
@@ -96,6 +96,7 @@ body[data-page="home"] .home-photo-slab,
 body[data-page="home"] .home-cta-slab {
     position: relative;
     min-height: var(--home-hero-height);
+    overflow: hidden;
     background: var(--home-ink);
     color: #fff;
     isolation: isolate;
@@ -145,12 +146,13 @@ body[data-page="home"] .home-hero-grid {
 }
 
 body[data-page="home"] .home-hero-content {
-    position: relative;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 72px;
-    min-height: var(--home-hero-height);
     padding: var(--home-hero-padding);
 }
 

@@ -19,8 +19,7 @@ const GRADES = [
     desc: '关键学年 · 备战中考',
     href: '/knowledge/grade-8',
     kicker: 'EIGHTH GRADE',
-    intro: '八年级是初中承上启下的关键学年，新增物理学科，数学难度明显提升，是备战中考的重要阶段。',
-    featured: true
+    intro: '八年级是初中承上启下的关键学年，新增物理学科，数学难度明显提升，是备战中考的重要阶段。'
   },
   {
     key: 'grade9',
@@ -139,7 +138,7 @@ export default function GradeSubjectExplorer() {
           return (
             <button
               type="button"
-              className={`knowledge-grade-tile${item.featured ? ' is-featured' : ''}${selected === item.key ? ' is-active' : ''}`}
+              className={`knowledge-grade-tile${selected === item.key ? ' is-active' : ''}`}
               onClick={() => setSelected(item.key)}
               key={item.key}
               aria-pressed={selected === item.key}

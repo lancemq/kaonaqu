@@ -10,7 +10,7 @@
     --news-font-body: "Geist", "Noto Sans SC", sans-serif;
     --news-font-caption: "Newsreader", "Noto Serif SC", serif;
     --news-font-data: "Geist Mono", "SFMono-Regular", Consolas, monospace;
-    --news-hero-height: 380px;
+    --news-hero-height: 420px;
     --news-hero-padding: 60px 80px;
     --news-hero-grid-size: 120px 92px;
 }
@@ -95,6 +95,7 @@ body[data-page="news"] .news-hero-slab {
     background: var(--news-ink);
     color: #fff;
     isolation: isolate;
+    overflow: hidden;
 }
 
 body[data-page="news"] .news-hero-slab::before {
@@ -120,11 +121,13 @@ body[data-page="news"] .news-hero-slab::after {
 }
 
 body[data-page="news"] .news-hero-content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: space-between;
     gap: 72px;
-    min-height: var(--news-hero-height);
     padding: var(--news-hero-padding);
 }
 
@@ -247,10 +250,16 @@ body[data-page="news"] .news-result-count strong {
 body[data-page="news"] .news-filter-row {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 10px;
 }
 
 body[data-page="news"] .news-filter-button {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
     min-height: 36px;
     padding: 0 16px;
     border: 1px solid var(--news-line);
@@ -260,6 +269,9 @@ body[data-page="news"] .news-filter-button {
     font-family: var(--news-font-body);
     font-size: 13px;
     font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
     cursor: pointer;
 }
 
@@ -349,6 +361,9 @@ body[data-page="news"] .news-pager {
 
 body[data-page="news"] .news-pager button,
 body[data-page="news"] .news-pager span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 40px;
     padding: 0 18px;
     border: 1px solid var(--news-line);
@@ -1040,6 +1055,22 @@ body[data-page="news"] .news-detail-footer p {
 
     body[data-page="news"] .news-list-header {
         display: grid;
+    }
+
+    body[data-page="news"] .news-filter-row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+    }
+
+    body[data-page="news"] .news-filter-row::-webkit-scrollbar {
+        display: none;
+    }
+
+    body[data-page="news"] .news-filter-button {
+        flex: 0 0 auto;
+        min-width: 88px;
     }
 
     body[data-page="news"] .news-article-meta {

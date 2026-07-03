@@ -6,11 +6,11 @@ const homeCss = await readFile(new URL('../styles/theme-home.css', import.meta.u
 const newsCss = await readFile(new URL('../styles/theme-news.css', import.meta.url), 'utf8');
 
 test('home banner matches latest Pencil hero height', () => {
-  assert.match(homeCss, /--home-hero-height:\s*380px;/);
+  assert.match(homeCss, /--home-hero-height:\s*420px;/);
   assert.match(homeCss, /--home-hero-padding:\s*80px 80px 60px;/);
 });
 
 test('news banner matches latest Pencil hero height', () => {
-  assert.match(newsCss, /--news-hero-height:\s*380px;/);
+  assert.match(newsCss, /--news-hero-height:\s*420px;/);
   assert.match(newsCss, /--news-hero-padding:\s*60px 80px;/);
 });
