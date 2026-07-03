@@ -1,6 +1,5 @@
-import SiteShell from '../../components/site-shell';
-import { createRequire } from 'module';
 import Link from 'next/link';
+import { createRequire } from 'module';
 import NewsPageClient from '../../components/news-page-client';
 
 const require = createRequire(import.meta.url);
@@ -13,11 +12,6 @@ export const metadata = {
 };
 
 export const revalidate = 3600;
-
-function toTimestamp(value) {
-  const timestamp = Date.parse(value || '');
-  return Number.isFinite(timestamp) ? timestamp : 0;
-}
 
 function getCurrentYear(news, policies) {
   const years = [...news, ...policies]
@@ -42,84 +36,109 @@ function isRenderablePolicy(policy, currentYear) {
   return policy.source?.type === 'official' || String(policy.source?.name || '').includes('上海市教育委员会');
 }
 
+function SectionLabel({ children }) {
+  return (
+    <div className="news-section-label">
+      <span aria-hidden="true"></span>
+      <p>{children}</p>
+    </div>
+  );
+}
+
 export default async function NewsPage() {
   const { news, policies, schools } = await loadDataStore();
-  const schoolNamesById = Object.fromEntries(
-    schools.map((school) => [school.id, school.name || ''])
-  );
+  const schoolNamesById = Object.fromEntries(schools.map((school) => [school.id, school.name || '']));
   const currentYear = getCurrentYear(news, policies);
   const currentYearNews = news.filter((item) => isCurrentYearItem(item, currentYear));
   const currentYearPolicies = policies.filter((item) => isRenderablePolicy(item, currentYear));
-  const schoolCount = currentYearNews.filter((item) => item.newsType === 'school').length;
-  const latestLocalHeadline = currentYearNews
-    .slice()
-    .sort((left, right) => {
-      const publishedDiff = toTimestamp(right.publishedAt) - toTimestamp(left.publishedAt);
-      if (publishedDiff !== 0) return publishedDiff;
-
-      const updatedDiff = toTimestamp(right.updatedAt) - toTimestamp(left.updatedAt);
-      if (updatedDiff !== 0) return updatedDiff;
-
-      return String(left.id || '').localeCompare(String(right.id || ''));
-    })[0] || null;
+  const today = new Date().toISOString().slice(0, 10);
+  const todayUpdates = currentYearNews.filter((item) => String(item.publishedAt || item.updatedAt || '').startsWith(today)).length;
 
   const itemListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    'name': '上海升学新闻政策列表',
-    'description': `${currentYear}年上海中考高考新闻政策汇总`,
-    'numberOfItems': news.length
+    name: '上海升学新闻政策列表',
+    description: `${currentYear}年上海中考高考新闻政策汇总`,
+    numberOfItems: news.length
   };
 
   return (
-    <>
+    <main className="news-aerial-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <SiteShell hideKnowledgeNav>
-      <header className="hero">
-        <section className="search-panel news-channel-hero">
-          <div className="news-channel-hero-grid">
-            <div className="news-channel-hero-main">
-              <p className="overview-label">上海升学新闻</p>
-              <h1>{currentYear} 上海升学新闻</h1>
-              <p className="news-channel-subtitle">
-                报名、考试、录取、学校动态每日更新，挑出真正影响选择的消息。
-              </p>
-              <p>本周重点 + 政策与时间线专题。</p>
-              <div className="news-channel-tag-row">
-                <Link className="pill news-channel-tag-link" href="/news/zhongkao-special">中考重点</Link>
-                <Link className="pill news-channel-tag-link" href="/news/gaokao-special">高考重点</Link>
-                <Link className="pill news-channel-tag-link" href="/news/admission-timeline">关键时间</Link>
-                <Link className="pill news-channel-tag-link" href="/schools">上海学校</Link>
-              </div>
-            </div>
-            <aside className="news-channel-hero-side">
-              {latestLocalHeadline ? (
-                <Link className="news-channel-focus-link" href={`/news/${latestLocalHeadline.id}`}>
-                  <article className="news-channel-focus-card">
-                    <span className="overview-label">最新一条</span>
-                    <h2>{latestLocalHeadline.title}</h2>
-                    <p className="news-channel-focus-summary">{latestLocalHeadline.summary || '与近期上海升学节奏相关。'}</p>
-                    <div className="news-channel-focus-meta">
-                      <span>{latestLocalHeadline.publishedAt || '—'}</span>
-                      <span>查看</span>
-                    </div>
-                  </article>
-                </Link>
-              ) : null}
-            </aside>
+
+      <nav className="news-aerial-nav" aria-label="顶部导航">
+        <Link className="news-aerial-brand" href="/" aria-label="考哪去首页">
+          <strong>考哪去</strong>
+          <span>SHANGHAI EDUCATION</span>
+        </Link>
+        <div className="news-aerial-nav-links">
+          <Link href="/">首页</Link>
+          <Link className="is-active" href="/news">新闻</Link>
+          <Link href="/schools">学校</Link>
+          <Link href="/knowledge">知识</Link>
+        </div>
+        <Link className="news-aerial-nav-cta" href="/schools">开始探索</Link>
+      </nav>
+
+      <header className="news-hero-slab">
+        <section className="news-hero-content" aria-label="新闻频道概览">
+          <div className="news-hero-copy">
+            <SectionLabel>NEWS CHANNEL</SectionLabel>
+            <h1>新闻动态</h1>
+            <p>实时追踪上海中考、高考最新政策发布与升学新闻，一站式掌握关键信息动态。</p>
           </div>
+
+          <aside className="news-hero-stats" aria-label="新闻统计">
+            <article>
+              <span>新闻总数</span>
+              <strong>{currentYearNews.length}</strong>
+              <p>{currentYear} 年本地动态</p>
+            </article>
+            <article>
+              <span>政策文件</span>
+              <strong>{currentYearPolicies.length}</strong>
+              <p>官方政策与通知</p>
+            </article>
+            <article>
+              <span>今日更新</span>
+              <strong>{todayUpdates}</strong>
+              <p>最新同步条目</p>
+            </article>
+          </aside>
         </section>
       </header>
-      <NewsPageClient news={news} policies={policies} schoolNamesById={schoolNamesById} />
 
-      <footer className="prototype-page-footer">
-        <span>上海升学观察 / {currentYear} 新闻与政策</span>
-        <span>当年新闻 {currentYearNews.length} / 当年政策 {currentYearPolicies.length} / 学校动态 {schoolCount}</span>
+      <NewsPageClient
+        news={news}
+        policies={policies}
+        schoolNamesById={schoolNamesById}
+        currentYear={currentYear}
+      />
+
+      <div className="news-color-block-row" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <footer className="news-aerial-footer">
+        <div>
+          <strong>考哪去</strong>
+          <span>SHANGHAI EDUCATION PLATFORM</span>
+        </div>
+        <nav aria-label="页脚导航">
+          <Link href="/">首页</Link>
+          <Link href="/news">新闻</Link>
+          <Link href="/schools">学校</Link>
+          <Link href="/knowledge">知识</Link>
+        </nav>
+        <p>© 2026 考哪去</p>
       </footer>
-    </SiteShell>
-    </>
+    </main>
   );
 }
