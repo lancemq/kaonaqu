@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
-import SiteShell from '../../../../components/site-shell';
 import {
-  getDistrictSchoolTopic,
   clipText,
   formatSchoolUpdate,
-  getUpdateSortValue,
+  getDistrictSchoolTopic,
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
   getSchoolOwnershipLabel,
@@ -35,8 +33,47 @@ function sortSchoolsBySignal(list) {
     .sort((left, right) => {
       const rightSignal = (right.features?.length || 0) + (right.tags?.length || 0);
       const leftSignal = (left.features?.length || 0) + (left.tags?.length || 0);
-      return rightSignal - leftSignal || getUpdateSortValue(right.updatedAt) - getUpdateSortValue(left.updatedAt);
+      return rightSignal - leftSignal || String(right.updatedAt || '').localeCompare(String(left.updatedAt || ''));
     });
+}
+
+function SectionKicker({ children }) {
+  return (
+    <div className="district-channel-kicker">
+      <span aria-hidden="true" />
+      <p>{children}</p>
+    </div>
+  );
+}
+
+function SiteNav() {
+  return (
+    <nav className="schools-aerial-nav" aria-label="顶部导航">
+      <Link className="schools-aerial-brand" href="/" aria-label="考哪去首页">
+        <strong>考哪去</strong>
+        <span>SHANGHAI EDUCATION</span>
+      </Link>
+      <div className="schools-aerial-nav-links">
+        <Link href="/">首页</Link>
+        <Link href="/news">新闻</Link>
+        <Link className="is-active" href="/schools">学校</Link>
+        <Link href="/knowledge">知识</Link>
+      </div>
+    </nav>
+  );
+}
+
+function Footer() {
+  return (
+    <>
+      <div className="schools-color-block-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <footer className="schools-aerial-footer">
+        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
+        <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
+        <p>© 2026 考哪去</p>
+      </footer>
+    </>
+  );
 }
 
 export async function generateMetadata({ params }) {
@@ -84,212 +121,142 @@ export default async function DistrictSchoolsPage({ params }) {
     .slice()
     .sort((left, right) => Number(right.schoolCount || 0) - Number(left.schoolCount || 0))
     .slice(0, 5);
-
-  const districtDescriptor = [
-    `${districtSchools.length} 所学校`,
-    `${stageBuckets.senior_high.length} 所高中`,
-    `${stageBuckets.junior.length} 所初中`,
-    `${stageBuckets.complete.length} 所完全中学`
-  ].join(' · ');
-
   const stageGroups = [
     { id: 'senior_high', label: '高中', items: stageBuckets.senior_high, note: '适合中招阶段直接比较高中。' },
     { id: 'junior', label: '初中', items: stageBuckets.junior, note: '适合小升初与初中阶段择校。' },
     { id: 'complete', label: '完全中学', items: stageBuckets.complete, note: '适合关注初高中贯通培养路径。' }
   ].filter((group) => group.items.length);
-
+  const topStage = stageGroups.slice().sort((left, right) => right.items.length - left.items.length)[0];
+  const districtOverview = districtInfo.districtOverview || `${districtInfo.name}学校信息持续整理中，可先按学段和办学性质查看区内学校结构。`;
   const itemListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    'name': `${districtInfo.name}学校列表`,
-    'description': `${districtInfo.name}初中高中学校信息`,
-    'numberOfItems': districtSchools.length
+    name: `${districtInfo.name}学校列表`,
+    description: `${districtInfo.name}初中高中学校信息`,
+    numberOfItems: districtSchools.length
   };
 
   return (
-    <>
+    <main className="schools-aerial-page district-channel-page district-detail-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <SiteShell
-      hideKnowledgeNav
-      breadcrumbItems={[
-        { label: '学校信息', href: '/schools' },
-        { label: '区级专题' },
-        { label: districtInfo.name }
-      ]}
-    >
-      <header className="hero" id="top">
-        <section className="district-datadesk-hero" aria-label="区级学校专题">
-          <div className="district-datadesk-hero-grid">
-            <div className="district-datadesk-hero-main">
-              <p className="overview-label">District Database</p>
-              <h1>{districtInfo.name}学校专题</h1>
-              <p className="district-datadesk-subtitle">{getDistrictSchoolTopic(districtInfo)}</p>
-              <p className="district-datadesk-description">{districtInfo.name} 学校按区域数据库方式重组：区内学校结构与优先学校。</p>
-              <div className="district-datadesk-inline-meta">
-                <span>区域结构优先</span>
-                <span>先看学段分布</span>
-                <span>再选具体学校</span>
-              </div>
-            </div>
+      <SiteNav />
 
-            <div className="district-datadesk-summary-grid">
-              <article className="district-datadesk-summary-card district-datadesk-summary-card-strong">
-                <span>学校总量</span>
-                <strong>{districtSchools.length}</strong>
-                <p>{districtInfo.name} 当前收录学校条目</p>
-              </article>
-              <article className="district-datadesk-summary-card">
-                <span>最近更新</span>
-                <strong>{latestUpdated}</strong>
-                <p>本区学校数据最近一次收录时间</p>
-              </article>
-              <article className="district-datadesk-summary-card">
-                <span>高中 / 初中</span>
-                <strong>{stageBuckets.senior_high.length} / {stageBuckets.junior.length}</strong>
-                <p>纯高中与纯初中分布</p>
-              </article>
-              <article className="district-datadesk-summary-card">
-                <span>完全中学</span>
-                <strong>{stageBuckets.complete.length}</strong>
-                <p>适合看连续培养路径的学校数量</p>
-              </article>
-            </div>
-          </div>
-        </section>
+      <header className="district-channel-hero district-detail-hero" id="top">
+        <div className="district-channel-hero-content">
+          <section className="district-channel-hero-copy" aria-label={`${districtInfo.name}学校专题概览`}>
+            <div className="district-channel-breadcrumb"><Link href="/schools">学校</Link><span>/</span><Link href="/schools/district">区域频道</Link><span>/</span><strong>{districtInfo.name}</strong></div>
+            <SectionKicker>DISTRICT DATABASE</SectionKicker>
+            <h1>{districtInfo.name}学校专题</h1>
+            <p>{getDistrictSchoolTopic(districtInfo)}</p>
+          </section>
+
+          <aside className="district-channel-hero-stats" aria-label={`${districtInfo.name}学校统计`}>
+            <article><strong>{districtSchools.length}</strong><span>学校总量</span></article>
+            <article><strong>{stageBuckets.senior_high.length}</strong><span>高中样本</span></article>
+            <article><strong>{stageBuckets.junior.length}</strong><span>初中样本</span></article>
+            <article><strong>{stageBuckets.complete.length}</strong><span>完全中学</span></article>
+          </aside>
+        </div>
       </header>
 
-      {districtInfo.districtOverview ? (
-        <section className="district-datadesk-overview" aria-label={`${districtInfo.name}区域概览`}>
-          <div className="district-datadesk-overview-inner">
-            <p className="overview-label">区域概览</p>
-            <p className="district-datadesk-overview-copy">{districtInfo.districtOverview}</p>
+      <section className="district-channel-overview" aria-label={`${districtInfo.name}区域概况`}>
+        <div>
+          <h2>区域概况</h2>
+          <p>{districtOverview}</p>
+        </div>
+        <div className="district-channel-overview-stats">
+          <article><strong>{latestUpdated}</strong><span>最近更新</span></article>
+          <article><strong>{topStage?.label || '学段'}</strong><span>主要学段</span></article>
+          <article><strong>{districtSchools.filter((school) => school.schoolType === 'private').length}</strong><span>民办记录</span></article>
+        </div>
+      </section>
+
+      {featured.length ? (
+        <section className="district-channel-section district-channel-highlights" aria-label={`${districtInfo.name}优先学校`}>
+          <SectionKicker>HIGHLIGHTS</SectionKicker>
+          <h2>{districtInfo.name}优先学校</h2>
+          <div className="district-channel-featured-grid">
+            {featured.slice(0, 3).map((school) => (
+              <Link className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
+                <div><span>{getSchoolStage(school)}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
+                <strong>{school.name}</strong>
+                <p>{clipText(getSchoolAdmissionInfo(school) || school.schoolDescription || '学校信息持续整理中。', 46)}</p>
+                <b>进入 →</b>
+              </Link>
+            ))}
           </div>
         </section>
       ) : null}
 
-      <section className="district-datadesk-statusbar" aria-label="区级数据库状态">
-        <span className="district-datadesk-statuslabel">District Status</span>
-        <span>{districtInfo.name} / {districtDescriptor}</span>
-      </section>
+      <section className="district-channel-schools" aria-label={`${districtInfo.name}学校列表`}>
+        <div className="district-channel-main-list">
+          <div className="district-channel-list-head">
+            <div>
+              <SectionKicker>SCHOOLS</SectionKicker>
+              <h2>{districtInfo.name}学校列表</h2>
+            </div>
+            <p>按资料完整度和特色标签优先展示，点击进入学校详情。</p>
+          </div>
 
-      <main className="layout district-datadesk-layout">
-        <aside className="district-datadesk-sidebar">
-          <section className="district-datadesk-panel district-datadesk-panel-dark">
-            <div className="district-datadesk-panel-head">
-              <p className="overview-label">本区读法</p>
-              <span>{districtInfo.name}</span>
-            </div>
-            <p className="district-datadesk-panel-copy">先看这个区的学段结构和学校密度，再决定是继续按学段深入，还是先从头部学校进入详情。</p>
-            <div className="district-datadesk-stack">
-              <span>纯高中 {stageBuckets.senior_high.length}</span>
-              <span>纯初中 {stageBuckets.junior.length}</span>
-              <span>完全中学 {stageBuckets.complete.length}</span>
-            </div>
-          </section>
-
-          <section className="district-datadesk-panel">
-            <div className="district-datadesk-panel-head">
-              <p className="overview-label">学段分布</p>
-              <span>本区结构</span>
-            </div>
-            <div className="district-datadesk-breakdown">
-              {stageGroups.map((group) => (
-                <article key={group.id} className="district-datadesk-breakdown-card">
-                  <strong>{group.label}</strong>
-                  <span>{group.items.length} 所</span>
-                  <p>{group.note}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="district-datadesk-panel">
-            <div className="district-datadesk-panel-head">
-              <p className="overview-label">相关区域</p>
-              <span>继续横向看区</span>
-            </div>
-            <div className="district-datadesk-related">
-              {relatedDistricts.map((item) => (
-                <Link key={item.id} className="district-datadesk-related-link" href={`/schools/district/${item.id}`}>
-                  <strong>{item.name}</strong>
-                  <span>{item.schoolCount || 0} 所学校</span>
+          <div className="district-channel-row-list">
+            {sortedSchools.map((school) => {
+              const tags = buildCardTags(school);
+              return (
+                <Link className="district-channel-row district-detail-school-row" href={`/schools/${school.id}`} key={school.id}>
+                  <div className="district-channel-row-info">
+                    <strong>{school.name}</strong>
+                    <span>{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getSchoolOwnershipLabel(school) || '学校信息'}</span>
+                    <em>{clipText(getSchoolAdmissionInfo(school) || school.schoolDescription || '学校信息持续整理中。', 62)}</em>
+                    {tags.length ? <small>{tags.join(' · ')}</small> : null}
+                  </div>
+                  <div className="district-channel-row-score">
+                    <strong>{getSchoolType(school) || '—'}</strong>
+                    <span>{formatSchoolUpdate(school.updatedAt)}</span>
+                  </div>
                 </Link>
-              ))}
-            </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <aside className="district-channel-sidebar" aria-label={`${districtInfo.name}侧栏`}>
+          <section className="district-channel-side-card">
+            <SectionKicker>STAGE</SectionKicker>
+            <h2>学段分布</h2>
+            {stageGroups.map((group, index) => (
+              <Link className={index === 0 ? 'is-active' : undefined} href={`/schools?district=${districtInfo.id}&stage=${group.id}`} key={group.id}>
+                <span>{group.label} · {group.items.length} 所</span>
+                <i>→</i>
+              </Link>
+            ))}
+          </section>
+
+          <section className="district-channel-side-card">
+            <SectionKicker>RELATED</SectionKicker>
+            <h2>周边区域</h2>
+            {relatedDistricts.map((item) => (
+              <Link href={`/schools/district/${item.id}`} key={item.id}>
+                <span>{item.name} · {item.schoolCount || 0} 所</span>
+                <i>→</i>
+              </Link>
+            ))}
+          </section>
+
+          <section className="district-channel-side-card is-dark">
+            <SectionKicker>TOOLS</SectionKicker>
+            <h2>区域工具</h2>
+            <Link href="/schools"><span>学校数据库</span><i>→</i></Link>
+            <Link href="/schools/category"><span>学校分类</span><i>→</i></Link>
+            <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
+            <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
           </section>
         </aside>
+      </section>
 
-        <section className="district-datadesk-results">
-          <section className="district-datadesk-panel">
-            <div className="district-datadesk-results-head">
-              <div>
-                <p className="overview-label">本区优先阅读</p>
-                <h2>{districtInfo.name}优先学校</h2>
-              </div>
-              <p>优先展示资料相对完整、适合做第一轮判断的学校条目。</p>
-            </div>
-            <div className="district-datadesk-cardlist">
-              {featured.map((school) => {
-                const cardTags = buildCardTags(school);
-                return (
-                  <Link key={school.id} href={`/schools/${school.id}`} className="district-datadesk-card">
-                    <div className="district-datadesk-cardhead">
-                      <div>
-                        <p className="district-datadesk-cardkicker">{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getSchoolOwnershipLabel(school) || '学校信息'}</p>
-                        <h3>{school.name}</h3>
-                      </div>
-                      <div className="district-datadesk-cardmeta">
-                        <span>{getSchoolType(school)}</span>
-                        <span>{formatSchoolUpdate(school.updatedAt)}</span>
-                      </div>
-                    </div>
-                    <p className="district-datadesk-cardsummary">{clipText(getSchoolAdmissionInfo(school) || school.schoolDescription || '学校信息持续整理中。')}</p>
-                    <div className="district-datadesk-cardfooter">
-                      <div className="district-datadesk-cardtags">
-                        {cardTags.length ? cardTags.map((tag) => (
-                          <span key={tag} className="district-datadesk-cardtag">{tag}</span>
-                        )) : (
-                          <span className="district-datadesk-cardtag district-datadesk-cardtag-muted">标签待补充</span>
-                        )}
-                      </div>
-                      <span className="district-datadesk-cardlink">进入学校详情</span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </section>
-
-          {stageGroups.map((group) => (
-            <section key={group.id} className="district-datadesk-panel">
-              <div className="district-datadesk-results-head">
-                <div>
-                  <p className="overview-label">按学段查看</p>
-                  <h2>{districtInfo.name}{group.label}学校</h2>
-                </div>
-                <p>{group.note}</p>
-              </div>
-              <div className="district-datadesk-schoolgrid">
-                {group.items.slice(0, 9).map((school) => (
-                  <Link key={school.id} href={`/schools/${school.id}`} className="district-datadesk-schoolitem">
-                    <strong>{school.name}</strong>
-                    <span>{getSchoolOwnershipLabel(school) || '学校信息'} / {formatSchoolUpdate(school.updatedAt)}</span>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ))}
-        </section>
-      </main>
-
-      <footer className="prototype-page-footer">
-        <span>上海学校数据库 / 区域专题页</span>
-        <span>{districtInfo.name} / 区域结构 / 学段分布 / 学校详情</span>
-      </footer>
-    </SiteShell>
-    </>
+      <Footer />
+    </main>
   );
 }

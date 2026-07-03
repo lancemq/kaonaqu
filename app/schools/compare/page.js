@@ -1,4 +1,3 @@
-import SiteShell from '../../../components/site-shell';
 import { createRequire } from 'module';
 import SchoolsCompareClient from '../../../components/schools-compare-client';
 
@@ -13,20 +12,14 @@ export const metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function SchoolsComparePage({ searchParams }) {
-  const { districts, schools } = await loadDataStore();
+  const { schools } = await loadDataStore();
   const params = await searchParams;
   const initialSchools = typeof params?.schools === 'string' ? params.schools : '';
 
   return (
-    <SiteShell hideKnowledgeNav breadcrumbItems={[
-      { label: '首页', href: '/' },
-      { label: '学校信息', href: '/schools' },
-      { label: '学校对比' }
-    ]}>
-      <SchoolsCompareClient 
-        schools={schools} 
-        initialSchools={initialSchools} 
-      />
-    </SiteShell>
+    <SchoolsCompareClient
+      schools={schools}
+      initialSchools={initialSchools}
+    />
   );
 }

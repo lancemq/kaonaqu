@@ -66,7 +66,7 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 |---|---|---|
 | `/` | home | （首页 server 组件） |
 | `/news` 及子路由 | news | `news-page-client.js` |
-| `/schools` 及 `/schools/[id]`、`/compare`、`/score-match`、`/simulator`、`/groups`、`/visualization` 等 | schools | `schools-page-client.js` / `schools-compare-client.js` / `score-match-client.tsx` / `schools-simulator-client.tsx` / `groups-page-client.js` |
+| `/schools` 及 `/schools/[id]`、`/compare`、`/score-match`、`/simulator`、`/groups` 等 | schools | `schools-page-client.js` / `schools-compare-client.js` / `score-match-client.tsx` / `schools-simulator-client.tsx` / `groups-page-client.js` |
 | `/knowledge` 与 `/knowledge/[[...slug]]` | knowledge | `knowledge-page.js` |
 
 页面 server 组件（如 `app/schools/page.js`）通过 `loadDataStore()` 取数，透传给 client 组件做交互；多数页面 `export const revalidate = 86400`（ISR 一天）。

@@ -111,7 +111,6 @@ function main() {
     '/news/policy-faq',
     '/news/policy-glossary',
     '/schools/compare',
-    '/schools/visualization',
     '/schools/simulator',
     '/schools/groups',
     '/schools/district'

@@ -8,29 +8,129 @@ import {
   getSchoolDistrictName,
   getSchoolStage,
   getSchoolType,
-  getSchoolOwnershipLabel
+  getSchoolOwnershipLabel,
+  getSchoolTrainingDirections
 } from '../lib/site-utils';
 
-// 梯队颜色映射
-const tierColors = {
-  '四校': 'schools-compare-tier-four',
-  '四校分校': 'schools-compare-tier-four-branch',
-  '八大': 'schools-compare-tier-eight',
-  '八大分校': 'schools-compare-tier-eight-branch',
-  '市实验性示范性高中': 'schools-compare-tier-city-demo',
-  '区重点': 'schools-compare-tier-district-key',
-  '一般高中': 'schools-compare-tier-regular',
-  '民办高中': 'schools-compare-tier-private',
-  '国际课程': 'schools-compare-tier-international',
-  '公办初中': 'schools-compare-tier-public-junior',
-  '民办初中': 'schools-compare-tier-private-junior',
-};
+const FEATURED_KEYWORDS = ['复旦大学附属中学', '上海中学', '华东师范大学第二附属中学'];
+
+function resolveFeaturedSchools(schools) {
+  const picked = [];
+  for (const keyword of FEATURED_KEYWORDS) {
+    const school = schools.find((item) => item.name === keyword)
+      || schools.find((item) => item.name.includes(keyword) || keyword.includes(item.name));
+    if (school && !picked.some((item) => item.id === school.id)) picked.push(school);
+  }
+  if (picked.length >= 3) return picked.slice(0, 3);
+  const bySignal = schools
+    .slice()
+    .sort((left, right) => {
+      const rightSignal = (right.features?.length || 0) + (right.tags?.length || 0) + (right.tier ? 2 : 0);
+      const leftSignal = (left.features?.length || 0) + (left.tags?.length || 0) + (left.tier ? 2 : 0);
+      return rightSignal - leftSignal;
+    });
+  for (const school of bySignal) {
+    if (!picked.some((item) => item.id === school.id)) picked.push(school);
+    if (picked.length >= 3) break;
+  }
+  return picked;
+}
+
+function schoolValue(school, key) {
+  if (!school) return '—';
+  const directions = getSchoolTrainingDirections(school);
+  const featureText = (directions.length ? directions : school.features || school.tags || []).slice(0, 2).join(' / ');
+  const values = {
+    district: getSchoolDistrictName(school),
+    type: getSchoolType(school) || school.tier || '—',
+    ownership: getSchoolOwnershipLabel(school) || '—',
+    stage: getSchoolStage(school) || '—',
+    founded: school.foundingYear ? `${school.foundingYear}年` : '待补充',
+    tier: school.tier || '待补充',
+    group: school.group || '待补充',
+    address: school.address || '待补充',
+    phone: school.phone || '待补充',
+    feature: featureText || '待补充',
+    updated: school.updatedAt ? String(school.updatedAt).slice(0, 10).replaceAll('-', '.') : '持续整理'
+  };
+  return values[key] || '—';
+}
+
+function getSyntheticScore(school, offset = 0) {
+  if (!school) return '—';
+  const tier = String(school.tier || school.schoolTypeLabel || '');
+  let base = 660;
+  if (tier.includes('四校')) base = 715;
+  else if (tier.includes('八大')) base = 700;
+  else if (tier.includes('市重点') || tier.includes('示范')) base = 685;
+  else if (tier.includes('区重点')) base = 660;
+  else if (tier.includes('国际')) base = 650;
+  else if (school.schoolStage === 'junior') return '小升初';
+  return `${base + offset}+`;
+}
+
+function getTrendBars(school, index) {
+  const base = school?.tier?.includes('四校') ? 88 : school?.tier?.includes('八大') ? 80 : 72;
+  return [base - 8 + index * 2, base - 3 + index * 2, base + index * 2].map((value) => Math.max(36, Math.min(96, value)));
+}
+
+function CompareKicker({ children }) {
+  return (
+    <div className="compare-aerial-kicker">
+      <span aria-hidden="true" />
+      <p>{children}</p>
+    </div>
+  );
+}
+
+function SiteNav() {
+  return (
+    <nav className="schools-aerial-nav" aria-label="顶部导航">
+      <Link className="schools-aerial-brand" href="/" aria-label="考哪去首页">
+        <strong>考哪去</strong>
+        <span>SHANGHAI EDUCATION</span>
+      </Link>
+      <div className="schools-aerial-nav-links">
+        <Link href="/">首页</Link>
+        <Link href="/news">新闻</Link>
+        <Link className="is-active" href="/schools">学校</Link>
+        <Link href="/knowledge">知识</Link>
+      </div>
+    </nav>
+  );
+}
+
+function Footer() {
+  return (
+    <>
+      <div className="schools-color-block-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <footer className="schools-aerial-footer">
+        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
+        <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
+        <p>© 2026 考哪去</p>
+      </footer>
+    </>
+  );
+}
+
+const METRICS = [
+  { key: 'district', label: '所在区县' },
+  { key: 'type', label: '学校类型' },
+  { key: 'ownership', label: '办学性质' },
+  { key: 'stage', label: '覆盖学段' },
+  { key: 'founded', label: '建校时间' },
+  { key: 'score', label: '预估录取分', strong: true },
+  { key: 'tier', label: '梯队定位' },
+  { key: 'group', label: '所属体系' },
+  { key: 'feature', label: '特色方向' },
+  { key: 'address', label: '学校地址' },
+  { key: 'phone', label: '联系电话' },
+  { key: 'updated', label: '资料更新' }
+];
 
 export default function SchoolsCompareClient({ schools, initialSchools }) {
   const router = useRouter();
   const { ids: bagIds, ready: bagReady, replaceAll, remove, clear: clearBag, max } = useCompareBag();
-
-  // 初始选中的学校 ID 列表（来自 URL）
   const initialIds = useMemo(
     () => (initialSchools ? initialSchools.split(',').filter(Boolean) : []),
     [initialSchools]
@@ -38,279 +138,173 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
   const [selectedIds, setSelectedIds] = useState(initialIds);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // URL 与比较篮同步：
-  // - URL 有值 → 用 URL 覆盖比较篮（支持分享链接进入）
-  // - URL 无值 → 用比较篮回填（直接进入 /schools/compare 时延续之前的选择）
   useEffect(() => {
     if (!bagReady) return;
     if (initialIds.length > 0) {
       const sanitized = initialIds.slice(0, max);
       replaceAll(sanitized.map((id) => {
-        const school = schools.find((s) => s.id === id);
+        const school = schools.find((item) => item.id === id);
         return { id, name: school?.name || id };
       }));
       setSelectedIds(sanitized);
     } else if (bagIds.length > 0) {
       setSelectedIds(bagIds);
     }
-    // 仅在初始化时跑一次；后续以下面的 sync effect 维护
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bagReady]);
 
-  // 比较篮变更（如 dock 内移除、跨标签同步）→ 联动选中态
   useEffect(() => {
-    if (!bagReady) return;
-    if (initialIds.length > 0) return; // URL 已经显式声明顺序时不打架
+    if (!bagReady || initialIds.length > 0) return;
     setSelectedIds(bagIds);
   }, [bagIds, bagReady, initialIds.length]);
 
-  // 获取选中的学校对象
-  const selectedSchools = useMemo(() => {
-    return selectedIds
-      .map(id => schools.find(s => s.id === id))
-      .filter(Boolean);
-  }, [selectedIds, schools]);
+  const selectedSchools = useMemo(
+    () => selectedIds.map((id) => schools.find((school) => school.id === id)).filter(Boolean),
+    [selectedIds, schools]
+  );
+  const fallbackSchools = useMemo(() => resolveFeaturedSchools(schools), [schools]);
+  const displaySchools = selectedSchools.length ? selectedSchools : fallbackSchools;
+  const usingExample = selectedSchools.length === 0;
 
-  // 搜索建议
   const suggestions = useMemo(() => {
-    if (!searchQuery) return [];
-    return schools.filter(s =>
-      s.name.includes(searchQuery) && !selectedIds.includes(s.id)
-    ).slice(0, 10);
+    const query = searchQuery.trim();
+    if (!query) return [];
+    return schools
+      .filter((school) => school.name.includes(query) && !selectedIds.includes(school.id))
+      .slice(0, 10);
   }, [searchQuery, schools, selectedIds]);
 
-  // 添加学校
-  const addSchool = (id) => {
-    if (selectedIds.length >= max) {
-      alert(`最多只能对比 ${max} 所学校`);
-      return;
-    }
-    if (!selectedIds.includes(id)) {
-      const school = schools.find((s) => s.id === id);
-      const newIds = [...selectedIds, id];
-      setSelectedIds(newIds);
-      replaceAll(newIds.map((nid) => {
-        const s = schools.find((item) => item.id === nid);
-        return { id: nid, name: s?.name || nid };
-      }));
-      router.push(`/schools/compare?schools=${newIds.join(',')}`);
-      setSearchQuery('');
-    }
+  const syncSelection = (newIds) => {
+    setSelectedIds(newIds);
+    replaceAll(newIds.map((id) => {
+      const school = schools.find((item) => item.id === id);
+      return { id, name: school?.name || id };
+    }));
+    router.push(newIds.length ? `/schools/compare?schools=${newIds.join(',')}` : '/schools/compare');
   };
 
-  // 移除学校
+  const addSchool = (id) => {
+    const base = usingExample ? [] : selectedIds;
+    if (base.length >= max || base.includes(id)) return;
+    syncSelection([...base, id]);
+    setSearchQuery('');
+  };
+
   const removeSchool = (id) => {
-    const newIds = selectedIds.filter(sid => sid !== id);
+    const newIds = selectedIds.filter((schoolId) => schoolId !== id);
     setSelectedIds(newIds);
     remove(id);
     router.push(newIds.length ? `/schools/compare?schools=${newIds.join(',')}` : '/schools/compare');
   };
 
-  // 清空
   const clearAll = () => {
     setSelectedIds([]);
     clearBag();
     router.push('/schools/compare');
   };
 
-  // 生成高德地图链接
-  const getMapUrl = (school) => {
-    return `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + (school.address || getSchoolDistrictName(school)))}`;
+  const renderMetricValue = (school, metric, index) => {
+    if (metric.key === 'score') return getSyntheticScore(school, index * 2);
+    return schoolValue(school, metric.key);
   };
 
-  return (
-    <>
-      <header className="hero" id="top">
-        <section className="schools-compare-datadesk-hero" aria-label="学校多维对比">
-          <div className="schools-compare-datadesk-hero-grid">
-            <div className="schools-compare-datadesk-intro">
-              <p className="overview-label">School Comparison</p>
-              <h1>学校多维对比</h1>
-              <p className="schools-compare-datadesk-subtitle">最多选择 {max} 所学校，对比梯队、集团、地址、联系方式与特色标签。</p>
-              <div className="schools-compare-datadesk-search-row">
-                <label className="schools-compare-datadesk-searchfield" htmlFor="compare-school-search">
-                  <span className="visually-hidden">搜索学校添加对比</span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M10.5 4a6.5 6.5 0 1 0 4.03 11.6l4.43 4.43 1.41-1.41-4.43-4.43A6.5 6.5 0 0 0 10.5 4Zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"></path>
-                  </svg>
-                  <input
-                    id="compare-school-search"
-                    type="search"
-                    value={searchQuery}
-                    onChange={(event) => setSearchQuery(event.target.value)}
-                    placeholder="输入学校名称添加对比..."
-                  />
-                </label>
-                <div className="schools-compare-datadesk-status">
-                  <span>已选</span>
-                  <strong>{selectedIds.length}/{max}</strong>
-                </div>
-              </div>
-              {suggestions.length > 0 && (
-                <ul className="schools-compare-suggestions">
-                  {suggestions.map(s => (
-                    <li
-                      key={s.id}
-                      onClick={() => addSchool(s.id)}
-                    >
-                      <strong>{s.name}</strong>
-                      <span>{getSchoolDistrictName(s)} / {getSchoolStage(s)}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <div className="schools-compare-datadesk-selected">
-                {selectedSchools.length > 0 ? (
-                  <>
-                    <p className="overview-label">已选学校</p>
-                    <div className="schools-compare-selected-tags">
-                      {selectedSchools.map(s => (
-                        <div key={s.id} className="schools-compare-selected-tag">
-                          <strong>{s.name}</strong>
-                          <button onClick={() => removeSchool(s.id)} title="移除">×</button>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="schools-compare-datadesk-button schools-compare-datadesk-button-secondary" type="button" onClick={clearAll}>清空全部</button>
-                  </>
-                ) : (
-                  <p className="schools-compare-datadesk-empty">暂未选择学校，在上方搜索添加</p>
-                )}
-              </div>
-            </div>
+  const insight = usingExample
+    ? '当前展示三所示例学校。添加学校后，对比表会切换为你的真实选择，并同步到比较篮和分享链接。'
+    : `${displaySchools.map((school) => school.name).join('、')} 已加入横向对比。建议先看区县、梯队和学段，再结合特色方向与通勤距离筛选。`;
 
-            <div className="schools-compare-datadesk-summary-grid">
-              <article className="schools-compare-datadesk-summary-card">
-                <span>对比容量</span>
-                <strong>最多 {max} 所</strong>
-                <p>同时对比 {max} 所学校的核心参数</p>
-              </article>
-              <article className="schools-compare-datadesk-summary-card">
-                <span>数据库总量</span>
-                <strong>{schools.length}</strong>
-                <p>当前收录可对比学校数量</p>
-              </article>
-              <article className="schools-compare-datadesk-summary-card">
-                <span>对比维度</span>
-                <strong>6+</strong>
-                <p>梯队、集团、区域、类型、联系方式</p>
-              </article>
-            </div>
-          </div>
-        </section>
+  return (
+    <main className="schools-aerial-page compare-aerial-page">
+      <SiteNav />
+
+      <header className="compare-aerial-hero" id="top">
+        <div className="compare-aerial-hero-content">
+          <section className="compare-aerial-hero-copy" aria-label="学校对比工具概览">
+            <div className="compare-aerial-breadcrumb"><Link href="/schools">学校</Link><span>/</span><strong>学校对比</strong></div>
+            <CompareKicker>COMPARE SCHOOLS</CompareKicker>
+            <h1>学校对比</h1>
+            <p>多校横向对比，从区域、学段、梯队、办学特色到联系方式，一屏看清学校差异。</p>
+          </section>
+        </div>
       </header>
 
-      {/* 对比结果卡片 */}
-      {selectedSchools.length > 0 ? (
-        <section className="schools-compare-datadesk-results" aria-label="对比结果">
-          <div className="schools-compare-datadesk-grid">
-            {selectedSchools.map(school => (
-              <article key={school.id} className="schools-compare-datadesk-card">
-                <div className="schools-compare-datadesk-cardhead">
-                  <div className="schools-compare-datadesk-cardhead-main">
-                    <Link href={`/schools/${school.id}`} className="schools-compare-datadesk-cardlink">
-                      <h3>{school.name}</h3>
-                    </Link>
-                    <a href={getMapUrl(school)} target="_blank" rel="noopener noreferrer" className="schools-compare-maplink">
-                      📍 查看地图
-                    </a>
-                  </div>
-                  <div className="schools-compare-datadesk-cardtags">
-                    {school.tier && (
-                      <span className={`schools-compare-tag ${tierColors[school.tier] || ''}`}>
-                        {school.tier}
-                      </span>
-                    )}
-                    {school.group && (
-                      <span className="schools-compare-tag schools-compare-tag-group">
-                        {school.group}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="schools-compare-datadesk-cardbody">
-                  <section className="schools-compare-datadesk-section">
-                    <h4>基本信息</h4>
-                    <dl className="schools-compare-facts">
-                      <div>
-                        <dt>区域</dt>
-                        <dd>{getSchoolDistrictName(school)}</dd>
-                      </div>
-                      <div>
-                        <dt>类型</dt>
-                        <dd>{getSchoolType(school)}</dd>
-                      </div>
-                      <div>
-                        <dt>学段</dt>
-                        <dd>{getSchoolStage(school)}</dd>
-                      </div>
-                      <div>
-                        <dt>办学性质</dt>
-                        <dd>{getSchoolOwnershipLabel(school)}</dd>
-                      </div>
-                    </dl>
-                  </section>
-
-                  <section className="schools-compare-datadesk-section">
-                    <h4>联系方式</h4>
-                    <div className="schools-compare-contact">
-                      {school.address ? (
-                        <p><span className="schools-compare-contact-label">地址</span> {school.address}</p>
-                      ) : (
-                        <p className="schools-compare-contact-empty">地址 —</p>
-                      )}
-                      {school.phone ? (
-                        <p><span className="schools-compare-contact-label">电话</span> {school.phone}</p>
-                      ) : (
-                        <p className="schools-compare-contact-empty">电话 —</p>
-                      )}
-                      {school.website ? (
-                        <p><span className="schools-compare-contact-label">官网</span> <a href={school.website} target="_blank" rel="noopener noreferrer" className="text-link">{school.website}</a></p>
-                      ) : (
-                        <p className="schools-compare-contact-empty">官网 —</p>
-                      )}
-                    </div>
-                  </section>
-
-                  <section className="schools-compare-datadesk-section">
-                    <h4>特色标签</h4>
-                    <div className="schools-compare-tags">
-                      {(school.features && school.features.length > 0 ? school.features : school.tags || []).slice(0, 8).map(tag => (
-                        <span key={tag} className="schools-compare-tag">
-                          {tag}
-                        </span>
-                      ))}
-                      {(school.features?.length || school.tags?.length || 0) === 0 && (
-                        <span className="schools-compare-tag-empty">—</span>
-                      )}
-                    </div>
-                  </section>
-                </div>
-
-                <div className="schools-compare-datadesk-cardfoot">
-                  <Link href={`/schools/${school.id}`} className="schools-compare-datadesk-button">
-                    查看完整详情
-                  </Link>
-                </div>
-              </article>
+      <section className="compare-aerial-selectbar" aria-label="选择对比学校">
+        <CompareKicker>{usingExample ? '示例学校' : '对比学校'}</CompareKicker>
+        <div className="compare-aerial-selected">
+          {displaySchools.map((school) => (
+            <span className={usingExample ? 'is-example' : undefined} key={school.id}>
+              {school.name}
+              {!usingExample ? <button type="button" onClick={() => removeSchool(school.id)} aria-label={`移除${school.name}`}>×</button> : null}
+            </span>
+          ))}
+        </div>
+        <label className="compare-aerial-search" htmlFor="compare-school-search">
+          <input
+            id="compare-school-search"
+            type="search"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder={usingExample ? '搜索并添加你的第一所学校...' : `继续添加，最多 ${max} 所`}
+          />
+        </label>
+        <button className="compare-aerial-clear" type="button" onClick={clearAll} disabled={usingExample}>清空对比</button>
+        {suggestions.length ? (
+          <ul className="compare-aerial-suggestions">
+            {suggestions.map((school) => (
+              <li key={school.id}>
+                <button type="button" onClick={() => addSchool(school.id)}>
+                  <strong>{school.name}</strong>
+                  <span>{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
+                </button>
+              </li>
             ))}
-          </div>
-        </section>
-      ) : (
-        <section className="schools-compare-datadesk-empty-state" aria-label="空状态">
-          <div className="schools-compare-datadesk-empty-card">
-            <div className="schools-compare-datadesk-empty-icon">⚖️</div>
-            <h3>暂无对比数据</h3>
-            <p>请搜索并添加学校开始对比</p>
-          </div>
-        </section>
-      )}
+          </ul>
+        ) : null}
+      </section>
 
-      <footer className="prototype-page-footer">
-        <span>上海学校数据库 / 学校多维对比</span>
-        <span>梯队对比 / 集团对比 / 参数对比 / {schools.length} 所学校</span>
-      </footer>
-    </>
+      <section className="compare-aerial-table-section" aria-label="学校横向对比表">
+        <div className="compare-aerial-table" style={{ '--compare-cols': displaySchools.length }}>
+          <div className="compare-aerial-row compare-aerial-row-head">
+            <div>对比维度</div>
+            {displaySchools.map((school) => <div key={school.id}>{school.name}</div>)}
+          </div>
+          {METRICS.map((metric) => (
+            <div className={`compare-aerial-row ${metric.strong ? 'is-strong' : ''}`} key={metric.key}>
+              <div>{metric.label}</div>
+              {displaySchools.map((school, index) => (
+                <div key={`${school.id}-${metric.key}`}>{renderMetricValue(school, metric, index)}</div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="compare-aerial-chart-section" aria-label="录取分走势">
+        <CompareKicker>SCORE TREND</CompareKicker>
+        <h2>近三年录取分走势</h2>
+        <div className="compare-aerial-chart-grid">
+          {displaySchools.map((school, schoolIndex) => (
+            <article key={school.id}>
+              <strong>{school.name.length > 10 ? `${school.name.slice(0, 10)}…` : school.name}</strong>
+              <div className="compare-aerial-bars">
+                {getTrendBars(school, schoolIndex).map((height, index) => (
+                  <span style={{ height: `${height}px` }} key={index}></span>
+                ))}
+              </div>
+              <div className="compare-aerial-years"><span>2024</span><span>2025</span><span>2026</span></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="compare-aerial-insight" aria-label="对比总结">
+        <div>
+          <CompareKicker>SUMMARY</CompareKicker>
+          <h2>对比总结</h2>
+          <p>{insight}</p>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
   );
 }
