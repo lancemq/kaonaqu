@@ -58,123 +58,166 @@ export default function ScoreMatchClient() {
 
   const hasResults = results.length > 0;
 
+  const heroStats = [
+    { value: '3', label: '档位建议' },
+    { value: String(districts.length), label: '覆盖区域' },
+    { value: String(MAX_SCORE), label: '满分参考' },
+    { value: '8', label: '每档上限' }
+  ];
+
   return (
     <>
-      <header className="hero" id="top">
-        <section className="score-match-hero" aria-label="估分择校">
-          <div className="score-match-hero-copy">
-            <span className="overview-label">Score Match</span>
+      <nav className="schools-aerial-nav" aria-label="顶部导航">
+        <Link className="schools-aerial-brand" href="/" aria-label="考哪去首页">
+          <strong>考哪去</strong>
+          <span>SHANGHAI EDUCATION</span>
+        </Link>
+        <div className="schools-aerial-nav-links">
+          <Link href="/">首页</Link>
+          <Link href="/news">新闻</Link>
+          <Link className="is-active" href="/schools">学校</Link>
+          <Link href="/knowledge">知识</Link>
+        </div>
+      </nav>
+
+      <header className="score-match-aerial-hero" id="top">
+        <section className="score-match-aerial-hero-content" aria-label="估分择校">
+          <div className="score-match-aerial-hero-copy">
+            <p className="score-match-aerial-kicker"><span aria-hidden="true"></span>SCORE MATCH</p>
             <h1>估分择校</h1>
-            <p>输入成绩与所在区域，按学校层级参考区间给出冲刺、匹配、保底三档建议。</p>
+            <p>输入中考或高考成绩与所在区域，按学校层级参考区间给出冲刺、匹配、保底三档可填报高中建议。</p>
           </div>
-
-          <div className="score-match-hero-panel">
-            <div className="score-match-form">
-              <div className="score-match-form-row">
-                <span>考试类型</span>
-                <div className="score-match-toggle" role="radiogroup" aria-label="考试类型">
-                  {EXAM_OPTIONS.map((opt) => (
-                    <button
-                      key={opt.value}
-                      type="button"
-                      role="radio"
-                      aria-checked={examType === opt.value}
-                      className={`score-match-toggle-btn${examType === opt.value ? ' score-match-toggle-btn-active' : ''}`}
-                      onClick={() => { setExamType(opt.value); setSubmitted(false); }}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="score-match-form-row">
-                <span>成绩</span>
-                <label className="score-match-scorefield" htmlFor="score-match-score-input">
-                  <input
-                    id="score-match-score-input"
-                    type="number"
-                    inputMode="numeric"
-                    min={0}
-                    max={MAX_SCORE}
-                    value={scoreInput}
-                    onChange={(e) => setScoreInput(e.target.value)}
-                    onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); applyMatch(); } }}
-                    placeholder={`0 - ${MAX_SCORE}`}
-                  />
-                  <em>{EXAM_OPTIONS.find((o) => o.value === examType)?.fullMark}</em>
-                </label>
-              </div>
-
-              <div className="score-match-form-row">
-                <span>所在区域</span>
-                <label className="score-match-scorefield score-match-scorefield-select" htmlFor="score-match-district">
-                  <span className="visually-hidden">按区域筛选</span>
-                  <select
-                    id="score-match-district"
-                    value={districtId}
-                    onChange={(e) => setDistrictId(e.target.value)}
-                  >
-                    <option value="">全市范围</option>
-                    {districts.map((d) => (
-                      <option key={d.id} value={d.id}>{d.name}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-
-              <div className="score-match-form-actions">
-                <button className="score-match-button" type="button" onClick={applyMatch}>生成建议</button>
-                <button className="score-match-button score-match-button-secondary" type="button" onClick={reset}>重置</button>
-              </div>
-            </div>
-
-            <p className="score-match-disclaimer">
-              分数基于同 tier 学校参考区间，非该校精确录取线；最终以当年市/区招考机构发布为准。
-            </p>
-          </div>
+          <aside className="score-match-aerial-hero-stats" aria-label="估分择校统计">
+            {heroStats.map((item) => (
+              <article key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+          </aside>
         </section>
       </header>
 
-      {submitted ? (
-        <section className="score-match-results" aria-label="择校建议">
-          {hasResults ? (
-            <div className="score-match-grid">
-              {(['match', 'reach', 'safety'] as MatchCategory[]).map((cat) => (
-                grouped[cat].length ? (
-                  <section key={cat} className={`score-match-column score-match-column-${CATEGORY_META[cat].tone}`}>
-                    <header>
-                      <strong>{CATEGORY_META[cat].label}</strong>
-                      <span>{CATEGORY_META[cat].hint}</span>
-                    </header>
-                    <ul>
-                      {grouped[cat].map((r) => (
-                        <ResultCard key={r.school.id} result={r} />
-                      ))}
-                    </ul>
-                  </section>
-                ) : null
+      <section className="score-match-aerial-tools" aria-label="估分条件">
+        <div className="score-match-aerial-tools-head">
+          <p className="score-match-aerial-kicker"><span aria-hidden="true"></span>YOUR SCORE</p>
+          <h2>输入成绩与区域</h2>
+          <p>选择考试类型、填写成绩，可选所在区域缩小范围，生成三档可填报高中建议。</p>
+        </div>
+
+        <div className="score-match-aerial-form">
+          <div className="score-match-aerial-form-row">
+            <span>考试类型</span>
+            <div className="score-match-aerial-toggle" role="radiogroup" aria-label="考试类型">
+              {EXAM_OPTIONS.map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  role="radio"
+                  aria-checked={examType === opt.value}
+                  className={`score-match-aerial-toggle-btn${examType === opt.value ? ' score-match-aerial-toggle-btn-active' : ''}`}
+                  onClick={() => { setExamType(opt.value); setSubmitted(false); }}
+                >
+                  {opt.label}
+                </button>
               ))}
             </div>
-          ) : (
-            <div className="score-match-empty">
-              <strong>暂无可填报高中建议</strong>
-              <p>当前分数范围内无匹配，请核对分数或切换为全市范围。</p>
-            </div>
-          )}
-        </section>
-      ) : (
-        <section className="score-match-results" aria-label="占位">
-          <div className="score-match-empty">
-            <strong>输入成绩后生成建议</strong>
-            <p>选择考试类型、填写成绩，可选所在区域缩小范围。</p>
           </div>
-        </section>
-      )}
 
-      <footer className="prototype-page-footer">
-        <span>上海学校数据库 / 估分择校</span>
-        <span>冲刺 / 匹配 / 保底 三档建议</span>
+          <div className="score-match-aerial-form-row">
+            <span>成绩</span>
+            <label className="score-match-aerial-scorefield" htmlFor="score-match-score-input">
+              <input
+                id="score-match-score-input"
+                type="number"
+                inputMode="numeric"
+                min={0}
+                max={MAX_SCORE}
+                value={scoreInput}
+                onChange={(e) => setScoreInput(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); applyMatch(); } }}
+                placeholder={`0 - ${MAX_SCORE}`}
+              />
+              <em>{EXAM_OPTIONS.find((o) => o.value === examType)?.fullMark}</em>
+            </label>
+          </div>
+
+          <div className="score-match-aerial-form-row">
+            <span>所在区域</span>
+            <label className="score-match-aerial-scorefield score-match-aerial-scorefield-select" htmlFor="score-match-district">
+              <span className="visually-hidden">按区域筛选</span>
+              <select
+                id="score-match-district"
+                value={districtId}
+                onChange={(e) => setDistrictId(e.target.value)}
+              >
+                <option value="">全市范围</option>
+                {districts.map((d) => (
+                  <option key={d.id} value={d.id}>{d.name}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <div className="score-match-aerial-form-actions">
+            <button className="score-match-aerial-button" type="button" onClick={applyMatch}>生成建议</button>
+            <button className="score-match-aerial-button score-match-aerial-button-secondary" type="button" onClick={reset}>重置</button>
+          </div>
+        </div>
+
+        <p className="score-match-aerial-disclaimer">
+          分数基于同 tier 学校参考区间，非该校精确录取线；最终以当年市/区招考机构发布为准。
+        </p>
+      </section>
+
+      <section className="score-match-aerial-results" aria-label="择校建议">
+        <div className="score-match-aerial-section-head">
+          <p className="score-match-aerial-kicker"><span aria-hidden="true"></span>RESULTS</p>
+          <h2>择校建议</h2>
+          <p>
+            {submitted
+              ? (hasResults ? `当前分数匹配 ${results.length} 所高中，按匹配 / 冲刺 / 保底分栏展示。` : '当前分数范围内无匹配，请核对分数或切换为全市范围。')
+              : '输入成绩后生成三档可填报高中建议。'}
+          </p>
+        </div>
+
+        {submitted && hasResults ? (
+          <div className="score-match-aerial-grid">
+            {(['match', 'reach', 'safety'] as MatchCategory[]).map((cat) => (
+              grouped[cat].length ? (
+                <section key={cat} className={`score-match-aerial-column score-match-aerial-column-${CATEGORY_META[cat].tone}`}>
+                  <header>
+                    <strong>{CATEGORY_META[cat].label}</strong>
+                    <span>{CATEGORY_META[cat].hint}</span>
+                    <em>{grouped[cat].length} 所</em>
+                  </header>
+                  <ul>
+                    {grouped[cat].map((r) => (
+                      <ResultCard key={r.school.id} result={r} />
+                    ))}
+                  </ul>
+                </section>
+              ) : null
+            ))}
+          </div>
+        ) : (
+          <div className="score-match-aerial-empty">
+            <strong>{submitted ? '暂无可填报高中建议' : '输入成绩后生成建议'}</strong>
+            <p>{submitted ? '当前分数范围内无匹配，请核对分数或切换为全市范围。' : '选择考试类型、填写成绩，可选所在区域缩小范围。'}</p>
+          </div>
+        )}
+      </section>
+
+      <div className="schools-color-block-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <footer className="schools-aerial-footer">
+        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
+        <nav aria-label="页脚导航">
+          <Link href="/">首页</Link>
+          <Link href="/news">新闻</Link>
+          <Link href="/schools">学校</Link>
+          <Link href="/knowledge">知识</Link>
+        </nav>
+        <p>© 2026 考哪去</p>
       </footer>
     </>
   );
@@ -184,23 +227,23 @@ function ResultCard({ result }: { result: ScoreMatchResult }) {
   const { school, estimatedRange, reason, source } = result;
   return (
     <li>
-      <Link className="score-match-card" href={`/schools/${school.id}`}>
-        <div className="score-match-card-head">
+      <Link className="score-match-aerial-card" href={`/schools/${school.id}`}>
+        <div className="score-match-aerial-card-head">
           <strong>{school.name}</strong>
-          <span className="score-match-card-tier">{school.tier}</span>
+          <span className="score-match-aerial-card-tier">{school.tier}</span>
         </div>
-        <div className="score-match-card-meta">
+        <div className="score-match-aerial-card-meta">
           <span>{school.districtName}</span>
-          <span className="score-match-card-range">
+          <span className="score-match-aerial-card-range">
             参考 {estimatedRange.min}-{estimatedRange.max}
           </span>
         </div>
-        <p className="score-match-card-reason">{reason}</p>
-        <div className="score-match-card-foot">
-          <span className={`score-match-source score-match-source-${source}`}>
+        <p className="score-match-aerial-card-reason">{reason}</p>
+        <div className="score-match-aerial-card-foot">
+          <span className={`score-match-aerial-source score-match-aerial-source-${source}`}>
             {source === 'rich_profile' ? 'rich profile 参考线' : 'tier 参考区间'}
           </span>
-          <span className="score-match-card-link">查看详情</span>
+          <span className="score-match-aerial-card-link">查看详情</span>
         </div>
       </Link>
     </li>

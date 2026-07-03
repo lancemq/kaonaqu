@@ -83,7 +83,6 @@ export default async function SchoolCategoriesPage() {
               <div className="district-datadesk-hero-actions">
                 <Link className="module-link" href="/schools">查看 16 区学校</Link>
                 <Link className="module-link" href="/schools/groups">教育集团专题</Link>
-                <Link className="module-link" href="/schools/simulator">志愿模拟</Link>
               </div>
             </div>
 

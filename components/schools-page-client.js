@@ -380,7 +380,7 @@ export default function SchoolsPageClient({
               <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
               <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
               <Link href="/news/admission-timeline"><span>政策日历</span><i>→</i></Link>
-              <Link href="/schools/groups"><span>招生简章</span><i>→</i></Link>
+              <Link href="/schools/groups"><span>教育集团</span><i>→</i></Link>
             </div>
           </section>
 

@@ -1,4 +1,3 @@
-import SiteShell from '../../../components/site-shell';
 import ScoreMatchClient from '../../../components/score-match-client';
 
 export const metadata = {
@@ -8,8 +7,8 @@ export const metadata = {
 
 export default function ScoreMatchPage() {
   return (
-    <SiteShell hideKnowledgeNav breadcrumbItems={[{ label: '学校信息', href: '/schools' }, { label: '估分择校' }]}>
+    <main className="schools-aerial-page score-match-aerial-page">
       <ScoreMatchClient />
-    </SiteShell>
+    </main>
   );
 }

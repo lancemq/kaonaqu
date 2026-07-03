@@ -14,8 +14,7 @@ const ROUTE_LABELS = {
   '/schools': '学校信息',
   '/schools/groups': '教育集团',
   '/schools/district': '区域专题',
-  '/schools/compare': '学校对比',
-  '/schools/simulator': '志愿模拟'
+  '/schools/compare': '学校对比'
 };
 
 function safeDecode(value) {
