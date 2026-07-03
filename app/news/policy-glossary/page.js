@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import SiteShell from '../../../components/site-shell';
+import { NewsAerialFooter, NewsAerialHero, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
 import policyGlossary from '../../../lib/policy-glossary';
 
 export const metadata = {
@@ -71,39 +71,15 @@ export default function PolicyGlossaryPage() {
   ];
 
   return (
-    <SiteShell hideKnowledgeNav>
-      <header className="hero">
-        <section className="search-panel school-prototype-hero news-glossary-hero news-special-hero news-special-hero-glossary" aria-label="政策概念速查">
-          <div className="school-prototype-hero-grid">
-            <div className="school-prototype-hero-main">
-              <p className="overview-label">新闻政策 / 政策概念速查</p>
-              <h1>术语先弄懂，上海升学信息才不会越看越乱。</h1>
-              <p className="school-prototype-subtitle">这页把最常见、最容易混淆的政策概念做成可快速定位的术语工具页，帮你先建立“概念地图”，再回到新闻和政策原文继续判断。</p>
-              <div className="news-special-hero-chips">
-                <span>录取批次</span>
-                <span>职业教育通道</span>
-                <span>术语不再混着看</span>
-              </div>
-              <div className="school-prototype-action-row">
-                <a className="action-button" href="#glossary-list">开始查看</a>
-              </div>
-            </div>
-            <aside className="school-prototype-hero-side">
-              <article className="school-prototype-focus-card news-special-focus-card">
-                <p className="overview-label">这页最适合</p>
-                <h2>读新闻时总能看见关键词，但还说不清它到底属于哪一段录取流程的人。</h2>
-                <div className="news-special-focus-points">
-                  <span>先知道术语是什么</span>
-                  <span>再知道它会影响哪一类选择</span>
-                  <span>最后回到官方口径核对规则</span>
-                </div>
-              </article>
-            </aside>
-          </div>
-        </section>
-      </header>
+    <main className="news-special-aerial-page">
+      <NewsAerialNav />
+      <NewsAerialHero
+        kicker="POLICY GLOSSARY"
+        title="政策概念速查"
+        description="把上海升学常见、容易混淆的政策概念做成可快速定位的术语工具页，先建立概念地图，再回到新闻和政策原文继续判断。"
+      />
 
-      <section className="school-prototype-stats news-glossary-stats news-special-stats">
+      <section className="news-special-aerial-stats">
         <article>
           <strong>{policyGlossary.length}</strong>
           <span>核心术语</span>
@@ -122,14 +98,14 @@ export default function PolicyGlossaryPage() {
         </article>
       </section>
 
-      <main className="layout school-prototype-layout news-special-layout" id="glossary-list">
-        <section className="school-prototype-main">
-          <section className="school-prototype-panel news-special-panel">
-            <p className="overview-label">建议阅读顺序</p>
+      <section className="news-special-aerial-content" id="glossary-list">
+        <section className="news-special-aerial-main">
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>建议阅读顺序</NewsAerialKicker>
             <h2>按这三个入口进入，会比从头到尾硬读更快。</h2>
             <div className="news-special-brief-grid">
               {quickStarts.map((item, index) => (
-                <article key={item.title} className="news-special-brief-card">
+                <article key={item.title} className="news-special-aerial-card">
                   <span>{`0${index + 1}`}</span>
                   <strong>{item.title}</strong>
                   <p>{item.detail}</p>
@@ -138,8 +114,8 @@ export default function PolicyGlossaryPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-special-panel">
-            <p className="overview-label">批次流程总览</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>批次流程总览</NewsAerialKicker>
             <h2>先把上海中招的“大顺序”看懂，再查术语会容易很多。</h2>
             <div className="news-glossary-process-flow" aria-label="上海中招批次流程总览">
               {processSteps.map((step, index) => (
@@ -158,10 +134,10 @@ export default function PolicyGlossaryPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-special-panel">
+          <section className="news-special-aerial-section">
             <div className="news-special-section-head">
               <div>
-                <p className="overview-label">概念关系图</p>
+                <NewsAerialKicker>概念关系图</NewsAerialKicker>
                 <h2>不是所有词都在同一个层级里，它们之间大致是这三种关系。</h2>
               </div>
               <p className="news-special-section-summary">把“批次”“资格”“投档方式”拆开理解，能明显减少术语混用和误判。</p>
@@ -181,18 +157,18 @@ export default function PolicyGlossaryPage() {
           </section>
 
           {groups.map(([pill, items]) => (
-            <section key={pill} className="school-prototype-panel news-glossary-panel news-special-panel">
+            <section key={pill} className="news-special-aerial-section">
               <div className="news-special-section-head">
                 <div>
-                  <p className="overview-label">{pill}</p>
+                  <NewsAerialKicker>{pill}</NewsAerialKicker>
                   <h2>{pill === '职业教育' ? '职业教育相关概念' : pill === '录取批次' ? '录取批次相关概念' : `${pill}相关概念`}</h2>
                 </div>
                 <p className="news-special-section-summary">这一组更适合解决“这个词是什么意思、处在什么流程里、和其它词有什么差别”的问题。</p>
               </div>
-              <div className="news-glossary-list">
+              <div className="news-special-aerial-stack">
                 {items.map((item) => (
-                  <article key={item.title} id={`term-${item.title}`} className="news-glossary-card news-special-card">
-                    <div className="news-prototype-glossary-meta">
+                  <article key={item.title} id={`term-${item.title}`} className="news-special-aerial-entry">
+                    <div className="news-special-aerial-entry-meta">
                       <span className="pill">{item.pill}</span>
                       <span>{item.date}</span>
                     </div>
@@ -215,9 +191,9 @@ export default function PolicyGlossaryPage() {
           ))}
         </section>
 
-        <aside className="school-prototype-side">
-          <article className="school-prototype-side-card news-special-side-card">
-            <p className="overview-label">先查这些词</p>
+        <aside className="news-special-aerial-side">
+          <article className="news-special-aerial-side-card">
+            <NewsAerialKicker>先查这些词</NewsAerialKicker>
             {policyGlossary.slice(0, 5).map((item) => (
               <a key={item.title} className="school-prototype-side-link news-special-side-term" href={`#term-${item.title}`}>
                 {item.title}
@@ -225,20 +201,17 @@ export default function PolicyGlossaryPage() {
             ))}
           </article>
 
-          <article className="school-prototype-side-card news-special-side-card news-special-side-card-dark">
-            <p className="overview-label">继续查看</p>
-            <Link className="school-prototype-side-link" href="/news/policy-faq">进入高频政策问答</Link>
-            <Link className="school-prototype-side-link" href="/news/policy-deep-dive">进入政策深读</Link>
-            <Link className="school-prototype-side-link" href="/news/admission-timeline">进入官方招生日程</Link>
+          <article className="news-special-aerial-side-card is-dark">
+            <NewsAerialKicker>继续查看</NewsAerialKicker>
+            <Link className="news-special-aerial-side-link" href="/news/policy-faq">进入高频政策问答</Link>
+            <Link className="news-special-aerial-side-link" href="/news/policy-deep-dive">进入政策深读</Link>
+            <Link className="news-special-aerial-side-link" href="/news/admission-timeline">进入官方招生日程</Link>
           </article>
         </aside>
 
-      </main>
+      </section>
 
-      <footer className="prototype-page-footer">
-        <span>上海升学观察 / 政策概念速查专题页</span>
-        <span>术语解释 / 官方口径</span>
-      </footer>
-    </SiteShell>
+      <NewsAerialFooter />
+    </main>
   );
 }

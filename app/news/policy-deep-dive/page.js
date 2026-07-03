@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
-import SiteShell from '../../../components/site-shell';
+import { NewsAerialFooter, NewsAerialHero, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { readPolicyPlainText } from '../../../lib/policy-content-files.mjs';
 
@@ -195,40 +195,15 @@ export default async function PolicyDeepDivePage() {
   ];
 
   return (
-    <SiteShell hideKnowledgeNav>
-      <header className="hero">
-        <section className="search-panel school-prototype-hero news-glossary-hero news-special-hero news-special-hero-deep" aria-label="政策深读">
-          <div className="school-prototype-hero-grid">
-            <div className="school-prototype-hero-main">
-              <p className="overview-label">新闻政策 / 政策深读</p>
-              <h1>{currentYear} 上海政策不是越多越好，而是先读对几份。</h1>
-              <p className="school-prototype-subtitle">这页按 {currentYear} 年上海市教委和市教育考试院公开口径，把更关键的正式政策文件整理成“先读哪份、为什么先读、读的时候重点看什么”的深读入口，帮助你把新闻结论和官方规则真正对应起来。</p>
-              <div className="news-special-hero-chips">
-                <span>优先阅读清单</span>
-                <span>阅读提示</span>
-                <span>按 2026 官方口径校准</span>
-                <span>原文入口</span>
-              </div>
-              <div className="school-prototype-action-row">
-                <a className="action-button" href="#policy-list">查看政策列表</a>
-              </div>
-            </div>
-            <aside className="school-prototype-hero-side">
-              <article className="school-prototype-focus-card news-special-focus-card">
-                <p className="overview-label">本页重点</p>
-                <h2>重点不是把政策全文堆在一起，而是先帮你判断哪些文件最值得先读。</h2>
-                <div className="news-special-focus-points">
-                  <span>按阅读主题分组，不让政策混作一团</span>
-                  <span>每份文件都提示“先看什么”</span>
-                  <span>直接保留原文入口，便于核对口径</span>
-                </div>
-              </article>
-            </aside>
-          </div>
-        </section>
-      </header>
+    <main className="news-special-aerial-page">
+      <NewsAerialNav />
+      <NewsAerialHero
+        kicker="POLICY DEEP DIVE"
+        title="政策深读"
+        description="把关键正式政策文件整理成先读哪份、为什么先读、读的时候重点看什么的深读入口。"
+      />
 
-      <section className="school-prototype-stats news-glossary-stats news-special-stats">
+      <section className="news-special-aerial-stats">
         <article>
           <strong>{officialPolicies.length}</strong>
           <span>当年政策</span>
@@ -247,14 +222,14 @@ export default async function PolicyDeepDivePage() {
         </article>
       </section>
 
-      <main className="layout school-prototype-layout news-special-layout" id="policy-list">
-        <section className="school-prototype-main">
-          <section className="school-prototype-panel news-special-panel">
-            <p className="overview-label">读法建议</p>
+      <section className="news-special-aerial-content" id="policy-list">
+        <section className="news-special-aerial-main">
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>读法建议</NewsAerialKicker>
             <h2>读政策深度专题时，不建议按发布时间机械往下翻。</h2>
             <div className="news-special-brief-grid">
               {readingStages.map((stage, index) => (
-                <article key={stage.title} className="news-special-brief-card">
+                <article key={stage.title} className="news-special-aerial-card">
                   <span>{`0${index + 1}`}</span>
                   <strong>{stage.title}</strong>
                   <p>{stage.detail}</p>
@@ -263,10 +238,10 @@ export default async function PolicyDeepDivePage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-special-panel">
+          <section className="news-special-aerial-section">
             <div className="news-special-section-head">
               <div>
-                <p className="overview-label">深读校准</p>
+                <NewsAerialKicker>深读校准</NewsAerialKicker>
                 <h2>先校准这 3 个阅读误区，深读才不会越看越乱。</h2>
               </div>
               <p className="news-special-section-summary">深读不是把文件越堆越多，而是先确认哪些文件定义框架，哪些文件负责执行，哪些文件只是专项补充。</p>
@@ -284,8 +259,8 @@ export default async function PolicyDeepDivePage() {
           </section>
 
           {leadPolicy ? (
-            <section className="school-prototype-panel news-glossary-panel news-special-panel">
-              <p className="overview-label">优先阅读</p>
+            <section className="news-special-aerial-section">
+              <NewsAerialKicker>优先阅读</NewsAerialKicker>
               <h2>{leadPolicy.title}</h2>
               <div className="news-special-hero-chips">
                 <span>{buildPolicyPriority(leadPolicy).tier} 级优先级</span>
@@ -308,18 +283,18 @@ export default async function PolicyDeepDivePage() {
           ) : null}
 
           {groupedEntries.map(([group, items]) => (
-            <section key={group} id={`group-${group}`} className="school-prototype-panel news-glossary-panel news-special-panel">
+            <section key={group} id={`group-${group}`} className="news-special-aerial-section">
               <div className="news-special-section-head">
                 <div>
-                  <p className="overview-label">{group}</p>
+                  <NewsAerialKicker>{group}</NewsAerialKicker>
                   <h2>{group}</h2>
                 </div>
                 <p className="news-special-section-summary">这一组适合连续阅读同类规则，减少“把报名、批次和专项政策混在一起看”的理解成本。</p>
               </div>
-              <div className="news-glossary-list">
+              <div className="news-special-aerial-stack">
                 {items.map((item) => (
-                  <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={getPolicyDetailHref(item)}>
-                    <div className="news-prototype-glossary-meta">
+                  <Link key={item.id} className="news-special-aerial-entry" href={getPolicyDetailHref(item)}>
+                    <div className="news-special-aerial-entry-meta">
                       <span className="pill">{buildPolicyPriority(item).tier} 级</span>
                       <span className="pill">{buildPolicyLens(item).label}</span>
                       <span>{item.publishedAt || '暂无日期'}</span>
@@ -348,38 +323,35 @@ export default async function PolicyDeepDivePage() {
           ))}
         </section>
 
-        <aside className="school-prototype-side">
-          <article className="school-prototype-side-card news-special-side-card">
-            <p className="overview-label">推荐阅读顺序</p>
+        <aside className="news-special-aerial-side">
+          <article className="news-special-aerial-side-card">
+            <NewsAerialKicker>推荐阅读顺序</NewsAerialKicker>
             {leadPolicy ? <p>{leadPolicy.title}</p> : null}
             <p>2026 年 2 月 27 日：先看《若干意见》</p>
             <p>2026 年 3 月 20 日：再看《实施细则》</p>
             {groupedEntries.map(([group]) => (
-              <a key={group} className="school-prototype-side-link" href={`#group-${group}`}>
+              <a key={group} className="news-special-aerial-side-link" href={`#group-${group}`}>
                 {group}
               </a>
             ))}
           </article>
 
-          <article className="school-prototype-side-card news-special-side-card">
-            <p className="overview-label">本页校准依据</p>
+          <article className="news-special-aerial-side-card">
+            <NewsAerialKicker>本页校准依据</NewsAerialKicker>
             <p>核心依据包括 2026 年 2 月 27 日《上海市高中阶段学校招生工作的若干意见》、2026 年 3 月 20 日发布的《实施细则》、2026 年 3 月 26 日发布的中职自主招生通知，以及 2026 年 3 月 13 日发布的特殊教育高中阶段招生通知。</p>
           </article>
 
-          <article className="school-prototype-side-card news-special-side-card news-special-side-card-dark">
-            <p className="overview-label">配合阅读</p>
-            <Link className="school-prototype-side-link" href="/news/admission-timeline">先查时间线</Link>
-            <Link className="school-prototype-side-link" href="/news/policy-glossary">再看政策术语</Link>
-            <Link className="school-prototype-side-link" href="/news/policy-faq">查看高频问答</Link>
+          <article className="news-special-aerial-side-card is-dark">
+            <NewsAerialKicker>配合阅读</NewsAerialKicker>
+            <Link className="news-special-aerial-side-link" href="/news/admission-timeline">先查时间线</Link>
+            <Link className="news-special-aerial-side-link" href="/news/policy-glossary">再看政策术语</Link>
+            <Link className="news-special-aerial-side-link" href="/news/policy-faq">查看高频问答</Link>
           </article>
         </aside>
 
-      </main>
+      </section>
 
-      <footer className="prototype-page-footer">
-        <span>上海升学观察 / 政策深读专题页</span>
-        <span>重点政策 / 原文入口</span>
-      </footer>
-    </SiteShell>
+      <NewsAerialFooter />
+    </main>
   );
 }

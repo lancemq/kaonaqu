@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
-import SiteShell from '../../../components/site-shell';
+import { NewsAerialFooter, NewsAerialHero, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getPolicyExamType } from '../../../lib/site-utils';
 
@@ -90,23 +90,16 @@ export default async function GaokaoSpecialPage() {
   ];
 
   return (
-    <SiteShell hideKnowledgeNav>
-      <header className="hero">
-        <section className="search-panel school-prototype-hero news-glossary-hero news-special-hero news-special-hero-gaokao" aria-label="高招专题">
-          <div className="school-prototype-hero-grid">
-            <div className="school-prototype-hero-main">
-              <p className="overview-label">新闻政策 / 高招专题</p>
-              <h1>{currentYear} 上海高招专题</h1>
-              <p className="school-prototype-subtitle">面向上海高中升学家庭，把春招、高考、学业考试、体育类和三校生相关信息按路径整理，方便按当前进度快速进入。</p>
-              <div className="school-prototype-action-row">
-                <a className="action-button" href="#gaokao-list">查看专题内容</a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </header>
+    <main className="news-special-aerial-page">
+      <NewsAerialNav />
+      <NewsAerialHero
+        kicker="GAOKAO SPECIAL"
+        title={`${currentYear} 上海高招专题`}
+        description="面向上海高中升学家庭，把春招、高考、学业考试、体育类和三校生相关信息按路径整理，方便按当前进度快速进入。"
+        imageClass="is-gaokao"
+      />
 
-      <section className="school-prototype-stats news-glossary-stats news-special-stats">
+      <section className="news-special-aerial-stats">
         <article>
           <strong>{gaokaoNews.length}</strong>
           <span>高招新闻</span>
@@ -121,11 +114,11 @@ export default async function GaokaoSpecialPage() {
         </article>
       </section>
 
-      <main className="layout school-prototype-layout news-special-layout" id="gaokao-list">
-        <section className="school-prototype-main">
+      <section className="news-special-aerial-content" id="gaokao-list">
+        <section className="news-special-aerial-main">
           {leadNews ? (
-            <section className="school-prototype-panel news-glossary-panel news-special-panel">
-              <p className="overview-label">专题导读</p>
+            <section className="news-special-aerial-section">
+              <NewsAerialKicker>FOCUS</NewsAerialKicker>
               <Link className="news-panel-link" href={`/news/${leadNews.id}`}>
                 <h2>{leadNews.title}</h2>
                 <p className="news-glossary-summary">{leadNews.summary || '暂无摘要'}</p>
@@ -133,8 +126,8 @@ export default async function GaokaoSpecialPage() {
             </section>
           ) : null}
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">官方校准</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>先用这几条官方信息校准高招路径</h2>
             <div className="news-special-annotation-grid">
               {keyFacts.map((item) => (
@@ -146,12 +139,12 @@ export default async function GaokaoSpecialPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">当前该看什么</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>按当前阶段，高招专题更适合这样使用</h2>
             <div className="news-special-brief-grid">
               {currentChecklist.map((item, index) => (
-                <article key={item} className="news-special-brief-card">
+                <article key={item} className="news-special-aerial-card">
                   <span>{`0${index + 1}`}</span>
                   <p>{item}</p>
                 </article>
@@ -159,17 +152,17 @@ export default async function GaokaoSpecialPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">官方文件先看</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>这几份文件决定了今年上海高招几条主要路径</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {officialFocus.map((item) => (
                 <Link
                   key={item.id}
-                  className="news-glossary-card news-special-card news-glossary-card-link"
+                  className="news-special-aerial-entry"
                   href={getDetailHref(item)}
                 >
-                  <div className="news-prototype-glossary-meta">
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
                     <span>{item.source?.name || getNewsCategoryLabel(item)}</span>
                   </div>
@@ -180,8 +173,8 @@ export default async function GaokaoSpecialPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">当前路径入口</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>先判断自己现在更该进入哪一条高招路径</h2>
             <div className="news-special-stage-grid">
               {stageEntries.map((item, index) => (
@@ -194,13 +187,13 @@ export default async function GaokaoSpecialPage() {
             </div>
           </section>
 
-          <section id="gaokao-spring" className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">春招与自招</p>
+          <section id="gaokao-spring" className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>春考、专科自主招生与征求志愿</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {groups.spring.map((item) => (
-                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
-                  <div className="news-prototype-glossary-meta">
+                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
@@ -211,13 +204,13 @@ export default async function GaokaoSpecialPage() {
             </div>
           </section>
 
-          <section id="gaokao-exam" className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">考试与学考</p>
+          <section id="gaokao-exam" className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>高考、学业考试与成绩相关内容</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {groups.exam.map((item) => (
-                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
-                  <div className="news-prototype-glossary-meta">
+                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
@@ -228,13 +221,13 @@ export default async function GaokaoSpecialPage() {
             </div>
           </section>
 
-          <section id="gaokao-special-track" className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">专项路径</p>
+          <section id="gaokao-special-track" className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>体育类、三校生与其他专项招生</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {groups.special.map((item) => (
-                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
-                  <div className="news-prototype-glossary-meta">
+                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
@@ -245,13 +238,13 @@ export default async function GaokaoSpecialPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">相关政策</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>当年高招政策与说明</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {gaokaoPolicies.map((item) => (
-                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={getPolicyDetailHref(item)}>
-                  <div className="news-prototype-glossary-meta">
+                <Link key={item.id} className="news-special-aerial-entry" href={getPolicyDetailHref(item)}>
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
                     <span>{item.source?.name || '官方来源'}</span>
                   </div>
@@ -263,29 +256,26 @@ export default async function GaokaoSpecialPage() {
           </section>
         </section>
 
-        <aside className="school-prototype-side">
-          <section className="school-prototype-side-card">
-            <p className="overview-label">路径提示</p>
+        <aside className="news-special-aerial-side">
+          <section className="news-special-aerial-side-card">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <p>上海高招最容易混淆的是春招、高考、体育类、三校生这几条路径。建议先确认自己属于哪一类，再继续读对应内容。</p>
           </section>
 
-          <section className="school-prototype-side-card">
-            <p className="overview-label">当前重点</p>
+          <section className="news-special-aerial-side-card">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <p>2026 年 4 月初这一阶段，专题里最值得优先看的通常是专科自主招生征求志愿、体育类成绩与合格线、三校生实施办法和学考命题要求。</p>
           </section>
 
-          <section className="school-prototype-side-card">
-            <p className="overview-label">下一步入口</p>
-            <a className="school-prototype-side-link" href="/news/admission-timeline">查看官方招生日程</a>
+          <section className="news-special-aerial-side-card">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
+            <a className="news-special-aerial-side-link" href="/news/admission-timeline">查看官方招生日程</a>
           </section>
         </aside>
 
-      </main>
+      </section>
 
-      <footer className="prototype-page-footer">
-        <span>上海升学观察 / 高招专题页</span>
-        <span>高招新闻 / 高招政策 / 考试与录取</span>
-      </footer>
-    </SiteShell>
+      <NewsAerialFooter />
+    </main>
   );
 }

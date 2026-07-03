@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
-import SiteShell from '../../../components/site-shell';
+import { NewsAerialFooter, NewsAerialHero, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getPolicyExamType } from '../../../lib/site-utils';
 
@@ -89,23 +89,15 @@ export default async function ZhongkaoSpecialPage() {
   ];
 
   return (
-    <SiteShell hideKnowledgeNav>
-      <header className="hero">
-        <section className="search-panel school-prototype-hero news-glossary-hero news-special-hero news-special-hero-zhongkao" aria-label="中招专题">
-          <div className="school-prototype-hero-grid">
-            <div className="school-prototype-hero-main">
-              <p className="overview-label">新闻政策 / 中招专题</p>
-              <h1>{currentYear} 上海中招专题</h1>
-              <p className="school-prototype-subtitle">面向上海初三家庭，把中招报名、考试、录取和专项招生相关内容按阶段整理，方便按当前进度快速进入。</p>
-              <div className="school-prototype-action-row">
-                <a className="action-button" href="#zhongkao-list">查看专题内容</a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </header>
+    <main className="news-special-aerial-page">
+      <NewsAerialNav />
+      <NewsAerialHero
+        kicker="ZHONGKAO SPECIAL"
+        title={`${currentYear} 上海中招专题`}
+        description="面向上海初三家庭，把中招报名、考试、录取和专项招生相关内容按阶段整理，方便按当前进度快速进入。"
+      />
 
-      <section className="school-prototype-stats news-glossary-stats news-special-stats">
+      <section className="news-special-aerial-stats">
         <article>
           <strong>{zhongkaoNews.length}</strong>
           <span>中招新闻</span>
@@ -120,11 +112,11 @@ export default async function ZhongkaoSpecialPage() {
         </article>
       </section>
 
-      <main className="layout school-prototype-layout news-special-layout" id="zhongkao-list">
-        <section className="school-prototype-main">
+      <section className="news-special-aerial-content" id="zhongkao-list">
+        <section className="news-special-aerial-main">
           {leadNews ? (
-            <section className="school-prototype-panel news-glossary-panel news-special-panel">
-              <p className="overview-label">专题导读</p>
+            <section className="news-special-aerial-section">
+              <NewsAerialKicker>FOCUS</NewsAerialKicker>
               <Link className="news-panel-link" href={`/news/${leadNews.id}`}>
                 <h2>{leadNews.title}</h2>
                 <p className="news-glossary-summary">{leadNews.summary || '暂无摘要'}</p>
@@ -132,8 +124,8 @@ export default async function ZhongkaoSpecialPage() {
             </section>
           ) : null}
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">官方校准</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>先用这几条官方信息校准中招判断框架</h2>
             <div className="news-special-annotation-grid">
               {keyFacts.map((item) => (
@@ -145,12 +137,12 @@ export default async function ZhongkaoSpecialPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">当前该看什么</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>按当前阶段，中招专题更适合这样使用</h2>
             <div className="news-special-brief-grid">
               {currentChecklist.map((item, index) => (
-                <article key={item} className="news-special-brief-card">
+                <article key={item} className="news-special-aerial-card">
                   <span>{`0${index + 1}`}</span>
                   <p>{item}</p>
                 </article>
@@ -158,17 +150,17 @@ export default async function ZhongkaoSpecialPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">官方文件先看</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>这几份文件决定了今年上海中招怎么走</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {officialFocus.map((item) => (
                 <Link
                   key={item.id}
-                  className="news-glossary-card news-special-card news-glossary-card-link"
+                  className="news-special-aerial-entry"
                   href={getDetailHref(item)}
                 >
-                  <div className="news-prototype-glossary-meta">
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
                     <span>{item.source?.name || getNewsCategoryLabel(item)}</span>
                   </div>
@@ -179,8 +171,8 @@ export default async function ZhongkaoSpecialPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">当前阶段入口</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>先判断自己现在更该看哪一段</h2>
             <div className="news-special-stage-grid">
               {stageEntries.map((item, index) => (
@@ -193,13 +185,13 @@ export default async function ZhongkaoSpecialPage() {
             </div>
           </section>
 
-          <section id="zhongkao-registration" className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">报名前后</p>
+          <section id="zhongkao-registration" className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>报名、确认与资格相关内容</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {groups.registration.map((item) => (
-                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
-                  <div className="news-prototype-glossary-meta">
+                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
@@ -210,13 +202,13 @@ export default async function ZhongkaoSpecialPage() {
             </div>
           </section>
 
-          <section id="zhongkao-exam" className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">考试阶段</p>
+          <section id="zhongkao-exam" className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>考试、成绩与时间安排</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {groups.exam.map((item) => (
-                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
-                  <div className="news-prototype-glossary-meta">
+                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
@@ -227,13 +219,13 @@ export default async function ZhongkaoSpecialPage() {
             </div>
           </section>
 
-          <section id="zhongkao-admission" className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">录取阶段</p>
+          <section id="zhongkao-admission" className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>志愿、专项招生与录取相关内容</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {groups.admission.map((item) => (
-                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={`/news/${item.id}`}>
-                  <div className="news-prototype-glossary-meta">
+                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || '暂无日期'}</span>
                     <span>{getNewsCategoryLabel(item)}</span>
                   </div>
@@ -244,13 +236,13 @@ export default async function ZhongkaoSpecialPage() {
             </div>
           </section>
 
-          <section className="school-prototype-panel news-glossary-panel news-special-panel">
-            <p className="overview-label">相关政策</p>
+          <section className="news-special-aerial-section">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <h2>当年中招政策与说明</h2>
-            <div className="news-glossary-list">
+            <div className="news-special-aerial-stack">
               {zhongkaoPolicies.map((item) => (
-                <Link key={item.id} className="news-glossary-card news-special-card news-glossary-card-link" href={getPolicyDetailHref(item)}>
-                  <div className="news-prototype-glossary-meta">
+                <Link key={item.id} className="news-special-aerial-entry" href={getPolicyDetailHref(item)}>
+                  <div className="news-special-aerial-entry-meta">
                     <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
                     <span>{item.source?.name || '官方来源'}</span>
                   </div>
@@ -262,29 +254,26 @@ export default async function ZhongkaoSpecialPage() {
           </section>
         </section>
 
-        <aside className="school-prototype-side">
-          <section className="school-prototype-side-card">
-            <p className="overview-label">高频概念</p>
+        <aside className="news-special-aerial-side">
+          <section className="news-special-aerial-side-card">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <p>自主招生、名额分配综合评价录取、统一招生录取，是上海中招最需要先分清的三条主线。看不清时先去术语页，再回来读这一页会更顺。</p>
           </section>
 
-          <section className="school-prototype-side-card">
-            <p className="overview-label">官方节点</p>
+          <section className="news-special-aerial-side-card">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
             <p>5 月 16 日至 17 日听说和实验、6 月 20 日至 21 日笔试、6 月 23 日至 26 日志愿填报、6 月 27 日至 28 日书面确认，是今年最核心的中招时间链。</p>
           </section>
 
-          <section className="school-prototype-side-card">
-            <p className="overview-label">下一步入口</p>
-            <a className="school-prototype-side-link" href="/news/admission-timeline">查看官方招生日程</a>
+          <section className="news-special-aerial-side-card">
+            <NewsAerialKicker>FOCUS</NewsAerialKicker>
+            <a className="news-special-aerial-side-link" href="/news/admission-timeline">查看官方招生日程</a>
           </section>
         </aside>
 
-      </main>
+      </section>
 
-      <footer className="prototype-page-footer">
-        <span>上海升学观察 / 中招专题页</span>
-        <span>中招新闻 / 中招政策 / 报名与录取</span>
-      </footer>
-    </SiteShell>
+      <NewsAerialFooter />
+    </main>
   );
 }
