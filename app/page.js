@@ -9,6 +9,7 @@ import {
   getSchoolStage,
   getSchoolType
 } from '../lib/site-utils';
+import { readNewsMarkdownFile } from '../lib/news-content-files.mjs';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../shared/data-store');
@@ -38,6 +39,54 @@ const KNOWLEDGE_TOPICS = [
 
 function getNewsHref(item) {
   return item?.id ? `/news/${encodeURIComponent(item.id)}` : '/news';
+}
+
+const NEWS_FILLER_HEADINGS = new Set([
+  '核心信息', '这条信息为什么值得看', '适合谁先看', '阅读提示', '官方原文', '这条文件最适合看什么'
+]);
+
+function getNewsRichness(item) {
+  const raw = readNewsMarkdownFile(item);
+  if (!raw) return 0;
+  let inFiller = false, overviewSeen = false, overviewDone = false, subst = 0;
+  for (const line of raw.split('\n')) {
+    const heading = line.match(/^##\s+(.+?)\s*$/);
+    if (heading) {
+      const title = heading[1].trim();
+      inFiller = NEWS_FILLER_HEADINGS.has(title);
+      if (title === '新闻概览') { overviewSeen = true; inFiller = false; overviewDone = false; }
+      continue;
+    }
+    if (line.startsWith('---')) continue;
+    const clean = line.replace(/[#>*_`~\-\[\]\(\)!]/g, '').replace(/\s+/g, '');
+    if (!clean) continue;
+    if (inFiller) continue;
+    if (overviewSeen && !overviewDone) { overviewDone = true; continue; }
+    subst += clean.length;
+  }
+  return subst;
+}
+
+function pickFeaturedNews(news) {
+  const ranked = news
+    .slice()
+    .map((item) => ({ item, richness: getNewsRichness(item) }))
+    .sort((a, b) => b.richness - a.richness);
+  const picked = [];
+  const usedSections = new Set();
+  for (const { item } of ranked) {
+    if (picked.length >= 4) break;
+    const section = getNewsSection(item);
+    if (usedSections.has(section)) continue;
+    usedSections.add(section);
+    picked.push(item);
+  }
+  for (const { item } of ranked) {
+    if (picked.length >= 4) break;
+    if (picked.some((existing) => existing.id === item.id)) continue;
+    picked.push(item);
+  }
+  return picked.slice(0, 4);
 }
 
 function sortNews(news) {
@@ -96,14 +145,7 @@ export default async function HomePage() {
   const { districts, schools, news } = await loadDataStore();
   const sortedNews = sortNews(news);
   const headline = sortedNews[0] || null;
-  const featuredNews = [
-    sortedNews.find((item) => getNewsSection(item) === 'admission'),
-    sortedNews.find((item) => getNewsSection(item) === 'exam'),
-    sortedNews.find((item) => getNewsSection(item) === 'school'),
-    sortedNews[1],
-    sortedNews[2],
-    sortedNews[3]
-  ].filter(Boolean).filter((item, index, array) => array.findIndex((other) => other.id === item.id) === index).slice(0, 4);
+  const featuredNews = pickFeaturedNews(sortedNews);
   const featuredSchools = getFeaturedSchools(schools);
   const districtHighlights = getDistrictHighlights(districts, schools);
 
