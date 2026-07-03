@@ -76,9 +76,7 @@ function getPolicyLabel(policy) {
 }
 
 function getItemHref(item) {
-  return item.itemType === 'policy'
-    ? `/news/policy/${encodeURIComponent(item.id)}`
-    : `/news/${encodeURIComponent(item.id)}`;
+  return `/news/${encodeURIComponent(item.id)}`;
 }
 
 function getItemKicker(item) {
@@ -137,8 +135,7 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {}, c
   const pagedItems = rankedItems.slice((currentPage - 1) * NEWS_PER_PAGE, currentPage * NEWS_PER_PAGE);
   const hotTopics = [
     { label: '中考政策', count: currentYearNews.filter((item) => item.examType === 'zhongkao').length, href: '/news/zhongkao-special' },
-    { label: '高考指南', count: currentYearNews.filter((item) => item.examType === 'gaokao').length, href: '/news/gaokao-special' },
-    { label: '学校动态', count: currentYearNews.filter((item) => item.newsType === 'school').length, href: '/schools' }
+    { label: '高考指南', count: currentYearNews.filter((item) => item.examType === 'gaokao').length, href: '/news/gaokao-special' }
   ];
   const timelinePreview = admissionTimeline.slice(0, 3);
   const glossaryLead = policyGlossary[0];

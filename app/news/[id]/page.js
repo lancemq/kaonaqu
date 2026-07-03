@@ -2,11 +2,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import { readNewsMarkdownFile } from '../../../lib/news-content-files.mjs';
+import { readPolicyMarkdownFile } from '../../../lib/policy-content-files.mjs';
+import { getPolicyDetailHref, getPolicyMappedNewsId } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
 
+// ===== news markdown 渲染 =====
 function renderInlineMarkdown(text) {
   const parts = [];
   const value = String(text || '');
@@ -23,7 +26,7 @@ function renderInlineMarkdown(text) {
         {match[1]}
       </a>
     );
-    lastIndex = regex.lastIndex;
+    lastIndex = match.lastIndex;
   }
 
   if (lastIndex < value.length) {
@@ -99,6 +102,256 @@ function renderNewsMarkdown(markdown) {
   return nodes;
 }
 
+// ===== policy markdown 渲染（含表格 / 引用 / 有序列表 / 加粗 / 斜体）=====
+function renderPolicyInlineMarkdown(text) {
+  const parts = [];
+  const value = String(text || '');
+  const regex = /\[([^\]]+)\]\(([^)]*)\)|\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(value)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(value.slice(lastIndex, match.index));
+    }
+
+    if (match[1] !== undefined) {
+      parts.push(
+        <a key={`link-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
+          {match[1] || match[2]}
+        </a>
+      );
+    } else if (match[3] !== undefined) {
+      parts.push(<strong key={`strong-${match.index}`}>{match[3]}</strong>);
+    } else {
+      parts.push(<em key={`em-${match.index}`}>{match[4]}</em>);
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < value.length) {
+    parts.push(value.slice(lastIndex));
+  }
+
+  return parts;
+}
+
+function parseMarkdownTableRow(line) {
+  return String(line || '')
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map((cell) => cell.trim());
+}
+
+function isMarkdownTableSeparator(line) {
+  const cells = parseMarkdownTableRow(line);
+  return cells.length > 1 && cells.every((cell) => /^:?-{3,}:?$/.test(cell));
+}
+
+function renderPolicyMarkdown(markdown) {
+  const lines = String(markdown || '').split('\n');
+  const nodes = [];
+  let listItems = [];
+  let listType = 'ul';
+  let quoteItems = [];
+  let tableRows = [];
+  let key = 0;
+  let inFrontmatter = false;
+  let skipping = false;
+
+  const SKIP_SECTIONS = new Set([
+    '这条信息为什么值得看',
+    '适合谁先看',
+    '适合谁看',
+    '适合谁读'
+  ]);
+
+  const flushList = () => {
+    if (!listItems.length) return;
+    const ListTag = listType === 'ol' ? 'ol' : 'ul';
+    nodes.push(
+      <ListTag key={`list-${key++}`} className="news-detail-markdown-list">
+        {listItems.map((item, index) => (
+          <li key={`item-${index}`}>{renderPolicyInlineMarkdown(item)}</li>
+        ))}
+      </ListTag>
+    );
+    listItems = [];
+    listType = 'ul';
+  };
+
+  const flushQuote = () => {
+    if (!quoteItems.length) return;
+    nodes.push(
+      <blockquote key={`quote-${key++}`} className="news-detail-markdown-quote">
+        {quoteItems.map((item, index) => (
+          <p key={`quote-line-${index}`}>{renderPolicyInlineMarkdown(item)}</p>
+        ))}
+      </blockquote>
+    );
+    quoteItems = [];
+  };
+
+  const flushTable = () => {
+    if (tableRows.length < 2) {
+      tableRows = [];
+      return;
+    }
+    const [header, ...bodyRows] = tableRows;
+    nodes.push(
+      <div key={`table-${key++}`} className="news-detail-markdown-table-wrap">
+        <table className="news-detail-markdown-table">
+          <thead>
+            <tr>
+              {header.map((cell, cellIndex) => (
+                <th key={`head-${cellIndex}`}>{renderPolicyInlineMarkdown(cell)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {bodyRows.map((row, rowIndex) => (
+              <tr key={`row-${rowIndex}`}>
+                {row.map((cell, cellIndex) => (
+                  <td key={`cell-${rowIndex}-${cellIndex}`}>{renderPolicyInlineMarkdown(cell)}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+    tableRows = [];
+  };
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const rawLine = lines[index];
+    const line = rawLine.trim();
+    if (index === 0 && line === '---') {
+      inFrontmatter = true;
+      continue;
+    }
+    if (inFrontmatter) {
+      if (line === '---') {
+        inFrontmatter = false;
+      }
+      continue;
+    }
+    if (!line) {
+      flushList();
+      flushQuote();
+      flushTable();
+      continue;
+    }
+    if (line === '---') {
+      flushList();
+      flushQuote();
+      flushTable();
+      nodes.push(<hr key={`hr-${key++}`} className="news-detail-markdown-divider" />);
+      continue;
+    }
+    const nextLine = String(lines[index + 1] || '').trim();
+    const isTableRow = line.includes('|') && (tableRows.length > 0 || isMarkdownTableSeparator(nextLine));
+    if (isTableRow) {
+      flushList();
+      flushQuote();
+      tableRows.push(parseMarkdownTableRow(line));
+      if (isMarkdownTableSeparator(nextLine)) {
+        index += 1;
+      }
+      continue;
+    }
+    if (line.startsWith('>')) {
+      flushList();
+      flushTable();
+      const quoteText = line.replace(/^>\s?/, '').trim();
+      if (quoteText) {
+        quoteItems.push(quoteText);
+      }
+      continue;
+    }
+    if (line.startsWith('# ')) {
+      flushList();
+      flushQuote();
+      flushTable();
+      continue;
+    }
+    if (line.startsWith('## ')) {
+      flushList();
+      flushQuote();
+      flushTable();
+      const title = line.slice(3).trim();
+      if (SKIP_SECTIONS.has(title)) {
+        skipping = true;
+        continue;
+      }
+      skipping = false;
+      nodes.push(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{title}</h3>);
+      continue;
+    }
+    if (skipping) continue;
+    if (line.startsWith('### ')) {
+      flushList();
+      flushQuote();
+      flushTable();
+      nodes.push(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
+      continue;
+    }
+    if (line.startsWith('- ')) {
+      flushTable();
+      if (listType !== 'ul') flushList();
+      listType = 'ul';
+      listItems.push(line.slice(2));
+      continue;
+    }
+    const orderedMatch = line.match(/^\d+\.\s+(.+)$/);
+    if (orderedMatch) {
+      flushTable();
+      if (listType !== 'ol') flushList();
+      listType = 'ol';
+      listItems.push(orderedMatch[1]);
+      continue;
+    }
+    flushList();
+    flushQuote();
+    flushTable();
+    nodes.push(
+      <p key={`p-${key++}`} className="news-detail-markdown-paragraph">
+        {renderPolicyInlineMarkdown(line)}
+      </p>
+    );
+  }
+
+  flushList();
+  flushQuote();
+  flushTable();
+  return nodes;
+}
+
+function cleanPolicyText(text, title = '') {
+  let value = String(text || '').trim();
+  if (!value) return '';
+
+  value = value
+    .replace(/无障碍 首页[\s\S]*?内容概述\s*/g, '')
+    .replace(/索取号：[^。]*?/g, '')
+    .replace(/发布日期：\d{4}-\d{2}-\d{2}/g, '')
+    .replace(/字体 \[ 大 中 小 ]/g, '')
+    .replace(/查阅全文[\s\S]*$/g, '')
+    .replace(/\[返回上一页][\s\S]*$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (title && value.startsWith(title)) {
+    value = value.slice(title.length).trim();
+  }
+
+  return value;
+}
+
+// ===== 解析 =====
 function resolveNewsById(news, rawId) {
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
   const normalizedId = String(id || '');
@@ -113,9 +366,31 @@ function resolveNewsById(news, rawId) {
   return news.find((item) => item.id === normalizedId) || news.find((item) => item.id === decodedId) || null;
 }
 
+function resolvePolicyById(policies, rawId) {
+  const id = Array.isArray(rawId) ? rawId[0] : rawId;
+  const normalizedId = String(id || '');
+  const decodedId = (() => {
+    try {
+      return decodeURIComponent(normalizedId);
+    } catch {
+      return normalizedId;
+    }
+  })();
+
+  return policies.find((item) => item.id === normalizedId) || policies.find((item) => item.id === decodedId) || null;
+}
+
+// ===== 标签 =====
 function getExamTypeLabel(newsItem) {
   if (newsItem.examType === 'zhongkao') return '中招';
   if (newsItem.examType === 'gaokao') return '高招';
+  return '综合';
+}
+
+function getPolicyExamTypeLabel(policy) {
+  const type = getPolicyExamType(policy);
+  if (type === 'zhongkao') return '中招';
+  if (type === 'gaokao') return '高招';
   return '综合';
 }
 
@@ -132,6 +407,14 @@ function getActionReminder(item) {
 function buildRelatedPolicies(policies, current) {
   return policies
     .filter((policy) => getPolicyExamType(policy) === current.examType)
+    .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')))
+    .slice(0, 4);
+}
+
+function buildRelatedPoliciesForPolicy(policies, current) {
+  return policies
+    .filter((policy) => policy.id !== current.id)
+    .filter((policy) => getPolicyExamType(policy) === getPolicyExamType(current))
     .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')))
     .slice(0, 4);
 }
@@ -259,29 +542,53 @@ function SidebarList({ items, getHref, getLabel }) {
   );
 }
 
-export async function generateMetadata({ params }) {
-  const { news } = await loadDataStore();
-  const { id } = await params;
-  const item = resolveNewsById(news, id);
+const KNOWLEDGE_TOPICS = [
+  { id: 'admission-guide', title: '中考志愿填报指南', href: '/knowledge' },
+  { id: 'quality-review', title: '综合素质评价详解', href: '/knowledge' },
+  { id: 'sports-test', title: '体育中考备考攻略', href: '/knowledge' },
+  { id: 'admission-batch', title: '高中招生批次解读', href: '/knowledge' }
+];
 
-  if (!item) {
-    return { title: '新闻详情 | 考哪去' };
+export async function generateMetadata({ params }) {
+  const { news, policies } = await loadDataStore();
+  const { id } = await params;
+  const newsItem = resolveNewsById(news, id);
+
+  if (newsItem) {
+    const examType = newsItem.examType === 'zhongkao' ? '中考' : newsItem.examType === 'gaokao' ? '高考' : '上海升学';
+    return {
+      title: `${newsItem.title} - ${examType}政策解读 | 考哪去`,
+      description: newsItem.summary || '查看上海升学新闻与政策详情。',
+      keywords: [examType, '上海升学', '政策解读', newsItem.newsType === 'policy' ? '政策' : newsItem.newsType === 'exam' ? '考试' : '招生'],
+      openGraph: {
+        type: 'article',
+        locale: 'zh_CN',
+        siteName: '考哪去',
+        title: `${newsItem.title} - ${examType}政策解读 | 考哪去`,
+        description: newsItem.summary || '查看上海升学新闻与政策详情。'
+      }
+    };
   }
 
-  const examType = item.examType === 'zhongkao' ? '中考' : item.examType === 'gaokao' ? '高考' : '上海升学';
+  const policyItem = resolvePolicyById(policies, id);
+  if (policyItem) {
+    const examType = getPolicyExamType(policyItem);
+    const examLabel = examType === 'zhongkao' ? '中考' : examType === 'gaokao' ? '高考' : '升学';
+    return {
+      title: `${policyItem.title} - 上海${examLabel}政策原文 | 考哪去`,
+      description: policyItem.summary || '查看上海升学政策详情。',
+      keywords: [examLabel, '上海政策', '官方文件', '招生', '考试'],
+      openGraph: {
+        type: 'article',
+        locale: 'zh_CN',
+        siteName: '考哪去',
+        title: `${policyItem.title} - 上海${examLabel}政策原文 | 考哪去`,
+        description: policyItem.summary || '查看上海升学政策详情。'
+      }
+    };
+  }
 
-  return {
-    title: `${item.title} - ${examType}政策解读 | 考哪去`,
-    description: item.summary || '查看上海升学新闻与政策详情。',
-    keywords: [examType, '上海升学', '政策解读', item.newsType === 'policy' ? '政策' : item.newsType === 'exam' ? '考试' : '招生'],
-    openGraph: {
-      type: 'article',
-      locale: 'zh_CN',
-      siteName: '考哪去',
-      title: `${item.title} - ${examType}政策解读 | 考哪去`,
-      description: item.summary || '查看上海升学新闻与政策详情。'
-    }
-  };
+  return { title: '新闻详情 | 考哪去' };
 }
 
 export const revalidate = 3600;
@@ -289,12 +596,18 @@ export const revalidate = 3600;
 export default async function NewsDetailPage({ params }) {
   const { news, policies, schools } = await loadDataStore();
   const { id } = await params;
-  const item = resolveNewsById(news, id);
-
-  if (!item) {
-    notFound();
+  const newsItem = resolveNewsById(news, id);
+  if (newsItem) {
+    return renderNewsDetail(newsItem, news, policies, schools);
   }
+  const policyItem = resolvePolicyById(policies, id);
+  if (policyItem) {
+    return renderPolicyDetail(policyItem, policies, news);
+  }
+  notFound();
+}
 
+function renderNewsDetail(item, news, policies, schools) {
   const relatedPolicies = buildRelatedPolicies(policies, item);
   const relatedNews = buildRelatedNews(news, item);
   const relatedSchools = buildRelatedSchools(schools, item);
@@ -308,12 +621,6 @@ export default async function NewsDetailPage({ params }) {
     getStageLabel(item),
     item.newsType === 'school' ? '学校观察' : '招生政策'
   ].filter(Boolean);
-  const knowledgeTopics = [
-    { id: 'admission-guide', title: '中考志愿填报指南', href: '/knowledge' },
-    { id: 'quality-review', title: '综合素质评价详解', href: '/knowledge' },
-    { id: 'sports-test', title: '体育中考备考攻略', href: '/knowledge' },
-    { id: 'admission-batch', title: '高中招生批次解读', href: '/knowledge' }
-  ];
 
   if (!articleBodyMarkdown) {
     notFound();
@@ -327,7 +634,7 @@ export default async function NewsDetailPage({ params }) {
     "description": item.summary || item.title,
     "datePublished": item.publishedAt || '',
     "dateModified": item.updatedAt || item.publishedAt || '',
-    "image": [], 
+    "image": [],
     "author": {
       "@type": "Organization",
       "name": sourceName,
@@ -414,7 +721,7 @@ export default async function NewsDetailPage({ params }) {
             <SectionKicker>KNOWLEDGE</SectionKicker>
             <h2>知识专题</h2>
             <SidebarList
-              items={knowledgeTopics}
+              items={KNOWLEDGE_TOPICS}
               getHref={(topic) => topic.href}
               getLabel={(topic) => topic.title}
             />
@@ -434,11 +741,146 @@ export default async function NewsDetailPage({ params }) {
               <h2>相关政策</h2>
               <div className="news-detail-related-text is-light">
                 {relatedPolicies.map((policy) => (
-                  <Link key={policy.id} href={`/news/policy/${policy.id}`}>{policy.title}</Link>
+                  <Link key={policy.id} href={getPolicyDetailHref(policy)}>{policy.title}</Link>
                 ))}
               </div>
             </section>
           ) : null}
+        </aside>
+      </section>
+
+      <NewsDetailFooter />
+    </main>
+  );
+}
+
+function renderPolicyDetail(item, policies, news) {
+  const mappedNewsId = getPolicyMappedNewsId(item);
+  const mappedNews = mappedNewsId ? news.find((entry) => entry.id === mappedNewsId) : null;
+  const articleBodyMarkdown = readPolicyMarkdownFile(item);
+  const sourceName = item.source?.name || '官方来源';
+  const examTypeLabel = getPolicyExamTypeLabel(item);
+  const summaryText = cleanPolicyText(item.summary, item.title) || '暂无摘要';
+  const relatedPolicies = buildRelatedPoliciesForPolicy(policies, item);
+  const displayDate = formatArticleDate(item.publishedAt || item.year);
+
+  if (!articleBodyMarkdown) {
+    notFound();
+  }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": item.title,
+    "description": item.summary || item.title,
+    "datePublished": item.publishedAt || '',
+    "dateModified": item.publishedAt || '',
+    "image": [],
+    "author": {
+      "@type": "Organization",
+      "name": sourceName,
+      "url": item.source?.url || 'https://kaonaqu.xyz'
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "考哪去",
+      "url": "https://kaonaqu.xyz"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://kaonaqu.xyz/news/${encodeURIComponent(item.id)}`
+    }
+  };
+
+  const tags = [examTypeLabel, '官方文件', '政策原文'].filter(Boolean);
+  const policyKnowledgeTopics = [
+    { id: 'zhongkao-special', title: '进入中招专题', href: '/news/zhongkao-special' },
+    { id: 'admission-timeline', title: '查看官方招生日程', href: '/news/admission-timeline' },
+    { id: 'policy-deep-dive', title: '政策深读', href: '/news/policy-deep-dive' },
+    { id: 'policy-faq', title: '高频政策问答', href: '/news/policy-faq' }
+  ];
+
+  return (
+    <main className="news-detail-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <NewsDetailNav />
+
+      <header className="news-detail-header" id="top">
+        <nav className="news-detail-breadcrumb" aria-label="面包屑">
+          <Link href="/">首页</Link>
+          <span>/</span>
+          <Link href="/news">新闻</Link>
+          <span>/</span>
+          <strong>政策</strong>
+        </nav>
+
+        <div className="news-detail-meta-row">
+          <span className="news-detail-category">政策</span>
+          <time dateTime={item.publishedAt || ''}>{displayDate}</time>
+          <span>{sourceName}</span>
+        </div>
+
+        <h1>{item.title}</h1>
+        <p>{summaryText}</p>
+      </header>
+
+      <section className="news-detail-body">
+        <article className="news-detail-main" id="article-body">
+          <div className="news-detail-markdown">
+            {renderPolicyMarkdown(articleBodyMarkdown)}
+          </div>
+
+          <div className="news-detail-tags" aria-label="文章标签">
+            <span>TAGS</span>
+            {tags.map((tag) => (
+              <em key={tag}>{tag}</em>
+            ))}
+          </div>
+        </article>
+
+        <aside className="news-detail-sidebar">
+          {mappedNews ? (
+            <section className="news-detail-sidebar-card is-dark">
+              <SectionKicker inverse>RELATED</SectionKicker>
+              <h2>对应新闻稿</h2>
+              <div className="news-detail-related-text">
+                <Link href={`/news/${mappedNews.id}`}>{mappedNews.title}</Link>
+              </div>
+            </section>
+          ) : null}
+
+          {relatedPolicies.length ? (
+            <section className="news-detail-sidebar-card">
+              <SectionKicker>POLICY</SectionKicker>
+              <h2>相关政策</h2>
+              <div className="news-detail-related-text is-light">
+                {relatedPolicies.map((policy) => (
+                  <Link key={policy.id} href={getPolicyDetailHref(policy)}>{policy.title}</Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          <section className="news-detail-sidebar-card">
+            <SectionKicker>KNOWLEDGE</SectionKicker>
+            <h2>知识专题</h2>
+            <SidebarList
+              items={policyKnowledgeTopics}
+              getHref={(topic) => topic.href}
+              getLabel={(topic) => topic.title}
+            />
+          </section>
+
+          <section className="news-detail-sidebar-card">
+            <SectionKicker>SHARE</SectionKicker>
+            <div className="news-detail-share-row">
+              <button type="button">微信</button>
+              <button type="button">链接</button>
+            </div>
+          </section>
         </aside>
       </section>
 

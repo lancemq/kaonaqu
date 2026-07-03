@@ -23,7 +23,6 @@ function getUrlPriority(url) {
   if (url === '/schools') return '0.9';
   if (url.startsWith('/schools/')) return '0.7';
   if (url.startsWith('/knowledge')) return '0.7';
-  if (url.startsWith('/news/policy/')) return '0.8';
   if (url.startsWith('/news/')) return '0.8';
   if (url.startsWith('/schools/district/')) return '0.7';
   return '0.6';
@@ -90,7 +89,7 @@ function main() {
   const policies = readJson('policies.json');
   for (const policy of policies) {
     if (policy && policy.id) {
-      urls.push(`/news/policy/${encodeURIComponent(policy.id)}`);
+      urls.push(`/news/${encodeURIComponent(policy.id)}`);
     }
   }
 
@@ -111,7 +110,6 @@ function main() {
     '/news/policy-faq',
     '/news/policy-glossary',
     '/schools/compare',
-    '/schools/simulator',
     '/schools/groups',
     '/schools/district'
   ];
