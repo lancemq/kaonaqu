@@ -103,7 +103,7 @@ export default async function HomePage() {
     sortedNews[1],
     sortedNews[2],
     sortedNews[3]
-  ].filter(Boolean).filter((item, index, array) => array.findIndex((other) => other.id === item.id) === index).slice(0, 6);
+  ].filter(Boolean).filter((item, index, array) => array.findIndex((other) => other.id === item.id) === index).slice(0, 4);
   const featuredSchools = getFeaturedSchools(schools);
   const districtHighlights = getDistrictHighlights(districts, schools);
 
@@ -138,7 +138,6 @@ export default async function HomePage() {
           <Link href="/schools">学校</Link>
           <Link href="/knowledge">知识</Link>
         </div>
-        <Link className="home-aerial-nav-cta" href="/schools">开始探索</Link>
       </nav>
 
       <header className="home-hero-slab">

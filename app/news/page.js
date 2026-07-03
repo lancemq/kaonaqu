@@ -80,7 +80,6 @@ export default async function NewsPage() {
           <Link href="/schools">学校</Link>
           <Link href="/knowledge">知识</Link>
         </div>
-        <Link className="news-aerial-nav-cta" href="/schools">开始探索</Link>
       </nav>
 
       <header className="news-hero-slab">

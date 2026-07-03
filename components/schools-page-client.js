@@ -277,358 +277,169 @@ export default function SchoolsPageClient({
   };
 
   return (
-    <>
-      <header className="hero" id="top">
-        <section className="schools-datadesk-hero" aria-label="上海学校数据库入口">
-          <div className="schools-datadesk-hero-grid">
-            <div className="schools-datadesk-intro">
-              <p className="overview-label">School Database</p>
-              <h1>上海学校数据库</h1>
-              <p className="schools-datadesk-subtitle">按区域、学段、办学性质与特征缩小范围，再进入学校详情。</p>
-              <p className="schools-datadesk-description">搜索已知目标学校，或用左侧控制台逐步缩范围。</p>
-              <div className="schools-datadesk-search-row">
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-main schools-datadesk-search" htmlFor="prototype-school-search">
-                  <span className="visually-hidden">搜索学校、区域或关键词</span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M10.5 4a6.5 6.5 0 1 0 4.03 11.6l4.43 4.43 1.41-1.41-4.43-4.43A6.5 6.5 0 0 0 10.5 4Zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"></path>
-                  </svg>
-                  <input
-                    id="prototype-school-search"
-                    type="search"
-                    value={queryInput}
-                    onChange={(event) => setQueryInput(event.target.value)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter') {
-                        event.preventDefault();
-                        applySearch();
-                      }
-                    }}
-                    placeholder="搜索学校名、区域或办学特征"
-                  />
-                </label>
-                <button className="schools-datadesk-button" type="button" onClick={applySearch}>执行检索</button>
-              </div>
-              <div className="schools-datadesk-inline-meta">
-                <span>区域</span>
-                <span>学段 / 性质</span>
-                <span>标签比较</span>
-              </div>
-              <div className="schools-datadesk-hero-actions">
-                <Link className="module-link" href="/schools/district">查看 16 区专题</Link>
-                <Link className="module-link" href="/schools/category">查看学校分类</Link>
-                <Link className="module-link" href="/schools/groups">查看教育集团专题</Link>
-                <Link className="module-link" href="/schools/simulator">进入志愿模拟</Link>
-              </div>
-            </div>
+    <main className="schools-aerial-page">
+      <nav className="schools-aerial-nav" aria-label="顶部导航">
+        <Link className="schools-aerial-brand" href="/" aria-label="考哪去首页">
+          <strong>考哪去</strong>
+          <span>SHANGHAI EDUCATION</span>
+        </Link>
+        <div className="schools-aerial-nav-links">
+          <Link href="/">首页</Link>
+          <Link href="/news">新闻</Link>
+          <Link className="is-active" href="/schools">学校</Link>
+          <Link href="/knowledge">知识</Link>
+        </div>
+      </nav>
 
-            <div className="schools-datadesk-summary-grid">
-              <article className="schools-datadesk-summary-card schools-datadesk-summary-card-strong">
-                <span>学校总量</span>
-                <strong>{schools.length}</strong>
-                <p>可检索学校条目</p>
-              </article>
-              <article className="schools-datadesk-summary-card">
-                <span>覆盖区域</span>
-                <strong>{districts.length}</strong>
-                <p>上海 16 区</p>
-              </article>
-              <article className="schools-datadesk-summary-card">
-                <span>当前结果</span>
-                <strong>{filteredSchools.length}</strong>
-                <p>{activeFilterSummary.length ? '筛选后范围' : '未筛选'}</p>
-              </article>
-              <article className="schools-datadesk-summary-card schools-datadesk-summary-card-stack">
-                <span>学段分布</span>
-                <strong>{schoolStageTotals.senior_high} / {schoolStageTotals.junior} / {schoolStageTotals.complete}</strong>
-                <p>高中 / 初中 / 完全中学</p>
-              </article>
+      <header className="schools-aerial-hero" id="top">
+        <div className="schools-aerial-hero-content">
+          <section className="schools-aerial-hero-copy" aria-label="学校频道概览">
+            <div className="schools-aerial-kicker"><span aria-hidden="true"></span><p>SCHOOL DATABASE</p></div>
+            <h1>上海学校数据库</h1>
+            <p>收录全市 {schools.length.toLocaleString('zh-CN')} 所学校详细信息，按区县、类型精准筛选，全面了解各校特色与升学数据。</p>
+            <div className="schools-aerial-searchbar">
+              <span aria-hidden="true"></span>
+              <input
+                id="prototype-school-search"
+                type="search"
+                value={queryInput}
+                onChange={(event) => setQueryInput(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    event.preventDefault();
+                    applySearch();
+                  }
+                }}
+                placeholder="搜索学校名称、区县或类型..."
+              />
+              <button type="button" onClick={applySearch}>检索</button>
             </div>
-            <div className="schools-datadesk-hero-footnote">
-              <span>更新于 {latestUpdated}</span>
-              <span>来源：公开资料整理</span>
-            </div>
-          </div>
-        </section>
+          </section>
+
+          <aside className="schools-aerial-hero-stats" aria-label="学校数据统计">
+            <article><strong>{schools.length}</strong><span>收录学校</span></article>
+            <article><strong>{districts.length}</strong><span>覆盖区县</span></article>
+            <article><strong>{schoolStageTotals.senior_high}</strong><span>高中样本</span></article>
+          </aside>
+        </div>
       </header>
 
-      <section className="schools-datadesk-statusbar" aria-label="数据库状态摘要">
-        <span className="schools-datadesk-statuslabel">Database Status</span>
-        <span>{resultDescriptor}</span>
-      </section>
+      <section className="schools-aerial-content">
+        <aside className="schools-aerial-sidebar" aria-label="筛选条件">
+          <div className="schools-aerial-sidebar-head">
+            <div className="schools-aerial-kicker"><span aria-hidden="true"></span><p>FILTER</p></div>
+            <h2>筛选条件</h2>
+          </div>
 
-      <main className="layout schools-datadesk-layout">
-        <aside className="schools-datadesk-sidebar">
-          <section className="schools-datadesk-panel schools-datadesk-panel-dark">
-            <div className="schools-datadesk-panel-head schools-datadesk-panel-head-tight">
-              <p className="overview-label">当前条件</p>
-              <span>{activeFilterCount} 项激活</span>
-            </div>
-            {activeFilterSummary.length ? (
-              <div className="schools-datadesk-activechips">
-                {activeFilterSummary.map((line) => (
-                  <span
-                    key={line}
-                    className={`schools-datadesk-activechip${line.startsWith('区域：') ? ' schools-datadesk-activechip-district' : ''}`}
-                  >
-                    {line}
-                  </span>
-                ))}
-              </div>
-            ) : (
-              <p className="schools-datadesk-panel-copy">未添加筛选条件。</p>
-            )}
-            <div className="schools-datadesk-panel-meta">
-              <span>最近更新时间</span>
-              <strong>{latestUpdated}</strong>
-            </div>
-            <button className="schools-datadesk-button schools-datadesk-button-secondary" type="button" onClick={resetFilters}>清空全部条件</button>
-          </section>
-
-          <section className="schools-datadesk-panel">
-            <div className="schools-datadesk-panel-head">
-              <p className="overview-label">控制台</p>
-            </div>
-            <div className="schools-datadesk-controls">
-              <div className="schools-datadesk-controlblock">
-                <span>区域</span>
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-district-filter">
-                  <span className="visually-hidden">按区域筛选</span>
-                  <select id="prototype-district-filter" value={activeDistrict} onChange={(event) => { setActiveDistrict(event.target.value); setCurrentPage(1); }}>
-                    <option value="all">全部区域</option>
-                    {districts.map((district) => (
-                      <option key={district.id} value={district.id}>{district.name || district.districtName}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              <div className="schools-datadesk-controlblock">
-                <span>学段</span>
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-stage-filter">
-                  <span className="visually-hidden">按学段筛选</span>
-                  <select id="prototype-stage-filter" value={activeStage} onChange={(event) => { setActiveStage(event.target.value); setCurrentPage(1); }}>
-                    {STAGE_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>{option.label}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              <div className="schools-datadesk-controlblock">
-                <span>办学性质</span>
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-ownership-filter">
-                  <span className="visually-hidden">按办学性质筛选</span>
-                  <select id="prototype-ownership-filter" value={activeOwnership} onChange={(event) => { setActiveOwnership(event.target.value); setCurrentPage(1); }}>
-                    {OWNERSHIP_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>{option.label}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-            </div>
-            <button
-              type="button"
-              className={`schools-datadesk-advanced-toggle${advancedOpen ? ' schools-datadesk-advanced-toggle-open' : ''}`}
-              onClick={() => setAdvancedOpen((open) => !open)}
-              aria-expanded={advancedOpen}
-              aria-controls="schools-datadesk-advanced"
-            >
-              <span>{advancedOpen ? '收起高级筛选' : '展开高级筛选'}</span>
-              <span
-                className={`schools-datadesk-advanced-badge${advancedCount > 0 ? ' schools-datadesk-advanced-badge-active' : ''}`}
-                aria-label={`已激活 ${advancedCount} 项高级筛选`}
-              >{advancedCount}</span>
-            </button>
-          </section>
-
-          {advancedOpen ? (
-            <div id="schools-datadesk-advanced" className="schools-datadesk-advanced">
-              <section className="schools-datadesk-panel">
-                <div className="schools-datadesk-panel-head">
-                  <p className="overview-label">学校分类</p>
-                </div>
-                <div className="schools-datadesk-controls">
-                  <div className="schools-datadesk-controlblock">
-                    <span>学校分类</span>
-                    <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="prototype-category-filter">
-                      <span className="visually-hidden">按学校分类筛选</span>
-                      <select id="prototype-category-filter" value={activeCategory} onChange={(event) => { setActiveCategory(event.target.value); setCurrentPage(1); }}>
-                        <option value="all">全部分类</option>
-                        {CATEGORY_FILTER_OPTIONS.map((option) => (
-                          <option key={option.value} value={option.value}>{option.label}</option>
-                        ))}
-                      </select>
-                    </label>
-                  </div>
-                </div>
-              </section>
-
-              <section className="schools-datadesk-panel">
-                <div className="schools-datadesk-panel-head">
-                  <p className="overview-label">学校特征</p>
-                </div>
-                <div className="schools-datadesk-taggroup" aria-label="学校特色筛选">
-                  <div className="schools-datadesk-tagrow">
-                    {tagOptions.map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        className={`schools-datadesk-tag${activeTag === option ? ' schools-datadesk-tag-active' : ''}`}
-                        onClick={() => { setActiveTag(option); setCurrentPage(1); }}
-                      >
-                        {option === 'all' ? '全部特色' : option}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div className="schools-datadesk-taggroup" aria-label="培养方向筛选">
-                  <div className="schools-datadesk-tagrow">
-                    {directionOptions.map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        className={`schools-datadesk-tag${activeDirection === option ? ' schools-datadesk-tag-active' : ''}`}
-                        onClick={() => { setActiveDirection(option); setCurrentPage(1); }}
-                      >
-                        {option === 'all' ? '全部方向' : option}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            </div>
-          ) : null}
-
-          <section className="schools-datadesk-panel">
-            <div className="schools-datadesk-panel-head">
-              <p className="overview-label">快速入口</p>
-            </div>
-            <div className="schools-datadesk-shortcuts">
-              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/compare">
-                <strong>学校多维对比</strong>
-                <span>支持梯队、集团、地址等全方位参数对比</span>
-              </Link>
-              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/simulator">
-                <strong>志愿模拟</strong>
-                <span>按当前初中、目标区域和学校层级生成高中候选清单</span>
-              </Link>
-              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/visualization">
-                <strong>数据可视化</strong>
-                <span>查看集团关系图谱与初升高升学流向</span>
-              </Link>
-              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/groups">
-                <strong>教育集团专题</strong>
-                <span>按集团查看成员校、覆盖区域与梯队结构</span>
-              </Link>
-              <Link className="schools-datadesk-entry schools-datadesk-entry-feature" href="/schools/score-match">
-                <strong>估分择校</strong>
-                <span>输入分数与区域，给出冲刺/匹配/保底建议</span>
-              </Link>
-              {featuredSchools.map((item) => (
-                <Link key={item.school.id} className="schools-datadesk-entry" href={`/schools/${item.school.id}`}>
-                  <strong>{item.school.name}</strong>
-                  <span>{item.label}</span>
-                </Link>
+          <section className="schools-aerial-filter-block">
+            <label htmlFor="prototype-district-filter">区县</label>
+            <select id="prototype-district-filter" value={activeDistrict} onChange={(event) => { setActiveDistrict(event.target.value); setCurrentPage(1); }}>
+              <option value="all">全部区域</option>
+              {districts.map((district) => (
+                <option key={district.id} value={district.id}>{district.name || district.districtName}</option>
               ))}
-            </div>
-            <div className="schools-datadesk-districts">
-              {highlightedDistricts.map((district) => (
-                <Link key={district.id} className="schools-datadesk-district" href={`/schools/district/${district.id}`}>
-                  <strong>{district.name || district.districtName}</strong>
-                  <span>{district.schoolCount || 0} 所学校</span>
-                </Link>
+            </select>
+          </section>
+
+          <section className="schools-aerial-filter-block">
+            <label>学校类型</label>
+            <div className="schools-aerial-filter-stack">
+              {CATEGORY_FILTER_OPTIONS.slice(0, 5).map((option) => (
+                <button key={option.value} type="button" className={activeCategory === option.value ? 'is-active' : ''} onClick={() => { setActiveCategory(activeCategory === option.value ? 'all' : option.value); setCurrentPage(1); }}>
+                  {option.label}
+                </button>
               ))}
             </div>
           </section>
+
+          <section className="schools-aerial-filter-block">
+            <label>学段</label>
+            <div className="schools-aerial-filter-stack">
+              {STAGE_OPTIONS.map((option) => (
+                <button key={option.value} type="button" className={activeStage === option.value ? 'is-active' : ''} onClick={() => { setActiveStage(option.value); setCurrentPage(1); }}>
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="schools-aerial-filter-block">
+            <label>学校特征</label>
+            <div className="schools-aerial-feature-stack">
+              {tagOptions.slice(1, 7).map((option) => (
+                <button key={option} type="button" className={activeTag === option ? 'is-active' : ''} onClick={() => { setActiveTag(activeTag === option ? 'all' : option); setCurrentPage(1); }}>
+                  {option}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="schools-aerial-filter-block">
+            <label>快速工具</label>
+            <div className="schools-aerial-tool-stack">
+              <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
+              <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
+              <Link href="/schools/visualization"><span>数据可视化</span><i>→</i></Link>
+              <Link href="/news/admission-timeline"><span>政策日历</span><i>→</i></Link>
+              <Link href="/schools/groups"><span>招生简章</span><i>→</i></Link>
+            </div>
+          </section>
+
+          <button className="schools-aerial-reset" type="button" onClick={resetFilters}>清空全部条件</button>
         </aside>
 
-        <section className="schools-datadesk-results">
-          <div className="schools-datadesk-results-head">
+        <section className="schools-aerial-results" aria-label="学校检索结果">
+          <header className="schools-aerial-results-head">
             <div>
-              <p className="overview-label">检索结果</p>
-              <h2>当前可比较范围</h2>
+              <span>{filteredSchools.length}</span>
+              <h2>所学校</h2>
             </div>
             <p>{activeFilterSummary.length ? activeFilterSummary.join(' · ') : '未筛选，展示全量结果。'}</p>
-          </div>
+          </header>
 
-          <div className="schools-datadesk-metrics">
-            <article>
-              <strong>{filteredSchools.length}</strong>
-              <span>当前结果数</span>
-            </article>
-            <article>
-              <strong>{stageStats.junior}</strong>
-              <span>纯初中</span>
-            </article>
-            <article>
-              <strong>{stageStats.senior_high}</strong>
-              <span>纯高中</span>
-            </article>
-            <article>
-              <strong>{stageStats.complete}</strong>
-              <span>完全中学</span>
-            </article>
-          </div>
-
-          <div className="schools-datadesk-cardlist">
+          <div className="schools-aerial-cardlist">
             {(pagedSchools.length ? pagedSchools : emptyStateSchools).map((school) => {
               const cardTags = buildCardTags(school);
               const quality = getSchoolDataQuality(school);
               const badge = dataQualityBadge(dataQualityScore(quality));
-              const mapUrl = school.address
-                ? `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.address)}`
-                : `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.districtName)}`;
-
               return (
-                <div key={school.id} className="schools-datadesk-card-wrapper relative group">
-                  <Link href={`/schools/${school.id}`} className="schools-datadesk-card schools-datadesk-card-link block">
-                    <div className="schools-datadesk-cardhead">
-                      <div>
-                        <p className="schools-datadesk-cardkicker">{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getOwnershipLabel(school)}</p>
-                        <h3>{school.name}</h3>
-                      </div>
-                      <div className="schools-datadesk-cardmeta">
-                        <span>{getSchoolType(school)}</span>
-                        <span>{school.tier || '—'}</span>
-                        <span>更新于 {formatSchoolUpdate(school.updatedAt)}</span>
-                        {badge ? (
-                          <span className={`schools-datadesk-cardquality schools-datadesk-cardquality-${badge.tone}`}>
-                            {badge.label}
-                          </span>
-                        ) : null}
+                <article key={school.id} className="schools-aerial-card-wrap">
+                  <Link href={`/schools/${school.id}`} className="schools-aerial-card">
+                    <div className="schools-aerial-card-main">
+                      <p>{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getOwnershipLabel(school)}</p>
+                      <h3>{school.name}</h3>
+                      <span>{getSchoolPositioning(school) || '查看学校画像、招生路径与择校提示。'}</span>
+                      <div className="schools-aerial-card-tags">
+                        {cardTags.slice(0, 4).map((tag) => <em key={tag}>{tag}</em>)}
+                        {badge ? <em>{badge.label}</em> : null}
                       </div>
                     </div>
-                    {(() => {
-                      const positioning = getSchoolPositioning(school);
-                      return positioning ? <p className="schools-datadesk-cardsummary">{positioning}</p> : null;
-                    })()}
-                    <div className="schools-datadesk-cardfooter">
-                      <div className="schools-datadesk-cardtags">
-                        {cardTags.length ? cardTags.map((tag) => (
-                          <span key={tag} className="schools-datadesk-cardtag">{tag}</span>
-                        )) : (
-                          <span className="schools-datadesk-cardtag schools-datadesk-cardtag-muted">—</span>
-                        )}
-                      </div>
-                      <span className="schools-datadesk-cardlink">进入学校详情</span>
+                    <div className="schools-aerial-card-side">
+                      <strong>{school.tier || getSchoolType(school) || '—'}</strong>
+                      <small>更新于 {formatSchoolUpdate(school.updatedAt)}</small>
+                      <b>查看详情 →</b>
                     </div>
                   </Link>
                   <CompareBagCheckbox schoolId={school.id} schoolName={school.name} />
-                </div>
+                </article>
               );
             })}
           </div>
 
-          <div className="schools-datadesk-pager">
+          <div className="schools-aerial-pager">
             <button type="button" onClick={() => setCurrentPage((page) => Math.max(1, page - 1))} disabled={currentPage === 1}>上一页</button>
             <span>{currentPage} / {totalPages}</span>
             <button type="button" onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))} disabled={currentPage === totalPages}>下一页</button>
           </div>
         </section>
-      </main>
+      </section>
 
-      <footer className="prototype-page-footer">
-        <span>上海学校数据库 / 首页数据台</span>
-        <span>区域筛选 / 学段筛选 / 标签比较 / {schools.length} 所学校</span>
+      <div className="schools-color-block-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <footer className="schools-aerial-footer">
+        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
+        <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
+        <p>© 2026 考哪去</p>
       </footer>
-    </>
+    </main>
   );
 }

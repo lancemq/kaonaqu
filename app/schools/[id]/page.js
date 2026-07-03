@@ -1,12 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
-import CrossChannelSection from '../../../components/cross-channel-section';
-import SiteShell from '../../../components/site-shell';
-import { getSchoolChannelJourney } from '../../../lib/cross-channel-journeys.mjs';
 import { readSchoolMarkdownFile } from '../../../lib/school-content-files.mjs';
-import { getSchoolRichProfile } from '../../../lib/school-rich-profiles';
 import { getSchoolDataQuality } from '../../../lib/school-data-quality';
 import {
   getSchoolAdmissionInfo,
@@ -36,17 +31,6 @@ function resolveSchoolById(schools, rawId) {
   })();
 
   return schools.find((item) => item.id === normalizedId) || schools.find((item) => item.id === decodedId) || null;
-}
-
-function getAdmissionRoutes(school) {
-  const routes = school.admissionRoutes || [];
-  if (routes.length === 0) return null;
-  
-  // Sort by year desc, then count desc
-  return routes.sort((a, b) => {
-    if (b.year !== a.year) return b.year - a.year;
-    return b.count - a.count;
-  });
 }
 
 function getRelatedSchools(schools, current) {
@@ -105,27 +89,22 @@ function renderSchoolMarkdown(markdown) {
   const SKIP_SECTIONS = new Set([
     '历史沿革（公开资料）',
     '办学特色（公开资料）',
-    '课程与培养路径解读'
+    '课程与培养路径解读',
+    '官方对口查询',
+    '适合谁',
+    '阅读提示',
+    '公开信息入口'
   ]);
 
   // Section tracking for highlights
-  let activeSectionType = null; // 'catchment', 'group', or null
+  let activeSectionType = null; // 'group' or null
   let currentSectionTitle = '';
   let currentSectionNodes = [];
   let skipping = false;
 
   const flushSection = () => {
     if (currentSectionNodes.length === 0) return;
-    if (activeSectionType === 'catchment') {
-      nodes.push(
-        <div key={`catchment-section-${key++}`} className="highlight-card highlight-card-catchment">
-          <div className="highlight-card-header">{currentSectionTitle}</div>
-          <div className="highlight-card-content">
-            {currentSectionNodes}
-          </div>
-        </div>
-      );
-    } else if (activeSectionType === 'group') {
+    if (activeSectionType === 'group') {
       nodes.push(
         <div key={`group-section-${key++}`} className="highlight-card highlight-card-group">
           <div className="highlight-card-header">{currentSectionTitle}</div>
@@ -172,11 +151,7 @@ function renderSchoolMarkdown(markdown) {
         continue;
       }
       skipping = false;
-      if (title.includes('官方对口查询')) {
-        activeSectionType = 'catchment';
-        currentSectionTitle = title;
-        continue;
-      } else if (title.includes('教育集团')) {
+      if (title.includes('教育集团')) {
         activeSectionType = 'group';
         currentSectionTitle = title;
         continue;
@@ -273,7 +248,7 @@ export async function generateMetadata({ params }) {
 export const revalidate = 86400;
 
 export default async function SchoolDetailPage({ params }) {
-  const { schools, news } = await loadDataStore();
+  const { schools } = await loadDataStore();
   const { id } = await params;
   const school = resolveSchoolById(schools, id);
 
@@ -291,15 +266,9 @@ export default async function SchoolDetailPage({ params }) {
   const features = articleInsights.keywords.length ? articleInsights.keywords : getSchoolFeatures(school);
   const trainingDirections = articleInsights.directions.length ? articleInsights.directions : getSchoolTrainingDirections(school);
   const tags = getSchoolTags(school);
-  const richProfile = getSchoolRichProfile(school.id);
-  const schoolJourney = getSchoolChannelJourney(school, { news });
   const schoolSummary = articleInsights.overview || getSchoolAdmissionInfo(school) || '';
-  const decisionTags = Array.isArray(school.decisionTags) ? school.decisionTags.slice(0, 6) : [];
-  const profileSignals = school.profileSignals || {};
 
   const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '—';
-  const summaryPoints = [highlights[0], highlights[1], trainingDirections[0] || features[0]].filter(Boolean).slice(0, 3);
-  const quickTags = Array.from(new Set([...tags, ...features, ...trainingDirections])).filter(Boolean).slice(0, 6);
   const profileFacts = [
     ['办学属性', schoolAttribute],
     ['学校类型', getSchoolType(school)],
@@ -308,16 +277,6 @@ export default async function SchoolDetailPage({ params }) {
     ['更新时间', formatSchoolUpdate(school.updatedAt)]
   ].filter(([, value]) => String(value || '').trim());
   const dataQuality = getSchoolDataQuality(school);
-  const serviceFacts = [
-    dataQuality.hasRealAddress ? ['地址', school.address] : null,
-    dataQuality.hasRealPhone ? ['电话', school.phone] : null,
-    dataQuality.hasRealWebsite ? ['官网', school.website] : null
-  ].filter(Boolean);
-  const missingServiceFacts = [
-    !dataQuality.hasRealAddress ? '地址暂未收录' : null,
-    !dataQuality.hasRealPhone ? '电话暂未收录' : null,
-    !dataQuality.hasRealWebsite ? '官网暂未收录' : null
-  ].filter(Boolean);
 
   // JSON-LD for School Schema —— 占位字段不输出，避免给搜索引擎"死链"。
   const jsonLd = {
@@ -336,477 +295,79 @@ export default async function SchoolDetailPage({ params }) {
     ...(dataQuality.hasRealWebsite ? { 'sameAs': [school.website] } : {})
   };
 
-  // 构建地图链接（仅当有真实地址时启用）
-  const mapUrl = dataQuality.hasRealAddress
-    ? `https://www.amap.com/search?query=${encodeURIComponent(school.name + ' ' + school.address)}`
-    : null;
+  const admissionRows = [
+    ['清北录取', school.qingbeiCount || school.topUniversityCount || '资料待补'],
+    ['复旦交大', school.fudanJiaodaCount || school.localTopUniversityCount || '资料待补'],
+    ['985高校', school.project985Rate || school.keyUniversityRate || '资料待补'],
+    ['一本率', school.firstTierRate || school.undergraduateRate || '资料待补']
+  ];
+  const scoreRows = Array.isArray(school.scoreLines) && school.scoreLines.length
+    ? school.scoreLines.slice(0, 3)
+    : [
+      { year: '2025年', score: school.score2025 || '资料待补', plan: school.plan2025 || '以当年招生计划为准', batch: '统一招生' },
+      { year: '2024年', score: school.score2024 || '资料待补', plan: school.plan2024 || '以当年招生计划为准', batch: '统一招生' },
+      { year: '2023年', score: school.score2023 || '资料待补', plan: school.plan2023 || '以当年招生计划为准', batch: '统一招生' }
+    ];
+  const competitionRows = [
+    ['全国高中数学联赛', '公开资料待补', '国家级'],
+    ['全国中学生物理竞赛', '公开资料待补', '国家级'],
+    ['中国化学奥林匹克', '公开资料待补', '国家级'],
+    ['全国青少年信息学奥赛', '公开资料待补', '国家级'],
+    ['上海市青少年科技创新大赛', '公开资料待补', '市级']
+  ];
+  const courseRows = [
+    ['大学先修课程', school.apCourses || '结合学校公开课程与招生简章核对。'],
+    ['创新实验课程', trainingDirections.slice(0, 2).join('、') || '以项目式学习与综合实践为观察重点。'],
+    ['国际理解课程', features.includes('国际化') || features.includes('国际课程') ? '关注国际课程、双语项目与升学路径。' : '公开资料待补。']
+  ];
+  const featureTags = Array.from(new Set([...features, ...tags, ...trainingDirections])).filter(Boolean).slice(0, 3);
 
   return (
-    <>
+    <main className="school-detail-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SiteShell
-        hideKnowledgeNav
-        breadcrumbItems={[
-          { label: '学校信息', href: '/schools' },
-          { label: getSchoolDistrictName(school), href: `/schools/district/${school.districtId}` },
-          { label: school.name }
-        ]}
-      >
-        <header className="hero" id="top">
-          <section className="school-datadesk-detail-hero" aria-label="学校详情">
-            <div className="school-datadesk-detail-hero-grid">
-              <div className="school-datadesk-detail-main">
-                <p className="overview-label">
-                  学校库 / {getSchoolDistrictName(school)} / {getSchoolStage(school)} / {schoolAttribute}
-                </p>
-                <h1>{school.name}</h1>
-                <p className="school-datadesk-detail-subtitle">
-                  {renderInlineMarkdown(schoolSummary)}
-                </p>
-                <div className="school-datadesk-detail-chiprow">
-                  {richProfile?.badge ? (
-                    <span className="school-datadesk-detail-chip school-datadesk-detail-chip-strong">{richProfile.badge}</span>
-                  ) : null}
-                  {quickTags.length ? quickTags.map((item) => (
-                    <span key={item} className="school-datadesk-detail-chip">{item}</span>
-                  )) : (
-                    <span className="school-datadesk-detail-chip">—</span>
-                  )}
-                </div>
-              </div>
-            <aside className="school-datadesk-detail-sidehead">
-              <article className="school-datadesk-detail-sidecard school-datadesk-detail-sidecard-strong">
-                <span>学校定位</span>
-                <strong>{highlights[0] || '结合课程、招生与培养方向判断学校节奏。'}</strong>
-                <p>招生口径、课程方向、校园节奏与家庭适配度。</p>
-              </article>
-              <article className="school-datadesk-detail-sidecard">
-                <span>最近更新时间</span>
-                <strong>{formatSchoolUpdate(school.updatedAt)}</strong>
-                <p>本地收录时间。</p>
-              </article>
-            </aside>
-          </div>
-        </section>
+      <nav className="school-detail-nav" aria-label="顶部导航">
+        <Link className="school-detail-brand" href="/" aria-label="考哪去首页"><strong>考哪去</strong><span>SHANGHAI EDUCATION</span></Link>
+        <div className="school-detail-nav-links"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link className="is-active" href="/schools">学校</Link><Link href="/knowledge">知识</Link></div>
+      </nav>
+
+      <header className="school-detail-header" id="top">
+        <nav className="school-detail-breadcrumb" aria-label="面包屑"><Link href="/">首页</Link><span>/</span><Link href="/schools">学校</Link><span>/</span><Link href={'/schools/district/' + school.districtId}>{getSchoolDistrictName(school)}</Link><span>/</span><strong>{school.name}</strong></nav>
+        <div className="school-detail-chipline"><span>{getSchoolDistrictName(school)}</span><span>{getSchoolStage(school)}</span><span>{schoolAttribute}</span><em>{formatSchoolUpdate(school.updatedAt)}</em></div>
+        <h1>{school.name}</h1>
+        <p>{schoolSummary ? renderInlineMarkdown(schoolSummary) : '查看学校画像、招生路径与择校提示。'}</p>
+        <div className="school-detail-statline">
+          <article><strong>{school.foundingYear || '—'}</strong><span>建校时间</span></article>
+          <article><strong>{getSchoolOwnershipLabel(school) || '—'}</strong><span>学校性质</span></article>
+          <article><strong>{getSchoolStage(school)}</strong><span>学段</span></article>
+          <article><strong>{school.group || schoolAttribute}</strong><span>学校体系</span></article>
+        </div>
       </header>
 
-      <div className="school-datadesk-detail-gap" aria-hidden="true" />
+      <section className="school-detail-body">
+        <article className="school-detail-main">
+          <section className="school-detail-section"><h2>学校概览</h2><p>{schoolSummary ? renderInlineMarkdown(schoolSummary) : '公开资料仍在整理，建议结合学校官网、区教育局和当年招生文件核对。'}</p></section>
+          <section className="school-detail-section"><h2>办学特色</h2><p>{highlights.slice(0, 2).join('。') || getSchoolAdmissionInfo(school) || '关注课程结构、师资资源、升学路径与家庭节奏适配。'}</p></section>
+          <section className="school-detail-section"><h2>招生方式</h2><p>{getSchoolAdmissionInfo(school) || '招生方式以当年上海市及各区教育局公布为准。'}</p></section>
+          <section className="school-detail-section"><h2>升学出口</h2><p>以下为公开资料整理口径，具体录取结果与招生计划以当年官方发布为准。</p><div className="school-detail-score-list">{scoreRows.map((row) => (<div key={row.year} className="school-detail-score-row"><strong>{row.year}</strong><span>{row.score || row.minScore || '资料待补'}</span><span>{row.plan || row.batch || '以官方为准'}</span></div>))}</div></section>
+          <section className="school-detail-section"><h2>竞赛成绩</h2><div className="school-detail-competition-list">{competitionRows.map(([name, count, level]) => (<div key={name}><strong>{name}</strong><span>{count}</span><em>{level}</em></div>))}</div></section>
+          <section className="school-detail-section"><h2>所属教育集团</h2><div className="school-detail-groupbox"><p><strong>集团名称</strong>{school.group || '公开资料待补'}</p><p><strong>成员学校</strong>{relatedSchools.map((peer) => peer.name).join(' · ') || '公开资料待补'}</p><p><strong>集团特色</strong>资源共享 · 课程共建 · 联合教研</p></div></section>
+          <section className="school-detail-section"><h2>特色课程</h2><div className="school-detail-course-list">{courseRows.map(([name, desc]) => (<div key={name}><strong>{name}</strong><p>{desc}</p></div>))}</div></section>
+          <section className="school-detail-section school-detail-markdown-section"><h2>正文资料</h2><div className="news-detail-markdown school-datadesk-detail-article">{renderSchoolMarkdown(articleBodyMarkdown)}</div></section>
+          <div className="school-detail-tags"><span>FEATURES</span>{(featureTags.length ? featureTags : ['学校画像']).map((tag) => <em key={tag}>{tag}</em>)}</div>
+        </article>
 
-      {richProfile ? (
-        <section className="school-rich-visual" aria-label={`${school.name}核心资料`}>
-          <figure className={`school-rich-image-card${richProfile.image.url.includes('/placeholder-') ? '' : ' is-photo'}`}>
-            <Image src={richProfile.image.url} alt={richProfile.image.alt} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
-            <figcaption>{richProfile.image.caption}</figcaption>
-          </figure>
-          <div className="school-rich-brief">
-            <p className="overview-label">核心资料速览</p>
-            <h2>{school.name}</h2>
-            <p>{richProfile.generated
-              ? '按 tier 模板生成，硬指标无公开来源时以占位提示，以学校官方发布为准。'
-              : '人工整理；分数线为录取参考，以当年官方发布为准。'}</p>
-            <dl className="school-rich-metric-grid">
-              <div>
-                <dt>办学属性</dt>
-                <dd>{schoolAttribute}</dd>
-              </div>
-              <div>
-                <dt>所在区域</dt>
-                <dd>{getSchoolDistrictName(school)}</dd>
-              </div>
-              <div>
-                <dt>学段</dt>
-                <dd>{getSchoolStage(school)}</dd>
-              </div>
-              <div>
-                <dt>建校年份</dt>
-                <dd>{school.foundingYear || '资料待补'}</dd>
-              </div>
-              {school.group ? (
-                <div>
-                  <dt>教育集团</dt>
-                  <dd>{school.group}</dd>
-                </div>
-              ) : null}
-              <div>
-                <dt>最近更新</dt>
-                <dd>{formatSchoolUpdate(school.updatedAt)}</dd>
-              </div>
-            </dl>
-          </div>
-        </section>
-      ) : null}
-
-      <section className="school-datadesk-detail-stats">
-        <article>
-          <strong>{schoolAttribute}</strong>
-          <span>学校属性</span>
-        </article>
-        <article>
-          <strong>{getSchoolDistrictName(school)}</strong>
-          <span>所在区域</span>
-        </article>
-        <article>
-          <strong>{getSchoolStage(school)}</strong>
-          <span>学段</span>
-        </article>
-        {school.group ? (
-          <article>
-            <strong>{school.group}</strong>
-            <span>教育集团</span>
-          </article>
-        ) : null}
+        <aside className="school-detail-sidebar">
+          <section className="school-detail-side-card is-dark"><div className="school-detail-kicker"><span></span><p>AT A GLANCE</p></div><h2>基本信息</h2><dl>{profileFacts.slice(0, 5).map(([label, value]) => (<div key={label}><dt>{label}</dt><dd>{value}</dd></div>))}</dl></section>
+          <section className="school-detail-side-card"><div className="school-detail-kicker"><span></span><p>ADMISSION</p></div><h2>升学出口</h2>{admissionRows.map(([label, value]) => <p key={label}><span>{label}</span><strong>{value}</strong></p>)}</section>
+          <section className="school-detail-side-card"><div className="school-detail-kicker"><span></span><p>SIMILAR SCHOOLS</p></div>{relatedSchools.slice(0, 3).map((peer) => (<Link key={peer.id} href={'/schools/' + peer.id}><span>{peer.name}</span><i>→</i></Link>))}</section>
+        </aside>
       </section>
 
-      <div className="school-datadesk-detail-main-gap" aria-hidden="true" />
-
-      <main className="layout school-datadesk-detail-layout">
-        <section className="school-datadesk-detail-maincol">
-          <section className="school-datadesk-detail-panel">
-            <p className="overview-label">学校概览</p>
-            <h2>{school.name}</h2>
-            {schoolSummary ? <p>{renderInlineMarkdown(schoolSummary)}</p> : null}
-            {summaryPoints.length ? (
-              <div className="school-datadesk-detail-highlightgrid">
-                {summaryPoints.map((item, index) => (
-                  <article key={`${item}-${index}`} className="school-datadesk-detail-highlightcard">
-                    <span>重点 {index + 1}</span>
-                    <strong>{item}</strong>
-                  </article>
-                ))}
-              </div>
-            ) : null}
-          </section>
-
-          {richProfile ? (
-            <section className="school-rich-panel" id="school-rich-profile">
-              <div className="school-rich-panel-head">
-                <p className="overview-label">深度资料</p>
-                <h2>{school.name}核心信息</h2>
-                {richProfile.badge ? (
-                  <span className="school-rich-badge">{richProfile.badge}</span>
-                ) : null}
-              </div>
-
-              {/* 1. 学校与办学 */}
-              <details className="school-rich-group" open>
-                <summary>
-                  <span className="school-rich-group-label">学校与办学</span>
-                  <span className="school-rich-group-hint">校史 · 办学特色</span>
-                </summary>
-                <div className="school-rich-group-body">
-                  <div className="school-rich-history">
-                    {richProfile.history.map((item) => (
-                      <article key={`${item.year}-${item.text}`}>
-                        <span>{item.year}</span>
-                        <p>{item.text}</p>
-                      </article>
-                    ))}
-                  </div>
-                  <div className="school-rich-card-grid">
-                    {richProfile.programs.map((item) => (
-                      <article key={item.title} className="school-rich-card">
-                        <span>办学特色</span>
-                        <h3>{item.title}</h3>
-                        <p>{item.text}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              </details>
-
-              {/* 2. 学术表现 */}
-              {(richProfile.competitions || richProfile.specialtyClasses) ? (
-                <details className="school-rich-group" open>
-                  <summary>
-                    <span className="school-rich-group-label">学术表现</span>
-                    <span className="school-rich-group-hint">学科竞赛 · 特色班级</span>
-                  </summary>
-                  <div className="school-rich-group-body school-rich-group-body-two">
-                    {richProfile.competitions ? (
-                      <section className="school-rich-subblock">
-                        <div className="school-rich-subhead">
-                          <p className="overview-label">五大学科奥赛</p>
-                        </div>
-                        <div className="school-rich-competition-list">
-                          {richProfile.competitions.map((item) => (
-                            <article key={item.name} className="school-rich-competition-item">
-                              <header>
-                                <strong>{item.name}</strong>
-                                <span className="school-rich-competition-strength">{item.strength}</span>
-                              </header>
-                              <p>{item.records}</p>
-                            </article>
-                          ))}
-                        </div>
-                      </section>
-                    ) : null}
-
-                    {richProfile.specialtyClasses ? (
-                      <section className="school-rich-subblock">
-                        <div className="school-rich-subhead">
-                          <p className="overview-label">特色班级与项目</p>
-                        </div>
-                        <div className="school-rich-classes-grid">
-                          {richProfile.specialtyClasses.map((item) => (
-                            <article key={item.name} className="school-rich-class-item">
-                              <h3>{item.name}</h3>
-                              <p>{item.desc}</p>
-                            </article>
-                          ))}
-                        </div>
-                      </section>
-                    ) : (
-                      <div className="school-rich-empty">特色班级公开资料整理中，建议查阅学校官网招生栏目或区教育局发布。</div>
-                    )}
-                  </div>
-                </details>
-              ) : (
-                <details className="school-rich-group">
-                  <summary>
-                    <span className="school-rich-group-label">学术表现</span>
-                    <span className="school-rich-group-hint">学科竞赛 · 特色班级</span>
-                  </summary>
-                  <div className="school-rich-group-body">
-                    <div className="school-rich-empty">该校学术表现公开数据有限，建议查阅 SHCS / 上海赛区官方公示或学校官网。</div>
-                  </div>
-                </details>
-              )}
-
-              {/* 3. 录取与去向 */}
-              <details className="school-rich-group" open>
-                <summary>
-                  <span className="school-rich-group-label">录取与去向</span>
-                  <span className="school-rich-group-hint">分数线 · 升学路径</span>
-                </summary>
-                <div className="school-rich-group-body school-rich-group-body-two">
-                  <section className="school-rich-subblock">
-                    <div className="school-rich-subhead">
-                      <p className="overview-label">历年入学分数线</p>
-                    </div>
-                    {richProfile.scoreLines ? (
-                      <>
-                        <div className="school-rich-score-table" role="table" aria-label={`${school.name}录取参考分数线`}>
-                          <div role="row" className="school-rich-score-row school-rich-score-head">
-                            <span role="columnheader">年份</span>
-                            <span role="columnheader">批次</span>
-                            <span role="columnheader">分数</span>
-                          </div>
-                          {richProfile.scoreLines.map((item) => (
-                            <div key={`${item.year}-${item.batch}`} role="row" className="school-rich-score-row">
-                              <span role="cell">{item.year}</span>
-                              <span role="cell">{item.batch}<small>{item.scope}</small></span>
-                              <strong role="cell">{item.score}</strong>
-                            </div>
-                          ))}
-                        </div>
-                        <p className="school-rich-note">{richProfile.scoreLines[0]?.source?.note}</p>
-                      </>
-                    ) : (
-                      <div className="school-rich-empty">该校分数线公开数据有限，请查阅上海市教育考试院（shmeea.edu.cn）当年发布。</div>
-                    )}
-                  </section>
-
-                  <section className="school-rich-subblock">
-                    <div className="school-rich-subhead">
-                      <p className="overview-label">毕业生去向</p>
-                    </div>
-                    {richProfile.graduateDestinations ? (
-                      <div className="school-rich-graduates-list">
-                        {richProfile.graduateDestinations.map((item) => (
-                          <article key={item.destination} className="school-rich-graduate-item">
-                            <header>
-                              <strong>{item.destination}</strong>
-                              <span className="school-rich-graduate-ratio">{item.ratio}</span>
-                            </header>
-                            <p>{item.desc}</p>
-                          </article>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="school-rich-empty">该校毕业生去向公开数据有限，建议查阅学校公开年报或区教育局发布的高招简讯。</div>
-                    )}
-                  </section>
-                </div>
-              </details>
-
-              {/* 4. 校友与资料 */}
-              <details className="school-rich-group" open>
-                <summary>
-                  <span className="school-rich-group-label">校友与资料</span>
-                  <span className="school-rich-group-hint">名人线索 · 资料入口</span>
-                </summary>
-                <div className="school-rich-group-body school-rich-group-body-two">
-                  <section className="school-rich-subblock">
-                    <div className="school-rich-subhead">
-                      <p className="overview-label">相关名人与校友线索</p>
-                    </div>
-                    <div className="school-rich-people-list">
-                      {richProfile.notablePeople.map((item) => (
-                        <article key={item.name}>
-                          <strong>{item.name}</strong>
-                          <p>{item.role}</p>
-                        </article>
-                      ))}
-                    </div>
-                  </section>
-                  <section className="school-rich-subblock">
-                    <div className="school-rich-subhead">
-                      <p className="overview-label">资料入口</p>
-                    </div>
-                    <div className="school-rich-source-list">
-                      {richProfile.sources.map((item) => (
-                        <a key={item.url} href={item.url} target="_blank" rel="noreferrer">{item.label}</a>
-                      ))}
-                      {richProfile.scoreLines?.[0]?.source ? (
-                        <a href={richProfile.scoreLines[0].source.url} target="_blank" rel="noreferrer">
-                          {richProfile.scoreLines[0].source.label}
-                        </a>
-                      ) : null}
-                    </div>
-                  </section>
-                </div>
-              </details>
-            </section>
-          ) : null}
-
-          <section className="school-datadesk-detail-panel" id="school-article">
-            <p className="overview-label">正文与判断</p>
-            <h2>学校详情正文</h2>
-            <div className="news-detail-markdown school-datadesk-detail-article">
-              {renderSchoolMarkdown(articleBodyMarkdown)}
-            </div>
-          </section>
-        </section>
-
-        <aside className="school-datadesk-detail-sidebar">
-          <section className="school-datadesk-detail-panel school-datadesk-detail-panel-dark">
-            <div className="school-datadesk-detail-sectionhead">
-              <p className="overview-label">学校速览</p>
-            </div>
-            <dl className="school-datadesk-detail-facts">
-              {profileFacts.map(([label, value]) => (
-                <div key={label}>
-                  <dt>{label}</dt>
-                  <dd><span className="school-datadesk-detail-fact-value">{value}</span></dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
-          {school.group && (
-            <section className="school-datadesk-detail-panel">
-              <div className="school-datadesk-detail-sectionhead">
-                <p className="overview-label">教育集团</p>
-              </div>
-              <div className="group-badge-container">
-                <div className="group-badge-text">
-                  <span className="group-badge-label">所属集团</span>
-                  <span className="group-badge-value">{school.group}</span>
-                </div>
-              </div>
-            </section>
-          )}
-
-          {getAdmissionRoutes(school) && (
-            <section className="school-datadesk-detail-panel">
-              <div className="school-datadesk-detail-sectionhead">
-                <p className="overview-label">名额分配去向</p>
-              </div>
-              <div className="quota-list">
-                {getAdmissionRoutes(school).slice(0, 5).map((route) => (
-                  <div key={`${route.high_school_id}-${route.year}`} className="quota-item">
-                    <div className="quota-info">
-                      <Link href={`/schools/${route.high_school_id}`} className="quota-link">
-                        {route.high_school_name}
-                      </Link>
-                      <span className="quota-type">{route.type}</span>
-                    </div>
-                    <div className="quota-count">
-                      <span className="quota-year">{route.year}</span>
-                      <span className="quota-number">{route.count}人</span>
-                    </div>
-                  </div>
-                ))}
-                <p className="quota-note">数据仅供参考，实际以当年官方公布为准</p>
-              </div>
-            </section>
-          )}
-
-          <section className="school-datadesk-detail-panel">
-            <div className="school-datadesk-detail-sectionhead">
-              <p className="overview-label">培养与检索</p>
-            </div>
-            <p className="school-datadesk-detail-sidecopy">培养方向：{trainingDirections.slice(0, 2).join('、') || '综合培养'}</p>
-            <p className="school-datadesk-detail-sidecopy">核心关键词：{[...features.slice(0, 2), ...tags.slice(0, 2)].filter(Boolean).join('、') || '—'}</p>
-            {profileSignals.districtContext ? (
-              <p className="school-datadesk-detail-sidecopy">区域判断：{profileSignals.districtContext}</p>
-            ) : null}
-            {decisionTags.length ? (
-              <div className="school-datadesk-detail-chiprow" aria-label="择校标签">
-                {decisionTags.map((item) => (
-                  <span key={item} className="school-datadesk-detail-chip">{item}</span>
-                ))}
-              </div>
-            ) : null}
-            {serviceFacts.length ? (
-              <dl className="school-datadesk-detail-facts school-datadesk-detail-facts-compact">
-                {serviceFacts.map(([label, value]) => (
-                  <div key={label}>
-                    <dt>{label}</dt>
-                    <dd>{label === '官网'
-                      ? <a className="text-link" href={value} target="_blank" rel="noreferrer">{value}</a>
-                      : <span className="school-datadesk-detail-fact-value">{value}</span>}</dd>
-                  </div>
-                ))}
-              </dl>
-            ) : null}
-            {missingServiceFacts.length ? (
-              <ul className="school-datadesk-detail-missing">
-                {missingServiceFacts.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            ) : null}
-            <div className="school-datadesk-detail-map-link">
-              {mapUrl ? (
-                <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="map-link-button">
-                  打开地图
-                </a>
-              ) : (
-                <span className="map-link-button map-link-button-disabled" aria-disabled="true">
-                  地址暂未收录
-                </span>
-              )}
-            </div>
-          </section>
-
-          <CrossChannelSection journey={schoolJourney} variant="school-side" />
-
-          <section className="school-datadesk-detail-panel">
-            <div className="school-datadesk-detail-sectionhead">
-              <p className="overview-label">相关学校</p>
-              <span>{profileSignals.system || getSchoolDistrictName(school)}</span>
-            </div>
-            {relatedSchools.length ? relatedSchools.map((peer) => (
-              <Link key={peer.id} className="school-datadesk-detail-peerlink" href={`/schools/${peer.id}`}>
-                <strong>{peer.name}</strong>
-                <span>{getSchoolStage(peer)} / {getSchoolOwnershipLabel(peer) || '学校信息'}</span>
-              </Link>
-            )) : (
-              <p className="school-datadesk-detail-empty">暂无相关学校。</p>
-            )}
-          </section>
-        </aside>
-      </main>
-
-      <footer className="prototype-page-footer">
-        <span>上海学校数据库 / 学校详情页</span>
-        <span>学校画像 / 招生口径 / 同区比较 / 正文判断</span>
-      </footer>
-    </SiteShell>
-    </>
+      <div className="schools-color-block-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <footer className="school-detail-footer"><div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div><p>© 2026 考哪去</p></footer>
+    </main>
   );
 }

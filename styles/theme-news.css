@@ -35,10 +35,10 @@ body[data-page="news"] .news-aerial-page a {
 }
 
 body[data-page="news"] .news-aerial-nav {
-    display: grid;
-    grid-template-columns: minmax(180px, 1fr) auto minmax(140px, 1fr);
+    display: flex;
     align-items: center;
-    gap: 24px;
+    justify-content: space-between;
+    min-height: 80px;
     padding: 20px 40px;
     border-bottom: 1px solid var(--news-line);
     background: #fff;
@@ -73,26 +73,20 @@ body[data-page="news"] .news-aerial-nav-links {
     gap: 4px;
 }
 
-body[data-page="news"] .news-aerial-nav-links a,
-body[data-page="news"] .news-aerial-nav-cta {
+body[data-page="news"] .news-aerial-nav-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 40px;
     padding: 0 18px;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 body[data-page="news"] .news-aerial-nav-links a.is-active {
     background: var(--news-ink);
     color: #fff;
-}
-
-body[data-page="news"] .news-aerial-nav-cta {
-    justify-self: end;
-    background: var(--news-blue);
-    color: #fff;
+    font-weight: 600;
 }
 
 body[data-page="news"] .news-hero-slab {
@@ -527,7 +521,6 @@ body[data-page="news"] .news-aerial-footer p {
 body[data-page="news"] .news-filter-button,
 body[data-page="news"] .news-article-row,
 body[data-page="news"] .news-aerial-nav-links a,
-body[data-page="news"] .news-aerial-nav-cta,
 body[data-page="news"] .news-hot-card a,
 body[data-page="news"] .news-quick-grid a,
 body[data-page="news"] .news-timeline-card a {
@@ -540,7 +533,6 @@ body[data-page="news"] .news-article-row:focus-visible {
 }
 
 body[data-page="news"] .news-aerial-nav-links a:hover,
-body[data-page="news"] .news-aerial-nav-cta:hover,
 body[data-page="news"] .news-filter-button:hover {
     transform: translateY(-1px);
 }
@@ -974,14 +966,12 @@ body[data-page="news"] .news-detail-footer p {
 }
 
 @media (max-width: 1120px) {
-    body[data-page="news"] .news-aerial-nav,
     body[data-page="news"] .news-aerial-content,
     body[data-page="news"] .news-aerial-footer {
         grid-template-columns: 1fr;
         justify-items: start;
     }
 
-    body[data-page="news"] .news-aerial-nav-cta,
     body[data-page="news"] .news-aerial-footer p {
         justify-self: start;
     }
@@ -1024,6 +1014,12 @@ body[data-page="news"] .news-detail-footer p {
     body[data-page="news"] .news-aerial-brand {
         display: grid;
         gap: 4px;
+    }
+
+    body[data-page="news"] .news-aerial-nav {
+        display: grid;
+        justify-content: stretch;
+        gap: 16px;
     }
 
     body[data-page="news"] .news-aerial-nav-links {

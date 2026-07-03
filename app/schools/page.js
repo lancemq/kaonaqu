@@ -1,4 +1,3 @@
-import SiteShell from '../../components/site-shell';
 import { createRequire } from 'module';
 import SchoolsPageClient from '../../components/schools-page-client';
 
@@ -38,7 +37,6 @@ export default async function SchoolsPage({ searchParams }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <SiteShell hideKnowledgeNav>
       <SchoolsPageClient
         districts={districts}
         schools={schools}
@@ -51,7 +49,6 @@ export default async function SchoolsPage({ searchParams }) {
         initialDirection={initialDirection}
         initialQuery={initialQuery}
       />
-    </SiteShell>
     </>
   );
 }
