@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import GradeSubjectExplorer from './knowledge-grade-explorer';
 
 const NAV_ITEMS = [
   { label: '首页', href: '/' },
@@ -15,15 +16,6 @@ const GRADE_RIBBON = [
   { label: '高一', desc: '选科规划 · 打好基础', href: '/knowledge/senior-1' },
   { label: '高二', desc: '深化学习 · 备战等级考', href: '/knowledge/senior-2' },
   { label: '高三', desc: '高考冲刺 · 志愿指导', href: '/knowledge/senior-3' }
-];
-
-const FEATURED_SUBJECTS = [
-  { grade: '八年级', title: '语文', desc: '文言文 · 现代文阅读 · 作文  |  12 个专题', href: '/knowledge/chinese-grade8' },
-  { grade: '八年级', title: '数学', desc: '一次函数 · 全等三角形 · 分式  |  18 个专题', href: '/knowledge/math-grade8' },
-  { grade: '八年级', title: '英语', desc: '完形填空 · 阅读理解 · 写作  |  14 个专题', href: '/knowledge/english-grade8' },
-  { grade: '八年级', title: '物理', desc: '声光热 · 力学基础 · 实验探究  |  16 个专题', href: '/knowledge/physics-grade8' },
-  { grade: '八年级', title: '历史', desc: '中国近现代史 · 材料分析  |  8 个专题', href: '/knowledge/history-grade8' },
-  { grade: '八年级', title: '道德与法治', desc: '宪法 · 权利义务 · 社会规则  |  10 个专题', href: '/knowledge/politics-grade8' }
 ];
 
 const LEARNING_PATHS = [
@@ -233,49 +225,6 @@ function ChannelHero({ page }) {
   );
 }
 
-function GradeRibbon() {
-  return (
-    <section className="knowledge-grade-ribbon" aria-label="年级入口">
-      {GRADE_RIBBON.map((grade) => {
-        const content = (
-          <>
-            <strong>{grade.label}</strong>
-            <span>{grade.desc}</span>
-          </>
-        );
-        if (grade.disabled) {
-          return <div className="knowledge-grade-tile is-disabled" key={grade.label}>{content}</div>;
-        }
-        return (
-          <Link className={`knowledge-grade-tile${grade.featured ? ' is-featured' : ''}`} href={grade.href} key={grade.label}>
-            {content}
-          </Link>
-        );
-      })}
-    </section>
-  );
-}
-
-function FeaturedSubjects() {
-  return (
-    <section className="knowledge-section knowledge-featured-subjects">
-      <SectionKicker label="EIGHTH GRADE" />
-      <h2>八年级 · 核心学科</h2>
-      <p>八年级是初中承上启下的关键学年，新增物理学科，数学难度明显提升，是备战中考的重要阶段。</p>
-      <div className="knowledge-subject-strip">
-        {FEATURED_SUBJECTS.map((subject) => (
-          <Link className="knowledge-subject-card" href={subject.href} key={subject.title}>
-            <span>{subject.grade}</span>
-            <strong>{subject.title}</strong>
-            <p>{subject.desc}</p>
-            <em>进入 →</em>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function LearningPaths() {
   return (
     <section className="knowledge-section knowledge-learning-zone">
@@ -350,8 +299,7 @@ function ChannelPage({ page }) {
   return (
     <>
       <ChannelHero page={page} />
-      <GradeRibbon />
-      <FeaturedSubjects />
+      <GradeSubjectExplorer />
       <LearningPaths />
       <HotTopics />
       <ExamTips />

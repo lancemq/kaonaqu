@@ -116,7 +116,7 @@ body[data-page="knowledge"] a {
 
 .knowledge-channel-hero {
     position: relative;
-    min-height: 360px;
+    min-height: 380px;
     overflow: hidden;
     background: var(--knowledge-black);
 }
@@ -214,11 +214,25 @@ body[data-page="knowledge"] a {
     border: 1px solid var(--knowledge-faint);
     background: #ffffff;
     text-decoration: none;
+    font: inherit;
+    color: inherit;
+    text-align: start;
+    cursor: pointer;
 }
 
 .knowledge-grade-tile.is-featured {
     border-color: var(--knowledge-black);
     background: var(--knowledge-black);
+}
+
+.knowledge-grade-tile.is-active {
+    border-color: var(--knowledge-blue);
+    background: var(--knowledge-blue);
+}
+
+.knowledge-grade-tile.is-active strong,
+.knowledge-grade-tile.is-active span {
+    color: #ffffff;
 }
 
 .knowledge-grade-tile.is-disabled {

@@ -1,14 +1,21 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
-import SiteShell from '../../../components/site-shell';
-import { getDistrictSchoolTopic } from '../../../lib/site-utils';
+import {
+  clipText,
+  formatSchoolUpdate,
+  getDistrictSchoolTopic,
+  getSchoolAdmissionInfo,
+  getSchoolDistrictName,
+  getSchoolStage,
+  getSchoolType
+} from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
 
 export const metadata = {
-  title: '上海学校区域专题汇总 | 考哪去',
-  description: '按上海各区查看学校专题入口，快速跳转到黄浦、徐汇、浦东等区域学校专题页。'
+  title: '上海学校区域频道 - 16区学校结构与区域专题 | 考哪去',
+  description: '按上海16区查看学校结构、区域教育特点、初高中分布与学校专题入口，适合按区比较上海学校资源。'
 };
 
 export const dynamic = 'force-dynamic';
@@ -20,12 +27,10 @@ function getLatestUpdate(schools) {
     .sort()
     .at(-1);
 
-  if (!latest) {
-    return '持续整理';
-  }
+  if (!latest) return '持续整理';
 
   const match = latest.match(/^(\d{4})-(\d{2})-(\d{2})/);
-  return match ? `${match[1]}.${match[2]}.${match[3]}` : latest;
+  return match ? `${match[1]}.${match[2]}.${match[3]}` : formatSchoolUpdate(latest);
 }
 
 function countByStage(schools, stage) {
@@ -45,10 +50,62 @@ function buildDistrictRows(districts, schools) {
         publicCount: districtSchools.filter((school) => school.schoolType === 'public').length,
         privateCount: districtSchools.filter((school) => school.schoolType === 'private').length,
         latestUpdated: getLatestUpdate(districtSchools),
-        topic: getDistrictSchoolTopic(district)
+        topic: getDistrictSchoolTopic(district),
+        overview: district.districtOverview || district.description || '区域学校信息持续整理中。'
       };
     })
     .sort((left, right) => Number(right.total || 0) - Number(left.total || 0));
+}
+
+function getDistrictFeaturedSchool(district, schools) {
+  return schools
+    .filter((school) => school.districtId === district.id)
+    .slice()
+    .sort((left, right) => {
+      const rightSignal = (right.features?.length || 0) + (right.tags?.length || 0);
+      const leftSignal = (left.features?.length || 0) + (left.tags?.length || 0);
+      return rightSignal - leftSignal;
+    })
+    .at(0);
+}
+
+function SectionKicker({ children }) {
+  return (
+    <div className="district-channel-kicker">
+      <span aria-hidden="true" />
+      <p>{children}</p>
+    </div>
+  );
+}
+
+function SiteNav() {
+  return (
+    <nav className="schools-aerial-nav" aria-label="顶部导航">
+      <Link className="schools-aerial-brand" href="/" aria-label="考哪去首页">
+        <strong>考哪去</strong>
+        <span>SHANGHAI EDUCATION</span>
+      </Link>
+      <div className="schools-aerial-nav-links">
+        <Link href="/">首页</Link>
+        <Link href="/news">新闻</Link>
+        <Link className="is-active" href="/schools">学校</Link>
+        <Link href="/knowledge">知识</Link>
+      </div>
+    </nav>
+  );
+}
+
+function Footer() {
+  return (
+    <>
+      <div className="schools-color-block-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <footer className="schools-aerial-footer">
+        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
+        <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
+        <p>© 2026 考哪去</p>
+      </footer>
+    </>
+  );
 }
 
 export default async function DistrictIndexPage() {
@@ -61,125 +118,147 @@ export default async function DistrictIndexPage() {
     seniorHigh: countByStage(schools, 'senior_high'),
     complete: countByStage(schools, 'complete')
   };
-  const topDistricts = districtRows.slice(0, 4);
+  const leadDistrict = districtRows[0];
+  const zoneDistricts = districtRows.slice(0, 6);
+  const highlightedDistricts = districtRows.slice(0, 3);
+  const featuredSchools = highlightedDistricts
+    .map((district) => ({ district, school: getDistrictFeaturedSchool(district, schools) }))
+    .filter((item) => item.school);
+  const relatedTools = [
+    { label: '学校数据库', href: '/schools' },
+    { label: '学校分类', href: '/schools/category' },
+    { label: '学校对比', href: '/schools/compare' },
+    { label: '分数匹配', href: '/schools/score-match' }
+  ];
 
   return (
-    <SiteShell
-      hideKnowledgeNav
-      breadcrumbItems={[
-        { label: '学校信息', href: '/schools' },
-        { label: '区域专题' }
-      ]}
-    >
-      <header className="hero" id="top">
-        <section className="district-datadesk-hero district-index-hero" aria-label="上海学校区域专题汇总">
-          <div className="district-datadesk-hero-grid">
-            <div className="district-datadesk-hero-main">
-              <p className="overview-label">District Topics</p>
-              <h1>上海学校区域专题</h1>
-              <p className="district-datadesk-subtitle">从区域进入，看这个区的学校结构、优先学校与学段分布。</p>
-              <p className="district-datadesk-description">没有明确目标学校时，按区浏览更快：学校密度、初高中结构与区域特点。</p>
-              <div className="district-datadesk-inline-meta">
-                <span>16 区入口</span>
-                <span>区域专题直达</span>
-                <span>学校结构一眼看清</span>
-              </div>
-              <div className="district-index-actions">
-                <Link className="module-link" href="/schools">回到学校数据库</Link>
-                <Link className="module-link module-link-secondary" href="/schools?stage=junior">先看初中</Link>
-              </div>
-            </div>
+    <main className="schools-aerial-page district-channel-page">
+      <SiteNav />
 
-            <div className="district-datadesk-summary-grid">
-              <article className="district-datadesk-summary-card district-datadesk-summary-card-strong">
-                <span>覆盖区域</span>
-                <strong>{totals.districts}</strong>
-                <p>上海各区学校专题入口</p>
-              </article>
-              <article className="district-datadesk-summary-card">
-                <span>学校总量</span>
-                <strong>{totals.schools}</strong>
-                <p>当前站内学校数据库记录</p>
-              </article>
-              <article className="district-datadesk-summary-card">
-                <span>高中 / 初中</span>
-                <strong>{totals.seniorHigh} / {totals.junior}</strong>
-                <p>纯高中与纯初中记录</p>
-              </article>
-              <article className="district-datadesk-summary-card">
-                <span>完全中学</span>
-                <strong>{totals.complete}</strong>
-                <p>适合关注贯通培养路径</p>
-              </article>
-            </div>
-          </div>
-        </section>
+      <header className="district-channel-hero" id="top">
+        <div className="district-channel-hero-content">
+          <section className="district-channel-hero-copy" aria-label="上海学校区域频道概览">
+            <div className="district-channel-breadcrumb"><Link href="/schools">学校</Link><span>/</span><strong>区域频道</strong></div>
+            <SectionKicker>DISTRICT CHANNEL</SectionKicker>
+            <h1>上海学校区域频道</h1>
+            <p>从区域进入，先看各区学校密度、初高中结构和区域教育特点，再进入具体区县专题和学校详情。</p>
+          </section>
+
+          <aside className="district-channel-hero-stats" aria-label="区域频道数据统计">
+            <article><strong>{totals.districts}</strong><span>覆盖区域</span></article>
+            <article><strong>{totals.schools}</strong><span>收录学校</span></article>
+            <article><strong>{totals.seniorHigh}</strong><span>高中样本</span></article>
+            <article><strong>{totals.complete}</strong><span>完全中学</span></article>
+          </aside>
+        </div>
       </header>
 
-      <section className="district-datadesk-statusbar" aria-label="区域专题状态">
-        <span className="district-datadesk-statuslabel">District Index</span>
-        <span>上海 {totals.districts} 区 / {totals.schools} 所学校 / 可跳转至各区专题页</span>
+      <section className="district-channel-overview" aria-label="区域频道概况">
+        <div>
+          <h2>区域概况</h2>
+          <p>上海学校资源在中心城区、近郊新城和远郊生态区之间差异明显。按区浏览可以先判断学校密度、通勤范围、头部学校和学段结构，再进入具体学校做细分比较。</p>
+        </div>
+        <div className="district-channel-overview-stats">
+          <article><strong>{leadDistrict?.name || '浦东新区'}</strong><span>学校记录最多</span></article>
+          <article><strong>{totals.junior}</strong><span>初中记录</span></article>
+          <article><strong>{getLatestUpdate(schools)}</strong><span>最近更新</span></article>
+        </div>
       </section>
 
-      <main className="layout district-index-layout">
-        <section className="district-datadesk-panel district-index-lead-panel">
-          <div className="district-datadesk-results-head">
-            <div>
-              <p className="overview-label">先看哪里</p>
-              <h2>学校记录最多的区域</h2>
-            </div>
-            <p>这些区域学校记录密度更高，适合先做横向比较。</p>
-          </div>
-          <div className="district-index-feature-grid">
-            {topDistricts.map((district) => (
-              <Link key={district.id} href={`/schools/district/${district.id}`} className="district-index-feature-card">
-                <span>{district.name}</span>
-                <strong>{district.total} 所学校</strong>
-                <p>{district.topic}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
+      <section className="district-channel-section district-channel-zones" aria-label="学校密集区域">
+        <SectionKicker>SCHOOL ZONES</SectionKicker>
+        <h2>学校密集区域</h2>
+        <p>先从学校记录更多、结构更丰富的区域切入，适合做第一轮横向比较。</p>
+        <div className="district-channel-zone-grid">
+          {zoneDistricts.map((district) => (
+            <Link className="district-channel-zone-card" href={`/schools/district/${district.id}`} key={district.id}>
+              <div>
+                <strong>{district.name}</strong>
+                <span>{district.total} 所</span>
+              </div>
+              <p>{clipText(district.topic, 42)}</p>
+              <em>高中 {district.seniorHigh} · 初中 {district.junior}</em>
+            </Link>
+          ))}
+        </div>
+      </section>
 
-        <section className="district-datadesk-panel">
-          <div className="district-datadesk-results-head">
+      <section className="district-channel-section district-channel-highlights" aria-label="区域名校">
+        <SectionKicker>HIGHLIGHTS</SectionKicker>
+        <h2>区域名校</h2>
+        <div className="district-channel-featured-grid">
+          {featuredSchools.map(({ district, school }) => (
+            <Link className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
+              <div><span>{district.name}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
+              <strong>{school.name}</strong>
+              <p>{clipText(getSchoolAdmissionInfo(school) || school.schoolDescription || '学校信息持续整理中。', 46)}</p>
+              <b>进入 →</b>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="district-channel-schools" aria-label="上海各区学校入口">
+        <div className="district-channel-main-list">
+          <div className="district-channel-list-head">
             <div>
-              <p className="overview-label">区域专题</p>
-              <h2>上海各区学校入口</h2>
+              <SectionKicker>ALL DISTRICTS</SectionKicker>
+              <h2>上海各区入口</h2>
             </div>
-            <p>点击任一区域，进入对应学校专题页。</p>
+            <p>按学校数量排序，点击进入对应区级学校专题。</p>
           </div>
 
-          <div className="district-index-grid">
+          <div className="district-channel-row-list">
             {districtRows.map((district) => (
-              <Link key={district.id} href={`/schools/district/${district.id}`} className="district-index-card">
-                <div className="district-index-card-head">
-                  <div>
-                    <p>{district.description || '区域学校专题'}</p>
-                    <h3>{district.name}</h3>
-                  </div>
-                  <span>{district.total}</span>
+              <Link className="district-channel-row" href={`/schools/district/${district.id}`} key={district.id}>
+                <div className="district-channel-row-info">
+                  <strong>{district.name}</strong>
+                  <span>{clipText(district.overview, 54)}</span>
                 </div>
-                <p className="district-index-card-topic">{district.topic}</p>
-                <div className="district-index-card-metrics">
-                  <span>高中 {district.seniorHigh}</span>
-                  <span>初中 {district.junior}</span>
-                  <span>完全中学 {district.complete}</span>
-                </div>
-                <div className="district-index-card-foot">
-                  <span>公办 {district.publicCount} / 民办 {district.privateCount}</span>
-                  <strong>进入专题</strong>
+                <div className="district-channel-row-score">
+                  <strong>{district.total}</strong>
+                  <span>学校</span>
                 </div>
               </Link>
             ))}
           </div>
-        </section>
-      </main>
+        </div>
 
-      <footer className="prototype-page-footer">
-        <span>上海学校数据库 / 区域专题汇总</span>
-        <span>16 区入口 / 区域结构 / 学校专题页</span>
-      </footer>
-    </SiteShell>
+        <aside className="district-channel-sidebar" aria-label="区域频道侧栏">
+          <section className="district-channel-side-card">
+            <SectionKicker>QUICK FILTER</SectionKicker>
+            <h2>快速筛选</h2>
+            <Link className="is-active" href="/schools?stage=senior_high">高中学校</Link>
+            <Link href="/schools?stage=junior">初中学校</Link>
+            <Link href="/schools?stage=complete">完全中学</Link>
+            <Link href="/schools?ownership=private">民办学校</Link>
+          </section>
+
+          <section className="district-channel-side-card">
+            <SectionKicker>TOP AREAS</SectionKicker>
+            <h2>热门区域</h2>
+            {zoneDistricts.slice(0, 5).map((district) => (
+              <Link href={`/schools/district/${district.id}`} key={district.id}>
+                <span>{district.name} · {district.total} 所</span>
+                <i>→</i>
+              </Link>
+            ))}
+          </section>
+
+          <section className="district-channel-side-card is-dark">
+            <SectionKicker>TOOLS</SectionKicker>
+            <h2>区域工具</h2>
+            {relatedTools.map((tool) => (
+              <Link href={tool.href} key={tool.href}>
+                <span>{tool.label}</span>
+                <i>→</i>
+              </Link>
+            ))}
+          </section>
+        </aside>
+      </section>
+
+      <Footer />
+    </main>
   );
 }
