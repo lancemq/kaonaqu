@@ -161,6 +161,15 @@ export default async function DistrictSchoolsPage({ params }) {
         </section>
       </header>
 
+      {districtInfo.districtOverview ? (
+        <section className="district-datadesk-overview" aria-label={`${districtInfo.name}区域概览`}>
+          <div className="district-datadesk-overview-inner">
+            <p className="overview-label">区域概览</p>
+            <p className="district-datadesk-overview-copy">{districtInfo.districtOverview}</p>
+          </div>
+        </section>
+      ) : null}
+
       <section className="district-datadesk-statusbar" aria-label="区级数据库状态">
         <span className="district-datadesk-statuslabel">District Status</span>
         <span>{districtInfo.name} / {districtDescriptor}</span>
