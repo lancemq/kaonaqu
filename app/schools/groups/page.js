@@ -1,4 +1,3 @@
-import SiteShell from '../../../components/site-shell';
 import { createRequire } from 'module';
 import GroupsPageClient from '../../../components/groups-page-client';
 
@@ -21,13 +20,7 @@ export default async function GroupsPage({ searchParams }) {
   const initialQuery = typeof params?.query === 'string' ? params.query : '';
 
   return (
-    <SiteShell
-      hideKnowledgeNav
-      breadcrumbItems={[
-        { label: '学校信息', href: '/schools' },
-        { label: '教育集团' }
-      ]}
-    >
+    <main className="schools-aerial-page school-groups-aerial-page">
       <GroupsPageClient
         districts={districts}
         schools={schools}
@@ -37,6 +30,6 @@ export default async function GroupsPage({ searchParams }) {
         initialTier={initialTier}
         initialQuery={initialQuery}
       />
-    </SiteShell>
+    </main>
   );
 }

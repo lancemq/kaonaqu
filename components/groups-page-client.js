@@ -371,9 +371,16 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
         </section>
       </main>
 
-      <footer className="prototype-page-footer">
-        <span>上海学校数据库 / 教育集团专题</span>
-        <span>{groupsData.length} 个教育集团 / {memberSchoolTotal} 所成员校</span>
+      <div className="schools-color-block-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <footer className="schools-aerial-footer">
+        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
+        <nav aria-label="页脚导航">
+          <Link href="/">首页</Link>
+          <Link href="/news">新闻</Link>
+          <Link href="/schools">学校</Link>
+          <Link href="/knowledge">知识</Link>
+        </nav>
+        <p>© 2026 考哪去</p>
       </footer>
     </>
   );
