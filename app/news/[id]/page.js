@@ -1,12 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
-import CrossChannelSection from '../../../components/cross-channel-section';
-import SiteShell from '../../../components/site-shell';
-import { getNewsChannelJourney } from '../../../lib/cross-channel-journeys.mjs';
-import { getNewsSchoolCtaCopy, shouldShowNewsSchoolCta } from '../../../lib/news-channel-utils.mjs';
 import { readNewsMarkdownFile } from '../../../lib/news-content-files.mjs';
-import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
@@ -158,6 +153,20 @@ function buildRelatedNews(news, current) {
     .slice(0, 4);
 }
 
+function buildRelatedSchools(schools, current) {
+  const linkedSchool = current.primarySchoolId
+    ? schools.find((school) => school.id === current.primarySchoolId)
+    : null;
+  const candidates = [
+    linkedSchool,
+    ...schools.filter((school) => school.id !== linkedSchool?.id)
+  ].filter(Boolean);
+
+  return candidates
+    .filter((school) => String(school.name || '').trim())
+    .slice(0, 4);
+}
+
 function getStageLabel(item) {
   const text = `${item.title || ''} ${item.summary || ''}`;
   if (text.includes('成绩')) return '成绩公布';
@@ -182,6 +191,72 @@ function getNextStepLabel(item) {
   if (item.newsType === 'exam') return '先确认时间、地点、准考证或成绩使用方式，再看下一条时间线通知。';
   if (item.newsType === 'admission') return '先确认自己是否适用，再核对报名、志愿、确认或录取的具体截止时间。';
   return '把它当作学校观察线索，再回到学校详情页和正式招生政策交叉判断。';
+}
+
+function formatArticleDate(value) {
+  const text = String(value || '').trim();
+  if (!text) return '暂无日期';
+  return text.slice(0, 10).replaceAll('-', '.');
+}
+
+function SectionKicker({ children, inverse = false }) {
+  return (
+    <div className={`news-detail-kicker${inverse ? ' is-inverse' : ''}`}>
+      <span aria-hidden="true"></span>
+      <p>{children}</p>
+    </div>
+  );
+}
+
+function NewsDetailNav() {
+  return (
+    <nav className="news-detail-nav" aria-label="顶部导航">
+      <Link className="news-detail-brand" href="/" aria-label="考哪去首页">
+        <strong>考哪去</strong>
+        <span>SHANGHAI EDUCATION</span>
+      </Link>
+      <div className="news-detail-nav-links">
+        <Link href="/">首页</Link>
+        <Link className="is-active" href="/news">新闻</Link>
+        <Link href="/schools">学校</Link>
+        <Link href="/knowledge">知识</Link>
+      </div>
+    </nav>
+  );
+}
+
+function NewsDetailFooter() {
+  return (
+    <>
+      <div className="news-color-block-row" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <footer className="news-detail-footer">
+        <div>
+          <strong>考哪去</strong>
+          <span>SHANGHAI EDUCATION PLATFORM</span>
+        </div>
+        <p>© 2026 考哪去</p>
+      </footer>
+    </>
+  );
+}
+
+function SidebarList({ items, getHref, getLabel }) {
+  return (
+    <div className="news-detail-sidebar-list">
+      {items.map((item) => (
+        <Link key={item.id || getLabel(item)} href={getHref(item)}>
+          <span>{getLabel(item)}</span>
+          <i aria-hidden="true">→</i>
+        </Link>
+      ))}
+    </div>
+  );
 }
 
 export async function generateMetadata({ params }) {
@@ -222,14 +297,23 @@ export default async function NewsDetailPage({ params }) {
 
   const relatedPolicies = buildRelatedPolicies(policies, item);
   const relatedNews = buildRelatedNews(news, item);
-  const schoolsById = new Map(schools.map((school) => [school.id, school]));
-  const linkedSchool = item.primarySchoolId ? schoolsById.get(item.primarySchoolId) || null : null;
-  const schoolCta = getNewsSchoolCtaCopy(item);
-  const shouldRenderSchoolBridge = shouldShowNewsSchoolCta(item) && linkedSchool && schoolCta;
-  const newsJourney = getNewsChannelJourney(item, { schools });
+  const relatedSchools = buildRelatedSchools(schools, item);
   const sourceName = item.source?.name || '未知来源';
   const articleType = getNewsCategoryLabel(item);
   const articleBodyMarkdown = readNewsMarkdownFile(item);
+  const displayDate = formatArticleDate(item.publishedAt || item.updatedAt);
+  const tags = [
+    getExamTypeLabel(item),
+    articleType,
+    getStageLabel(item),
+    item.newsType === 'school' ? '学校观察' : '招生政策'
+  ].filter(Boolean);
+  const knowledgeTopics = [
+    { id: 'admission-guide', title: '中考志愿填报指南', href: '/knowledge' },
+    { id: 'quality-review', title: '综合素质评价详解', href: '/knowledge' },
+    { id: 'sports-test', title: '体育中考备考攻略', href: '/knowledge' },
+    { id: 'admission-batch', title: '高中招生批次解读', href: '/knowledge' }
+  ];
 
   if (!articleBodyMarkdown) {
     notFound();
@@ -261,129 +345,104 @@ export default async function NewsDetailPage({ params }) {
   };
 
   return (
-    <>
+    <main className="news-detail-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SiteShell
-        hideKnowledgeNav
-        breadcrumbItems={[
-          { label: '新闻政策', href: '/news' },
-          { label: articleType },
-          { label: item.title }
-        ]}
-      >
-      <header className="hero" id="top">
-        <section className="search-panel news-detail-article-hero news-detail-article-shell" aria-label="新闻详情">
-          <div className="news-detail-article-head">
-              <p className="overview-label">{getExamTypeLabel(item)} / {articleType}</p>
-              <div className="news-detail-stage-row">
-                <span className="pill">{getStageLabel(item)}</span>
-                <span className="news-detail-stage-text">{getAudienceLabel(item)}</span>
-              </div>
-              <h1>{item.title}</h1>
-              <p className="news-detail-article-summary">{item.summary || '暂无摘要'}</p>
-          </div>
-        </section>
+      <NewsDetailNav />
+
+      <header className="news-detail-header" id="top">
+        <nav className="news-detail-breadcrumb" aria-label="面包屑">
+          <Link href="/">首页</Link>
+          <span>/</span>
+          <Link href="/news">新闻</Link>
+          <span>/</span>
+          <strong>{articleType}</strong>
+        </nav>
+
+        <div className="news-detail-meta-row">
+          <span className="news-detail-category">{articleType}</span>
+          <time dateTime={item.publishedAt || item.updatedAt || ''}>{displayDate}</time>
+          <span>{sourceName}</span>
+        </div>
+
+        <h1>{item.title}</h1>
+        <p>{item.summary || '暂无摘要'}</p>
       </header>
 
-      <section className="school-prototype-stats news-detail-prototype-stats news-detail-article-stats news-detail-article-shell">
-        <article>
-          <strong>{item.publishedAt || '暂无日期'}</strong>
-          <span>发布日期</span>
-        </article>
-        <article>
-          <strong>{getExamTypeLabel(item)}</strong>
-          <span>适用考试线</span>
-        </article>
-        <article>
-          <strong>{articleType}</strong>
-          <span>栏目分类</span>
-        </article>
-        <article>
-          <strong>{sourceName}</strong>
-          <span>官方来源</span>
-        </article>
-      </section>
+      <section className="news-detail-body">
+        <article className="news-detail-main" id="article-body">
+          <div className="news-detail-markdown">
+            {renderNewsMarkdown(articleBodyMarkdown)}
+          </div>
 
-      <main className="layout news-detail-article-layout">
-        <div className="news-detail-article-layout-with-side">
-          <article className="news-detail-article-main">
-            <section className="school-prototype-panel news-detail-article-panel" id="article-body">
-              <h2>正文与解读</h2>
-              <div className="news-detail-markdown">
-                {renderNewsMarkdown(articleBodyMarkdown)}
+          <div className="news-detail-tags" aria-label="文章标签">
+            <span>TAGS</span>
+            {tags.map((tag) => (
+              <em key={tag}>{tag}</em>
+            ))}
+          </div>
+        </article>
+
+        <aside className="news-detail-sidebar" id="related-policies">
+          {relatedNews.length ? (
+            <section className="news-detail-sidebar-card is-dark">
+              <SectionKicker inverse>RELATED</SectionKicker>
+              <h2>相关文章</h2>
+              <div className="news-detail-related-text">
+                {relatedNews.map((entry) => (
+                  <Link key={entry.id} href={`/news/${entry.id}`}>{entry.title}</Link>
+                ))}
               </div>
             </section>
+          ) : null}
 
-            <CrossChannelSection journey={newsJourney} variant="news" />
-          </article>
-
-          <aside className="school-prototype-side news-detail-article-side" id="related-policies">
-            <section className="school-prototype-side-card news-detail-side-card news-detail-side-card-dark">
-              <p className="overview-label">这条新闻意味着什么</p>
-              <p>{getStageLabel(item)} / {articleType}</p>
-              <p>{getNextStepLabel(item)}</p>
+          {relatedSchools.length ? (
+            <section className="news-detail-sidebar-card">
+              <SectionKicker>RELATED SCHOOLS</SectionKicker>
+              <h2>相关学校</h2>
+              <SidebarList
+                items={relatedSchools}
+                getHref={(school) => `/schools/${school.id}`}
+                getLabel={(school) => school.name}
+              />
             </section>
+          ) : null}
 
-            <section className="school-prototype-side-card news-detail-side-card">
-              <p className="overview-label">下一步建议</p>
-              <p>{getAudienceLabel(item)}</p>
-              <p>{getActionReminder(item)}</p>
+          <section className="news-detail-sidebar-card">
+            <SectionKicker>KNOWLEDGE</SectionKicker>
+            <h2>知识专题</h2>
+            <SidebarList
+              items={knowledgeTopics}
+              getHref={(topic) => topic.href}
+              getLabel={(topic) => topic.title}
+            />
+          </section>
+
+          <section className="news-detail-sidebar-card">
+            <SectionKicker>SHARE</SectionKicker>
+            <div className="news-detail-share-row">
+              <button type="button">微信</button>
+              <button type="button">链接</button>
+            </div>
+          </section>
+
+          {relatedPolicies.length ? (
+            <section className="news-detail-sidebar-card">
+              <SectionKicker>POLICY</SectionKicker>
+              <h2>相关政策</h2>
+              <div className="news-detail-related-text is-light">
+                {relatedPolicies.map((policy) => (
+                  <Link key={policy.id} href={`/news/policy/${policy.id}`}>{policy.title}</Link>
+                ))}
+              </div>
             </section>
+          ) : null}
+        </aside>
+      </section>
 
-            {shouldRenderSchoolBridge ? (
-              <section className="school-prototype-side-card news-detail-side-card news-detail-school-bridge">
-                <p className="overview-label">关联学校</p>
-                <div className="news-detail-school-bridge-copy">
-                  <p className="news-detail-school-bridge-title">{schoolCta.title}</p>
-                  <p className="news-detail-school-bridge-body">{schoolCta.body}</p>
-                </div>
-                <div className="news-detail-school-bridge-school">
-                  <span className="news-detail-school-bridge-school-label">已关联学校</span>
-                  <strong>{linkedSchool.name}</strong>
-                </div>
-                <Link className="button news-detail-school-bridge-link" href={`/schools/${linkedSchool.id}`}>
-                  {schoolCta.action}
-                </Link>
-              </section>
-            ) : null}
-
-            {relatedPolicies.length ? (
-              <section className="school-prototype-side-card news-detail-side-card">
-                <p className="overview-label">相关政策</p>
-                <div className="news-detail-policy-list">
-                  {relatedPolicies.map((policy) => (
-                    <a key={policy.id} className="school-prototype-side-link" href={getPolicyDetailHref(policy)}>
-                      • {policy.title}
-                    </a>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            {relatedNews.length ? (
-              <section className="school-prototype-side-card news-detail-side-card">
-                <p className="overview-label">继续阅读</p>
-                <div className="news-detail-policy-list">
-                  {relatedNews.map((entry) => (
-                    <a key={entry.id} className="school-prototype-side-link" href={`/news/${entry.id}`}>
-                      • {entry.title}
-                    </a>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-          </aside>
-        </div>
-      </main>
-
-      <footer className="prototype-page-footer">
-        <span>上海升学观察 / 新闻正文详情页</span>
-        <span>{sourceName} / {getActionReminder(item)}</span>
-      </footer>
-    </SiteShell>
-    </>
+      <NewsDetailFooter />
+    </main>
   );
 }
