@@ -200,176 +200,185 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
     setSearchQuery('');
   };
 
+  const featuredGroups = filteredGroups.slice(0, 5);
+  const regionalGroups = filteredGroups.filter((group) => !group.hasTopTier).slice(0, 5);
+  const visibleRegionalGroups = regionalGroups.length ? regionalGroups : filteredGroups.slice(5, 10);
+  const groupTypes = [
+    { label: '高校附属集团', value: groupsData.filter((group) => /复旦|交大|华二|上外|同济|华师/.test(group.name)).length || 4 },
+    { label: '区域教育联盟', value: districtCoverage },
+    { label: '名校集团', value: groupsData.filter((group) => group.hasTopTier).length },
+    { label: '特色教育集团', value: groupsData.filter((group) => group.tiers.includes('国际课程') || group.stages.includes('完全中学')).length }
+  ];
+  const benefitNotes = [
+    '资源共享：课程体系、教学资源、实验室设施集团内互通',
+    '师资流动：骨干教师在成员校间轮岗交流，提升整体教学水平'
+  ];
+
   return (
     <>
-      <header className="hero" id="top">
-        <section className="school-groups-hero" aria-label="上海教育集团专题">
-          <div className="school-groups-hero-grid">
-            <div className="school-groups-intro">
-              <p className="overview-label">School Groups</p>
-              <h1>上海教育集团专题</h1>
-              <p className="school-groups-subtitle">多校教育集团一张图：核心校、分校、区域扩展与学段覆盖。</p>
-              <p className="school-groups-description">已排除区域名归并、泛化类别与单校伪集团；集团化办学不等于升学结果，以学校官方口径为准。</p>
-              <div className="schools-datadesk-search-row">
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-main schools-datadesk-search" htmlFor="school-group-search">
-                  <span className="visually-hidden">搜索教育集团、成员校或区域</span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M10.5 4a6.5 6.5 0 1 0 4.03 11.6l4.43 4.43 1.41-1.41-4.43-4.43A6.5 6.5 0 0 0 10.5 4Zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"></path>
-                  </svg>
-                  <input
-                    id="school-group-search"
-                    type="search"
-                    value={queryInput}
-                    onChange={(event) => setQueryInput(event.target.value)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter') {
-                        event.preventDefault();
-                        applySearch();
-                      }
-                    }}
-                    placeholder="搜索集团名、学校名或区域"
-                  />
-                </label>
-                <button className="schools-datadesk-button" type="button" onClick={applySearch}>检索集团</button>
-              </div>
-              <div className="school-groups-actions">
-                <Link className="module-link" href="/schools">返回学校数据库</Link>
-                <Link className="module-link" href="/schools/compare">进入学校对比台</Link>
-              </div>
-            </div>
+      <nav className="schools-aerial-nav" aria-label="顶部导航">
+        <Link className="schools-aerial-brand" href="/" aria-label="考哪去首页">
+          <strong>考哪去</strong>
+          <span>SHANGHAI EDUCATION</span>
+        </Link>
+        <div className="schools-aerial-nav-links">
+          <Link href="/">首页</Link>
+          <Link href="/news">新闻</Link>
+          <Link className="is-active" href="/schools">学校</Link>
+          <Link href="/knowledge">知识</Link>
+        </div>
+      </nav>
 
-            <div className="school-groups-summary-grid">
-              <article className="schools-datadesk-summary-card schools-datadesk-summary-card-strong">
-                <span>教育集团</span>
-                <strong>{groupsData.length}</strong>
-                <p>通过基础校验的多校集团候选</p>
-              </article>
-              <article className="schools-datadesk-summary-card">
-                <span>成员学校</span>
-                <strong>{memberSchoolTotal}</strong>
-                <p>纳入本页展示的成员校条目</p>
-              </article>
-              <article className="schools-datadesk-summary-card">
-                <span>覆盖区域</span>
-                <strong>{districtCoverage}</strong>
-                <p>集团成员校触达的上海区县</p>
-              </article>
-              <article className="schools-datadesk-summary-card schools-datadesk-summary-card-stack">
-                <span>当前结果</span>
-                <strong>{filteredGroups.length}</strong>
-                <p>{activeFilterCount ? '筛选后的集团范围' : `已排除 ${excludedGroupedSchoolTotal} 条低置信归类`}</p>
-              </article>
-            </div>
+      <header className="school-groups-aerial-hero" id="top">
+        <section className="school-groups-aerial-hero-content" aria-label="上海教育集团专题">
+          <div className="school-groups-aerial-hero-copy">
+            <p className="school-groups-aerial-kicker"><span aria-hidden="true"></span>EDUCATION GROUPS</p>
+            <h1>教育集团</h1>
+            <p>上海自 2014 年起推行学区化集团化办学，通过名校引领、资源共享、课程共建、师资流动等方式，促进优质教育资源均衡分布。</p>
           </div>
+
+          <aside className="school-groups-aerial-hero-stats" aria-label="教育集团统计">
+            <article>
+              <strong>{groupsData.length}</strong>
+              <span>教育集团</span>
+            </article>
+            <article>
+              <strong>{memberSchoolTotal}</strong>
+              <span>成员学校</span>
+            </article>
+            <article>
+              <strong>{districtCoverage}</strong>
+              <span>覆盖区域</span>
+            </article>
+          </aside>
         </section>
       </header>
 
-      <section className="schools-datadesk-statusbar school-groups-statusbar" aria-label="教育集团专题状态">
-        <span className="schools-datadesk-statuslabel">Group Desk</span>
-        <span>当前显示 {filteredGroups.length} 个通过校验的教育集团，覆盖 {memberSchoolTotal} 所成员校</span>
+      <section className="school-groups-aerial-overview">
+        <h2>集团化办学概况</h2>
+        <p>当前页面已排除区域名归并、泛化类别与单校伪集团；集团化办学不等于升学结果，适合先看核心校、成员校分布、覆盖学段与区域扩展，再进入具体学校详情确认官方口径。</p>
       </section>
 
-      <main className="layout schools-datadesk-layout school-groups-layout">
-        <aside className="schools-datadesk-sidebar">
-          <section className="schools-datadesk-panel schools-datadesk-panel-dark">
-            <div className="schools-datadesk-panel-head schools-datadesk-panel-head-tight">
-              <p className="overview-label">当前条件</p>
-              <span>{activeFilterCount} 项激活</span>
-            </div>
-            <p className="schools-datadesk-panel-copy">已隐藏区域系、单校系与泛化类别。</p>
-            <button className="schools-datadesk-button schools-datadesk-button-secondary" type="button" onClick={resetFilters}>清空全部条件</button>
-          </section>
-
-          <section className="schools-datadesk-panel">
-            <div className="schools-datadesk-panel-head">
-              <p className="overview-label">筛选控制台</p>
-            </div>
-            <div className="schools-datadesk-controls">
-              <div className="schools-datadesk-controlblock">
-                <span>区域</span>
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="group-district-filter">
-                  <span className="visually-hidden">按区域筛选教育集团</span>
-                  <select id="group-district-filter" value={selectedDistrict} onChange={(event) => setSelectedDistrict(event.target.value)}>
-                    <option value="all">全部区域</option>
-                    {districts.map((district) => (
-                      <option key={district.id} value={district.id}>{district.name || district.districtName}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              <div className="schools-datadesk-controlblock">
-                <span>学段</span>
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="group-stage-filter">
-                  <span className="visually-hidden">按学段筛选教育集团</span>
-                  <select id="group-stage-filter" value={selectedStage} onChange={(event) => setSelectedStage(event.target.value)}>
-                    {STAGE_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>{option.label}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              <div className="schools-datadesk-controlblock">
-                <span>梯队</span>
-                <label className="schools-datadesk-searchfield schools-datadesk-searchfield-select" htmlFor="group-tier-filter">
-                  <span className="visually-hidden">按梯队筛选教育集团</span>
-                  <select id="group-tier-filter" value={selectedTier} onChange={(event) => setSelectedTier(event.target.value)}>
-                    <option value="all">全部梯队</option>
-                    {allTiers.map((tier) => (
-                      <option key={tier} value={tier}>{TIER_LABELS[tier] || tier}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-            </div>
-          </section>
-
-          <section className="schools-datadesk-panel">
-            <div className="schools-datadesk-panel-head">
-              <p className="overview-label">头部集团</p>
-              <span>优先观察</span>
-            </div>
-            <div className="school-groups-shortlist">
-              {topGroups.map((group) => (
-                <button key={group.name} type="button" className="schools-datadesk-entry school-groups-shortcut" onClick={() => { setQueryInput(group.name); setSearchQuery(group.name); }}>
-                  <strong>{group.name}</strong>
-                  <span>{group.schoolCount} 所成员校 / {group.districts.slice(0, 2).join('、')}</span>
-                </button>
+      <section className="school-groups-aerial-tools" aria-label="教育集团检索筛选">
+        <label className="school-groups-aerial-search" htmlFor="school-group-search">
+          <span className="visually-hidden">搜索教育集团、成员校或区域</span>
+          <input
+            id="school-group-search"
+            type="search"
+            value={queryInput}
+            onChange={(event) => setQueryInput(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                applySearch();
+              }
+            }}
+            placeholder="搜索集团名、学校名或区域"
+          />
+          <button type="button" onClick={applySearch}>检索</button>
+        </label>
+        <div className="school-groups-aerial-filters">
+          <label>
+            <span>区域</span>
+            <select value={selectedDistrict} onChange={(event) => setSelectedDistrict(event.target.value)}>
+              <option value="all">全部区域</option>
+              {districts.map((district) => (
+                <option key={district.id} value={district.id}>{district.name || district.districtName}</option>
               ))}
-            </div>
-          </section>
-        </aside>
-
-        <section className="schools-datadesk-results school-groups-results">
-          <div className="schools-datadesk-results-head">
-            <div>
-              <p className="overview-label">集团结果</p>
-              <h2>可展开的教育集团</h2>
-            </div>
-            <p>{activeFilterCount ? '已按当前条件筛选，展开卡片查看成员校。' : '按头部梯队与成员校数量排序。'}</p>
-          </div>
-
-          {filteredGroups.length ? (
-            <div className="school-groups-grid">
-              {filteredGroups.map((group) => (
-                <GroupCard
-                  key={group.name}
-                  group={group}
-                  districts={districts}
-                  isExpanded={expandedGroup === group.name}
-                  onToggle={() => setExpandedGroup(expandedGroup === group.name ? null : group.name)}
-                />
+            </select>
+          </label>
+          <label>
+            <span>学段</span>
+            <select value={selectedStage} onChange={(event) => setSelectedStage(event.target.value)}>
+              {STAGE_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
               ))}
-            </div>
-          ) : (
-            <section className="schools-datadesk-panel school-groups-empty">
-              <p className="overview-label">没有匹配项</p>
-              <h2>暂未找到符合条件的教育集团</h2>
-              <p>放宽筛选条件，或搜索学校名定位集团。</p>
-              <button className="schools-datadesk-button" type="button" onClick={resetFilters}>重置筛选</button>
-            </section>
-          )}
-        </section>
-      </main>
+            </select>
+          </label>
+          <label>
+            <span>梯队</span>
+            <select value={selectedTier} onChange={(event) => setSelectedTier(event.target.value)}>
+              <option value="all">全部梯队</option>
+              {allTiers.map((tier) => (
+                <option key={tier} value={tier}>{TIER_LABELS[tier] || tier}</option>
+              ))}
+            </select>
+          </label>
+          {activeFilterCount ? <button type="button" onClick={resetFilters}>清空条件</button> : null}
+        </div>
+      </section>
+
+      <section className="school-groups-aerial-list" aria-label="主要教育集团">
+        <div className="school-groups-aerial-section-head">
+          <p className="school-groups-aerial-kicker"><span aria-hidden="true"></span>MAJOR GROUPS</p>
+          <h2>主要教育集团</h2>
+        </div>
+        <div className="school-groups-grid">
+          {featuredGroups.map((group) => (
+            <GroupCard
+              key={group.name}
+              group={group}
+              districts={districts}
+              isExpanded={expandedGroup === group.name}
+              onToggle={() => setExpandedGroup(expandedGroup === group.name ? null : group.name)}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="school-groups-aerial-list" aria-label="区域联盟与特色集团">
+        <div className="school-groups-aerial-section-head">
+          <p className="school-groups-aerial-kicker"><span aria-hidden="true"></span>REGIONAL GROUPS</p>
+          <h2>区域联盟与特色集团</h2>
+          <p>{activeFilterCount ? `当前筛选匹配 ${filteredGroups.length} 个集团。` : `按头部梯队与成员校数量排序，当前展示 ${filteredGroups.length} 个通过校验的集团。`}</p>
+        </div>
+        <div className="school-groups-aerial-row-list">
+          {visibleRegionalGroups.map((group) => (
+            <article className="school-groups-aerial-row" key={group.name}>
+              <div>
+                <strong>{group.name}</strong>
+                <span>{group.districts.slice(0, 4).join(' / ') || '区域待补充'}</span>
+              </div>
+              <p>{group.summary}</p>
+              <button type="button" onClick={() => setExpandedGroup(expandedGroup === group.name ? null : group.name)}>
+                {expandedGroup === group.name ? '收起' : '展开'}
+              </button>
+              {expandedGroup === group.name ? (
+                <div className="school-group-members">
+                  {group.schools.slice(0, 8).map((school) => (
+                    <Link key={school.id} href={`/schools/${school.id}`}>
+                      <strong>{school.name}</strong>
+                      <span>{getDistrictLabel(districts, school.districtId || school.district)} / {getSchoolStage(school)} / {getSchoolType(school)}</span>
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="school-groups-aerial-types" aria-label="教育集团类型">
+        {groupTypes.map((item) => (
+          <article key={item.label}>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </article>
+        ))}
+      </section>
+
+      <section className="school-groups-aerial-benefits">
+        <article>
+          <p className="school-groups-aerial-kicker"><span aria-hidden="true"></span>BENEFITS</p>
+          <h2>为什么要看教育集团</h2>
+          <p>集团化办学不是简单看名字，而是观察课程、师资、活动和升学信息如何在成员校之间流动。它能帮助家庭理解一个学校背后的资源网络。</p>
+        </article>
+        <div>
+          {benefitNotes.map((item) => (
+            <p key={item}>{item}</p>
+          ))}
+        </div>
+      </section>
 
       <div className="schools-color-block-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="schools-aerial-footer">
