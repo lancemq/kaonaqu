@@ -249,7 +249,6 @@ export default async function DistrictSchoolsPage({ params }) {
             <SectionKicker>TOOLS</SectionKicker>
             <h2>区域工具</h2>
             <Link href="/schools"><span>学校数据库</span><i>→</i></Link>
-            <Link href="/schools/category"><span>学校分类</span><i>→</i></Link>
             <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
             <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
           </section>

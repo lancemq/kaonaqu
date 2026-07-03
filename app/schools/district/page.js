@@ -126,7 +126,6 @@ export default async function DistrictIndexPage() {
     .filter((item) => item.school);
   const relatedTools = [
     { label: '学校数据库', href: '/schools' },
-    { label: '学校分类', href: '/schools/category' },
     { label: '学校对比', href: '/schools/compare' },
     { label: '分数匹配', href: '/schools/score-match' }
   ];
