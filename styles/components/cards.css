@@ -1,0 +1,45 @@
+/* Shared card and card-control styles. */
+
+/* ===== 卡片上的"加入比较"勾选 ===== */
+.compare-bag-checkbox {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px 5px 8px;
+    border: 1px solid var(--site-line);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+    border-radius: 999px;
+    color: var(--site-muted);
+    font: 600 11.5px/1.2 var(--font-display, inherit);
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.compare-bag-checkbox:hover {
+    border-color: var(--site-accent);
+    color: var(--site-accent);
+}
+.compare-bag-checkbox-checked {
+    border-color: var(--site-accent);
+    background: var(--site-accent);
+    color: #ffffff;
+}
+.compare-bag-checkbox-checked:hover {
+    background: var(--site-accent-dark);
+    border-color: var(--site-accent-dark);
+    color: #ffffff;
+}
+.compare-bag-checkbox-disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+@media (max-width: 720px) {
+    .compare-bag-checkbox-text {
+        display: none;
+    }
+}

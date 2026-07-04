@@ -1,0 +1,468 @@
+body[data-page="schools"] .score-match-aerial-page {
+    width: min(100%, 1440px);
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fff;
+    color: #1a1a1a;
+    font-family: Geist, "Noto Sans SC", sans-serif;
+}
+
+body[data-page="schools"] .score-match-aerial-page a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body[data-page="schools"] .score-match-aerial-hero {
+    position: relative;
+    min-height: 420px;
+    overflow: hidden;
+    background: #0a0a0a;
+    color: #fff;
+    isolation: isolate;
+}
+
+body[data-page="schools"] .score-match-aerial-hero::before {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    content: "";
+    background-image: url("https://images.unsplash.com/photo-1769284026886-b64643d70da0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
+    background-position: center;
+    background-size: cover;
+}
+
+body[data-page="schools"] .score-match-aerial-hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    background: rgba(0, 0, 0, 0.52);
+}
+
+body[data-page="schools"] .score-match-aerial-hero-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 56px;
+    padding: 60px 80px 50px;
+}
+
+body[data-page="schools"] .score-match-aerial-hero-copy {
+    max-width: 680px;
+}
+
+body[data-page="schools"] .score-match-aerial-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: #4a9fd8;
+    font-family: Newsreader, "Noto Serif SC", serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+body[data-page="schools"] .score-match-aerial-kicker span {
+    width: 6px;
+    height: 6px;
+    background: #4a9fd8;
+}
+
+body[data-page="schools"] .score-match-aerial-hero h1 {
+    margin: 20px 0 16px;
+    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-size: clamp(42px, 5vw, 58px);
+    line-height: 1.04;
+}
+
+body[data-page="schools"] .score-match-aerial-hero-copy > p:last-child {
+    max-width: 610px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+body[data-page="schools"] .score-match-aerial-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    min-width: 320px;
+}
+
+body[data-page="schools"] .score-match-aerial-hero-stats article {
+    display: grid;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+body[data-page="schools"] .score-match-aerial-hero-stats strong {
+    font-family: "Geist Mono", monospace;
+    font-size: 36px;
+    line-height: 1;
+}
+
+body[data-page="schools"] .score-match-aerial-hero-stats span {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 12px;
+}
+
+body[data-page="schools"] .score-match-aerial-tools {
+    display: grid;
+    gap: 20px;
+    padding: 40px 80px 32px;
+    background: #fff;
+    border-bottom: 1px solid #eef0f2;
+}
+
+body[data-page="schools"] .score-match-aerial-tools-head,
+body[data-page="schools"] .score-match-aerial-section-head {
+    display: grid;
+    gap: 10px;
+    max-width: 760px;
+}
+
+body[data-page="schools"] .score-match-aerial-tools-head h2,
+body[data-page="schools"] .score-match-aerial-section-head h2 {
+    margin: 0;
+    color: #1a1a1a;
+    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+body[data-page="schools"] .score-match-aerial-tools-head p,
+body[data-page="schools"] .score-match-aerial-section-head p {
+    margin: 0;
+    color: #666;
+    line-height: 1.7;
+}
+
+body[data-page="schools"] .score-match-aerial-form {
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid #eef0f2;
+    background: #fff;
+}
+
+body[data-page="schools"] .score-match-aerial-form-row {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    align-items: center;
+    gap: 12px;
+}
+
+body[data-page="schools"] .score-match-aerial-form-row > span {
+    color: #666;
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+body[data-page="schools"] .score-match-aerial-toggle {
+    display: inline-flex;
+    border: 1px solid #eef0f2;
+}
+
+body[data-page="schools"] .score-match-aerial-toggle-btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 10px 22px;
+    color: #666;
+    font: 600 14px/1 "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    cursor: pointer;
+}
+
+body[data-page="schools"] .score-match-aerial-toggle-btn-active {
+    background: #0a0a0a;
+    color: #fff;
+}
+
+body[data-page="schools"] .score-match-aerial-scorefield {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    border: 1px solid #eef0f2;
+    background: #fff;
+}
+
+body[data-page="schools"] .score-match-aerial-scorefield-select {
+    padding: 0;
+}
+
+body[data-page="schools"] .score-match-aerial-scorefield input,
+body[data-page="schools"] .score-match-aerial-scorefield select {
+    width: 100%;
+    min-height: 44px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #1a1a1a;
+    font: 600 15px/1 "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+}
+
+body[data-page="schools"] .score-match-aerial-scorefield em {
+    color: #999;
+    font-style: normal;
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+body[data-page="schools"] .score-match-aerial-form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+body[data-page="schools"] .score-match-aerial-button {
+    flex: 1;
+    min-height: 44px;
+    border: 0;
+    background: #0a0a0a;
+    color: #fff;
+    font: 700 14px/1 "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    cursor: pointer;
+}
+
+body[data-page="schools"] .score-match-aerial-button:hover {
+    background: #1a1a1a;
+}
+
+body[data-page="schools"] .score-match-aerial-button-secondary {
+    flex: 0 0 auto;
+    padding: 0 22px;
+    background: transparent;
+    border: 1px solid #eef0f2;
+    color: #666;
+}
+
+body[data-page="schools"] .score-match-aerial-disclaimer {
+    margin: 0;
+    padding: 12px 16px;
+    border-left: 3px solid #4a9fd8;
+    background: #f7f9fc;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+body[data-page="schools"] .score-match-aerial-results {
+    display: grid;
+    gap: 24px;
+    padding: 40px 80px;
+    background: #fff;
+}
+
+body[data-page="schools"] .score-match-aerial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+
+body[data-page="schools"] .score-match-aerial-column {
+    display: grid;
+    border: 1px solid #eef0f2;
+    background: #fff;
+}
+
+body[data-page="schools"] .score-match-aerial-column > header {
+    display: grid;
+    gap: 4px;
+    padding: 16px 18px;
+    color: #fff;
+}
+
+body[data-page="schools"] .score-match-aerial-column > header strong {
+    font: 700 18px/1.2 "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+}
+
+body[data-page="schools"] .score-match-aerial-column > header span {
+    font-size: 12px;
+    opacity: 0.86;
+}
+
+body[data-page="schools"] .score-match-aerial-column > header em {
+    font-style: normal;
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+body[data-page="schools"] .score-match-aerial-column-match > header { background: #0a0a0a; }
+body[data-page="schools"] .score-match-aerial-column-reach > header { background: #1d4ed8; }
+body[data-page="schools"] .score-match-aerial-column-safety > header { background: #4a9fd8; }
+
+body[data-page="schools"] .score-match-aerial-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body[data-page="schools"] .score-match-aerial-card {
+    display: grid;
+    gap: 8px;
+    padding: 16px 18px;
+    border-top: 1px solid #eef0f2;
+    background: #fff;
+    transition: background 180ms ease;
+}
+
+body[data-page="schools"] .score-match-aerial-card:hover {
+    background: #f7f9fc;
+}
+
+body[data-page="schools"] .score-match-aerial-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+body[data-page="schools"] .score-match-aerial-card-head strong {
+    font: 600 16px/1.3 "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    color: #1a1a1a;
+}
+
+body[data-page="schools"] .score-match-aerial-card-tier {
+    flex: 0 0 auto;
+    padding: 2px 8px;
+    border: 1px solid #eef0f2;
+    color: #666;
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+body[data-page="schools"] .score-match-aerial-card-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: #666;
+    font-size: 13px;
+}
+
+body[data-page="schools"] .score-match-aerial-card-range {
+    color: #4a9fd8;
+    font-weight: 600;
+}
+
+body[data-page="schools"] .score-match-aerial-card-reason {
+    margin: 0;
+    color: #888;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+body[data-page="schools"] .score-match-aerial-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+body[data-page="schools"] .score-match-aerial-source {
+    padding: 2px 8px;
+    border: 1px solid #eef0f2;
+    color: #666;
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+body[data-page="schools"] .score-match-aerial-source-rich_profile {
+    border-color: #4a9fd8;
+    color: #1d4ed8;
+}
+
+body[data-page="schools"] .score-match-aerial-card-link {
+    color: #1a1a1a;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+body[data-page="schools"] .score-match-aerial-empty {
+    padding: 48px 24px;
+    text-align: center;
+    border: 1px dashed #eef0f2;
+    background: #fff;
+}
+
+body[data-page="schools"] .score-match-aerial-empty strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+    font: 600 18px/1.3 "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+}
+
+body[data-page="schools"] .score-match-aerial-empty p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 1180px) {
+    body[data-page="schools"] .score-match-aerial-hero-content,
+    body[data-page="schools"] .score-match-aerial-tools,
+    body[data-page="schools"] .score-match-aerial-results {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    body[data-page="schools"] .score-match-aerial-hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    body[data-page="schools"] .score-match-aerial-hero-stats {
+        min-width: 0;
+        width: 100%;
+    }
+
+    body[data-page="schools"] .score-match-aerial-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    body[data-page="schools"] .score-match-aerial-hero {
+        min-height: 360px;
+    }
+
+    body[data-page="schools"] .score-match-aerial-hero-content,
+    body[data-page="schools"] .score-match-aerial-tools,
+    body[data-page="schools"] .score-match-aerial-results {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    body[data-page="schools"] .score-match-aerial-hero h1 {
+        font-size: 36px;
+    }
+
+    body[data-page="schools"] .score-match-aerial-form-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    body[data-page="schools"] .score-match-aerial-form-actions {
+        flex-direction: column;
+    }
+
+    body[data-page="schools"] .score-match-aerial-button-secondary {
+        padding: 0;
+    }
+}

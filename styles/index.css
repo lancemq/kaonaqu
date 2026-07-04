@@ -1,5 +1,21 @@
+@import url("./tokens.css");
 @import url("./base.css");
-@import url("./theme-home.css");
-@import url("./theme-news.css");
-@import url("./theme-schools.css");
-@import url("./theme-knowledge.css")
+
+@import url("./components/aerial-nav.css");
+@import url("./components/aerial-footer.css");
+@import url("./components/hero-slab.css");
+@import url("./components/cards.css");
+@import url("./components/markdown.css");
+
+@import url("./channels/home.css");
+@import url("./channels/news.css");
+@import url("./channels/schools.css");
+@import url("./channels/knowledge.css");
+
+@import url("./pages/news-special.css");
+@import url("./pages/news-detail.css");
+@import url("./pages/schools-detail.css");
+@import url("./pages/schools-district.css");
+@import url("./pages/schools-groups.css");
+@import url("./pages/schools-compare.css");
+@import url("./pages/schools-score-match.css");

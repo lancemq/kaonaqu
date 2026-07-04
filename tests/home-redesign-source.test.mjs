@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const pageSource = await readFile(new URL('../app/page.js', import.meta.url), 'utf8');
-const homeCss = await readFile(new URL('../styles/theme-home.css', import.meta.url), 'utf8');
+const homeCss = await readFile(new URL('../styles/channels/home.css', import.meta.url), 'utf8');
 
 test('home page uses the aerial redesign shell instead of the old SiteShell prototype', () => {
   assert.match(pageSource, /className="home-aerial-page"/);

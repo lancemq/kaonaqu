@@ -19,6 +19,7 @@ const FILTERS = [
 
 const QUICK_LINKS = [
   { label: '中考政策', href: '/news/zhongkao-special' },
+  { label: '体育改革', href: '/news/sports-reform' },
   { label: '高考指南', href: '/news/gaokao-special' },
   { label: '时间轴', href: '/news/admission-timeline' },
   { label: '政策问答', href: '/news/policy-faq' }
@@ -143,6 +144,25 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {}, c
   return (
     <section className="news-aerial-content">
       <div className="news-aerial-main-column">
+        <div className="news-special-entry-row" aria-label="专题聚焦">
+          <SectionLabel>SPECIALS</SectionLabel>
+          <div className="news-special-entry-grid">
+            <Link className="news-special-entry-card is-lead" href="/news/sports-reform">
+              <span>SPORTS REFORM</span>
+              <strong>上海体育考试改革专题</strong>
+              <p>把中考体育新规、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生串成一条专题线。</p>
+            </Link>
+            <Link className="news-special-entry-card" href="/news/zhongkao-special">
+              <span>ZHONGKAO</span>
+              <strong>中招专题</strong>
+            </Link>
+            <Link className="news-special-entry-card" href="/news/gaokao-special">
+              <span>GAOKAO</span>
+              <strong>高招专题</strong>
+            </Link>
+          </div>
+        </div>
+
         <div className="news-list-header">
           <div>
             <SectionLabel>ALL NEWS</SectionLabel>
