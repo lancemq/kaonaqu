@@ -13,9 +13,9 @@ import { getSchoolRichProfile } from './school-rich-profiles';
 
 export type ExamType = 'zhongkao' | 'gaokao';
 export type MatchCategory = 'reach' | 'match' | 'safety';
-export type MatchSource = 'tier_reference' | 'rich_profile';
+type MatchSource = 'tier_reference' | 'rich_profile';
 
-export interface SchoolRecord {
+interface SchoolRecord {
   id: string;
   name: string;
   districtId: string;
@@ -25,7 +25,7 @@ export interface SchoolRecord {
   group?: string;
 }
 
-export interface ScoreMatchInput {
+interface ScoreMatchInput {
   score: number;
   districtId?: string;
   examType: ExamType;

@@ -16,7 +16,7 @@ npm start                # 启动 Next 生产服务
 npm run data:validate    # 校验新闻、学校和基础数据（改完数据必跑）
 
 # 测试（node:test，无额外测试框架）
-node --test tests/                            # 跑全部测试
+node --test tests/*.test.mjs                  # 跑全部测试
 node --test tests/knowledge-content.test.mjs  # 跑单个测试文件
 
 # 内容与数据维护
