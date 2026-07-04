@@ -50,10 +50,6 @@ body[data-page="schools"] .schools-datadesk-cardkicker {
 
 /* Chips And Buttons */
 
-body[data-page="schools"] .school-direction-row-large {
-    margin-top: 4px;
-}
-
 body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-heading,
 body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-subheading {
     color: var(--schools-tone-text);
@@ -1658,71 +1654,6 @@ body[data-page="schools"] .school-detail-side-card p strong {
 }
 
 /* Education Groups Topic */
-.school-groups-hero {
-    padding: 28px 30px 24px;
-}
-
-.school-groups-hero-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.42fr) minmax(320px, 0.95fr);
-    gap: 22px;
-    align-items: start;
-}
-
-.school-groups-subtitle {
-    max-width: 44rem;
-    margin: 14px 0 0;
-    font-size: 1.02rem;
-    font-weight: 700;
-    line-height: 1.58;
-}
-
-.school-groups-description {
-    max-width: 48rem;
-    margin: 12px 0 0;
-    color: #2563eb;
-    line-height: 1.72;
-}
-
-.school-groups-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 18px;
-}
-
-.school-groups-summary-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-}
-
-.school-groups-statusbar {
-    margin-top: 16px;
-}
-
-.school-groups-layout {
-    margin-top: 0;
-}
-
-.school-groups-shortlist {
-    display: grid;
-    gap: 8px;
-}
-
-.school-groups-shortcut {
-    width: 100%;
-    border-right: 0;
-    border-bottom: 0;
-    border-left: 0;
-    text-align: left;
-    cursor: pointer;
-}
-
-.school-groups-results {
-    display: grid;
-    gap: 14px;
-}
 
 .school-groups-grid {
     display: grid;
@@ -1897,10 +1828,6 @@ body[data-page="schools"] .school-detail-side-card p strong {
     color: #1d4ed8;
     font-weight: 800;
     text-align: right;
-}
-
-.school-groups-empty {
-    align-content: start;
 }
 
 body[data-page="schools"] .school-groups-aerial-page {
@@ -2279,18 +2206,12 @@ body[data-page="schools"] .school-groups-aerial-benefits > div p {
 }
 
 @media (max-width: 1080px) {
-    .school-groups-hero-grid,
     .school-groups-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 720px) {
-
-    .school-groups-hero {
-        padding-left: 18px;
-        padding-right: 18px;
-    }
 
     .school-group-card {
         padding-left: 16px;
@@ -2763,90 +2684,12 @@ body[data-page="schools"] .compare-aerial-insight p {
 /* 卡片头部 */
 
 /* 梯队颜色 */
-body[data-page="schools"] .schools-compare-tier-four {
-    background: rgba(29, 78, 216, 0.12);
-    border-color: rgba(29, 78, 216, 0.22);
-    color: #1d4ed8;
-}
-
-body[data-page="schools"] .schools-compare-tier-four-branch {
-    background: rgba(37, 99, 235, 0.08);
-    border-color: rgba(37, 99, 235, 0.18);
-    color: #2563eb;
-}
-
-body[data-page="schools"] .schools-compare-tier-eight {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.2);
-    color: #3b82f6;
-}
-
-body[data-page="schools"] .schools-compare-tier-eight-branch {
-    background: rgba(59, 130, 246, 0.08);
-    border-color: rgba(59, 130, 246, 0.18);
-    color: #2563eb;
-}
-
-body[data-page="schools"] .schools-compare-tier-city-demo {
-    background: rgba(37, 99, 235, 0.1);
-    border-color: rgba(37, 99, 235, 0.2);
-    color: #2563eb;
-}
-
-body[data-page="schools"] .schools-compare-tier-district-key {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.2);
-    color: #3b82f6;
-}
-
-body[data-page="schools"] .schools-compare-tier-regular {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.2);
-    color: #2563eb;
-}
-
-body[data-page="schools"] .schools-compare-tier-private {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.2);
-    color: #2563eb;
-}
-
-body[data-page="schools"] .schools-compare-tier-international {
-    background: rgba(37, 99, 235, 0.08);
-    border-color: rgba(37, 99, 235, 0.18);
-    color: #1d4ed8;
-}
-
-body[data-page="schools"] .schools-compare-tier-public-junior {
-    background: rgba(59, 130, 246, 0.05);
-    border-color: rgba(59, 130, 246, 0.15);
-    color: #3b82f6;
-}
-
-body[data-page="schools"] .schools-compare-tier-private-junior {
-    background: rgba(59, 130, 246, 0.06);
-    border-color: rgba(59, 130, 246, 0.16);
-    color: #2563eb;
-}
 
 /* 卡片主体 */
 
 /* 基本信息网格 */
 
 /* 联系方式 */
-
-body[data-page="schools"] .schools-compare-contact-label {
-    color: var(--schools-tone-muted);
-    font-size: 0.82rem;
-    margin-right: 6px;
-}
-
-body[data-page="schools"] .schools-compare-contact-empty {
-    color: var(--schools-tone-muted);
-    font-size: 0.82rem;
-    font-style: italic;
-    margin: 0;
-}
 
 /* 标签 */
 
