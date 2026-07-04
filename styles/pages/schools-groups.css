@@ -1,23 +1,10 @@
-/* Migrated from base.css: Schools Channel Blocks */
-
-/* ============================================
-   快速入口和热门区县样式
-   ============================================ */
-
-/* 特色入口卡片增强 */
-
 .schools-datadesk-cardkicker {
     font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
     font-size: 0.74rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-}
-
-.schools-datadesk-cardkicker {
     margin: 0 0 8px;
 }
-
-/* Education Groups Topic */
 
 .school-groups-grid {
     display: grid;
@@ -594,15 +581,7 @@ body[data-page="schools"] .school-groups-aerial-benefits > div p {
     }
 }
 
-/* Readability guardrails */
-
 body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-paragraph,
 body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-list li {
     color: #252a3a;
 }
-
-/* 查看地图按钮样式 */
-
-/* ============================================
-   学校多维对比页面样式
-   ============================================ */

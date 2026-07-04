@@ -48,16 +48,6 @@ body::after {
 }
 
 /* Shared Typography */
-.news-detail-copy h1 {
-    margin: 10px 0 0;
-    font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
-    font-size: clamp(2rem, 3.2vw, 3rem);
-    line-height: 1.02;
-    letter-spacing: -0.06em;
-}
-
-.news-detail-focus-card h2,
-.news-glossary-card h3,
 .news-special-faq-body h3,
 .news-glossary-process-card h3,
 .news-glossary-relation-card h3 {
@@ -101,28 +91,14 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 42px;
-    padding: 10px 16px;
-    border: 1px solid transparent;
-    border-radius: 999px;
-    transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.pill {
-    border-color: rgba(26, 29, 41, 0.08);
-    background: rgba(255, 255, 255, 0.82);
-    color: var(--muted);
-}
-
-.pill {
-    background: rgba(26, 29, 41, 0.05);
-    color: var(--muted);
-}
-
-.pill {
     min-height: 34px;
     padding: 8px 12px;
+    border: 1px solid rgba(26, 29, 41, 0.08);
+    border-radius: 999px;
+    background: rgba(26, 29, 41, 0.05);
+    color: var(--muted);
     font-size: 0.8rem;
+    transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .text-link {
