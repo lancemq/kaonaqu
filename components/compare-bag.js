@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'kaonaqu:compareBag';
@@ -93,37 +92,4 @@ export function useCompareBag() {
   const clear = useCallback(() => writeBag([]), []);
 
   return { items, ids, ready, has, remove, toggle, replaceAll, clear, max: MAX_ITEMS };
-}
-
-export default function CompareBagDock() {
-  const { items, ready, remove, clear, max } = useCompareBag();
-  if (!ready || items.length === 0) return null;
-
-  const target = `/schools/compare?schools=${items.map((item) => encodeURIComponent(item.id)).join(',')}`;
-
-  return (
-    <aside className="compare-bag-dock" aria-label="学校比较篮">
-      <div className="compare-bag-dock-head">
-        <span className="compare-bag-dock-title">比较篮</span>
-        <span className="compare-bag-dock-count">{items.length}/{max}</span>
-      </div>
-      <ul className="compare-bag-dock-list">
-        {items.map((item) => (
-          <li key={item.id}>
-            <span className="compare-bag-dock-name">{item.name}</span>
-            <button
-              type="button"
-              className="compare-bag-dock-remove"
-              onClick={() => remove(item.id)}
-              aria-label={`从比较篮移除 ${item.name}`}
-            >×</button>
-          </li>
-        ))}
-      </ul>
-      <div className="compare-bag-dock-actions">
-        <Link className="compare-bag-dock-primary" href={target}>进入比较</Link>
-        <button type="button" className="compare-bag-dock-secondary" onClick={clear}>清空</button>
-      </div>
-    </aside>
-  );
 }

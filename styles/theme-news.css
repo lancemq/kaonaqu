@@ -552,10 +552,6 @@ body[data-page="news"] .news-filter-button:hover {
     transform: translateY(-1px);
 }
 
-body[data-page="news"] .page-shell {
-    background: #fff;
-}
-
 body[data-page="news"] .news-special-aerial-page {
     width: min(100%, 1440px);
     margin: 0 auto;
@@ -656,7 +652,6 @@ body[data-page="news"] .news-special-aerial-hero-copy > p {
 }
 
 body[data-page="news"] .news-special-aerial-stats,
-body[data-page="news"] .news-special-aerial-cards,
 body[data-page="news"] .news-special-aerial-content {
     background: #fff;
 }
@@ -889,20 +884,6 @@ body[data-page="news"] .news-special-aerial-side-card a:first-of-type {
         grid-template-columns: 1fr;
         gap: 8px;
     }
-}
-
-body[data-page="news"] .news-detail-article-hero,
-body[data-page="news"] .news-special-hero,
-body[data-page="news"] .news-special-hero-timeline,
-body[data-page="news"] .school-prototype-hero {
-    border-color: var(--news-line);
-    background: #fff;
-    box-shadow: none;
-}
-
-body[data-page="news"] .top-links a[href="/news"] {
-    background: var(--news-ink);
-    color: #fff;
 }
 
 body[data-page="news"] .news-detail-page {

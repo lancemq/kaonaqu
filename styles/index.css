@@ -119,18 +119,6 @@ body[data-page="knowledge"] .cross-channel-panel-knowledge .cross-channel-group-
     color: var(--subject-accent, var(--channel-accent));
 }
 
-body[data-page="schools"] .cross-channel-panel-school-side {
-    padding: 18px;
-}
-
-body[data-page="schools"] .cross-channel-panel-school-side .cross-channel-groups {
-    grid-template-columns: 1fr;
-}
-
-body[data-page="schools"] .cross-channel-panel-school-side .cross-channel-panel-head h2 {
-    font-size: 1.28rem;
-}
-
 @media (max-width: 1080px) {
     .cross-channel-groups {
         grid-template-columns: 1fr;
