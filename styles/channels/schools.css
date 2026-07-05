@@ -151,20 +151,9 @@ body[data-page="schools"] .highlight-card-group .text-link {
 }
 
 body[data-page="schools"] {
-    --schools-blue: #4A9FD8;
-    --schools-blue-soft: #B3D9F0;
-    --schools-ink: #0A0A0A;
-    --schools-text: #1A1A1A;
-    --schools-muted: #666666;
-    --schools-line: #EEF0F2;
-    --schools-paper: #FFFFFF;
-    --schools-font-heading: "Funnel Sans", "Noto Sans SC", sans-serif;
-    --schools-font-body: "Geist", "Noto Sans SC", sans-serif;
-    --schools-font-caption: "Newsreader", "Noto Serif SC", serif;
-    --schools-font-data: "Geist Mono", "SFMono-Regular", Consolas, monospace;
-    background: var(--schools-paper) !important;
-    color: var(--schools-text);
-    font-family: var(--schools-font-body);
+    background: var(--channel-paper) !important;
+    color: var(--channel-text);
+    font-family: var(--channel-font-body);
 }
 
 body[data-page="schools"]::before,

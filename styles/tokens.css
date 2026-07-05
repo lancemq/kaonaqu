@@ -22,6 +22,19 @@
     --site-shadow-md: 0 4px 16px rgba(26, 29, 41, 0.08), 0 8px 32px rgba(26, 29, 41, 0.06);
     --channel-accent: var(--site-accent);
 
+    /* Channel design tokens — shared across home/news/schools/knowledge */
+    --channel-blue: #4A9FD8;
+    --channel-blue-soft: #B3D9F0;
+    --channel-ink: #0A0A0A;
+    --channel-text: #1A1A1A;
+    --channel-muted: #666666;
+    --channel-line: #EEF0F2;
+    --channel-paper: #FFFFFF;
+    --channel-font-heading: "Funnel Sans", "Noto Sans SC", sans-serif;
+    --channel-font-body: "Geist", "Noto Sans SC", sans-serif;
+    --channel-font-caption: "Newsreader", "Noto Serif SC", serif;
+    --channel-font-data: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+
     /* Legacy aliases still referenced by base components */
     --bg: #f0f3f8;
     --surface-tint: #f0f3f8;

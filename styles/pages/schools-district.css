@@ -6,8 +6,8 @@ body[data-page="schools"] .district-channel-page {
     width: min(100%, 1440px);
     margin: 0 auto;
     overflow: hidden;
-    background: var(--schools-paper);
-    color: var(--schools-text);
+    background: var(--channel-paper);
+    color: var(--channel-text);
 }
 
 body[data-page="schools"] .district-channel-page a {
@@ -18,7 +18,7 @@ body[data-page="schools"] .district-channel-page a {
 body[data-page="schools"] .district-channel-hero {
     position: relative;
     min-height: 380px;
-    background: var(--schools-ink);
+    background: var(--channel-ink);
     color: #fff;
     isolation: isolate;
 }
@@ -65,12 +65,12 @@ body[data-page="schools"] .district-channel-breadcrumb {
 }
 
 body[data-page="schools"] .district-channel-breadcrumb span {
-    font-family: var(--schools-font-data);
+    font-family: var(--channel-font-data);
     font-size: 10px;
 }
 
 body[data-page="schools"] .district-channel-breadcrumb strong {
-    color: var(--schools-blue-soft);
+    color: var(--channel-blue-soft);
 }
 
 body[data-page="schools"] .district-channel-kicker {
@@ -82,26 +82,26 @@ body[data-page="schools"] .district-channel-kicker {
 body[data-page="schools"] .district-channel-kicker span {
     width: 6px;
     height: 6px;
-    background: var(--schools-blue);
+    background: var(--channel-blue);
 }
 
 body[data-page="schools"] .district-channel-kicker p {
     margin: 0;
-    color: var(--schools-blue);
-    font-family: var(--schools-font-caption);
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
     font-size: 12px;
     letter-spacing: 4px;
 }
 
 body[data-page="schools"] .district-channel-hero .district-channel-kicker p,
 body[data-page="schools"] .district-channel-side-card.is-dark .district-channel-kicker p {
-    color: var(--schools-blue-soft);
+    color: var(--channel-blue-soft);
 }
 
 body[data-page="schools"] .district-channel-hero h1 {
     margin: 0;
     color: #fff;
-    font-family: var(--schools-font-heading);
+    font-family: var(--channel-font-heading);
     font-size: clamp(42px, 5vw, 52px);
     font-weight: 700;
     line-height: 1.06;
@@ -129,7 +129,7 @@ body[data-page="schools"] .district-channel-hero-stats article {
 
 body[data-page="schools"] .district-channel-hero-stats strong {
     color: #fff;
-    font-family: var(--schools-font-data);
+    font-family: var(--channel-font-data);
     font-size: 42px;
     line-height: 1;
 }
@@ -145,7 +145,7 @@ body[data-page="schools"] .district-channel-overview {
     gap: 40px;
     align-items: center;
     padding: 40px 80px 20px;
-    border-bottom: 1px solid var(--schools-line);
+    border-bottom: 1px solid var(--channel-line);
     background: #fff;
 }
 
@@ -154,8 +154,8 @@ body[data-page="schools"] .district-channel-section h2,
 body[data-page="schools"] .district-channel-list-head h2,
 body[data-page="schools"] .district-channel-side-card h2 {
     margin: 0;
-    color: var(--schools-text);
-    font-family: var(--schools-font-heading);
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-weight: 700;
     letter-spacing: 0;
 }
@@ -170,7 +170,7 @@ body[data-page="schools"] .district-channel-section > p,
 body[data-page="schools"] .district-channel-list-head > p {
     max-width: 934px;
     margin: 0;
-    color: var(--schools-muted);
+    color: var(--channel-muted);
     font-size: 14px;
     line-height: 1.65;
 }
@@ -188,15 +188,15 @@ body[data-page="schools"] .district-channel-overview-stats article {
 }
 
 body[data-page="schools"] .district-channel-overview-stats strong {
-    color: var(--schools-text);
-    font-family: var(--schools-font-data);
+    color: var(--channel-text);
+    font-family: var(--channel-font-data);
     font-size: 24px;
     line-height: 1.1;
 }
 
 body[data-page="schools"] .district-channel-overview-stats span {
-    color: var(--schools-muted);
-    font-family: var(--schools-font-caption);
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
     font-size: 10px;
     letter-spacing: 2px;
 }
@@ -226,13 +226,13 @@ body[data-page="schools"] .district-channel-zone-card {
     gap: 10px;
     min-height: 112px;
     padding: 18px;
-    border: 1px solid var(--schools-line);
+    border: 1px solid var(--channel-line);
     background: #fff;
     transition: border-color 180ms ease, transform 180ms ease;
 }
 
 body[data-page="schools"] .district-channel-zone-card:hover {
-    border-color: var(--schools-blue);
+    border-color: var(--channel-blue);
     transform: translateY(-1px);
 }
 
@@ -244,36 +244,36 @@ body[data-page="schools"] .district-channel-zone-card > div {
 }
 
 body[data-page="schools"] .district-channel-zone-card strong {
-    color: var(--schools-text);
-    font-family: var(--schools-font-heading);
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-size: 18px;
     line-height: 1.2;
 }
 
 body[data-page="schools"] .district-channel-zone-card > div span {
-    color: var(--schools-blue);
-    font-family: var(--schools-font-data);
+    color: var(--channel-blue);
+    font-family: var(--channel-font-data);
     font-size: 12px;
 }
 
 body[data-page="schools"] .district-channel-zone-card p {
     margin: 0;
-    color: var(--schools-muted);
+    color: var(--channel-muted);
     font-size: 12px;
     line-height: 1.45;
 }
 
 body[data-page="schools"] .district-channel-zone-card em {
     margin-top: auto;
-    color: var(--schools-text);
+    color: var(--channel-text);
     font-style: normal;
     font-size: 11px;
 }
 
 body[data-page="schools"] .district-channel-highlights {
     padding-top: 20px;
-    border-top: 1px solid var(--schools-line);
-    border-bottom: 1px solid var(--schools-line);
+    border-top: 1px solid var(--channel-line);
+    border-bottom: 1px solid var(--channel-line);
 }
 
 body[data-page="schools"] .district-channel-featured-grid {
@@ -287,7 +287,7 @@ body[data-page="schools"] .district-channel-featured-card {
     gap: 14px;
     min-height: 199px;
     padding: 24px;
-    background: var(--schools-ink);
+    background: var(--channel-ink);
     color: #fff;
 }
 
@@ -301,7 +301,7 @@ body[data-page="schools"] .district-channel-featured-card > div {
 body[data-page="schools"] .district-channel-featured-card span,
 body[data-page="schools"] .district-channel-featured-card em {
     color: rgba(255, 255, 255, 0.62);
-    font-family: var(--schools-font-caption);
+    font-family: var(--channel-font-caption);
     font-size: 10px;
     font-style: normal;
     letter-spacing: 2px;
@@ -309,7 +309,7 @@ body[data-page="schools"] .district-channel-featured-card em {
 
 body[data-page="schools"] .district-channel-featured-card strong {
     color: #fff;
-    font-family: var(--schools-font-heading);
+    font-family: var(--channel-font-heading);
     font-size: 20px;
     line-height: 1.2;
 }
@@ -323,7 +323,7 @@ body[data-page="schools"] .district-channel-featured-card p {
 
 body[data-page="schools"] .district-channel-featured-card b {
     margin-top: auto;
-    color: var(--schools-blue-soft);
+    color: var(--channel-blue-soft);
     font-size: 13px;
 }
 
@@ -375,13 +375,13 @@ body[data-page="schools"] .district-channel-row {
     gap: 20px;
     min-height: 97px;
     padding: 16px;
-    border: 1px solid var(--schools-line);
+    border: 1px solid var(--channel-line);
     background: #fff;
     transition: border-color 180ms ease, transform 180ms ease;
 }
 
 body[data-page="schools"] .district-channel-row:hover {
-    border-color: var(--schools-blue);
+    border-color: var(--channel-blue);
     transform: translateY(-1px);
 }
 
@@ -392,21 +392,21 @@ body[data-page="schools"] .district-channel-row-info {
 }
 
 body[data-page="schools"] .district-channel-row-info strong {
-    color: var(--schools-text);
-    font-family: var(--schools-font-heading);
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-size: 20px;
     line-height: 1.2;
 }
 
 body[data-page="schools"] .district-channel-row-info span {
-    color: var(--schools-muted);
+    color: var(--channel-muted);
     font-size: 13px;
     line-height: 1.5;
 }
 
 body[data-page="schools"] .district-channel-row-info em,
 body[data-page="schools"] .district-channel-row-info small {
-    color: var(--schools-muted);
+    color: var(--channel-muted);
     font-style: normal;
     line-height: 1.5;
 }
@@ -416,8 +416,8 @@ body[data-page="schools"] .district-channel-row-info em {
 }
 
 body[data-page="schools"] .district-channel-row-info small {
-    color: var(--schools-blue);
-    font-family: var(--schools-font-caption);
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
     font-size: 10px;
     letter-spacing: 1px;
 }
@@ -430,23 +430,23 @@ body[data-page="schools"] .district-channel-row-score {
 }
 
 body[data-page="schools"] .district-channel-row-score strong {
-    color: var(--schools-blue);
-    font-family: var(--schools-font-data);
+    color: var(--channel-blue);
+    font-family: var(--channel-font-data);
     font-size: 40px;
     line-height: 1;
 }
 
 body[data-page="schools"] .district-detail-school-row .district-channel-row-score strong {
     max-width: 150px;
-    color: var(--schools-text);
-    font-family: var(--schools-font-body);
+    color: var(--channel-text);
+    font-family: var(--channel-font-body);
     font-size: 13px;
     line-height: 1.35;
     text-align: right;
 }
 
 body[data-page="schools"] .district-channel-row-score span {
-    color: var(--schools-muted);
+    color: var(--channel-muted);
     font-size: 12px;
 }
 
@@ -457,13 +457,13 @@ body[data-page="schools"] .district-channel-sidebar {
 body[data-page="schools"] .district-channel-side-card {
     gap: 12px;
     padding: 20px;
-    border: 1px solid var(--schools-line);
+    border: 1px solid var(--channel-line);
     background: #fff;
 }
 
 body[data-page="schools"] .district-channel-side-card.is-dark {
-    border-color: var(--schools-ink);
-    background: var(--schools-ink);
+    border-color: var(--channel-ink);
+    background: var(--channel-ink);
     color: #fff;
 }
 
@@ -478,8 +478,8 @@ body[data-page="schools"] .district-channel-side-card a {
     gap: 12px;
     min-height: 33px;
     padding: 6px 0;
-    border-bottom: 1px solid var(--schools-line);
-    color: var(--schools-text);
+    border-bottom: 1px solid var(--channel-line);
+    color: var(--channel-text);
     font-size: 12px;
     font-weight: 600;
 }
@@ -488,7 +488,7 @@ body[data-page="schools"] .district-channel-side-card a.is-active {
     min-height: 33px;
     padding: 8px 12px;
     border-bottom: 0;
-    background: var(--schools-ink);
+    background: var(--channel-ink);
     color: #fff;
 }
 
@@ -498,8 +498,8 @@ body[data-page="schools"] .district-channel-side-card.is-dark a {
 }
 
 body[data-page="schools"] .district-channel-side-card i {
-    color: var(--schools-muted);
-    font-family: var(--schools-font-data);
+    color: var(--channel-muted);
+    font-family: var(--channel-font-data);
     font-size: 10px;
     font-style: normal;
 }

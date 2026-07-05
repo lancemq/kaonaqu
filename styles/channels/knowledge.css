@@ -1,14 +1,7 @@
 body[data-page="knowledge"] {
-    --knowledge-blue: #4a9fd8;
-    --knowledge-blue-soft: #b3d9f0;
-    --knowledge-ink: #1a1a1a;
-    --knowledge-muted: #666666;
-    --knowledge-faint: #eef0f2;
-    --knowledge-black: #0a0a0a;
-    --knowledge-white: #ffffff;
-    background: #ffffff !important;
-    color: var(--knowledge-ink);
-    font-family: Geist, "Noto Sans SC", sans-serif;
+    background: var(--channel-paper) !important;
+    color: var(--channel-text);
+    font-family: var(--channel-font-body);
 }
 
 body[data-page="knowledge"]::before,
@@ -35,7 +28,7 @@ body[data-page="knowledge"] a {
     gap: 24px;
     min-height: 80px;
     padding: 20px 40px;
-    border-bottom: 1px solid var(--knowledge-faint);
+    border-bottom: 1px solid var(--channel-line);
     background: #ffffff;
 }
 
@@ -48,16 +41,16 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-brand strong {
-    color: var(--knowledge-ink);
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-size: 22px;
     line-height: 1;
     letter-spacing: -0.02em;
 }
 
 .knowledge-brand span {
-    color: var(--knowledge-muted);
-    font-family: Newsreader, "Noto Serif SC", serif;
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
     font-size: 11px;
     letter-spacing: 0.27em;
     white-space: nowrap;
@@ -77,7 +70,7 @@ body[data-page="knowledge"] a {
     min-height: 40px;
     padding: 0 18px;
     background: #ffffff;
-    color: var(--knowledge-ink);
+    color: var(--channel-text);
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
@@ -87,7 +80,7 @@ body[data-page="knowledge"] a {
 .knowledge-nav-links a:hover,
 .knowledge-nav-links a:focus-visible,
 .knowledge-nav-links a.is-active {
-    background: var(--knowledge-black);
+    background: var(--channel-ink);
     color: #ffffff;
 }
 
@@ -102,12 +95,12 @@ body[data-page="knowledge"] a {
     width: 6px;
     height: 6px;
     flex: 0 0 auto;
-    background: var(--knowledge-blue);
+    background: var(--channel-blue);
 }
 
 .knowledge-section-kicker em {
-    color: var(--knowledge-blue);
-    font-family: Newsreader, "Noto Serif SC", serif;
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
     font-size: 12px;
     font-style: normal;
     letter-spacing: 0.28em;
@@ -118,7 +111,7 @@ body[data-page="knowledge"] a {
     position: relative;
     min-height: 420px;
     overflow: hidden;
-    background: var(--knowledge-black);
+    background: var(--channel-ink);
 }
 
 .knowledge-hero-bg,
@@ -156,7 +149,7 @@ body[data-page="knowledge"] a {
 .knowledge-hero-copy h1 {
     margin: 0;
     color: #ffffff;
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
     font-size: 48px;
     line-height: 1.06;
     letter-spacing: -0.02em;
@@ -184,7 +177,7 @@ body[data-page="knowledge"] a {
 
 .knowledge-hero-stats strong {
     color: #ffffff;
-    font-family: "Geist Mono", monospace;
+    font-family: var(--channel-font-data);
     font-size: 44px;
     font-weight: 600;
     line-height: 1;
@@ -193,7 +186,7 @@ body[data-page="knowledge"] a {
 
 .knowledge-hero-stats span {
     color: rgba(255, 255, 255, 0.7);
-    font-family: Newsreader, "Noto Serif SC", serif;
+    font-family: var(--channel-font-caption);
     font-size: 12px;
     letter-spacing: 0.2em;
 }
@@ -203,7 +196,7 @@ body[data-page="knowledge"] a {
     grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 14px;
     padding: 40px 80px;
-    border-bottom: 1px solid var(--knowledge-faint);
+    border-bottom: 1px solid var(--channel-line);
 }
 
 .knowledge-grade-tile {
@@ -211,7 +204,7 @@ body[data-page="knowledge"] a {
     gap: 8px;
     min-width: 0;
     padding: 16px;
-    border: 1px solid var(--knowledge-faint);
+    border: 1px solid var(--channel-line);
     background: #ffffff;
     text-decoration: none;
     font: inherit;
@@ -221,8 +214,8 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-grade-tile.is-active {
-    border-color: var(--knowledge-blue);
-    background: var(--knowledge-blue);
+    border-color: var(--channel-blue);
+    background: var(--channel-blue);
 }
 
 .knowledge-grade-tile.is-active strong,
@@ -235,15 +228,15 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-grade-tile strong {
-    color: var(--knowledge-blue);
-    font-family: "Geist Mono", monospace;
+    color: var(--channel-blue);
+    font-family: var(--channel-font-data);
     font-size: 18px;
     line-height: 1.2;
     letter-spacing: -0.02em;
 }
 
 .knowledge-grade-tile span {
-    color: var(--knowledge-muted);
+    color: var(--channel-muted);
     font-size: 11px;
     line-height: 1.4;
 }
@@ -270,8 +263,8 @@ body[data-page="knowledge"] a {
 .knowledge-grade-intro h2,
 .knowledge-subject-header h1 {
     margin: 0;
-    color: var(--knowledge-ink);
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-weight: 700;
     letter-spacing: -0.02em;
 }
@@ -290,7 +283,7 @@ body[data-page="knowledge"] a {
 .knowledge-subject-header > p {
     max-width: 900px;
     margin: 0;
-    color: var(--knowledge-muted);
+    color: var(--channel-muted);
     font-size: 15px;
     line-height: 1.6;
 }
@@ -319,7 +312,7 @@ body[data-page="knowledge"] a {
     display: grid;
     gap: 12px;
     min-width: 0;
-    border: 1px solid var(--knowledge-faint);
+    border: 1px solid var(--channel-line);
     background: #ffffff;
     color: inherit;
     text-decoration: none;
@@ -334,15 +327,15 @@ body[data-page="knowledge"] a {
 .knowledge-index-card > span {
     width: fit-content;
     padding: 3px 8px;
-    background: var(--knowledge-blue-soft);
-    color: var(--knowledge-ink);
-    font-family: "Geist Mono", monospace;
+    background: var(--channel-blue-soft);
+    color: var(--channel-text);
+    font-family: var(--channel-font-data);
     font-size: 11px;
 }
 
 .knowledge-subject-card strong {
-    color: var(--knowledge-ink);
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-size: 20px;
     line-height: 1.15;
     letter-spacing: -0.02em;
@@ -354,7 +347,7 @@ body[data-page="knowledge"] a {
 .knowledge-index-card p,
 .knowledge-grade-focus p {
     margin: 0;
-    color: var(--knowledge-muted);
+    color: var(--channel-muted);
     font-size: 12px;
     line-height: 1.5;
 }
@@ -362,15 +355,15 @@ body[data-page="knowledge"] a {
 .knowledge-subject-card em,
 .knowledge-hot-card em {
     align-self: end;
-    color: var(--knowledge-blue);
+    color: var(--channel-blue);
     font-style: normal;
     font-size: 12px;
     font-weight: 700;
 }
 
 .knowledge-learning-zone {
-    border-top: 1px solid var(--knowledge-faint);
-    border-bottom: 1px solid var(--knowledge-faint);
+    border-top: 1px solid var(--channel-line);
+    border-bottom: 1px solid var(--channel-line);
 }
 
 .knowledge-section-head {
@@ -386,7 +379,7 @@ body[data-page="knowledge"] a {
     align-items: center;
     min-height: 33px;
     padding: 0 2px;
-    color: var(--knowledge-blue);
+    color: var(--channel-blue);
     font-size: 12px;
     font-weight: 700;
     text-decoration: none;
@@ -402,14 +395,14 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-path-card strong {
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
     font-size: 17px;
     line-height: 1.25;
 }
 
 .knowledge-path-card span {
-    color: var(--knowledge-blue);
-    font-family: "Geist Mono", monospace;
+    color: var(--channel-blue);
+    font-family: var(--channel-font-data);
     font-size: 11px;
 }
 
@@ -420,18 +413,18 @@ body[data-page="knowledge"] a {
 .knowledge-hot-card {
     min-height: 162px;
     padding: 20px;
-    background: var(--knowledge-black);
+    background: var(--channel-ink);
 }
 
 .knowledge-hot-card span {
-    color: var(--knowledge-blue-soft);
-    font-family: "Geist Mono", monospace;
+    color: var(--channel-blue-soft);
+    font-family: var(--channel-font-data);
     font-size: 11px;
 }
 
 .knowledge-hot-card strong {
     color: #ffffff;
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
     font-size: 18px;
     line-height: 1.25;
 }
@@ -444,7 +437,7 @@ body[data-page="knowledge"] a {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 340px;
     gap: 40px;
-    border-top: 1px solid var(--knowledge-faint);
+    border-top: 1px solid var(--channel-line);
 }
 
 .knowledge-tips-main {
@@ -463,20 +456,20 @@ body[data-page="knowledge"] a {
     grid-template-columns: 4px minmax(0, 500px);
     gap: 14px;
     padding: 10px 0;
-    border-bottom: 1px solid var(--knowledge-faint);
+    border-bottom: 1px solid var(--channel-line);
 }
 
 .knowledge-tip-list article > span {
     width: 4px;
     height: 16px;
     margin-top: 10px;
-    background: var(--knowledge-blue);
+    background: var(--channel-blue);
 }
 
 .knowledge-tip-list strong {
     display: block;
     margin-bottom: 6px;
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
 }
 
 .knowledge-updates-card {
@@ -484,14 +477,14 @@ body[data-page="knowledge"] a {
     align-content: start;
     gap: 14px;
     padding: 24px;
-    background: var(--knowledge-black);
+    background: var(--channel-ink);
     color: #ffffff;
 }
 
 .knowledge-updates-card h3 {
     margin: 0;
     color: #ffffff;
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
     font-size: 18px;
 }
 
@@ -505,7 +498,7 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-updates-card p span {
-    color: var(--knowledge-blue);
+    color: var(--channel-blue);
 }
 
 .knowledge-breadcrumbs {
@@ -513,7 +506,7 @@ body[data-page="knowledge"] a {
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    color: var(--knowledge-muted);
+    color: var(--channel-muted);
     font-size: 11px;
 }
 
@@ -525,7 +518,7 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-breadcrumbs em {
-    color: var(--knowledge-blue);
+    color: var(--channel-blue);
     font-weight: 700;
 }
 
@@ -533,7 +526,7 @@ body[data-page="knowledge"] a {
 .knowledge-subject-header {
     display: grid;
     gap: 20px;
-    border-bottom: 1px solid var(--knowledge-faint);
+    border-bottom: 1px solid var(--channel-line);
 }
 
 .knowledge-grade-hero h1,
@@ -558,8 +551,8 @@ body[data-page="knowledge"] a {
 
 .knowledge-grade-stats strong,
 .knowledge-subject-stats strong {
-    color: var(--knowledge-ink);
-    font-family: "Geist Mono", monospace;
+    color: var(--channel-text);
+    font-family: var(--channel-font-data);
     font-size: 22px;
     font-weight: 600;
     line-height: 1.15;
@@ -567,8 +560,8 @@ body[data-page="knowledge"] a {
 
 .knowledge-grade-stats span,
 .knowledge-subject-stats span {
-    color: var(--knowledge-muted);
-    font-family: Newsreader, "Noto Serif SC", serif;
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
     font-size: 10px;
     letter-spacing: 0.18em;
 }
@@ -576,7 +569,7 @@ body[data-page="knowledge"] a {
 .knowledge-grade-stats p {
     max-width: 140px;
     margin: 0;
-    color: var(--knowledge-muted);
+    color: var(--channel-muted);
     font-size: 11px;
     line-height: 1.4;
 }
@@ -594,8 +587,8 @@ body[data-page="knowledge"] a {
 
 .knowledge-grade-focus {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 1px solid var(--knowledge-faint);
-    border-bottom: 1px solid var(--knowledge-faint);
+    border-top: 1px solid var(--channel-line);
+    border-bottom: 1px solid var(--channel-line);
 }
 
 .knowledge-grade-focus article {
@@ -604,15 +597,15 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-grade-focus span {
-    color: var(--knowledge-blue);
-    font-family: Newsreader, "Noto Serif SC", serif;
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
     font-size: 12px;
     letter-spacing: 0.18em;
 }
 
 .knowledge-grade-focus strong {
-    color: var(--knowledge-ink);
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-size: 20px;
 }
 
@@ -630,14 +623,14 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-index-card strong {
-    color: var(--knowledge-ink);
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-size: 18px;
 }
 
 .knowledge-index-card em {
     width: fit-content;
-    color: var(--knowledge-blue);
+    color: var(--channel-blue);
     font-style: normal;
     font-size: 12px;
     font-weight: 700;
@@ -654,13 +647,13 @@ body[data-page="knowledge"] a {
 
 .knowledge-list-section li {
     padding: 0 0 12px 18px;
-    border-bottom: 1px solid var(--knowledge-faint);
-    color: var(--knowledge-muted);
+    border-bottom: 1px solid var(--channel-line);
+    color: var(--channel-muted);
     line-height: 1.65;
 }
 
 .knowledge-list-section li::marker {
-    color: var(--knowledge-blue);
+    color: var(--channel-blue);
 }
 
 .knowledge-subject-title-row {
@@ -672,9 +665,9 @@ body[data-page="knowledge"] a {
 .knowledge-subject-title-row > span {
     flex: 0 0 auto;
     padding: 4px 10px;
-    background: var(--knowledge-blue-soft);
-    color: var(--knowledge-ink);
-    font-family: Newsreader, "Noto Serif SC", serif;
+    background: var(--channel-blue-soft);
+    color: var(--channel-text);
+    font-family: var(--channel-font-caption);
     font-size: 10px;
     letter-spacing: 0.2em;
 }
@@ -700,7 +693,7 @@ body[data-page="knowledge"] a {
     gap: 16px;
     min-width: 0;
     padding-bottom: 28px;
-    border-bottom: 1px solid var(--knowledge-faint);
+    border-bottom: 1px solid var(--channel-line);
 }
 
 .knowledge-detail-main h1,
@@ -708,8 +701,8 @@ body[data-page="knowledge"] a {
 .knowledge-detail-main h3,
 .knowledge-detail-main h4 {
     margin: 0;
-    color: var(--knowledge-ink);
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     letter-spacing: -0.02em;
 }
 
@@ -726,7 +719,7 @@ body[data-page="knowledge"] a {
 .knowledge-detail-main p,
 .knowledge-detail-main li,
 .knowledge-detail-main td {
-    color: var(--knowledge-muted);
+    color: var(--channel-muted);
     line-height: 1.72;
 }
 
@@ -749,7 +742,7 @@ body[data-page="knowledge"] a {
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
-    border: 1px solid var(--knowledge-faint);
+    border: 1px solid var(--channel-line);
     border-collapse: collapse;
     background: #ffffff;
 }
@@ -758,13 +751,13 @@ body[data-page="knowledge"] a {
 .knowledge-detail-main td {
     min-width: 140px;
     padding: 12px 14px;
-    border: 1px solid var(--knowledge-faint);
+    border: 1px solid var(--channel-line);
     text-align: left;
     vertical-align: top;
 }
 
 .knowledge-detail-main th {
-    color: var(--knowledge-ink);
+    color: var(--channel-text);
     background: #f7f8fa;
     font-weight: 700;
 }
@@ -787,17 +780,17 @@ body[data-page="knowledge"] a {
     display: grid;
     gap: 8px;
     padding: 14px;
-    border: 1px solid var(--knowledge-faint);
+    border: 1px solid var(--channel-line);
     background: #ffffff;
 }
 
 .knowledge-detail-main .summary-label {
-    color: var(--knowledge-muted);
+    color: var(--channel-muted);
     font-size: 12px;
 }
 
 .knowledge-detail-main .summary-value {
-    color: var(--knowledge-ink);
+    color: var(--channel-text);
 }
 
 .knowledge-detail-sidebar {
@@ -812,20 +805,20 @@ body[data-page="knowledge"] a {
     display: grid;
     gap: 12px;
     padding: 20px;
-    border: 1px solid var(--knowledge-faint);
+    border: 1px solid var(--channel-line);
     background: #ffffff;
 }
 
 .knowledge-detail-sidebar section.is-dark {
-    border-color: var(--knowledge-black);
-    background: var(--knowledge-black);
+    border-color: var(--channel-ink);
+    background: var(--channel-ink);
     color: #ffffff;
 }
 
 .knowledge-detail-sidebar h2 {
     margin: 0;
     color: inherit;
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
     font-size: 17px;
 }
 
@@ -835,7 +828,7 @@ body[data-page="knowledge"] a {
     justify-content: space-between;
     gap: 12px;
     padding: 8px 0;
-    border-bottom: 1px solid var(--knowledge-faint);
+    border-bottom: 1px solid var(--channel-line);
     color: inherit;
     font-size: 13px;
     text-decoration: none;
@@ -850,17 +843,17 @@ body[data-page="knowledge"] a {
     display: grid;
     gap: 4px;
     padding: 8px 12px;
-    border: 1px solid var(--knowledge-faint);
+    border: 1px solid var(--channel-line);
 }
 
 .knowledge-detail-sidebar article span {
-    color: var(--knowledge-muted);
+    color: var(--channel-muted);
     font-size: 11px;
 }
 
 .knowledge-detail-sidebar article strong {
-    color: var(--knowledge-ink);
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
 }
 
 .knowledge-color-blocks {
@@ -871,16 +864,16 @@ body[data-page="knowledge"] a {
 
 .knowledge-color-blocks span:nth-child(1),
 .knowledge-color-blocks span:nth-child(4) {
-    background: var(--knowledge-blue);
+    background: var(--channel-blue);
 }
 
 .knowledge-color-blocks span:nth-child(2),
 .knowledge-color-blocks span:nth-child(5) {
-    background: var(--knowledge-blue-soft);
+    background: var(--channel-blue-soft);
 }
 
 .knowledge-color-blocks span:nth-child(3) {
-    background: var(--knowledge-black);
+    background: var(--channel-ink);
 }
 
 .knowledge-footer {
@@ -889,7 +882,7 @@ body[data-page="knowledge"] a {
     justify-content: space-between;
     gap: 24px;
     padding: 40px 80px;
-    background: var(--knowledge-black);
+    background: var(--channel-ink);
     color: #ffffff;
 }
 
@@ -899,7 +892,7 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-footer strong {
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
     font-size: 20px;
 }
 
@@ -907,7 +900,7 @@ body[data-page="knowledge"] a {
 .knowledge-footer p {
     margin: 0;
     color: rgba(255, 255, 255, 0.42);
-    font-family: Newsreader, "Noto Serif SC", serif;
+    font-family: var(--channel-font-caption);
     font-size: 10px;
     letter-spacing: 0.24em;
 }

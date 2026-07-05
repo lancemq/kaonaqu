@@ -2,8 +2,8 @@ body[data-page="schools"] .compare-aerial-page {
     width: min(100%, 1440px);
     margin: 0 auto;
     overflow: hidden;
-    background: var(--schools-paper);
-    color: var(--schools-text);
+    background: var(--channel-paper);
+    color: var(--channel-text);
 }
 
 body[data-page="schools"] .compare-aerial-page a {
@@ -14,7 +14,7 @@ body[data-page="schools"] .compare-aerial-page a {
 body[data-page="schools"] .compare-aerial-hero {
     position: relative;
     min-height: 360px;
-    background: var(--schools-ink);
+    background: var(--channel-ink);
     color: #fff;
     isolation: isolate;
 }
@@ -59,12 +59,12 @@ body[data-page="schools"] .compare-aerial-breadcrumb {
 }
 
 body[data-page="schools"] .compare-aerial-breadcrumb span {
-    font-family: var(--schools-font-data);
+    font-family: var(--channel-font-data);
     font-size: 10px;
 }
 
 body[data-page="schools"] .compare-aerial-breadcrumb strong {
-    color: var(--schools-blue-soft);
+    color: var(--channel-blue-soft);
 }
 
 body[data-page="schools"] .compare-aerial-kicker {
@@ -76,26 +76,26 @@ body[data-page="schools"] .compare-aerial-kicker {
 body[data-page="schools"] .compare-aerial-kicker span {
     width: 6px;
     height: 6px;
-    background: var(--schools-blue);
+    background: var(--channel-blue);
 }
 
 body[data-page="schools"] .compare-aerial-kicker p {
     margin: 0;
-    color: var(--schools-blue);
-    font-family: var(--schools-font-caption);
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
     font-size: 12px;
     letter-spacing: 4px;
 }
 
 body[data-page="schools"] .compare-aerial-hero .compare-aerial-kicker p,
 body[data-page="schools"] .compare-aerial-insight .compare-aerial-kicker p {
-    color: var(--schools-blue-soft);
+    color: var(--channel-blue-soft);
 }
 
 body[data-page="schools"] .compare-aerial-hero h1 {
     margin: 0;
     color: #fff;
-    font-family: var(--schools-font-heading);
+    font-family: var(--channel-font-heading);
     font-size: clamp(40px, 5vw, 48px);
     font-weight: 700;
     line-height: 1.06;
@@ -117,7 +117,7 @@ body[data-page="schools"] .compare-aerial-selectbar {
     gap: 20px;
     min-height: 89px;
     padding: 30px 80px 20px;
-    border-bottom: 1px solid var(--schools-line);
+    border-bottom: 1px solid var(--channel-line);
     background: #fff;
 }
 
@@ -135,14 +135,14 @@ body[data-page="schools"] .compare-aerial-selected span {
     gap: 8px;
     min-height: 39px;
     padding: 0 20px;
-    background: var(--schools-ink);
+    background: var(--channel-ink);
     color: #fff;
     font-size: 13px;
     font-weight: 600;
 }
 
 body[data-page="schools"] .compare-aerial-selected span.is-example {
-    background: var(--schools-ink);
+    background: var(--channel-ink);
 }
 
 body[data-page="schools"] .compare-aerial-selected button {
@@ -152,13 +152,13 @@ body[data-page="schools"] .compare-aerial-selected button {
     background: transparent;
     color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
-    font: 700 14px/1 var(--schools-font-data);
+    font: 700 14px/1 var(--channel-font-data);
 }
 
 body[data-page="schools"] .compare-aerial-search {
     width: min(100%, 230px);
     min-height: 39px;
-    border: 1px solid var(--schools-line);
+    border: 1px solid var(--channel-line);
     background: #fff;
 }
 
@@ -169,21 +169,21 @@ body[data-page="schools"] .compare-aerial-search input {
     outline: 0;
     padding: 0 14px;
     background: transparent;
-    color: var(--schools-text);
-    font: 13px/1 var(--schools-font-body);
+    color: var(--channel-text);
+    font: 13px/1 var(--channel-font-body);
 }
 
 body[data-page="schools"] .compare-aerial-search input::placeholder {
-    color: var(--schools-muted);
+    color: var(--channel-muted);
 }
 
 body[data-page="schools"] .compare-aerial-clear {
     min-height: 37px;
     border: 0;
     background: transparent;
-    color: var(--schools-muted);
+    color: var(--channel-muted);
     padding: 0;
-    font: 12px/1 var(--schools-font-body);
+    font: 12px/1 var(--channel-font-body);
     cursor: pointer;
 }
 
@@ -203,7 +203,7 @@ body[data-page="schools"] .compare-aerial-suggestions {
     margin: 0;
     padding: 0;
     list-style: none;
-    border: 1px solid var(--schools-line);
+    border: 1px solid var(--channel-line);
     background: #fff;
     box-shadow: 0 18px 30px rgba(0, 0, 0, 0.08);
 }
@@ -216,10 +216,10 @@ body[data-page="schools"] .compare-aerial-suggestions button {
     width: 100%;
     min-height: 48px;
     border: 0;
-    border-bottom: 1px solid var(--schools-line);
+    border-bottom: 1px solid var(--channel-line);
     background: #fff;
     padding: 10px 16px;
-    color: var(--schools-text);
+    color: var(--channel-text);
     text-align: left;
     cursor: pointer;
 }
@@ -229,7 +229,7 @@ body[data-page="schools"] .compare-aerial-suggestions strong {
 }
 
 body[data-page="schools"] .compare-aerial-suggestions span {
-    color: var(--schools-muted);
+    color: var(--channel-muted);
     font-size: 12px;
     white-space: nowrap;
 }
@@ -247,7 +247,7 @@ body[data-page="schools"] .compare-aerial-row {
     display: grid;
     grid-template-columns: 160px repeat(var(--compare-cols), minmax(0, 1fr));
     min-height: 48px;
-    border-bottom: 1px solid var(--schools-line);
+    border-bottom: 1px solid var(--channel-line);
 }
 
 body[data-page="schools"] .compare-aerial-row > div {
@@ -255,14 +255,14 @@ body[data-page="schools"] .compare-aerial-row > div {
     align-items: center;
     min-width: 0;
     padding: 14px 24px;
-    color: var(--schools-text);
+    color: var(--channel-text);
     font-size: 14px;
     line-height: 1.45;
 }
 
 body[data-page="schools"] .compare-aerial-row > div:first-child {
-    color: var(--schools-muted);
-    font-family: var(--schools-font-caption);
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -270,35 +270,35 @@ body[data-page="schools"] .compare-aerial-row > div:first-child {
 
 body[data-page="schools"] .compare-aerial-row-head {
     min-height: 54px;
-    background: var(--schools-ink);
+    background: var(--channel-ink);
 }
 
 body[data-page="schools"] .compare-aerial-row-head > div {
     color: #fff;
-    font-family: var(--schools-font-heading);
+    font-family: var(--channel-font-heading);
     font-size: 15px;
     font-weight: 700;
 }
 
 body[data-page="schools"] .compare-aerial-row-head > div:first-child {
     color: rgba(255, 255, 255, 0.6);
-    font-family: var(--schools-font-caption);
+    font-family: var(--channel-font-caption);
     font-size: 10px;
 }
 
 body[data-page="schools"] .compare-aerial-row.is-strong {
-    background: var(--schools-ink);
+    background: var(--channel-ink);
 }
 
 body[data-page="schools"] .compare-aerial-row.is-strong > div {
-    color: var(--schools-blue);
-    font-family: var(--schools-font-data);
+    color: var(--channel-blue);
+    font-family: var(--channel-font-data);
     font-weight: 700;
 }
 
 body[data-page="schools"] .compare-aerial-row.is-strong > div:first-child {
-    color: var(--schools-muted);
-    font-family: var(--schools-font-caption);
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
 }
 
 body[data-page="schools"] .compare-aerial-chart-section {
@@ -310,8 +310,8 @@ body[data-page="schools"] .compare-aerial-chart-section {
 
 body[data-page="schools"] .compare-aerial-chart-section h2 {
     margin: 0;
-    color: var(--schools-text);
-    font-family: var(--schools-font-heading);
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-size: 28px;
     line-height: 1.15;
 }
@@ -321,7 +321,7 @@ body[data-page="schools"] .compare-aerial-chart-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
     padding: 30px;
-    border: 1px solid var(--schools-line);
+    border: 1px solid var(--channel-line);
 }
 
 body[data-page="schools"] .compare-aerial-chart-grid article {
@@ -331,8 +331,8 @@ body[data-page="schools"] .compare-aerial-chart-grid article {
 }
 
 body[data-page="schools"] .compare-aerial-chart-grid strong {
-    color: var(--schools-text);
-    font-family: var(--schools-font-heading);
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
     font-size: 14px;
 }
 
@@ -347,15 +347,15 @@ body[data-page="schools"] .compare-aerial-bars {
 
 body[data-page="schools"] .compare-aerial-bars span {
     width: 48px;
-    background: var(--schools-blue);
+    background: var(--channel-blue);
 }
 
 body[data-page="schools"] .compare-aerial-years {
     display: flex;
     justify-content: center;
     gap: 22px;
-    color: var(--schools-muted);
-    font-family: var(--schools-font-data);
+    color: var(--channel-muted);
+    font-family: var(--channel-font-data);
     font-size: 9px;
 }
 
@@ -368,14 +368,14 @@ body[data-page="schools"] .compare-aerial-insight > div {
     display: grid;
     gap: 14px;
     padding: 24px;
-    background: var(--schools-ink);
+    background: var(--channel-ink);
     color: #fff;
 }
 
 body[data-page="schools"] .compare-aerial-insight h2 {
     margin: 0;
     color: #fff;
-    font-family: var(--schools-font-heading);
+    font-family: var(--channel-font-heading);
     font-size: 20px;
 }
 
