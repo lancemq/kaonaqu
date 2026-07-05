@@ -125,7 +125,7 @@ export default async function NewsPage() {
         <span></span>
       </div>
 
-      <footer className="news-aerial-footer">
+      <footer className="channel-footer">
         <div>
           <strong>考哪去</strong>
           <span>SHANGHAI EDUCATION PLATFORM</span>

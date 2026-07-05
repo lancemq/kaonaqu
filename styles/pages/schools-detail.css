@@ -33,7 +33,7 @@ body[data-page="schools"] .school-detail-brand {
 
 body[data-page="schools"] .schools-aerial-brand strong,
 body[data-page="schools"] .school-detail-brand strong,
-body[data-page="schools"] .schools-aerial-footer strong,
+body[data-page="schools"] .channel-footer strong,
 body[data-page="schools"] .school-detail-footer strong {
     color: var(--channel-text);
     font-family: var(--channel-font-heading);
@@ -44,7 +44,7 @@ body[data-page="schools"] .school-detail-footer strong {
 
 body[data-page="schools"] .schools-aerial-brand span,
 body[data-page="schools"] .school-detail-brand span,
-body[data-page="schools"] .schools-aerial-footer span,
+body[data-page="schools"] .channel-footer span,
 body[data-page="schools"] .school-detail-footer span {
     color: var(--channel-muted);
     font-family: var(--channel-font-caption);
@@ -461,7 +461,7 @@ body[data-page="schools"] .schools-aerial-card-side small {
     font-size: 11px;
 }
 
-body[data-page="schools"] .schools-aerial-footer,
+body[data-page="schools"] .channel-footer,
 body[data-page="schools"] .school-detail-footer {
     display: flex;
     align-items: center;
@@ -473,33 +473,33 @@ body[data-page="schools"] .school-detail-footer {
     color: #fff;
 }
 
-body[data-page="schools"] .schools-aerial-footer > div,
+body[data-page="schools"] .channel-footer > div,
 body[data-page="schools"] .school-detail-footer > div {
     display: grid;
     gap: 8px;
 }
 
-body[data-page="schools"] .schools-aerial-footer strong,
+body[data-page="schools"] .channel-footer strong,
 body[data-page="schools"] .school-detail-footer strong {
     color: #fff;
     font-size: 20px;
 }
 
-body[data-page="schools"] .schools-aerial-footer span,
-body[data-page="schools"] .schools-aerial-footer p,
+body[data-page="schools"] .channel-footer span,
+body[data-page="schools"] .channel-footer p,
 body[data-page="schools"] .school-detail-footer span,
 body[data-page="schools"] .school-detail-footer p {
     color: rgba(255, 255, 255, 0.42);
 }
 
-body[data-page="schools"] .schools-aerial-footer nav {
+body[data-page="schools"] .channel-footer nav {
     display: flex;
     gap: 22px;
     color: rgba(255, 255, 255, 0.72);
     font-size: 13px;
 }
 
-body[data-page="schools"] .schools-aerial-footer p,
+body[data-page="schools"] .channel-footer p,
 body[data-page="schools"] .school-detail-footer p {
     margin: 0;
     font-family: var(--channel-font-data);
@@ -803,7 +803,7 @@ body[data-page="schools"] .school-detail-side-card p strong {
     body[data-page="schools"] .schools-aerial-content,
     body[data-page="schools"] .school-detail-header,
     body[data-page="schools"] .school-detail-body,
-    body[data-page="schools"] .schools-aerial-footer,
+    body[data-page="schools"] .channel-footer,
     body[data-page="schools"] .school-detail-footer {
         padding-left: 22px;
         padding-right: 22px;
@@ -811,7 +811,7 @@ body[data-page="schools"] .school-detail-side-card p strong {
 
     body[data-page="schools"] .schools-aerial-nav,
     body[data-page="schools"] .school-detail-nav,
-    body[data-page="schools"] .schools-aerial-footer,
+    body[data-page="schools"] .channel-footer,
     body[data-page="schools"] .school-detail-footer {
         display: grid;
         justify-content: stretch;

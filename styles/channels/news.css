@@ -40,7 +40,7 @@ body[data-page="news"] .news-aerial-brand {
 }
 
 body[data-page="news"] .news-aerial-brand strong,
-body[data-page="news"] .news-aerial-footer strong {
+body[data-page="news"] .channel-footer strong {
     font-family: var(--channel-font-heading);
     font-size: 22px;
     font-weight: 700;
@@ -48,7 +48,7 @@ body[data-page="news"] .news-aerial-footer strong {
 }
 
 body[data-page="news"] .news-aerial-brand span,
-body[data-page="news"] .news-aerial-footer span {
+body[data-page="news"] .channel-footer span {
     color: var(--channel-muted);
     font-family: var(--channel-font-caption);
     font-size: 11px;
@@ -429,40 +429,6 @@ body[data-page="news"] .news-hot-card p {
     line-height: 1.6;
 }
 
-body[data-page="news"] .news-aerial-footer {
-    display: grid;
-    grid-template-columns: minmax(190px, 1fr) auto minmax(120px, 1fr);
-    align-items: center;
-    gap: 36px;
-    padding: 40px 80px;
-    background: var(--channel-ink);
-    color: #fff;
-}
-
-body[data-page="news"] .news-aerial-footer > div {
-    display: grid;
-    gap: 8px;
-}
-
-body[data-page="news"] .news-aerial-footer span,
-body[data-page="news"] .news-aerial-footer p {
-    color: rgba(255, 255, 255, 0.48);
-}
-
-body[data-page="news"] .news-aerial-footer nav {
-    display: flex;
-    gap: 22px;
-    flex-wrap: wrap;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 13px;
-}
-
-body[data-page="news"] .news-aerial-footer p {
-    justify-self: end;
-    margin: 0;
-    font-family: var(--channel-font-data);
-    font-size: 11px;
-}
 
 body[data-page="news"] .news-filter-button,
 body[data-page="news"] .news-article-row,

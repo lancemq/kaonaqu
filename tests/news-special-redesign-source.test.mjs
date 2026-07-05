@@ -34,8 +34,8 @@ test('admission topic pages use the Pencil topic shell', () => {
   const styles = readFileSync('styles/pages/news-special.css', 'utf8');
   assert.match(shell, /NewsAerialNav/);
   assert.match(shell, /NewsAerialFooter/);
-  assert.match(shell, /className=\{`topic-special-page/);
-  assert.match(styles, /\.topic-special-page\.is-zhongkao \.topic-special-hero::before/);
+  assert.match(shell, /className=\{`special-page/);
+  assert.match(styles, /\.special-page\.is-zhongkao \.special-hero::before/);
 
   for (const page of topicPages) {
     const source = readFileSync(page, 'utf8');
@@ -51,7 +51,7 @@ test('policy tool pages use the Pencil policy shell', () => {
   const shell = readFileSync('components/news-policy-tool-ui.js', 'utf8');
   assert.match(shell, /NewsAerialNav/);
   assert.match(shell, /NewsAerialFooter/);
-  assert.match(shell, /className=\{`policy-tool-page/);
+  assert.match(shell, /className=\{`special-page/);
 
   for (const page of policyToolPages) {
     const source = readFileSync(page, 'utf8');

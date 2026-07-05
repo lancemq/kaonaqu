@@ -434,7 +434,7 @@ export default function SchoolsPageClient({
       </section>
 
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <footer className="schools-aerial-footer">
+      <footer className="channel-footer">
         <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
         <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
         <p>© 2026 考哪去</p>

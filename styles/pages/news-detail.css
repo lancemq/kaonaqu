@@ -410,12 +410,12 @@ body[data-page="news"] .news-detail-footer p {
 
 @media (max-width: 1120px) {
     body[data-page="news"] .news-aerial-content,
-    body[data-page="news"] .news-aerial-footer {
+    body[data-page="news"] .channel-footer {
         grid-template-columns: 1fr;
         justify-items: start;
     }
 
-    body[data-page="news"] .news-aerial-footer p {
+    body[data-page="news"] .channel-footer p {
         justify-self: start;
     }
 
@@ -445,7 +445,7 @@ body[data-page="news"] .news-detail-footer p {
 
     body[data-page="news"] .news-aerial-nav,
     body[data-page="news"] .news-aerial-content,
-    body[data-page="news"] .news-aerial-footer,
+    body[data-page="news"] .channel-footer,
     body[data-page="news"] .news-detail-nav,
     body[data-page="news"] .news-detail-header,
     body[data-page="news"] .news-detail-body,

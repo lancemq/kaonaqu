@@ -13,5 +13,5 @@ test('school groups page is no longer wrapped in the legacy SiteShell', () => {
   assert.match(clientSource, /className="school-groups-aerial-hero"/);
   assert.match(clientSource, /className="school-groups-aerial-list"/);
   assert.doesNotMatch(clientSource, /prototype-page-footer/);
-  assert.match(clientSource, /className="schools-aerial-footer"/);
+  assert.match(clientSource, /className="channel-footer"/);
 });

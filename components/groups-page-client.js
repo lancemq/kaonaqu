@@ -381,7 +381,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
       </section>
 
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <footer className="schools-aerial-footer">
+      <footer className="channel-footer">
         <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
         <nav aria-label="页脚导航">
           <Link href="/">首页</Link>

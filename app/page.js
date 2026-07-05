@@ -396,7 +396,7 @@ export default async function HomePage() {
         </aside>
       </section>
 
-      <footer className="home-aerial-footer">
+      <footer className="channel-footer">
         <div>
           <strong>考哪去</strong>
           <span>SHANGHAI EDUCATION PLATFORM</span>

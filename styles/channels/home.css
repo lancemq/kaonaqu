@@ -41,7 +41,7 @@ body[data-page="home"] .home-aerial-brand {
 }
 
 body[data-page="home"] .home-aerial-brand strong,
-body[data-page="home"] .home-aerial-footer strong {
+body[data-page="home"] .channel-footer strong {
     font-family: var(--channel-font-heading);
     font-size: 22px;
     font-weight: 700;
@@ -49,7 +49,7 @@ body[data-page="home"] .home-aerial-footer strong {
 }
 
 body[data-page="home"] .home-aerial-brand span,
-body[data-page="home"] .home-aerial-footer span {
+body[data-page="home"] .channel-footer span {
     color: var(--channel-muted);
     font-family: var(--channel-font-caption);
     font-size: 11px;
@@ -634,40 +634,6 @@ body[data-page="home"] .home-floating-links a {
     font-weight: 700;
 }
 
-body[data-page="home"] .home-aerial-footer {
-    display: grid;
-    grid-template-columns: minmax(190px, 1fr) auto minmax(120px, 1fr);
-    align-items: center;
-    gap: 36px;
-    padding: 40px 80px;
-    background: var(--channel-ink);
-    color: #fff;
-}
-
-body[data-page="home"] .home-aerial-footer > div {
-    display: grid;
-    gap: 8px;
-}
-
-body[data-page="home"] .home-aerial-footer span,
-body[data-page="home"] .home-aerial-footer p {
-    color: rgba(255, 255, 255, 0.48);
-}
-
-body[data-page="home"] .home-aerial-footer nav {
-    display: flex;
-    gap: 22px;
-    flex-wrap: wrap;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 13px;
-}
-
-body[data-page="home"] .home-aerial-footer p {
-    justify-self: end;
-    margin: 0;
-    font-family: var(--channel-font-data);
-    font-size: 11px;
-}
 
 body[data-page="home"] .home-news-card,
 body[data-page="home"] .home-school-card,
@@ -743,7 +709,7 @@ body[data-page="home"] .home-cta-actions a:hover {
     body[data-page="home"] .home-schools-slab,
     body[data-page="home"] .home-knowledge-districts,
     body[data-page="home"] .home-cta-slab,
-    body[data-page="home"] .home-aerial-footer {
+    body[data-page="home"] .channel-footer {
         padding-left: 22px;
         padding-right: 22px;
     }
@@ -803,12 +769,12 @@ body[data-page="home"] .home-cta-actions a:hover {
         padding: 22px;
     }
 
-    body[data-page="home"] .home-aerial-footer {
+    body[data-page="home"] .channel-footer {
         grid-template-columns: 1fr;
         justify-items: start;
     }
 
-    body[data-page="home"] .home-aerial-footer p {
+    body[data-page="home"] .channel-footer p {
         justify-self: start;
     }
 }

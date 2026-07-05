@@ -96,3 +96,39 @@
     opacity: 0.42;
     cursor: not-allowed;
 }
+
+/* Channel footer — shared across home/news/schools (knowledge keeps its own) */
+.channel-footer {
+    display: grid;
+    grid-template-columns: minmax(190px, 1fr) auto minmax(120px, 1fr);
+    align-items: center;
+    gap: 36px;
+    padding: 40px 80px;
+    background: var(--channel-ink);
+    color: #fff;
+}
+
+.channel-footer > div {
+    display: grid;
+    gap: 8px;
+}
+
+.channel-footer span,
+.channel-footer p {
+    color: rgba(255, 255, 255, 0.48);
+}
+
+.channel-footer nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+}
+
+.channel-footer p {
+    justify-self: end;
+    margin: 0;
+    font-family: var(--channel-font-data);
+    font-size: 11px;
+}
