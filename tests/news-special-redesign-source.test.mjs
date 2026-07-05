@@ -16,6 +16,19 @@ const policyToolPages = [
   'app/news/policy-glossary/page.js'
 ];
 
+test('admission timeline uses the Pencil dual-track schedule redesign', () => {
+  const source = readFileSync('app/news/admission-timeline/page.js', 'utf8');
+  const styles = readFileSync('styles/pages/news-special.css', 'utf8');
+
+  assert.match(source, /className="admission-timeline-page"/);
+  assert.match(source, /DUAL TRACK TIMELINE/);
+  assert.match(source, /admission-timeline-spine/);
+  assert.match(source, /getTimelineTrack/);
+  assert.match(source, /is-\$\{track\}/);
+  assert.match(styles, /\.admission-timeline-row/);
+  assert.doesNotMatch(source, /NewsAerialHero/);
+});
+
 test('news special pages use the aerial redesign shell', () => {
   for (const page of aerialPages) {
     const source = readFileSync(page, 'utf8');

@@ -1,11 +1,22 @@
 import Link from 'next/link';
 import admissionTimeline from '../../../lib/admission-timeline';
-import { NewsAerialFooter, NewsAerialHero, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
+import { NewsAerialFooter, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
 
 export const metadata = {
   title: '官方招生日程 | 考哪去',
   description: '集中查看上海升学官方招生日程，包括中招报名、体育类考试、补报名、志愿确认、考试安排和特殊教育招生关键时间节点。'
 };
+
+const TRACK_LABELS = {
+  zhongkao: '中招',
+  gaokao: '高招'
+};
+
+function getTimelineTrack(item) {
+  return /中招|中考|高中阶段|体育统一考试/.test(`${item.tag}${item.title}${item.summary}`)
+    ? 'zhongkao'
+    : 'gaokao';
+}
 
 function getTimelineGroup(item) {
   if (item.tag.includes('体育')) return '体育考试';
@@ -17,111 +28,160 @@ function getTimelineGroup(item) {
 }
 
 function parseWindowValue(windowText) {
-  const dayMatch = String(windowText || '').match(/(\d{1,2})月(\d{1,2})日/);
-  if (dayMatch) return Number(dayMatch[1]) * 100 + Number(dayMatch[2]);
+  const yearMatch = String(windowText || '').match(/(20\d{2})年/);
   const monthMatch = String(windowText || '').match(/(\d{1,2})月/);
-  if (monthMatch) return Number(monthMatch[1]) * 100;
-  return 9999;
+  const dayMatch = String(windowText || '').match(/(\d{1,2})月(\d{1,2})日/);
+  const year = yearMatch ? Number(yearMatch[1]) : 2026;
+  const month = monthMatch ? Number(monthMatch[1]) : 12;
+  const day = dayMatch ? Number(dayMatch[2]) : 1;
+  return year * 10000 + month * 100 + day;
+}
+
+function getMonthLabel(windowText) {
+  const rangeMatch = String(windowText || '').match(/(\d{1,2})月.*?(\d{1,2})月/);
+  if (rangeMatch && rangeMatch[1] !== rangeMatch[2]) return `${rangeMatch[1]}-${rangeMatch[2]}月`;
+  const monthMatch = String(windowText || '').match(/(\d{1,2})月/);
+  return monthMatch ? `${monthMatch[1]}月` : '待定';
+}
+
+function getTimelineRows(items) {
+  const rows = new Map();
+  for (const item of items) {
+    const month = getMonthLabel(item.window);
+    const existing = rows.get(month) || {
+      month,
+      order: parseWindowValue(item.window),
+      zhongkao: [],
+      gaokao: []
+    };
+    existing.order = Math.min(existing.order, parseWindowValue(item.window));
+    existing[getTimelineTrack(item)].push(item);
+    rows.set(month, existing);
+  }
+
+  return [...rows.values()].sort((a, b) => a.order - b.order);
+}
+
+function getTodayValue() {
+  const today = new Date();
+  return today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+}
+
+function TimelineCard({ item, compact = false }) {
+  const track = getTimelineTrack(item);
+  const isPriority = /考试|志愿|录取|确认/.test(`${item.tag}${item.title}`);
+
+  return (
+    <article className={`admission-timeline-card is-${track}${isPriority ? ' is-priority' : ''}${compact ? ' is-compact' : ''}`}>
+      <span>{TRACK_LABELS[track]}{isPriority ? ' · 重点' : ''}</span>
+      <h3>{item.title}</h3>
+      <p>{compact ? item.summary : item.detail || item.summary}</p>
+      <div className="admission-timeline-card-meta">
+        <strong>{item.window}</strong>
+        {item.links?.[0] ? <Link href={item.links[0].href}>{item.links[0].label}</Link> : null}
+      </div>
+    </article>
+  );
 }
 
 export default function AdmissionTimelinePage() {
   const sortedTimeline = [...admissionTimeline].sort((a, b) => parseWindowValue(a.window) - parseWindowValue(b.window));
-  const today = new Date();
-  const todayValue = (today.getMonth() + 1) * 100 + today.getDate();
+  const todayValue = getTodayValue();
   const upcomingItems = sortedTimeline.filter((item) => parseWindowValue(item.window) >= todayValue);
   const recentPastItems = [...sortedTimeline]
     .filter((item) => parseWindowValue(item.window) < todayValue)
     .sort((a, b) => parseWindowValue(b.window) - parseWindowValue(a.window));
   const nextItems = [...upcomingItems, ...recentPastItems].slice(0, 4);
+  const timelineRows = getTimelineRows(sortedTimeline);
+  const zhongkaoCount = sortedTimeline.filter((item) => getTimelineTrack(item) === 'zhongkao').length;
+  const gaokaoCount = sortedTimeline.length - zhongkaoCount;
   const groupSummary = [
-    { label: '报名与确认', count: sortedTimeline.filter((item) => getTimelineGroup(item) === '报名与确认').length, hint: '先看资格、补报名和现场确认。' },
-    { label: '体育考试', count: sortedTimeline.filter((item) => getTimelineGroup(item) === '体育考试').length, hint: '补上体育类专业考试、确认和成绩节点。' },
-    { label: '考试节点', count: sortedTimeline.filter((item) => getTimelineGroup(item) === '考试节点').length, hint: '重点关注听说、实验和笔试安排。' },
-    { label: '志愿录取', count: sortedTimeline.filter((item) => getTimelineGroup(item) === '志愿录取').length, hint: '别漏掉网上填报后的签字确认。' },
-    { label: '特殊教育', count: sortedTimeline.filter((item) => getTimelineGroup(item) === '特殊教育').length, hint: '单独列出特教中招的关键操作时间。' }
+    { label: '关键节点', value: `${sortedTimeline.length}+` },
+    { label: '流程阶段', value: new Set(sortedTimeline.map(getTimelineGroup)).size },
+    { label: '近期优先', value: nextItems.length },
+    { label: '官方来源', value: '公开口径' }
   ];
 
   return (
-    <main className="news-special-aerial-page">
+    <main className="admission-timeline-page">
       <NewsAerialNav />
-      <NewsAerialHero
-        kicker="ADMISSION TIMELINE"
-        title="官方招生日程"
-        description="把上海中考报名、个别报名、体育类考试、志愿确认、统考和特殊教育招生的关键时间节点集中整理。"
-        imageClass="is-timeline"
-      />
 
-      <section className="news-special-aerial-stats" aria-label="招生日程统计">
-        <article><strong>{admissionTimeline.length}</strong><span>关键节点</span></article>
-        <article><strong>{groupSummary.length}</strong><span>流程阶段</span></article>
-        <article><strong>{nextItems.length}</strong><span>近期优先</span></article>
-        <article><strong>官方来源</strong><span>按公开口径整理</span></article>
+      <header className="admission-timeline-hero">
+        <section className="admission-timeline-hero-inner" aria-label="官方招生日程">
+          <div className="admission-timeline-hero-copy">
+            <NewsAerialKicker>ADMISSION TIMELINE</NewsAerialKicker>
+            <h1>官方招生日程</h1>
+            <p>把上海中考报名、体育类考试、志愿确认、统考和特殊教育招生的关键时间节点按时间轴集中整理。</p>
+          </div>
+          <aside className="admission-timeline-hero-stats" aria-label="招生日程统计">
+            {groupSummary.map((item) => (
+              <article key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+          </aside>
+        </section>
+      </header>
+
+      <section className="admission-timeline-priority" aria-label="近期优先节点">
+        <div className="admission-timeline-priority-head">
+          <NewsAerialKicker>NEXT WINDOW</NewsAerialKicker>
+          <h2>近期优先看这些关键时间点</h2>
+          <p>先处理最近窗口，再回到完整时间轴里按中招、高招两条线对照查看。</p>
+        </div>
+        <div className="admission-timeline-priority-grid">
+          {nextItems.map((item) => (
+            <TimelineCard item={item} compact key={`${item.tag}-${item.window}-${item.title}`} />
+          ))}
+        </div>
       </section>
 
-      <section className="news-special-aerial-content" id="timeline-list">
-        <div className="news-special-aerial-main">
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>STAGE MAP</NewsAerialKicker>
-            <h2>先按阶段确认自己现在该看哪一段</h2>
-            <div className="news-special-aerial-card-grid">
-              {groupSummary.slice(0, 3).map((item) => (
-                <article className="news-special-aerial-card" key={item.label}>
-                  <span>{item.label}</span>
-                  <strong>{item.count} 个节点</strong>
-                  <p>{item.hint}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>NEXT</NewsAerialKicker>
-            <h2>近期优先看这些关键时间点</h2>
-            <div className="news-special-aerial-stack">
-              {nextItems.map((item) => (
-                <article className="news-special-aerial-entry" key={`${item.tag}-${item.window}-${item.title}`}>
-                  <span>{item.tag} / {item.window}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FULL TIMELINE</NewsAerialKicker>
-            <h2>完整时间轴</h2>
-            <div>
-              {sortedTimeline.map((item) => (
-                <article className="news-special-aerial-timeline-item" key={`${item.tag}-${item.window}-${item.title}`}>
-                  <div className="news-special-aerial-timeline-date">{item.window}</div>
-                  <div className="news-special-aerial-entry">
-                    <span>{item.tag} / {item.source}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.detail || item.summary}</p>
-                    {item.links?.length ? (
-                      <p>{item.links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}</p>
-                    ) : null}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
+      <section className="admission-timeline-body" id="timeline-list">
+        <div className="admission-timeline-heading">
+          <NewsAerialKicker>DUAL TRACK TIMELINE</NewsAerialKicker>
+          <h2>中招 & 高招关键节点一览</h2>
+          <p>沿时间轴左右展开，蓝色 = 中招，深色 = 高招。上下对照，一目了然。</p>
+          <div className="admission-timeline-legend" aria-label="时间轴图例">
+            <span><i></i>中招 {zhongkaoCount} 个节点</span>
+            <span><i></i>高招 {gaokaoCount} 个节点</span>
+          </div>
         </div>
 
-        <aside className="news-special-aerial-side">
-          <section className="news-special-aerial-side-card is-dark">
-            <NewsAerialKicker>HOW TO USE</NewsAerialKicker>
-            <h2>使用建议</h2>
-            <p>先看“近期优先看”，再回到对应阶段。查到节点后，继续进入中招专题或新闻详情页确认规则和口径。</p>
-          </section>
-          <section className="news-special-aerial-side-card">
-            <span>NEXT</span>
-            <Link href="/news/zhongkao-special">进入中招专题</Link>
-            <Link href="/news/gaokao-special">进入高招专题</Link>
-            <Link href="/news/policy-faq">查看政策问答</Link>
-          </section>
-        </aside>
+        <div className="admission-timeline-spine">
+          {timelineRows.map((row, index) => (
+            <section className="admission-timeline-row" key={row.month}>
+              <div className="admission-timeline-track">
+                {row.zhongkao.map((item) => (
+                  <TimelineCard item={item} key={`${item.tag}-${item.window}-${item.title}`} />
+                ))}
+              </div>
+              <div className="admission-timeline-marker" aria-label={row.month}>
+                <strong>{row.month}</strong>
+                <span className={row.zhongkao.length ? 'is-zhongkao' : 'is-gaokao'}></span>
+                {index < timelineRows.length - 1 ? <i></i> : null}
+              </div>
+              <div className="admission-timeline-track">
+                {row.gaokao.map((item) => (
+                  <TimelineCard item={item} key={`${item.tag}-${item.window}-${item.title}`} />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+
+      <section className="admission-timeline-next">
+        <div>
+          <NewsAerialKicker>NEXT STEP</NewsAerialKicker>
+          <h2>查完时间，再进入对应专题核对规则</h2>
+        </div>
+        <nav aria-label="招生日程相关入口">
+          <Link href="/news/zhongkao-special">中招专题</Link>
+          <Link href="/news/gaokao-special">高招专题</Link>
+          <Link href="/news/policy-faq">政策问答</Link>
+          <Link href="/news/policy-glossary">政策速查</Link>
+        </nav>
       </section>
 
       <NewsAerialFooter />
