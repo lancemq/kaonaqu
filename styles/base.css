@@ -48,8 +48,6 @@ body::after {
 }
 
 /* Shared Typography */
-.news-special-faq-body h3,
-.news-glossary-process-card h3,
 .news-glossary-relation-card h3 {
     margin: 0;
     font-family: "Noto Serif SC", serif;
@@ -95,16 +93,19 @@ a {
     padding: 8px 12px;
     border: 1px solid rgba(26, 29, 41, 0.08);
     border-radius: 999px;
-    background: rgba(26, 29, 41, 0.05);
-    color: var(--muted);
-    font-size: 0.8rem;
+    background: var(--surface-tint);
+    color: var(--coral);
+    font-family: "JetBrains Mono", "Sora", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .text-link {
     display: inline-block;
     margin-top: 14px;
-    color: var(--ink);
+    color: var(--coral);
     text-decoration: none;
     font-weight: 600;
 }
@@ -158,22 +159,4 @@ summary:focus-visible {
     gap: 10px;
     margin-top: 0;
     flex-wrap: wrap;
-}
-
-.pill {
-    border-color: rgba(26, 29, 41, 0.08);
-    background: var(--surface-tint);
-    color: var(--ink);
-}
-
-.pill {
-    color: var(--coral);
-    font-family: "JetBrains Mono", "Sora", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.text-link {
-    color: var(--coral);
 }

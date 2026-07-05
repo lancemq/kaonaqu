@@ -33,14 +33,6 @@ body[data-page="news"] .news-special-aerial-hero.is-timeline::before {
     background-image: url("https://images.unsplash.com/photo-1506784983877-45594efa4cbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
 }
 
-body[data-page="news"] .news-special-aerial-hero.is-faq::before {
-    background-image: url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
-}
-
-body[data-page="news"] .news-special-aerial-hero.is-gaokao::before {
-    background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
-}
-
 body[data-page="news"] .news-special-aerial-hero::after {
     position: absolute;
     inset: 0;
