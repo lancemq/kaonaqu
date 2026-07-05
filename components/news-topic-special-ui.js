@@ -46,8 +46,28 @@ export function NewsTopicSpecialPage({
   sideNotes,
   contentId
 }) {
+  const variantHref = {
+    zhongkao: '/news/zhongkao-special',
+    gaokao: '/news/gaokao-special',
+    sports: '/news/sports-reform'
+  }[variant];
+  const collectionJsonLd = variantHref ? {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    url: `https://kaonaqu.xyz${variantHref}`,
+    description,
+    isPartOf: { '@type': 'WebSite', name: '考哪去', url: 'https://kaonaqu.xyz' }
+  } : null;
+
   return (
     <main className={`special-page ${variant ? `is-${variant}` : ''}`}>
+      {collectionJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+        />
+      ) : null}
       <NewsAerialNav />
 
       <header className="special-hero">
