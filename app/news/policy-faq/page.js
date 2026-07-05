@@ -194,9 +194,26 @@ export const metadata = {
 
 export default function PolicyFaqPage() {
   const faqCount = faqGroups.reduce((count, group) => count + group.items.length, 0);
+  const faqPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqGroups.flatMap((group) => group.items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `${item.shortAnswer} ${item.whyItMatters} ${item.nextStep}`
+      }
+    })))
+  };
 
   return (
-    <PolicyToolShell
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
+      />
+      <PolicyToolShell
       variant="faq"
       hero={{
         kicker: 'POLICY FAQ',
@@ -270,5 +287,6 @@ export default function PolicyFaqPage() {
         </aside>
       </section>
     </PolicyToolShell>
+    </>
   );
 }

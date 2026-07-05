@@ -182,15 +182,26 @@ export default async function HomePage() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: '考哪去',
-    url: 'https://kaonaqu.xyz',
-    description: '上海升学信息平台，聚合中考高考政策、学校信息、区县专题和初高中知识体系。',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://kaonaqu.xyz/schools?query={search_term_string}',
-      'query-input': 'required name=search_term_string'
-    }
+    '@graph': [
+      {
+        '@type': 'Organization',
+        name: '考哪去',
+        url: 'https://kaonaqu.xyz',
+        description: '上海升学信息平台，聚合中考高考政策、学校信息、区县专题和初高中知识体系。',
+        areaServed: '上海'
+      },
+      {
+        '@type': 'WebSite',
+        name: '考哪去',
+        url: 'https://kaonaqu.xyz',
+        description: '上海升学信息平台，聚合中考高考政策、学校信息、区县专题和初高中知识体系。',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://kaonaqu.xyz/schools?query={search_term_string}',
+          'query-input': 'required name=search_term_string'
+        }
+      }
+    ]
   };
 
   return (
