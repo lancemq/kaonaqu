@@ -132,3 +132,27 @@
     font-family: var(--channel-font-data);
     font-size: 11px;
 }
+
+/* Channel kicker — shared section label */
+.channel-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.channel-kicker span {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 auto;
+    background: var(--channel-blue);
+}
+
+.channel-kicker p {
+    margin: 0;
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
