@@ -21,7 +21,7 @@ body[data-page="knowledge"] a {
     background: #ffffff;
 }
 
-.knowledge-site-nav {
+.channel-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,7 +32,7 @@ body[data-page="knowledge"] a {
     background: #ffffff;
 }
 
-.knowledge-brand {
+.channel-brand {
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -40,7 +40,7 @@ body[data-page="knowledge"] a {
     text-decoration: none;
 }
 
-.knowledge-brand strong {
+.channel-brand strong {
     color: var(--channel-text);
     font-family: var(--channel-font-heading);
     font-size: 22px;
@@ -48,7 +48,7 @@ body[data-page="knowledge"] a {
     letter-spacing: -0.02em;
 }
 
-.knowledge-brand span {
+.channel-brand span {
     color: var(--channel-muted);
     font-family: var(--channel-font-caption);
     font-size: 11px;
@@ -56,14 +56,14 @@ body[data-page="knowledge"] a {
     white-space: nowrap;
 }
 
-.knowledge-nav-links {
+.channel-nav-links {
     display: inline-flex;
     align-items: center;
     gap: 4px;
     flex-wrap: wrap;
 }
 
-.knowledge-nav-links a {
+.channel-nav-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -77,9 +77,9 @@ body[data-page="knowledge"] a {
     transition: background 160ms ease, color 160ms ease;
 }
 
-.knowledge-nav-links a:hover,
-.knowledge-nav-links a:focus-visible,
-.knowledge-nav-links a.is-active {
+.channel-nav-links a:hover,
+.channel-nav-links a:focus-visible,
+.channel-nav-links a.is-active {
     background: var(--channel-ink);
     color: #ffffff;
 }
@@ -909,7 +909,7 @@ body[data-page="knowledge"] a {
 }
 
 @media (max-width: 760px) {
-    .knowledge-site-nav,
+    .channel-nav,
     .knowledge-hero-content,
     .knowledge-grade-ribbon,
     .knowledge-section,
@@ -924,25 +924,25 @@ body[data-page="knowledge"] a {
         padding-right: 20px;
     }
 
-    .knowledge-site-nav {
+    .channel-nav {
         align-items: flex-start;
         flex-direction: column;
         min-height: 0;
     }
 
-    .knowledge-brand {
+    .channel-brand {
         flex-direction: column;
         align-items: flex-start;
         gap: 6px;
     }
 
-    .knowledge-nav-links {
+    .channel-nav-links {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .knowledge-nav-links a {
+    .channel-nav-links a {
         min-height: 38px;
         padding: 0 10px;
     }

@@ -69,12 +69,12 @@ export default async function NewsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
 
-      <nav className="news-aerial-nav" aria-label="顶部导航">
-        <Link className="news-aerial-brand" href="/" aria-label="考哪去首页">
+      <nav className="channel-nav" aria-label="顶部导航">
+        <Link className="channel-brand" href="/" aria-label="考哪去首页">
           <strong>考哪去</strong>
           <span>SHANGHAI EDUCATION</span>
         </Link>
-        <div className="news-aerial-nav-links">
+        <div className="channel-nav-links">
           <Link href="/">首页</Link>
           <Link className="is-active" href="/news">新闻</Link>
           <Link href="/schools">学校</Link>

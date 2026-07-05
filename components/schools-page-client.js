@@ -278,12 +278,12 @@ export default function SchoolsPageClient({
 
   return (
     <main className="schools-aerial-page">
-      <nav className="schools-aerial-nav" aria-label="顶部导航">
-        <Link className="schools-aerial-brand" href="/" aria-label="考哪去首页">
+      <nav className="channel-nav" aria-label="顶部导航">
+        <Link className="channel-brand" href="/" aria-label="考哪去首页">
           <strong>考哪去</strong>
           <span>SHANGHAI EDUCATION</span>
         </Link>
-        <div className="schools-aerial-nav-links">
+        <div className="channel-nav-links">
           <Link href="/">首页</Link>
           <Link href="/news">新闻</Link>
           <Link className="is-active" href="/schools">学校</Link>

@@ -23,7 +23,7 @@ body[data-page="news"] .news-aerial-page a {
     text-decoration: none;
 }
 
-body[data-page="news"] .news-aerial-nav {
+body[data-page="news"] .channel-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,13 +33,13 @@ body[data-page="news"] .news-aerial-nav {
     background: #fff;
 }
 
-body[data-page="news"] .news-aerial-brand {
+body[data-page="news"] .channel-brand {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-body[data-page="news"] .news-aerial-brand strong,
+body[data-page="news"] .channel-brand strong,
 body[data-page="news"] .channel-footer strong {
     font-family: var(--channel-font-heading);
     font-size: 22px;
@@ -47,7 +47,7 @@ body[data-page="news"] .channel-footer strong {
     letter-spacing: 0;
 }
 
-body[data-page="news"] .news-aerial-brand span,
+body[data-page="news"] .channel-brand span,
 body[data-page="news"] .channel-footer span {
     color: var(--channel-muted);
     font-family: var(--channel-font-caption);
@@ -56,13 +56,13 @@ body[data-page="news"] .channel-footer span {
     white-space: nowrap;
 }
 
-body[data-page="news"] .news-aerial-nav-links {
+body[data-page="news"] .channel-nav-links {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-body[data-page="news"] .news-aerial-nav-links a {
+body[data-page="news"] .channel-nav-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -72,7 +72,7 @@ body[data-page="news"] .news-aerial-nav-links a {
     font-weight: 500;
 }
 
-body[data-page="news"] .news-aerial-nav-links a.is-active {
+body[data-page="news"] .channel-nav-links a.is-active {
     background: var(--channel-ink);
     color: #fff;
     font-weight: 600;
@@ -432,7 +432,7 @@ body[data-page="news"] .news-hot-card p {
 
 body[data-page="news"] .news-filter-button,
 body[data-page="news"] .news-article-row,
-body[data-page="news"] .news-aerial-nav-links a,
+body[data-page="news"] .channel-nav-links a,
 body[data-page="news"] .news-hot-card a,
 body[data-page="news"] .news-quick-grid a,
 body[data-page="news"] .news-timeline-card a {
@@ -444,7 +444,7 @@ body[data-page="news"] .news-article-row:focus-visible {
     border-top-color: var(--channel-blue);
 }
 
-body[data-page="news"] .news-aerial-nav-links a:hover,
+body[data-page="news"] .channel-nav-links a:hover,
 body[data-page="news"] .news-filter-button:hover {
     transform: translateY(-1px);
 }

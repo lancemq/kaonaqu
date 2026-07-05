@@ -146,12 +146,12 @@ function inferGradeLabel(page) {
 
 function SiteNav() {
   return (
-    <header className="knowledge-site-nav">
-      <Link className="knowledge-brand" href="/">
+    <header className="channel-nav">
+      <Link className="channel-brand" href="/">
         <strong>考哪去</strong>
         <span>SHANGHAI EDUCATION</span>
       </Link>
-      <nav className="knowledge-nav-links" aria-label="主导航">
+      <nav className="channel-nav-links" aria-label="主导航">
         {NAV_ITEMS.map((item) => (
           <Link className={item.href === '/knowledge' ? 'is-active' : undefined} href={item.href} key={item.href}>
             {item.label}

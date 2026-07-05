@@ -13,8 +13,8 @@ body[data-page="schools"] .school-detail-page a {
     text-decoration: none;
 }
 
-body[data-page="schools"] .schools-aerial-nav,
-body[data-page="schools"] .school-detail-nav {
+body[data-page="schools"] .channel-nav,
+body[data-page="schools"] .channel-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,15 +24,15 @@ body[data-page="schools"] .school-detail-nav {
     background: #fff;
 }
 
-body[data-page="schools"] .schools-aerial-brand,
-body[data-page="schools"] .school-detail-brand {
+body[data-page="schools"] .channel-brand,
+body[data-page="schools"] .channel-brand {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-body[data-page="schools"] .schools-aerial-brand strong,
-body[data-page="schools"] .school-detail-brand strong,
+body[data-page="schools"] .channel-brand strong,
+body[data-page="schools"] .channel-brand strong,
 body[data-page="schools"] .channel-footer strong,
 body[data-page="schools"] .school-detail-footer strong {
     color: var(--channel-text);
@@ -42,8 +42,8 @@ body[data-page="schools"] .school-detail-footer strong {
     letter-spacing: 0;
 }
 
-body[data-page="schools"] .schools-aerial-brand span,
-body[data-page="schools"] .school-detail-brand span,
+body[data-page="schools"] .channel-brand span,
+body[data-page="schools"] .channel-brand span,
 body[data-page="schools"] .channel-footer span,
 body[data-page="schools"] .school-detail-footer span {
     color: var(--channel-muted);
@@ -53,15 +53,15 @@ body[data-page="schools"] .school-detail-footer span {
     white-space: nowrap;
 }
 
-body[data-page="schools"] .schools-aerial-nav-links,
-body[data-page="schools"] .school-detail-nav-links {
+body[data-page="schools"] .channel-nav-links,
+body[data-page="schools"] .channel-nav-links {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-body[data-page="schools"] .schools-aerial-nav-links a,
-body[data-page="schools"] .school-detail-nav-links a {
+body[data-page="schools"] .channel-nav-links a,
+body[data-page="schools"] .channel-nav-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -71,8 +71,8 @@ body[data-page="schools"] .school-detail-nav-links a {
     font-weight: 500;
 }
 
-body[data-page="schools"] .schools-aerial-nav-links a.is-active,
-body[data-page="schools"] .school-detail-nav-links a.is-active {
+body[data-page="schools"] .channel-nav-links a.is-active,
+body[data-page="schools"] .channel-nav-links a.is-active {
     background: var(--channel-ink);
     color: #fff;
     font-weight: 600;
@@ -797,8 +797,8 @@ body[data-page="schools"] .school-detail-side-card p strong {
 }
 
 @media (max-width: 760px) {
-    body[data-page="schools"] .schools-aerial-nav,
-    body[data-page="schools"] .school-detail-nav,
+    body[data-page="schools"] .channel-nav,
+    body[data-page="schools"] .channel-nav,
     body[data-page="schools"] .schools-aerial-hero-content,
     body[data-page="schools"] .schools-aerial-content,
     body[data-page="schools"] .school-detail-header,
@@ -809,8 +809,8 @@ body[data-page="schools"] .school-detail-side-card p strong {
         padding-right: 22px;
     }
 
-    body[data-page="schools"] .schools-aerial-nav,
-    body[data-page="schools"] .school-detail-nav,
+    body[data-page="schools"] .channel-nav,
+    body[data-page="schools"] .channel-nav,
     body[data-page="schools"] .channel-footer,
     body[data-page="schools"] .school-detail-footer {
         display: grid;
@@ -818,14 +818,14 @@ body[data-page="schools"] .school-detail-side-card p strong {
         gap: 16px;
     }
 
-    body[data-page="schools"] .schools-aerial-brand,
-    body[data-page="schools"] .school-detail-brand {
+    body[data-page="schools"] .channel-brand,
+    body[data-page="schools"] .channel-brand {
         display: grid;
         gap: 4px;
     }
 
-    body[data-page="schools"] .schools-aerial-nav-links,
-    body[data-page="schools"] .school-detail-nav-links {
+    body[data-page="schools"] .channel-nav-links,
+    body[data-page="schools"] .channel-nav-links {
         overflow-x: auto;
         padding-bottom: 4px;
     }
