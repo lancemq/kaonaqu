@@ -110,7 +110,7 @@ const SUBJECTS_BY_GRADE = {
 
 function SectionKicker({ label }) {
   return (
-    <div className="knowledge-section-kicker">
+    <div className="channel-kicker">
       <span />
       <em>{label}</em>
     </div>

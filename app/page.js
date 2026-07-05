@@ -165,7 +165,7 @@ function getDistrictHighlights(districts, schools) {
 
 function SectionLabel({ children }) {
   return (
-    <div className="home-section-label">
+    <div className="channel-kicker">
       <span aria-hidden="true"></span>
       <p>{children}</p>
     </div>

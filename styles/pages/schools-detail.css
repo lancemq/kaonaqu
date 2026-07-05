@@ -122,22 +122,22 @@ body[data-page="schools"] .schools-aerial-hero-copy {
     width: min(100%, 580px);
 }
 
-body[data-page="schools"] .schools-aerial-kicker,
-body[data-page="schools"] .school-detail-kicker {
+body[data-page="schools"] .channel-kicker,
+body[data-page="schools"] .channel-kicker {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-body[data-page="schools"] .schools-aerial-kicker span,
-body[data-page="schools"] .school-detail-kicker span {
+body[data-page="schools"] .channel-kicker span,
+body[data-page="schools"] .channel-kicker span {
     width: 6px;
     height: 6px;
     background: var(--channel-blue);
 }
 
-body[data-page="schools"] .schools-aerial-kicker p,
-body[data-page="schools"] .school-detail-kicker p {
+body[data-page="schools"] .channel-kicker p,
+body[data-page="schools"] .channel-kicker p {
     margin: 0;
     color: var(--channel-blue-soft);
     font-family: var(--channel-font-caption);
@@ -145,13 +145,13 @@ body[data-page="schools"] .school-detail-kicker p {
     letter-spacing: 4px;
 }
 
-body[data-page="schools"] .school-detail-kicker p {
+body[data-page="schools"] .channel-kicker p {
     color: var(--channel-blue);
     font-size: 10px;
     letter-spacing: 3px;
 }
 
-body[data-page="schools"] .school-detail-side-card.is-dark .school-detail-kicker p {
+body[data-page="schools"] .school-detail-side-card.is-dark .channel-kicker p {
     color: var(--channel-blue-soft);
 }
 

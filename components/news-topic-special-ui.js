@@ -162,13 +162,13 @@ export function NewsTopicSpecialPage({
 
         <aside className="special-side">
           {sideNotes.map((note, index) => (
-            <section key={note} className={`special-side-card${index === 0 ? ' is-dark' : ''}`}>
+            <section key={note} className={`channel-side-card${index === 0 ? ' is-dark' : ''}`}>
               <TopicSectionLabel>{index === 0 ? 'NOTE' : 'DATE LINE'}</TopicSectionLabel>
               <p>{note}</p>
             </section>
           ))}
 
-          <section className="special-side-card is-dark compact">
+          <section className="channel-side-card is-dark compact">
             <TopicSectionLabel>JUMP</TopicSectionLabel>
             {sideLinks.map((item) => (
               <a key={item.href} href={item.href}>{item.label}</a>

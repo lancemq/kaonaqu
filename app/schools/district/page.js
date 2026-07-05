@@ -71,7 +71,7 @@ function getDistrictFeaturedSchool(district, schools) {
 
 function SectionKicker({ children }) {
   return (
-    <div className="district-channel-kicker">
+    <div className="channel-kicker">
       <span aria-hidden="true" />
       <p>{children}</p>
     </div>
@@ -224,7 +224,7 @@ export default async function DistrictIndexPage() {
         </div>
 
         <aside className="district-channel-sidebar" aria-label="区域频道侧栏">
-          <section className="district-channel-side-card">
+          <section className="channel-side-card">
             <SectionKicker>QUICK FILTER</SectionKicker>
             <h2>快速筛选</h2>
             <Link className="is-active" href="/schools?stage=senior_high">高中学校</Link>
@@ -233,7 +233,7 @@ export default async function DistrictIndexPage() {
             <Link href="/schools?ownership=private">民办学校</Link>
           </section>
 
-          <section className="district-channel-side-card">
+          <section className="channel-side-card">
             <SectionKicker>TOP AREAS</SectionKicker>
             <h2>热门区域</h2>
             {zoneDistricts.slice(0, 5).map((district) => (
@@ -244,7 +244,7 @@ export default async function DistrictIndexPage() {
             ))}
           </section>
 
-          <section className="district-channel-side-card is-dark">
+          <section className="channel-side-card is-dark">
             <SectionKicker>TOOLS</SectionKicker>
             <h2>区域工具</h2>
             {relatedTools.map((tool) => (

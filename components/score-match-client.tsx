@@ -83,7 +83,7 @@ export default function ScoreMatchClient() {
       <header className="score-match-aerial-hero" id="top">
         <section className="score-match-aerial-hero-content" aria-label="估分择校">
           <div className="score-match-aerial-hero-copy">
-            <p className="score-match-aerial-kicker"><span aria-hidden="true"></span>SCORE MATCH</p>
+            <p className="channel-kicker"><span aria-hidden="true"></span>SCORE MATCH</p>
             <h1>估分择校</h1>
             <p>输入中考或高考成绩与所在区域，按学校层级参考区间给出冲刺、匹配、保底三档可填报高中建议。</p>
           </div>
@@ -100,7 +100,7 @@ export default function ScoreMatchClient() {
 
       <section className="score-match-aerial-tools" aria-label="估分条件">
         <div className="score-match-aerial-tools-head">
-          <p className="score-match-aerial-kicker"><span aria-hidden="true"></span>YOUR SCORE</p>
+          <p className="channel-kicker"><span aria-hidden="true"></span>YOUR SCORE</p>
           <h2>输入成绩与区域</h2>
           <p>选择考试类型、填写成绩，可选所在区域缩小范围，生成三档可填报高中建议。</p>
         </div>
@@ -172,7 +172,7 @@ export default function ScoreMatchClient() {
 
       <section className="score-match-aerial-results" aria-label="择校建议">
         <div className="score-match-aerial-section-head">
-          <p className="score-match-aerial-kicker"><span aria-hidden="true"></span>RESULTS</p>
+          <p className="channel-kicker"><span aria-hidden="true"></span>RESULTS</p>
           <h2>择校建议</h2>
           <p>
             {submitted

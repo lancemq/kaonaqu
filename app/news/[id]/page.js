@@ -484,7 +484,7 @@ function formatArticleDate(value) {
 
 function SectionKicker({ children, inverse = false }) {
   return (
-    <div className={`news-detail-kicker${inverse ? ' is-inverse' : ''}`}>
+    <div className={`channel-kicker${inverse ? ' is-inverse' : ''}`}>
       <span aria-hidden="true"></span>
       <p>{children}</p>
     </div>

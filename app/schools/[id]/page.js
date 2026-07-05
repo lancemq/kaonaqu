@@ -360,9 +360,9 @@ export default async function SchoolDetailPage({ params }) {
         </article>
 
         <aside className="school-detail-sidebar">
-          <section className="school-detail-side-card is-dark"><div className="school-detail-kicker"><span></span><p>AT A GLANCE</p></div><h2>基本信息</h2><dl>{profileFacts.slice(0, 5).map(([label, value]) => (<div key={label}><dt>{label}</dt><dd>{value}</dd></div>))}</dl></section>
-          <section className="school-detail-side-card"><div className="school-detail-kicker"><span></span><p>ADMISSION</p></div><h2>升学出口</h2>{admissionRows.map(([label, value]) => <p key={label}><span>{label}</span><strong>{value}</strong></p>)}</section>
-          <section className="school-detail-side-card"><div className="school-detail-kicker"><span></span><p>SIMILAR SCHOOLS</p></div>{relatedSchools.slice(0, 3).map((peer) => (<Link key={peer.id} href={'/schools/' + peer.id}><span>{peer.name}</span><i>→</i></Link>))}</section>
+          <section className="school-detail-side-card is-dark"><div className="channel-kicker"><span></span><p>AT A GLANCE</p></div><h2>基本信息</h2><dl>{profileFacts.slice(0, 5).map(([label, value]) => (<div key={label}><dt>{label}</dt><dd>{value}</dd></div>))}</dl></section>
+          <section className="school-detail-side-card"><div className="channel-kicker"><span></span><p>ADMISSION</p></div><h2>升学出口</h2>{admissionRows.map(([label, value]) => <p key={label}><span>{label}</span><strong>{value}</strong></p>)}</section>
+          <section className="school-detail-side-card"><div className="channel-kicker"><span></span><p>SIMILAR SCHOOLS</p></div>{relatedSchools.slice(0, 3).map((peer) => (<Link key={peer.id} href={'/schools/' + peer.id}><span>{peer.name}</span><i>→</i></Link>))}</section>
         </aside>
       </section>
 

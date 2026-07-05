@@ -84,21 +84,21 @@ body[data-page="knowledge"] a {
     color: #ffffff;
 }
 
-.knowledge-section-kicker {
+.channel-kicker {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     min-width: 0;
 }
 
-.knowledge-section-kicker span {
+.channel-kicker span {
     width: 6px;
     height: 6px;
     flex: 0 0 auto;
     background: var(--channel-blue);
 }
 
-.knowledge-section-kicker em {
+.channel-kicker em {
     color: var(--channel-blue);
     font-family: var(--channel-font-caption);
     font-size: 12px;

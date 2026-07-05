@@ -232,7 +232,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
       <header className="school-groups-aerial-hero" id="top">
         <section className="school-groups-aerial-hero-content" aria-label="上海教育集团专题">
           <div className="school-groups-aerial-hero-copy">
-            <p className="school-groups-aerial-kicker"><span aria-hidden="true"></span>EDUCATION GROUPS</p>
+            <p className="channel-kicker"><span aria-hidden="true"></span>EDUCATION GROUPS</p>
             <h1>教育集团</h1>
             <p>上海自 2014 年起推行学区化集团化办学，通过名校引领、资源共享、课程共建、师资流动等方式，促进优质教育资源均衡分布。</p>
           </div>
@@ -310,7 +310,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
 
       <section className="school-groups-aerial-list" aria-label="主要教育集团">
         <div className="school-groups-aerial-section-head">
-          <p className="school-groups-aerial-kicker"><span aria-hidden="true"></span>MAJOR GROUPS</p>
+          <p className="channel-kicker"><span aria-hidden="true"></span>MAJOR GROUPS</p>
           <h2>主要教育集团</h2>
         </div>
         <div className="school-groups-grid">
@@ -328,7 +328,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
 
       <section className="school-groups-aerial-list" aria-label="区域联盟与特色集团">
         <div className="school-groups-aerial-section-head">
-          <p className="school-groups-aerial-kicker"><span aria-hidden="true"></span>REGIONAL GROUPS</p>
+          <p className="channel-kicker"><span aria-hidden="true"></span>REGIONAL GROUPS</p>
           <h2>区域联盟与特色集团</h2>
           <p>{activeFilterCount ? `当前筛选匹配 ${filteredGroups.length} 个集团。` : `按头部梯队与成员校数量排序，当前展示 ${filteredGroups.length} 个通过校验的集团。`}</p>
         </div>
@@ -369,7 +369,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
 
       <section className="school-groups-aerial-benefits">
         <article>
-          <p className="school-groups-aerial-kicker"><span aria-hidden="true"></span>BENEFITS</p>
+          <p className="channel-kicker"><span aria-hidden="true"></span>BENEFITS</p>
           <h2>为什么要看教育集团</h2>
           <p>集团化办学不是简单看名字，而是观察课程、师资、活动和升学信息如何在成员校之间流动。它能帮助家庭理解一个学校背后的资源网络。</p>
         </article>

@@ -39,7 +39,7 @@ function sortSchoolsBySignal(list) {
 
 function SectionKicker({ children }) {
   return (
-    <div className="district-channel-kicker">
+    <div className="channel-kicker">
       <span aria-hidden="true" />
       <p>{children}</p>
     </div>
@@ -223,7 +223,7 @@ export default async function DistrictSchoolsPage({ params }) {
         </div>
 
         <aside className="district-channel-sidebar" aria-label={`${districtInfo.name}侧栏`}>
-          <section className="district-channel-side-card">
+          <section className="channel-side-card">
             <SectionKicker>STAGE</SectionKicker>
             <h2>学段分布</h2>
             {stageGroups.map((group, index) => (
@@ -234,7 +234,7 @@ export default async function DistrictSchoolsPage({ params }) {
             ))}
           </section>
 
-          <section className="district-channel-side-card">
+          <section className="channel-side-card">
             <SectionKicker>RELATED</SectionKicker>
             <h2>周边区域</h2>
             {relatedDistricts.map((item) => (
@@ -245,7 +245,7 @@ export default async function DistrictSchoolsPage({ params }) {
             ))}
           </section>
 
-          <section className="district-channel-side-card is-dark">
+          <section className="channel-side-card is-dark">
             <SectionKicker>TOOLS</SectionKicker>
             <h2>区域工具</h2>
             <Link href="/schools"><span>学校数据库</span><i>→</i></Link>

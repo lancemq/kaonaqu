@@ -38,7 +38,7 @@ function isRenderablePolicy(policy, currentYear) {
 
 function SectionLabel({ children }) {
   return (
-    <div className="news-section-label">
+    <div className="channel-kicker">
       <span aria-hidden="true"></span>
       <p>{children}</p>
     </div>

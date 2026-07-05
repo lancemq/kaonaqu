@@ -3,7 +3,7 @@ import { NewsAerialFooter, NewsAerialNav } from './news-aerial-ui';
 
 export function PolicyToolLabel({ children }) {
   return (
-    <div className="special-label">
+    <div className="channel-kicker">
       <span aria-hidden="true"></span>
       <p>{children}</p>
     </div>
@@ -64,7 +64,7 @@ export function PolicyToolCards({ kicker, title, items }) {
 
 export function PolicyToolSideCard({ dark = false, label, children }) {
   return (
-    <article className={`special-side-card${dark ? ' is-dark' : ''}`}>
+    <article className={`channel-side-card${dark ? ' is-dark' : ''}`}>
       <PolicyToolLabel>{label}</PolicyToolLabel>
       {children}
     </article>

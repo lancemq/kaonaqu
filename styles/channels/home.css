@@ -156,20 +156,20 @@ body[data-page="home"] .home-hero-copy {
     width: min(100%, 650px);
 }
 
-body[data-page="home"] .home-section-label {
+body[data-page="home"] .channel-kicker {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-body[data-page="home"] .home-section-label span {
+body[data-page="home"] .channel-kicker span {
     width: 6px;
     height: 6px;
     flex: 0 0 auto;
     background: var(--channel-blue);
 }
 
-body[data-page="home"] .home-section-label p {
+body[data-page="home"] .channel-kicker p {
     margin: 0;
     color: var(--channel-blue);
     font-family: var(--channel-font-caption);
@@ -366,7 +366,7 @@ body[data-page="home"] .home-feature-panel p {
     color: #fff;
 }
 
-body[data-page="home"] .home-feature-panel .home-section-label p {
+body[data-page="home"] .home-feature-panel .channel-kicker p {
     color: var(--channel-blue-soft);
 }
 

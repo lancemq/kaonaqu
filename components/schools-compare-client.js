@@ -76,7 +76,7 @@ function getTrendBars(school, index) {
 
 function CompareKicker({ children }) {
   return (
-    <div className="compare-aerial-kicker">
+    <div className="channel-kicker">
       <span aria-hidden="true" />
       <p>{children}</p>
     </div>

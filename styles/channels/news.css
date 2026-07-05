@@ -124,19 +124,19 @@ body[data-page="news"] .news-hero-copy {
     width: min(100%, 600px);
 }
 
-body[data-page="news"] .news-section-label {
+body[data-page="news"] .channel-kicker {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-body[data-page="news"] .news-section-label span {
+body[data-page="news"] .channel-kicker span {
     width: 6px;
     height: 6px;
     background: var(--channel-blue);
 }
 
-body[data-page="news"] .news-section-label p {
+body[data-page="news"] .channel-kicker p {
     margin: 0;
     color: var(--channel-blue);
     font-family: var(--channel-font-caption);
@@ -355,7 +355,7 @@ body[data-page="news"] .news-hot-card {
     color: #fff;
 }
 
-body[data-page="news"] .news-hot-card .news-section-label p {
+body[data-page="news"] .news-hot-card .channel-kicker p {
     color: var(--channel-blue-soft);
 }
 
