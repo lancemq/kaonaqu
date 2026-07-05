@@ -8,7 +8,8 @@ const { loadDataStore } = require('../../../shared/data-store');
 
 export const metadata = {
   title: '高招专题 | 考哪去',
-  description: '集中查看上海高招相关的当年新闻、政策、报名与录取信息，方便家长和学生按专题快速了解。'
+  description: '集中查看上海高招相关的当年新闻、政策、报名与录取信息，方便家长和学生按专题快速了解。',
+  alternates: { canonical: '/news/gaokao-special' }
 };
 
 function getCurrentYear(news, policies) {

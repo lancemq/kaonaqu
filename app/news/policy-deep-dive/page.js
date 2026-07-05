@@ -9,7 +9,8 @@ const { loadDataStore } = require('../../../shared/data-store');
 
 export const metadata = {
   title: '政策深读 | 考哪去',
-  description: '集中查看上海升学当年关键政策文件与解读，帮助家长和学生理解报名、录取、志愿和特殊招生相关规则。'
+  description: '集中查看上海升学当年关键政策文件与解读，帮助家长和学生理解报名、录取、志愿和特殊招生相关规则。',
+  alternates: { canonical: '/news/policy-deep-dive' }
 };
 
 function sanitizePolicyText(text, title = '') {

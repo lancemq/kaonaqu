@@ -4,7 +4,8 @@ import { NewsAerialFooter, NewsAerialKicker, NewsAerialNav } from '../../../comp
 
 export const metadata = {
   title: '官方招生日程 | 考哪去',
-  description: '集中查看上海升学官方招生日程，包括中招报名、体育类考试、补报名、志愿确认、考试安排和特殊教育招生关键时间节点。'
+  description: '集中查看上海升学官方招生日程，包括中招报名、体育类考试、补报名、志愿确认、考试安排和特殊教育招生关键时间节点。',
+  alternates: { canonical: '/news/admission-timeline' }
 };
 
 const TRACK_LABELS = {

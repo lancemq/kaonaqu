@@ -10,7 +10,8 @@ import policyGlossary from '../../../lib/policy-glossary';
 
 export const metadata = {
   title: '政策概念速查 | 考哪去',
-  description: '集中查看上海升学常见政策术语，包括中本贯通、名额到区、名额到校、自主招生录取等重点概念。'
+  description: '集中查看上海升学常见政策术语，包括中本贯通、名额到区、名额到校、自主招生录取等重点概念。',
+  alternates: { canonical: '/news/policy-glossary' }
 };
 
 function groupByPill(items) {
