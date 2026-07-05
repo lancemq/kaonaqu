@@ -3,7 +3,7 @@ import { NewsAerialFooter, NewsAerialNav } from './news-aerial-ui';
 
 export function PolicyToolLabel({ children }) {
   return (
-    <div className="policy-tool-label">
+    <div className="special-label">
       <span aria-hidden="true"></span>
       <p>{children}</p>
     </div>
@@ -12,15 +12,15 @@ export function PolicyToolLabel({ children }) {
 
 export function PolicyToolHero({ variant, kicker, title, description, stats }) {
   return (
-    <header className={`policy-tool-hero is-${variant}`}>
-      <div className="policy-tool-hero-shade" aria-hidden="true"></div>
-      <section className="policy-tool-hero-inner" aria-label={title}>
-        <div className="policy-tool-hero-copy">
+    <header className={`special-hero is-${variant}`}>
+      <div className="special-hero-shade" aria-hidden="true"></div>
+      <section className="special-hero-inner" aria-label={title}>
+        <div className="special-hero-copy">
           <PolicyToolLabel>{kicker}</PolicyToolLabel>
           <h1>{title}</h1>
           <p>{description}</p>
         </div>
-        <aside className="policy-tool-hero-panel" aria-label="专题数据摘要">
+        <aside className="special-hero-panel" aria-label="专题数据摘要">
           {stats.map((item) => (
             <article key={item.label}>
               <strong>{item.value}</strong>
@@ -35,7 +35,7 @@ export function PolicyToolHero({ variant, kicker, title, description, stats }) {
 
 export function PolicyToolShell({ variant, hero, children }) {
   return (
-    <main className={`policy-tool-page is-${variant}`}>
+    <main className={`special-page is-${variant}`}>
       <NewsAerialNav />
       <PolicyToolHero variant={variant} {...hero} />
       {children}
@@ -46,10 +46,10 @@ export function PolicyToolShell({ variant, hero, children }) {
 
 export function PolicyToolCards({ kicker, title, items }) {
   return (
-    <section className="policy-tool-cards">
+    <section className="special-cards">
       <PolicyToolLabel>{kicker}</PolicyToolLabel>
       <h2>{title}</h2>
-      <div className="policy-tool-card-grid">
+      <div className="special-card-grid">
         {items.map((item, index) => (
           <article key={item.title}>
             <span>{`0${index + 1}`}</span>
@@ -64,7 +64,7 @@ export function PolicyToolCards({ kicker, title, items }) {
 
 export function PolicyToolSideCard({ dark = false, label, children }) {
   return (
-    <article className={`policy-tool-side-card${dark ? ' is-dark' : ''}`}>
+    <article className={`special-side-card${dark ? ' is-dark' : ''}`}>
       <PolicyToolLabel>{label}</PolicyToolLabel>
       {children}
     </article>
