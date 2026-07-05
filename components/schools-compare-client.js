@@ -216,9 +216,9 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
     <main className="schools-aerial-page compare-aerial-page">
       <SiteNav />
 
-      <header className="compare-aerial-hero" id="top">
-        <div className="compare-aerial-hero-content">
-          <section className="compare-aerial-hero-copy" aria-label="学校对比工具概览">
+      <header className="channel-hero" id="top">
+        <div className="channel-hero-content">
+          <section className="channel-hero-copy" aria-label="学校对比工具概览">
             <div className="compare-aerial-breadcrumb"><Link href="/schools">学校</Link><span>/</span><strong>学校对比</strong></div>
             <CompareKicker>COMPARE SCHOOLS</CompareKicker>
             <h1>学校对比</h1>

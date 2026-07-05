@@ -229,15 +229,15 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
         </div>
       </nav>
 
-      <header className="school-groups-aerial-hero" id="top">
-        <section className="school-groups-aerial-hero-content" aria-label="上海教育集团专题">
-          <div className="school-groups-aerial-hero-copy">
+      <header className="channel-hero" id="top">
+        <section className="channel-hero-content" aria-label="上海教育集团专题">
+          <div className="channel-hero-copy">
             <p className="channel-kicker"><span aria-hidden="true"></span>EDUCATION GROUPS</p>
             <h1>教育集团</h1>
             <p>上海自 2014 年起推行学区化集团化办学，通过名校引领、资源共享、课程共建、师资流动等方式，促进优质教育资源均衡分布。</p>
           </div>
 
-          <aside className="school-groups-aerial-hero-stats" aria-label="教育集团统计">
+          <aside className="channel-hero-stats" aria-label="教育集团统计">
             <article>
               <strong>{groupsData.length}</strong>
               <span>教育集团</span>

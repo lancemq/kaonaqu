@@ -144,16 +144,16 @@ export default async function DistrictSchoolsPage({ params }) {
       />
       <SiteNav />
 
-      <header className="district-channel-hero district-detail-hero" id="top">
-        <div className="district-channel-hero-content">
-          <section className="district-channel-hero-copy" aria-label={`${districtInfo.name}学校专题概览`}>
+      <header className="channel-hero district-detail-hero" id="top">
+        <div className="channel-hero-content">
+          <section className="channel-hero-copy" aria-label={`${districtInfo.name}学校专题概览`}>
             <div className="district-channel-breadcrumb"><Link href="/schools">学校</Link><span>/</span><Link href="/schools/district">区域频道</Link><span>/</span><strong>{districtInfo.name}</strong></div>
             <SectionKicker>DISTRICT DATABASE</SectionKicker>
             <h1>{districtInfo.name}学校专题</h1>
             <p>{getDistrictSchoolTopic(districtInfo)}</p>
           </section>
 
-          <aside className="district-channel-hero-stats" aria-label={`${districtInfo.name}学校统计`}>
+          <aside className="channel-hero-stats" aria-label={`${districtInfo.name}学校统计`}>
             <article><strong>{districtSchools.length}</strong><span>学校总量</span></article>
             <article><strong>{stageBuckets.senior_high.length}</strong><span>高中样本</span></article>
             <article><strong>{stageBuckets.junior.length}</strong><span>初中样本</span></article>

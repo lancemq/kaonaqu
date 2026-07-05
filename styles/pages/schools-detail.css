@@ -78,7 +78,7 @@ body[data-page="schools"] .channel-nav-links a.is-active {
     font-weight: 600;
 }
 
-body[data-page="schools"] .schools-aerial-hero {
+body[data-page="schools"] .channel-hero {
     position: relative;
     min-height: 420px;
     overflow: hidden;
@@ -87,7 +87,7 @@ body[data-page="schools"] .schools-aerial-hero {
     isolation: isolate;
 }
 
-body[data-page="schools"] .schools-aerial-hero::before {
+body[data-page="schools"] .channel-hero::before {
     position: absolute;
     inset: 0;
     z-index: -2;
@@ -97,7 +97,7 @@ body[data-page="schools"] .schools-aerial-hero::before {
     background-size: cover;
 }
 
-body[data-page="schools"] .schools-aerial-hero::after {
+body[data-page="schools"] .channel-hero::after {
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -105,7 +105,7 @@ body[data-page="schools"] .schools-aerial-hero::after {
     background: rgba(0, 0, 0, 0.5);
 }
 
-body[data-page="schools"] .schools-aerial-hero-content {
+body[data-page="schools"] .channel-hero-content {
     position: absolute;
     inset: 0;
     z-index: 1;
@@ -116,7 +116,7 @@ body[data-page="schools"] .schools-aerial-hero-content {
     padding: 60px 80px;
 }
 
-body[data-page="schools"] .schools-aerial-hero-copy {
+body[data-page="schools"] .channel-hero-copy {
     display: grid;
     gap: 20px;
     width: min(100%, 580px);
@@ -155,7 +155,7 @@ body[data-page="schools"] .school-detail-side-card.is-dark .channel-kicker p {
     color: var(--channel-blue-soft);
 }
 
-body[data-page="schools"] .schools-aerial-hero h1 {
+body[data-page="schools"] .channel-hero h1 {
     margin: 0;
     color: #fff;
     font-family: var(--channel-font-heading);
@@ -165,7 +165,7 @@ body[data-page="schools"] .schools-aerial-hero h1 {
     letter-spacing: 0;
 }
 
-body[data-page="schools"] .schools-aerial-hero-copy > p {
+body[data-page="schools"] .channel-hero-copy > p {
     max-width: 500px;
     margin: 0;
     color: rgba(255, 255, 255, 0.72);
@@ -214,25 +214,25 @@ body[data-page="schools"] .schools-aerial-searchbar button {
     font-weight: 700;
 }
 
-body[data-page="schools"] .schools-aerial-hero-stats {
+body[data-page="schools"] .channel-hero-stats {
     display: grid;
     gap: 20px;
     width: 240px;
 }
 
-body[data-page="schools"] .schools-aerial-hero-stats article {
+body[data-page="schools"] .channel-hero-stats article {
     display: grid;
     gap: 4px;
 }
 
-body[data-page="schools"] .schools-aerial-hero-stats strong {
+body[data-page="schools"] .channel-hero-stats strong {
     color: #fff;
     font-family: var(--channel-font-data);
     font-size: 42px;
     line-height: 1;
 }
 
-body[data-page="schools"] .schools-aerial-hero-stats span {
+body[data-page="schools"] .channel-hero-stats span {
     color: rgba(255, 255, 255, 0.72);
     font-size: 13px;
 }
@@ -786,11 +786,11 @@ body[data-page="schools"] .school-detail-side-card p strong {
         grid-template-columns: 1fr;
     }
 
-    body[data-page="schools"] .schools-aerial-hero-content {
+    body[data-page="schools"] .channel-hero-content {
         display: grid;
     }
 
-    body[data-page="schools"] .schools-aerial-hero-stats {
+    body[data-page="schools"] .channel-hero-stats {
         width: 100%;
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -799,7 +799,7 @@ body[data-page="schools"] .school-detail-side-card p strong {
 @media (max-width: 760px) {
     body[data-page="schools"] .channel-nav,
     body[data-page="schools"] .channel-nav,
-    body[data-page="schools"] .schools-aerial-hero-content,
+    body[data-page="schools"] .channel-hero-content,
     body[data-page="schools"] .schools-aerial-content,
     body[data-page="schools"] .school-detail-header,
     body[data-page="schools"] .school-detail-body,
@@ -830,7 +830,7 @@ body[data-page="schools"] .school-detail-side-card p strong {
         padding-bottom: 4px;
     }
 
-    body[data-page="schools"] .schools-aerial-hero-content {
+    body[data-page="schools"] .channel-hero-content {
         min-height: 520px;
         padding-top: 64px;
         padding-bottom: 42px;

@@ -11,7 +11,7 @@ body[data-page="schools"] .compare-aerial-page a {
     text-decoration: none;
 }
 
-body[data-page="schools"] .compare-aerial-hero {
+body[data-page="schools"] .channel-hero {
     position: relative;
     min-height: 360px;
     background: var(--channel-ink);
@@ -19,7 +19,7 @@ body[data-page="schools"] .compare-aerial-hero {
     isolation: isolate;
 }
 
-body[data-page="schools"] .compare-aerial-hero::before {
+body[data-page="schools"] .channel-hero::before {
     position: absolute;
     inset: 0;
     z-index: -2;
@@ -29,7 +29,7 @@ body[data-page="schools"] .compare-aerial-hero::before {
     background-size: cover;
 }
 
-body[data-page="schools"] .compare-aerial-hero::after {
+body[data-page="schools"] .channel-hero::after {
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -37,14 +37,14 @@ body[data-page="schools"] .compare-aerial-hero::after {
     background: rgba(0, 0, 0, 0.5);
 }
 
-body[data-page="schools"] .compare-aerial-hero-content {
+body[data-page="schools"] .channel-hero-content {
     display: flex;
     align-items: end;
     min-height: 360px;
     padding: 60px 80px 50px;
 }
 
-body[data-page="schools"] .compare-aerial-hero-copy {
+body[data-page="schools"] .channel-hero-copy {
     display: grid;
     gap: 16px;
     width: min(100%, 560px);
@@ -87,12 +87,12 @@ body[data-page="schools"] .channel-kicker p {
     letter-spacing: 4px;
 }
 
-body[data-page="schools"] .compare-aerial-hero .channel-kicker p,
+body[data-page="schools"] .channel-hero .channel-kicker p,
 body[data-page="schools"] .compare-aerial-insight .channel-kicker p {
     color: var(--channel-blue-soft);
 }
 
-body[data-page="schools"] .compare-aerial-hero h1 {
+body[data-page="schools"] .channel-hero h1 {
     margin: 0;
     color: #fff;
     font-family: var(--channel-font-heading);
@@ -102,7 +102,7 @@ body[data-page="schools"] .compare-aerial-hero h1 {
     letter-spacing: 0;
 }
 
-body[data-page="schools"] .compare-aerial-hero-copy > p {
+body[data-page="schools"] .channel-hero-copy > p {
     max-width: 480px;
     margin: 0;
     color: rgba(255, 255, 255, 0.72);
@@ -402,11 +402,11 @@ body[data-page="schools"] .compare-aerial-insight p {
 }
 
 @media (max-width: 760px) {
-    body[data-page="schools"] .compare-aerial-hero {
+    body[data-page="schools"] .channel-hero {
         min-height: 430px;
     }
 
-    body[data-page="schools"] .compare-aerial-hero-content {
+    body[data-page="schools"] .channel-hero-content {
         min-height: 430px;
         padding: 44px 20px;
     }

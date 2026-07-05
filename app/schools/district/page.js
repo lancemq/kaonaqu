@@ -134,16 +134,16 @@ export default async function DistrictIndexPage() {
     <main className="schools-aerial-page district-channel-page">
       <SiteNav />
 
-      <header className="district-channel-hero" id="top">
-        <div className="district-channel-hero-content">
-          <section className="district-channel-hero-copy" aria-label="上海学校区域频道概览">
+      <header className="channel-hero" id="top">
+        <div className="channel-hero-content">
+          <section className="channel-hero-copy" aria-label="上海学校区域频道概览">
             <div className="district-channel-breadcrumb"><Link href="/schools">学校</Link><span>/</span><strong>区域频道</strong></div>
             <SectionKicker>DISTRICT CHANNEL</SectionKicker>
             <h1>上海学校区域频道</h1>
             <p>从区域进入，先看各区学校密度、初高中结构和区域教育特点，再进入具体区县专题和学校详情。</p>
           </section>
 
-          <aside className="district-channel-hero-stats" aria-label="区域频道数据统计">
+          <aside className="channel-hero-stats" aria-label="区域频道数据统计">
             <article><strong>{totals.districts}</strong><span>覆盖区域</span></article>
             <article><strong>{totals.schools}</strong><span>收录学校</span></article>
             <article><strong>{totals.seniorHigh}</strong><span>高中样本</span></article>

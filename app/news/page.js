@@ -82,15 +82,15 @@ export default async function NewsPage() {
         </div>
       </nav>
 
-      <header className="news-hero-slab">
-        <section className="news-hero-content" aria-label="新闻频道概览">
-          <div className="news-hero-copy">
+      <header className="channel-hero">
+        <section className="channel-hero-content" aria-label="新闻频道概览">
+          <div className="channel-hero-copy">
             <SectionLabel>NEWS CHANNEL</SectionLabel>
             <h1>新闻动态</h1>
             <p>实时追踪上海中考、高考最新政策发布与升学新闻，一站式掌握关键信息动态。</p>
           </div>
 
-          <aside className="news-hero-stats" aria-label="新闻统计">
+          <aside className="channel-hero-stats" aria-label="新闻统计">
             <article>
               <span>新闻总数</span>
               <strong>{currentYearNews.length}</strong>

@@ -15,7 +15,7 @@ body[data-page="schools"] .district-channel-page a {
     text-decoration: none;
 }
 
-body[data-page="schools"] .district-channel-hero {
+body[data-page="schools"] .channel-hero {
     position: relative;
     min-height: 380px;
     background: var(--channel-ink);
@@ -23,7 +23,7 @@ body[data-page="schools"] .district-channel-hero {
     isolation: isolate;
 }
 
-body[data-page="schools"] .district-channel-hero::before {
+body[data-page="schools"] .channel-hero::before {
     position: absolute;
     inset: 0;
     z-index: -2;
@@ -33,7 +33,7 @@ body[data-page="schools"] .district-channel-hero::before {
     background-size: cover;
 }
 
-body[data-page="schools"] .district-channel-hero::after {
+body[data-page="schools"] .channel-hero::after {
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -41,7 +41,7 @@ body[data-page="schools"] .district-channel-hero::after {
     background: rgba(0, 0, 0, 0.5);
 }
 
-body[data-page="schools"] .district-channel-hero-content {
+body[data-page="schools"] .channel-hero-content {
     display: flex;
     align-items: end;
     justify-content: space-between;
@@ -50,7 +50,7 @@ body[data-page="schools"] .district-channel-hero-content {
     padding: 36px 80px;
 }
 
-body[data-page="schools"] .district-channel-hero-copy {
+body[data-page="schools"] .channel-hero-copy {
     display: grid;
     gap: 16px;
     width: min(100%, 580px);
@@ -93,12 +93,12 @@ body[data-page="schools"] .channel-kicker p {
     letter-spacing: 4px;
 }
 
-body[data-page="schools"] .district-channel-hero .channel-kicker p,
+body[data-page="schools"] .channel-hero .channel-kicker p,
 body[data-page="schools"] .channel-side-card.is-dark .channel-kicker p {
     color: var(--channel-blue-soft);
 }
 
-body[data-page="schools"] .district-channel-hero h1 {
+body[data-page="schools"] .channel-hero h1 {
     margin: 0;
     color: #fff;
     font-family: var(--channel-font-heading);
@@ -108,7 +108,7 @@ body[data-page="schools"] .district-channel-hero h1 {
     letter-spacing: 0;
 }
 
-body[data-page="schools"] .district-channel-hero-copy > p {
+body[data-page="schools"] .channel-hero-copy > p {
     max-width: 500px;
     margin: 0;
     color: rgba(255, 255, 255, 0.72);
@@ -116,25 +116,25 @@ body[data-page="schools"] .district-channel-hero-copy > p {
     line-height: 1.6;
 }
 
-body[data-page="schools"] .district-channel-hero-stats {
+body[data-page="schools"] .channel-hero-stats {
     display: grid;
     gap: 16px;
     width: 240px;
 }
 
-body[data-page="schools"] .district-channel-hero-stats article {
+body[data-page="schools"] .channel-hero-stats article {
     display: grid;
     gap: 4px;
 }
 
-body[data-page="schools"] .district-channel-hero-stats strong {
+body[data-page="schools"] .channel-hero-stats strong {
     color: #fff;
     font-family: var(--channel-font-data);
     font-size: 42px;
     line-height: 1;
 }
 
-body[data-page="schools"] .district-channel-hero-stats span {
+body[data-page="schools"] .channel-hero-stats span {
     color: rgba(255, 255, 255, 0.72);
     font-size: 13px;
 }
@@ -525,7 +525,7 @@ body[data-page="schools"] .channel-side-card i {
 }
 
 @media (max-width: 760px) {
-    body[data-page="schools"] .district-channel-hero-content,
+    body[data-page="schools"] .channel-hero-content,
     body[data-page="schools"] .district-channel-overview,
     body[data-page="schools"] .district-channel-section,
     body[data-page="schools"] .district-channel-schools {
@@ -533,11 +533,11 @@ body[data-page="schools"] .channel-side-card i {
         padding-right: 20px;
     }
 
-    body[data-page="schools"] .district-channel-hero {
+    body[data-page="schools"] .channel-hero {
         min-height: 520px;
     }
 
-    body[data-page="schools"] .district-channel-hero-content {
+    body[data-page="schools"] .channel-hero-content {
         flex-direction: column;
         align-items: start;
         justify-content: end;
@@ -547,17 +547,17 @@ body[data-page="schools"] .channel-side-card i {
         padding-bottom: 44px;
     }
 
-    body[data-page="schools"] .district-channel-hero h1 {
+    body[data-page="schools"] .channel-hero h1 {
         font-size: 40px;
     }
 
-    body[data-page="schools"] .district-channel-hero-stats {
+    body[data-page="schools"] .channel-hero-stats {
         width: 100%;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
     }
 
-    body[data-page="schools"] .district-channel-hero-stats strong {
+    body[data-page="schools"] .channel-hero-stats strong {
         font-size: 30px;
     }
 

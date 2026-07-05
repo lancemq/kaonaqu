@@ -213,10 +213,10 @@ export default async function HomePage() {
         </div>
       </nav>
 
-      <header className="home-hero-slab">
-        <div className="home-hero-grid" aria-hidden="true"></div>
-        <section className="home-hero-content" aria-label="首页概览">
-          <div className="home-hero-copy">
+      <header className="channel-hero">
+        <div className="channel-hero-grid" aria-hidden="true"></div>
+        <section className="channel-hero-content" aria-label="首页概览">
+          <div className="channel-hero-copy">
             <SectionLabel>SHANGHAI EDUCATION SIGNAL</SectionLabel>
             <h1>上海升学信息，从这里俯瞰全局</h1>
             <p>
@@ -228,7 +228,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <aside className="home-hero-index" aria-label="首页数据摘要">
+          <aside className="channel-hero-stats" aria-label="首页数据摘要">
             <article>
               <span>01 / NEWS</span>
               <strong>{news.length}</strong>

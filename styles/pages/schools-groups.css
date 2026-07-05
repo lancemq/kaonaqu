@@ -195,7 +195,7 @@ body[data-page="schools"] .school-groups-aerial-page a {
     text-decoration: none;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero {
+body[data-page="schools"] .channel-hero {
     position: relative;
     min-height: 420px;
     overflow: hidden;
@@ -204,7 +204,7 @@ body[data-page="schools"] .school-groups-aerial-hero {
     isolation: isolate;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero::before {
+body[data-page="schools"] .channel-hero::before {
     position: absolute;
     inset: 0;
     z-index: -2;
@@ -214,7 +214,7 @@ body[data-page="schools"] .school-groups-aerial-hero::before {
     background-size: cover;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero::after {
+body[data-page="schools"] .channel-hero::after {
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -222,7 +222,7 @@ body[data-page="schools"] .school-groups-aerial-hero::after {
     background: rgba(0, 0, 0, 0.52);
 }
 
-body[data-page="schools"] .school-groups-aerial-hero-content {
+body[data-page="schools"] .channel-hero-content {
     position: absolute;
     inset: 0;
     display: flex;
@@ -232,7 +232,7 @@ body[data-page="schools"] .school-groups-aerial-hero-content {
     padding: 60px 80px 50px;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero-copy {
+body[data-page="schools"] .channel-hero-copy {
     max-width: 680px;
 }
 
@@ -255,7 +255,7 @@ body[data-page="schools"] .channel-kicker span {
     background: #4a9fd8;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero h1 {
+body[data-page="schools"] .channel-hero h1 {
     margin: 20px 0 16px;
     font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
     font-size: clamp(42px, 5vw, 58px);
@@ -263,7 +263,7 @@ body[data-page="schools"] .school-groups-aerial-hero h1 {
     letter-spacing: 0;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero-copy > p:last-child {
+body[data-page="schools"] .channel-hero-copy > p:last-child {
     max-width: 610px;
     margin: 0;
     color: rgba(255, 255, 255, 0.74);
@@ -271,27 +271,27 @@ body[data-page="schools"] .school-groups-aerial-hero-copy > p:last-child {
     line-height: 1.7;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero-stats {
+body[data-page="schools"] .channel-hero-stats {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
     min-width: 420px;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero-stats article {
+body[data-page="schools"] .channel-hero-stats article {
     display: grid;
     gap: 8px;
     padding-top: 16px;
     border-top: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-body[data-page="schools"] .school-groups-aerial-hero-stats strong {
+body[data-page="schools"] .channel-hero-stats strong {
     font-family: "Geist Mono", monospace;
     font-size: 36px;
     line-height: 1;
 }
 
-body[data-page="schools"] .school-groups-aerial-hero-stats span {
+body[data-page="schools"] .channel-hero-stats span {
     color: rgba(255, 255, 255, 0.72);
     font-size: 12px;
 }

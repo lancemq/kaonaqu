@@ -80,14 +80,14 @@ export default function ScoreMatchClient() {
         </div>
       </nav>
 
-      <header className="score-match-aerial-hero" id="top">
-        <section className="score-match-aerial-hero-content" aria-label="估分择校">
-          <div className="score-match-aerial-hero-copy">
+      <header className="channel-hero" id="top">
+        <section className="channel-hero-content" aria-label="估分择校">
+          <div className="channel-hero-copy">
             <p className="channel-kicker"><span aria-hidden="true"></span>SCORE MATCH</p>
             <h1>估分择校</h1>
             <p>输入中考或高考成绩与所在区域，按学校层级参考区间给出冲刺、匹配、保底三档可填报高中建议。</p>
           </div>
-          <aside className="score-match-aerial-hero-stats" aria-label="估分择校统计">
+          <aside className="channel-hero-stats" aria-label="估分择校统计">
             {heroStats.map((item) => (
               <article key={item.label}>
                 <strong>{item.value}</strong>

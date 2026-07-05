@@ -203,16 +203,16 @@ function ChannelHero({ page }) {
   ];
 
   return (
-    <section className="knowledge-channel-hero">
+    <section className="channel-hero">
       <div className="knowledge-hero-bg" />
       <div className="knowledge-hero-tint" />
-      <div className="knowledge-hero-content">
-        <div className="knowledge-hero-copy">
+      <div className="channel-hero-content">
+        <div className="channel-hero-copy">
           <SectionKicker label="KNOWLEDGE SYSTEM" />
           <h1>知识专题</h1>
           <p>{page.hero?.summary || page.description}</p>
         </div>
-        <div className="knowledge-hero-stats" aria-label="知识频道统计">
+        <div className="channel-hero-stats" aria-label="知识频道统计">
           {stats.slice(0, 3).map((stat) => (
             <article key={stat.label}>
               <strong>{stat.value}</strong>

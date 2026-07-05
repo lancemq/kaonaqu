@@ -291,9 +291,9 @@ export default function SchoolsPageClient({
         </div>
       </nav>
 
-      <header className="schools-aerial-hero" id="top">
-        <div className="schools-aerial-hero-content">
-          <section className="schools-aerial-hero-copy" aria-label="学校频道概览">
+      <header className="channel-hero" id="top">
+        <div className="channel-hero-content">
+          <section className="channel-hero-copy" aria-label="学校频道概览">
             <div className="channel-kicker"><span aria-hidden="true"></span><p>SCHOOL DATABASE</p></div>
             <h1>上海学校数据库</h1>
             <p>收录全市 {schools.length.toLocaleString('zh-CN')} 所学校详细信息，按区县、类型精准筛选，全面了解各校特色与升学数据。</p>
@@ -316,7 +316,7 @@ export default function SchoolsPageClient({
             </div>
           </section>
 
-          <aside className="schools-aerial-hero-stats" aria-label="学校数据统计">
+          <aside className="channel-hero-stats" aria-label="学校数据统计">
             <article><strong>{schools.length}</strong><span>收录学校</span></article>
             <article><strong>{districts.length}</strong><span>覆盖区县</span></article>
             <article><strong>{schoolStageTotals.senior_high}</strong><span>高中样本</span></article>
