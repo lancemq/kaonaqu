@@ -1,5 +1,10 @@
-import Link from 'next/link';
-import { NewsAerialFooter, NewsAerialHero, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
+import {
+  PolicyToolCards,
+  PolicyToolLabel,
+  PolicyToolLinks,
+  PolicyToolShell,
+  PolicyToolSideCard
+} from '../../../components/news-policy-tool-ui';
 
 const faqGroups = [
   {
@@ -191,67 +196,45 @@ export default function PolicyFaqPage() {
   const faqCount = faqGroups.reduce((count, group) => count + group.items.length, 0);
 
   return (
-    <main className="news-special-aerial-page">
-      <NewsAerialNav />
-      <NewsAerialHero
-        kicker="POLICY FAQ"
-        title="政策问答"
-        description="按 2026 年上海市教委和市教育考试院公开口径，把中考和高招中最常遇到的资格、时间、批次和信息校准问题整理成行动问答。"
-        imageClass="is-faq"
+    <PolicyToolShell
+      variant="faq"
+      hero={{
+        kicker: 'POLICY FAQ',
+        title: '政策问答',
+        description: '按 2026 年上海市教委和市教育考试院公开口径，把中考和高招中最常遇到的资格、时间、批次和信息校准问题整理成行动问答。',
+        stats: [
+          { value: faqCount, label: '校准问答' },
+          { value: faqGroups.length, label: '判断场景' },
+          { value: '2026', label: '官方口径' }
+        ]
+      }}
+    >
+      <PolicyToolCards
+        kicker="READ FIRST"
+        title="读上海升学政策前，先把这三条顺序记住。"
+        items={faqCalibrationCards}
       />
 
-      <section className="news-special-aerial-stats">
-        <article>
-          <strong>{faqCount}</strong>
-          <span>校准问答</span>
-        </article>
-        <article>
-          <strong>{faqGroups.length}</strong>
-          <span>判断场景</span>
-        </article>
-        <article>
-          <strong>按 2026 口径</strong>
-          <span>覆盖中招与高招关键规则</span>
-        </article>
-        <article>
-          <strong>适合先收藏</strong>
-          <span>配合概念页与深读页一起看</span>
-        </article>
-      </section>
-
-      <section className="news-special-aerial-content" id="faq-list">
-        <section className="news-special-aerial-main">
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>读上海升学政策前，先把这三条顺序记住。</h2>
-            <div className="news-special-brief-grid">
-              {faqCalibrationCards.map((item, index) => (
-                <article key={item.title} className="news-special-aerial-card">
-                  <span>{`0${index + 1}`}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.detail}</p>
-                </article>
-              ))}
-            </div>
-          </section>
+      <section className="policy-tool-content" id="faq-list">
+        <section className="policy-tool-main">
 
           {faqGroups.map((group) => (
-            <section key={group.title} className="news-special-aerial-section">
-              <div className="news-special-section-head">
+            <section key={group.title} className="policy-tool-section">
+              <div className="policy-tool-section-head">
                 <div>
-                  <NewsAerialKicker>FOCUS</NewsAerialKicker>
+                  <PolicyToolLabel>{group.label}</PolicyToolLabel>
                   <h2>{group.title}</h2>
                 </div>
-                <p className="news-special-section-summary">{group.summary}</p>
+                <p>{group.summary}</p>
               </div>
-              <div className="news-special-faq-stack">
+              <div className="policy-faq-stack">
                 {group.items.map((item, index) => (
-                  <article key={item.question} className="news-special-faq-card">
-                    <div className="news-special-faq-index">Q{index + 1}</div>
-                    <div className="news-special-faq-body">
+                  <article key={item.question} className="policy-faq-card">
+                    <div className="policy-faq-index">Q{index + 1}</div>
+                    <div className="policy-faq-body">
                       <h3>{item.question}</h3>
-                      <p className="news-special-faq-answer">{item.shortAnswer}</p>
-                      <div className="news-special-faq-meta">
+                      <p className="policy-faq-answer">{item.shortAnswer}</p>
+                      <div className="policy-faq-meta">
                         <article>
                           <span>为什么重要</span>
                           <p>{item.whyItMatters}</p>
@@ -269,32 +252,23 @@ export default function PolicyFaqPage() {
           ))}
         </section>
 
-        <aside className="news-special-aerial-side">
-          <article className="news-special-aerial-side-card">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
+        <aside className="policy-tool-side">
+          <PolicyToolSideCard label="COMMON MISTAKES" dark>
             <p>把“看到通知”误当成“自己就一定适用”。</p>
             <p>只记志愿个数，不分批次顺序和平行志愿逻辑。</p>
             <p>网上填完就结束，漏掉书面确认。</p>
-          </article>
+          </PolicyToolSideCard>
 
-          <article className="news-special-aerial-side-card">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
+          <PolicyToolSideCard label="SOURCE">
             <p>主要按 2026 年 2 月 27 日上海市教委《高中阶段学校招生工作的若干意见》与 2026 年 3 月 27 日《实施细则》问答整理。</p>
             <p>涉及志愿设置、平行志愿、征求志愿和中职校自主招生说明，也参考上海市教育考试院 2026 年公开口径。</p>
-          </article>
+          </PolicyToolSideCard>
 
-          <article className="news-special-aerial-side-card is-dark">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            {faqLinks.map((link) => (
-              <Link key={link.href} className="news-special-aerial-side-link" href={link.href}>
-                {link.label}
-              </Link>
-            ))}
-          </article>
+          <PolicyToolSideCard label="NEXT" dark>
+            <PolicyToolLinks links={faqLinks} />
+          </PolicyToolSideCard>
         </aside>
       </section>
-
-      <NewsAerialFooter />
-    </main>
+    </PolicyToolShell>
   );
 }

@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import { createRequire } from 'module';
-import { NewsAerialFooter, NewsAerialHero, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
+import { NewsTopicSpecialPage } from '../../../components/news-topic-special-ui';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getPolicyExamType } from '../../../lib/site-utils';
 
@@ -40,6 +39,17 @@ function getDetailHref(item) {
   return item?.newsType ? `/news/${item.id}` : getPolicyDetailHref(item);
 }
 
+function toTopicEntry(item) {
+  return {
+    id: item.id,
+    href: getDetailHref(item),
+    date: item.publishedAt || item.year || '暂无日期',
+    source: item.source?.name || getNewsCategoryLabel(item),
+    title: item.title,
+    summary: item.summary
+  };
+}
+
 export default async function GaokaoSpecialPage() {
   const { news, policies } = await loadDataStore();
   const currentYear = getCurrentYear(news, policies);
@@ -70,7 +80,6 @@ export default async function GaokaoSpecialPage() {
   function getCurrentPhaseLabel() {
     const now = new Date();
     const month = now.getMonth() + 1;
-    const day = now.getDate();
     if (month >= 1 && month <= 3) return '春招考试与成绩公布阶段，建议优先关注春考志愿填报和自主测试安排。';
     if (month === 4 || month === 5) return '综评和强基报名阶段，建议同步跟进高考主流程和学考等级考复习节奏。';
     if (month === 6) return '高考笔试与校测阶段，考后重点关注综合评价校测和志愿填报准备。';
@@ -90,192 +99,37 @@ export default async function GaokaoSpecialPage() {
   ];
 
   return (
-    <main className="news-special-aerial-page">
-      <NewsAerialNav />
-      <NewsAerialHero
-        kicker="GAOKAO SPECIAL"
-        title={`${currentYear} 上海高招专题`}
-        description="面向上海高中升学家庭，把春招、高考、学业考试、体育类和三校生相关信息按路径整理，方便按当前进度快速进入。"
-        imageClass="is-gaokao"
-      />
-
-      <section className="news-special-aerial-stats">
-        <article>
-          <strong>{gaokaoNews.length}</strong>
-          <span>高招新闻</span>
-        </article>
-        <article>
-          <strong>{gaokaoPolicies.length}</strong>
-          <span>相关政策</span>
-        </article>
-        <article>
-          <strong>考试 / 录取</strong>
-          <span>按专题集中查看</span>
-        </article>
-      </section>
-
-      <section className="news-special-aerial-content" id="gaokao-list">
-        <section className="news-special-aerial-main">
-          {leadNews ? (
-            <section className="news-special-aerial-section">
-              <NewsAerialKicker>FOCUS</NewsAerialKicker>
-              <Link className="news-panel-link" href={`/news/${leadNews.id}`}>
-                <h2>{leadNews.title}</h2>
-                <p className="news-glossary-summary">{leadNews.summary || '暂无摘要'}</p>
-              </Link>
-            </section>
-          ) : null}
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>先用这几条官方信息校准高招路径</h2>
-            <div className="news-special-annotation-grid">
-              {keyFacts.map((item) => (
-                <article key={item.title}>
-                  <span>{item.title}</span>
-                  <p>{item.detail}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>按当前阶段，高招专题更适合这样使用</h2>
-            <div className="news-special-brief-grid">
-              {currentChecklist.map((item, index) => (
-                <article key={item} className="news-special-aerial-card">
-                  <span>{`0${index + 1}`}</span>
-                  <p>{item}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>这几份文件决定了今年上海高招几条主要路径</h2>
-            <div className="news-special-aerial-stack">
-              {officialFocus.map((item) => (
-                <Link
-                  key={item.id}
-                  className="news-special-aerial-entry"
-                  href={getDetailHref(item)}
-                >
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
-                    <span>{item.source?.name || getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>先判断自己现在更该进入哪一条高招路径</h2>
-            <div className="news-special-stage-grid">
-              {stageEntries.map((item, index) => (
-                <a key={item.label} className={`news-special-stage-card${index === 1 ? ' news-special-stage-card-warm' : ''}`} href={item.anchor}>
-                  <span>{item.label}</span>
-                  <strong>{item.count} 条内容</strong>
-                  <p>{item.description}</p>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          <section id="gaokao-spring" className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>春考、专科自主招生与征求志愿</h2>
-            <div className="news-special-aerial-stack">
-              {groups.spring.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                    <span>{getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section id="gaokao-exam" className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>高考、学业考试与成绩相关内容</h2>
-            <div className="news-special-aerial-stack">
-              {groups.exam.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                    <span>{getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section id="gaokao-special-track" className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>体育类、三校生与其他专项招生</h2>
-            <div className="news-special-aerial-stack">
-              {groups.special.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                    <span>{getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>当年高招政策与说明</h2>
-            <div className="news-special-aerial-stack">
-              {gaokaoPolicies.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={getPolicyDetailHref(item)}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
-                    <span>{item.source?.name || '官方来源'}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        </section>
-
-        <aside className="news-special-aerial-side">
-          <section className="news-special-aerial-side-card">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <p>上海高招最容易混淆的是春招、高考、体育类、三校生这几条路径。建议先确认自己属于哪一类，再继续读对应内容。</p>
-          </section>
-
-          <section className="news-special-aerial-side-card">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <p>2026 年 4 月初这一阶段，专题里最值得优先看的通常是专科自主招生征求志愿、体育类成绩与合格线、三校生实施办法和学考命题要求。</p>
-          </section>
-
-          <section className="news-special-aerial-side-card">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <a className="news-special-aerial-side-link" href="/news/admission-timeline">查看官方招生日程</a>
-          </section>
-        </aside>
-
-      </section>
-
-      <NewsAerialFooter />
-    </main>
+    <NewsTopicSpecialPage
+      variant="gaokao"
+      kicker="GAOKAO SPECIAL"
+      title={`${currentYear} 上海高招专题`}
+      description="面向上海高中升学家庭，把春招、高考、学业考试、体育类和三校生相关信息按路径整理，方便按当前进度快速进入。"
+      heroStats={[
+        { value: gaokaoNews.length, label: '高招新闻' },
+        { value: gaokaoPolicies.length, label: '相关政策' },
+        { value: officialFocus.length, label: '重点文件' }
+      ]}
+      facts={keyFacts}
+      stageTitle="先判断自己现在更该进入哪一条高招路径"
+      stageDescription="春招与自招、高考与学考、专项升学路径分开读，避免把不同批次和不同资格要求混在一起。"
+      stageEntries={stageEntries}
+      lead={leadNews ? toTopicEntry(leadNews) : null}
+      checklist={currentChecklist}
+      officialTitle="这几份文件决定了今年上海高招几条主要路径"
+      officialItems={officialFocus.map(toTopicEntry)}
+      sections={[
+        { id: 'gaokao-spring', kicker: 'SPRING', title: '春考、专科自主招生与征求志愿', items: groups.spring.map(toTopicEntry) },
+        { id: 'gaokao-exam', kicker: 'EXAM', title: '高考、学业考试与成绩相关内容', items: groups.exam.map(toTopicEntry) },
+        { id: 'gaokao-special-track', kicker: 'SPECIAL TRACK', title: '体育类、三校生与其他专项招生', items: groups.special.map(toTopicEntry) }
+      ]}
+      policyTitle="当年高招政策与说明"
+      policyItems={gaokaoPolicies.map(toTopicEntry)}
+      sideLinks={stageEntries.map((item) => ({ label: item.label, href: item.anchor }))}
+      sideNotes={[
+        '上海高招最容易混淆的是春招、高考、体育类、三校生这几条路径。建议先确认自己属于哪一类，再继续读对应内容。',
+        '2026 年 4 月初这一阶段，专题里最值得优先看的通常是专科自主招生征求志愿、体育类成绩与合格线、三校生实施办法和学考命题要求。'
+      ]}
+      contentId="gaokao-list"
+    />
   );
 }

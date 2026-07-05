@@ -30,6 +30,37 @@ const QUICK_LINKS = [
   { label: '知识专题', href: '/knowledge' }
 ];
 
+const NEWS_SPECIALS = [
+  {
+    title: '中招专题',
+    label: '热门',
+    icon: '中',
+    href: '/news/zhongkao-special',
+    description: '上海中考招生政策、志愿填报、录取节奏与关键节点汇总'
+  },
+  {
+    title: '高招专题',
+    label: '必读',
+    icon: '高',
+    href: '/news/gaokao-special',
+    description: '高考综合改革、考试安排、招生录取等权威政策解读'
+  },
+  {
+    title: '体育改革',
+    label: 'NEW',
+    icon: '体',
+    href: '/news/sports-reform',
+    description: '体育考试改革、评价方式、项目规则与训练准备集中追踪'
+  },
+  {
+    title: '政策速查',
+    label: 'TOOLS',
+    icon: '策',
+    href: '/news/policy-glossary',
+    description: '把常见政策概念、录取术语和问答入口整理成可快速查阅的工具'
+  }
+];
+
 const KNOWLEDGE_TOPICS = [
   { label: '九年级中考总览', meta: 'GRADE 9', href: '/knowledge/grade-9' },
   { label: '数学压轴题路径', meta: 'MATH', href: '/knowledge/math-grade9' },
@@ -242,6 +273,33 @@ export default async function HomePage() {
           <p>{headline?.summary || '从所有动态中挑出真正影响选择的信息，帮你抓住时间窗口。'}</p>
           <Link href={getNewsHref(headline)}>阅读全文</Link>
         </aside>
+      </section>
+
+      <section className="home-news-specials-slab">
+        <div className="home-news-specials-overlay">
+          <div className="home-news-specials-head">
+            <div>
+              <SectionLabel>TOPIC ENTRIES</SectionLabel>
+              <h2>新闻专题</h2>
+              <p>按专题分类浏览，快速找到您关心的升学信息。</p>
+            </div>
+            <Link href="/news">全部新闻 →</Link>
+          </div>
+
+          <div className="home-news-specials-grid">
+            {NEWS_SPECIALS.map((special) => (
+              <Link className="home-news-special-card" href={special.href} key={special.href}>
+                <div className="home-news-special-card-top">
+                  <span aria-hidden="true">{special.icon}</span>
+                  <strong>{special.label}</strong>
+                </div>
+                <h3>{special.title}</h3>
+                <p>{special.description}</p>
+                <em>查看专题 →</em>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="home-schools-slab">

@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import { createRequire } from 'module';
-import { NewsAerialFooter, NewsAerialHero, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
+import { NewsTopicSpecialPage } from '../../../components/news-topic-special-ui';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel } from '../../../lib/site-utils';
 
@@ -44,6 +43,17 @@ function pickItemsById(items, ids) {
 
 function getDetailHref(item) {
   return item?.newsType ? `/news/${item.id}` : getPolicyDetailHref(item);
+}
+
+function toTopicEntry(item) {
+  return {
+    id: item.id,
+    href: getDetailHref(item),
+    date: item.publishedAt || item.year || '暂无日期',
+    source: item.source?.name || getNewsCategoryLabel(item),
+    title: item.title,
+    summary: item.summary
+  };
 }
 
 export default async function SportsReformPage() {
@@ -96,229 +106,44 @@ export default async function SportsReformPage() {
     { title: '招生通道', detail: '优秀体育学生、高水平运动员招生为体育特长生提供单独通道，需单独完成报名、测试与确认。' }
   ];
 
+  const sections = [
+    { id: 'sports-reform', kicker: 'REFORM', title: '改革解读与过程性评价相关内容', items: groups.reform.map(toTopicEntry) },
+    { id: 'sports-exam', kicker: 'EXAM', title: '统一考试与时间安排相关内容', items: groups.exam.map(toTopicEntry) },
+    { id: 'sports-injury', kicker: 'INJURY RULES', title: '伤病免考与缓考相关内容', items: groups.injury.map(toTopicEntry) },
+    { id: 'sports-recruit', kicker: 'RECRUIT', title: '体育特长生与高水平运动员招生', items: groups.recruit.map(toTopicEntry) }
+  ];
+  if (groups.school.length) {
+    sections.push({ id: 'sports-school', kicker: 'SCHOOL', title: '体育特色学校相关内容', items: groups.school.map(toTopicEntry) });
+  }
+
   return (
-    <main className="news-special-aerial-page">
-      <NewsAerialNav />
-      <NewsAerialHero
-        kicker="SPORTS REFORM SPECIAL"
-        title={`${currentYear} 上海体育考试改革专题`}
-        description="面向上海升学家庭，把中考体育改革、过程性评价、统一考试时间表、伤病免缓考和体育特长生招生按阶段整理，方便按当前进度快速进入。"
-        imageClass="is-sports"
-      />
-
-      <section className="news-special-aerial-stats">
-        <article>
-          <strong>{sportsNews.length}</strong>
-          <span>体育相关新闻</span>
-        </article>
-        <article>
-          <strong>{sportsPolicies.length}</strong>
-          <span>相关政策</span>
-        </article>
-        <article>
-          <strong>改革 / 招生</strong>
-          <span>按专题集中查看</span>
-        </article>
-      </section>
-
-      <section className="news-special-aerial-content" id="sports-list">
-        <section className="news-special-aerial-main">
-          {leadNews ? (
-            <section className="news-special-aerial-section">
-              <NewsAerialKicker>FOCUS</NewsAerialKicker>
-              <Link className="news-panel-link" href={`/news/${leadNews.id}`}>
-                <h2>{leadNews.title}</h2>
-                <p className="news-glossary-summary">{leadNews.summary || '暂无摘要'}</p>
-              </Link>
-            </section>
-          ) : null}
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>先用这几条官方信息校准体育改革判断框架</h2>
-            <div className="news-special-annotation-grid">
-              {keyFacts.map((item) => (
-                <article key={item.title}>
-                  <span>{item.title}</span>
-                  <p>{item.detail}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>按当前阶段，体育改革专题更适合这样使用</h2>
-            <div className="news-special-brief-grid">
-              {currentChecklist.map((item, index) => (
-                <article key={item} className="news-special-aerial-card">
-                  <span>{`0${index + 1}`}</span>
-                  <p>{item}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>这几份文件决定了今年上海体育考试改革怎么走</h2>
-            <div className="news-special-aerial-stack">
-              {officialFocus.map((item) => (
-                <Link
-                  key={item.id}
-                  className="news-special-aerial-entry"
-                  href={getDetailHref(item)}
-                >
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
-                    <span>{item.source?.name || getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>先判断自己现在更该看哪一段</h2>
-            <div className="news-special-stage-grid">
-              {stageEntries.map((item, index) => (
-                <a key={item.label} className={`news-special-stage-card${index === 1 ? ' news-special-stage-card-warm' : ''}`} href={item.anchor}>
-                  <span>{item.label}</span>
-                  <strong>{item.count} 条内容</strong>
-                  <p>{item.description}</p>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          <section id="sports-reform" className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>改革解读与过程性评价相关内容</h2>
-            <div className="news-special-aerial-stack">
-              {groups.reform.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                    <span>{getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section id="sports-exam" className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>统一考试与时间安排相关内容</h2>
-            <div className="news-special-aerial-stack">
-              {groups.exam.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                    <span>{getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section id="sports-injury" className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>伤病免考与缓考相关内容</h2>
-            <div className="news-special-aerial-stack">
-              {groups.injury.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                    <span>{getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section id="sports-recruit" className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>体育特长生与高水平运动员招生</h2>
-            <div className="news-special-aerial-stack">
-              {groups.recruit.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                    <span>{getNewsCategoryLabel(item)}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          {groups.school.length ? (
-            <section className="news-special-aerial-section">
-              <NewsAerialKicker>FOCUS</NewsAerialKicker>
-              <h2>体育特色学校相关内容</h2>
-              <div className="news-special-aerial-stack">
-                {groups.school.map((item) => (
-                  <Link key={item.id} className="news-special-aerial-entry" href={`/news/${item.id}`}>
-                    <div className="news-special-aerial-entry-meta">
-                      <span className="pill">{item.publishedAt || '暂无日期'}</span>
-                      <span>{getNewsCategoryLabel(item)}</span>
-                    </div>
-                    <h3>{item.title}</h3>
-                    <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ) : null}
-
-          <section className="news-special-aerial-section">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <h2>当年体育相关招生政策与说明</h2>
-            <div className="news-special-aerial-stack">
-              {sportsPolicies.map((item) => (
-                <Link key={item.id} className="news-special-aerial-entry" href={getPolicyDetailHref(item)}>
-                  <div className="news-special-aerial-entry-meta">
-                    <span className="pill">{item.publishedAt || item.year || '暂无日期'}</span>
-                    <span>{item.source?.name || '官方来源'}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p className="news-glossary-summary">{item.summary || '暂无摘要'}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        </section>
-
-        <aside className="news-special-aerial-side">
-          <section className="news-special-aerial-side-card">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <p>上海体育考试改革最容易混淆的是「过程性评价」「日常考核」「统一考试」三个概念。看不清时先分清这三者，再读这一页会更顺。</p>
-          </section>
-
-          <section className="news-special-aerial-side-card">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <p>4 月统一考试、伤病免缓考申请窗口、优秀体育学生资格确认，是今年体育改革专题里最核心的时间链。</p>
-          </section>
-
-          <section className="news-special-aerial-side-card">
-            <NewsAerialKicker>FOCUS</NewsAerialKicker>
-            <a className="news-special-aerial-side-link" href="/news/admission-timeline">查看官方招生日程</a>
-          </section>
-        </aside>
-
-      </section>
-
-      <NewsAerialFooter />
-    </main>
+    <NewsTopicSpecialPage
+      variant="sports"
+      kicker="SPORTS REFORM SPECIAL"
+      title={`${currentYear} 上海体育考试改革专题`}
+      description="把中考体育改革、过程性评价、统一考试时间表、伤病免缓考和体育特长生招生串成一条清晰的行动线。"
+      heroStats={[
+        { value: sportsNews.length, label: '体育新闻' },
+        { value: sportsPolicies.length, label: '相关政策' },
+        { value: officialFocus.length, label: '重点文件' }
+      ]}
+      facts={keyFacts}
+      stageTitle="先判断自己现在更该看哪一段"
+      stageDescription="专题按家庭最常遇到的决策顺序拆开：规则、考试、伤病、招生。每段都能直接跳转到对应资料。"
+      stageEntries={stageEntries}
+      lead={leadNews ? toTopicEntry(leadNews) : null}
+      checklist={currentChecklist}
+      officialTitle="这几份文件决定了今年上海体育考试改革怎么走"
+      officialItems={officialFocus.map(toTopicEntry)}
+      sections={sections}
+      policyTitle="当年体育相关招生政策与说明"
+      policyItems={sportsPolicies.map(toTopicEntry)}
+      sideLinks={stageEntries.map((item) => ({ label: item.label, href: item.anchor }))}
+      sideNotes={[
+        '上海体育考试改革最容易混淆的是「过程性评价」「日常考核」「统一考试」三个概念。看不清时先分清这三者，再读这一页会更顺。',
+        '4 月统一考试、伤病免缓考申请窗口、优秀体育学生资格确认，是今年体育改革专题里最核心的时间链。'
+      ]}
+      contentId="sports-list"
+    />
   );
 }

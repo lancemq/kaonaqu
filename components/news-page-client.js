@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import admissionTimeline from '../lib/admission-timeline';
-import policyGlossary from '../lib/policy-glossary';
 import { filterNews, getNewsCategoryLabel } from '../lib/site-utils';
 
 const NEWS_PER_PAGE = 7;
@@ -18,12 +17,18 @@ const FILTERS = [
 ];
 
 const QUICK_LINKS = [
-  { label: '中考政策', href: '/news/zhongkao-special' },
-  { label: '体育改革', href: '/news/sports-reform' },
-  { label: '高考指南', href: '/news/gaokao-special' },
-  { label: '时间轴', href: '/news/admission-timeline' },
+  { label: '中招专题', href: '/news/zhongkao-special' },
+  { label: '高招专题', href: '/news/gaokao-special' },
+  { label: '政策速查', href: '/news/policy-glossary' },
   { label: '政策问答', href: '/news/policy-faq' }
 ];
+
+const SPORTS_SPECIAL = {
+  label: '体育改革',
+  title: '上海体育考试改革专题',
+  summary: '中考体育新规、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生，一页串起来看。',
+  href: '/news/sports-reform'
+};
 
 function sanitizePolicyText(text, title = '') {
   let value = String(text || '');
@@ -134,35 +139,11 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {}, c
   );
   const totalPages = Math.max(1, Math.ceil(rankedItems.length / NEWS_PER_PAGE));
   const pagedItems = rankedItems.slice((currentPage - 1) * NEWS_PER_PAGE, currentPage * NEWS_PER_PAGE);
-  const hotTopics = [
-    { label: '中考政策', count: currentYearNews.filter((item) => item.examType === 'zhongkao').length, href: '/news/zhongkao-special' },
-    { label: '高考指南', count: currentYearNews.filter((item) => item.examType === 'gaokao').length, href: '/news/gaokao-special' }
-  ];
   const timelinePreview = admissionTimeline.slice(0, 3);
-  const glossaryLead = policyGlossary[0];
 
   return (
     <section className="news-aerial-content">
       <div className="news-aerial-main-column">
-        <div className="news-special-entry-row" aria-label="专题聚焦">
-          <SectionLabel>SPECIALS</SectionLabel>
-          <div className="news-special-entry-grid">
-            <Link className="news-special-entry-card is-lead" href="/news/sports-reform">
-              <span>SPORTS REFORM</span>
-              <strong>上海体育考试改革专题</strong>
-              <p>把中考体育新规、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生串成一条专题线。</p>
-            </Link>
-            <Link className="news-special-entry-card" href="/news/zhongkao-special">
-              <span>ZHONGKAO</span>
-              <strong>中招专题</strong>
-            </Link>
-            <Link className="news-special-entry-card" href="/news/gaokao-special">
-              <span>GAOKAO</span>
-              <strong>高招专题</strong>
-            </Link>
-          </div>
-        </div>
-
         <div className="news-list-header">
           <div>
             <SectionLabel>ALL NEWS</SectionLabel>
@@ -242,14 +223,13 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {}, c
 
       <aside className="news-aerial-sidebar">
         <section className="news-hot-card">
-          <SectionLabel>TRENDING</SectionLabel>
-          <h2>热门话题</h2>
-          {hotTopics.map((topic) => (
-            <Link href={topic.href} key={topic.label}>
-              <span>{topic.label}</span>
-              <strong>{topic.count}</strong>
-            </Link>
-          ))}
+          <SectionLabel>SPECIALS</SectionLabel>
+          <h2>{SPORTS_SPECIAL.title}</h2>
+          <p>{SPORTS_SPECIAL.summary}</p>
+          <Link href={SPORTS_SPECIAL.href}>
+            <span>{SPORTS_SPECIAL.label}</span>
+            <strong>进入</strong>
+          </Link>
         </section>
 
         <section className="news-quick-card">
@@ -259,13 +239,6 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {}, c
               <Link href={item.href} key={item.href}>{item.label}</Link>
             ))}
           </div>
-        </section>
-
-        <section className="news-subscribe-card">
-          <SectionLabel>SUBSCRIBE</SectionLabel>
-          <h2>订阅最新资讯</h2>
-          <p>第一时间获取中考、高考政策推送。</p>
-          <Link href="/news/admission-timeline">查看时间轴</Link>
         </section>
 
         {timelinePreview.length ? (
@@ -280,12 +253,6 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {}, c
           </section>
         ) : null}
 
-        {glossaryLead ? (
-          <section className="news-quick-card">
-            <SectionLabel>GLOSSARY</SectionLabel>
-            <Link className="news-glossary-link" href="/news/policy-glossary">{glossaryLead.title}</Link>
-          </section>
-        ) : null}
       </aside>
     </section>
   );
