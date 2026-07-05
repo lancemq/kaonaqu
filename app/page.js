@@ -365,7 +365,7 @@ export default async function HomePage() {
         </aside>
       </section>
 
-      <div className="home-color-block-row" aria-hidden="true">
+      <div className="channel-color-bar" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>

@@ -856,26 +856,6 @@ body[data-page="knowledge"] a {
     font-family: var(--channel-font-heading);
 }
 
-.knowledge-color-blocks {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    height: 6px;
-}
-
-.knowledge-color-blocks span:nth-child(1),
-.knowledge-color-blocks span:nth-child(4) {
-    background: var(--channel-blue);
-}
-
-.knowledge-color-blocks span:nth-child(2),
-.knowledge-color-blocks span:nth-child(5) {
-    background: var(--channel-blue-soft);
-}
-
-.knowledge-color-blocks span:nth-child(3) {
-    background: var(--channel-ink);
-}
-
 .knowledge-footer {
     display: flex;
     align-items: center;

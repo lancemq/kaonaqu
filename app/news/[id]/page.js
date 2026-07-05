@@ -511,7 +511,7 @@ function NewsDetailNav() {
 function NewsDetailFooter() {
   return (
     <>
-      <div className="news-color-block-row" aria-hidden="true">
+      <div className="channel-color-bar" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>

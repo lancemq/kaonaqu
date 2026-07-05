@@ -505,7 +505,7 @@ body[data-page="news"] .news-detail-footer p {
         justify-items: start;
     }
 
-    body[data-page="news"] .news-pager {
+    body[data-page="news"] .pager {
         align-items: stretch;
         flex-direction: column;
     }

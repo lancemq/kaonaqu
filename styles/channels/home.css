@@ -605,25 +605,6 @@ body[data-page="home"] .home-district-list strong {
     font-size: 12px;
 }
 
-body[data-page="home"] .home-color-block-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    height: 6px;
-}
-
-body[data-page="home"] .home-color-block-row span:nth-child(1),
-body[data-page="home"] .home-color-block-row span:nth-child(4) {
-    background: var(--channel-blue);
-}
-
-body[data-page="home"] .home-color-block-row span:nth-child(2),
-body[data-page="home"] .home-color-block-row span:nth-child(5) {
-    background: var(--channel-blue-soft);
-}
-
-body[data-page="home"] .home-color-block-row span:nth-child(3) {
-    background: var(--channel-ink);
-}
 
 body[data-page="home"] .home-cta-slab {
     display: grid;

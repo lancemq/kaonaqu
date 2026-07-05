@@ -176,7 +176,7 @@ function Footer() {
 
 function ColorBlocks() {
   return (
-    <div className="knowledge-color-blocks" aria-hidden="true">
+    <div className="channel-color-bar" aria-hidden="true">
       <span />
       <span />
       <span />

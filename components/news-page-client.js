@@ -202,7 +202,7 @@ export default function NewsPageClient({ news, policies, schoolNamesById = {}, c
           )}
         </div>
 
-        <div className="news-pager">
+        <div className="pager">
           <button
             type="button"
             onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}

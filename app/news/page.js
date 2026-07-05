@@ -117,7 +117,7 @@ export default async function NewsPage() {
         currentYear={currentYear}
       />
 
-      <div className="news-color-block-row" aria-hidden="true">
+      <div className="channel-color-bar" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>

@@ -48,7 +48,7 @@ export function NewsAerialHero({ kicker, title, description, imageClass = '' }) 
 export function NewsAerialFooter() {
   return (
     <>
-      <div className="news-color-block-row" aria-hidden="true">
+      <div className="channel-color-bar" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>
