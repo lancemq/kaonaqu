@@ -1,18 +1,149 @@
 import { Fragment } from 'react';
+import Link from 'next/link';
+import { createRequire } from 'module';
 import {
-  PolicyToolCards,
   PolicyToolLabel,
   PolicyToolLinks,
   PolicyToolShell,
   PolicyToolSideCard
 } from '../../../components/news-policy-tool-ui';
 import policyGlossary from '../../../lib/policy-glossary';
+import { getPolicyDetailHref } from '../../../lib/policy-detail';
+import { readPolicyPlainText } from '../../../lib/policy-content-files.mjs';
+
+const require = createRequire(import.meta.url);
+const { loadDataStore } = require('../../../shared/data-store');
 
 export const metadata = {
   title: '政策概念速查 | 考哪去',
-  description: '集中查看上海升学常见政策术语，包括中本贯通、名额到区、名额到校、自主招生录取等重点概念。',
+  description: '集中查看上海升学常见政策术语与当年关键政策文件，包括中本贯通、名额到区、名额到校、自主招生录取等重点概念与官方政策原文。',
   alternates: { canonical: '/news/policy-glossary' }
 };
+
+function sanitizePolicyText(text, title = '') {
+  let value = String(text || '');
+  if (!value) return '';
+
+  value = value
+    .replace(/无障碍 首页[\s\S]*?内容概述\s*/g, '')
+    .replace(/索取号：[^。]*?/g, '')
+    .replace(/发布日期：\d{4}-\d{2}-\d{2}/g, '')
+    .replace(/字体 \[ 大 中 小 ]/g, '')
+    .replace(/查阅全文[\s\S]*$/g, '')
+    .replace(/\[返回上一页][\s\S]*$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (title && value.startsWith(title)) {
+    value = value.slice(title.length).trim();
+  }
+
+  return value;
+}
+
+function clipText(text, maxLength) {
+  if (!text || text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength).trim()}…`;
+}
+
+function getCurrentYear(items) {
+  const years = items
+    .map((item) => Number(item.year) || Number(String(item.publishedAt || '').slice(0, 4)) || 0)
+    .filter(Boolean)
+    .sort((a, b) => b - a);
+  return years[0] || new Date().getFullYear();
+}
+
+function isRenderablePolicy(policy, currentYear) {
+  const title = String(policy?.title || '').trim();
+  if (!title || title === '上海市教育委员会') return false;
+  const publishedYear = Number(policy?.year) || Number(String(policy?.publishedAt || '').slice(0, 4)) || 0;
+  if (publishedYear !== currentYear) return false;
+  return policy.source?.type === 'official' || String(policy.source?.name || '').includes('上海市教育委员会');
+}
+
+function getPolicySummary(policy) {
+  const summary = sanitizePolicyText(policy.summary, policy.title);
+  const content = sanitizePolicyText(readPolicyPlainText(policy), policy.title);
+  return clipText(summary || content || '暂无摘要', 160);
+}
+
+function buildReadingHint(policy) {
+  const title = String(policy.title || '');
+  if (title.includes('招生工作') || title.includes('中招意见')) {
+    return '这类文件更适合先看录取批次、分数线和招生计划，再结合学校和区县情况判断。';
+  }
+  if (title.includes('报名')) {
+    return '这类文件优先关注报名资格、材料要求和时间节点，避免错过操作窗口。';
+  }
+  if (title.includes('特殊教育')) {
+    return '这类文件建议结合具体申请条件和时间安排一起看，尤其注意评估和确认环节。';
+  }
+  return '建议先看摘要，再回到原文确认适用对象、关键时间和操作方式。';
+}
+
+function buildPolicyLens(policy) {
+  const title = String(policy.title || '');
+  if (title.includes('招生工作') || title.includes('中招意见')) {
+    return {
+      label: '规则总盘',
+      focus: '优先确认录取批次顺序、适用对象和不同招生类型的边界。'
+    };
+  }
+  if (title.includes('报名')) {
+    return {
+      label: '操作节点',
+      focus: '先看报名资格、确认方式、时间窗口和材料要求。'
+    };
+  }
+  if (title.includes('特殊教育')) {
+    return {
+      label: '专项政策',
+      focus: '重点确认申请条件、审核流程和评估确认环节。'
+    };
+  }
+  return {
+    label: '补充政策',
+    focus: '先看摘要，再回到原文确认时间、资格和执行方式。'
+  };
+}
+
+function buildPolicyPriority(policy) {
+  const title = String(policy.title || '');
+  if (title.includes('招生工作的若干意见') || title.includes('高中阶段学校招生工作')) {
+    return {
+      tier: 'A',
+      title: '先读总盘文件',
+      description: '这是年度规则总盘，适合先建立当年中招框架。'
+    };
+  }
+  if (title.includes('实施细则')) {
+    return {
+      tier: 'A',
+      title: '再读实施细则',
+      description: '它负责把总盘文件落到考试、志愿、投档和操作细节。'
+    };
+  }
+  if (title.includes('中等职业学校自主招生')) {
+    return {
+      tier: 'B',
+      title: '职业教育专项',
+      description: '适合重点关注中本贯通、五年一贯制、中高职贯通和提前招生的家庭。'
+    };
+  }
+  if (title.includes('特殊教育')) {
+    return {
+      tier: 'B',
+      title: '特殊类型专项',
+      description: '适合需要判断专项通道是否适用、如何评估和如何入学的家庭。'
+    };
+  }
+  return {
+    tier: 'C',
+    title: '补充阅读',
+    description: '适合在总盘和实施细则之后，用来核对边界条件和补充规则。'
+  };
+}
 
 function groupByPill(items) {
   const groups = new Map();
@@ -24,13 +155,32 @@ function groupByPill(items) {
   return Array.from(groups.entries());
 }
 
-export default function PolicyGlossaryPage() {
+function groupPoliciesByTopic(policies) {
+  const grouped = policies.reduce((acc, item) => {
+    const bucket = item.title.includes('报名')
+      ? '报名与资格'
+      : item.title.includes('招生工作') || item.title.includes('中招意见')
+        ? '招生与录取'
+        : item.title.includes('特殊教育')
+          ? '专项与特殊类型'
+          : '其他政策';
+    if (!acc[bucket]) acc[bucket] = [];
+    acc[bucket].push(item);
+    return acc;
+  }, {});
+  return Object.entries(grouped);
+}
+
+export default async function PolicyGlossaryPage() {
+  const { policies } = await loadDataStore();
+  const currentYear = getCurrentYear(policies);
+  const officialPolicies = policies
+    .filter((item) => isRenderablePolicy(item, currentYear))
+    .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));
+
+  const policyGroups = groupPoliciesByTopic(officialPolicies);
   const groups = groupByPill(policyGlossary);
-  const quickStarts = [
-    { title: '先看录取批次', detail: '如果你最困惑的是名额到区、名额到校、自招和统一招生的先后关系。' },
-    { title: '再看职业教育', detail: '如果你在看中本贯通、五年一贯制、中高职贯通这些不同培养通道。' },
-    { title: '最后回到新闻', detail: '概念看明白后，再去读专题和具体政策，会更容易判断自己适用哪条规则。' }
-  ];
+
   const processSteps = [
     {
       label: '第一层',
@@ -41,39 +191,14 @@ export default function PolicyGlossaryPage() {
     {
       label: '第二层',
       title: '名额分配综合评价录取',
-      detail: '分为“名额到区”和“名额到校”，结合成绩与综合素质评价进行投档。',
+      detail: '分为"名额到区"和"名额到校"，结合成绩与综合素质评价进行投档。',
       related: ['名额到区', '名额到校', '综合素质评价', '最低投档控制分数线']
     },
     {
       label: '第三层',
       title: '统一招生录取',
-      detail: '前序批次未录取的学生进入这一层，重点看“1 至 15 志愿”和征求志愿。',
+      detail: '前序批次未录取的学生进入这一层，重点看"1 至 15 志愿"和征求志愿。',
       related: ['1 至 15 志愿', '平行志愿', '征求志愿']
-    }
-  ];
-  const relationGroups = [
-    {
-      title: '先后关系',
-      items: [
-        '自主招生录取 → 名额分配综合评价录取 → 统一招生录取',
-        '前一批次正式录取后，后一批次志愿自然失效'
-      ]
-    },
-    {
-      title: '资格前置',
-      items: [
-        '名额到校要先满足“在籍在读满 3 年”等资格条件',
-        '区级优秀体育学生、艺术骨干学生要先完成资格确认',
-        '中职校提前招生常常要先参加面试或专业测试'
-      ]
-    },
-    {
-      title: '投档理解',
-      items: [
-        '平行志愿影响同批次内的排序和投档方式',
-        '最低投档控制分数线是进入投档范围的门槛，不是最终录取线',
-        '征求志愿是统一招生中的补充填报机会，不是新的独立大批次'
-      ]
     }
   ];
 
@@ -83,23 +208,18 @@ export default function PolicyGlossaryPage() {
       hero={{
         kicker: 'POLICY GLOSSARY',
         title: '政策概念速查',
-        description: '把上海升学常见、容易混淆的政策概念做成可快速定位的术语工具页，先建立概念地图，再回到新闻和政策原文继续判断。',
+        description: '把上海升学常见、容易混淆的政策概念与当年关键政策文件做成可快速定位的工具页，先建立概念地图，再回到政策原文继续判断。',
         stats: [
           { value: policyGlossary.length, label: '核心术语' },
+          { value: officialPolicies.length, label: '当年政策' },
           { value: groups.length, label: '分类主题' },
           { value: 'MAP', label: '概念地图' }
         ]
       }}
     >
-      <PolicyToolCards
-        kicker="READ FIRST"
-        title="按这三个入口进入，会比从头到尾硬读更快。"
-        items={quickStarts}
-      />
-
       <section className="policy-process-section">
         <PolicyToolLabel>PROCESS MAP</PolicyToolLabel>
-        <h2>先把上海中招的“大顺序”看懂，再查术语会容易很多。</h2>
+        <h2>先把上海中招的"大顺序"看懂，再查术语会容易很多。</h2>
         <div className="policy-process-flow" aria-label="上海中招批次流程总览">
           {processSteps.map((step, index) => (
             <Fragment key={step.title}>
@@ -119,24 +239,56 @@ export default function PolicyGlossaryPage() {
         </div>
       </section>
 
-      <section className="policy-relation-section">
-        <div className="policy-tool-section-head">
-          <div>
-            <PolicyToolLabel>RELATIONS</PolicyToolLabel>
-            <h2>不是所有词都在同一个层级里。</h2>
-          </div>
-          <p>把“批次”“资格”“投档方式”拆开理解，能明显减少术语混用和误判。</p>
-        </div>
-        <div className="policy-relation-grid">
-          {relationGroups.map((group) => (
-            <article key={group.title}>
-              <h3>{group.title}</h3>
-              {group.items.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
-            </article>
-          ))}
-        </div>
+      <section className="policy-glossary-list" id="policy-files">
+        <PolicyToolLabel>POLICY FILES</PolicyToolLabel>
+        <h2>{currentYear} 年政策文件</h2>
+        {officialPolicies.length === 0 ? (
+          <p>暂无当年可渲染的官方政策文件，请稍后再来查看。</p>
+        ) : (
+          policyGroups.map(([group, items]) => (
+            <section key={group} className="policy-term-group">
+              <div className="policy-tool-section-head">
+                <div>
+                  <PolicyToolLabel>{group}</PolicyToolLabel>
+                  <h3>{group}</h3>
+                </div>
+                <p>这一组适合连续阅读同类规则，减少"把报名、批次和专项政策混在一起看"的理解成本。</p>
+              </div>
+              <div className="policy-term-stack">
+                {items.map((item) => {
+                  const priority = buildPolicyPriority(item);
+                  const lens = buildPolicyLens(item);
+                  return (
+                    <Link key={item.id} href={getPolicyDetailHref(item)} className="policy-term-card">
+                      <div className="policy-term-meta">
+                        <span>{priority.tier} 级</span>
+                        <span>{lens.label}</span>
+                        <span>{item.publishedAt || '暂无日期'}</span>
+                        <span>{item.source?.name || '官方来源'}</span>
+                      </div>
+                      <h4>{item.title}</h4>
+                      <div className="policy-term-detail-grid">
+                        <article>
+                          <span>文件定位</span>
+                          <p>{priority.description}</p>
+                        </article>
+                        <article>
+                          <span>核心内容</span>
+                          <p>{getPolicySummary(item)}</p>
+                        </article>
+                        <article>
+                          <span>先看什么</span>
+                          <p>{lens.focus}</p>
+                        </article>
+                      </div>
+                      <p className="policy-term-source">{buildReadingHint(item)}</p>
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
+          ))
+        )}
       </section>
 
       <section className="policy-glossary-list" id="glossary-list">
@@ -149,7 +301,7 @@ export default function PolicyGlossaryPage() {
                 <PolicyToolLabel>{pill}</PolicyToolLabel>
                 <h3>{pill === '职业教育' ? '职业教育相关概念' : pill === '录取批次' ? '录取批次相关概念' : `${pill}相关概念`}</h3>
               </div>
-              <p>解决“这个词是什么意思、处在什么流程里、和其它词有什么差别”的问题。</p>
+              <p>解决"这个词是什么意思、处在什么流程里、和其它词有什么差别"的问题。</p>
             </div>
             <div className="policy-term-stack">
               {items.map((item) => (
@@ -178,15 +330,9 @@ export default function PolicyGlossaryPage() {
       </section>
 
       <section className="policy-tool-bottom-links">
-        <PolicyToolSideCard label="先查这些词">
-          {policyGlossary.slice(0, 5).map((item) => (
-            <a key={item.title} href={`#term-${item.title}`}>{item.title}</a>
-          ))}
-        </PolicyToolSideCard>
         <PolicyToolSideCard label="继续查看" dark>
           <PolicyToolLinks links={[
             { label: '进入高频政策问答', href: '/news/policy-faq' },
-            { label: '进入政策深读', href: '/news/policy-deep-dive' },
             { label: '进入官方招生日程', href: '/news/admission-timeline' }
           ]} />
         </PolicyToolSideCard>

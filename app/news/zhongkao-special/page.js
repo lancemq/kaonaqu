@@ -93,12 +93,6 @@ export default async function ZhongkaoSpecialPage() {
     '如果你走优秀体育学生、艺术骨干或中职自主招生路径，建议持续跟踪学校资格确认方案和后续测试安排。',
     '普通中招家庭建议把体育与健身测试、听说实验和笔试串成一条完整的准备线来规划。'
   ];
-  const keyFacts = [
-    { title: '录取总成绩', detail: '上海中招录取总分为 750 分，包含语数外、道法、历史、体育与健身和综合测试。' },
-    { title: '笔试日期', detail: '2026 年初中学业水平考试笔试安排在 6 月 20 日至 21 日。' },
-    { title: '志愿填报', detail: '网上志愿填报统一在 6 月 23 日至 26 日进行，6 月 27 日至 28 日完成书面确认。' }
-  ];
-
   return (
     <NewsTopicSpecialPage
       variant="zhongkao"
@@ -110,7 +104,6 @@ export default async function ZhongkaoSpecialPage() {
         { value: zhongkaoPolicies.length, label: '相关政策' },
         { value: officialFocus.length, label: '重点文件' }
       ]}
-      facts={keyFacts}
       stageTitle="先判断自己现在更该看哪一段"
       stageDescription="从报名资格到考试安排，再到志愿录取，把中招路径拆成三个能直接行动的阶段。"
       stageEntries={stageEntries}

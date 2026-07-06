@@ -93,12 +93,6 @@ export default async function GaokaoSpecialPage() {
     '体育类路径当前最关键的是把确认、考试、成绩与合格线这一条链看完整，确认自己后续是否具备填报资格。',
     '普通高考家庭建议把高考主流程、学业水平考试命题要求和三校生等专项路径拆开看，避免把不同通道混在一起。'
   ];
-  const keyFacts = [
-    { title: '高招总入口', detail: '2026 年上海普通高校考试招生包含春季考试招生、专科层次依法自主招生、三校生高考和秋季统一高考。' },
-    { title: '体育类链路', detail: '体育类专业招生需要单独完成项目勾选、网上确认、付费、统考、成绩与合格线确认。' },
-    { title: '学考用途', detail: '学业水平合格性考试和等级考相关信息不只是考试提醒，也直接影响部分升学路径与学校培养安排。' }
-  ];
-
   return (
     <NewsTopicSpecialPage
       variant="gaokao"
@@ -110,7 +104,6 @@ export default async function GaokaoSpecialPage() {
         { value: gaokaoPolicies.length, label: '相关政策' },
         { value: officialFocus.length, label: '重点文件' }
       ]}
-      facts={keyFacts}
       stageTitle="先判断自己现在更该进入哪一条高招路径"
       stageDescription="春招与自招、高考与学考、专项升学路径分开读，避免把不同批次和不同资格要求混在一起。"
       stageEntries={stageEntries}

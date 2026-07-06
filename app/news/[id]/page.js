@@ -796,7 +796,7 @@ function renderPolicyDetail(item, policies, news) {
   const policyKnowledgeTopics = [
     { id: 'zhongkao-special', title: '进入中招专题', href: '/news/zhongkao-special' },
     { id: 'admission-timeline', title: '查看官方招生日程', href: '/news/admission-timeline' },
-    { id: 'policy-deep-dive', title: '政策深读', href: '/news/policy-deep-dive' },
+    { id: 'policy-glossary', title: '政策概念速查', href: '/news/policy-glossary' },
     { id: 'policy-faq', title: '高频政策问答', href: '/news/policy-faq' }
   ];
 

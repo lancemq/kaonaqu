@@ -106,7 +106,6 @@ function main() {
     '/news/admission-timeline',
     '/news/gaokao-special',
     '/news/zhongkao-special',
-    '/news/policy-deep-dive',
     '/news/policy-faq',
     '/news/policy-glossary',
     '/schools/compare',

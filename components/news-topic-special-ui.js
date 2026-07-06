@@ -89,19 +89,21 @@ export function NewsTopicSpecialPage({
         </section>
       </header>
 
-      <section className="special-facts" aria-label="专题核心信息">
-        <TopicSectionLabel>READ FIRST</TopicSectionLabel>
-        <h2>先校准判断框架</h2>
-        <div className="special-fact-grid">
-          {facts.map((item, index) => (
-            <article key={item.title}>
-              <span>{`0${index + 1}`}</span>
-              <h3>{item.title}</h3>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      {facts && facts.length > 0 ? (
+        <section className="special-facts" aria-label="专题核心信息">
+          <TopicSectionLabel>READ FIRST</TopicSectionLabel>
+          <h2>先校准判断框架</h2>
+          <div className="special-fact-grid">
+            {facts.map((item, index) => (
+              <article key={item.title}>
+                <span>{`0${index + 1}`}</span>
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="special-stage-wrap" aria-label="专题阅读路径">
         <div className="special-stage-head">

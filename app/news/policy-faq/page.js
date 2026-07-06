@@ -1,9 +1,6 @@
 import {
-  PolicyToolCards,
   PolicyToolLabel,
-  PolicyToolLinks,
-  PolicyToolShell,
-  PolicyToolSideCard
+  PolicyToolShell
 } from '../../../components/news-policy-tool-ui';
 
 const faqGroups = [
@@ -100,10 +97,10 @@ const faqGroups = [
         nextStep: '建议以后读一条新通知时，都按这六项做摘录，形成自己的政策卡片。'
       },
       {
-        question: '什么时候该从 FAQ 跳去概念速查或政策深读？',
-        shortAnswer: '遇到术语卡住时去概念速查；想确认边界条件、原文规则和实际适用范围时去政策深读。',
-        whyItMatters: 'FAQ 更适合解决“我先看什么、先做什么”的问题；但一旦要判断具体资格、批次边界和执行口径，就需要切换到更细的专题页。',
-        nextStep: '先用 FAQ 建立判断顺序，再用概念速查和政策深读补足具体规则。'
+        question: '什么时候该从 FAQ 跳去概念速查？',
+        shortAnswer: '遇到术语卡住时去概念速查；想确认边界条件、原文规则和实际适用范围时，同样在概念速查页查看当年政策文件。',
+        whyItMatters: 'FAQ 更适合解决”我先看什么、先做什么”的问题；但一旦要判断具体资格、批次边界和执行口径，就需要切换到更细的速查页，那里同时提供术语解释和当年政策原文入口。',
+        nextStep: '先用 FAQ 建立判断顺序，再用概念速查补足具体规则与政策原文。'
       }
     ]
   },
@@ -165,28 +162,6 @@ const faqGroups = [
   },
 ];
 
-const faqCalibrationCards = [
-  {
-    title: '先看资格',
-    detail: '判断自己是不是适用对象，优先级高于看时间。'
-  },
-  {
-    title: '再看批次',
-    detail: '先弄清它属于哪一个录取批次，而不是只盯“能填几个志愿”。'
-  },
-  {
-    title: '最后看确认',
-    detail: '网上提交之后是否还要书面确认，往往决定操作是否真的完成。'
-  }
-];
-
-const faqLinks = [
-  { label: '回到新闻频道', href: '/news' },
-  { label: '查看政策概念速查', href: '/news/policy-glossary' },
-  { label: '查看政策深读', href: '/news/policy-deep-dive' },
-  { label: '查看官方招生日程', href: '/news/admission-timeline' }
-];
-
 export const metadata = {
   title: '上海中考高考政策问答 - 高频问题与录取规则 | 考哪去',
   description: '集中查看上海中考、高考升学中最常问的政策问题，包括报名资格、时间节点、志愿规则、高招通道选择、信息口径与下一步判断。'
@@ -226,12 +201,6 @@ export default function PolicyFaqPage() {
         ]
       }}
     >
-      <PolicyToolCards
-        kicker="READ FIRST"
-        title="读上海升学政策前，先把这三条顺序记住。"
-        items={faqCalibrationCards}
-      />
-
       <section className="policy-tool-content" id="faq-list">
         <section className="policy-tool-main">
 
@@ -268,23 +237,6 @@ export default function PolicyFaqPage() {
             </section>
           ))}
         </section>
-
-        <aside className="policy-tool-side">
-          <PolicyToolSideCard label="COMMON MISTAKES" dark>
-            <p>把“看到通知”误当成“自己就一定适用”。</p>
-            <p>只记志愿个数，不分批次顺序和平行志愿逻辑。</p>
-            <p>网上填完就结束，漏掉书面确认。</p>
-          </PolicyToolSideCard>
-
-          <PolicyToolSideCard label="SOURCE">
-            <p>主要按 2026 年 2 月 27 日上海市教委《高中阶段学校招生工作的若干意见》与 2026 年 3 月 27 日《实施细则》问答整理。</p>
-            <p>涉及志愿设置、平行志愿、征求志愿和中职校自主招生说明，也参考上海市教育考试院 2026 年公开口径。</p>
-          </PolicyToolSideCard>
-
-          <PolicyToolSideCard label="NEXT" dark>
-            <PolicyToolLinks links={faqLinks} />
-          </PolicyToolSideCard>
-        </aside>
       </section>
     </PolicyToolShell>
     </>
