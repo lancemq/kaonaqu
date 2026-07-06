@@ -742,6 +742,277 @@ body[data-page="news"] .policy-faq-meta article {
     background: #f6f8fa;
 }
 
+body[data-page="news"] .special-page.is-faq .special-hero {
+    min-height: 360px;
+}
+
+body[data-page="news"] .special-page.is-faq .special-hero::before {
+    background-image: url("https://images.unsplash.com/photo-1571277749544-67962c91869b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800");
+}
+
+body[data-page="news"] .special-page.is-faq .special-hero-shade {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+body[data-page="news"] .special-page.is-faq .special-hero-inner {
+    grid-template-columns: minmax(0, 640px) 360px;
+    gap: 280px;
+    min-height: 360px;
+    padding: 50px 80px;
+}
+
+body[data-page="news"] .special-page.is-faq .special-hero h1 {
+    font-size: clamp(44px, 4vw, 52px);
+    line-height: 1.06;
+}
+
+body[data-page="news"] .special-page.is-faq .special-hero-panel {
+    gap: 24px;
+    min-height: 0;
+    background: transparent;
+}
+
+body[data-page="news"] .special-page.is-faq .special-hero-panel article {
+    gap: 4px;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+}
+
+body[data-page="news"] .special-page.is-faq .special-hero-panel span {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--channel-font-body);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+body[data-page="news"] .policy-faq-primer {
+    display: grid;
+    gap: 16px;
+    padding: 30px 80px 20px;
+    background: #fff;
+}
+
+body[data-page="news"] .policy-faq-primer h2,
+body[data-page="news"] .policy-faq-cta h2,
+body[data-page="news"] .policy-tool-section-head h2,
+body[data-page="news"] .policy-faq-side h2 {
+    margin: 0;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
+    letter-spacing: 0;
+}
+
+body[data-page="news"] .policy-faq-primer h2 {
+    font-size: 28px;
+    line-height: 1.25;
+}
+
+body[data-page="news"] .policy-faq-rule-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+body[data-page="news"] .policy-faq-rule-grid article {
+    display: grid;
+    gap: 8px;
+    min-height: 142px;
+    padding: 24px 28px;
+    background: #f8fafc;
+}
+
+body[data-page="news"] .policy-faq-rule-grid span {
+    color: var(--channel-blue);
+    font-family: var(--channel-font-data);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+body[data-page="news"] .policy-faq-rule-grid h3 {
+    margin: 0;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+body[data-page="news"] .policy-faq-rule-grid p {
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+body[data-page="news"] .policy-faq-content {
+    padding-top: 0;
+    padding-bottom: 30px;
+    background: #fff;
+    border-top: 0;
+}
+
+body[data-page="news"] .policy-tool-section {
+    display: grid;
+    gap: 20px;
+}
+
+body[data-page="news"] .policy-tool-section-head {
+    display: grid;
+    gap: 14px;
+    padding-top: 28px;
+    border-top: 1px solid var(--channel-line);
+}
+
+body[data-page="news"] .policy-tool-section:first-child .policy-tool-section-head {
+    padding-top: 0;
+    border-top: 0;
+}
+
+body[data-page="news"] .policy-tool-section-head > div {
+    display: grid;
+    gap: 14px;
+}
+
+body[data-page="news"] .policy-tool-section-head h2 {
+    font-size: 26px;
+    line-height: 1.24;
+}
+
+body[data-page="news"] .policy-tool-section-head > p {
+    max-width: 760px;
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-stack {
+    gap: 10px;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-card {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 18px;
+    padding: 14px 20px;
+    border: 0;
+    background: #f8fafc;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-index {
+    align-self: start;
+    display: inline-flex;
+    width: fit-content;
+    padding: 3px 10px;
+    background: var(--channel-ink);
+    color: #fff;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-card h3 {
+    font-size: 18px;
+    line-height: 1.38;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-answer {
+    color: var(--channel-text);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-meta {
+    gap: 12px;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-meta article {
+    padding: 0;
+    background: transparent;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-meta span {
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+body[data-page="news"] .special-page.is-faq .policy-faq-meta article:nth-child(2) span {
+    color: var(--channel-blue-soft);
+}
+
+body[data-page="news"] .policy-faq-side .channel-side-card {
+    padding: 24px;
+}
+
+body[data-page="news"] .policy-faq-side .channel-side-card.is-dark {
+    border-color: var(--channel-ink);
+}
+
+body[data-page="news"] .policy-faq-side h2 {
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+body[data-page="news"] .policy-faq-side .channel-side-card.is-dark h2 {
+    color: #fff;
+}
+
+body[data-page="news"] .policy-faq-warning-list {
+    display: grid;
+    gap: 12px;
+}
+
+body[data-page="news"] .policy-faq-warning-list p {
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+body[data-page="news"] .policy-faq-warning-list p:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+body[data-page="news"] .policy-faq-cta {
+    display: grid;
+    gap: 16px;
+    margin: 0 80px 40px;
+    padding: 32px;
+    background: var(--channel-ink);
+}
+
+body[data-page="news"] .policy-faq-cta .channel-kicker p {
+    color: var(--channel-blue-soft);
+}
+
+body[data-page="news"] .policy-faq-cta h2 {
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+body[data-page="news"] .policy-faq-cta p {
+    max-width: 980px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+body[data-page="news"] .policy-faq-cta a {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 28px;
+    background: var(--channel-blue);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
 body[data-page="news"] .channel-side-card {
     display: grid;
     gap: 14px;
@@ -842,6 +1113,47 @@ body[data-page="news"] .special-bottom-links {
 
     body[data-page="news"] .policy-faq-card {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1100px) {
+    body[data-page="news"] .special-page.is-faq .special-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    body[data-page="news"] .special-page.is-faq .special-hero-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: min(100%, 560px);
+    }
+}
+
+@media (max-width: 760px) {
+    body[data-page="news"] .policy-faq-primer {
+        padding: 28px 22px 20px;
+    }
+
+    body[data-page="news"] .policy-faq-rule-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="news"] .policy-faq-content {
+        padding-top: 0;
+        padding-bottom: 28px;
+    }
+
+    body[data-page="news"] .special-page.is-faq .policy-faq-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    body[data-page="news"] .special-page.is-faq .policy-faq-meta {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="news"] .policy-faq-cta {
+        margin: 0 22px 32px;
+        padding: 24px;
     }
 }
 

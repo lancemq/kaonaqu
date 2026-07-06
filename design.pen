@@ -13986,7 +13986,7 @@
           "name": "Hero",
           "clip": true,
           "width": "fill_container",
-          "height": 440,
+          "height": 360,
           "fill": "$surface-inverse",
           "layout": "none",
           "children": [
@@ -14009,7 +14009,7 @@
                 "mode": "fill"
               },
               "width": 1440,
-              "height": 440
+              "height": 360
             },
             {
               "type": "rectangle",
@@ -14019,7 +14019,7 @@
               "name": "Tint",
               "fill": "#00000080",
               "width": 1440,
-              "height": 440
+              "height": 360
             },
             {
               "type": "frame",
@@ -14028,9 +14028,9 @@
               "y": 0,
               "name": "Content",
               "width": 1440,
-              "height": 440,
+              "height": 360,
               "padding": [
-                64,
+                50,
                 80
               ],
               "justifyContent": "space_between",
@@ -14236,11 +14236,11 @@
           "width": "fill_container",
           "fill": "$surface-primary",
           "layout": "vertical",
-          "gap": 24,
+          "gap": 16,
           "padding": [
-            60,
+            30,
             80,
-            40,
+            20,
             80
           ],
           "children": [
@@ -14448,7 +14448,7 @@
           "padding": [
             0,
             80,
-            60,
+            30,
             80
           ],
           "children": [
@@ -14458,7 +14458,7 @@
               "name": "Main Column",
               "width": "fill_container",
               "layout": "vertical",
-              "gap": 48,
+              "gap": 28,
               "children": [
                 {
                   "type": "frame",
@@ -14542,10 +14542,10 @@
                       "width": "fill_container",
                       "fill": "#F8FAFC",
                       "layout": "vertical",
-                      "gap": 16,
+                      "gap": 10,
                       "padding": [
-                        24,
-                        28
+                        14,
+                        20
                       ],
                       "children": [
                         {
@@ -14680,10 +14680,10 @@
                       "width": "fill_container",
                       "fill": "#F8FAFC",
                       "layout": "vertical",
-                      "gap": 16,
+                      "gap": 10,
                       "padding": [
-                        24,
-                        28
+                        14,
+                        20
                       ],
                       "children": [
                         {
@@ -14810,6 +14810,152 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zCM7h",
+                      "name": "跨区报考需要满足什么条件？",
+                      "width": "fill_container",
+                      "fill": "#F8FAFC",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        14,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "HkPpt",
+                          "name": "QT",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "jqvrJ",
+                              "name": "QB",
+                              "fill": "$accent-secondary",
+                              "padding": [
+                                3,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "dkKXZ",
+                                  "name": "Q",
+                                  "fill": "#FFFFFF",
+                                  "content": "Q",
+                                  "fontFamily": "$font-data",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "Muxuc",
+                              "name": "QText",
+                              "fill": "$foreground-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "跨区报考需要满足什么条件？",
+                              "lineHeight": 1.35,
+                              "fontFamily": "$font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "700",
+                              "letterSpacing": -0.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "LAR4v",
+                          "name": "A",
+                          "fill": "$foreground-primary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "学生原则上在学籍所在区报考。如回户籍区报考，需在规定时间内提交跨区申请，经审核通过后按户籍区政策执行。跨区报考学生不再享有学籍区的名额分配资格。",
+                          "lineHeight": 1.65,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SQx0V",
+                      "name": "往届生、返沪生可以参加中考吗？",
+                      "width": "fill_container",
+                      "fill": "#F8FAFC",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        14,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "QTtVs",
+                          "name": "QT",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "PvbTj",
+                              "name": "QB",
+                              "fill": "$accent-secondary",
+                              "padding": [
+                                3,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "mPrKB",
+                                  "name": "Q",
+                                  "fill": "#FFFFFF",
+                                  "content": "Q",
+                                  "fontFamily": "$font-data",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "KiQoO",
+                              "name": "QText",
+                              "fill": "$foreground-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "往届生、返沪生可以参加中考吗？",
+                              "lineHeight": 1.35,
+                              "fontFamily": "$font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "700",
+                              "letterSpacing": -0.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "JvuC6",
+                          "name": "A",
+                          "fill": "$foreground-primary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "可以。往届生和返沪生可参加本市中考，但往届生不参加名额分配录取，只能参加统一招生批次录取。返沪生需提供户籍证明和原就读学校学籍证明。",
+                          "lineHeight": 1.65,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -14895,10 +15041,10 @@
                       "width": "fill_container",
                       "fill": "#F8FAFC",
                       "layout": "vertical",
-                      "gap": 16,
+                      "gap": 10,
                       "padding": [
-                        24,
-                        28
+                        14,
+                        20
                       ],
                       "children": [
                         {
@@ -15025,6 +15171,152 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DvCMu",
+                      "name": "名额分配批次的志愿怎么填？",
+                      "width": "fill_container",
+                      "fill": "#F8FAFC",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        14,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ceQ5e",
+                          "name": "QT",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "NNnuM",
+                              "name": "QB",
+                              "fill": "$accent-secondary",
+                              "padding": [
+                                3,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "tp3Hb",
+                                  "name": "Q",
+                                  "fill": "#FFFFFF",
+                                  "content": "Q",
+                                  "fontFamily": "$font-data",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "W6xlb",
+                              "name": "QText",
+                              "fill": "$foreground-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "名额分配批次的志愿怎么填？",
+                              "lineHeight": 1.35,
+                              "fontFamily": "$font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "700",
+                              "letterSpacing": -0.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "fnWlj",
+                          "name": "A",
+                          "fill": "$foreground-primary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "名额分配到区：每个学生可填报1个志愿。名额分配到校：每个学生可填报1个志愿。两个志愿相互独立，均可选择填报或不填报。录取时先进行到区批次，再到校批次。",
+                          "lineHeight": 1.65,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tlsV5",
+                      "name": "统一招生批次可以填几个志愿？",
+                      "width": "fill_container",
+                      "fill": "#F8FAFC",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        14,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Qbuvn",
+                          "name": "QT",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "vstDh",
+                              "name": "QB",
+                              "fill": "$accent-secondary",
+                              "padding": [
+                                3,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "IcLUc",
+                                  "name": "Q",
+                                  "fill": "#FFFFFF",
+                                  "content": "Q",
+                                  "fontFamily": "$font-data",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "foMIw",
+                              "name": "QText",
+                              "fill": "$foreground-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "统一招生批次可以填几个志愿？",
+                              "lineHeight": 1.35,
+                              "fontFamily": "$font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "700",
+                              "letterSpacing": -0.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "zgqgi",
+                          "name": "A",
+                          "fill": "$foreground-primary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "统一招生批次实行平行志愿，考生最多可填报15个志愿。按照分数优先、遵循志愿的原则投档录取。建议考生按照冲一冲、稳一稳、保一保的策略合理填报。",
+                          "lineHeight": 1.65,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -15110,10 +15402,10 @@
                       "width": "fill_container",
                       "fill": "#F8FAFC",
                       "layout": "vertical",
-                      "gap": 16,
+                      "gap": 10,
                       "padding": [
-                        24,
-                        28
+                        14,
+                        20
                       ],
                       "children": [
                         {
@@ -15238,6 +15530,370 @@
                               ]
                             }
                           ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KpEUe",
+                      "name": "怎样判断一条政策消息的来源是否可靠？",
+                      "width": "fill_container",
+                      "fill": "#F8FAFC",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        14,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "BiUAx",
+                          "name": "QT",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "CryPO",
+                              "name": "QB",
+                              "fill": "$accent-secondary",
+                              "padding": [
+                                3,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Q3J1r",
+                                  "name": "Q",
+                                  "fill": "#FFFFFF",
+                                  "content": "Q",
+                                  "fontFamily": "$font-data",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "yWouj",
+                              "name": "QText",
+                              "fill": "$foreground-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "怎样判断一条政策消息的来源是否可靠？",
+                              "lineHeight": 1.35,
+                              "fontFamily": "$font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "700",
+                              "letterSpacing": -0.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "r9q3JP",
+                          "name": "A",
+                          "fill": "$foreground-primary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "最可靠的是上海市教育考试院官网（www.shmeea.edu.cn）和上海市教委官方发布。其次是各区教育局官方网站。学校官网和班主任通知作为补充参考。家长群和自媒体的消息需要核实后再采信。",
+                          "lineHeight": 1.65,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "j1NKRc",
+                      "name": "政策原文和媒体报道说法不一致怎么办？",
+                      "width": "fill_container",
+                      "fill": "#F8FAFC",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        14,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sL2Iu",
+                          "name": "QT",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "S7PQE1",
+                              "name": "QB",
+                              "fill": "$accent-secondary",
+                              "padding": [
+                                3,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "boFIF",
+                                  "name": "Q",
+                                  "fill": "#FFFFFF",
+                                  "content": "Q",
+                                  "fontFamily": "$font-data",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "ea0TB",
+                              "name": "QText",
+                              "fill": "$foreground-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "政策原文和媒体报道说法不一致怎么办？",
+                              "lineHeight": 1.35,
+                              "fontFamily": "$font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "700",
+                              "letterSpacing": -0.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "Pa2qb",
+                          "name": "A",
+                          "fill": "$foreground-primary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "以政策原文为准。官方政策文件通常通过沪教委或市教育考试院发布，文件编号和发布日期可查。媒体报道可能存在简化和解读偏差。",
+                          "lineHeight": 1.65,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ez9wD",
+                  "name": "Group 4",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "FfLFv",
+                      "name": "GH",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ykLrn",
+                          "name": "GK",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "T2E8vG",
+                              "name": "Dot",
+                              "width": 4,
+                              "height": 4,
+                              "fill": "$accent-primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "iU86j",
+                              "name": "Num",
+                              "fill": "$accent-primary",
+                              "content": "04",
+                              "fontFamily": "$font-data",
+                              "fontSize": 10,
+                              "fontWeight": "normal",
+                              "letterSpacing": 2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "joNyF",
+                          "name": "T",
+                          "fill": "$foreground-primary",
+                          "content": "特殊类型招生与体育考试",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 26,
+                          "fontWeight": "700",
+                          "letterSpacing": -0.5
+                        },
+                        {
+                          "type": "text",
+                          "id": "L9H8U",
+                          "name": "S",
+                          "fill": "$foreground-secondary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "体育、艺术特长和综合素质评价是很多家长容易忽略的关键环节",
+                          "lineHeight": 1.6,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "usBXP",
+                      "name": "体育测试免考有哪些条件？",
+                      "width": "fill_container",
+                      "fill": "#F8FAFC",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        14,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "WWBm6",
+                          "name": "QT",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "u5hLr",
+                              "name": "QB",
+                              "fill": "$accent-secondary",
+                              "padding": [
+                                3,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Gl4NB",
+                                  "name": "Q",
+                                  "fill": "#FFFFFF",
+                                  "content": "Q",
+                                  "fontFamily": "$font-data",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "dcSZi",
+                              "name": "QText",
+                              "fill": "$foreground-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "体育测试免考有哪些条件？",
+                              "lineHeight": 1.35,
+                              "fontFamily": "$font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "700",
+                              "letterSpacing": -0.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "ols9I",
+                          "name": "A",
+                          "fill": "$foreground-primary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "因残疾丧失运动能力的考生可申请免考，成绩按满分30分计。因伤病确实不能参加考试的，需提供二级甲等以上医院证明，成绩按满分的60%（18分）计。",
+                          "lineHeight": 1.65,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OW7MY",
+                      "name": "综合素质评价在录取中占多大比重？",
+                      "width": "fill_container",
+                      "fill": "#F8FAFC",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        14,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "dmKVM",
+                          "name": "QT",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "f2Mt5K",
+                              "name": "QB",
+                              "fill": "$accent-secondary",
+                              "padding": [
+                                3,
+                                10
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "oAK71",
+                                  "name": "Q",
+                                  "fill": "#FFFFFF",
+                                  "content": "Q",
+                                  "fontFamily": "$font-data",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "TV3xB",
+                              "name": "QText",
+                              "fill": "$foreground-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "综合素质评价在录取中占多大比重？",
+                              "lineHeight": 1.35,
+                              "fontFamily": "$font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "700",
+                              "letterSpacing": -0.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "P0wKX",
+                          "name": "A",
+                          "fill": "$foreground-primary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "在名额分配综合评价录取批次中，综合素质评价占50%权重。评价内容涵盖品德发展、学业水平、身心健康、艺术素养、社会实践五个维度，由初中学校评定。",
+                          "lineHeight": 1.65,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -15464,6 +16120,108 @@
                       "fontFamily": "$font-body",
                       "fontSize": 14,
                       "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "YHHbM",
+          "name": "Ask Section",
+          "width": "fill_container",
+          "fill": "$surface-primary",
+          "gap": 48,
+          "padding": [
+            0,
+            80,
+            40,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "N5kkkW",
+              "name": "Ask Card",
+              "width": "fill_container",
+              "fill": "$surface-inverse",
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "GgvlI",
+                  "name": "K",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Q3sSv",
+                      "name": "Dot",
+                      "width": 6,
+                      "height": 6,
+                      "fill": "$accent-primary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SM1Pk",
+                      "name": "L",
+                      "fill": "$accent-tertiary",
+                      "content": "STILL HAVE QUESTIONS?",
+                      "fontFamily": "$font-caption",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 4
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "yLeH4",
+                  "name": "Title",
+                  "fill": "$foreground-inverse",
+                  "content": "没找到答案？",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 22,
+                  "fontWeight": "700",
+                  "letterSpacing": -0.4
+                },
+                {
+                  "type": "text",
+                  "id": "tVOXT",
+                  "name": "Desc",
+                  "fill": "#ffffffb3",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "提交你的升学疑问，我们将整理常见问题并持续更新此页面。",
+                  "lineHeight": 1.6,
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "kerKD",
+                  "name": "Btn",
+                  "fill": "$accent-primary",
+                  "padding": [
+                    14,
+                    28
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "q0Ipd",
+                      "name": "L",
+                      "fill": "#FFFFFF",
+                      "content": "提交问题 →",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600"
                     }
                   ]
                 }
@@ -15861,7 +16619,7 @@
           "name": "Hero",
           "clip": true,
           "width": "fill_container",
-          "height": 440,
+          "height": 360,
           "fill": "$surface-inverse",
           "layout": "none",
           "children": [
@@ -15884,7 +16642,7 @@
                 "mode": "fill"
               },
               "width": 1440,
-              "height": 440
+              "height": 360
             },
             {
               "type": "rectangle",
@@ -15894,7 +16652,7 @@
               "name": "Tint",
               "fill": "#00000080",
               "width": 1440,
-              "height": 440
+              "height": 360
             },
             {
               "type": "frame",
@@ -15903,9 +16661,9 @@
               "y": 0,
               "name": "Content",
               "width": 1440,
-              "height": 440,
+              "height": 360,
               "padding": [
-                64,
+                50,
                 80
               ],
               "justifyContent": "space_between",
@@ -16111,11 +16869,11 @@
           "width": "fill_container",
           "fill": "$surface-primary",
           "layout": "vertical",
-          "gap": 24,
+          "gap": 16,
           "padding": [
-            60,
+            30,
             80,
-            40,
+            20,
             80
           ],
           "children": [
@@ -16320,11 +17078,11 @@
           "width": "fill_container",
           "fill": "$surface-primary",
           "layout": "vertical",
-          "gap": 24,
+          "gap": 16,
           "padding": [
             0,
             80,
-            60,
+            40,
             80
           ],
           "children": [
@@ -16610,9 +17368,9 @@
           "width": "fill_container",
           "fill": "#F8FAFC",
           "layout": "vertical",
-          "gap": 24,
+          "gap": 16,
           "padding": [
-            60,
+            40,
             80
           ],
           "children": [
@@ -16871,7 +17629,7 @@
           "width": "fill_container",
           "fill": "$surface-primary",
           "layout": "vertical",
-          "gap": 32,
+          "gap": 24,
           "padding": [
             0,
             80,
@@ -17000,10 +17758,10 @@
                   "width": "fill_container",
                   "fill": "#F8FAFC",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 10,
                   "padding": [
-                    24,
-                    28
+                    16,
+                    20
                   ],
                   "children": [
                     {
@@ -17096,10 +17854,10 @@
                   "width": "fill_container",
                   "fill": "#F8FAFC",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 10,
                   "padding": [
-                    24,
-                    28
+                    16,
+                    20
                   ],
                   "children": [
                     {
@@ -17269,10 +18027,10 @@
                   "width": "fill_container",
                   "fill": "#F8FAFC",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 10,
                   "padding": [
-                    24,
-                    28
+                    16,
+                    20
                   ],
                   "children": [
                     {
@@ -17365,10 +18123,10 @@
                   "width": "fill_container",
                   "fill": "#F8FAFC",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 10,
                   "padding": [
-                    24,
-                    28
+                    16,
+                    20
                   ],
                   "children": [
                     {
@@ -17447,6 +18205,473 @@
                       "name": "TSrc",
                       "fill": "$foreground-secondary",
                       "content": "来源：2026年上海市中招工作若干意见",
+                      "fontFamily": "$font-caption",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rPjAO",
+              "name": "TGroup 2",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "yztd6",
+                  "name": "TGH",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CAvDf",
+                      "name": "TGT",
+                      "fill": "$foreground-primary",
+                      "content": "志愿填报相关概念",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 24,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "t26QB3",
+                      "name": "TGS",
+                      "fill": "$foreground-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "理解志愿设置和投档规则，避免填报失误",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "laAmz",
+                  "name": "平行志愿",
+                  "width": "fill_container",
+                  "fill": "#F8FAFC",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": [
+                    16,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "c5tyg",
+                      "name": "Meta",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ampFD",
+                          "name": "Tag",
+                          "fill": "$accent-tertiary",
+                          "padding": [
+                            2,
+                            8
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "FHzJr",
+                              "name": "L",
+                              "fill": "$foreground-primary",
+                              "content": "志愿",
+                              "fontFamily": "$font-caption",
+                              "fontSize": 9,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "bIX9S",
+                      "name": "TT",
+                      "fill": "$foreground-primary",
+                      "content": "平行志愿",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 20,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "uMq3M",
+                      "name": "TS",
+                      "fill": "$foreground-primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "按分数从高到低、按志愿顺序依次投档的方式",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "gDnCJ",
+                      "name": "TD",
+                      "fill": "$foreground-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "考生在同一批次内可填报多个志愿。投档时，按考生成绩从高到低排序，对每位考生依次检索其志愿，投档到第一个符合条件的志愿。核心原则：分数优先、遵循志愿、一轮投档。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "r8Sys",
+                      "name": "TSrc",
+                      "fill": "$foreground-secondary",
+                      "content": "上海市教育考试院",
+                      "fontFamily": "$font-caption",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hSAjx",
+                  "name": "征求志愿",
+                  "width": "fill_container",
+                  "fill": "#F8FAFC",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": [
+                    16,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "zRvKk",
+                      "name": "Meta",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "qCh8g",
+                          "name": "Tag",
+                          "fill": "$accent-tertiary",
+                          "padding": [
+                            2,
+                            8
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "AN9tu",
+                              "name": "L",
+                              "fill": "$foreground-primary",
+                              "content": "志愿",
+                              "fontFamily": "$font-caption",
+                              "fontSize": 9,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "pttTd",
+                      "name": "TT",
+                      "fill": "$foreground-primary",
+                      "content": "征求志愿",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 20,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "kNl3g",
+                      "name": "TS",
+                      "fill": "$foreground-primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "统一招生录取结束后未完成计划的学校进行补充录取",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Nnh66",
+                      "name": "TD",
+                      "fill": "$foreground-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "在统一招生录取结束后，由市教育考试院公布未完成招生计划的学校和名额，未被录取的考生在规定时间内重新填报志愿。这是录取的最后一次机会。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "U56eG",
+                      "name": "TSrc",
+                      "fill": "$foreground-secondary",
+                      "content": "2026年上海市中招工作若干意见",
+                      "fontFamily": "$font-caption",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qkMxI",
+              "name": "TGroup 3",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "r2pm2V",
+                  "name": "TGH",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Ra8bd",
+                      "name": "TGT",
+                      "fill": "$foreground-primary",
+                      "content": "考试与评价相关概念",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 24,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "Leiln",
+                      "name": "TGS",
+                      "fill": "$foreground-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "考试科目设置、计分方式与录取标准",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "c8mEm",
+                  "name": "录取总分",
+                  "width": "fill_container",
+                  "fill": "#F8FAFC",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": [
+                    16,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "p8Pxsn",
+                      "name": "Meta",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "fy2wc",
+                          "name": "Tag",
+                          "fill": "$accent-tertiary",
+                          "padding": [
+                            2,
+                            8
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "fQc4p",
+                              "name": "L",
+                              "fill": "$foreground-primary",
+                              "content": "考试",
+                              "fontFamily": "$font-caption",
+                              "fontSize": 9,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "SUNfe",
+                      "name": "TT",
+                      "fill": "$foreground-primary",
+                      "content": "录取总分",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 20,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "KmKNN",
+                      "name": "TS",
+                      "fill": "$foreground-primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "语文、数学、外语、综合测试、道德与法治、历史、体育与健身各科成绩之和",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MpswK",
+                      "name": "TD",
+                      "fill": "$foreground-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "2026年上海中考总分为750分。包含语文150分、数学150分、外语150分（含听说测试10分）、综合测试150分（物理70+化学50+跨学科案例分析15+实验操作15）、道德与法治60分、历史60分、体育与健身30分。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "y7HYYl",
+                      "name": "TSrc",
+                      "fill": "$foreground-secondary",
+                      "content": "上海市教委",
+                      "fontFamily": "$font-caption",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "B1kgtL",
+                  "name": "最低投档控制分数线",
+                  "width": "fill_container",
+                  "fill": "#F8FAFC",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": [
+                    16,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "rIm9f",
+                      "name": "Meta",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "a7qIuy",
+                          "name": "Tag",
+                          "fill": "$accent-tertiary",
+                          "padding": [
+                            2,
+                            8
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "lrdZF",
+                              "name": "L",
+                              "fill": "$foreground-primary",
+                              "content": "考试",
+                              "fontFamily": "$font-caption",
+                              "fontSize": 9,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "F1P9Xx",
+                      "name": "TT",
+                      "fill": "$foreground-primary",
+                      "content": "最低投档控制分数线",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 20,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "M5u8NJ",
+                      "name": "TS",
+                      "fill": "$foreground-primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "进入某个批次投档范围的最低分数门槛",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SwPEx",
+                      "name": "TD",
+                      "fill": "$foreground-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "按招生计划数的一定比例划定。达到分数线才能参与该批次的投档，但达到线不代表一定会被录取，实际录取线取决于各校的最终录取情况。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "RVUo7",
+                      "name": "TSrc",
+                      "fill": "$foreground-secondary",
                       "fontFamily": "$font-caption",
                       "fontSize": 10,
                       "fontWeight": "normal",
@@ -20116,1398 +21341,9 @@
     },
     {
       "type": "frame",
-      "id": "Q61pk",
-      "x": 12480,
-      "y": 4300,
-      "name": "政策深读 · Policy Deep Dive",
-      "clip": true,
-      "width": 1440,
-      "layout": "vertical",
-      "children": [
-        {
-          "type": "frame",
-          "id": "Ij210",
-          "name": "Nav",
-          "width": "fill_container",
-          "fill": "$surface-primary",
-          "padding": [
-            20,
-            40
-          ],
-          "justifyContent": "space_between",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "frame",
-              "id": "Lvu86",
-              "name": "Brand",
-              "gap": 12,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "EOaqS",
-                  "name": "Logo",
-                  "fill": "$foreground-primary",
-                  "content": "考哪去",
-                  "fontFamily": "$font-heading",
-                  "fontSize": 22,
-                  "fontWeight": "700",
-                  "letterSpacing": -0.5
-                },
-                {
-                  "type": "text",
-                  "id": "qXiIs",
-                  "name": "Tagline",
-                  "fill": "$foreground-secondary",
-                  "content": "SHANGHAI EDUCATION",
-                  "fontFamily": "$font-caption",
-                  "fontSize": 11,
-                  "fontWeight": "normal",
-                  "letterSpacing": 3
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "GyUSw",
-              "name": "NavLinks",
-              "gap": 4,
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "tULab",
-                  "name": "N1",
-                  "fill": "$surface-primary",
-                  "padding": [
-                    10,
-                    18
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "BpBu5",
-                      "name": "L",
-                      "fill": "$foreground-primary",
-                      "content": "首页",
-                      "fontFamily": "$font-body",
-                      "fontSize": 14,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "uCAjl",
-                  "name": "N2",
-                  "fill": "$accent-secondary",
-                  "padding": [
-                    10,
-                    18
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "SWMfT",
-                      "name": "L",
-                      "fill": "$foreground-inverse",
-                      "content": "新闻",
-                      "fontFamily": "$font-body",
-                      "fontSize": 14,
-                      "fontWeight": "600"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "QXyIM",
-                  "name": "N3",
-                  "fill": "$surface-primary",
-                  "padding": [
-                    10,
-                    18
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "FU2rX",
-                      "name": "L",
-                      "fill": "$foreground-primary",
-                      "content": "学校",
-                      "fontFamily": "$font-body",
-                      "fontSize": 14,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "w0sawV",
-                  "name": "N4",
-                  "fill": "$surface-primary",
-                  "padding": [
-                    10,
-                    18
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "b0ycKj",
-                      "name": "L",
-                      "fill": "$foreground-primary",
-                      "content": "知识",
-                      "fontFamily": "$font-body",
-                      "fontSize": 14,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "y4T6yA",
-          "name": "Divider",
-          "width": "fill_container",
-          "height": 1,
-          "fill": "$border-subtle"
-        },
-        {
-          "type": "frame",
-          "id": "s0G8o",
-          "name": "Hero",
-          "clip": true,
-          "width": "fill_container",
-          "height": 380,
-          "fill": "$surface-inverse",
-          "layout": "none",
-          "children": [
-            {
-              "type": "rectangle",
-              "id": "EYEry",
-              "x": 0,
-              "y": 0,
-              "name": "BG",
-              "fill": "$surface-inverse",
-              "width": 1440,
-              "height": 380
-            },
-            {
-              "type": "rectangle",
-              "id": "zYDOO",
-              "x": 0,
-              "y": 0,
-              "name": "Tint",
-              "fill": "#00000080",
-              "width": 1440,
-              "height": 380
-            },
-            {
-              "type": "frame",
-              "id": "D6Iu2N",
-              "x": 0,
-              "y": 0,
-              "name": "Content",
-              "width": 1440,
-              "height": 380,
-              "padding": [
-                56,
-                80
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "end",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "EgQfL",
-                  "name": "Left",
-                  "width": 580,
-                  "layout": "vertical",
-                  "gap": 16,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "qq6sg",
-                      "name": "Kicker",
-                      "gap": 10,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "HX8p0",
-                          "name": "Dot",
-                          "width": 6,
-                          "height": 6,
-                          "fill": "$accent-primary"
-                        },
-                        {
-                          "type": "text",
-                          "id": "crNK6",
-                          "name": "L",
-                          "fill": "$accent-primary",
-                          "content": "POLICY DEEP DIVE",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
-                          "letterSpacing": 4
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "HJMZr",
-                      "name": "Title",
-                      "fill": "$foreground-inverse",
-                      "content": "政策深读",
-                      "lineHeight": 1.06,
-                      "fontFamily": "$font-heading",
-                      "fontSize": 42,
-                      "fontWeight": "700",
-                      "letterSpacing": -1
-                    },
-                    {
-                      "type": "text",
-                      "id": "AkM2E",
-                      "name": "Desc",
-                      "fill": "#ffffffb3",
-                      "textGrowth": "fixed-width",
-                      "width": 480,
-                      "content": "集中查看上海升学当年关键政策文件与解读，从总盘文件到实施细则再到专项文件，按顺序读",
-                      "lineHeight": 1.6,
-                      "fontFamily": "$font-body",
-                      "fontSize": 15,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Ii8vN",
-                  "name": "Right",
-                  "width": 320,
-                  "layout": "vertical",
-                  "gap": 20,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "Mcn6K",
-                      "name": "Stat",
-                      "layout": "vertical",
-                      "gap": 2,
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "r9Aaw",
-                          "name": "Num",
-                          "fill": "$foreground-inverse",
-                          "content": "10+",
-                          "fontFamily": "$font-data",
-                          "fontSize": 24,
-                          "fontWeight": "700"
-                        },
-                        {
-                          "type": "text",
-                          "id": "a2ntlP",
-                          "name": "Label",
-                          "fill": "#ffffff99",
-                          "content": "政策文件",
-                          "fontFamily": "$font-body",
-                          "fontSize": 11,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "im3sB",
-                      "name": "Stat",
-                      "layout": "vertical",
-                      "gap": 2,
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "rPOXB",
-                          "name": "Num",
-                          "fill": "$foreground-inverse",
-                          "content": "3",
-                          "fontFamily": "$font-data",
-                          "fontSize": 24,
-                          "fontWeight": "700"
-                        },
-                        {
-                          "type": "text",
-                          "id": "ym8ZW",
-                          "name": "Label",
-                          "fill": "#ffffff99",
-                          "content": "阅读阶段",
-                          "fontFamily": "$font-body",
-                          "fontSize": 11,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "FV27c",
-                      "name": "Stat",
-                      "layout": "vertical",
-                      "gap": 2,
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "aa1Kt",
-                          "name": "Num",
-                          "fill": "$foreground-inverse",
-                          "content": "官方口径",
-                          "fontFamily": "$font-data",
-                          "fontSize": 24,
-                          "fontWeight": "700"
-                        },
-                        {
-                          "type": "text",
-                          "id": "Paj4W",
-                          "name": "Label",
-                          "fill": "#ffffff99",
-                          "content": "按来源整理",
-                          "fontFamily": "$font-body",
-                          "fontSize": 11,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "iMJry",
-          "name": "Reading Stages",
-          "width": "fill_container",
-          "fill": "$surface-primary",
-          "layout": "vertical",
-          "gap": 24,
-          "padding": [
-            40,
-            80
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "L0Pp54",
-              "name": "H",
-              "gap": 10,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "mX9GB",
-                  "name": "Dot",
-                  "width": 6,
-                  "height": 6,
-                  "fill": "$accent-primary"
-                },
-                {
-                  "type": "text",
-                  "id": "Hh5Go",
-                  "name": "L",
-                  "fill": "$accent-primary",
-                  "content": "READING ORDER",
-                  "fontFamily": "$font-caption",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 4
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "a4aFz",
-              "name": "T",
-              "fill": "$foreground-primary",
-              "content": "建议按这个顺序读政策文件",
-              "fontFamily": "$font-heading",
-              "fontSize": 26,
-              "fontWeight": "700",
-              "letterSpacing": -0.6
-            },
-            {
-              "type": "frame",
-              "id": "OrdiH",
-              "name": "Grid",
-              "width": "fill_container",
-              "gap": 16,
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "QkP4h",
-                  "name": "C0",
-                  "width": "fill_container",
-                  "fill": "#F8FAFC",
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 24,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "A51QQ5",
-                      "name": "Step",
-                      "fill": "$accent-primary",
-                      "content": "第一步",
-                      "fontFamily": "$font-caption",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 2
-                    },
-                    {
-                      "type": "text",
-                      "id": "K4N0m",
-                      "name": "TT",
-                      "fill": "$foreground-primary",
-                      "content": "先读年度总盘",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 20,
-                      "fontWeight": "700",
-                      "letterSpacing": -0.3
-                    },
-                    {
-                      "type": "text",
-                      "id": "hGy7i",
-                      "name": "DD",
-                      "fill": "$foreground-secondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "优先看2026年2月27日发布的<若干意见>，先把考试科目、录取批次和整体框架看清",
-                      "lineHeight": 1.6,
-                      "fontFamily": "$font-body",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "iXGSF",
-                  "name": "C1",
-                  "width": "fill_container",
-                  "fill": "#F8FAFC",
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 24,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "i4Vc1",
-                      "name": "Step",
-                      "fill": "$accent-primary",
-                      "content": "第二步",
-                      "fontFamily": "$font-caption",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 2
-                    },
-                    {
-                      "type": "text",
-                      "id": "zxMkL",
-                      "name": "TT",
-                      "fill": "$foreground-primary",
-                      "content": "再读实施细则",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 20,
-                      "fontWeight": "700",
-                      "letterSpacing": -0.3
-                    },
-                    {
-                      "type": "text",
-                      "id": "Z4Kih",
-                      "name": "DD",
-                      "fill": "$foreground-secondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "再看2026年3月发布的<实施细则>，把志愿、投档、同分排序和确认环节对上",
-                      "lineHeight": 1.6,
-                      "fontFamily": "$font-body",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "jz8pc",
-                  "name": "C2",
-                  "width": "fill_container",
-                  "fill": "#F8FAFC",
-                  "layout": "vertical",
-                  "gap": 10,
-                  "padding": 24,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "OVoIT",
-                      "name": "Step",
-                      "fill": "$accent-primary",
-                      "content": "第三步",
-                      "fontFamily": "$font-caption",
-                      "fontSize": 11,
-                      "fontWeight": "600",
-                      "letterSpacing": 2
-                    },
-                    {
-                      "type": "text",
-                      "id": "jkmMZ",
-                      "name": "TT",
-                      "fill": "$foreground-primary",
-                      "content": "最后看专项文件",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 20,
-                      "fontWeight": "700",
-                      "letterSpacing": -0.3
-                    },
-                    {
-                      "type": "text",
-                      "id": "TjLFO",
-                      "name": "DD",
-                      "fill": "$foreground-secondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "根据实际需求进入中职自主招生、特殊教育等专项，不用一开始把所有文件都读一遍",
-                      "lineHeight": 1.6,
-                      "fontFamily": "$font-body",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "KUTMf",
-          "name": "Calibration Notes",
-          "width": "fill_container",
-          "fill": "#F8FAFC",
-          "layout": "vertical",
-          "gap": 20,
-          "padding": [
-            40,
-            80
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "eRZgK",
-              "name": "H",
-              "gap": 10,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "B94i3Q",
-                  "name": "Dot",
-                  "width": 6,
-                  "height": 6,
-                  "fill": "$accent-primary"
-                },
-                {
-                  "type": "text",
-                  "id": "XE2J3",
-                  "name": "L",
-                  "fill": "$accent-primary",
-                  "content": "CALIBRATION",
-                  "fontFamily": "$font-caption",
-                  "fontSize": 12,
-                  "fontWeight": "normal",
-                  "letterSpacing": 4
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "yljyq",
-              "name": "T",
-              "fill": "$foreground-primary",
-              "content": "读政策前先记住这三条",
-              "fontFamily": "$font-heading",
-              "fontSize": 26,
-              "fontWeight": "700",
-              "letterSpacing": -0.6
-            },
-            {
-              "type": "frame",
-              "id": "VIbZr",
-              "name": "Grid",
-              "width": "fill_container",
-              "gap": 16,
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "HVAfm",
-                  "name": "NC0",
-                  "width": "fill_container",
-                  "fill": "$surface-primary",
-                  "stroke": "$border-subtle",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 8,
-                  "padding": 24,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "M2EEQ5",
-                      "name": "TT",
-                      "fill": "$foreground-primary",
-                      "content": "总盘文件不等于操作细则",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 18,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "Eur8Q",
-                      "name": "DD",
-                      "fill": "$foreground-secondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "若干意见负责定义年度框架，实施细则负责把考试、志愿和录取规则写实",
-                      "lineHeight": 1.6,
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "R4V2Eu",
-                  "name": "NC1",
-                  "width": "fill_container",
-                  "fill": "$surface-primary",
-                  "stroke": "$border-subtle",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 8,
-                  "padding": 24,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "JmmGt",
-                      "name": "TT",
-                      "fill": "$foreground-primary",
-                      "content": "新闻摘要不等于资格边界",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 18,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "RDYyj",
-                      "name": "DD",
-                      "fill": "$foreground-secondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "很多新闻会先给结论，但真正决定是否适用的仍是原文里的对象、条件和时间要求",
-                      "lineHeight": 1.6,
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "zRpKO",
-                  "name": "NC2",
-                  "width": "fill_container",
-                  "fill": "$surface-primary",
-                  "stroke": "$border-subtle",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 8,
-                  "padding": 24,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "iModa",
-                      "name": "TT",
-                      "fill": "$foreground-primary",
-                      "content": "专项文件不是所有家庭都要通读",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 18,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "pVx0R",
-                      "name": "DD",
-                      "fill": "$foreground-secondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "特殊教育、中职自主招生更适合按需求进入，而不是和总盘文件混在一起看",
-                      "lineHeight": 1.6,
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "P3oIzl",
-          "name": "Policy Content",
-          "width": "fill_container",
-          "fill": "$surface-primary",
-          "gap": 48,
-          "padding": [
-            0,
-            80,
-            60,
-            80
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "N0BFT7",
-              "name": "Main Col",
-              "width": "fill_container",
-              "layout": "vertical",
-              "gap": 32,
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "PgTsd",
-                  "name": "Sec0",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 20,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "O26Zz",
-                      "name": "SH",
-                      "layout": "vertical",
-                      "gap": 8,
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "D3muq",
-                          "name": "SK",
-                          "gap": 10,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "Y4X3j5",
-                              "name": "Badge",
-                              "fill": "$accent-primary",
-                              "cornerRadius": "$rounded-sm",
-                              "padding": [
-                                3,
-                                10
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "Y8clo",
-                                  "name": "BL",
-                                  "fill": "$foreground-inverse",
-                                  "content": "招生与录取",
-                                  "fontFamily": "$font-caption",
-                                  "fontSize": 10,
-                                  "fontWeight": "600",
-                                  "letterSpacing": 2
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "JR0I7",
-                          "name": "TT",
-                          "fill": "$foreground-primary",
-                          "content": "招生与录取政策",
-                          "fontFamily": "$font-heading",
-                          "fontSize": 24,
-                          "fontWeight": "700",
-                          "letterSpacing": -0.4
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "CQPqc",
-                      "name": "PE0",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 8,
-                      "padding": [
-                        16,
-                        0
-                      ],
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "enmpk",
-                          "name": "PM0",
-                          "gap": 12,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "SvsJF",
-                              "name": "DP0",
-                              "fill": "$accent-primary",
-                              "cornerRadius": "$rounded-sm",
-                              "padding": [
-                                2,
-                                10
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "e26can",
-                                  "name": "D",
-                                  "fill": "$foreground-inverse",
-                                  "content": "2026-02-27",
-                                  "fontFamily": "$font-data",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "lRNuz",
-                              "name": "S",
-                              "fill": "$foreground-secondary",
-                              "content": "上海市教育委员会",
-                              "fontFamily": "$font-caption",
-                              "fontSize": 11,
-                              "fontWeight": "normal",
-                              "letterSpacing": 2
-                            }
-                          ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "Xrruc",
-                          "name": "TT",
-                          "fill": "$foreground-primary",
-                          "content": "上海市高中阶段学校招生工作的若干意见",
-                          "fontFamily": "$font-heading",
-                          "fontSize": 19,
-                          "fontWeight": "700",
-                          "letterSpacing": -0.3
-                        },
-                        {
-                          "type": "text",
-                          "id": "xIVYN",
-                          "name": "Sum",
-                          "fill": "$foreground-secondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "明确2026年上海中招录取总分750分、自主招生/名额分配/统一招生三个批次、志愿填报时间和书面确认要求等核心框架",
-                          "lineHeight": 1.5,
-                          "fontFamily": "$font-body",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "h7qas",
-                      "name": "Rl0",
-                      "width": "fill_container",
-                      "height": 1,
-                      "fill": "$border-subtle"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "itvEZ",
-                      "name": "PE1",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 8,
-                      "padding": [
-                        16,
-                        0
-                      ],
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "a7Atr",
-                          "name": "PM1",
-                          "gap": 12,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "X3eQM",
-                              "name": "DP1",
-                              "fill": "$accent-primary",
-                              "cornerRadius": "$rounded-sm",
-                              "padding": [
-                                2,
-                                10
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "CeTK3",
-                                  "name": "D",
-                                  "fill": "$foreground-inverse",
-                                  "content": "2026-03-20",
-                                  "fontFamily": "$font-data",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "mJgoa",
-                              "name": "S",
-                              "fill": "$foreground-secondary",
-                              "content": "上海市教育委员会",
-                              "fontFamily": "$font-caption",
-                              "fontSize": 11,
-                              "fontWeight": "normal",
-                              "letterSpacing": 2
-                            }
-                          ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "TQH0n",
-                          "name": "TT",
-                          "fill": "$foreground-primary",
-                          "content": "2026年上海市中招实施细则",
-                          "fontFamily": "$font-heading",
-                          "fontSize": 19,
-                          "fontWeight": "700",
-                          "letterSpacing": -0.3
-                        },
-                        {
-                          "type": "text",
-                          "id": "Avs7n",
-                          "name": "Sum",
-                          "fill": "$foreground-secondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "细化中招各环节操作流程，含报名确认、志愿填报批次顺序、平行志愿规则和同分排序办法",
-                          "lineHeight": 1.5,
-                          "fontFamily": "$font-body",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "ph8pF",
-                  "name": "Sec1",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 20,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "ud3at",
-                      "name": "SH",
-                      "layout": "vertical",
-                      "gap": 8,
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "Z8StKG",
-                          "name": "SK",
-                          "gap": 10,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "M4ewL",
-                              "name": "Badge",
-                              "fill": "$accent-primary",
-                              "cornerRadius": "$rounded-sm",
-                              "padding": [
-                                3,
-                                10
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "Zrkmz",
-                                  "name": "BL",
-                                  "fill": "$foreground-inverse",
-                                  "content": "报名与资格",
-                                  "fontFamily": "$font-caption",
-                                  "fontSize": 10,
-                                  "fontWeight": "600",
-                                  "letterSpacing": 2
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "PX3Rd",
-                          "name": "TT",
-                          "fill": "$foreground-primary",
-                          "content": "报名与资格政策",
-                          "fontFamily": "$font-heading",
-                          "fontSize": 24,
-                          "fontWeight": "700",
-                          "letterSpacing": -0.4
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "eSLVV",
-                      "name": "PE0",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 8,
-                      "padding": [
-                        16,
-                        0
-                      ],
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "UoSo3",
-                          "name": "PM0",
-                          "gap": 12,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "zY3JK",
-                              "name": "DP0",
-                              "fill": "$accent-primary",
-                              "cornerRadius": "$rounded-sm",
-                              "padding": [
-                                2,
-                                10
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "r6tOO3",
-                                  "name": "D",
-                                  "fill": "$foreground-inverse",
-                                  "content": "2026-02-15",
-                                  "fontFamily": "$font-data",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "yybVh",
-                              "name": "S",
-                              "fill": "$foreground-secondary",
-                              "content": "上海市教育考试院",
-                              "fontFamily": "$font-caption",
-                              "fontSize": 11,
-                              "fontWeight": "normal",
-                              "letterSpacing": 2
-                            }
-                          ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "zC4ui",
-                          "name": "TT",
-                          "fill": "$foreground-primary",
-                          "content": "2026年上海市中考报名工作通知",
-                          "fontFamily": "$font-heading",
-                          "fontSize": 19,
-                          "fontWeight": "700",
-                          "letterSpacing": -0.3
-                        },
-                        {
-                          "type": "text",
-                          "id": "eyvi4",
-                          "name": "Sum",
-                          "fill": "$foreground-secondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "明确中招网上报名时间、资格审核流程和补报名窗口安排",
-                          "lineHeight": 1.5,
-                          "fontFamily": "$font-body",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "nKPbG",
-              "name": "Sidebar",
-              "width": 320,
-              "layout": "vertical",
-              "gap": 20,
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "MmGTv",
-                  "name": "SC1",
-                  "width": 320,
-                  "fill": "$surface-inverse",
-                  "layout": "vertical",
-                  "gap": 14,
-                  "padding": 24,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "pF3ar",
-                      "name": "H",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "j0QTy",
-                          "name": "Dot",
-                          "width": 6,
-                          "height": 6,
-                          "fill": "$accent-primary"
-                        },
-                        {
-                          "type": "text",
-                          "id": "M9kFZ4",
-                          "name": "L",
-                          "fill": "$accent-primary",
-                          "content": "HOW TO READ",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 10,
-                          "fontWeight": "normal",
-                          "letterSpacing": 3
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "T5OiG",
-                      "name": "T",
-                      "fill": "#ffffffcc",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "年度总盘文件负责定义考试科目、录取批次和整体框架。实施细则负责把规则落到操作细节。专项文件则面向特定通道。建议按总盘→细则→专项的顺序读，不要跳跃。",
-                      "lineHeight": 1.7,
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "BUH2b",
-                  "name": "SC2",
-                  "width": 320,
-                  "fill": "$accent-secondary",
-                  "layout": "vertical",
-                  "gap": 14,
-                  "padding": 24,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "z4QhU0",
-                      "name": "H",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "PzJwh",
-                          "name": "Dot",
-                          "width": 6,
-                          "height": 6,
-                          "fill": "$foreground-inverse"
-                        },
-                        {
-                          "type": "text",
-                          "id": "kMuZ1",
-                          "name": "L",
-                          "fill": "$foreground-inverse",
-                          "content": "RELATED",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 10,
-                          "fontWeight": "normal",
-                          "letterSpacing": 3
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "jq3Zx",
-                      "name": "Lk",
-                      "fill": "#ffffffcc",
-                      "content": "政策问答 →",
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    },
-                    {
-                      "type": "text",
-                      "id": "U6dnND",
-                      "name": "Lk",
-                      "fill": "#ffffffcc",
-                      "content": "概念速查 →",
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    },
-                    {
-                      "type": "text",
-                      "id": "j7FHdc",
-                      "name": "Lk",
-                      "fill": "#ffffffcc",
-                      "content": "官方招生日程 →",
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "jqh3g",
-          "name": "Color Block Row",
-          "width": "fill_container",
-          "children": [
-            {
-              "type": "rectangle",
-              "id": "ajNuy",
-              "name": "B0",
-              "fill": "$accent-primary",
-              "width": "fill_container",
-              "height": 6
-            },
-            {
-              "type": "rectangle",
-              "id": "EZp6W",
-              "name": "B1",
-              "fill": "$accent-tertiary",
-              "width": "fill_container",
-              "height": 6
-            },
-            {
-              "type": "rectangle",
-              "id": "p6D3E",
-              "name": "B2",
-              "fill": "$accent-secondary",
-              "width": "fill_container",
-              "height": 6
-            },
-            {
-              "type": "rectangle",
-              "id": "d3N9Ah",
-              "name": "B3",
-              "fill": "$accent-primary",
-              "width": "fill_container",
-              "height": 6
-            },
-            {
-              "type": "rectangle",
-              "id": "Zurqz",
-              "name": "B4",
-              "fill": "$accent-tertiary",
-              "width": "fill_container",
-              "height": 6
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "EKQK4",
-          "name": "Footer",
-          "width": "fill_container",
-          "fill": "$surface-inverse",
-          "padding": [
-            40,
-            80
-          ],
-          "justifyContent": "space_between",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "frame",
-              "id": "pWgWE",
-              "name": "Brand",
-              "layout": "vertical",
-              "gap": 8,
-              "children": [
-                {
-                  "type": "text",
-                  "id": "JlR5w",
-                  "name": "Logo",
-                  "fill": "$foreground-inverse",
-                  "content": "考哪去",
-                  "fontFamily": "$font-heading",
-                  "fontSize": 20,
-                  "fontWeight": "700",
-                  "letterSpacing": -0.5
-                },
-                {
-                  "type": "text",
-                  "id": "Evrud",
-                  "name": "Tag",
-                  "fill": "#ffffff66",
-                  "content": "SHANGHAI EDUCATION PLATFORM",
-                  "fontFamily": "$font-caption",
-                  "fontSize": 10,
-                  "fontWeight": "normal",
-                  "letterSpacing": 3
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "BtRVH",
-              "name": "Copy",
-              "fill": "#ffffff4d",
-              "content": "2026 考哪去",
-              "fontFamily": "$font-data",
-              "fontSize": 11,
-              "fontWeight": "normal"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "frame",
       "id": "v6dad",
       "x": 0,
-      "y": 7500,
+      "y": 8280,
       "name": "学校频道 · Schools",
       "clip": true,
       "width": 1440,
@@ -24257,7 +24093,7 @@
       "type": "frame",
       "id": "EZc4m",
       "x": 1560,
-      "y": 7500,
+      "y": 8280,
       "name": "区域频道索引 · Districts",
       "clip": true,
       "width": 1440,
@@ -26371,7 +26207,7 @@
       "type": "frame",
       "id": "op6CY",
       "x": 3120,
-      "y": 7500,
+      "y": 8280,
       "name": "区学校页 · District",
       "clip": true,
       "width": 1440,
@@ -28107,7 +27943,7 @@
       "type": "frame",
       "id": "DRHhn",
       "x": 4680,
-      "y": 7500,
+      "y": 8280,
       "name": "学校详情 · School Detail",
       "clip": true,
       "width": 1440,
@@ -30371,7 +30207,7 @@
       "type": "frame",
       "id": "dV08f",
       "x": 6240,
-      "y": 7500,
+      "y": 8280,
       "name": "学校对比 · Compare",
       "clip": true,
       "width": 1440,
@@ -31672,7 +31508,7 @@
       "type": "frame",
       "id": "u3GAcb",
       "x": 7800,
-      "y": 7500,
+      "y": 8280,
       "name": "估分择校 · Score Match",
       "clip": true,
       "width": 1440,
@@ -32843,7 +32679,7 @@
       "type": "frame",
       "id": "TQlZq",
       "x": 9360,
-      "y": 7500,
+      "y": 8280,
       "name": "教育集团 · Groups",
       "clip": true,
       "width": 1440,
@@ -34258,7 +34094,7 @@
       "type": "frame",
       "id": "LjvSx",
       "x": 0,
-      "y": 10800,
+      "y": 11100,
       "name": "知识专题 · Knowledge Channel",
       "clip": true,
       "width": 1440,

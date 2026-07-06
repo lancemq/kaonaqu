@@ -1,6 +1,8 @@
 import {
   PolicyToolLabel,
-  PolicyToolShell
+  PolicyToolLinks,
+  PolicyToolShell,
+  PolicyToolSideCard
 } from '../../../components/news-policy-tool-ui';
 
 const faqGroups = [
@@ -162,6 +164,35 @@ const faqGroups = [
   },
 ];
 
+const readingRules = [
+  {
+    value: '01',
+    title: '先看资格',
+    detail: '判断自己是不是适用对象，优先级高于看时间。'
+  },
+  {
+    value: '02',
+    title: '再看批次',
+    detail: '先弄清它属于哪一个录取批次，再判断志愿数量和投档方式。'
+  },
+  {
+    value: '03',
+    title: '最后留痕',
+    detail: '把官方原文、确认窗口和下一步动作保存成自己的政策卡片。'
+  }
+];
+
+const sideWarnings = [
+  '只看标题，不核对适用对象和前置资格',
+  '只记大概月份，漏掉填报、确认和测试窗口',
+  '只记志愿个数，不分批次顺序和平行志愿逻辑'
+];
+
+const relatedLinks = [
+  { label: '招生日程 →', href: '/news/admission-timeline' },
+  { label: '政策概念速查 →', href: '/news/policy-glossary' }
+];
+
 export const metadata = {
   title: '上海中考高考政策问答 - 高频问题与录取规则 | 考哪去',
   description: '集中查看上海中考、高考升学中最常问的政策问题，包括报名资格、时间节点、志愿规则、高招通道选择、信息口径与下一步判断。'
@@ -197,13 +228,27 @@ export default function PolicyFaqPage() {
         stats: [
           { value: faqCount, label: '校准问答' },
           { value: faqGroups.length, label: '判断场景' },
-          { value: '2026', label: '官方口径' }
+          { value: '2026 口径', label: '中招 + 高招' },
+          { value: '先收藏', label: '配合概念页与深读页' }
         ]
       }}
     >
-      <section className="policy-tool-content" id="faq-list">
-        <section className="policy-tool-main">
+      <section className="policy-faq-primer" aria-labelledby="policy-faq-primer-title">
+        <PolicyToolLabel>READING ORDER</PolicyToolLabel>
+        <h2 id="policy-faq-primer-title">读上海升学政策前，先把这三条顺序记住</h2>
+        <div className="policy-faq-rule-grid">
+          {readingRules.map((rule) => (
+            <article key={rule.value}>
+              <span>{rule.value}</span>
+              <h3>{rule.title}</h3>
+              <p>{rule.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
+      <section className="special-content policy-faq-content" id="faq-list">
+        <section className="special-main">
           {faqGroups.map((group) => (
             <section key={group.title} className="policy-tool-section">
               <div className="policy-tool-section-head">
@@ -216,7 +261,7 @@ export default function PolicyFaqPage() {
               <div className="policy-faq-stack">
                 {group.items.map((item, index) => (
                   <article key={item.question} className="policy-faq-card">
-                    <div className="policy-faq-index">Q{index + 1}</div>
+                    <div className="policy-faq-index">{`Q${String(index + 1).padStart(2, '0')}`}</div>
                     <div className="policy-faq-body">
                       <h3>{item.question}</h3>
                       <p className="policy-faq-answer">{item.shortAnswer}</p>
@@ -237,6 +282,32 @@ export default function PolicyFaqPage() {
             </section>
           ))}
         </section>
+        <aside className="special-side policy-faq-side" aria-label="政策问答辅助信息">
+          <PolicyToolSideCard dark label="COMMON MISREADS">
+            <h2>最常见的三种误读</h2>
+            <div className="policy-faq-warning-list">
+              {sideWarnings.map((warning) => (
+                <p key={warning}>{warning}</p>
+              ))}
+            </div>
+          </PolicyToolSideCard>
+          <PolicyToolSideCard dark label="SOURCE">
+            <h2>整理口径</h2>
+            <p>主要按 2026 年上海市教委中招若干意见、实施细则问答，以及上海市教育考试院公开信息整理。</p>
+            <p>涉及学校执行安排时，仍需回到学校通知核对材料、测试和确认要求。</p>
+          </PolicyToolSideCard>
+          <PolicyToolSideCard label="NEXT">
+            <h2>继续校准</h2>
+            <PolicyToolLinks links={relatedLinks} />
+          </PolicyToolSideCard>
+        </aside>
+      </section>
+
+      <section className="policy-faq-cta" aria-labelledby="policy-faq-cta-title">
+        <PolicyToolLabel>WORKFLOW</PolicyToolLabel>
+        <h2 id="policy-faq-cta-title">把问答变成可执行清单</h2>
+        <p>先用本页确认判断顺序，再去概念速查页核对术语边界，最后把具体时间写入招生日程。政策不是背下来，而是拆成下一步动作。</p>
+        <a href="/news/policy-glossary">进入政策概念速查</a>
       </section>
     </PolicyToolShell>
     </>
