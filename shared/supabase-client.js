@@ -2,12 +2,13 @@
 
 const { createClient } = require('@supabase/supabase-js');
 
-// 支持三种来源：手动配置（KNQ_）、Vercel Supabase 集成（knq_ 前缀）
+// 支持：手动配置（KNQ_）、Vercel Supabase 集成（knq_ 前缀）、无前缀（SUPABASE_）
 const SUPABASE_URL =
   process.env.KNQ_SUPABASE_URL ||
   process.env.KNQ_KAONA_SUPABASE_URL ||
   process.env.knq_SUPABASE_URL ||
   process.env.knq_KNQ_SUPABASE_URL ||
+  process.env.SUPABASE_URL ||
   '';
 
 const SERVICE_ROLE_KEY =
@@ -15,6 +16,8 @@ const SERVICE_ROLE_KEY =
   process.env.KNQ_SUPABASE_SECRET_KEY ||
   process.env.knq_SUPABASE_SERVICE_ROLE_KEY ||
   process.env.knq_KNQ_SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_SECRET_KEY ||
   '';
 
 const ANON_KEY =
@@ -22,6 +25,8 @@ const ANON_KEY =
   process.env.KNQ_KAONA_SUPABASE_ANON_KEY ||
   process.env.knq_SUPABASE_ANON_KEY ||
   process.env.knq_KNQ_SUPABASE_ANON_KEY ||
+  process.env.SUPABASE_ANON_KEY ||
+  process.env.SUPABASE_PUBLISHABLE_KEY ||
   '';
 
 const SCHOOLS_TABLE = process.env.SUPABASE_SCHOOLS_TABLE || 'schools';

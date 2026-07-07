@@ -114,7 +114,7 @@ export default async function SchoolDetailPage({ params }) {
   const stageName = getSchoolStage(school);
   const ownershipName = getSchoolOwnershipLabel(school) || school.schoolType || '';
   const schoolAttribute = school.tier || ownershipName || '—';
-  const schoolSummary = school.description || getSchoolAdmissionInfo(school) || '';
+  const schoolSummary = school.description || '';
   const admissionInfo = getSchoolAdmissionInfo(school);
   const updatedText = formatSchoolMonth(school.updatedAt);
 
@@ -147,7 +147,7 @@ export default async function SchoolDetailPage({ params }) {
     [school.group || schoolAttribute || '—', '学校体系']
   ];
   const sections = [
-    ['学校概览', schoolSummary || ''],
+    ['学校概览', school.description || admissionInfo || ''],
     ['办学成就', school.achievements || ''],
     ['办学特色', features.join('、') || trainingDirections.join('、') || ''],
     ['招生方式', admissionInfo || ''],
@@ -188,7 +188,6 @@ export default async function SchoolDetailPage({ params }) {
     ['985高校', school.project985Rate || school.keyUniversityRate],
     ['一本率', school.firstTierRate || school.undergraduateRate]
   ].filter(([, value]) => String(value || '').trim());
-  const groupHref = school.group ? `/schools/groups?keyword=${encodeURIComponent(school.group)}` : '/schools/groups';
   const districtHref = school.districtId ? `/schools/district/${school.districtId}` : '';
 
   return (
@@ -234,15 +233,10 @@ export default async function SchoolDetailPage({ params }) {
 
       <section className="school-pencil-body">
         <article className="school-pencil-main">
-          {sections.map(([title, text], index) => (
+          {sections.map(([title, text]) => (
             <section className="school-pencil-section" key={title}>
               <h2>{title}</h2>
               <p>{renderInlineMarkdown(text)}</p>
-              {index === 0 && school.group ? (
-                <Link className="school-pencil-group-link" href={groupHref}>
-                  所属教育集团 → {school.group} 查看详情 →
-                </Link>
-              ) : null}
             </section>
           ))}
 
