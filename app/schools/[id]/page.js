@@ -135,10 +135,10 @@ export default async function SchoolDetailPage({ params }) {
   };
 
   const chipItems = [
-    districtName,
-    stageName,
-    ownershipName,
-    updatedText ? `更新于 ${updatedText}` : ''
+    districtName ? { text: districtName, type: 'district' } : null,
+    stageName ? { text: stageName, type: 'stage' } : null,
+    ownershipName ? { text: ownershipName, type: 'ownership' } : null,
+    updatedText ? { text: `更新于 ${updatedText}`, type: 'updated' } : null
   ].filter(Boolean);
   const headerStats = [
     [school.foundingYear || '—', '建校时间'],
@@ -148,7 +148,8 @@ export default async function SchoolDetailPage({ params }) {
   ];
   const sections = [
     ['学校概览', schoolSummary || ''],
-    ['办学特色', school.achievements || features.join('、') || trainingDirections.join('、') || ''],
+    ['办学成就', school.achievements || ''],
+    ['办学特色', features.join('、') || trainingDirections.join('、') || ''],
     ['招生方式', admissionInfo || ''],
     ['升学出口', [
       school.qingbeiCount ? `清北录取：${school.qingbeiCount}` : '',
@@ -175,7 +176,7 @@ export default async function SchoolDetailPage({ params }) {
     ].filter(Boolean);
   const featureTags = Array.from(new Set([...features, ...tags, ...trainingDirections])).filter(Boolean).slice(0, 6);
   const basicInfoRows = [
-    ['办学属性', schoolAttribute],
+    ['办学属性', school.schoolTypeLabel || ''],
     ['学校类型', school.categoryName || school.category || school.tier],
     ['所在区域', districtName],
     ['学段', stageName],
@@ -188,7 +189,7 @@ export default async function SchoolDetailPage({ params }) {
     ['一本率', school.firstTierRate || school.undergraduateRate]
   ].filter(([, value]) => String(value || '').trim());
   const groupHref = school.group ? `/schools/groups?keyword=${encodeURIComponent(school.group)}` : '/schools/groups';
-  const breadcrumb = ['首页', '学校', districtName, school.name].filter(Boolean).join(' / ');
+  const districtHref = school.districtId ? `/schools/district/${school.districtId}` : '';
 
   return (
     <main className="school-detail-page is-pencil-school-detail">
@@ -201,11 +202,23 @@ export default async function SchoolDetailPage({ params }) {
         <div className="channel-nav-links"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link className="is-active" href="/schools">学校</Link><Link href="/knowledge">知识</Link></div>
       </nav>
 
-      <nav className="school-pencil-breadcrumb" aria-label="面包屑">{breadcrumb}</nav>
+      <nav className="school-pencil-breadcrumb" aria-label="面包屑">
+        <Link href="/">首页</Link>
+        <i aria-hidden="true">/</i>
+        <Link href="/schools">学校</Link>
+        <i aria-hidden="true">/</i>
+        {districtHref ? (
+          <Link href={districtHref}>{districtName}</Link>
+        ) : (
+          <span>{districtName}</span>
+        )}
+        <i aria-hidden="true">/</i>
+        <span className="is-current">{school.name}</span>
+      </nav>
 
       <header className="school-pencil-header" id="top">
         <div className="school-pencil-chip-row">
-          {chipItems.map((item) => <span key={item}>{item}</span>)}
+          {chipItems.map((item) => <span key={item.type} className={`chip-${item.type}`}>{item.text}</span>)}
         </div>
         <h1>{school.name}</h1>
         {schoolSummary ? <p>{renderInlineMarkdown(schoolSummary)}</p> : null}
