@@ -381,6 +381,19 @@ export default function SchoolsPageClient({
               <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
               <Link href="/news/admission-timeline"><span>政策日历</span><i>→</i></Link>
               <Link href="/schools/groups"><span>教育集团</span><i>→</i></Link>
+              <Link href="/schools/district"><span>区域专题</span><i>→</i></Link>
+            </div>
+          </section>
+
+          <section className="schools-aerial-filter-block">
+            <label>热门区域</label>
+            <div className="schools-aerial-tool-stack">
+              {highlightedDistricts.map((district) => (
+                <Link key={district.id} href={`/schools/district/${district.id}`}>
+                  <span>{district.name || district.districtName}</span>
+                  <i>{district.schoolCount || 0} 所</i>
+                </Link>
+              ))}
             </div>
           </section>
 
