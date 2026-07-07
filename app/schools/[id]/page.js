@@ -1,19 +1,15 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
-import { readSchoolMarkdownFile } from '../../../lib/school-content-files.mjs';
 import { getSchoolDataQuality } from '../../../lib/school-data-quality';
 import {
   getSchoolAdmissionInfo,
-  formatSchoolUpdate,
   getSchoolDistrictName,
   getSchoolFeatures,
-  getSchoolHighlights,
   getSchoolOwnershipLabel,
   getSchoolStage,
   getSchoolTags,
-  getSchoolTrainingDirections,
-  getSchoolType
+  getSchoolTrainingDirections
 } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
@@ -31,19 +27,6 @@ function resolveSchoolById(schools, rawId) {
   })();
 
   return schools.find((item) => item.id === normalizedId) || schools.find((item) => item.id === decodedId) || null;
-}
-
-function getRelatedSchools(schools, current) {
-  const schoolById = new Map(schools.map((school) => [school.id, school]));
-  const curated = (Array.isArray(current.related_schools) ? current.related_schools : [])
-    .map((id) => schoolById.get(id))
-    .filter(Boolean)
-    .filter((school) => school.id !== current.id);
-  const fallback = schools
-    .filter((school) => school.id !== current.id && school.districtId === current.districtId)
-    .filter((school) => !curated.some((item) => item.id === school.id));
-
-  return [...curated, ...fallback].slice(0, 4);
 }
 
 function renderInlineMarkdown(text) {
@@ -78,143 +61,10 @@ function renderInlineMarkdown(text) {
   return parts;
 }
 
-function renderSchoolMarkdown(markdown) {
-  const lines = String(markdown || '').split('\n');
-  const nodes = [];
-  let listItems = [];
-  let key = 0;
-
-  // 这些 section 由长尾校的 enrich 模板生成，内容是对所有学校套同一句的空话，
-  // 无独立信息价值，整段跳过不渲染（头部校人工内容不含这些标题，不受影响）。
-  const SKIP_SECTIONS = new Set([
-    '历史沿革（公开资料）',
-    '办学特色（公开资料）',
-    '课程与培养路径解读',
-    '官方对口查询',
-    '适合谁',
-    '阅读提示',
-    '公开信息入口'
-  ]);
-
-  // Section tracking for highlights
-  let activeSectionType = null; // 'group' or null
-  let currentSectionTitle = '';
-  let currentSectionNodes = [];
-  let skipping = false;
-
-  const flushSection = () => {
-    if (currentSectionNodes.length === 0) return;
-    if (activeSectionType === 'group') {
-      nodes.push(
-        <div key={`group-section-${key++}`} className="highlight-card highlight-card-group">
-          <div className="highlight-card-header">{currentSectionTitle}</div>
-          <div className="highlight-card-content">
-            {currentSectionNodes}
-          </div>
-        </div>
-      );
-    } else {
-      nodes.push(...currentSectionNodes);
-    }
-    currentSectionNodes = [];
-    currentSectionTitle = '';
-    activeSectionType = null;
-  };
-
-  const pushToSection = (node) => currentSectionNodes.push(node);
-
-  const flushList = () => {
-    if (!listItems.length) return;
-    pushToSection(
-      <ul key={`list-${key++}`} className="news-detail-markdown-list">
-        {listItems.map((item, index) => (
-          <li key={`item-${index}`}>{renderInlineMarkdown(item)}</li>
-        ))}
-      </ul>
-    );
-    listItems = [];
-  };
-
-  for (const rawLine of lines) {
-    const line = rawLine.trim();
-    if (!line) {
-      flushList();
-      continue;
-    }
-    if (line.startsWith('## ')) {
-      flushList();
-      flushSection();
-
-      const title = line.slice(3).trim();
-      if (SKIP_SECTIONS.has(title)) {
-        skipping = true;
-        continue;
-      }
-      skipping = false;
-      if (title.includes('教育集团')) {
-        activeSectionType = 'group';
-        currentSectionTitle = title;
-        continue;
-      } else {
-        pushToSection(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{title}</h3>);
-        flushSection(); // Regular sections close immediately
-      }
-      continue;
-    }
-    if (skipping) continue;
-    if (line.startsWith('### ')) {
-      flushList();
-      pushToSection(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
-      continue;
-    }
-    if (line.startsWith('- ')) {
-      listItems.push(line.slice(2));
-      continue;
-    }
-    flushList();
-    pushToSection(
-      <p key={`p-${key++}`} className="news-detail-markdown-paragraph">
-        {renderInlineMarkdown(line)}
-      </p>
-    );
-  }
-
-  flushList();
-  flushSection();
-  return nodes;
-}
-
-function extractSectionLines(markdown, heading) {
-  const lines = String(markdown || '').split('\n');
-  const start = lines.findIndex((line) => line.trim() === `## ${heading}`);
-  if (start < 0) return [];
-  const result = [];
-  for (let i = start + 1; i < lines.length; i += 1) {
-    const line = lines[i].trim();
-    if (line.startsWith('## ')) break;
-    if (!line) continue;
-    result.push(line);
-  }
-  return result;
-}
-
-function extractArticleInsights(markdown) {
-  const overviewLines = extractSectionLines(markdown, '学校概览');
-  const highlightLines = extractSectionLines(markdown, '关注重点')
-    .filter((line) => line.startsWith('- '))
-    .map((line) => line.slice(2).trim())
-    .filter(Boolean);
-  const directionLines = extractSectionLines(markdown, '培养方向');
-  const directionText = directionLines.join(' ');
-  const directionMatch = directionText.match(/培养方向包括：([^。]+)/);
-  const keywordMatch = directionText.match(/关键词包括：([^。]+)/);
-
-  return {
-    overview: overviewLines.find((line) => !line.startsWith('- ')) || '',
-    highlights: highlightLines,
-    directions: directionMatch ? directionMatch[1].split('、').map((item) => item.trim()).filter(Boolean) : [],
-    keywords: keywordMatch ? keywordMatch[1].split('、').map((item) => item.trim()).filter(Boolean) : []
-  };
+function formatSchoolMonth(value) {
+  const text = String(value || '').trim();
+  const match = text.match(/^(\d{4})[-/.](\d{1,2})/);
+  return match ? `${match[1]}-${match[2].padStart(2, '0')}` : text;
 }
 
 export async function generateMetadata({ params }) {
@@ -256,29 +106,18 @@ export default async function SchoolDetailPage({ params }) {
     notFound();
   }
 
-  const relatedSchools = getRelatedSchools(schools, school);
-  const articleBodyMarkdown = await readSchoolMarkdownFile(school);
-  if (!articleBodyMarkdown) {
-    notFound();
-  }
-  const articleInsights = extractArticleInsights(articleBodyMarkdown);
-  const highlights = articleInsights.highlights.length ? articleInsights.highlights : getSchoolHighlights(school);
-  const features = articleInsights.keywords.length ? articleInsights.keywords : getSchoolFeatures(school);
-  const trainingDirections = articleInsights.directions.length ? articleInsights.directions : getSchoolTrainingDirections(school);
+  const features = getSchoolFeatures(school);
+  const trainingDirections = getSchoolTrainingDirections(school);
   const tags = getSchoolTags(school);
-  const schoolSummary = articleInsights.overview || getSchoolAdmissionInfo(school) || '';
-
-  const schoolAttribute = school.tier || getSchoolOwnershipLabel(school) || '—';
-  const profileFacts = [
-    ['办学属性', schoolAttribute],
-    ['学校类型', getSchoolType(school)],
-    ['所在区域', getSchoolDistrictName(school)],
-    ['学段', getSchoolStage(school)],
-    ['更新时间', formatSchoolUpdate(school.updatedAt)]
-  ].filter(([, value]) => String(value || '').trim());
   const dataQuality = getSchoolDataQuality(school);
+  const districtName = getSchoolDistrictName(school);
+  const stageName = getSchoolStage(school);
+  const ownershipName = getSchoolOwnershipLabel(school) || school.schoolType || '';
+  const schoolAttribute = school.tier || ownershipName || '—';
+  const schoolSummary = school.description || getSchoolAdmissionInfo(school) || '';
+  const admissionInfo = getSchoolAdmissionInfo(school);
+  const updatedText = formatSchoolMonth(school.updatedAt);
 
-  // JSON-LD for School Schema —— 占位字段不输出，避免给搜索引擎"死链"。
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'School',
@@ -295,35 +134,64 @@ export default async function SchoolDetailPage({ params }) {
     ...(dataQuality.hasRealWebsite ? { 'sameAs': [school.website] } : {})
   };
 
-  const admissionRows = [
-    ['清北录取', school.qingbeiCount || school.topUniversityCount || '资料待补'],
-    ['复旦交大', school.fudanJiaodaCount || school.localTopUniversityCount || '资料待补'],
-    ['985高校', school.project985Rate || school.keyUniversityRate || '资料待补'],
-    ['一本率', school.firstTierRate || school.undergraduateRate || '资料待补']
+  const chipItems = [
+    districtName,
+    stageName,
+    ownershipName,
+    updatedText ? `更新于 ${updatedText}` : ''
+  ].filter(Boolean);
+  const headerStats = [
+    [school.foundingYear || '—', '建校时间'],
+    [ownershipName || '—', '学校性质'],
+    [stageName || '—', '学段'],
+    [school.group || schoolAttribute || '—', '学校体系']
   ];
+  const sections = [
+    ['学校概览', schoolSummary || ''],
+    ['办学特色', school.achievements || features.join('、') || trainingDirections.join('、') || ''],
+    ['招生方式', admissionInfo || ''],
+    ['升学出口', [
+      school.qingbeiCount ? `清北录取：${school.qingbeiCount}` : '',
+      school.fudanJiaodaCount ? `复旦交大：${school.fudanJiaodaCount}` : '',
+      school.project985Rate ? `985高校：${school.project985Rate}` : '',
+      school.firstTierRate ? `一本率：${school.firstTierRate}` : ''
+    ].filter(Boolean).join('；')]
+  ].filter(([, text]) => String(text || '').trim());
   const scoreRows = Array.isArray(school.scoreLines) && school.scoreLines.length
-    ? school.scoreLines.slice(0, 3)
+    ? school.scoreLines.slice(0, 3).map((row) => [row.year, row.score || row.minScore, row.plan || row.batch])
     : [
-      { year: '2025年', score: school.score2025 || '资料待补', plan: school.plan2025 || '以当年招生计划为准', batch: '统一招生' },
-      { year: '2024年', score: school.score2024 || '资料待补', plan: school.plan2024 || '以当年招生计划为准', batch: '统一招生' },
-      { year: '2023年', score: school.score2023 || '资料待补', plan: school.plan2023 || '以当年招生计划为准', batch: '统一招生' }
-    ];
-  const competitionRows = [
-    ['全国高中数学联赛', '公开资料待补', '国家级'],
-    ['全国中学生物理竞赛', '公开资料待补', '国家级'],
-    ['中国化学奥林匹克', '公开资料待补', '国家级'],
-    ['全国青少年信息学奥赛', '公开资料待补', '国家级'],
-    ['上海市青少年科技创新大赛', '公开资料待补', '市级']
-  ];
-  const courseRows = [
-    ['大学先修课程', school.apCourses || '结合学校公开课程与招生简章核对。'],
-    ['创新实验课程', trainingDirections.slice(0, 2).join('、') || '以项目式学习与综合实践为观察重点。'],
-    ['国际理解课程', features.includes('国际化') || features.includes('国际课程') ? '关注国际课程、双语项目与升学路径。' : '公开资料待补。']
-  ];
-  const featureTags = Array.from(new Set([...features, ...tags, ...trainingDirections])).filter(Boolean).slice(0, 3);
+      ['2025年', school.score2025, school.plan2025],
+      ['2024年', school.score2024, school.plan2024],
+      ['2023年', school.score2023, school.plan2023]
+    ].filter(([, score, plan]) => score || plan);
+  const competitionRows = Array.isArray(school.competitions)
+    ? school.competitions.slice(0, 5).map((item) => [item.name || item.title, item.count || item.result || item.level])
+    : [];
+  const courseRows = Array.isArray(school.courses)
+    ? school.courses.slice(0, 3).map((item) => [item.name || item.title, item.description || item.desc])
+    : [
+      school.apCourses ? ['大学先修课程', school.apCourses] : null,
+      trainingDirections.length ? ['培养方向', trainingDirections.join('、')] : null
+    ].filter(Boolean);
+  const featureTags = Array.from(new Set([...features, ...tags, ...trainingDirections])).filter(Boolean).slice(0, 6);
+  const basicInfoRows = [
+    ['办学属性', schoolAttribute],
+    ['学校类型', school.categoryName || school.category || school.tier],
+    ['所在区域', districtName],
+    ['学段', stageName],
+    ['更新时间', updatedText]
+  ].filter(([, value]) => String(value || '').trim());
+  const admissionRows = [
+    ['清北录取', school.qingbeiCount || school.topUniversityCount],
+    ['复旦交大', school.fudanJiaodaCount || school.localTopUniversityCount],
+    ['985高校', school.project985Rate || school.keyUniversityRate],
+    ['一本率', school.firstTierRate || school.undergraduateRate]
+  ].filter(([, value]) => String(value || '').trim());
+  const groupHref = school.group ? `/schools/groups?keyword=${encodeURIComponent(school.group)}` : '/schools/groups';
+  const breadcrumb = ['首页', '学校', districtName, school.name].filter(Boolean).join(' / ');
 
   return (
-    <main className="school-detail-page">
+    <main className="school-detail-page is-pencil-school-detail">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -333,36 +201,112 @@ export default async function SchoolDetailPage({ params }) {
         <div className="channel-nav-links"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link className="is-active" href="/schools">学校</Link><Link href="/knowledge">知识</Link></div>
       </nav>
 
-      <header className="school-detail-header" id="top">
-        <nav className="school-detail-breadcrumb" aria-label="面包屑"><Link href="/">首页</Link><span>/</span><Link href="/schools">学校</Link><span>/</span><Link href={'/schools/district/' + school.districtId}>{getSchoolDistrictName(school)}</Link><span>/</span><strong>{school.name}</strong></nav>
-        <div className="school-detail-chipline"><span>{getSchoolDistrictName(school)}</span><span>{getSchoolStage(school)}</span><span>{schoolAttribute}</span><em>{formatSchoolUpdate(school.updatedAt)}</em></div>
+      <nav className="school-pencil-breadcrumb" aria-label="面包屑">{breadcrumb}</nav>
+
+      <header className="school-pencil-header" id="top">
+        <div className="school-pencil-chip-row">
+          {chipItems.map((item) => <span key={item}>{item}</span>)}
+        </div>
         <h1>{school.name}</h1>
-        <p>{schoolSummary ? renderInlineMarkdown(schoolSummary) : '查看学校画像、招生路径与择校提示。'}</p>
-        <div className="school-detail-statline">
-          <article><strong>{school.foundingYear || '—'}</strong><span>建校时间</span></article>
-          <article><strong>{getSchoolOwnershipLabel(school) || '—'}</strong><span>学校性质</span></article>
-          <article><strong>{getSchoolStage(school)}</strong><span>学段</span></article>
-          <article><strong>{school.group || schoolAttribute}</strong><span>学校体系</span></article>
+        {schoolSummary ? <p>{renderInlineMarkdown(schoolSummary)}</p> : null}
+        <div className="school-pencil-stats" aria-label="学校关键指标">
+          {headerStats.map(([value, label]) => (
+            <article key={label}>
+              <strong>{value}</strong>
+              <span>{label}</span>
+            </article>
+          ))}
         </div>
       </header>
 
-      <section className="school-detail-body">
-        <article className="school-detail-main">
-          <section className="school-detail-section"><h2>学校概览</h2><p>{schoolSummary ? renderInlineMarkdown(schoolSummary) : '公开资料仍在整理，建议结合学校官网、区教育局和当年招生文件核对。'}</p></section>
-          <section className="school-detail-section"><h2>办学特色</h2><p>{highlights.slice(0, 2).join('。') || getSchoolAdmissionInfo(school) || '关注课程结构、师资资源、升学路径与家庭节奏适配。'}</p></section>
-          <section className="school-detail-section"><h2>招生方式</h2><p>{getSchoolAdmissionInfo(school) || '招生方式以当年上海市及各区教育局公布为准。'}</p></section>
-          <section className="school-detail-section"><h2>升学出口</h2><p>以下为公开资料整理口径，具体录取结果与招生计划以当年官方发布为准。</p><div className="school-detail-score-list">{scoreRows.map((row) => (<div key={row.year} className="school-detail-score-row"><strong>{row.year}</strong><span>{row.score || row.minScore || '资料待补'}</span><span>{row.plan || row.batch || '以官方为准'}</span></div>))}</div></section>
-          <section className="school-detail-section"><h2>竞赛成绩</h2><div className="school-detail-competition-list">{competitionRows.map(([name, count, level]) => (<div key={name}><strong>{name}</strong><span>{count}</span><em>{level}</em></div>))}</div></section>
-          <section className="school-detail-section"><h2>所属教育集团</h2><div className="school-detail-groupbox"><p><strong>集团名称</strong>{school.group || '公开资料待补'}</p><p><strong>成员学校</strong>{relatedSchools.map((peer) => peer.name).join(' · ') || '公开资料待补'}</p><p><strong>集团特色</strong>资源共享 · 课程共建 · 联合教研</p></div></section>
-          <section className="school-detail-section"><h2>特色课程</h2><div className="school-detail-course-list">{courseRows.map(([name, desc]) => (<div key={name}><strong>{name}</strong><p>{desc}</p></div>))}</div></section>
-          <section className="school-detail-section school-detail-markdown-section"><h2>正文资料</h2><div className="news-detail-markdown school-datadesk-detail-article">{renderSchoolMarkdown(articleBodyMarkdown)}</div></section>
-          <div className="school-detail-tags"><span>FEATURES</span>{(featureTags.length ? featureTags : ['学校画像']).map((tag) => <em key={tag}>{tag}</em>)}</div>
+      <section className="school-pencil-body">
+        <article className="school-pencil-main">
+          {sections.map(([title, text], index) => (
+            <section className="school-pencil-section" key={title}>
+              <h2>{title}</h2>
+              <p>{renderInlineMarkdown(text)}</p>
+              {index === 0 && school.group ? (
+                <Link className="school-pencil-group-link" href={groupHref}>
+                  所属教育集团 → {school.group} 查看详情 →
+                </Link>
+              ) : null}
+            </section>
+          ))}
+
+          {competitionRows.length ? (
+            <section className="school-pencil-section">
+              <h2>竞赛成绩</h2>
+              <div className="school-pencil-rows">
+                {competitionRows.map(([name, value]) => (
+                  <div className="school-pencil-row" key={`${name}-${value}`}>
+                    <strong>{name}</strong>
+                    <span>{value}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {featureTags.length ? (
+            <div className="school-pencil-tags">
+              <span>FEATURES</span>
+              <div className="school-pencil-tags-list">
+                {featureTags.map((tag) => <em key={tag}>{tag}</em>)}
+              </div>
+            </div>
+          ) : null}
         </article>
 
-        <aside className="school-detail-sidebar">
-          <section className="school-detail-side-card is-dark"><div className="channel-kicker"><span></span><p>AT A GLANCE</p></div><h2>基本信息</h2><dl>{profileFacts.slice(0, 5).map(([label, value]) => (<div key={label}><dt>{label}</dt><dd>{value}</dd></div>))}</dl></section>
-          <section className="school-detail-side-card"><div className="channel-kicker"><span></span><p>ADMISSION</p></div><h2>升学出口</h2>{admissionRows.map(([label, value]) => <p key={label}><span>{label}</span><strong>{value}</strong></p>)}</section>
-          <section className="school-detail-side-card"><div className="channel-kicker"><span></span><p>SIMILAR SCHOOLS</p></div>{relatedSchools.slice(0, 3).map((peer) => (<Link key={peer.id} href={'/schools/' + peer.id}><span>{peer.name}</span><i>→</i></Link>))}</section>
+        <aside className="school-pencil-sidebar">
+          {basicInfoRows.length ? (
+            <section className="school-pencil-card is-dark">
+              <div className="school-pencil-kicker"><span></span><p>AT A GLANCE</p></div>
+              <h2>基本信息</h2>
+              <dl>
+                {basicInfoRows.map(([label, value]) => (
+                  <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+                ))}
+              </dl>
+            </section>
+          ) : null}
+
+          {scoreRows.length ? (
+            <section className="school-pencil-score">
+              <h2>历年分数线</h2>
+              <div className="school-pencil-score-table">
+                <div><span>年份</span><span>录取分数</span><span>招生计划</span></div>
+                {scoreRows.map(([year, score, plan]) => (
+                  <div key={`${year}-${score}-${plan}`}>
+                    <strong>{year}</strong>
+                    <b>{score || '—'}</b>
+                    <em>{plan || '—'}</em>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {admissionRows.length ? (
+            <section className="school-pencil-card">
+              <div className="school-pencil-kicker"><span></span><p>ADMISSION</p></div>
+              <h2>升学出口</h2>
+              {admissionRows.map(([label, value]) => (
+                <p key={label}><span>{label}</span><strong>{value}</strong></p>
+              ))}
+            </section>
+          ) : null}
+
+          {courseRows.length ? (
+            <section className="school-pencil-card">
+              <h2>特色课程</h2>
+              {courseRows.map(([name, desc]) => (
+                <article key={`${name}-${desc}`}>
+                  <h3>{name}</h3>
+                  {desc ? <p>{desc}</p> : null}
+                </article>
+              ))}
+            </section>
+          ) : null}
         </aside>
       </section>
 

@@ -28104,7 +28104,7 @@
           "id": "siFj2",
           "name": "Breadcrumb",
           "width": "fill_container",
-          "fill": "#F8FAFC",
+          "fill": "$surface-primary",
           "gap": 4,
           "padding": [
             16,
@@ -28132,13 +28132,13 @@
           "id": "fjZe2",
           "name": "School Header",
           "width": "fill_container",
-          "fill": "#F8FAFC",
+          "fill": "$surface-primary",
           "layout": "vertical",
-          "gap": 16,
+          "gap": 12,
           "padding": [
-            20,
+            16,
             80,
-            40,
+            32,
             80
           ],
           "children": [
@@ -28422,11 +28422,11 @@
           "name": "Main Body",
           "width": "fill_container",
           "fill": "$surface-primary",
-          "gap": 48,
+          "gap": 40,
           "padding": [
-            40,
+            24,
             80,
-            60,
+            40,
             80
           ],
           "children": [
@@ -28436,7 +28436,7 @@
               "name": "Left Col",
               "width": "fill_container",
               "layout": "vertical",
-              "gap": 32,
+              "gap": 24,
               "children": [
                 {
                   "type": "frame",
@@ -28444,7 +28444,7 @@
                   "name": "Section 0",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
@@ -28474,6 +28474,27 @@
                 },
                 {
                   "type": "frame",
+                  "id": "f0JqXl",
+                  "name": "Group Link",
+                  "padding": [
+                    6,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FxrVL",
+                      "name": "Link",
+                      "fill": "$accent-primary",
+                      "content": "所属教育集团 → 华东师范大学教育集团 查看详情 →",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
                   "id": "YgXck",
                   "name": "Rule 0",
                   "width": "fill_container",
@@ -28486,7 +28507,7 @@
                   "name": "Section 1",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
@@ -28528,7 +28549,7 @@
                   "name": "Section 2",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
@@ -28570,7 +28591,7 @@
                   "name": "Section 3",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
@@ -28600,215 +28621,12 @@
                 },
                 {
                   "type": "frame",
-                  "id": "od6gs",
-                  "name": "Section 4 Score",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 12,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "X5YyRv",
-                      "name": "Title",
-                      "fill": "$foreground-primary",
-                      "content": "历年分数线",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 24,
-                      "fontWeight": "700",
-                      "letterSpacing": -0.4
-                    },
-                    {
-                      "type": "frame",
-                      "id": "aFFfP",
-                      "name": "ST Header",
-                      "width": "fill_container",
-                      "fill": "#F8FAFC",
-                      "padding": [
-                        10,
-                        14
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "AVqEI",
-                          "name": "Y",
-                          "fill": "$accent-primary",
-                          "content": "年份",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 11,
-                          "fontWeight": "600",
-                          "letterSpacing": 2
-                        },
-                        {
-                          "type": "text",
-                          "id": "ein9q",
-                          "name": "S",
-                          "fill": "$accent-primary",
-                          "content": "录取分数",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 11,
-                          "fontWeight": "600",
-                          "letterSpacing": 2
-                        },
-                        {
-                          "type": "text",
-                          "id": "unYab",
-                          "name": "P",
-                          "fill": "$accent-primary",
-                          "content": "招生计划",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 11,
-                          "fontWeight": "600",
-                          "letterSpacing": 2
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "j8ND4l",
-                      "name": "SR 0",
-                      "width": "fill_container",
-                      "fill": "#F8FAFC",
-                      "padding": [
-                        10,
-                        14
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "c6qZZ5",
-                          "name": "Yr",
-                          "fill": "$foreground-primary",
-                          "content": "2025年",
-                          "fontFamily": "$font-body",
-                          "fontSize": 15,
-                          "fontWeight": "500"
-                        },
-                        {
-                          "type": "text",
-                          "id": "AyQdf",
-                          "name": "Sc",
-                          "fill": "$accent-primary",
-                          "content": "705.5",
-                          "fontFamily": "$font-data",
-                          "fontSize": 16,
-                          "fontWeight": "700"
-                        },
-                        {
-                          "type": "text",
-                          "id": "VJ9Ui",
-                          "name": "Pl",
-                          "fill": "$foreground-secondary",
-                          "content": "统一招生",
-                          "fontFamily": "$font-body",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "fpdQS",
-                      "name": "SR 1",
-                      "width": "fill_container",
-                      "fill": "$surface-primary",
-                      "padding": [
-                        10,
-                        14
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "g973aO",
-                          "name": "Yr",
-                          "fill": "$foreground-primary",
-                          "content": "2024年",
-                          "fontFamily": "$font-body",
-                          "fontSize": 15,
-                          "fontWeight": "500"
-                        },
-                        {
-                          "type": "text",
-                          "id": "P8KYLQ",
-                          "name": "Sc",
-                          "fill": "$accent-primary",
-                          "content": "702.0",
-                          "fontFamily": "$font-data",
-                          "fontSize": 16,
-                          "fontWeight": "700"
-                        },
-                        {
-                          "type": "text",
-                          "id": "lWbpu",
-                          "name": "Pl",
-                          "fill": "$foreground-secondary",
-                          "content": "统一招生",
-                          "fontFamily": "$font-body",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "FH0Sw",
-                      "name": "SR 2",
-                      "width": "fill_container",
-                      "fill": "#F8FAFC",
-                      "padding": [
-                        10,
-                        14
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "Zh79b",
-                          "name": "Yr",
-                          "fill": "$foreground-primary",
-                          "content": "2023年",
-                          "fontFamily": "$font-body",
-                          "fontSize": 15,
-                          "fontWeight": "500"
-                        },
-                        {
-                          "type": "text",
-                          "id": "WViTj",
-                          "name": "Sc",
-                          "fill": "$accent-primary",
-                          "content": "698.5",
-                          "fontFamily": "$font-data",
-                          "fontSize": 16,
-                          "fontWeight": "700"
-                        },
-                        {
-                          "type": "text",
-                          "id": "DSTcK",
-                          "name": "Pl",
-                          "fill": "$foreground-secondary",
-                          "content": "统一招生",
-                          "fontFamily": "$font-body",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
                   "id": "vzIXb",
                   "name": "Rule 3",
                   "width": "fill_container",
                   "height": 1,
-                  "fill": "$border-subtle"
+                  "fill": "$border-subtle",
+                  "gap": 8
                 },
                 {
                   "type": "frame",
@@ -28816,7 +28634,7 @@
                   "name": "Section 5 Comp",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": 8,
                   "children": [
                     {
                       "type": "text",
@@ -29040,255 +28858,15 @@
                 },
                 {
                   "type": "frame",
-                  "id": "pnPrk",
-                  "name": "Section 6 Course",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 12,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "MsPeI",
-                      "name": "Title",
-                      "fill": "$foreground-primary",
-                      "content": "特色课程",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 24,
-                      "fontWeight": "700",
-                      "letterSpacing": -0.4
-                    },
-                    {
-                      "type": "frame",
-                      "id": "iZI8V",
-                      "name": "CS 0",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 6,
-                      "padding": [
-                        0,
-                        0,
-                        12,
-                        0
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "CZ9e1",
-                          "name": "N",
-                          "fill": "$foreground-primary",
-                          "content": "大学先修课程",
-                          "fontFamily": "$font-heading",
-                          "fontSize": 17,
-                          "fontWeight": "700",
-                          "letterSpacing": -0.2
-                        },
-                        {
-                          "type": "text",
-                          "id": "kMEbM",
-                          "name": "D",
-                          "fill": "$foreground-secondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "高等数学、大学物理等大学前置课程供学有余力的学生选修",
-                          "lineHeight": 1.6,
-                          "fontFamily": "$font-body",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "m21I7S",
-                      "name": "CS 1",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 6,
-                      "padding": [
-                        0,
-                        0,
-                        12,
-                        0
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "MoiyA",
-                          "name": "N",
-                          "fill": "$foreground-primary",
-                          "content": "创新实验课程",
-                          "fontFamily": "$font-heading",
-                          "fontSize": 17,
-                          "fontWeight": "700",
-                          "letterSpacing": -0.2
-                        },
-                        {
-                          "type": "text",
-                          "id": "k1Lkh",
-                          "name": "D",
-                          "fill": "$foreground-secondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "以项目式学习和综合实践为核心，培养科研思维和解决问题的能力",
-                          "lineHeight": 1.6,
-                          "fontFamily": "$font-body",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "Ri9Uo",
-                      "name": "CS 2",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 6,
-                      "padding": [
-                        0,
-                        0,
-                        12,
-                        0
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "w13snY",
-                          "name": "N",
-                          "fill": "$foreground-primary",
-                          "content": "国际理解课程",
-                          "fontFamily": "$font-heading",
-                          "fontSize": 17,
-                          "fontWeight": "700",
-                          "letterSpacing": -0.2
-                        },
-                        {
-                          "type": "text",
-                          "id": "NYJhD",
-                          "name": "D",
-                          "fill": "$foreground-secondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "关注国际课程、双语项目与多元升学路径",
-                          "lineHeight": 1.6,
-                          "fontFamily": "$font-body",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "rm6lZ",
-                  "name": "Rule 4",
-                  "width": "fill_container",
-                  "height": 1,
-                  "fill": "$border-subtle"
-                },
-                {
-                  "type": "frame",
-                  "id": "Qw6lE",
-                  "name": "Section 7 Group",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 12,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "t6tc7",
-                      "name": "Title",
-                      "fill": "$foreground-primary",
-                      "content": "所属教育集团",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 24,
-                      "fontWeight": "700",
-                      "letterSpacing": -0.4
-                    },
-                    {
-                      "type": "frame",
-                      "id": "DSnEy",
-                      "name": "Group Box",
-                      "width": "fill_container",
-                      "fill": "#F8FAFC",
-                      "layout": "vertical",
-                      "gap": 12,
-                      "padding": 24,
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "y0vTzh",
-                          "name": "G1",
-                          "width": "fill_container",
-                          "gap": 24,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "i49vaq",
-                              "name": "L",
-                              "fill": "$foreground-secondary",
-                              "content": "集团名称",
-                              "fontFamily": "$font-caption",
-                              "fontSize": 11,
-                              "fontWeight": "600",
-                              "letterSpacing": 2
-                            },
-                            {
-                              "type": "text",
-                              "id": "mZzwR",
-                              "name": "V",
-                              "fill": "$foreground-primary",
-                              "content": "华东师范大学教育集团",
-                              "fontFamily": "$font-body",
-                              "fontSize": 15,
-                              "fontWeight": "500"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "esWVk",
-                          "name": "G2",
-                          "width": "fill_container",
-                          "gap": 24,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "CDml4",
-                              "name": "L",
-                              "fill": "$foreground-secondary",
-                              "content": "集团特色",
-                              "fontFamily": "$font-caption",
-                              "fontSize": 11,
-                              "fontWeight": "600",
-                              "letterSpacing": 2
-                            },
-                            {
-                              "type": "text",
-                              "id": "Rr43o",
-                              "name": "V",
-                              "fill": "$foreground-primary",
-                              "content": "资源共享 · 课程共建 · 联合教研 · 师资互通",
-                              "fontFamily": "$font-body",
-                              "fontSize": 15,
-                              "fontWeight": "500"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
                   "id": "brD0u",
                   "name": "Feature Tags",
                   "width": "fill_container",
+                  "fill": "$surface-primary",
+                  "stroke": "$border-subtle",
+                  "strokeWidth": 1,
                   "layout": "vertical",
-                  "gap": 8,
+                  "gap": 10,
+                  "padding": 20,
                   "children": [
                     {
                       "type": "text",
@@ -29482,11 +29060,11 @@
                   "type": "frame",
                   "id": "hhNRM",
                   "name": "SC1",
-                  "width": 320,
+                  "width": "fill_container",
                   "fill": "$surface-inverse",
                   "layout": "vertical",
-                  "gap": 16,
-                  "padding": 24,
+                  "gap": 12,
+                  "padding": 20,
                   "children": [
                     {
                       "type": "frame",
@@ -29685,15 +29263,219 @@
                 },
                 {
                   "type": "frame",
+                  "id": "od6gs",
+                  "name": "Section 4 Score",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X5YyRv",
+                      "name": "Title",
+                      "fill": "$foreground-primary",
+                      "content": "历年分数线",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 24,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.4
+                    },
+                    {
+                      "type": "frame",
+                      "id": "aFFfP",
+                      "name": "ST Header",
+                      "width": "fill_container",
+                      "fill": "$accent-secondary",
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "AVqEI",
+                          "name": "Y",
+                          "fill": "$foreground-inverse",
+                          "content": "年份",
+                          "fontFamily": "$font-caption",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "ein9q",
+                          "name": "S",
+                          "fill": "$foreground-inverse",
+                          "content": "录取分数",
+                          "fontFamily": "$font-caption",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "unYab",
+                          "name": "P",
+                          "fill": "$foreground-inverse",
+                          "content": "招生计划",
+                          "fontFamily": "$font-caption",
+                          "fontSize": 11,
+                          "fontWeight": "600",
+                          "letterSpacing": 2
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "j8ND4l",
+                      "name": "SR 0",
+                      "width": "fill_container",
+                      "fill": "#000000",
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "c6qZZ5",
+                          "name": "Yr",
+                          "fill": "$foreground-primary",
+                          "content": "2025年",
+                          "fontFamily": "$font-body",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "AyQdf",
+                          "name": "Sc",
+                          "fill": "$accent-primary",
+                          "content": "705.5",
+                          "fontFamily": "$font-data",
+                          "fontSize": 16,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "VJ9Ui",
+                          "name": "Pl",
+                          "fill": "$foreground-secondary",
+                          "content": "统一招生",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "fpdQS",
+                      "name": "SR 1",
+                      "width": "fill_container",
+                      "fill": "$surface-primary",
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "g973aO",
+                          "name": "Yr",
+                          "fill": "$foreground-primary",
+                          "content": "2024年",
+                          "fontFamily": "$font-body",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "P8KYLQ",
+                          "name": "Sc",
+                          "fill": "$accent-primary",
+                          "content": "702.0",
+                          "fontFamily": "$font-data",
+                          "fontSize": 16,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "lWbpu",
+                          "name": "Pl",
+                          "fill": "$foreground-secondary",
+                          "content": "统一招生",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "FH0Sw",
+                      "name": "SR 2",
+                      "width": "fill_container",
+                      "fill": "#000000",
+                      "padding": [
+                        8,
+                        14
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Zh79b",
+                          "name": "Yr",
+                          "fill": "$foreground-primary",
+                          "content": "2023年",
+                          "fontFamily": "$font-body",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "WViTj",
+                          "name": "Sc",
+                          "fill": "$accent-primary",
+                          "content": "698.5",
+                          "fontFamily": "$font-data",
+                          "fontSize": 16,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "DSTcK",
+                          "name": "Pl",
+                          "fill": "$foreground-secondary",
+                          "content": "统一招生",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
                   "id": "W74jJ",
                   "name": "SC2",
-                  "width": 320,
+                  "width": "fill_container",
                   "fill": "$surface-primary",
                   "stroke": "$border-subtle",
                   "strokeWidth": 1,
                   "layout": "vertical",
-                  "gap": 12,
-                  "padding": 24,
+                  "gap": 10,
+                  "padding": 20,
                   "children": [
                     {
                       "type": "frame",
@@ -29857,237 +29639,144 @@
                 },
                 {
                   "type": "frame",
-                  "id": "nGfNv",
-                  "name": "SC3",
-                  "width": 320,
+                  "id": "pnPrk",
+                  "name": "Section 6 Course",
+                  "width": "fill_container",
                   "fill": "$surface-primary",
                   "stroke": "$border-subtle",
                   "strokeWidth": 1,
                   "layout": "vertical",
-                  "gap": 12,
-                  "padding": 24,
+                  "gap": 10,
+                  "padding": 20,
                   "children": [
                     {
+                      "type": "text",
+                      "id": "MsPeI",
+                      "name": "Title",
+                      "fill": "$foreground-primary",
+                      "content": "特色课程",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 24,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.4
+                    },
+                    {
                       "type": "frame",
-                      "id": "yi2Ih",
-                      "name": "H3",
-                      "gap": 10,
-                      "alignItems": "center",
+                      "id": "iZI8V",
+                      "name": "CS 0",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": [
+                        0,
+                        0,
+                        12,
+                        0
+                      ],
                       "children": [
                         {
-                          "type": "frame",
-                          "id": "rXlLA",
-                          "name": "Dot",
-                          "width": 6,
-                          "height": 6,
-                          "fill": "$accent-primary"
+                          "type": "text",
+                          "id": "CZ9e1",
+                          "name": "N",
+                          "fill": "$foreground-primary",
+                          "content": "大学先修课程",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700",
+                          "letterSpacing": -0.2
                         },
                         {
                           "type": "text",
-                          "id": "yfV0b",
-                          "name": "L",
-                          "fill": "$accent-primary",
-                          "content": "SIMILAR SCHOOLS",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 10,
-                          "fontWeight": "normal",
-                          "letterSpacing": 3
+                          "id": "kMEbM",
+                          "name": "D",
+                          "fill": "$foreground-secondary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "高等数学、大学物理等大学前置课程供学有余力的学生选修",
+                          "lineHeight": 1.6,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
                     {
-                      "type": "text",
-                      "id": "yj2oi",
-                      "name": "Title",
-                      "fill": "$foreground-primary",
-                      "content": "相似学校",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 18,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "text",
-                      "id": "GO7RJ",
-                      "name": "Sim 0",
-                      "fill": "$accent-primary",
-                      "content": "上海中学 →",
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    },
-                    {
-                      "type": "text",
-                      "id": "p9xzqN",
-                      "name": "Sim 1",
-                      "fill": "$accent-primary",
-                      "content": "复旦大学附属中学 →",
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    },
-                    {
-                      "type": "text",
-                      "id": "M1bheN",
-                      "name": "Sim 2",
-                      "fill": "$accent-primary",
-                      "content": "上海交通大学附属中学 →",
-                      "fontFamily": "$font-body",
-                      "fontSize": 13,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "oKxZE",
-                  "name": "SC4 Direction",
-                  "width": 320,
-                  "fill": "$surface-primary",
-                  "stroke": "$border-subtle",
-                  "strokeWidth": 1,
-                  "layout": "vertical",
-                  "gap": 12,
-                  "padding": 24,
-                  "children": [
-                    {
                       "type": "frame",
-                      "id": "WqpnV",
-                      "name": "H4",
-                      "gap": 10,
-                      "alignItems": "center",
+                      "id": "m21I7S",
+                      "name": "CS 1",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": [
+                        0,
+                        0,
+                        12,
+                        0
+                      ],
                       "children": [
                         {
-                          "type": "frame",
-                          "id": "BcvLB",
-                          "name": "Dot",
-                          "width": 6,
-                          "height": 6,
-                          "fill": "$accent-primary"
+                          "type": "text",
+                          "id": "MoiyA",
+                          "name": "N",
+                          "fill": "$foreground-primary",
+                          "content": "创新实验课程",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700",
+                          "letterSpacing": -0.2
                         },
                         {
                           "type": "text",
-                          "id": "G91Nf",
-                          "name": "L",
-                          "fill": "$accent-primary",
-                          "content": "DIRECTION",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 10,
-                          "fontWeight": "normal",
-                          "letterSpacing": 3
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "JXBWB",
-                      "name": "Title",
-                      "fill": "$foreground-primary",
-                      "content": "培养方向",
-                      "fontFamily": "$font-heading",
-                      "fontSize": 18,
-                      "fontWeight": "700"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "QlBXK",
-                      "name": "Dir 0",
-                      "fill": "#F0F5FF",
-                      "cornerRadius": "$rounded-sm",
-                      "stroke": "$accent-primary",
-                      "strokeWidth": 0.5,
-                      "padding": [
-                        5,
-                        12
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "QItiX",
-                          "name": "T",
-                          "fill": "$accent-primary",
-                          "content": "科创竞赛",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 10,
-                          "fontWeight": "600",
-                          "letterSpacing": 1
+                          "id": "k1Lkh",
+                          "name": "D",
+                          "fill": "$foreground-secondary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "以项目式学习和综合实践为核心，培养科研思维和解决问题的能力",
+                          "lineHeight": 1.6,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
                     {
                       "type": "frame",
-                      "id": "sPajx",
-                      "name": "Dir 1",
-                      "fill": "#F0F5FF",
-                      "cornerRadius": "$rounded-sm",
-                      "stroke": "$accent-primary",
-                      "strokeWidth": 0.5,
+                      "id": "Ri9Uo",
+                      "name": "CS 2",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
                       "padding": [
-                        5,
-                        12
+                        0,
+                        0,
+                        12,
+                        0
                       ],
                       "children": [
                         {
                           "type": "text",
-                          "id": "oPUBo",
-                          "name": "T",
-                          "fill": "$accent-primary",
-                          "content": "人文综合",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 10,
-                          "fontWeight": "600",
-                          "letterSpacing": 1
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "fabmK",
-                      "name": "Dir 2",
-                      "fill": "#F0F5FF",
-                      "cornerRadius": "$rounded-sm",
-                      "stroke": "$accent-primary",
-                      "strokeWidth": 0.5,
-                      "padding": [
-                        5,
-                        12
-                      ],
-                      "children": [
+                          "id": "w13snY",
+                          "name": "N",
+                          "fill": "$foreground-primary",
+                          "content": "国际理解课程",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700",
+                          "letterSpacing": -0.2
+                        },
                         {
                           "type": "text",
-                          "id": "N4j38k",
-                          "name": "T",
-                          "fill": "$accent-primary",
-                          "content": "国际课程",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 10,
-                          "fontWeight": "600",
-                          "letterSpacing": 1
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "qral7",
-                      "name": "Dir 3",
-                      "fill": "#F0F5FF",
-                      "cornerRadius": "$rounded-sm",
-                      "stroke": "$accent-primary",
-                      "strokeWidth": 0.5,
-                      "padding": [
-                        5,
-                        12
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "cPlHm",
-                          "name": "T",
-                          "fill": "$accent-primary",
-                          "content": "学术研究",
-                          "fontFamily": "$font-caption",
-                          "fontSize": 10,
-                          "fontWeight": "600",
-                          "letterSpacing": 1
+                          "id": "NYJhD",
+                          "name": "D",
+                          "fill": "$foreground-secondary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "关注国际课程、双语项目与多元升学路径",
+                          "lineHeight": 1.6,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
