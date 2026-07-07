@@ -2,6 +2,7 @@ const fs = require('fs').promises;
 const fsSync = require('fs');
 const path = require('path');
 const { buildDistricts } = require('./data-schema');
+const { isSupabaseConfigured, getServiceClient, SCHOOLS_TABLE } = require('./supabase-client');
 
 function resolveDataDir() {
   const candidates = [
@@ -66,6 +67,79 @@ async function loadLocalData() {
   ]);
 
   return { districts, schools, policies, news };
+}
+
+// === Supabase 读取 ===
+
+// 从 school_stage_label 推断 school_stage（数据库已删 school_stage 列）
+function inferSchoolStage(stageLabel) {
+  if (!stageLabel) return '';
+  if (stageLabel.includes('初中')) return 'junior';
+  if (stageLabel.includes('完全')) return 'complete';
+  return 'senior';
+}
+
+// 从本地 schools.json 构建 name → localSchool 映射（content_file 列已删，text id 从本地补）
+function buildLocalSchoolIndex(localSchools) {
+  const map = new Map();
+  for (const s of localSchools || []) {
+    if (s?.name) map.set(s.name, s);
+  }
+  return map;
+}
+
+function rowToSchool(row, localSchool) {
+  if (!row) return null;
+  return {
+    id: row.slug || localSchool?.id || '',
+    dbId: row.id,
+    name: row.name,
+    districtId: localSchool?.districtId || '',
+    districtName: row.district_name,
+    schoolStage: inferSchoolStage(row.school_stage_label),
+    schoolStageLabel: row.school_stage_label,
+    schoolTypeLabel: row.school_type_label,
+    tier: row.tier,
+    group: row.group,
+    address: row.address,
+    phone: row.phone,
+    website: row.website,
+    foundingYear: row.founding_year,
+    isBoarding: row.is_boarding,
+    isInternational: row.is_international,
+    image: row.image,
+    description: row.description,
+    achievements: row.achievements,
+    admissionNotes: row.admission_notes,
+    admissionCode: row.admission_info?.code || '',
+    contentFile: localSchool?.contentFile || '',
+    profileDepth: row.profile_depth,
+    features: row.features || [],
+    related_schools: row.related_schools || [],
+    admissionMethods: row.admission_info?.methods || [],
+    admissionRoutes: row.admission_info?.routes || []
+  };
+}
+
+async function loadSchoolsFromSupabase() {
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select('*')
+    .order('id', { ascending: true });
+
+  if (error) {
+    throw error;
+  }
+
+  // content_file 列已删除，从本地 schools.json 的 name→id 映射补充 text id 等字段
+  const localSchools = await readLocalJson(DATASET_FILES.schools);
+  const localArr = Array.isArray(localSchools) ? localSchools : (localSchools?.schools || []);
+  const localIndex = buildLocalSchoolIndex(localArr);
+
+  return (data || [])
+    .map((row) => rowToSchool(row, localIndex.get(row.name)))
+    .filter(Boolean);
 }
 
 function toTimestamp(value) {
@@ -162,7 +236,19 @@ function ensureDatasets(data = {}) {
 
 async function loadDataStore() {
   const local = await loadLocalData();
-  return ensureDatasets(local);
+
+  let schools = local.schools;
+
+  if (isSupabaseConfigured()) {
+    try {
+      schools = await loadSchoolsFromSupabase();
+    } catch (err) {
+      console.warn('[data-store] Supabase 读取失败，降级到本地文件:', err.message);
+      schools = local.schools;
+    }
+  }
+
+  return ensureDatasets({ ...local, schools });
 }
 
 async function saveDataStore(nextState) {

@@ -257,7 +257,7 @@ export default async function SchoolDetailPage({ params }) {
   }
 
   const relatedSchools = getRelatedSchools(schools, school);
-  const articleBodyMarkdown = readSchoolMarkdownFile(school);
+  const articleBodyMarkdown = await readSchoolMarkdownFile(school);
   if (!articleBodyMarkdown) {
     notFound();
   }

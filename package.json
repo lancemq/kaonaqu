@@ -25,7 +25,8 @@
     "crawl:school-enrich": "node crawler/src/crawlers/school-enrichment.js",
     "crawl:school-enrich:dry": "node crawler/src/crawlers/school-enrichment.js --dry-run --limit 10",
     "data:schools:merge": "node crawler/src/merge-school-data.js",
-    "data:schools:validate": "node crawler/src/merge-school-data.js"
+    "data:schools:validate": "node crawler/src/merge-school-data.js",
+    "data:sync:supabase": "node scripts/migrate-schools-to-supabase.js"
   },
   "keywords": [
     "shanghai",
@@ -37,9 +38,11 @@
   "author": "马奇",
   "license": "MIT",
   "dependencies": {
+    "@supabase/supabase-js": "^2.110.0",
     "@vercel/analytics": "^2.0.1",
     "axios": "^1.6.7",
     "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^17.4.2",
     "next": "^16.1.7",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
