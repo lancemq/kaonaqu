@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const fsSync = require('fs');
 const path = require('path');
-const { buildDistricts } = require('./data-schema');
+const { buildDistricts, DISTRICT_NAME_TO_ID } = require('./data-schema');
 const { isSupabaseConfigured, getServiceClient, SCHOOLS_TABLE } = require('./supabase-client');
 
 function resolveDataDir() {
@@ -79,22 +79,14 @@ function inferSchoolStage(stageLabel) {
   return 'senior';
 }
 
-// 从本地 schools.json 构建 name → localSchool 映射（content_file 列已删，text id 从本地补）
-function buildLocalSchoolIndex(localSchools) {
-  const map = new Map();
-  for (const s of localSchools || []) {
-    if (s?.name) map.set(s.name, s);
-  }
-  return map;
-}
-
-function rowToSchool(row, localSchool) {
+// rowToSchool：完全从数据库行映射，districtId 由 district_name 查映射得到
+function rowToSchool(row) {
   if (!row) return null;
   return {
-    id: row.slug || localSchool?.id || '',
+    id: row.slug || '',
     dbId: row.id,
     name: row.name,
-    districtId: localSchool?.districtId || '',
+    districtId: DISTRICT_NAME_TO_ID[row.district_name] || '',
     districtName: row.district_name,
     schoolStage: inferSchoolStage(row.school_stage_label),
     schoolStageLabel: row.school_stage_label,
@@ -112,7 +104,7 @@ function rowToSchool(row, localSchool) {
     achievements: row.achievements,
     admissionNotes: row.admission_notes,
     admissionCode: row.admission_info?.code || '',
-    contentFile: localSchool?.contentFile || '',
+    contentFile: '',
     profileDepth: row.profile_depth,
     features: row.features || [],
     related_schools: row.related_schools || [],
@@ -132,13 +124,8 @@ async function loadSchoolsFromSupabase() {
     throw error;
   }
 
-  // content_file 列已删除，从本地 schools.json 的 name→id 映射补充 text id 等字段
-  const localSchools = await readLocalJson(DATASET_FILES.schools);
-  const localArr = Array.isArray(localSchools) ? localSchools : (localSchools?.schools || []);
-  const localIndex = buildLocalSchoolIndex(localArr);
-
   return (data || [])
-    .map((row) => rowToSchool(row, localIndex.get(row.name)))
+    .map((row) => rowToSchool(row))
     .filter(Boolean);
 }
 

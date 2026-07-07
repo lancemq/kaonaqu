@@ -220,7 +220,6 @@ export default async function SchoolDetailPage({ params }) {
           {chipItems.map((item) => <span key={item.type} className={`chip-${item.type}`}>{item.text}</span>)}
         </div>
         <h1>{school.name}</h1>
-        {schoolSummary ? <p>{renderInlineMarkdown(schoolSummary)}</p> : null}
         <div className="school-pencil-stats" aria-label="学校关键指标">
           {headerStats.map(([value, label]) => (
             <article key={label}>

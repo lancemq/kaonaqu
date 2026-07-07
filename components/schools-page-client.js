@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import CompareBagCheckbox from './compare-bag-checkbox';
 import { dataQualityBadge, dataQualityScore, getSchoolDataQuality } from '../lib/school-data-quality';
 import {
   filterSchools,
@@ -10,30 +9,13 @@ import {
   formatSchoolUpdate,
   getUpdateSortValue,
   getSchoolAdmissionInfo,
-  getSchoolCategory,
   getSchoolCategoryLabel,
   getSchoolDistrictName,
   getSchoolStage,
   getSchoolSpecializationLabels,
   getSchoolTrainingDirections,
-  getSchoolType,
-  SCHOOL_CATEGORY_LIST
+  getSchoolType
 } from '../lib/site-utils';
-
-const STAGE_OPTIONS = [
-  { value: 'all', label: '全部学段' },
-  { value: 'junior', label: '初中' },
-  { value: 'senior_high', label: '高中' },
-  { value: 'complete', label: '完全中学' }
-];
-
-const OWNERSHIP_OPTIONS = [
-  { value: 'all', label: '全部办学性质' },
-  { value: 'public', label: '公办' },
-  { value: 'private', label: '民办' },
-  { value: 'international', label: '国际化 / 双语' },
-  { value: 'foreign', label: '外籍学校' }
-];
 
 const FEATURE_FILTER_OPTIONS = [
   '示范性高中',
@@ -56,11 +38,6 @@ const DIRECTION_FILTER_OPTIONS = [
   '贯通培养',
   '外语特色'
 ];
-
-const CATEGORY_FILTER_OPTIONS = SCHOOL_CATEGORY_LIST.map((cat) => ({
-  value: cat.id,
-  label: cat.shortLabel
-}));
 
 const SCHOOLS_PER_PAGE = 10;
 
@@ -105,7 +82,6 @@ export default function SchoolsPageClient({
   schools,
   initialDistrict = 'all',
   initialStage = 'all',
-  initialOwnership = 'all',
   initialCategory = 'all',
   initialTag = 'all',
   initialDirection = 'all',
@@ -113,7 +89,6 @@ export default function SchoolsPageClient({
 }) {
   const [activeDistrict, setActiveDistrict] = useState(initialDistrict);
   const [activeStage, setActiveStage] = useState(initialStage);
-  const [activeOwnership, setActiveOwnership] = useState(initialOwnership);
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [activeTag, setActiveTag] = useState(initialTag);
   const [activeDirection, setActiveDirection] = useState(initialDirection);
@@ -124,22 +99,45 @@ export default function SchoolsPageClient({
     initialCategory !== 'all' || initialTag !== 'all' || initialDirection !== 'all'
   );
 
+  const stageOptions = useMemo(() => {
+    const map = new Map();
+    for (const school of schools) {
+      const label = String(school?.schoolStageLabel || '').trim();
+      if (label && !map.has(label)) {
+        map.set(label, { value: label, label });
+      }
+    }
+    return [{ value: 'all', label: '全部学段' }, ...map.values()];
+  }, [schools]);
+
+  const categoryOptions = useMemo(() => {
+    const map = new Map();
+    for (const school of schools) {
+      const tier = String(school?.tier || '').trim();
+      if (tier && !map.has(tier)) {
+        map.set(tier, { value: tier, label: tier });
+      }
+    }
+    return [{ value: 'all', label: '全部类型' }, ...map.values()];
+  }, [schools]);
+
   const filteredSchools = useMemo(
     () => {
       let result = filterSchools(schools, {
         district: activeDistrict,
         query: searchQuery,
-        stage: activeStage,
-        ownership: activeOwnership,
         tag: activeTag,
         direction: activeDirection
       });
+      if (activeStage !== 'all') {
+        result = result.filter((school) => String(school?.schoolStageLabel || '').trim() === activeStage);
+      }
       if (activeCategory !== 'all') {
-        result = result.filter((school) => (school.category || getSchoolCategory(school)?.id) === activeCategory);
+        result = result.filter((school) => String(school?.tier || '').trim() === activeCategory);
       }
       return result;
     },
-    [schools, activeDistrict, searchQuery, activeStage, activeOwnership, activeCategory, activeTag, activeDirection]
+    [schools, activeDistrict, searchQuery, activeStage, activeCategory, activeTag, activeDirection]
   );
 
   const tagOptions = useMemo(() => {
@@ -191,14 +189,10 @@ export default function SchoolsPageClient({
       lines.push(`区域：${district?.name || district?.districtName || activeDistrict}`);
     }
     if (activeStage !== 'all') {
-      lines.push(`学段：${STAGE_OPTIONS.find((item) => item.value === activeStage)?.label || activeStage}`);
-    }
-    if (activeOwnership !== 'all') {
-      lines.push(`办学性质：${OWNERSHIP_OPTIONS.find((item) => item.value === activeOwnership)?.label || activeOwnership}`);
+      lines.push(`学段：${stageOptions.find((item) => item.value === activeStage)?.label || activeStage}`);
     }
     if (activeCategory !== 'all') {
-      const cat = SCHOOL_CATEGORY_LIST.find((c) => c.id === activeCategory);
-      lines.push(`分类：${cat?.label || activeCategory}`);
+      lines.push(`分类：${categoryOptions.find((item) => item.value === activeCategory)?.label || activeCategory}`);
     }
     if (activeTag !== 'all') {
       lines.push(`特色：${activeTag}`);
@@ -210,7 +204,7 @@ export default function SchoolsPageClient({
       lines.push(`关键词：${searchQuery}`);
     }
     return lines;
-  }, [activeDistrict, activeStage, activeOwnership, activeTag, activeDirection, searchQuery, districts]);
+  }, [activeDistrict, activeStage, activeTag, activeDirection, searchQuery, districts]);
 
   const totalPages = Math.max(1, Math.ceil(filteredSchools.length / SCHOOLS_PER_PAGE));
   const pagedSchools = useMemo(() => {
@@ -267,7 +261,6 @@ export default function SchoolsPageClient({
   const resetFilters = () => {
     setActiveDistrict('all');
     setActiveStage('all');
-    setActiveOwnership('all');
     setActiveCategory('all');
     setActiveTag('all');
     setActiveDirection('all');
@@ -296,7 +289,7 @@ export default function SchoolsPageClient({
           <section className="channel-hero-copy" aria-label="学校频道概览">
             <div className="channel-kicker"><span aria-hidden="true"></span><p>SCHOOL DATABASE</p></div>
             <h1>上海学校数据库</h1>
-            <p>收录全市 {schools.length.toLocaleString('zh-CN')} 所学校详细信息，按区县、类型精准筛选，全面了解各校特色与升学数据。</p>
+            <p>收录全市 {schools.length.toLocaleString('zh-CN')} 所学校详细信息，按区域、类型精准筛选，全面了解各校特色与升学数据。</p>
             <div className="schools-aerial-searchbar">
               <span aria-hidden="true"></span>
               <input
@@ -310,7 +303,7 @@ export default function SchoolsPageClient({
                     applySearch();
                   }
                 }}
-                placeholder="搜索学校名称、区县或类型..."
+                placeholder="搜索学校名称、区域或类型..."
               />
               <button type="button" onClick={applySearch}>检索</button>
             </div>
@@ -318,7 +311,7 @@ export default function SchoolsPageClient({
 
           <aside className="channel-hero-stats" aria-label="学校数据统计">
             <article><strong>{schools.length}</strong><span>收录学校</span></article>
-            <article><strong>{districts.length}</strong><span>覆盖区县</span></article>
+            <article><strong>{districts.length}</strong><span>覆盖区域</span></article>
             <article><strong>{schoolStageTotals.senior_high}</strong><span>高中样本</span></article>
           </aside>
         </div>
@@ -332,7 +325,7 @@ export default function SchoolsPageClient({
           </div>
 
           <section className="schools-aerial-filter-block">
-            <label htmlFor="prototype-district-filter">区县</label>
+            <label htmlFor="prototype-district-filter">区域</label>
             <select id="prototype-district-filter" value={activeDistrict} onChange={(event) => { setActiveDistrict(event.target.value); setCurrentPage(1); }}>
               <option value="all">全部区域</option>
               {districts.map((district) => (
@@ -344,7 +337,7 @@ export default function SchoolsPageClient({
           <section className="schools-aerial-filter-block">
             <label>学校类型</label>
             <div className="schools-aerial-filter-stack">
-              {CATEGORY_FILTER_OPTIONS.slice(0, 5).map((option) => (
+              {categoryOptions.slice(1).map((option) => (
                 <button key={option.value} type="button" className={activeCategory === option.value ? 'is-active' : ''} onClick={() => { setActiveCategory(activeCategory === option.value ? 'all' : option.value); setCurrentPage(1); }}>
                   {option.label}
                 </button>
@@ -355,8 +348,8 @@ export default function SchoolsPageClient({
           <section className="schools-aerial-filter-block">
             <label>学段</label>
             <div className="schools-aerial-filter-stack">
-              {STAGE_OPTIONS.map((option) => (
-                <button key={option.value} type="button" className={activeStage === option.value ? 'is-active' : ''} onClick={() => { setActiveStage(option.value); setCurrentPage(1); }}>
+              {stageOptions.slice(1).map((option) => (
+                <button key={option.value} type="button" className={activeStage === option.value ? 'is-active' : ''} onClick={() => { setActiveStage(activeStage === option.value ? 'all' : option.value); setCurrentPage(1); }}>
                   {option.label}
                 </button>
               ))}
@@ -432,7 +425,6 @@ export default function SchoolsPageClient({
                       <b>查看详情 →</b>
                     </div>
                   </Link>
-                  <CompareBagCheckbox schoolId={school.id} schoolName={school.name} />
                 </article>
               );
             })}
