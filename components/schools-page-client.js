@@ -8,7 +8,6 @@ import {
   clipText,
   formatSchoolUpdate,
   getUpdateSortValue,
-  getSchoolAdmissionInfo,
   getSchoolCategoryLabel,
   getSchoolDistrictName,
   getSchoolStage,
@@ -54,9 +53,9 @@ function getOwnershipLabel(school) {
 }
 
 function getSchoolPositioning(school) {
-  const admission = clipText(getSchoolAdmissionInfo(school), 84);
-  if (admission && admission !== '暂无') {
-    return admission;
+  const desc = clipText(school?.description, 84);
+  if (desc && desc !== '暂无') {
+    return desc;
   }
   const directions = getSchoolTrainingDirections(school);
   if (directions.length) {

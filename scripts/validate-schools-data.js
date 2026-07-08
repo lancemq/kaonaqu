@@ -15,7 +15,7 @@ require('dotenv').config({ path: '.env.local' });
 const { getServiceClient, SCHOOLS_TABLE } = require('../shared/supabase-client');
 
 const STAGE_VALUES = new Set(['幼儿园', '小学', '初中', '高中', '完中', '完全中学', '九年一贯', '十二年一贯', '十五年一贯', '一贯制']);
-const TYPE_VALUES = new Set(['公办', '民办', '其他', '转制', '中外合作', '国际', '国际化']);
+const TYPE_VALUES = new Set(['公办', '民办', '中外合作', '外籍']);
 const TIER_VALUES = new Set(['', '市实验性示范性高中', '区实验性示范性高中', '特色普通高中', '一般', '区重点', '市重点', '国家重点', '其他', '四校', '八大', '四校分校', '八大分校']);
 
 const issues = [];

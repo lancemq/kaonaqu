@@ -20,15 +20,6 @@ const DISTRICT_CATALOG = [
 const DISTRICT_NAME_TO_ID = Object.fromEntries(DISTRICT_CATALOG.map((item) => [item.name, item.id]));
 const DISTRICT_ID_TO_NAME = Object.fromEntries(DISTRICT_CATALOG.map((item) => [item.id, item.name]));
 
-const SCHOOL_TYPE_MAP = {
-  '市实验性示范性高中': 'municipal_model',
-  '市特色普通高中': 'featured_high_school',
-  '市重点': 'municipal_key',
-  '区重点': 'district_key',
-  '普通': 'general',
-  '普通中学': 'general'
-};
-
 const SCHOOL_STAGE_MAP = {
   junior: '初中',
   senior_high: '高中',
@@ -118,11 +109,6 @@ function normalizeDistrictId(value) {
 function normalizeDistrictName(value) {
   const districtId = normalizeDistrictId(value);
   return DISTRICT_ID_TO_NAME[districtId] || cleanString(value);
-}
-
-function normalizeSchoolType(value) {
-  const text = cleanString(value);
-  return SCHOOL_TYPE_MAP[text] || 'unknown';
 }
 
 function normalizeSchoolStage(value) {
@@ -244,7 +230,6 @@ function normalizeSchool(raw) {
     districtName,
     schoolStage,
     schoolStageLabel: SCHOOL_STAGE_MAP[schoolStage] || schoolStage,
-    schoolType: normalizeSchoolType(raw.schoolType || raw.type),
     schoolTypeLabel: cleanString(raw.schoolTypeLabel || raw.type || '未知'),
     tier,
     address: cleanString(raw.address),

@@ -45,13 +45,13 @@ function dedupeArray(arr) {
   return out;
 }
 
-// 完中阶段/分类推导：保留 HI 的 schoolType 与 schoolTypeLabel
+// 完中阶段/分类推导：保留 HI 的 school_type_label
 function deriveCompleteFields(hi) {
-  const type = hi.schoolType; // 'public' | 'private' | ...
-  if (type === 'public') {
+  const type = hi.schoolTypeLabel; // '公办' | '民办' | ...
+  if (type === '公办') {
     return { schoolStage: 'complete', schoolStageLabel: '完全中学', tier: '公办完全中学', category: 'gongban-chuzhong' };
   }
-  if (type === 'private') {
+  if (type === '民办') {
     return { schoolStage: 'complete', schoolStageLabel: '完全中学', tier: '民办完全中学', category: 'minban-chuzhong' };
   }
   // 其他类型（国际等）保留 HI 原值，只改 stage

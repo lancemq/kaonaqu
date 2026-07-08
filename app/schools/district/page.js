@@ -47,8 +47,8 @@ function buildDistrictRows(districts, schools) {
         seniorHigh: countByStage(districtSchools, 'senior_high'),
         junior: countByStage(districtSchools, 'junior'),
         complete: countByStage(districtSchools, 'complete'),
-        publicCount: districtSchools.filter((school) => school.schoolType === 'public').length,
-        privateCount: districtSchools.filter((school) => school.schoolType === 'private').length,
+        publicCount: districtSchools.filter((school) => school.schoolTypeLabel === '公办').length,
+        privateCount: districtSchools.filter((school) => school.schoolTypeLabel === '民办').length,
         latestUpdated: getLatestUpdate(districtSchools),
         topic: getDistrictSchoolTopic(district),
         overview: district.districtOverview || district.description || '区域学校信息持续整理中。'

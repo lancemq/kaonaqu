@@ -112,7 +112,7 @@ export default async function SchoolDetailPage({ params }) {
   const dataQuality = getSchoolDataQuality(school);
   const districtName = getSchoolDistrictName(school);
   const stageName = getSchoolStage(school);
-  const ownershipName = getSchoolOwnershipLabel(school) || school.schoolType || '';
+  const ownershipName = getSchoolOwnershipLabel(school) || school.schoolTypeLabel || '';
   const schoolAttribute = school.tier || ownershipName || '—';
   const schoolSummary = school.description || '';
   const admissionInfo = getSchoolAdmissionInfo(school);

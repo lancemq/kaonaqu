@@ -130,7 +130,6 @@ async function crawlSocialPlatforms() {
         districtId: cleanText(item.districtId || item.district),
         districtName: cleanText(item.districtName || item.district),
         schoolStage: cleanText(item.schoolStage || item.stage),
-        type: cleanText(item.type || item.schoolType),
         schoolTypeLabel: cleanText(item.schoolTypeLabel || item.type || item.schoolType),
         tier: cleanText(item.tier),
         address: cleanText(item.address),

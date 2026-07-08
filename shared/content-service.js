@@ -10,6 +10,15 @@ const { loadDataStore, updateDataStore } = require('./data-store');
 const fsSync = require('fs');
 const path = require('path');
 
+// 旧 code 过滤值 -> 规范 label（school_type_label），用于兼容历史调用
+const CODE_TO_TYPE_LABEL = {
+  public: '公办',
+  private: '民办',
+  foreign: '外籍',
+  cooperative: '中外合作',
+  international: '国际化 / 双语'
+};
+
 function sortByTimeDesc(items, field = 'updatedAt') {
   return items
     .slice()
@@ -104,8 +113,12 @@ async function listSchools(filters = {}) {
     if (stage && school.schoolStage !== stage) {
       return false;
     }
-    if (schoolType && school.schoolType !== schoolType && school.schoolTypeLabel !== schoolType) {
-      return false;
+    if (schoolType) {
+      const labelMatch = school.schoolTypeLabel === schoolType;
+      const codeMatch = CODE_TO_TYPE_LABEL[schoolType] === school.schoolTypeLabel;
+      if (!labelMatch && !codeMatch) {
+        return false;
+      }
     }
     if (feature && ![...(school.features || []), ...(school.tags || [])].some((item) => item.includes(feature))) {
       return false;

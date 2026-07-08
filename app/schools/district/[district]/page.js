@@ -170,7 +170,7 @@ export default async function DistrictSchoolsPage({ params }) {
         <div className="district-channel-overview-stats">
           <article><strong>{latestUpdated}</strong><span>最近更新</span></article>
           <article><strong>{topStage?.label || '学段'}</strong><span>主要学段</span></article>
-          <article><strong>{districtSchools.filter((school) => school.schoolType === 'private').length}</strong><span>民办记录</span></article>
+          <article><strong>{districtSchools.filter((school) => school.schoolTypeLabel === '民办').length}</strong><span>民办记录</span></article>
         </div>
       </section>
 
