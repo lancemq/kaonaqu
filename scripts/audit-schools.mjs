@@ -26,13 +26,13 @@ const DISTRICT_PINYIN = new Set([
 // 简体转繁体常用字检测（中學、職業、技術等）
 const TRADITIONAL_CHARS = /[學職業技術廠場館廳處務團體們際網絡線計劃劃製藝術系統紀錄證書場務員會員會計員會計師師生員會員會員會員會員會員會員]/;
 
-// school_type_label（办学性质）合法值
+// school_property_label（办学性质）合法值
 const VALID_SCHOOL_TYPE = new Set(['公办', '民办', '中外合作', '外籍', '']);
 const VALID_SCHOOL_STAGE = new Set(['junior', 'senior_high', 'complete', '']);
 
-// tier 期望值映射（基于 school_type_label）
+// tier 期望值映射（基于 school_property_label）
 function expectedTier(s) {
-  const t = s.schoolTypeLabel;
+  const t = s.schoolPropertyLabel;
   const st = s.schoolStage;
   if (t === '公办' && st === 'junior') return '公办初中';
   if (t === '公办' && st === 'senior_high') return /示范性|实验性/.test(s.tier || '') ? s.tier : '一般高中';
@@ -44,7 +44,7 @@ function expectedTier(s) {
 }
 
 function expectedCategory(s) {
-  const t = s.schoolTypeLabel;
+  const t = s.schoolPropertyLabel;
   const st = s.schoolStage;
   if (t === '公办' && (st === 'junior' || st === 'complete')) return 'gongban-chuzhong';
   if (t === '公办' && st === 'senior_high') return 'gongban-gaozhong';
@@ -95,9 +95,9 @@ for (const s of arr) {
 // === 2. 字段一致性 ===
 for (const s of arr) {
   const issues = [];
-  // school_type_label 合法性
-  if (s.schoolTypeLabel && !VALID_SCHOOL_TYPE.has(s.schoolTypeLabel)) {
-    issues.push(`school_type_label 非法值: ${s.schoolTypeLabel}`);
+  // school_property_label 合法性
+  if (s.schoolPropertyLabel && !VALID_SCHOOL_TYPE.has(s.schoolPropertyLabel)) {
+    issues.push(`school_property_label 非法值: ${s.schoolPropertyLabel}`);
   }
   // schoolStage / schoolStageLabel
   const stageLabelMap = { junior: '初中', senior_high: '高中', complete: '完全中学', '': '' };
@@ -112,29 +112,29 @@ for (const s of arr) {
       issues.push(`profileSignals.stage="${ps}" vs schoolStage="${s.schoolStage}"`);
     }
   }
-  // profileSignals.ownership 与 school_type_label 不一致
-  if (s.profileSignals?.ownership && s.schoolTypeLabel) {
+  // profileSignals.ownership 与 school_property_label 不一致
+  if (s.profileSignals?.ownership && s.schoolPropertyLabel) {
     const po = s.profileSignals.ownership;
-    if (po !== s.schoolTypeLabel) {
-      issues.push(`profileSignals.ownership="${po}" vs school_type_label="${s.schoolTypeLabel}"`);
+    if (po !== s.schoolPropertyLabel) {
+      issues.push(`profileSignals.ownership="${po}" vs school_property_label="${s.schoolPropertyLabel}"`);
     }
   }
-  // category 与 school_type_label/stage 不匹配
+  // category 与 school_property_label/stage 不匹配
   const expCat = expectedCategory(s);
   if (expCat && s.category && s.category !== expCat) {
-    if (['公办', '民办', '中外合作', '外籍'].includes(s.schoolTypeLabel) && ['junior', 'senior_high', 'complete'].includes(s.schoolStage)) {
+    if (['公办', '民办', '中外合作', '外籍'].includes(s.schoolPropertyLabel) && ['junior', 'senior_high', 'complete'].includes(s.schoolStage)) {
       issues.push(`category="${s.category}" expected="${expCat}"`);
     }
   }
   if (issues.length) {
-    problems.field_inconsistent.push({ id: s.id, name: s.name, type: s.schoolTypeLabel, stage: s.schoolStage, tier: s.tier, issues });
+    problems.field_inconsistent.push({ id: s.id, name: s.name, type: s.schoolPropertyLabel, stage: s.schoolStage, tier: s.tier, issues });
   }
 }
 
 // === 3. 关键字段缺失 ===
 for (const s of arr) {
   const missing = [];
-  if (!s.schoolTypeLabel) missing.push('schoolTypeLabel');
+  if (!s.schoolPropertyLabel) missing.push('schoolPropertyLabel');
   if (!s.schoolStage) missing.push('schoolStage');
   if (!s.districtId) missing.push('districtId');
   if (!s.tier) missing.push('tier');
@@ -199,17 +199,17 @@ for (const [name, list] of Object.entries(nameMap)) {
 for (const s of arr) {
   const tags = s.tags || [];
   const kw = s.searchKeywords || [];
-  if (s.schoolTypeLabel === '民办') {
+  if (s.schoolPropertyLabel === '民办') {
     const badTags = tags.filter((t) => t === '公办' || t === '公办初中' || t === 'public');
     const badKw = kw.filter((k) => k === '公办' || k === '公办初中' || k === 'public');
     if (badTags.length || badKw.length) {
-      problems.merge_residual.push({ id: s.id, name: s.name, type: s.schoolTypeLabel, badTags, badKw });
+      problems.merge_residual.push({ id: s.id, name: s.name, type: s.schoolPropertyLabel, badTags, badKw });
     }
-  } else if (s.schoolTypeLabel === '公办') {
+  } else if (s.schoolPropertyLabel === '公办') {
     const badTags = tags.filter((t) => t === '民办' || t === '民办初中' || t === 'private');
     const badKw = kw.filter((k) => k === '民办' || k === '民办初中' || k === 'private');
     if (badTags.length || badKw.length) {
-      problems.merge_residual.push({ id: s.id, name: s.name, type: s.schoolTypeLabel, badTags, badKw });
+      problems.merge_residual.push({ id: s.id, name: s.name, type: s.schoolPropertyLabel, badTags, badKw });
     }
   }
 }

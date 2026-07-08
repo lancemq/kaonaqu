@@ -295,8 +295,8 @@ function main() {
   // === C. 合并遗留标签清理 ===
   let cleanCount = 0;
   for (const s of arr) {
-    const isPublic = s.schoolTypeLabel === '公办';
-    const isPrivate = s.schoolTypeLabel === '民办';
+    const isPublic = s.schoolPropertyLabel === '公办';
+    const isPrivate = s.schoolPropertyLabel === '民办';
     if (!isPublic && !isPrivate) continue;
     const badTags = isPublic ? BAD_TAGS_PUBLIC : BAD_TAGS_PRIVATE;
     let changed = false;

@@ -107,7 +107,7 @@ function schoolToRow(school, oldIdToSlug) {
     name: school.name,
     district_name: school.districtName,
     school_stage_label: school.schoolStageLabel || '',
-    school_type_label: school.schoolTypeLabel || '',
+    school_property_label: school.schoolPropertyLabel || '',
     tier: school.tier || '',
     "group": school.group || '',
     address: school.address || '',
@@ -193,7 +193,7 @@ async function verifyMigration(schools) {
   for (const sample of samples) {
     const { data, error } = await client
       .from(SCHOOLS_TABLE)
-      .select('name, slug, description, school_type_label, tier')
+      .select('name, slug, description, school_property_label, tier')
       .eq('name', sample.name)
       .limit(1)
       .single();
@@ -205,7 +205,7 @@ async function verifyMigration(schools) {
 
     const nameMatch = data.name === sample.name;
     const descOk = (data.description || '').length > 0;
-    console.log(`抽样 [${sample.id}]: slug=${data.slug} name=${nameMatch ? '✓' : '✗'} description=${descOk ? '✓' : '空'} type=${data.school_type_label} tier=${data.tier}`);
+    console.log(`抽样 [${sample.id}]: slug=${data.slug} name=${nameMatch ? '✓' : '✗'} description=${descOk ? '✓' : '空'} type=${data.school_property_label} tier=${data.tier}`);
   }
 }
 

@@ -4,7 +4,7 @@
  *   node scripts/apply-supabase-tier-type-corrections.js --dry-run  # 预览
  *   node scripts/apply-supabase-tier-type-corrections.js            # 正式写回
  *
- * 仅更新 tier 与 school_type_label 两列。每行更新后校验影响行数=1。
+ * 仅更新 tier 与 school_property_label 两列。每行更新后校验影响行数=1。
  */
 require('dotenv').config({ path: '.env.local' });
 
@@ -23,7 +23,7 @@ async function main() {
   const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
 
   const changes = plan.corrections.filter(
-    (c) => c.proposed_tier !== c.current_tier || c.proposed_school_type_label !== c.current_school_type_label
+    (c) => c.proposed_tier !== c.current_tier || c.proposed_school_property_label !== c.current_school_property_label
   );
   console.log(`纠错计划共 ${plan.corrections.length} 条，需实际变更 ${changes.length} 条\n`);
 
@@ -31,7 +31,7 @@ async function main() {
     changes.forEach((c, i) => {
       console.log(`${i + 1}. ${c.name} (${c.slug})`);
       if (c.proposed_tier !== c.current_tier) console.log(`     tier: ${c.current_tier || '(空)'} → ${c.proposed_tier}`);
-      if (c.proposed_school_type_label !== c.current_school_type_label) console.log(`     type: ${c.current_school_type_label || '(空)'} → ${c.proposed_school_type_label}`);
+      if (c.proposed_school_property_label !== c.current_school_property_label) console.log(`     type: ${c.current_school_property_label || '(空)'} → ${c.proposed_school_property_label}`);
     });
     console.log('\n[dry-run] 未写入。去掉 --dry-run 正式写回。');
     return;
@@ -45,13 +45,13 @@ async function main() {
   for (const ch of changes) {
     const patch = {};
     if (ch.proposed_tier !== ch.current_tier) patch.tier = ch.proposed_tier;
-    if (ch.proposed_school_type_label !== ch.current_school_type_label) patch.school_type_label = ch.proposed_school_type_label;
+    if (ch.proposed_school_property_label !== ch.current_school_property_label) patch.school_property_label = ch.proposed_school_property_label;
 
     const { data, error } = await c
       .from(SCHOOLS_TABLE)
       .update(patch)
       .eq('slug', ch.slug)
-      .select('slug, tier, school_type_label');
+      .select('slug, tier, school_property_label');
 
     if (error) {
       console.error(`✗ ${ch.name}: ${error.message}`);
@@ -63,7 +63,7 @@ async function main() {
       failed.push(ch.name);
     } else {
       ok++;
-      console.log(`✓ ${ch.name}: tier=${data[0].tier} type=${data[0].school_type_label}`);
+      console.log(`✓ ${ch.name}: tier=${data[0].tier} type=${data[0].school_property_label}`);
     }
   }
 

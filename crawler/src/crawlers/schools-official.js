@@ -66,7 +66,7 @@ async function fetchText(url, params = {}) {
   return response.data;
 }
 
-function parseDistrictGroupedList(raw, schoolTypeLabel, sourceUrl) {
+function parseDistrictGroupedList(raw, schoolPropertyLabel, sourceUrl) {
   const lines = raw.split('\n');
   const records = [];
   let currentDistrict = '';
@@ -90,8 +90,8 @@ function parseDistrictGroupedList(raw, schoolTypeLabel, sourceUrl) {
       name: cleanSchoolName(title),
       district: currentDistrict,
       schoolStage: 'senior_high',
-      type: schoolTypeLabel,
-      admissionInfo: `${schoolTypeLabel}，根据公开名单整理。`,
+      type: schoolPropertyLabel,
+      admissionInfo: `${schoolPropertyLabel}，根据公开名单整理。`,
       source: '维基百科',
       sourceUrl,
       crawledAt: new Date().toISOString()

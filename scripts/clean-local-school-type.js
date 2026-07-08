@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
- * 把已清洗好的 Supabase schools 表的 school_type_label + is_international
+ * 把已清洗好的 Supabase schools 表的 school_property_label + is_international
  * 同步回本地 data/schools.json（按 区名+校名 定位，因为 Supabase id 是数字代理键、
  * 而 slug=区名-校名 与本地 districtName+name 对应）。
  *   node scripts/clean-local-school-type.js            # 正式写回（先自动备份）
  *   node scripts/clean-local-school-type.js --dry-run # 预览
  *
  * 以 Supabase 为权威源，确保本地 == Supabase，避免 data:sync:supabase 把旧「国际」回写。
- * 仅改 schoolTypeLabel 与 isInternational 两字段。
- * 注：schoolType（旧代码字段）已从本地 JSON 与归一化对象中彻底移除，全校统一到 school_type_label。
+ * 仅改 schoolPropertyLabel 与 isInternational 两字段。
+ * 注：schoolType（旧代码字段）已从本地 JSON 与归一化对象中彻底移除，全校统一到 school_property_label。
  */
 require('dotenv').config({ path: '.env.local' });
 const fs = require('fs');
@@ -21,7 +21,7 @@ const BACKUP_DIR = path.join(process.cwd(), 'data', 'backups');
 
 async function fetchSupabase() {
   const c = getServiceClient();
-  const cols = 'name,district_name,school_type_label,is_international';
+  const cols = 'name,district_name,school_property_label,is_international';
   const PAGE = 1000;
   let all = [];
   let from = 0;
@@ -41,7 +41,7 @@ async function main() {
   const sb = await fetchSupabase();
   const map = new Map();
   for (const r of sb) map.set(`${r.district_name || ''}||${r.name || ''}`, {
-    type: String(r.school_type_label || '').trim(),
+    type: String(r.school_property_label || '').trim(),
     intl: r.is_international === true
   });
 
@@ -56,12 +56,12 @@ async function main() {
     const key = `${s.districtName || ''}||${s.name || ''}`;
     const m = map.get(key);
     if (!m) { unmatched.push(`${s.name} (${s.districtName || ''})`); continue; }
-    const curType = String(s.schoolTypeLabel || '').trim();
+    const curType = String(s.schoolPropertyLabel || '').trim();
     const curIntl = s.isInternational === true;
     if (curType !== m.type || curIntl !== m.intl) {
       const fromType = curType || '(空)';
       const fromIntl = curIntl ? 'true' : 'false';
-      s.schoolTypeLabel = m.type || s.schoolTypeLabel;
+      s.schoolPropertyLabel = m.type || s.schoolPropertyLabel;
       s.isInternational = m.intl;
       changed++;
       plan.push(`${s.name} (${s.districtName || ''}): type ${fromType}→${m.type}, intl ${fromIntl}→${m.intl}`);
@@ -89,11 +89,11 @@ async function main() {
   const dist = {};
   let intlTrue = 0;
   for (const s of arr) {
-    const v = String(s.schoolTypeLabel || '').trim();
+    const v = String(s.schoolPropertyLabel || '').trim();
     dist[v] = (dist[v] || 0) + 1;
     if (s.isInternational === true) intlTrue++;
   }
-  console.log('\n新 schoolTypeLabel 分布:', JSON.stringify(dist));
+  console.log('\n新 schoolPropertyLabel 分布:', JSON.stringify(dist));
   console.log(`isInternational=true 总数: ${intlTrue}`);
 }
 

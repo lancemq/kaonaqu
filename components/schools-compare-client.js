@@ -58,7 +58,7 @@ function schoolValue(school, key) {
 
 function getSyntheticScore(school, offset = 0) {
   if (!school) return '—';
-  const tier = String(school.tier || school.schoolTypeLabel || '');
+  const tier = String(school.tier || school.schoolPropertyLabel || '');
   let base = 660;
   if (tier.includes('四校')) base = 715;
   else if (tier.includes('八大')) base = 700;

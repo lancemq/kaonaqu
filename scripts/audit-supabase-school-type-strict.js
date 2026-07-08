@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * 按严格「办学性质」四值 {公办, 民办, 中外合作, 外籍} 重新清洗 Supabase schools 表 school_type_label（只读）
+ * 按严格「办学性质」四值 {公办, 民办, 中外合作, 外籍} 重新清洗 Supabase schools 表 school_property_label（只读）
  *   node scripts/audit-supabase-school-type-strict.js
  *
  * 产出：
@@ -33,7 +33,7 @@ function hasAny(text, list) {
 function infer(school) {
   const name = String(school.name || '');
   const desc = String(school.description || '');
-  const typeCur = String(school.school_type_label || '');
+  const typeCur = String(school.school_property_label || '');
   const blob = `${name}\n${desc}`;
 
   // 1) 中外合作办学
@@ -65,7 +65,7 @@ function infer(school) {
 
 async function fetchAll() {
   const c = getServiceClient();
-  const cols = 'id,slug,name,district_name,school_stage_label,school_type_label,tier,description,is_international';
+  const cols = 'id,slug,name,district_name,school_stage_label,school_property_label,tier,description,is_international';
   const PAGE = 1000;
   let all = [];
   let from = 0;
@@ -82,14 +82,14 @@ async function fetchAll() {
 
 async function main() {
   if (!isSupabaseConfigured()) { console.error('Supabase 未配置'); process.exit(1); }
-  console.log('\n=== 按四值「办学性质」清洗 school_type_label（只读） ===\n');
+  console.log('\n=== 按四值「办学性质」清洗 school_property_label（只读） ===\n');
   const rows = await fetchAll();
   console.log(`拉取 ${rows.length} 条\n`);
 
   const corrections = [];
   const currentDist = {};
   for (const r of rows) {
-    const cur = String(r.school_type_label || '').trim();
+    const cur = String(r.school_property_label || '').trim();
     currentDist[cur || '(空)'] = (currentDist[cur || '(空)'] || 0) + 1;
     if (!TARGET.has(cur)) {
       // 当前值不在四值集合内（如「国际」）→ 必须重分类
@@ -97,8 +97,8 @@ async function main() {
       corrections.push({
         slug: r.slug, name: r.name, district_name: r.district_name,
         school_stage_label: String(r.school_stage_label || ''),
-        current_school_type_label: cur,
-        proposed_school_type_label: inf.type,
+        current_school_property_label: cur,
+        proposed_school_property_label: inf.type,
         current_is_international: Boolean(r.is_international),
         proposed_is_international: true, // 这些校均为国际课程/外籍/合作办学，统一置 true 以保全站 isInternational 语义
         confidence: inf.confidence,
@@ -111,8 +111,8 @@ async function main() {
         corrections.push({
           slug: r.slug, name: r.name, district_name: r.district_name,
           school_stage_label: String(r.school_stage_label || ''),
-          current_school_type_label: cur,
-          proposed_school_type_label: inf.type,
+          current_school_property_label: cur,
+          proposed_school_property_label: inf.type,
           current_is_international: Boolean(r.is_international),
           proposed_is_international: true,
           confidence: inf.confidence,
@@ -122,7 +122,7 @@ async function main() {
     }
   }
 
-  console.log('━━━ 当前 school_type_label 分布 ━━━');
+  console.log('━━━ 当前 school_property_label 分布 ━━━');
   Object.entries(currentDist).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => {
     console.log(`  ${String(v).padStart(4)}  ${k}${TARGET.has(k) ? ' ✓' : ' ✗不在四值内'}`);
   });
@@ -136,13 +136,13 @@ async function main() {
   const order = { low: 0, medium: 1, high: 2 };
   corrections.sort((a, b) => order[a.confidence] - order[b.confidence]);
   corrections.forEach((c, i) => {
-    console.log(`  [${c.confidence}] ${c.name} (${c.district_name}) ${c.school_stage_label}: ${c.current_school_type_label} → ${c.proposed_school_type_label}  | ${c.reasons.join('；')}`);
+    console.log(`  [${c.confidence}] ${c.name} (${c.district_name}) ${c.school_stage_label}: ${c.current_school_property_label} → ${c.proposed_school_property_label}  | ${c.reasons.join('；')}`);
   });
 
   const outDir = path.join(process.cwd(), 'reports');
   fs.mkdirSync(outDir, { recursive: true });
   const md = [
-    `# school_type_label 四值「办学性质」清洗审计`,
+    `# school_property_label 四值「办学性质」清洗审计`,
     '',
     `> 生成: ${new Date().toLocaleString('zh-CN')} | 数据源: Supabase \`${SCHOOLS_TABLE}\` (${rows.length} 条)`,
     `> 目标集合: { 公办, 民办, 中外合作, 外籍 }`,
@@ -154,7 +154,7 @@ async function main() {
     '',
     `| 置信 | 学校 | 区 | 阶段 | 当前 | 建议 | 理由 |`,
     `| --- | --- | --- | --- | --- | --- | --- |`,
-    ...corrections.map((c) => `| ${c.confidence} | ${c.name} | ${c.district_name || ''} | ${c.school_stage_label} | ${c.current_school_type_label} | ${c.proposed_school_type_label} | ${c.reasons.join('；')} |`),
+    ...corrections.map((c) => `| ${c.confidence} | ${c.name} | ${c.district_name || ''} | ${c.school_stage_label} | ${c.current_school_property_label} | ${c.proposed_school_property_label} | ${c.reasons.join('；')} |`),
     '',
     `> low 置信行建议人工复核后再写库。`
   ].join('\n');

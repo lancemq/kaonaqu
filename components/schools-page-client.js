@@ -48,7 +48,7 @@ function resolveFeaturedSchool(schools, keyword, preferredName) {
 }
 
 function getOwnershipLabel(school) {
-  const label = String(school?.schoolTypeLabel || '').trim();
+  const label = String(school?.schoolPropertyLabel || '').trim();
   return label || '—';
 }
 

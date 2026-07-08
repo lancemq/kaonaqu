@@ -112,7 +112,7 @@ export default async function SchoolDetailPage({ params }) {
   const dataQuality = getSchoolDataQuality(school);
   const districtName = getSchoolDistrictName(school);
   const stageName = getSchoolStage(school);
-  const ownershipName = getSchoolOwnershipLabel(school) || school.schoolTypeLabel || '';
+  const ownershipName = getSchoolOwnershipLabel(school) || school.schoolPropertyLabel || '';
   const schoolAttribute = school.tier || ownershipName || '—';
   const schoolSummary = school.description || '';
   const admissionInfo = getSchoolAdmissionInfo(school);
@@ -176,7 +176,7 @@ export default async function SchoolDetailPage({ params }) {
     ].filter(Boolean);
   const featureTags = Array.from(new Set([...features, ...tags, ...trainingDirections])).filter(Boolean).slice(0, 6);
   const basicInfoRows = [
-    ['办学属性', school.schoolTypeLabel || ''],
+    ['办学属性', school.schoolPropertyLabel || ''],
     ['学校类型', school.categoryName || school.category || school.tier],
     ['所在区域', districtName],
     ['学段', stageName],

@@ -230,7 +230,7 @@ function normalizeSchool(raw) {
     districtName,
     schoolStage,
     schoolStageLabel: SCHOOL_STAGE_MAP[schoolStage] || schoolStage,
-    schoolTypeLabel: cleanString(raw.schoolTypeLabel || raw.type || '未知'),
+    schoolPropertyLabel: cleanString(raw.schoolPropertyLabel || raw.schoolTypeLabel || raw.type || '未知'),
     tier,
     address: cleanString(raw.address),
     phone: cleanPhone(raw.phone),

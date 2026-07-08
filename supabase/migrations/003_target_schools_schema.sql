@@ -14,7 +14,7 @@ CREATE TABLE public.schools (
   name                 TEXT NOT NULL,
   district_name        TEXT NOT NULL DEFAULT '',
   school_stage_label   TEXT NOT NULL DEFAULT '',
-  school_type_label    TEXT NOT NULL DEFAULT '',
+  school_property_label    TEXT NOT NULL DEFAULT '',
   tier                 TEXT NOT NULL DEFAULT '',
   "group"              TEXT NOT NULL DEFAULT '',
   address              TEXT NOT NULL DEFAULT '',
@@ -36,7 +36,7 @@ CREATE TABLE public.schools (
 CREATE INDEX idx_schools_slug              ON public.schools(slug);
 CREATE INDEX idx_schools_district_name     ON public.schools(district_name);
 CREATE INDEX idx_schools_school_stage_label ON public.schools(school_stage_label);
-CREATE INDEX idx_schools_school_type_label ON public.schools(school_type_label);
+CREATE INDEX idx_schools_school_property_label ON public.schools(school_property_label);
 CREATE INDEX idx_schools_tier              ON public.schools(tier);
 CREATE INDEX idx_schools_group              ON public.schools("group");
 CREATE INDEX idx_schools_features_gin      ON public.schools USING GIN(features);

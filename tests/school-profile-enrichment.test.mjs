@@ -14,7 +14,7 @@ const school = {
   districtName: '浦东新区',
   schoolStage: 'senior_high',
   schoolStageLabel: '高中',
-  schoolTypeLabel: '公办市重点',
+  schoolPropertyLabel: '公办市重点',
   tier: '市重点',
   admissionCode: '10199',
   admissionMethods: ['district_allocation', 'self_recruitment'],

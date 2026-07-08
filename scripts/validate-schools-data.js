@@ -57,7 +57,7 @@ async function main() {
     if (!school.name) addIssue('error', school, 'name', 'name 为空');
     if (!school.district_name) addIssue('error', school, 'district_name', 'district_name 为空');
     if (!school.school_stage_label) addIssue('warn', school, 'school_stage_label', 'school_stage_label 为空');
-    if (!school.school_type_label) addIssue('warn', school, 'school_type_label', 'school_type_label 为空');
+    if (!school.school_property_label) addIssue('warn', school, 'school_property_label', 'school_property_label 为空');
 
     // ===== 2. 唯一性 =====
     if (school.slug) {
@@ -134,8 +134,8 @@ async function main() {
     if (school.school_stage_label && !STAGE_VALUES.has(school.school_stage_label)) {
       addIssue('warn', school, 'school_stage_label', `非标准值: ${school.school_stage_label}`);
     }
-    if (school.school_type_label && !TYPE_VALUES.has(school.school_type_label)) {
-      addIssue('warn', school, 'school_type_label', `非标准值: ${school.school_type_label}`);
+    if (school.school_property_label && !TYPE_VALUES.has(school.school_property_label)) {
+      addIssue('warn', school, 'school_property_label', `非标准值: ${school.school_property_label}`);
     }
     if (school.tier && !TIER_VALUES.has(school.tier)) {
       addIssue('info', school, 'tier', `非标准梯队值: ${school.tier}`);

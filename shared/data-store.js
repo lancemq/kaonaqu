@@ -90,7 +90,7 @@ function rowToSchool(row) {
     districtName: row.district_name,
     schoolStage: inferSchoolStage(row.school_stage_label),
     schoolStageLabel: row.school_stage_label,
-    schoolTypeLabel: row.school_type_label,
+    schoolPropertyLabel: row.school_property_label,
     tier: row.tier,
     group: row.group,
     address: row.address,
@@ -212,8 +212,17 @@ function mergeRecords(...collections) {
   });
 }
 
+// 本地 JSON 向后兼容：旧字段 schoolTypeLabel → 新字段 schoolPropertyLabel
+function ensureSchoolFieldCompat(school) {
+  if (!school) return school;
+  if (!school.schoolPropertyLabel && school.schoolTypeLabel) {
+    return { ...school, schoolPropertyLabel: school.schoolTypeLabel };
+  }
+  return school;
+}
+
 function ensureDatasets(data = {}) {
-  const schools = Array.isArray(data.schools) ? data.schools : [];
+  const schools = (Array.isArray(data.schools) ? data.schools : []).map(ensureSchoolFieldCompat);
   const policies = Array.isArray(data.policies) ? data.policies : [];
   const news = Array.isArray(data.news) ? data.news : [];
   const districts = buildDistricts(schools, policies);

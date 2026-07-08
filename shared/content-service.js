@@ -10,7 +10,7 @@ const { loadDataStore, updateDataStore } = require('./data-store');
 const fsSync = require('fs');
 const path = require('path');
 
-// 旧 code 过滤值 -> 规范 label（school_type_label），用于兼容历史调用
+// 旧 code 过滤值 -> 规范 label（school_property_label），用于兼容历史调用
 const CODE_TO_TYPE_LABEL = {
   public: '公办',
   private: '民办',
@@ -114,8 +114,8 @@ async function listSchools(filters = {}) {
       return false;
     }
     if (schoolType) {
-      const labelMatch = school.schoolTypeLabel === schoolType;
-      const codeMatch = CODE_TO_TYPE_LABEL[schoolType] === school.schoolTypeLabel;
+      const labelMatch = school.schoolPropertyLabel === schoolType;
+      const codeMatch = CODE_TO_TYPE_LABEL[schoolType] === school.schoolPropertyLabel;
       if (!labelMatch && !codeMatch) {
         return false;
       }
@@ -131,7 +131,7 @@ async function listSchools(filters = {}) {
       school.name,
       school.districtName,
       school.schoolStageLabel,
-      school.schoolTypeLabel,
+      school.schoolPropertyLabel,
       school.tier,
       school.address,
       school.admissionNotes,
