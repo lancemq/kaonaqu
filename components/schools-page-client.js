@@ -2,13 +2,11 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { dataQualityBadge, dataQualityScore, getSchoolDataQuality } from '../lib/school-data-quality';
 import {
   filterSchools,
   clipText,
   formatSchoolUpdate,
   getUpdateSortValue,
-  getSchoolCategoryLabel,
   getSchoolDistrictName,
   getSchoolStage,
   getSchoolSpecializationLabels,
@@ -37,7 +35,6 @@ function getSchoolPositioning(school) {
 
 function buildCardTags(school) {
   const values = [
-    getSchoolCategoryLabel(school),
     ...getSchoolSpecializationLabels(school),
     ...(school.features || []),
     ...getSchoolTrainingDirections(school)
@@ -368,8 +365,6 @@ export default function SchoolsPageClient({
               </div>
             ) : pagedSchools.map((school) => {
               const cardTags = buildCardTags(school);
-              const quality = getSchoolDataQuality(school);
-              const badge = dataQualityBadge(dataQualityScore(quality));
               return (
                 <article key={school.id} className="schools-aerial-card-wrap">
                   <Link href={`/schools/${school.id}`} className="schools-aerial-card">
@@ -379,7 +374,6 @@ export default function SchoolsPageClient({
                       <span>{getSchoolPositioning(school) || '查看学校画像、招生路径与择校提示。'}</span>
                       <div className="schools-aerial-card-tags">
                         {cardTags.slice(0, 4).map((tag) => <em key={tag}>{tag}</em>)}
-                        {badge ? <em>{badge.label}</em> : null}
                       </div>
                     </div>
                     <div className="schools-aerial-card-side">
