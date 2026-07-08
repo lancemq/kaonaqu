@@ -45,13 +45,13 @@ function findNewsItem(id) {
 [
   {
     id: 'school-2026-shs-cross-disciplinary-teaching',
-    primarySchoolId: 'pudong-上海市浦东新区上海中学东校',
+    primarySchoolId: '浦东新区-上海中学东校',
     schoolLinkReason: 'school_signal',
     minConfidence: 0.9
   },
   {
     id: 'admission-2026-hsefz-sports-students-plan',
-    primarySchoolId: 'pudong-华东师范大学第二附属中学',
+    primarySchoolId: '浦东新区-华东师范大学第二附属中学',
     schoolLinkReason: 'admission_school_mention',
     requireRelatedIncludesPrimary: true
   }

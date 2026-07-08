@@ -16,36 +16,7 @@ import {
   getSchoolType
 } from '../lib/site-utils';
 
-const FEATURE_FILTER_OPTIONS = [
-  '示范性高中',
-  '外语特色',
-  '双语',
-  '寄宿',
-  '九年一贯',
-  '百年名校',
-  '国际化',
-  '实验',
-  '科技特色',
-  '艺术特色'
-];
-
-const DIRECTION_FILTER_OPTIONS = [
-  '科创竞赛',
-  '人文综合',
-  '国际课程',
-  '寄宿管理',
-  '贯通培养',
-  '外语特色'
-];
-
 const SCHOOLS_PER_PAGE = 10;
-
-function resolveFeaturedSchool(schools, keyword, preferredName) {
-  return schools.find((entry) => entry.name === preferredName)
-    || schools.find((entry) => entry.name === keyword)
-    || schools.find((entry) => entry.name.includes(keyword) || keyword.includes(entry.name))
-    || null;
-}
 
 function getOwnershipLabel(school) {
   const label = String(school?.schoolPropertyLabel || '').trim();
@@ -68,7 +39,6 @@ function buildCardTags(school) {
   const values = [
     getSchoolCategoryLabel(school),
     ...getSchoolSpecializationLabels(school),
-    ...(school.tags || []),
     ...(school.features || []),
     ...getSchoolTrainingDirections(school)
   ].filter(Boolean);
@@ -81,22 +51,19 @@ export default function SchoolsPageClient({
   schools,
   initialDistrict = 'all',
   initialStage = 'all',
-  initialCategory = 'all',
-  initialTag = 'all',
-  initialDirection = 'all',
+  initialProperty = 'all',
+  initialKeyLevel = 'all',
+  initialCohort = 'all',
   initialQuery = ''
 }) {
   const [activeDistrict, setActiveDistrict] = useState(initialDistrict);
   const [activeStage, setActiveStage] = useState(initialStage);
-  const [activeCategory, setActiveCategory] = useState(initialCategory);
-  const [activeTag, setActiveTag] = useState(initialTag);
-  const [activeDirection, setActiveDirection] = useState(initialDirection);
+  const [activeProperty, setActiveProperty] = useState(initialProperty);
+  const [activeKeyLevel, setActiveKeyLevel] = useState(initialKeyLevel);
+  const [activeCohort, setActiveCohort] = useState(initialCohort);
   const [queryInput, setQueryInput] = useState(initialQuery);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [currentPage, setCurrentPage] = useState(1);
-  const [advancedOpen, setAdvancedOpen] = useState(
-    initialCategory !== 'all' || initialTag !== 'all' || initialDirection !== 'all'
-  );
 
   const stageOptions = useMemo(() => {
     const map = new Map();
@@ -109,72 +76,61 @@ export default function SchoolsPageClient({
     return [{ value: 'all', label: '全部学段' }, ...map.values()];
   }, [schools]);
 
-  const categoryOptions = useMemo(() => {
+  const propertyOptions = useMemo(() => {
     const map = new Map();
     for (const school of schools) {
-      const tier = String(school?.tier || '').trim();
-      if (tier && !map.has(tier)) {
-        map.set(tier, { value: tier, label: tier });
+      const label = String(school?.schoolPropertyLabel || '').trim();
+      if (label && !map.has(label)) {
+        map.set(label, { value: label, label });
       }
     }
-    return [{ value: 'all', label: '全部类型' }, ...map.values()];
+    return [{ value: 'all', label: '全部性质' }, ...map.values()];
+  }, [schools]);
+
+  const keyLevelOptions = useMemo(() => {
+    const map = new Map();
+    for (const school of schools) {
+      const label = String(school?.schoolKeyLevel || '').trim();
+      if (label && !map.has(label)) {
+        map.set(label, { value: label, label });
+      }
+    }
+    return [{ value: 'all', label: '全部等级' }, ...map.values()];
+  }, [schools]);
+
+  const cohortOptions = useMemo(() => {
+    const map = new Map();
+    for (const school of schools) {
+      const label = String(school?.eliteCohort || '').trim();
+      if (label && !map.has(label)) {
+        map.set(label, { value: label, label });
+      }
+    }
+    return [{ value: 'all', label: '全部荣誉' }, ...map.values()];
   }, [schools]);
 
   const filteredSchools = useMemo(
     () => {
       let result = filterSchools(schools, {
         district: activeDistrict,
-        query: searchQuery,
-        tag: activeTag,
-        direction: activeDirection
+        query: searchQuery
       });
       if (activeStage !== 'all') {
-        result = result.filter((school) => String(school?.schoolStageLabel || '').trim() === activeStage);
+        result = result.filter((s) => String(s?.schoolStageLabel || '').trim() === activeStage);
       }
-      if (activeCategory !== 'all') {
-        result = result.filter((school) => String(school?.tier || '').trim() === activeCategory);
+      if (activeProperty !== 'all') {
+        result = result.filter((s) => String(s?.schoolPropertyLabel || '').trim() === activeProperty);
+      }
+      if (activeKeyLevel !== 'all') {
+        result = result.filter((s) => String(s?.schoolKeyLevel || '').trim() === activeKeyLevel);
+      }
+      if (activeCohort !== 'all') {
+        result = result.filter((s) => String(s?.eliteCohort || '').trim() === activeCohort);
       }
       return result;
     },
-    [schools, activeDistrict, searchQuery, activeStage, activeCategory, activeTag, activeDirection]
+    [schools, activeDistrict, searchQuery, activeStage, activeProperty, activeKeyLevel, activeCohort]
   );
-
-  const tagOptions = useMemo(() => {
-    const available = new Set();
-    for (const school of schools) {
-      for (const item of [...(school.tags || []), ...(school.features || []), ...(school.keyFeatures || [])]) {
-        if (item) available.add(item);
-      }
-    }
-    return ['all', ...FEATURE_FILTER_OPTIONS.filter((option) => available.has(option))];
-  }, [schools]);
-
-  const directionOptions = useMemo(() => {
-    const unique = new Set();
-    for (const school of schools) {
-      const directions = getSchoolTrainingDirections(school);
-      for (const item of directions) {
-        if (item) unique.add(item);
-      }
-    }
-    return ['all', ...DIRECTION_FILTER_OPTIONS.filter((option) => unique.has(option))];
-  }, [schools]);
-
-  const featuredSchools = useMemo(() => {
-    const picks = [
-      { keyword: '上海中学', preferredName: '上海中学', label: '重点高中样本' },
-      { keyword: '华东师范大学第二附属中学', preferredName: '华东师范大学第二附属中学', label: '浦东头部高中' },
-      { keyword: '复旦大学附属中学', label: '杨浦代表学校' },
-      { keyword: '上外附属双语学校', preferredName: '上海外国语大学附属双语学校', label: '完全中学样本' }
-    ];
-
-    return picks
-      .map((item) => {
-        const school = resolveFeaturedSchool(schools, item.keyword, item.preferredName);
-        return school ? { ...item, school } : null;
-      })
-      .filter(Boolean);
-  }, [schools]);
 
   const highlightedDistricts = useMemo(
     () => districts.slice().sort((left, right) => Number(right.schoolCount || 0) - Number(left.schoolCount || 0)).slice(0, 6),
@@ -190,20 +146,20 @@ export default function SchoolsPageClient({
     if (activeStage !== 'all') {
       lines.push(`学段：${stageOptions.find((item) => item.value === activeStage)?.label || activeStage}`);
     }
-    if (activeCategory !== 'all') {
-      lines.push(`分类：${categoryOptions.find((item) => item.value === activeCategory)?.label || activeCategory}`);
+    if (activeProperty !== 'all') {
+      lines.push(`办学性质：${activeProperty}`);
     }
-    if (activeTag !== 'all') {
-      lines.push(`特色：${activeTag}`);
+    if (activeKeyLevel !== 'all') {
+      lines.push(`等级：${activeKeyLevel}`);
     }
-    if (activeDirection !== 'all') {
-      lines.push(`培养方向：${activeDirection}`);
+    if (activeCohort !== 'all') {
+      lines.push(`荣誉：${activeCohort}`);
     }
     if (searchQuery) {
       lines.push(`关键词：${searchQuery}`);
     }
     return lines;
-  }, [activeDistrict, activeStage, activeTag, activeDirection, searchQuery, districts]);
+  }, [activeDistrict, activeStage, activeProperty, activeKeyLevel, activeCohort, searchQuery, districts]);
 
   const totalPages = Math.max(1, Math.ceil(filteredSchools.length / SCHOOLS_PER_PAGE));
   const pagedSchools = useMemo(() => {
@@ -240,17 +196,10 @@ export default function SchoolsPageClient({
   }, [schools]);
 
   const activeFilterCount = activeFilterSummary.length;
-  const advancedCount = [
-    activeCategory !== 'all',
-    activeTag !== 'all',
-    activeDirection !== 'all'
-  ].filter(Boolean).length;
 
   const resultDescriptor = activeFilterSummary.length
     ? `${currentDistrictLabel}下匹配 ${filteredSchools.length} 所学校`
     : `数据库收录 ${schools.length} 所学校`;
-
-  const emptyStateSchools = featuredSchools.map((item) => item.school);
 
   const applySearch = () => {
     setSearchQuery(queryInput.trim());
@@ -260,9 +209,9 @@ export default function SchoolsPageClient({
   const resetFilters = () => {
     setActiveDistrict('all');
     setActiveStage('all');
-    setActiveCategory('all');
-    setActiveTag('all');
-    setActiveDirection('all');
+    setActiveProperty('all');
+    setActiveKeyLevel('all');
+    setActiveCohort('all');
     setQueryInput('');
     setSearchQuery('');
     setCurrentPage(1);
@@ -334,17 +283,6 @@ export default function SchoolsPageClient({
           </section>
 
           <section className="schools-aerial-filter-block">
-            <label>学校类型</label>
-            <div className="schools-aerial-filter-stack">
-              {categoryOptions.slice(1).map((option) => (
-                <button key={option.value} type="button" className={activeCategory === option.value ? 'is-active' : ''} onClick={() => { setActiveCategory(activeCategory === option.value ? 'all' : option.value); setCurrentPage(1); }}>
-                  {option.label}
-                </button>
-              ))}
-            </div>
-          </section>
-
-          <section className="schools-aerial-filter-block">
             <label>学段</label>
             <div className="schools-aerial-filter-stack">
               {stageOptions.slice(1).map((option) => (
@@ -356,11 +294,33 @@ export default function SchoolsPageClient({
           </section>
 
           <section className="schools-aerial-filter-block">
-            <label>学校特征</label>
-            <div className="schools-aerial-feature-stack">
-              {tagOptions.slice(1, 7).map((option) => (
-                <button key={option} type="button" className={activeTag === option ? 'is-active' : ''} onClick={() => { setActiveTag(activeTag === option ? 'all' : option); setCurrentPage(1); }}>
-                  {option}
+            <label>办学性质</label>
+            <div className="schools-aerial-filter-stack">
+              {propertyOptions.slice(1).map((option) => (
+                <button key={option.value} type="button" className={activeProperty === option.value ? 'is-active' : ''} onClick={() => { setActiveProperty(activeProperty === option.value ? 'all' : option.value); setCurrentPage(1); }}>
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="schools-aerial-filter-block">
+            <label>等级</label>
+            <div className="schools-aerial-filter-stack">
+              {keyLevelOptions.slice(1).map((option) => (
+                <button key={option.value} type="button" className={activeKeyLevel === option.value ? 'is-active' : ''} onClick={() => { setActiveKeyLevel(activeKeyLevel === option.value ? 'all' : option.value); setCurrentPage(1); }}>
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="schools-aerial-filter-block">
+            <label>荣誉</label>
+            <div className="schools-aerial-filter-stack">
+              {cohortOptions.slice(1).map((option) => (
+                <button key={option.value} type="button" className={activeCohort === option.value ? 'is-active' : ''} onClick={() => { setActiveCohort(activeCohort === option.value ? 'all' : option.value); setCurrentPage(1); }}>
+                  {option.label}
                 </button>
               ))}
             </div>
@@ -402,7 +362,11 @@ export default function SchoolsPageClient({
           </header>
 
           <div className="schools-aerial-cardlist">
-            {(pagedSchools.length ? pagedSchools : emptyStateSchools).map((school) => {
+            {pagedSchools.length === 0 ? (
+              <div className="schools-aerial-empty">
+                <p>没有匹配的学校，请调整筛选条件。</p>
+              </div>
+            ) : pagedSchools.map((school) => {
               const cardTags = buildCardTags(school);
               const quality = getSchoolDataQuality(school);
               const badge = dataQualityBadge(dataQualityScore(quality));
@@ -419,7 +383,7 @@ export default function SchoolsPageClient({
                       </div>
                     </div>
                     <div className="schools-aerial-card-side">
-                      <strong>{school.tier || getSchoolType(school) || '—'}</strong>
+                      <strong>{school.eliteCohort || school.schoolKeyLevel || getSchoolType(school) || '—'}</strong>
                       <small>更新于 {formatSchoolUpdate(school.updatedAt)}</small>
                       <b>查看详情 →</b>
                     </div>

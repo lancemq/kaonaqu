@@ -6,7 +6,7 @@ const {
   slugify,
   validateRequired
 } = require('./data-schema');
-const { loadDataStore, updateDataStore } = require('./data-store');
+const { loadDataStore, updateDataStore, sortBySchoolPriority } = require('./data-store');
 const fsSync = require('fs');
 const path = require('path');
 
@@ -103,10 +103,8 @@ async function listSchools(filters = {}) {
   const districtId = cleanString(filters.district || filters.districtId);
   const stage = cleanString(filters.stage || filters.schoolStage);
   const schoolType = cleanString(filters.schoolType || filters.type);
-  const feature = cleanString(filters.feature || filters.tag);
-  const sourceType = cleanString(filters.sourceType);
 
-  return sortByTimeDesc(schools.filter((school) => {
+  return sortBySchoolPriority(schools.filter((school) => {
     if (districtId && districtId !== 'all' && school.districtId !== districtId) {
       return false;
     }
@@ -120,12 +118,6 @@ async function listSchools(filters = {}) {
         return false;
       }
     }
-    if (feature && ![...(school.features || []), ...(school.tags || [])].some((item) => item.includes(feature))) {
-      return false;
-    }
-    if (sourceType && school.source?.type !== sourceType) {
-      return false;
-    }
 
     return matchesQuery([
       school.name,
@@ -133,12 +125,13 @@ async function listSchools(filters = {}) {
       school.schoolStageLabel,
       school.schoolPropertyLabel,
       school.tier,
+      school.schoolKeyLevel,
+      school.eliteCohort,
       school.address,
       school.admissionNotes,
-      school.features,
-      school.tags
+      school.features
     ], q);
-  }), 'updatedAt');
+  }));
 }
 
 async function getSchoolById(id) {
@@ -164,7 +157,7 @@ async function createSchool(input) {
     const indexedDraft = stripSchoolDetailFields(draft);
     return {
       ...state,
-      schools: sortByTimeDesc([
+      schools: sortBySchoolPriority([
         {
           ...indexedDraft,
           features: uniqueStrings(indexedDraft.features),

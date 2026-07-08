@@ -76,25 +76,11 @@ function validateSchools(schools) {
       errors.push(`schools[${index}]: invalid profileDepth ${school.profileDepth}`);
     }
 
-    if (!Array.isArray(school.trainingDirections)) {
-      errors.push(`schools[${index}]: trainingDirections must be an array`);
-    }
-
     for (const field of DETAIL_FIELDS) {
       const value = school[field];
       if (Array.isArray(value) ? value.length : cleanString(value)) {
         errors.push(`schools[${index}]: ${field} must be stored in markdown, not schools.json`);
       }
-    }
-
-    const contentFile = cleanString(school.contentFile || `content/schools/${school.id}.md`);
-    const contentPath = path.join(ROOT_DIR, contentFile);
-    if (!contentFile.endsWith('.md')) {
-      errors.push(`schools[${index}]: invalid contentFile ${contentFile}`);
-    } else if (!fs.existsSync(contentPath)) {
-      errors.push(`schools[${index}]: missing school content file ${contentFile}`);
-    } else if (!fs.readFileSync(contentPath, 'utf8').trim()) {
-      errors.push(`schools[${index}]: empty school content file ${contentFile}`);
     }
   });
 

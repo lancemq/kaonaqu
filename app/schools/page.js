@@ -17,9 +17,9 @@ export default async function SchoolsPage({ searchParams }) {
   const params = await searchParams;
   const initialDistrict = typeof params?.district === 'string' ? params.district : 'all';
   const initialStage = typeof params?.stage === 'string' ? params.stage : 'all';
-  const initialCategory = typeof params?.category === 'string' ? params.category : 'all';
-  const initialTag = typeof params?.tag === 'string' ? params.tag : 'all';
-  const initialDirection = typeof params?.direction === 'string' ? params.direction : 'all';
+  const initialProperty = typeof params?.property === 'string' ? params.property : 'all';
+  const initialKeyLevel = typeof params?.keyLevel === 'string' ? params.keyLevel : 'all';
+  const initialCohort = typeof params?.cohort === 'string' ? params.cohort : 'all';
   const initialQuery = typeof params?.query === 'string' ? params.query : '';
 
   const itemListJsonLd = {
@@ -42,9 +42,9 @@ export default async function SchoolsPage({ searchParams }) {
         news={news}
         initialDistrict={initialDistrict}
         initialStage={initialStage}
-        initialCategory={initialCategory}
-        initialTag={initialTag}
-        initialDirection={initialDirection}
+        initialProperty={initialProperty}
+        initialKeyLevel={initialKeyLevel}
+        initialCohort={initialCohort}
         initialQuery={initialQuery}
       />
     </>

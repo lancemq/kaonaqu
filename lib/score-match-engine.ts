@@ -21,7 +21,9 @@ interface SchoolRecord {
   districtId: string;
   districtName: string;
   schoolStage: 'junior' | 'senior_high' | 'complete';
-  tier: string;
+  tier?: string;
+  eliteCohort?: string;
+  schoolKeyLevel?: string;
   group?: string;
 }
 
@@ -44,13 +46,20 @@ const SENIOR_HIGHS = SCHOOLS.filter(
   (s) => s.schoolStage === 'senior_high' || s.schoolStage === 'complete'
 );
 
+// 从新字段 eliteCohort / schoolKeyLevel 获取匹配键（兼容旧 tier）
+function getMatchKey(s: SchoolRecord): string {
+  return s.eliteCohort || s.schoolKeyLevel || s.tier || '';
+}
+
 // tier 参考录取区间（同 tier 学校录取参考，非精确线）
 const TIER_SCORE_RANGE: Record<string, { min: number; max: number }> = {
   四校: { min: 705, max: 712 },
   四校分校: { min: 690, max: 705 },
   八大: { min: 685, max: 700 },
   八大分校: { min: 670, max: 690 },
-  市实验性示范性高中: { min: 620, max: 680 },
+  '市实验性示范性高中': { min: 620, max: 680 },
+  市重点: { min: 620, max: 680 },
+  区重点: { min: 580, max: 640 },
   一般高中: { min: 560, max: 620 },
   民办高中: { min: 520, max: 600 },
   国际课程: { min: 500, max: 580 }
@@ -62,7 +71,9 @@ const TIER_PRESTIGE: Record<string, number> = {
   八大: 90,
   四校分校: 80,
   八大分校: 75,
-  市实验性示范性高中: 70,
+  '市实验性示范性高中': 70,
+  市重点: 70,
+  区重点: 60,
   一般高中: 50,
   民办高中: 40,
   国际课程: 35
@@ -97,7 +108,8 @@ function matchZhongkao(score: number, districtId?: string): ScoreMatchResult[] {
   const results: ScoreMatchResult[] = [];
 
   for (const school of SENIOR_HIGHS) {
-    const range = TIER_SCORE_RANGE[school.tier];
+    const key = getMatchKey(school);
+    const range = TIER_SCORE_RANGE[key];
     if (!range) continue;
 
     const category = categorizeByTier(score, range);
@@ -107,7 +119,7 @@ function matchZhongkao(score: number, districtId?: string): ScoreMatchResult[] {
       school,
       category,
       estimatedRange: range,
-      reason: `${school.tier}参考区间 ${range.min}-${range.max}`,
+      reason: `${key}参考区间 ${range.min}-${range.max}`,
       source: 'tier_reference'
     });
   }
@@ -154,7 +166,7 @@ function applyDistrictAndSort(results: ScoreMatchResult[], districtId?: string):
     return results.sort(
       (a, b) =>
         categoryOrder(a.category) - categoryOrder(b.category) ||
-        (TIER_PRESTIGE[b.school.tier] || 0) - (TIER_PRESTIGE[a.school.tier] || 0)
+        (TIER_PRESTIGE[getMatchKey(b.school)] || 0) - (TIER_PRESTIGE[getMatchKey(a.school)] || 0)
     );
   }
 
@@ -163,7 +175,7 @@ function applyDistrictAndSort(results: ScoreMatchResult[], districtId?: string):
 
   const sortFn = (a: ScoreMatchResult, b: ScoreMatchResult) =>
     categoryOrder(a.category) - categoryOrder(b.category) ||
-    (TIER_PRESTIGE[b.school.tier] || 0) - (TIER_PRESTIGE[a.school.tier] || 0);
+    (TIER_PRESTIGE[getMatchKey(b.school)] || 0) - (TIER_PRESTIGE[getMatchKey(a.school)] || 0);
 
   inDistrict.sort(sortFn);
   outDistrict.sort(sortFn);

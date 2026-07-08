@@ -76,14 +76,15 @@ function inferSchoolStage(stageLabel) {
   if (!stageLabel) return '';
   if (stageLabel.includes('初中')) return 'junior';
   if (stageLabel.includes('完全')) return 'complete';
-  return 'senior';
+  return 'senior_high';
 }
 
-// rowToSchool：完全从数据库行映射，districtId 由 district_name 查映射得到
+// rowToSchool：完全从数据库行映射，仅返回 DB 列对应的字段 + 运行时派生字段
 function rowToSchool(row) {
   if (!row) return null;
+  const slug = row.slug || '';
   return {
-    id: row.slug || '',
+    id: slug,
     dbId: row.id,
     name: row.name,
     districtId: DISTRICT_NAME_TO_ID[row.district_name] || '',
@@ -92,6 +93,8 @@ function rowToSchool(row) {
     schoolStageLabel: row.school_stage_label,
     schoolPropertyLabel: row.school_property_label,
     tier: row.tier,
+    schoolKeyLevel: row.school_key_level,
+    eliteCohort: row.elite_cohort,
     group: row.group,
     address: row.address,
     phone: row.phone,
@@ -104,13 +107,35 @@ function rowToSchool(row) {
     achievements: row.achievements,
     admissionNotes: row.admission_notes,
     admissionCode: row.admission_info?.code || '',
-    contentFile: '',
-    profileDepth: row.profile_depth,
-    features: row.features || [],
-    related_schools: row.related_schools || [],
     admissionMethods: row.admission_info?.methods || [],
-    admissionRoutes: row.admission_info?.routes || []
+    admissionRoutes: row.admission_info?.routes || [],
+    contentFile: slug ? `content/schools/${slug}.md` : '',
+    profileDepth: row.profile_depth,
+    features: row.features || []
   };
+}
+
+// 学校排序：eliteCohort 非空优先 + schoolKeyLevel 重点优先
+const KEY_LEVEL_PRIORITY = {
+  '市重点': 100,
+  '三公': 95,
+  '区重点': 80,
+  '顶级民办': 70,
+  '优质公办': 65,
+  '一般高中': 60,
+  '一般初中': 40
+};
+
+function sortBySchoolPriority(items) {
+  return items.slice().sort((a, b) => {
+    const aCohort = String(a?.eliteCohort || '').trim() ? 1 : 0;
+    const bCohort = String(b?.eliteCohort || '').trim() ? 1 : 0;
+    if (aCohort !== bCohort) return bCohort - aCohort;
+    const aLevel = KEY_LEVEL_PRIORITY[String(a?.schoolKeyLevel || '').trim()] || 0;
+    const bLevel = KEY_LEVEL_PRIORITY[String(b?.schoolKeyLevel || '').trim()] || 0;
+    if (bLevel !== aLevel) return bLevel - aLevel;
+    return String(a.name || '').localeCompare(String(b.name || ''));
+  });
 }
 
 async function loadSchoolsFromSupabase() {
@@ -212,17 +237,8 @@ function mergeRecords(...collections) {
   });
 }
 
-// 本地 JSON 向后兼容：旧字段 schoolTypeLabel → 新字段 schoolPropertyLabel
-function ensureSchoolFieldCompat(school) {
-  if (!school) return school;
-  if (!school.schoolPropertyLabel && school.schoolTypeLabel) {
-    return { ...school, schoolPropertyLabel: school.schoolTypeLabel };
-  }
-  return school;
-}
-
 function ensureDatasets(data = {}) {
-  const schools = (Array.isArray(data.schools) ? data.schools : []).map(ensureSchoolFieldCompat);
+  const schools = Array.isArray(data.schools) ? data.schools : [];
   const policies = Array.isArray(data.policies) ? data.policies : [];
   const news = Array.isArray(data.news) ? data.news : [];
   const districts = buildDistricts(schools, policies);
@@ -279,5 +295,7 @@ module.exports = {
   mergeRecords,
   mergeDataStore,
   saveDataStore,
-  updateDataStore
+  updateDataStore,
+  rowToSchool,
+  sortBySchoolPriority
 };
