@@ -8,14 +8,14 @@
 
 'use client';
 
-import schoolsData from '../data/schools.json';
 import { getSchoolRichProfile } from './school-rich-profiles';
 
 export type ExamType = 'zhongkao' | 'gaokao';
 export type MatchCategory = 'reach' | 'match' | 'safety';
 type MatchSource = 'tier_reference' | 'rich_profile';
 
-interface SchoolRecord {
+// 学校数据结构（与 rowToSchool / 本地缓存字段对齐）
+export interface SchoolRecord {
   id: string;
   name: string;
   districtId: string;
@@ -41,10 +41,7 @@ export interface ScoreMatchResult {
   source: MatchSource;
 }
 
-const SCHOOLS = schoolsData as SchoolRecord[];
-const SENIOR_HIGHS = SCHOOLS.filter(
-  (s) => s.schoolStage === 'senior_high' || s.schoolStage === 'complete'
-);
+// 学校数据由调用方（服务端 loadDataStore）传入，不再静态打包 schools.json。
 
 // 从新字段 eliteCohort / schoolKeyLevel 获取匹配键（兼容旧 tier）
 function getMatchKey(s: SchoolRecord): string {
@@ -83,9 +80,9 @@ const REACH_GAP = 20; // 低于区间下限 20 分内仍算冲刺
 
 export const MAX_SCORE = 660;
 
-export function getAllDistricts(): { id: string; name: string }[] {
+export function getAllDistricts(schools: SchoolRecord[]): { id: string; name: string }[] {
   const map = new Map<string, string>();
-  SCHOOLS.forEach((s) => map.set(s.districtId, s.districtName));
+  (schools || []).forEach((s) => map.set(s.districtId, s.districtName));
   return Array.from(map.entries())
     .map(([id, name]) => ({ id, name }))
     .sort((a, b) => a.name.localeCompare(b.name, 'zh'));
@@ -104,10 +101,13 @@ function categorizeByTier(score: number, range: { min: number; max: number }): M
 /**
  * 中考分支：用 tier 参考区间匹配全部高中
  */
-function matchZhongkao(score: number, districtId?: string): ScoreMatchResult[] {
+function matchZhongkao(score: number, districtId: string | undefined, schools: SchoolRecord[]): ScoreMatchResult[] {
   const results: ScoreMatchResult[] = [];
+  const seniorHighs = (schools || []).filter(
+    (s) => s.schoolStage === 'senior_high' || s.schoolStage === 'complete'
+  );
 
-  for (const school of SENIOR_HIGHS) {
+  for (const school of seniorHighs) {
     const key = getMatchKey(school);
     const range = TIER_SCORE_RANGE[key];
     if (!range) continue;
@@ -130,10 +130,13 @@ function matchZhongkao(score: number, districtId?: string): ScoreMatchResult[] {
 /**
  * 高考分支：仅对有 rich profile scoreLines 的校做精确匹配
  */
-function matchGaokao(score: number, districtId?: string): ScoreMatchResult[] {
+function matchGaokao(score: number, districtId: string | undefined, schools: SchoolRecord[]): ScoreMatchResult[] {
   const results: ScoreMatchResult[] = [];
+  const seniorHighs = (schools || []).filter(
+    (s) => s.schoolStage === 'senior_high' || s.schoolStage === 'complete'
+  );
 
-  for (const school of SENIOR_HIGHS) {
+  for (const school of seniorHighs) {
     const profile = getSchoolRichProfile(school.id);
     if (!profile?.scoreLines?.length) continue;
 
@@ -191,11 +194,11 @@ function categoryOrder(c: MatchCategory): number {
   return 2;
 }
 
-export function matchSchoolsByScore(input: ScoreMatchInput): ScoreMatchResult[] {
+export function matchSchoolsByScore(input: ScoreMatchInput, schools: SchoolRecord[]): ScoreMatchResult[] {
   const { score, districtId, examType } = input;
   if (!Number.isFinite(score) || score < 0 || score > MAX_SCORE) return [];
 
-  const all = examType === 'gaokao' ? matchGaokao(score, districtId) : matchZhongkao(score, districtId);
+  const all = examType === 'gaokao' ? matchGaokao(score, districtId, schools) : matchZhongkao(score, districtId, schools);
 
   // 每档 limit 8 所
   const limited: ScoreMatchResult[] = [];

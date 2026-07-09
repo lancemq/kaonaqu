@@ -9,7 +9,8 @@ import {
   MAX_SCORE,
   type ExamType,
   type MatchCategory,
-  type ScoreMatchResult
+  type ScoreMatchResult,
+  type SchoolRecord
 } from '../lib/score-match-engine';
 
 const CATEGORY_META: Record<MatchCategory, { label: string; hint: string; tone: string }> = {
@@ -23,8 +24,8 @@ const EXAM_OPTIONS: { value: ExamType; label: string; fullMark: string }[] = [
   { value: 'gaokao', label: '高考', fullMark: '满分 660' }
 ];
 
-export default function ScoreMatchClient() {
-  const districts = useMemo(() => getAllDistricts(), []);
+export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] }) {
+  const districts = useMemo(() => getAllDistricts(schools), [schools]);
   const [examType, setExamType] = useState<ExamType>('zhongkao');
   const [scoreInput, setScoreInput] = useState('');
   const [score, setScore] = useState<number | null>(null);
@@ -33,8 +34,8 @@ export default function ScoreMatchClient() {
 
   const results = useMemo(() => {
     if (score === null) return [];
-    return matchSchoolsByScore({ score, districtId: districtId || undefined, examType });
-  }, [score, districtId, examType]);
+    return matchSchoolsByScore({ score, districtId: districtId || undefined, examType }, schools);
+  }, [score, districtId, examType, schools]);
 
   const grouped = useMemo(() => groupResultsByCategory(results), [results]);
 

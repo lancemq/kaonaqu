@@ -23,11 +23,20 @@ const DATASET_FILES = {
   news: 'news.json'
 };
 
-// Bundled JSON fallback for serverless environments where runtime fs paths may differ.
+// 打包兜底：惰性、容错加载。
+// 注意：schools.json 现在视为运行时缓存（由数据库生成、已 gitignore，不在仓库中），
+// 因此刻意不在这里 require 它——文件缺失时模块加载也不应崩溃。
+function safeRequire(p) {
+  try {
+    return require(p);
+  } catch (e) {
+    return undefined;
+  }
+}
+
 const BUNDLED_DATASETS = {
-  districts: require('../data/districts.json'),
-  schools: require('../data/schools.json'),
-  news: require('../data/news.json')
+  districts: safeRequire('../data/districts.json'),
+  news: safeRequire('../data/news.json')
 };
 
 function getDatasetKeyByFilename(filename) {
@@ -45,10 +54,13 @@ async function readLocalJson(filename) {
       throw error;
     }
     const fallback = BUNDLED_DATASETS[datasetKey];
-    if (!Array.isArray(fallback)) {
-      throw error;
+    if (Array.isArray(fallback)) {
+      return fallback;
     }
-    return fallback;
+    // 缓存/源文件均不可用（如 schools.json 尚未由数据库生成）：
+    // 返回空集合，避免整站因缺数据而崩溃（数据库不可用时优雅降级）。
+    console.warn(`[data-store] 无法读取 ${filename} 且无打包兜底，返回空集合`);
+    return [];
   }
 }
 
@@ -324,28 +336,37 @@ function ensureDatasets(data = {}) {
   return { districts, schools, news };
 }
 
+// 将数据库数据 best-effort 写回本地缓存（schools.json）。
+// 目的：保证 data/schools.json 始终与线上数据库对齐（数据库变化时即同步）。
+// 在只读文件系统（部分 serverless 环境）下静默失败，不影响主流程。
+async function writeSchoolCache(schools) {
+  try {
+    await writeLocalJson(DATASET_FILES.schools, schools.map(stripLocalSchoolFields));
+  } catch (e) {
+    console.warn('[data-store] 写 schools 缓存失败（忽略）:', e?.message || e);
+  }
+}
+
+// 数据来源始终是线上数据库；schools.json 仅作为运行时缓存。
+// DB 可读时：取数并刷新本地缓存；DB 不可读时：降级到本地缓存文件。
 async function loadDataStore() {
-  const local = await loadLocalData();
-
-  let schools = local.schools;
-  let news = local.news;
-
   if (isSupabaseConfigured()) {
     try {
-      schools = await loadSchoolsFromSupabase();
+      const [schools, news] = await Promise.all([
+        loadSchoolsFromSupabase(),
+        loadNewsFromSupabase()
+      ]);
+      const state = ensureDatasets({ schools, news });
+      // 数据库数据写回本地缓存，使 schools.json 始终与线上一致
+      await writeSchoolCache(state.schools);
+      return state;
     } catch (err) {
-      console.warn('[data-store] Supabase 读取 schools 失败，降级到本地文件:', err.message);
-      schools = local.schools;
-    }
-    try {
-      news = await loadNewsFromSupabase();
-    } catch (err) {
-      console.warn('[data-store] Supabase 读取 news 失败，降级到本地文件:', err.message);
-      news = local.news;
+      console.warn('[data-store] Supabase 读取失败，降级到本地缓存:', err?.message || err);
     }
   }
 
-  return ensureDatasets({ ...local, schools, news });
+  // 降级：读本地缓存（运行时由数据库生成的 schools.json 等）
+  return loadLocalData();
 }
 
 async function saveDataStore(nextState) {
