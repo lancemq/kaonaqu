@@ -172,9 +172,10 @@ function groupPoliciesByTopic(policies) {
 }
 
 export default async function PolicyGlossaryPage() {
-  const { policies } = await loadDataStore();
-  const currentYear = getCurrentYear(policies);
-  const officialPolicies = policies
+  const { news } = await loadDataStore();
+  const currentYear = getCurrentYear(news);
+  const officialPolicies = news
+    .filter((n) => n.newsType === 'policy')
     .filter((item) => isRenderablePolicy(item, currentYear))
     .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));
 

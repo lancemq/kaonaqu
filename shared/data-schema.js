@@ -343,10 +343,11 @@ function inferNewsExamType(title, content) {
   return 'zhongkao';
 }
 
-function buildDistricts(schools, policies) {
+function buildDistricts(schools, news) {
+  const policyNews = (Array.isArray(news) ? news : []).filter((item) => item.newsType === 'policy');
   return DISTRICT_CATALOG.map((district) => {
     const districtSchools = schools.filter((school) => school.districtId === district.id);
-    const districtPolicies = policies.filter((policy) => policy.districtId === district.id);
+    const districtPolicies = policyNews.filter((policy) => policy.districtId === district.id);
     const latestPolicy = districtPolicies
       .slice()
       .sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')))[0];

@@ -6,7 +6,9 @@ import { buildSchoolMarkdown, getSchoolContentAbsolutePath, validateSchoolMarkdo
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../shared/data-store');
 
-const { policies, schools, news } = await loadDataStore();
+const { schools, news } = await loadDataStore();
+
+const policies = news.filter((n) => n.newsType === 'policy');
 
 writePolicyMarkdownFiles(policies, news);
 

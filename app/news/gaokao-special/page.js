@@ -12,9 +12,9 @@ export const metadata = {
   alternates: { canonical: '/news/gaokao-special' }
 };
 
-function getCurrentYear(news, policies) {
-  const years = [...news, ...policies]
-    .map((item) => Number(String(item?.publishedAt || '').slice(0, 4)) || Number(item?.year) || 0)
+function getCurrentYear(news) {
+  const years = news
+    .map((item) => Number(String(item?.publishedAt || '').slice(0, 4)) || 0)
     .filter(Boolean)
     .sort((a, b) => b - a);
   return years[0] || new Date().getFullYear();
@@ -52,12 +52,13 @@ function toTopicEntry(item) {
 }
 
 export default async function GaokaoSpecialPage() {
-  const { news, policies } = await loadDataStore();
-  const currentYear = getCurrentYear(news, policies);
+  const { news } = await loadDataStore();
+  const currentYear = getCurrentYear(news);
   const gaokaoNews = news
     .filter((item) => item.examType === 'gaokao' && isCurrentYearItem(item, currentYear))
     .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));
-  const gaokaoPolicies = policies
+  const gaokaoPolicies = news
+    .filter((n) => n.newsType === 'policy')
     .filter((item) => isCurrentYearItem(item, currentYear) && getPolicyExamType(item) === 'gaokao')
     .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));
 

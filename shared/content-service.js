@@ -1,14 +1,11 @@
 const {
   cleanString,
   normalizeNews,
-  normalizePolicy,
   normalizeSchool,
   slugify,
   validateRequired
 } = require('./data-schema');
 const { loadDataStore, updateDataStore, sortBySchoolPriority } = require('./data-store');
-const fsSync = require('fs');
-const path = require('path');
 
 // 旧 code 过滤值 -> 规范 label（school_property_label），用于兼容历史调用
 const CODE_TO_TYPE_LABEL = {
@@ -41,32 +38,6 @@ function matchesQuery(fields, query) {
     .join(' ');
 
   return haystack.includes(normalizedQuery);
-}
-
-function stripMarkdown(markdown = '') {
-  return String(markdown || '')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1')
-    .replace(/^#{1,6}\s+/gm, '')
-    .replace(/^\-\s+/gm, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function readPolicySearchText(policy) {
-  const filePath = cleanString(policy?.contentFile);
-  if (!filePath) {
-    return '';
-  }
-
-  try {
-    const absolutePath = path.join(process.cwd(), filePath);
-    if (!fsSync.existsSync(absolutePath)) {
-      return '';
-    }
-    return stripMarkdown(fsSync.readFileSync(absolutePath, 'utf8'));
-  } catch {
-    return '';
-  }
 }
 
 function pickDefined(raw = {}) {
@@ -220,124 +191,26 @@ async function deleteSchool(id) {
   });
 }
 
-async function listPolicies(filters = {}) {
-  const { policies } = await loadDataStore();
-  const districtId = cleanString(filters.district || filters.districtId);
-  const year = cleanString(filters.year);
-  const q = cleanString(filters.q);
-  const sourceType = cleanString(filters.sourceType);
-
-  return sortByTimeDesc(policies.filter((policy) => {
-    if (districtId && districtId !== 'all' && policy.districtId !== 'all' && policy.districtId !== districtId) {
-      return false;
-    }
-    if (year && String(policy.year) !== year) {
-      return false;
-    }
-    if (sourceType && policy.source?.type !== sourceType) {
-      return false;
-    }
-
-    return matchesQuery([policy.title, policy.summary, policy.districtName, readPolicySearchText(policy)], q);
-  }), 'publishedAt');
-}
-
-async function getPolicyById(id) {
-  const { policies } = await loadDataStore();
-  return policies.find((item) => item.id === id) || null;
-}
-
-async function createPolicy(input) {
-  const draft = normalizePolicy({
-    ...pickDefined(input),
-    id: input.id || slugify(`${input.year || new Date().getUTCFullYear()}-${input.districtId || input.district || 'all'}-${input.title}`)
-  });
-
-  requireFields(draft, ['id', 'title']);
-
-  return updateDataStore(async (state) => {
-    if (state.policies.some((policy) => policy.id === draft.id)) {
-      const error = new Error('政策已存在');
-      error.statusCode = 409;
-      throw error;
-    }
-
-    return {
-      ...state,
-      policies: sortByTimeDesc([
-        {
-          ...draft,
-          updatedAt: new Date().toISOString()
-        },
-        ...state.policies
-      ], 'publishedAt')
-    };
-  }).then((state) => state.policies.find((item) => item.id === draft.id));
-}
-
-async function updatePolicy(id, input) {
-  return updateDataStore(async (state) => {
-    const current = state.policies.find((item) => item.id === id);
-    if (!current) {
-      const error = new Error('政策不存在');
-      error.statusCode = 404;
-      throw error;
-    }
-
-    const merged = normalizePolicy({
-      ...current,
-      ...pickDefined(input),
-      id
-    });
-
-    requireFields(merged, ['id', 'title']);
-
-    return {
-      ...state,
-      policies: state.policies.map((item) => (
-        item.id === id
-          ? {
-            ...merged,
-            updatedAt: new Date().toISOString()
-          }
-          : item
-      ))
-    };
-  }).then((state) => state.policies.find((item) => item.id === id));
-}
-
-async function deletePolicy(id) {
-  return updateDataStore(async (state) => {
-    const current = state.policies.find((item) => item.id === id);
-    if (!current) {
-      const error = new Error('政策不存在');
-      error.statusCode = 404;
-      throw error;
-    }
-
-    return {
-      ...state,
-      policies: state.policies.filter((item) => item.id !== id)
-    };
-  });
-}
-
 async function listNews(filters = {}) {
   const { news } = await loadDataStore();
+  const q = cleanString(filters.q).toLowerCase();
+  const districtId = cleanString(filters.district || filters.districtId);
   const examType = cleanString(filters.examType || filters.exam_type);
   const newsType = cleanString(filters.newsType || filters.news_type);
   const category = cleanString(filters.category);
-  const q = cleanString(filters.q);
   const sourceType = cleanString(filters.sourceType);
 
   return sortByTimeDesc(news.filter((item) => {
+    if (districtId && districtId !== 'all' && item.districtId !== districtId) {
+      return false;
+    }
     if (examType && item.examType !== examType) {
       return false;
     }
-    if (category && item.category !== category) {
+    if (newsType && item.newsType !== newsType) {
       return false;
     }
-    if (newsType && item.newsType !== newsType) {
+    if (category && item.category !== category) {
       return false;
     }
     if (sourceType && item.source?.type !== sourceType) {
@@ -434,20 +307,15 @@ async function searchSchools(query, filters = {}) {
 
 module.exports = {
   createNews,
-  createPolicy,
   createSchool,
   deleteNews,
-  deletePolicy,
   deleteSchool,
   getNewsById,
-  getPolicyById,
   getSchoolById,
   listDistricts,
   listNews,
-  listPolicies,
   listSchools,
   searchSchools,
   updateNews,
-  updatePolicy,
   updateSchool
 };

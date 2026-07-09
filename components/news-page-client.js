@@ -63,15 +63,8 @@ function getPolicySummaryText(policy) {
 }
 
 function isCurrentYearItem(item, year) {
-  const publishedYear = Number(String(item?.publishedAt || item?.date || '').slice(0, 4)) || Number(item?.year) || 0;
+  const publishedYear = Number(String(item?.publishedAt || item?.date || '').slice(0, 4)) || 0;
   return publishedYear === year;
-}
-
-function isRenderablePolicy(policy, currentYear) {
-  const title = String(policy?.title || '').trim();
-  if (!title || title === '上海市教育委员会') return false;
-  if (!isCurrentYearItem(policy, currentYear)) return false;
-  return policy.source?.type === 'official' || String(policy.source?.name || '').includes('上海市教育委员会');
 }
 
 function getPolicyLabel(policy) {
@@ -101,35 +94,22 @@ function SectionLabel({ children }) {
   );
 }
 
-export default function NewsPageClient({ news, policies, schoolNamesById = {}, currentYear }) {
+export default function NewsPageClient({ news, schoolNamesById = {}, currentYear }) {
   const currentYearNews = useMemo(
     () => news
       .filter((item) => isCurrentYearItem(item, currentYear))
       .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))),
     [news, currentYear]
   );
-  const currentYearPolicies = useMemo(
-    () => policies
-      .filter((item) => isRenderablePolicy(item, currentYear))
-      .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))),
-    [policies, currentYear]
-  );
   const [activeFilter, setActiveFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
 
   const visibleItems = useMemo(() => {
-    if (activeFilter === 'policy') {
-      return [
-        ...filterNews(currentYearNews, 'policy').map((item) => ({ ...item, itemType: 'news' })),
-        ...currentYearPolicies.map((item) => ({ ...item, itemType: 'policy' }))
-      ];
-    }
-
     return filterNews(currentYearNews, activeFilter).map((item) => ({
       ...item,
-      itemType: 'news'
+      itemType: item.newsType === 'policy' ? 'policy' : 'news'
     }));
-  }, [activeFilter, currentYearNews, currentYearPolicies]);
+  }, [activeFilter, currentYearNews]);
 
   const rankedItems = useMemo(
     () => visibleItems

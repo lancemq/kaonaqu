@@ -366,20 +366,6 @@ function resolveNewsById(news, rawId) {
   return news.find((item) => item.id === normalizedId) || news.find((item) => item.id === decodedId) || null;
 }
 
-function resolvePolicyById(policies, rawId) {
-  const id = Array.isArray(rawId) ? rawId[0] : rawId;
-  const normalizedId = String(id || '');
-  const decodedId = (() => {
-    try {
-      return decodeURIComponent(normalizedId);
-    } catch {
-      return normalizedId;
-    }
-  })();
-
-  return policies.find((item) => item.id === normalizedId) || policies.find((item) => item.id === decodedId) || null;
-}
-
 // ===== 标签 =====
 function getExamTypeLabel(newsItem) {
   if (newsItem.examType === 'zhongkao') return '中招';
@@ -550,40 +536,29 @@ const KNOWLEDGE_TOPICS = [
 ];
 
 export async function generateMetadata({ params }) {
-  const { news, policies } = await loadDataStore();
+  const { news } = await loadDataStore();
   const { id } = await params;
   const newsItem = resolveNewsById(news, id);
 
   if (newsItem) {
-    const examType = newsItem.examType === 'zhongkao' ? '中考' : newsItem.examType === 'gaokao' ? '高考' : '上海升学';
+    const isPolicy = newsItem.newsType === 'policy';
+    const examType = isPolicy
+      ? getPolicyExamType(newsItem)
+      : (newsItem.examType === 'zhongkao' ? '中考' : newsItem.examType === 'gaokao' ? '高考' : '上海升学');
+    const examLabel = isPolicy
+      ? (examType === 'zhongkao' ? '中考' : examType === 'gaokao' ? '高考' : '升学')
+      : examType;
+    const titleSuffix = isPolicy ? `上海${examLabel}政策原文` : `${examType}政策解读`;
     return {
-      title: `${newsItem.title} - ${examType}政策解读 | 考哪去`,
+      title: `${newsItem.title} - ${titleSuffix} | 考哪去`,
       description: newsItem.summary || '查看上海升学新闻与政策详情。',
-      keywords: [examType, '上海升学', '政策解读', newsItem.newsType === 'policy' ? '政策' : newsItem.newsType === 'exam' ? '考试' : '招生'],
+      keywords: [examLabel, '上海升学', '政策解读', isPolicy ? '政策' : newsItem.newsType === 'exam' ? '考试' : '招生'],
       openGraph: {
         type: 'article',
         locale: 'zh_CN',
         siteName: '考哪去',
-        title: `${newsItem.title} - ${examType}政策解读 | 考哪去`,
+        title: `${newsItem.title} - ${titleSuffix} | 考哪去`,
         description: newsItem.summary || '查看上海升学新闻与政策详情。'
-      }
-    };
-  }
-
-  const policyItem = resolvePolicyById(policies, id);
-  if (policyItem) {
-    const examType = getPolicyExamType(policyItem);
-    const examLabel = examType === 'zhongkao' ? '中考' : examType === 'gaokao' ? '高考' : '升学';
-    return {
-      title: `${policyItem.title} - 上海${examLabel}政策原文 | 考哪去`,
-      description: policyItem.summary || '查看上海升学政策详情。',
-      keywords: [examLabel, '上海政策', '官方文件', '招生', '考试'],
-      openGraph: {
-        type: 'article',
-        locale: 'zh_CN',
-        siteName: '考哪去',
-        title: `${policyItem.title} - 上海${examLabel}政策原文 | 考哪去`,
-        description: policyItem.summary || '查看上海升学政策详情。'
       }
     };
   }
@@ -594,21 +569,21 @@ export async function generateMetadata({ params }) {
 export const revalidate = 3600;
 
 export default async function NewsDetailPage({ params }) {
-  const { news, policies, schools } = await loadDataStore();
+  const { news, schools } = await loadDataStore();
   const { id } = await params;
   const newsItem = resolveNewsById(news, id);
-  if (newsItem) {
-    return renderNewsDetail(newsItem, news, policies, schools);
+  if (!newsItem) {
+    notFound();
   }
-  const policyItem = resolvePolicyById(policies, id);
-  if (policyItem) {
-    return renderPolicyDetail(policyItem, policies, news);
+  if (newsItem.newsType === 'policy') {
+    return renderPolicyDetail(newsItem, news);
   }
-  notFound();
+  return renderNewsDetail(newsItem, news, schools);
 }
 
-function renderNewsDetail(item, news, policies, schools) {
-  const relatedPolicies = buildRelatedPolicies(policies, item);
+function renderNewsDetail(item, news, schools) {
+  const policyNews = news.filter((n) => n.newsType === 'policy');
+  const relatedPolicies = buildRelatedPolicies(policyNews, item);
   const relatedNews = buildRelatedNews(news, item);
   const relatedSchools = buildRelatedSchools(schools, item);
   const sourceName = item.source?.name || '未知来源';
@@ -754,14 +729,15 @@ function renderNewsDetail(item, news, policies, schools) {
   );
 }
 
-function renderPolicyDetail(item, policies, news) {
+function renderPolicyDetail(item, news) {
   const mappedNewsId = getPolicyMappedNewsId(item);
   const mappedNews = mappedNewsId ? news.find((entry) => entry.id === mappedNewsId) : null;
   const articleBodyMarkdown = readPolicyMarkdownFile(item);
   const sourceName = item.source?.name || '官方来源';
   const examTypeLabel = getPolicyExamTypeLabel(item);
   const summaryText = cleanPolicyText(item.summary, item.title) || '暂无摘要';
-  const relatedPolicies = buildRelatedPoliciesForPolicy(policies, item);
+  const policyNews = news.filter((n) => n.newsType === 'policy');
+  const relatedPolicies = buildRelatedPoliciesForPolicy(policyNews, item);
   const displayDate = formatArticleDate(item.publishedAt || item.year);
 
   if (!articleBodyMarkdown) {

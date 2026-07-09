@@ -20,7 +20,6 @@ const DATA_DIR = resolveDataDir();
 const DATASET_FILES = {
   districts: 'districts.json',
   schools: 'schools.json',
-  policies: 'policies.json',
   news: 'news.json'
 };
 
@@ -28,7 +27,6 @@ const DATASET_FILES = {
 const BUNDLED_DATASETS = {
   districts: require('../data/districts.json'),
   schools: require('../data/schools.json'),
-  policies: require('../data/policies.json'),
   news: require('../data/news.json')
 };
 
@@ -59,14 +57,13 @@ async function writeLocalJson(filename, payload) {
 }
 
 async function loadLocalData() {
-  const [districts, schools, policies, news] = await Promise.all([
+  const [districts, schools, news] = await Promise.all([
     readLocalJson(DATASET_FILES.districts),
     readLocalJson(DATASET_FILES.schools),
-    readLocalJson(DATASET_FILES.policies),
     readLocalJson(DATASET_FILES.news)
   ]);
 
-  return { districts, schools, policies, news };
+  return { districts, schools, news };
 }
 
 // === Supabase 读取 ===
@@ -110,7 +107,7 @@ function rowToSchool(row) {
     admissionMethods: row.admission_info?.methods || [],
     admissionRoutes: row.admission_info?.routes || [],
     contentFile: slug ? `content/schools/${slug}.md` : '',
-    profileDepth: row.profile_depth,
+    profileDepth: row.profile_depth || 'enhanced',
     features: row.features || []
   };
 }
@@ -239,11 +236,10 @@ function mergeRecords(...collections) {
 
 function ensureDatasets(data = {}) {
   const schools = Array.isArray(data.schools) ? data.schools : [];
-  const policies = Array.isArray(data.policies) ? data.policies : [];
   const news = Array.isArray(data.news) ? data.news : [];
-  const districts = buildDistricts(schools, policies);
+  const districts = buildDistricts(schools, news);
 
-  return { districts, schools, policies, news };
+  return { districts, schools, news };
 }
 
 async function loadDataStore() {
@@ -269,7 +265,6 @@ async function saveDataStore(nextState) {
   await Promise.all([
     writeLocalJson(DATASET_FILES.districts, payload.districts),
     writeLocalJson(DATASET_FILES.schools, payload.schools),
-    writeLocalJson(DATASET_FILES.policies, payload.policies),
     writeLocalJson(DATASET_FILES.news, payload.news)
   ]);
 

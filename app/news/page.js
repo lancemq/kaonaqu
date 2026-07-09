@@ -13,11 +13,11 @@ export const metadata = {
 
 export const revalidate = 3600;
 
-function getCurrentYear(news, policies) {
-  const years = [...news, ...policies]
+function getCurrentYear(news) {
+  const years = news
     .map((item) => {
       const value = String(item?.publishedAt || item?.date || '');
-      return Number(value.slice(0, 4)) || Number(item?.year) || 0;
+      return Number(value.slice(0, 4)) || 0;
     })
     .filter(Boolean)
     .sort((a, b) => b - a);
@@ -25,7 +25,7 @@ function getCurrentYear(news, policies) {
 }
 
 function isCurrentYearItem(item, year) {
-  const publishedYear = Number(String(item?.publishedAt || item?.date || '').slice(0, 4)) || Number(item?.year) || 0;
+  const publishedYear = Number(String(item?.publishedAt || item?.date || '').slice(0, 4)) || 0;
   return publishedYear === year;
 }
 
@@ -46,11 +46,11 @@ function SectionLabel({ children }) {
 }
 
 export default async function NewsPage() {
-  const { news, policies, schools } = await loadDataStore();
+  const { news, schools } = await loadDataStore();
   const schoolNamesById = Object.fromEntries(schools.map((school) => [school.id, school.name || '']));
-  const currentYear = getCurrentYear(news, policies);
+  const currentYear = getCurrentYear(news);
   const currentYearNews = news.filter((item) => isCurrentYearItem(item, currentYear));
-  const currentYearPolicies = policies.filter((item) => isRenderablePolicy(item, currentYear));
+  const currentYearPolicies = news.filter((item) => item.newsType === 'policy' && isRenderablePolicy(item, currentYear));
   const today = new Date().toISOString().slice(0, 10);
   const todayUpdates = currentYearNews.filter((item) => String(item.publishedAt || item.updatedAt || '').startsWith(today)).length;
 
@@ -112,7 +112,6 @@ export default async function NewsPage() {
 
       <NewsPageClient
         news={news}
-        policies={policies}
         schoolNamesById={schoolNamesById}
         currentYear={currentYear}
       />

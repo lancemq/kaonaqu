@@ -1,20 +1,15 @@
 const {
   createNews,
-  createPolicy,
   createSchool,
   deleteNews,
-  deletePolicy,
   deleteSchool,
   getNewsById,
-  getPolicyById,
   getSchoolById,
   listDistricts,
   listNews,
-  listPolicies,
   listSchools,
   searchSchools,
   updateNews,
-  updatePolicy,
   updateSchool
 } = require('./content-service');
 
@@ -96,26 +91,16 @@ async function handleApiRequest({ method, pathname, query = {}, body = null }) {
 
   if (pathname === '/api/policies') {
     const id = query.id || query.policyId || null;
-    const payload = await routeCollection(method, id, {
-      list: () => listPolicies(query),
-      get: async (itemId) => {
-        const policy = await getPolicyById(itemId);
-        if (!policy) {
-          const error = new Error('政策不存在');
-          error.statusCode = 404;
-          throw error;
-        }
-        return policy;
-      },
-      create: () => createPolicy(body || {}),
-      update: (itemId) => updatePolicy(itemId, body || {}),
-      remove: async (itemId) => {
-        await deletePolicy(itemId);
-        return { ok: true, id: itemId };
+    if (id) {
+      const policy = await getNewsById(id);
+      if (!policy) {
+        const error = new Error('政策不存在');
+        error.statusCode = 404;
+        throw error;
       }
-    });
-
-    return { statusCode: method === 'POST' ? 201 : 200, payload };
+      return { statusCode: 200, payload: policy };
+    }
+    return { statusCode: 200, payload: await listNews({ ...query, newsType: 'policy' }) };
   }
 
   if (pathname === '/api/news') {

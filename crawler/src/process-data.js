@@ -69,6 +69,36 @@ function dedupeById(records) {
   });
 }
 
+function inferPolicyExamType(title) {
+  const text = String(title || '').toLowerCase();
+  if (text.includes('高考') || text.includes('春考') || text.includes('高招') || text.includes('普通高校')) {
+    return 'gaokao';
+  }
+  if (text.includes('中考') || text.includes('中招') || text.includes('义务教育') || text.includes('小学')) {
+    return 'zhongkao';
+  }
+  return '';
+}
+
+function policyToNewsItem(policy) {
+  const examType = inferPolicyExamType(policy.title);
+  const category = policy.category || (examType === 'gaokao' ? '高招政策' : examType === 'zhongkao' ? '中招政策' : '综合政策');
+  return {
+    id: policy.id,
+    title: policy.title,
+    newsType: 'policy',
+    category,
+    examType,
+    summary: policy.summary || '',
+    publishedAt: policy.publishedAt || null,
+    updatedAt: policy.updatedAt || policy.publishedAt || null,
+    source: policy.source || {},
+    contentFile: policy.contentFile || '',
+    districtId: policy.districtId || 'all',
+    districtName: policy.districtName || '全市'
+  };
+}
+
 function countFilledSchoolFields(school) {
   return [
     school.name,
@@ -167,11 +197,11 @@ async function processPolicyData() {
     return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
   });
 
-  await writeJson(PROCESSED_DIR, 'policies.json', policies);
-  return policies;
+  // 将 policy 转为 newsType='policy' 的 news item
+  return policies.map(policyToNewsItem);
 }
 
-async function processNewsData() {
+async function processNewsData(policyNewsItems = []) {
   const [officialNews, socialNews] = await Promise.all([
     readOptionalJson('official-news.json'),
     readOptionalJson('social-news.json')
@@ -188,7 +218,7 @@ async function processNewsData() {
     sourceUrl: item.sourceUrl,
     crawledAt: item.crawledAt
   }, index + normalizedOfficialNews.length));
-  const news = dedupeById([...normalizedOfficialNews, ...normalizedSocialNews]).sort((left, right) => {
+  const news = dedupeById([...normalizedOfficialNews, ...normalizedSocialNews, ...policyNewsItems]).sort((left, right) => {
     return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
   });
 
@@ -196,10 +226,9 @@ async function processNewsData() {
   return news;
 }
 
-async function publishData({ districts, schools, policies, news }) {
+async function publishData({ districts, schools, news }) {
   await writeJson(ROOT_DATA_DIR, 'districts.json', districts);
   await writeJson(ROOT_DATA_DIR, 'schools.json', schools);
-  await writeJson(ROOT_DATA_DIR, 'policies.json', policies);
   await writeJson(ROOT_DATA_DIR, 'news.json', news);
 }
 
@@ -208,27 +237,27 @@ async function processAllData() {
     throw new Error('未发现 raw 抓取输出，已停止处理以避免生成空的 processed 数据或覆盖 data/*.json');
   }
 
-  const [schools, policies, news] = await Promise.all([
+  const [schools, policyNewsItems] = await Promise.all([
     processSchoolData(),
-    processPolicyData(),
-    processNewsData()
+    processPolicyData()
   ]);
+  const news = await processNewsData(policyNewsItems);
 
-  if (!schools.length && !policies.length && !news.length) {
+  if (!schools.length && !news.length) {
     throw new Error('raw 抓取输出为空，已停止处理以避免用空数据覆盖 data/*.json');
   }
 
-  const districts = buildDistricts(schools, policies);
+  const districts = buildDistricts(schools, news);
   await writeJson(PROCESSED_DIR, 'districts.json', districts);
-  await publishData({ districts, schools, policies, news });
+  await publishData({ districts, schools, news });
 
-  return { districts, schools, policies, news };
+  return { districts, schools, news };
 }
 
 async function main() {
   const result = await processAllData();
   console.log('数据处理完成');
-  console.log(`districts=${result.districts.length}, schools=${result.schools.length}, policies=${result.policies.length}, news=${result.news.length}`);
+  console.log(`districts=${result.districts.length}, schools=${result.schools.length}, news=${result.news.length}`);
 }
 
 if (require.main === module) {
