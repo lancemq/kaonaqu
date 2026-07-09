@@ -73,7 +73,7 @@ function requireSupabase() {
 }
 
 // 轻量归一化：直接基于 input 的 camelCase 字段构造应用层对象（与 DB schema 对齐）。
-// 绕开 normalizeSchool/normalizeNews（它们与当前 DB schema 脱节：normalizeSchool 仍产已删的 tier、
+// 取代已移除的 normalizeSchool/normalizeNews（它们与 DB schema 脱节：normalizeSchool 仍产已删的 tier、
 // 非 DB 字段 tags/schoolDescription；normalizeNews 不产 districtId/districtName）。
 // schoolToRow/newsToRow 只取 DB 需要的字段，多余字段自动忽略。
 function buildSchoolRecord(input = {}) {

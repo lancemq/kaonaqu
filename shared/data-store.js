@@ -465,89 +465,6 @@ async function deleteNewsFromSupabase(id) {
   return { ok: true, id };
 }
 
-function toTimestamp(value) {
-  const time = Date.parse(value || '');
-  return Number.isFinite(time) ? time : 0;
-}
-
-function getRecordCompleteness(record = {}) {
-  return Object.values(record).reduce((count, value) => {
-    if (Array.isArray(value)) {
-      return count + (value.length ? 1 : 0);
-    }
-    if (value && typeof value === 'object') {
-      return count + getRecordCompleteness(value);
-    }
-    return count + (value !== undefined && value !== null && value !== '' ? 1 : 0);
-  }, 0);
-}
-
-function mergeRecordPair(base = {}, incoming = {}) {
-  const merged = { ...base };
-
-  for (const [key, value] of Object.entries(incoming)) {
-    if (Array.isArray(value)) {
-      const current = Array.isArray(merged[key]) ? merged[key] : [];
-      merged[key] = Array.from(new Set([...current, ...value].filter(Boolean)));
-      continue;
-    }
-
-    if (value && typeof value === 'object') {
-      const current = merged[key] && typeof merged[key] === 'object' ? merged[key] : {};
-      merged[key] = mergeRecordPair(current, value);
-      continue;
-    }
-
-    if (value !== undefined && value !== null && value !== '') {
-      merged[key] = value;
-    }
-  }
-
-  return merged;
-}
-
-function pickPreferredRecord(current, next) {
-  if (!current) {
-    return next;
-  }
-
-  const currentTime = toTimestamp(current.updatedAt || current.publishedAt);
-  const nextTime = toTimestamp(next.updatedAt || next.publishedAt);
-  if (nextTime > currentTime) {
-    return mergeRecordPair(current, next);
-  }
-  if (nextTime < currentTime) {
-    return mergeRecordPair(next, current);
-  }
-
-  const currentCompleteness = getRecordCompleteness(current);
-  const nextCompleteness = getRecordCompleteness(next);
-  return nextCompleteness >= currentCompleteness
-    ? mergeRecordPair(current, next)
-    : mergeRecordPair(next, current);
-}
-
-function mergeRecords(...collections) {
-  const recordMap = new Map();
-
-  for (const collection of collections) {
-    for (const item of Array.isArray(collection) ? collection : []) {
-      if (!item || !item.id) {
-        continue;
-      }
-      recordMap.set(item.id, pickPreferredRecord(recordMap.get(item.id), item));
-    }
-  }
-
-  return Array.from(recordMap.values()).sort((left, right) => {
-    const timeDiff = toTimestamp(right.updatedAt || right.publishedAt) - toTimestamp(left.updatedAt || left.publishedAt);
-    if (timeDiff !== 0) {
-      return timeDiff;
-    }
-    return String(left.id).localeCompare(String(right.id));
-  });
-}
-
 function ensureDatasets(data = {}) {
   const schools = Array.isArray(data.schools) ? data.schools : [];
   const news = Array.isArray(data.news) ? data.news : [];
@@ -600,38 +517,10 @@ async function loadDataStore() {
   return loadLocalData();
 }
 
-async function saveDataStore(nextState) {
-  const payload = ensureDatasets(nextState);
-
-  await Promise.all([
-    writeLocalJson(DATASET_FILES.districts, payload.districts),
-    writeLocalJson(DATASET_FILES.schools, payload.schools.map(stripLocalSchoolFields)),
-    writeLocalJson(DATASET_FILES.news, payload.news)
-  ]);
-
-  return payload;
-}
-
-async function mergeDataStore(nextState) {
-  const payload = ensureDatasets(nextState);
-
-  return saveDataStore(payload);
-}
-
-async function updateDataStore(updater) {
-  const current = await loadDataStore();
-  const nextState = await updater(current);
-  return saveDataStore(nextState);
-}
-
 module.exports = {
   ensureDatasets,
   loadDataStore,
   loadLocalData,
-  mergeRecords,
-  mergeDataStore,
-  saveDataStore,
-  updateDataStore,
   rowToSchool,
   rowToNews,
   schoolToRow,
