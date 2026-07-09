@@ -25,7 +25,10 @@ function isCurrentYearItem(item, year) {
 }
 
 function isSportsItem(item) {
-  return /体育/.test(`${item?.title || ''}${item?.summary || ''}${item?.content || ''}`);
+  const contentText = Array.isArray(item?.content)
+    ? item.content.map((b) => b.text || (Array.isArray(b.items) ? b.items.join(' ') : '')).join(' ')
+    : (item?.content || '');
+  return /体育/.test(`${item?.title || ''}${item?.summary || ''}${contentText}`);
 }
 
 function groupSportsNews(news) {

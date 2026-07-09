@@ -34,6 +34,20 @@ function uniqueStrings(values) {
   return Array.from(new Set((values || []).map(cleanString).filter(Boolean)));
 }
 
+// content 现为 JSON block 数组（旧数据可能为 Markdown 字符串），搜索时提取全部文本。
+function contentToSearchableText(content) {
+  if (!content) return '';
+  if (typeof content === 'string') return content;
+  if (!Array.isArray(content)) return '';
+  return content.map((block) => {
+    if (typeof block === 'string') return block;
+    if (block.type === 'markdown') return block.text || '';
+    if (block.text) return block.text;
+    if (Array.isArray(block.items)) return block.items.join(' ');
+    return '';
+  }).join(' ');
+}
+
 function matchesQuery(fields, query) {
   const normalizedQuery = cleanString(query).toLowerCase();
   if (!normalizedQuery) {
@@ -98,7 +112,7 @@ function buildNewsRecord(input = {}) {
     category: cleanString(input.category),
     examType: cleanString(input.examType),
     summary: cleanString(input.summary),
-    content: cleanString(input.content),
+    content: input.content,
     source: input.source || {},
     districtId: cleanString(input.districtId),
     districtName: cleanString(input.districtName),
@@ -209,7 +223,7 @@ async function listNews(filters = {}) {
       return false;
     }
 
-    return matchesQuery([item.title, item.summary, item.content, item.category], q);
+    return matchesQuery([item.title, item.summary, contentToSearchableText(item.content), item.category], q);
   }), 'publishedAt');
 }
 

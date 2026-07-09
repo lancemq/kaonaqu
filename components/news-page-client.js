@@ -58,7 +58,10 @@ function clipText(text, maxLength) {
 
 function getPolicySummaryText(policy) {
   const summary = sanitizePolicyText(policy.summary, policy.title);
-  const content = sanitizePolicyText(policy.content, policy.title);
+  const contentText = Array.isArray(policy.content)
+    ? policy.content.map((b) => b.text || (Array.isArray(b.items) ? b.items.join(' ') : '')).join(' ')
+    : (policy.content || '');
+  const content = sanitizePolicyText(contentText, policy.title);
   return clipText(summary || content || '查看政策原文与关键内容。', 130);
 }
 

@@ -76,8 +76,28 @@ const NEWS_FILLER_HEADINGS = new Set([
 ]);
 
 function getNewsRichness(item) {
-  const raw = item.content || '';
-  if (!raw) return 0;
+  const content = item.content;
+  if (!content || (Array.isArray(content) && !content.length)) return 0;
+
+  // block 数组（新格式）
+  if (Array.isArray(content)) {
+    let inFiller = false, subst = 0;
+    for (const block of content) {
+      if (block.type === 'heading') {
+        inFiller = NEWS_FILLER_HEADINGS.has(block.text);
+        continue;
+      }
+      if (block.type === 'divider') continue;
+      const text = block.text || (Array.isArray(block.items) ? block.items.join('') : '');
+      const clean = String(text).replace(/[#>*_`~\-\[\]\(\)!]/g, '').replace(/\s+/g, '');
+      if (!clean || inFiller) continue;
+      subst += clean.length;
+    }
+    return subst;
+  }
+
+  // 旧 Markdown 字符串（兼容）
+  const raw = String(content);
   let inFiller = false, overviewSeen = false, overviewDone = false, subst = 0;
   for (const line of raw.split('\n')) {
     const heading = line.match(/^##\s+(.+?)\s*$/);

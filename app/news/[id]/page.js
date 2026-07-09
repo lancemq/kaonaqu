@@ -100,6 +100,73 @@ function renderNewsMarkdown(markdown) {
   return nodes;
 }
 
+// ===== news block 渲染（结构化 JSON content）=====
+// content 现为 block 数组：heading/paragraph/list/quote/divider。
+// 旧 Markdown 字符串数据包装为 [{type:'markdown',text}] 走 renderNewsMarkdown 兼容。
+// inline 格式（加粗/斜体/链接）复用 renderPolicyInlineMarkdown 解析。
+function renderNewsBlocks(blocks) {
+  if (!Array.isArray(blocks)) return null;
+  // 跳过编辑口径导读 section（与原 renderNewsMarkdown 的 SKIP_SECTIONS 行为一致）
+  const SKIP_SECTIONS = new Set([
+    '这条信息为什么值得看',
+    '适合谁先看',
+    '适合谁看',
+    '适合谁读'
+  ]);
+  const nodes = [];
+  let skipping = false;
+
+  blocks.forEach((block, i) => {
+    // level<=2 的 heading 切换 skipping 状态
+    if (block.type === 'heading' && block.level <= 2) {
+      skipping = SKIP_SECTIONS.has(block.text);
+    }
+    if (skipping) return;
+
+    const key = `block-${i}`;
+    switch (block.type) {
+      case 'heading': {
+        const text = renderPolicyInlineMarkdown(block.text);
+        // level 1/2 → h3（与原 ## 行为一致，避免比页面 h1 title 更突出）
+        if (block.level <= 2) {
+          nodes.push(<h3 key={key} className="news-detail-markdown-heading">{text}</h3>);
+        } else {
+          nodes.push(<h4 key={key} className="news-detail-markdown-subheading">{text}</h4>);
+        }
+        break;
+      }
+      case 'paragraph':
+        nodes.push(<p key={key} className="news-detail-markdown-paragraph">{renderPolicyInlineMarkdown(block.text)}</p>);
+        break;
+      case 'list': {
+        const Tag = block.ordered ? 'ol' : 'ul';
+        nodes.push(
+          <Tag key={key} className="news-detail-markdown-list">
+            {(block.items || []).map((listItem, j) => (
+              <li key={`${key}-${j}`}>{renderPolicyInlineMarkdown(listItem)}</li>
+            ))}
+          </Tag>
+        );
+        break;
+      }
+      case 'quote':
+        nodes.push(<blockquote key={key} className="news-detail-markdown-quote">{renderPolicyInlineMarkdown(block.text)}</blockquote>);
+        break;
+      case 'divider':
+        nodes.push(<hr key={key} className="news-detail-markdown-divider" />);
+        break;
+      case 'markdown':
+        // 兼容旧 Markdown 字符串数据
+        nodes.push(...(renderNewsMarkdown(block.text) || []));
+        break;
+      default:
+        break;
+    }
+  });
+
+  return nodes;
+}
+
 // ===== policy markdown 渲染（含表格 / 引用 / 有序列表 / 加粗 / 斜体）=====
 function renderPolicyInlineMarkdown(text) {
   const parts = [];
@@ -133,199 +200,6 @@ function renderPolicyInlineMarkdown(text) {
   }
 
   return parts;
-}
-
-function parseMarkdownTableRow(line) {
-  return String(line || '')
-    .trim()
-    .replace(/^\|/, '')
-    .replace(/\|$/, '')
-    .split('|')
-    .map((cell) => cell.trim());
-}
-
-function isMarkdownTableSeparator(line) {
-  const cells = parseMarkdownTableRow(line);
-  return cells.length > 1 && cells.every((cell) => /^:?-{3,}:?$/.test(cell));
-}
-
-function renderPolicyMarkdown(markdown) {
-  const lines = String(markdown || '').split('\n');
-  const nodes = [];
-  let listItems = [];
-  let listType = 'ul';
-  let quoteItems = [];
-  let tableRows = [];
-  let key = 0;
-  let inFrontmatter = false;
-  let skipping = false;
-
-  const SKIP_SECTIONS = new Set([
-    '这条信息为什么值得看',
-    '适合谁先看',
-    '适合谁看',
-    '适合谁读'
-  ]);
-
-  const flushList = () => {
-    if (!listItems.length) return;
-    const ListTag = listType === 'ol' ? 'ol' : 'ul';
-    nodes.push(
-      <ListTag key={`list-${key++}`} className="news-detail-markdown-list">
-        {listItems.map((item, index) => (
-          <li key={`item-${index}`}>{renderPolicyInlineMarkdown(item)}</li>
-        ))}
-      </ListTag>
-    );
-    listItems = [];
-    listType = 'ul';
-  };
-
-  const flushQuote = () => {
-    if (!quoteItems.length) return;
-    nodes.push(
-      <blockquote key={`quote-${key++}`} className="news-detail-markdown-quote">
-        {quoteItems.map((item, index) => (
-          <p key={`quote-line-${index}`}>{renderPolicyInlineMarkdown(item)}</p>
-        ))}
-      </blockquote>
-    );
-    quoteItems = [];
-  };
-
-  const flushTable = () => {
-    if (tableRows.length < 2) {
-      tableRows = [];
-      return;
-    }
-    const [header, ...bodyRows] = tableRows;
-    nodes.push(
-      <div key={`table-${key++}`} className="news-detail-markdown-table-wrap">
-        <table className="news-detail-markdown-table">
-          <thead>
-            <tr>
-              {header.map((cell, cellIndex) => (
-                <th key={`head-${cellIndex}`}>{renderPolicyInlineMarkdown(cell)}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {bodyRows.map((row, rowIndex) => (
-              <tr key={`row-${rowIndex}`}>
-                {row.map((cell, cellIndex) => (
-                  <td key={`cell-${rowIndex}-${cellIndex}`}>{renderPolicyInlineMarkdown(cell)}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-    tableRows = [];
-  };
-
-  for (let index = 0; index < lines.length; index += 1) {
-    const rawLine = lines[index];
-    const line = rawLine.trim();
-    if (index === 0 && line === '---') {
-      inFrontmatter = true;
-      continue;
-    }
-    if (inFrontmatter) {
-      if (line === '---') {
-        inFrontmatter = false;
-      }
-      continue;
-    }
-    if (!line) {
-      flushList();
-      flushQuote();
-      flushTable();
-      continue;
-    }
-    if (line === '---') {
-      flushList();
-      flushQuote();
-      flushTable();
-      nodes.push(<hr key={`hr-${key++}`} className="news-detail-markdown-divider" />);
-      continue;
-    }
-    const nextLine = String(lines[index + 1] || '').trim();
-    const isTableRow = line.includes('|') && (tableRows.length > 0 || isMarkdownTableSeparator(nextLine));
-    if (isTableRow) {
-      flushList();
-      flushQuote();
-      tableRows.push(parseMarkdownTableRow(line));
-      if (isMarkdownTableSeparator(nextLine)) {
-        index += 1;
-      }
-      continue;
-    }
-    if (line.startsWith('>')) {
-      flushList();
-      flushTable();
-      const quoteText = line.replace(/^>\s?/, '').trim();
-      if (quoteText) {
-        quoteItems.push(quoteText);
-      }
-      continue;
-    }
-    if (line.startsWith('# ')) {
-      flushList();
-      flushQuote();
-      flushTable();
-      continue;
-    }
-    if (line.startsWith('## ')) {
-      flushList();
-      flushQuote();
-      flushTable();
-      const title = line.slice(3).trim();
-      if (SKIP_SECTIONS.has(title)) {
-        skipping = true;
-        continue;
-      }
-      skipping = false;
-      nodes.push(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{title}</h3>);
-      continue;
-    }
-    if (skipping) continue;
-    if (line.startsWith('### ')) {
-      flushList();
-      flushQuote();
-      flushTable();
-      nodes.push(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
-      continue;
-    }
-    if (line.startsWith('- ')) {
-      flushTable();
-      if (listType !== 'ul') flushList();
-      listType = 'ul';
-      listItems.push(line.slice(2));
-      continue;
-    }
-    const orderedMatch = line.match(/^\d+\.\s+(.+)$/);
-    if (orderedMatch) {
-      flushTable();
-      if (listType !== 'ol') flushList();
-      listType = 'ol';
-      listItems.push(orderedMatch[1]);
-      continue;
-    }
-    flushList();
-    flushQuote();
-    flushTable();
-    nodes.push(
-      <p key={`p-${key++}`} className="news-detail-markdown-paragraph">
-        {renderPolicyInlineMarkdown(line)}
-      </p>
-    );
-  }
-
-  flushList();
-  flushQuote();
-  flushTable();
-  return nodes;
 }
 
 function cleanPolicyText(text, title = '') {
@@ -595,7 +469,7 @@ function renderNewsDetail(item, news, schools) {
     item.newsType === 'school' ? '学校观察' : '招生政策'
   ].filter(Boolean);
 
-  if (!articleBodyMarkdown) {
+  if (!articleBodyMarkdown || (Array.isArray(articleBodyMarkdown) && !articleBodyMarkdown.length)) {
     notFound();
   }
 
@@ -654,7 +528,7 @@ function renderNewsDetail(item, news, schools) {
       <section className="news-detail-body">
         <article className="news-detail-main" id="article-body">
           <div className="news-detail-markdown">
-            {renderNewsMarkdown(articleBodyMarkdown)}
+            {renderNewsBlocks(articleBodyMarkdown)}
           </div>
 
           <div className="news-detail-tags" aria-label="文章标签">
@@ -738,7 +612,7 @@ function renderPolicyDetail(item, news) {
   const relatedPolicies = buildRelatedPoliciesForPolicy(policyNews, item);
   const displayDate = formatArticleDate(item.publishedAt || item.year);
 
-  if (!articleBodyMarkdown) {
+  if (!articleBodyMarkdown || (Array.isArray(articleBodyMarkdown) && !articleBodyMarkdown.length)) {
     notFound();
   }
 
@@ -804,7 +678,7 @@ function renderPolicyDetail(item, news) {
       <section className="news-detail-body">
         <article className="news-detail-main" id="article-body">
           <div className="news-detail-markdown">
-            {renderPolicyMarkdown(articleBodyMarkdown)}
+            {renderNewsBlocks(articleBodyMarkdown)}
           </div>
 
           <div className="news-detail-tags" aria-label="文章标签">

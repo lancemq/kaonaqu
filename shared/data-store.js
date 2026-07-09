@@ -68,12 +68,17 @@ async function writeLocalJson(filename, payload) {
 }
 
 async function loadLocalData() {
-  const [districts, schoolsRaw, news] = await Promise.all([
+  const [districts, schoolsRaw, newsRaw] = await Promise.all([
     readLocalJson(DATASET_FILES.districts),
     readLocalJson(DATASET_FILES.schools),
     readLocalJson(DATASET_FILES.news)
   ]);
   const schools = (Array.isArray(schoolsRaw) ? schoolsRaw : []).map(deriveLocalSchoolFields);
+  // 本地降级路径也需 parseNewsContent，与 rowToNews（DB 路径）保持一致
+  const news = (Array.isArray(newsRaw) ? newsRaw : []).map((item) => ({
+    ...item,
+    content: parseNewsContent(item.content)
+  }));
 
   return { districts, schools, news };
 }
@@ -196,6 +201,21 @@ async function loadSchoolsFromSupabase() {
     .filter(Boolean);
 }
 
+// news content 支持 JSON block 数组（新）与 Markdown 字符串（旧）两种格式。
+// JSON 字符串解析为数组；旧 Markdown 包装为 [{type:'markdown', text}] 由渲染器兼容。
+function parseNewsContent(raw) {
+  if (!raw) return [];
+  if (Array.isArray(raw)) return raw;
+  if (typeof raw === 'string') {
+    try {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) return parsed;
+    } catch {}
+    return [{ type: 'markdown', text: raw }];
+  }
+  return [];
+}
+
 // rowToNews：DB snake_case 列 -> 应用 camelCase 字段
 function rowToNews(row) {
   if (!row) return null;
@@ -207,7 +227,7 @@ function rowToNews(row) {
     category: row.category || '',
     examType: row.exam_type || '',
     summary: row.summary || '',
-    content: row.content || '',
+    content: parseNewsContent(row.content),
     publishedAt: row.published_at || '',
     updatedAt: row.updated_at || '',
     source: {
@@ -287,7 +307,7 @@ function newsToRow(news = {}) {
     category: news.category || '',
     exam_type: news.examType || '',
     summary: news.summary || '',
-    content: news.content || '',
+    content: typeof news.content === 'string' ? news.content : JSON.stringify(news.content || []),
     published_at: news.publishedAt || '',
     updated_at: news.updatedAt || '',
     source: {
