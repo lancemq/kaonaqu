@@ -24,8 +24,8 @@ const DATASET_FILES = {
 };
 
 // 打包兜底：惰性、容错加载。
-// 注意：schools.json 现在视为运行时缓存（由数据库生成、已 gitignore，不在仓库中），
-// 因此刻意不在这里 require 它——文件缺失时模块加载也不应崩溃。
+// 注意：schools.json 与 news.json 现均视为运行时缓存（由数据库生成、已 gitignore，不在仓库中），
+// 因此刻意不在这里 require 它们——文件缺失时模块加载也不应崩溃。
 function safeRequire(p) {
   try {
     return require(p);
@@ -35,8 +35,7 @@ function safeRequire(p) {
 }
 
 const BUNDLED_DATASETS = {
-  districts: safeRequire('../data/districts.json'),
-  news: safeRequire('../data/news.json')
+  districts: safeRequire('../data/districts.json')
 };
 
 function getDatasetKeyByFilename(filename) {
@@ -245,6 +244,227 @@ async function loadNewsFromSupabase() {
     .filter(Boolean);
 }
 
+// === Supabase 写入 ===
+// 应用层 camelCase -> DB snake_case 行（与 rowToSchool/rowToNews 严格对称）。
+// schools 表 id 为 BIGSERIAL 自增主键，应用 id 即 DB slug（UNIQUE）；写入不带 id 列。
+function schoolToRow(school = {}) {
+  return {
+    slug: school.id || '',
+    name: school.name || '',
+    district_name: school.districtName || '',
+    school_stage_label: school.schoolStageLabel || '',
+    school_property_label: school.schoolPropertyLabel || '',
+    school_key_level: school.schoolKeyLevel || '',
+    elite_cohort: school.eliteCohort || '',
+    group: school.group || '',
+    address: school.address || '',
+    phone: school.phone || '',
+    website: school.website || '',
+    founding_year: school.foundingYear ? Number(school.foundingYear) || null : null,
+    is_boarding: !!school.isBoarding,
+    is_international: !!school.isInternational,
+    image: school.image || '',
+    description: school.description || '',
+    achievements: school.achievements || '',
+    admission_notes: school.admissionNotes || '',
+    profile_depth: school.profileDepth || 'enhanced',
+    features: Array.isArray(school.features) ? school.features : [],
+    admission_info: {
+      code: school.admissionCode || '',
+      methods: Array.isArray(school.admissionMethods) ? school.admissionMethods : [],
+      routes: Array.isArray(school.admissionRoutes) ? school.admissionRoutes : []
+    }
+  };
+}
+
+// news 表 id 为 TEXT 主键，直接写入。
+function newsToRow(news = {}) {
+  const source = news.source || {};
+  return {
+    id: news.id || '',
+    title: news.title || '',
+    news_type: news.newsType || '',
+    category: news.category || '',
+    exam_type: news.examType || '',
+    summary: news.summary || '',
+    content: news.content || '',
+    published_at: news.publishedAt || '',
+    updated_at: news.updatedAt || '',
+    source: {
+      type: source.type || '',
+      name: source.name || '',
+      url: source.url || '',
+      crawledAt: source.crawledAt || null,
+      confidence: source.confidence !== undefined ? source.confidence : null
+    },
+    district_id: news.districtId || '',
+    district_name: news.districtName || '',
+    primary_school_id: news.primarySchoolId || '',
+    related_school_ids: Array.isArray(news.relatedSchoolIds) ? news.relatedSchoolIds : [],
+    school_link_reason: news.schoolLinkReason || '',
+    school_link_confidence: news.schoolLinkConfidence !== undefined && news.schoolLinkConfidence !== null
+      ? Number(news.schoolLinkConfidence)
+      : null
+  };
+}
+
+// CRUD 写入：操作 DB，不写本地缓存（本地缓存只读，由 loadDataStore 读 DB 时刷新）。
+// DB 不可用时抛错（写操作不降级到本地）。
+
+async function createSchoolInSupabase(school) {
+  const client = getServiceClient();
+  const row = schoolToRow(school);
+
+  const { data: existing } = await client
+    .from(SCHOOLS_TABLE)
+    .select('slug')
+    .eq('slug', row.slug)
+    .maybeSingle();
+  if (existing) {
+    const error = new Error('学校已存在');
+    error.statusCode = 409;
+    throw error;
+  }
+
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .insert(row)
+    .select()
+    .single();
+  if (error) {
+    throw error;
+  }
+  return rowToSchool(data);
+}
+
+async function updateSchoolInSupabase(slug, school) {
+  const client = getServiceClient();
+  const row = schoolToRow({ ...school, id: slug });
+
+  const { data: existing } = await client
+    .from(SCHOOLS_TABLE)
+    .select('slug')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (!existing) {
+    const error = new Error('学校不存在');
+    error.statusCode = 404;
+    throw error;
+  }
+
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .update(row)
+    .eq('slug', slug)
+    .select()
+    .single();
+  if (error) {
+    throw error;
+  }
+  return rowToSchool(data);
+}
+
+async function deleteSchoolFromSupabase(slug) {
+  const client = getServiceClient();
+
+  const { data: existing } = await client
+    .from(SCHOOLS_TABLE)
+    .select('slug')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (!existing) {
+    const error = new Error('学校不存在');
+    error.statusCode = 404;
+    throw error;
+  }
+
+  const { error } = await client
+    .from(SCHOOLS_TABLE)
+    .delete()
+    .eq('slug', slug);
+  if (error) {
+    throw error;
+  }
+  return { ok: true, id: slug };
+}
+
+async function createNewsInSupabase(news) {
+  const client = getServiceClient();
+  const row = newsToRow(news);
+
+  const { data: existing } = await client
+    .from(NEWS_TABLE)
+    .select('id')
+    .eq('id', row.id)
+    .maybeSingle();
+  if (existing) {
+    const error = new Error('新闻已存在');
+    error.statusCode = 409;
+    throw error;
+  }
+
+  const { data, error } = await client
+    .from(NEWS_TABLE)
+    .insert(row)
+    .select()
+    .single();
+  if (error) {
+    throw error;
+  }
+  return rowToNews(data);
+}
+
+async function updateNewsInSupabase(id, news) {
+  const client = getServiceClient();
+  const row = newsToRow({ ...news, id });
+
+  const { data: existing } = await client
+    .from(NEWS_TABLE)
+    .select('id')
+    .eq('id', id)
+    .maybeSingle();
+  if (!existing) {
+    const error = new Error('新闻不存在');
+    error.statusCode = 404;
+    throw error;
+  }
+
+  const { data, error } = await client
+    .from(NEWS_TABLE)
+    .update(row)
+    .eq('id', id)
+    .select()
+    .single();
+  if (error) {
+    throw error;
+  }
+  return rowToNews(data);
+}
+
+async function deleteNewsFromSupabase(id) {
+  const client = getServiceClient();
+
+  const { data: existing } = await client
+    .from(NEWS_TABLE)
+    .select('id')
+    .eq('id', id)
+    .maybeSingle();
+  if (!existing) {
+    const error = new Error('新闻不存在');
+    error.statusCode = 404;
+    throw error;
+  }
+
+  const { error } = await client
+    .from(NEWS_TABLE)
+    .delete()
+    .eq('id', id);
+  if (error) {
+    throw error;
+  }
+  return { ok: true, id };
+}
+
 function toTimestamp(value) {
   const time = Date.parse(value || '');
   return Number.isFinite(time) ? time : 0;
@@ -336,8 +556,8 @@ function ensureDatasets(data = {}) {
   return { districts, schools, news };
 }
 
-// 将数据库数据 best-effort 写回本地缓存（schools.json）。
-// 目的：保证 data/schools.json 始终与线上数据库对齐（数据库变化时即同步）。
+// 将数据库数据 best-effort 写回本地缓存（schools.json / news.json）。
+// 目的：保证 data/schools.json 与 data/news.json 始终与线上数据库对齐（数据库变化时即同步）。
 // 在只读文件系统（部分 serverless 环境）下静默失败，不影响主流程。
 async function writeSchoolCache(schools) {
   try {
@@ -347,7 +567,15 @@ async function writeSchoolCache(schools) {
   }
 }
 
-// 数据来源始终是线上数据库；schools.json 仅作为运行时缓存。
+async function writeNewsCache(news) {
+  try {
+    await writeLocalJson(DATASET_FILES.news, news);
+  } catch (e) {
+    console.warn('[data-store] 写 news 缓存失败（忽略）:', e?.message || e);
+  }
+}
+
+// 数据来源始终是线上数据库；schools.json / news.json 仅作为运行时缓存。
 // DB 可读时：取数并刷新本地缓存；DB 不可读时：降级到本地缓存文件。
 async function loadDataStore() {
   if (isSupabaseConfigured()) {
@@ -357,15 +585,18 @@ async function loadDataStore() {
         loadNewsFromSupabase()
       ]);
       const state = ensureDatasets({ schools, news });
-      // 数据库数据写回本地缓存，使 schools.json 始终与线上一致
-      await writeSchoolCache(state.schools);
+      // 数据库数据写回本地缓存，使 schools.json / news.json 始终与线上一致
+      await Promise.all([
+        writeSchoolCache(state.schools),
+        writeNewsCache(state.news)
+      ]);
       return state;
     } catch (err) {
       console.warn('[data-store] Supabase 读取失败，降级到本地缓存:', err?.message || err);
     }
   }
 
-  // 降级：读本地缓存（运行时由数据库生成的 schools.json 等）
+  // 降级：读本地缓存（运行时由数据库生成的 schools.json / news.json 等）
   return loadLocalData();
 }
 
@@ -403,6 +634,14 @@ module.exports = {
   updateDataStore,
   rowToSchool,
   rowToNews,
+  schoolToRow,
+  newsToRow,
   loadNewsFromSupabase,
+  createSchoolInSupabase,
+  updateSchoolInSupabase,
+  deleteSchoolFromSupabase,
+  createNewsInSupabase,
+  updateNewsInSupabase,
+  deleteNewsFromSupabase,
   sortBySchoolPriority
 };

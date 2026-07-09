@@ -1,11 +1,19 @@
 const {
   cleanString,
-  normalizeNews,
-  normalizeSchool,
   slugify,
   validateRequired
 } = require('./data-schema');
-const { loadDataStore, updateDataStore, sortBySchoolPriority } = require('./data-store');
+const { isSupabaseConfigured } = require('./supabase-client');
+const {
+  loadDataStore,
+  sortBySchoolPriority,
+  createSchoolInSupabase,
+  updateSchoolInSupabase,
+  deleteSchoolFromSupabase,
+  createNewsInSupabase,
+  updateNewsInSupabase,
+  deleteNewsFromSupabase
+} = require('./data-store');
 
 // 旧 code 过滤值 -> 规范 label（school_property_label），用于兼容历史调用
 const CODE_TO_TYPE_LABEL = {
@@ -46,14 +54,6 @@ function pickDefined(raw = {}) {
   );
 }
 
-function stripSchoolDetailFields(record = {}) {
-  const cleaned = { ...record };
-  for (const field of ['schoolDescription', 'admissionRequirements', 'schoolHighlights', 'suitableStudents', 'applicationTips']) {
-    delete cleaned[field];
-  }
-  return cleaned;
-}
-
 function requireFields(record, requiredFields) {
   const issues = validateRequired(record, requiredFields);
   if (issues.length) {
@@ -61,6 +61,52 @@ function requireFields(record, requiredFields) {
     error.statusCode = 400;
     throw error;
   }
+}
+
+// 写操作不降级到本地缓存：DB 未配置时直接拒绝。
+function requireSupabase() {
+  if (!isSupabaseConfigured()) {
+    const error = new Error('数据库未配置，写操作不可用');
+    error.statusCode = 503;
+    throw error;
+  }
+}
+
+// 轻量归一化：直接基于 input 的 camelCase 字段构造应用层对象（与 DB schema 对齐）。
+// 绕开 normalizeSchool/normalizeNews（它们与当前 DB schema 脱节：normalizeSchool 仍产已删的 tier、
+// 非 DB 字段 tags/schoolDescription；normalizeNews 不产 districtId/districtName）。
+// schoolToRow/newsToRow 只取 DB 需要的字段，多余字段自动忽略。
+function buildSchoolRecord(input = {}) {
+  return {
+    ...pickDefined(input),
+    name: cleanString(input.name),
+    districtName: cleanString(input.districtName || input.district),
+    schoolPropertyLabel: cleanString(input.schoolPropertyLabel || input.type || '未知'),
+    description: cleanString(input.description || input.schoolDescription),
+    admissionMethods: uniqueStrings(input.admissionMethods),
+    admissionRoutes: uniqueStrings(input.admissionRoutes),
+    features: uniqueStrings(input.features),
+    profileDepth: cleanString(input.profileDepth) || 'enhanced'
+  };
+}
+
+function buildNewsRecord(input = {}) {
+  return {
+    ...pickDefined(input),
+    title: cleanString(input.title),
+    newsType: cleanString(input.newsType),
+    category: cleanString(input.category),
+    examType: cleanString(input.examType),
+    summary: cleanString(input.summary),
+    content: cleanString(input.content),
+    source: input.source || {},
+    districtId: cleanString(input.districtId),
+    districtName: cleanString(input.districtName),
+    primarySchoolId: cleanString(input.primarySchoolId),
+    relatedSchoolIds: uniqueStrings(input.relatedSchoolIds),
+    schoolLinkReason: cleanString(input.schoolLinkReason),
+    schoolLinkConfidence: input.schoolLinkConfidence
+  };
 }
 
 async function listDistricts() {
@@ -110,84 +156,31 @@ async function getSchoolById(id) {
 }
 
 async function createSchool(input) {
-  const draft = normalizeSchool({
-    ...pickDefined(input),
-    id: input.id || slugify(`${input.districtId || input.district}-${input.name}`)
-  });
-
-  requireFields(draft, ['id', 'name', 'districtId', 'districtName']);
-
-  return updateDataStore(async (state) => {
-    if (state.schools.some((school) => school.id === draft.id)) {
-      const error = new Error('学校已存在');
-      error.statusCode = 409;
-      throw error;
-    }
-
-    const indexedDraft = stripSchoolDetailFields(draft);
-    return {
-      ...state,
-      schools: sortBySchoolPriority([
-        {
-          ...indexedDraft,
-          features: uniqueStrings(indexedDraft.features),
-          tags: uniqueStrings(indexedDraft.tags),
-          updatedAt: new Date().toISOString()
-        },
-        ...state.schools
-      ])
-    };
-  }).then((state) => state.schools.find((school) => school.id === draft.id));
+  requireSupabase();
+  const id = cleanString(input.id) || slugify(`${cleanString(input.districtId || input.district)}-${cleanString(input.name)}`);
+  const school = buildSchoolRecord({ ...input, id });
+  requireFields(school, ['id', 'name', 'districtName']);
+  return createSchoolInSupabase({ ...school, updatedAt: new Date().toISOString() });
 }
 
 async function updateSchool(id, input) {
-  return updateDataStore(async (state) => {
-    const current = state.schools.find((school) => school.id === id);
-    if (!current) {
-      const error = new Error('学校不存在');
-      error.statusCode = 404;
-      throw error;
-    }
-
-    const merged = normalizeSchool({
-      ...current,
-      ...pickDefined(input),
-      id
-    });
-    const indexedMerged = stripSchoolDetailFields(merged);
-
-    requireFields(indexedMerged, ['id', 'name', 'districtId', 'districtName']);
-
-    return {
-      ...state,
-      schools: state.schools.map((school) => (
-        school.id === id
-          ? {
-            ...indexedMerged,
-            features: uniqueStrings(indexedMerged.features),
-            tags: uniqueStrings(indexedMerged.tags),
-            updatedAt: new Date().toISOString()
-          }
-          : school
-      ))
-    };
-  }).then((state) => state.schools.find((school) => school.id === id));
+  requireSupabase();
+  // 取现有记录合并（getSchoolById 经 loadDataStore 读 DB）
+  const current = await getSchoolById(id);
+  if (!current) {
+    const error = new Error('学校不存在');
+    error.statusCode = 404;
+    throw error;
+  }
+  const merged = buildSchoolRecord({ ...current, ...input, id });
+  requireFields(merged, ['id', 'name', 'districtName']);
+  return updateSchoolInSupabase(id, { ...merged, updatedAt: new Date().toISOString() });
 }
 
 async function deleteSchool(id) {
-  return updateDataStore(async (state) => {
-    const current = state.schools.find((school) => school.id === id);
-    if (!current) {
-      const error = new Error('学校不存在');
-      error.statusCode = 404;
-      throw error;
-    }
-
-    return {
-      ...state,
-      schools: state.schools.filter((school) => school.id !== id)
-    };
-  });
+  requireSupabase();
+  // deleteSchoolFromSupabase 内部校验存在性（不存在抛 404）
+  return deleteSchoolFromSupabase(id);
 }
 
 async function listNews(filters = {}) {
@@ -226,78 +219,31 @@ async function getNewsById(id) {
 }
 
 async function createNews(input) {
-  const draft = normalizeNews({
-    ...pickDefined(input),
-    id: input.id || slugify(`${input.category || input.examType || 'news'}-${input.title}`)
-  });
-
-  requireFields(draft, ['id', 'title']);
-
-  return updateDataStore(async (state) => {
-    if (state.news.some((item) => item.id === draft.id)) {
-      const error = new Error('新闻已存在');
-      error.statusCode = 409;
-      throw error;
-    }
-
-    return {
-      ...state,
-      news: sortByTimeDesc([
-        {
-          ...draft,
-          updatedAt: new Date().toISOString()
-        },
-        ...state.news
-      ], 'publishedAt')
-    };
-  }).then((state) => state.news.find((item) => item.id === draft.id));
+  requireSupabase();
+  const id = cleanString(input.id) || slugify(`${cleanString(input.category || input.examType || 'news')}-${cleanString(input.title)}`);
+  const news = buildNewsRecord({ ...input, id });
+  requireFields(news, ['id', 'title']);
+  return createNewsInSupabase({ ...news, updatedAt: new Date().toISOString() });
 }
 
 async function updateNews(id, input) {
-  return updateDataStore(async (state) => {
-    const current = state.news.find((item) => item.id === id);
-    if (!current) {
-      const error = new Error('新闻不存在');
-      error.statusCode = 404;
-      throw error;
-    }
-
-    const merged = normalizeNews({
-      ...current,
-      ...pickDefined(input),
-      id
-    });
-
-    requireFields(merged, ['id', 'title']);
-
-    return {
-      ...state,
-      news: state.news.map((item) => (
-        item.id === id
-          ? {
-            ...merged,
-            updatedAt: new Date().toISOString()
-          }
-          : item
-      ))
-    };
-  }).then((state) => state.news.find((item) => item.id === id));
+  requireSupabase();
+  // 取现有记录合并（getNewsById 经 loadDataStore 读 DB）
+  const current = await getNewsById(id);
+  if (!current) {
+    const error = new Error('新闻不存在');
+    error.statusCode = 404;
+    throw error;
+  }
+  const merged = buildNewsRecord({ ...current, ...input, id });
+  requireFields(merged, ['id', 'title']);
+  return updateNewsInSupabase(id, { ...merged, updatedAt: new Date().toISOString() });
 }
 
 async function deleteNews(id) {
-  return updateDataStore(async (state) => {
-    const current = state.news.find((item) => item.id === id);
-    if (!current) {
-      const error = new Error('新闻不存在');
-      error.statusCode = 404;
-      throw error;
-    }
-
-    return {
-      ...state,
-      news: state.news.filter((item) => item.id !== id)
-    };
-  });
+  requireSupabase();
+  // deleteNewsFromSupabase 内部校验存在性（不存在抛 404）
+  return deleteNewsFromSupabase(id);
 }
 
 async function searchSchools(query, filters = {}) {

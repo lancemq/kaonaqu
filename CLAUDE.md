@@ -46,7 +46,7 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
                                                     ->  crawler/src/* -> data/
 ```
 
-- 学校数据权威源是线上数据库 `schools` 表；`data/schools.json` 是运行时由数据库生成的缓存文件（已 gitignore，从仓库移除），每次读取数据库时自动刷新并与线上对齐。其余 `data/*.json`（`districts.json`/`news.json`/`policies.json`/`knowledge-pages.json`）为提交的运行数据。
+- 学校与新闻数据权威源均为线上数据库（`schools` / `news` 表）；`data/schools.json` 与 `data/news.json` 是运行时由数据库生成的缓存文件（已 gitignore，从仓库移除），每次读取数据库时自动刷新并与线上对齐。其余 `data/*.json`（`districts.json`/`policies.json`/`knowledge-pages.json`）为提交的运行数据。
 - `content/` 存放 Markdown 长文（news / schools / policies 详情、knowledge 结构化 JSON）。
 - `shared/data-store.js` 通过 `KAONAQU_RUNTIME_ROOT_DATA_DIR` 环境变量定位数据目录；找不到本地文件时回退到 `require('../data/*.json')` 的打包快照（用于 serverless）。
 - 写入用 `writeLocalJson`（2 空格 JSON + 尾换行）；记录合并走 `mergeRecords` / `pickPreferredRecord`，按 `updatedAt` 时间 + 字段完整度择优。
