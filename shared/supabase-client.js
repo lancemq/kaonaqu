@@ -31,6 +31,7 @@ const ANON_KEY =
 
 const SCHOOLS_TABLE = process.env.SUPABASE_SCHOOLS_TABLE || 'schools';
 const SCHOOL_CONTENTS_TABLE = process.env.SUPABASE_SCHOOL_CONTENTS_TABLE || 'school_contents';
+const NEWS_TABLE = process.env.SUPABASE_NEWS_TABLE || 'news';
 
 let _serviceClient = null;
 let _anonClient = null;
@@ -75,5 +76,6 @@ module.exports = {
   isSupabaseConfigured,
   SCHOOLS_TABLE,
   SCHOOL_CONTENTS_TABLE,
+  NEWS_TABLE,
   SUPABASE_URL
 };

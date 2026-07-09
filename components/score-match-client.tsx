@@ -230,7 +230,7 @@ function ResultCard({ result }: { result: ScoreMatchResult }) {
       <Link className="score-match-aerial-card" href={`/schools/${school.id}`}>
         <div className="score-match-aerial-card-head">
           <strong>{school.name}</strong>
-          <span className="score-match-aerial-card-tier">{school.tier}</span>
+          <span className="score-match-aerial-card-tier">{school.eliteCohort || school.schoolKeyLevel}</span>
         </div>
         <div className="score-match-aerial-card-meta">
           <span>{school.districtName}</span>

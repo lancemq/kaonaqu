@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const fsSync = require('fs');
 const path = require('path');
 const { buildDistricts, DISTRICT_NAME_TO_ID } = require('./data-schema');
-const { isSupabaseConfigured, getServiceClient, SCHOOLS_TABLE } = require('./supabase-client');
+const { isSupabaseConfigured, getServiceClient, SCHOOLS_TABLE, NEWS_TABLE } = require('./supabase-client');
 
 function resolveDataDir() {
   const candidates = [
@@ -57,11 +57,12 @@ async function writeLocalJson(filename, payload) {
 }
 
 async function loadLocalData() {
-  const [districts, schools, news] = await Promise.all([
+  const [districts, schoolsRaw, news] = await Promise.all([
     readLocalJson(DATASET_FILES.districts),
     readLocalJson(DATASET_FILES.schools),
     readLocalJson(DATASET_FILES.news)
   ]);
+  const schools = (Array.isArray(schoolsRaw) ? schoolsRaw : []).map(deriveLocalSchoolFields);
 
   return { districts, schools, news };
 }
@@ -89,7 +90,6 @@ function rowToSchool(row) {
     schoolStage: inferSchoolStage(row.school_stage_label),
     schoolStageLabel: row.school_stage_label,
     schoolPropertyLabel: row.school_property_label,
-    tier: row.tier,
     schoolKeyLevel: row.school_key_level,
     eliteCohort: row.elite_cohort,
     group: row.group,
@@ -109,6 +109,40 @@ function rowToSchool(row) {
     contentFile: slug ? `content/schools/${slug}.md` : '',
     profileDepth: row.profile_depth || 'enhanced',
     features: row.features || []
+  };
+}
+
+// === 本地 JSON 与数据库表对齐 ===
+// data/schools.json 只应保留线上 schools 表存在的字段（camelCase 映射）。
+// 共 24 个：线上 22 列 + admission_info(jsonb) 拆出的 admissionCode/Methods/Routes。
+// 派生字段 districtId / schoolStage / contentFile 不是 DB 列，读取时补回、写回时剥离，
+// 以保证本地文件始终与数据库 schema 对齐，同时本地回退模式仍可用。
+const LOCAL_SCHOOL_DB_FIELDS = new Set([
+  'id', 'dbId', 'name', 'districtName', 'schoolStageLabel', 'schoolPropertyLabel',
+  'schoolKeyLevel', 'eliteCohort', 'group', 'address', 'phone', 'website', 'foundingYear',
+  'isBoarding', 'isInternational', 'image', 'description', 'achievements', 'admissionNotes',
+  'profileDepth', 'features', 'admissionCode', 'admissionMethods', 'admissionRoutes'
+]);
+
+// 仅保留线上表存在的字段（写回文件前调用）
+function stripLocalSchoolFields(rec) {
+  if (!rec || typeof rec !== 'object') return rec;
+  const out = {};
+  for (const k of Object.keys(rec)) {
+    if (LOCAL_SCHOOL_DB_FIELDS.has(k)) out[k] = rec[k];
+  }
+  return out;
+}
+
+// 读取本地数据时补回派生字段（与 rowToSchool 对 DB 行的处理保持一致）
+function deriveLocalSchoolFields(rec) {
+  if (!rec || typeof rec !== 'object') return rec;
+  const slug = rec.id || '';
+  return {
+    ...rec,
+    districtId: DISTRICT_NAME_TO_ID[rec.districtName] || '',
+    schoolStage: inferSchoolStage(rec.schoolStageLabel),
+    contentFile: slug ? `content/schools/${slug}.md` : ''
   };
 }
 
@@ -148,6 +182,56 @@ async function loadSchoolsFromSupabase() {
 
   return (data || [])
     .map((row) => rowToSchool(row))
+    .filter(Boolean);
+}
+
+// rowToNews：DB snake_case 列 -> 应用 camelCase 字段
+function rowToNews(row) {
+  if (!row) return null;
+  const source = row.source || {};
+  return {
+    id: row.id,
+    title: row.title || '',
+    newsType: row.news_type || '',
+    category: row.category || '',
+    examType: row.exam_type || '',
+    summary: row.summary || '',
+    content: row.content || '',
+    contentMd: row.content_md || '',
+    contentFile: row.content_file || '',
+    publishedAt: row.published_at || '',
+    updatedAt: row.updated_at || '',
+    source: {
+      type: source.type || '',
+      name: source.name || '',
+      url: source.url || '',
+      crawledAt: source.crawledAt || null,
+      confidence: source.confidence !== undefined ? source.confidence : null
+    },
+    districtId: row.district_id || '',
+    districtName: row.district_name || '',
+    primarySchoolId: row.primary_school_id || '',
+    relatedSchoolIds: Array.isArray(row.related_school_ids) ? row.related_school_ids : [],
+    schoolLinkReason: row.school_link_reason || '',
+    schoolLinkConfidence: row.school_link_confidence !== undefined && row.school_link_confidence !== null
+      ? Number(row.school_link_confidence)
+      : null
+  };
+}
+
+async function loadNewsFromSupabase() {
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(NEWS_TABLE)
+    .select('*')
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    throw error;
+  }
+
+  return (data || [])
+    .map((row) => rowToNews(row))
     .filter(Boolean);
 }
 
@@ -246,17 +330,24 @@ async function loadDataStore() {
   const local = await loadLocalData();
 
   let schools = local.schools;
+  let news = local.news;
 
   if (isSupabaseConfigured()) {
     try {
       schools = await loadSchoolsFromSupabase();
     } catch (err) {
-      console.warn('[data-store] Supabase 读取失败，降级到本地文件:', err.message);
+      console.warn('[data-store] Supabase 读取 schools 失败，降级到本地文件:', err.message);
       schools = local.schools;
+    }
+    try {
+      news = await loadNewsFromSupabase();
+    } catch (err) {
+      console.warn('[data-store] Supabase 读取 news 失败，降级到本地文件:', err.message);
+      news = local.news;
     }
   }
 
-  return ensureDatasets({ ...local, schools });
+  return ensureDatasets({ ...local, schools, news });
 }
 
 async function saveDataStore(nextState) {
@@ -264,7 +355,7 @@ async function saveDataStore(nextState) {
 
   await Promise.all([
     writeLocalJson(DATASET_FILES.districts, payload.districts),
-    writeLocalJson(DATASET_FILES.schools, payload.schools),
+    writeLocalJson(DATASET_FILES.schools, payload.schools.map(stripLocalSchoolFields)),
     writeLocalJson(DATASET_FILES.news, payload.news)
   ]);
 
@@ -292,5 +383,7 @@ module.exports = {
   saveDataStore,
   updateDataStore,
   rowToSchool,
+  rowToNews,
+  loadNewsFromSupabase,
   sortBySchoolPriority
 };

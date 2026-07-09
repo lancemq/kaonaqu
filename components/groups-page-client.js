@@ -15,8 +15,8 @@ const STAGE_OPTIONS = [
   { value: 'complete', label: '完全中学' }
 ];
 
-const TIER_ORDER = ['四校', '四校分校', '八大', '八大分校', '市实验性示范性高中', '区重点', '一般高中', '民办高中', '国际课程', '公办初中', '民办初中', '公办完全中学', '民办完全中学'];
-const TOP_TIER_SET = new Set(['四校', '四校分校', '八大', '八大分校', '市实验性示范性高中']);
+const TIER_ORDER = ['四校', '四校分校', '八大金刚', '八大金刚分校', '新五虎', '新五虎分校', '三公', '市重点(高中)', '特色高中', '区重点(高中)', '一般高中', '顶级公办(初中)', '顶级民办(初中)', '强公办(初中)', '强民办(初中)', '一般初中'];
+const TOP_TIER_SET = new Set(['四校', '四校分校', '八大金刚', '八大金刚分校', '市重点(高中)']);
 const EXCLUDED_GROUP_NAMES = new Set([
   '黄浦系',
   '徐汇系',
@@ -44,17 +44,20 @@ const EXCLUDED_GROUP_NAMES = new Set([
 const TIER_LABELS = {
   四校: '四校',
   四校分校: '四校分校',
-  八大: '八大',
-  八大分校: '八大分校',
-  市实验性示范性高中: '市重点',
-  区重点: '区重点',
-  一般高中: '一般高中',
-  民办高中: '民办高中',
-  国际课程: '国际课程',
-  公办初中: '公办初中',
-  民办初中: '民办初中',
-  公办完全中学: '公办完中',
-  民办完全中学: '民办完中'
+  八大金刚: '八大',
+  八大金刚分校: '八大分校',
+  新五虎: '新五虎',
+  新五虎分校: '新五虎分校',
+  三公: '三公',
+  '市重点(高中)': '市重点',
+  '特色高中': '特色高中',
+  '区重点(高中)': '区重点',
+  '一般高中': '一般高中',
+  '顶级公办(初中)': '顶级公办',
+  '顶级民办(初中)': '顶级民办',
+  '强公办(初中)': '强公办',
+  '强民办(初中)': '强民办',
+  '一般初中': '一般初中'
 };
 
 function getTierRank(tier) {
@@ -120,7 +123,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
 
       const group = groupsMap.get(groupName);
       const districtId = school.districtId || school.district;
-      const tier = String(school.tier || '').trim();
+      const tier = String(school.eliteCohort || school.schoolKeyLevel || '').trim();
 
       group.schools.push(school);
       group.districtIds.add(districtId);
@@ -138,7 +141,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
       .map((group) => {
         const tiers = Array.from(group.tiers).sort((left, right) => getTierRank(left) - getTierRank(right));
         const schoolsInGroup = group.schools.slice().sort((left, right) => {
-          const tierDiff = getTierRank(left.tier) - getTierRank(right.tier);
+          const tierDiff = getTierRank(left.eliteCohort || left.schoolKeyLevel || '') - getTierRank(right.eliteCohort || right.schoolKeyLevel || '');
           if (tierDiff !== 0) return tierDiff;
           return left.name.localeCompare(right.name, 'zh-Hans-CN');
         });
@@ -430,7 +433,7 @@ function GroupCard({ group, districts, isExpanded, onToggle }) {
                 <strong>{school.name}</strong>
                 <span>{getDistrictLabel(districts, school.districtId)} · {getSchoolStage(school)} · {getSchoolType(school)}</span>
               </div>
-              <span>{school.tier ? (TIER_LABELS[school.tier] || school.tier) : '详情'}</span>
+              <span>{school.eliteCohort || school.schoolKeyLevel ? (TIER_LABELS[school.eliteCohort || school.schoolKeyLevel] || school.eliteCohort || school.schoolKeyLevel) : '详情'}</span>
             </Link>
           ))}
         </div>

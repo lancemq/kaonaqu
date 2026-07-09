@@ -48,7 +48,7 @@ const SENIOR_HIGHS = SCHOOLS.filter(
 
 // 从新字段 eliteCohort / schoolKeyLevel 获取匹配键（兼容旧 tier）
 function getMatchKey(s: SchoolRecord): string {
-  return s.eliteCohort || s.schoolKeyLevel || s.tier || '';
+  return s.eliteCohort || s.schoolKeyLevel || '';
 }
 
 // tier 参考录取区间（同 tier 学校录取参考，非精确线）

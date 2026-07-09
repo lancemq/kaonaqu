@@ -25,8 +25,8 @@ function resolveFeaturedSchools(schools) {
   const bySignal = schools
     .slice()
     .sort((left, right) => {
-      const rightSignal = (right.features?.length || 0) + (right.tags?.length || 0) + (right.tier ? 2 : 0);
-      const leftSignal = (left.features?.length || 0) + (left.tags?.length || 0) + (left.tier ? 2 : 0);
+      const rightSignal = (right.features?.length || 0) + (right.tags?.length || 0) + ((right.eliteCohort || (right.schoolKeyLevel && !right.schoolKeyLevel.includes('一般'))) ? 2 : 0);
+      const leftSignal = (left.features?.length || 0) + (left.tags?.length || 0) + ((left.eliteCohort || (left.schoolKeyLevel && !left.schoolKeyLevel.includes('一般'))) ? 2 : 0);
       return rightSignal - leftSignal;
     });
   for (const school of bySignal) {
@@ -42,11 +42,11 @@ function schoolValue(school, key) {
   const featureText = (directions.length ? directions : school.features || school.tags || []).slice(0, 2).join(' / ');
   const values = {
     district: getSchoolDistrictName(school),
-    type: getSchoolType(school) || school.tier || '—',
+    type: getSchoolType(school) || school.schoolKeyLevel || '—',
     ownership: getSchoolOwnershipLabel(school) || '—',
     stage: getSchoolStage(school) || '—',
     founded: school.foundingYear ? `${school.foundingYear}年` : '待补充',
-    tier: school.tier || '待补充',
+    tier: school.eliteCohort || school.schoolKeyLevel || '待补充',
     group: school.group || '待补充',
     address: school.address || '待补充',
     phone: school.phone || '待补充',
@@ -58,7 +58,7 @@ function schoolValue(school, key) {
 
 function getSyntheticScore(school, offset = 0) {
   if (!school) return '—';
-  const tier = String(school.tier || school.schoolPropertyLabel || '');
+  const tier = String(school.eliteCohort || school.schoolKeyLevel || school.schoolPropertyLabel || '');
   let base = 660;
   if (tier.includes('四校')) base = 715;
   else if (tier.includes('八大')) base = 700;
@@ -70,7 +70,7 @@ function getSyntheticScore(school, offset = 0) {
 }
 
 function getTrendBars(school, index) {
-  const base = school?.tier?.includes('四校') ? 88 : school?.tier?.includes('八大') ? 80 : 72;
+  const base = school?.eliteCohort?.includes('四校') ? 88 : school?.eliteCohort?.includes('八大') ? 80 : 72;
   return [base - 8 + index * 2, base - 3 + index * 2, base + index * 2].map((value) => Math.max(36, Math.min(96, value)));
 }
 

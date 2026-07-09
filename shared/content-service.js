@@ -95,7 +95,6 @@ async function listSchools(filters = {}) {
       school.districtName,
       school.schoolStageLabel,
       school.schoolPropertyLabel,
-      school.tier,
       school.schoolKeyLevel,
       school.eliteCohort,
       school.address,
