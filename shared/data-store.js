@@ -197,7 +197,6 @@ function rowToNews(row) {
     examType: row.exam_type || '',
     summary: row.summary || '',
     content: row.content || '',
-    contentFile: row.content_file || '',
     publishedAt: row.published_at || '',
     updatedAt: row.updated_at || '',
     source: {

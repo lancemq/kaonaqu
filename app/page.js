@@ -9,7 +9,6 @@ import {
   getSchoolStage,
   getSchoolType
 } from '../lib/site-utils';
-import { readNewsMarkdownFile } from '../lib/news-content-files.mjs';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../shared/data-store');
@@ -77,7 +76,7 @@ const NEWS_FILLER_HEADINGS = new Set([
 ]);
 
 function getNewsRichness(item) {
-  const raw = readNewsMarkdownFile(item);
+  const raw = item.content || '';
   if (!raw) return 0;
   let inFiller = false, overviewSeen = false, overviewDone = false, subst = 0;
   for (const line of raw.split('\n')) {

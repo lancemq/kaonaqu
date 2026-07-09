@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS public.news (
   exam_type               TEXT NOT NULL DEFAULT '',
   summary                 TEXT NOT NULL DEFAULT '',
   content                 TEXT NOT NULL DEFAULT '',
-  content_file            TEXT NOT NULL DEFAULT '',
   published_at            TEXT NOT NULL DEFAULT '',
   updated_at              TEXT NOT NULL DEFAULT '',
   source                  JSONB NOT NULL DEFAULT '{}',

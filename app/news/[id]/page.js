@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
-import { readNewsMarkdownFile } from '../../../lib/news-content-files.mjs';
-import { readPolicyMarkdownFile } from '../../../lib/policy-content-files.mjs';
 import { getPolicyDetailHref, getPolicyMappedNewsId } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
 
@@ -588,7 +586,7 @@ function renderNewsDetail(item, news, schools) {
   const relatedSchools = buildRelatedSchools(schools, item);
   const sourceName = item.source?.name || '未知来源';
   const articleType = getNewsCategoryLabel(item);
-  const articleBodyMarkdown = readNewsMarkdownFile(item);
+  const articleBodyMarkdown = item.content || '';
   const displayDate = formatArticleDate(item.publishedAt || item.updatedAt);
   const tags = [
     getExamTypeLabel(item),
@@ -732,7 +730,7 @@ function renderNewsDetail(item, news, schools) {
 function renderPolicyDetail(item, news) {
   const mappedNewsId = getPolicyMappedNewsId(item);
   const mappedNews = mappedNewsId ? news.find((entry) => entry.id === mappedNewsId) : null;
-  const articleBodyMarkdown = readPolicyMarkdownFile(item);
+  const articleBodyMarkdown = item.content || '';
   const sourceName = item.source?.name || '官方来源';
   const examTypeLabel = getPolicyExamTypeLabel(item);
   const summaryText = cleanPolicyText(item.summary, item.title) || '暂无摘要';
