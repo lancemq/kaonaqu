@@ -28,12 +28,12 @@ CREATE TABLE public.schools (
   is_boarding           BOOLEAN NOT NULL DEFAULT FALSE,
   is_international      BOOLEAN NOT NULL DEFAULT FALSE,
   image                 TEXT NOT NULL DEFAULT '',
-  description           TEXT NOT NULL DEFAULT '',
-  achievements          TEXT NOT NULL DEFAULT '',
   admission_notes       TEXT NOT NULL DEFAULT '',
   profile_depth         TEXT NOT NULL DEFAULT 'foundation',
   features              JSONB NOT NULL DEFAULT '[]',
-  admission_info        JSONB NOT NULL DEFAULT '{}'
+  admission_info        JSONB NOT NULL DEFAULT '{}',
+  score_lines           JSONB NOT NULL DEFAULT '[]'::jsonb,
+  content              JSONB NOT NULL DEFAULT '[]'::jsonb
 );
 
 -- 索引

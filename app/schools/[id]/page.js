@@ -11,6 +11,8 @@ import {
   getSchoolTags,
   getSchoolTrainingDirections
 } from '../../../lib/site-utils';
+import { renderBlocks } from '../../../components/BlockRenderer';
+import { getSchoolOverview } from '../../../lib/school-content';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
@@ -114,7 +116,7 @@ export default async function SchoolDetailPage({ params }) {
   const stageName = getSchoolStage(school);
   const ownershipName = getSchoolOwnershipLabel(school) || school.schoolPropertyLabel || '';
   const schoolAttribute = school.schoolKeyLevel || ownershipName || '—';
-  const schoolSummary = school.description || '';
+  const schoolSummary = getSchoolOverview(school);
   const admissionInfo = getSchoolAdmissionInfo(school);
   const updatedText = formatSchoolMonth(school.updatedAt);
 
@@ -147,8 +149,6 @@ export default async function SchoolDetailPage({ params }) {
     [school.group || schoolAttribute || '—', '学校体系']
   ];
   const sections = [
-    ['学校概览', school.description || admissionInfo || ''],
-    ['办学成就', school.achievements || ''],
     ['办学特色', features.join('、') || trainingDirections.join('、') || ''],
     ['招生方式', admissionInfo || ''],
     ['升学出口', [
@@ -158,13 +158,22 @@ export default async function SchoolDetailPage({ params }) {
       school.firstTierRate ? `一本率：${school.firstTierRate}` : ''
     ].filter(Boolean).join('；')]
   ].filter(([, text]) => String(text || '').trim());
-  const scoreRows = Array.isArray(school.scoreLines) && school.scoreLines.length
-    ? school.scoreLines.slice(0, 3).map((row) => [row.year, row.score || row.minScore, row.plan || row.batch])
+  const scoreLines = Array.isArray(school.scoreLines) ? school.scoreLines : [];
+  const normalizeScoreYear = (y) => {
+    const s = String(y || '').trim();
+    return /^\d{4}$/.test(s) ? `${s}年` : (s || '—');
+  };
+  const scoreRows = scoreLines.length
+    ? scoreLines.map((row) => [
+        normalizeScoreYear(row.year),
+        String(row.score ?? row.minScore ?? '').trim() || '—'
+      ])
     : [
-      ['2025年', school.score2025, school.plan2025],
-      ['2024年', school.score2024, school.plan2024],
-      ['2023年', school.score2023, school.plan2023]
-    ].filter(([, score, plan]) => score || plan);
+        ['2025年', school.score2025],
+        ['2024年', school.score2024],
+        ['2023年', school.score2023]
+      ].filter(([, score]) => score);
+  const scoreLineNote = (scoreLines.find((r) => r.note && String(r.note).trim()) || {}).note || '';
   const competitionRows = Array.isArray(school.competitions)
     ? school.competitions.slice(0, 5).map((item) => [item.name || item.title, item.count || item.result || item.level])
     : [];
@@ -232,6 +241,10 @@ export default async function SchoolDetailPage({ params }) {
 
       <section className="school-pencil-body">
         <article className="school-pencil-main">
+          {Array.isArray(school.content) && school.content.length
+            ? renderBlocks(school.content, { sectionClass: 'school-pencil-section' })
+            : null}
+
           {sections.map(([title, text]) => (
             <section className="school-pencil-section" key={title}>
               <h2>{title}</h2>
@@ -280,15 +293,15 @@ export default async function SchoolDetailPage({ params }) {
             <section className="school-pencil-score">
               <h2>历年分数线</h2>
               <div className="school-pencil-score-table">
-                <div><span>年份</span><span>录取分数</span><span>招生计划</span></div>
-                {scoreRows.map(([year, score, plan]) => (
-                  <div key={`${year}-${score}-${plan}`}>
+                <div className="score-head"><span>年份</span><span>录取分数</span></div>
+                {scoreRows.map(([year, score]) => (
+                  <div className="score-row" key={year}>
                     <strong>{year}</strong>
-                    <b>{score || '—'}</b>
-                    <em>{plan || '—'}</em>
+                    <b className={/^[0-9]/.test(score) ? '' : 'is-text'}>{score}</b>
                   </div>
                 ))}
               </div>
+              {scoreLineNote ? <p className="school-pencil-score-note">{scoreLineNote}</p> : null}
             </section>
           ) : null}
 

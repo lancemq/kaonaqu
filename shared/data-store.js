@@ -116,28 +116,28 @@ function rowToSchool(row) {
     isBoarding: row.is_boarding,
     isInternational: row.is_international,
     image: row.image,
-    description: row.description,
-    achievements: row.achievements,
     admissionNotes: row.admission_notes,
     admissionCode: row.admission_info?.code || '',
     admissionMethods: row.admission_info?.methods || [],
     admissionRoutes: row.admission_info?.routes || [],
     contentFile: slug ? `content/schools/${slug}.md` : '',
     profileDepth: row.profile_depth || 'enhanced',
-    features: row.features || []
+    features: row.features || [],
+    scoreLines: Array.isArray(row.score_lines) ? row.score_lines : [],
+    content: Array.isArray(row.content) ? row.content : []
   };
 }
 
 // === 本地 JSON 与数据库表对齐 ===
 // data/schools.json 只应保留线上 schools 表存在的字段（camelCase 映射）。
-// 共 24 个：线上 22 列 + admission_info(jsonb) 拆出的 admissionCode/Methods/Routes。
+// 共 24 个：线上 22 列（含 score_lines / content jsonb 数组；学校概览/办学成就已迁入 content，不再单独存 description/achievements） + admission_info(jsonb) 拆出的 admissionCode/Methods/Routes。
 // 派生字段 districtId / schoolStage / contentFile 不是 DB 列，读取时补回、写回时剥离，
 // 以保证本地文件始终与数据库 schema 对齐，同时本地回退模式仍可用。
 const LOCAL_SCHOOL_DB_FIELDS = new Set([
   'id', 'dbId', 'name', 'districtName', 'schoolStageLabel', 'schoolPropertyLabel',
   'schoolKeyLevel', 'eliteCohort', 'group', 'address', 'phone', 'website', 'foundingYear',
-  'isBoarding', 'isInternational', 'image', 'description', 'achievements', 'admissionNotes',
-  'profileDepth', 'features', 'admissionCode', 'admissionMethods', 'admissionRoutes'
+  'isBoarding', 'isInternational', 'image', 'admissionNotes',
+  'profileDepth', 'features', 'scoreLines', 'content', 'admissionCode', 'admissionMethods', 'admissionRoutes'
 ]);
 
 // 仅保留线上表存在的字段（写回文件前调用）
@@ -284,11 +284,11 @@ function schoolToRow(school = {}) {
     is_boarding: !!school.isBoarding,
     is_international: !!school.isInternational,
     image: school.image || '',
-    description: school.description || '',
-    achievements: school.achievements || '',
     admission_notes: school.admissionNotes || '',
     profile_depth: school.profileDepth || 'enhanced',
     features: Array.isArray(school.features) ? school.features : [],
+    score_lines: Array.isArray(school.scoreLines) ? school.scoreLines : [],
+    content: Array.isArray(school.content) ? school.content : [],
     admission_info: {
       code: school.admissionCode || '',
       methods: Array.isArray(school.admissionMethods) ? school.admissionMethods : [],

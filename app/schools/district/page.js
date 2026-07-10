@@ -9,6 +9,7 @@ import {
   getSchoolStage,
   getSchoolType
 } from '../../../lib/site-utils';
+import { getSchoolOverview } from '../../../lib/school-content';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../shared/data-store');
@@ -190,7 +191,7 @@ export default async function DistrictIndexPage() {
             <Link className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
               <div><span>{district.name}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
               <strong>{school.name}</strong>
-              <p>{clipText(getSchoolAdmissionInfo(school) || school.schoolDescription || '学校信息持续整理中。', 46)}</p>
+              <p>{clipText(getSchoolAdmissionInfo(school) || getSchoolOverview(school) || '学校信息持续整理中。', 46)}</p>
               <b>进入 →</b>
             </Link>
           ))}

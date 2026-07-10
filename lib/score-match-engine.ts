@@ -14,6 +14,15 @@ export type ExamType = 'zhongkao' | 'gaokao';
 export type MatchCategory = 'reach' | 'match' | 'safety';
 type MatchSource = 'tier_reference' | 'rich_profile';
 
+// 历年录取分数线（与 schools 表 score_lines 列、详情页"历年分数线"对齐）
+export interface ScoreLine {
+  year?: string | number;
+  score?: string | number;
+  plan?: string;
+  batch?: string;
+  note?: string;
+}
+
 // 学校数据结构（与 rowToSchool / 本地缓存字段对齐）
 export interface SchoolRecord {
   id: string;
@@ -25,6 +34,7 @@ export interface SchoolRecord {
   eliteCohort?: string;
   schoolKeyLevel?: string;
   group?: string;
+  scoreLines?: ScoreLine[];
 }
 
 interface ScoreMatchInput {

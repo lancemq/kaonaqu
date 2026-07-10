@@ -12,6 +12,7 @@ import {
   getSchoolTrainingDirections,
   getSchoolType
 } from '../../../../lib/site-utils';
+import { getSchoolOverview } from '../../../../lib/school-content';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../../shared/data-store');
@@ -183,7 +184,7 @@ export default async function DistrictSchoolsPage({ params }) {
               <Link className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
                 <div><span>{getSchoolStage(school)}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
                 <strong>{school.name}</strong>
-                <p>{clipText(getSchoolAdmissionInfo(school) || school.schoolDescription || '学校信息持续整理中。', 46)}</p>
+                <p>{clipText(getSchoolAdmissionInfo(school) || getSchoolOverview(school) || '学校信息持续整理中。', 46)}</p>
                 <b>进入 →</b>
               </Link>
             ))}
@@ -209,7 +210,7 @@ export default async function DistrictSchoolsPage({ params }) {
                   <div className="district-channel-row-info">
                     <strong>{school.name}</strong>
                     <span>{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getSchoolOwnershipLabel(school) || '学校信息'}</span>
-                    <em>{clipText(getSchoolAdmissionInfo(school) || school.schoolDescription || '学校信息持续整理中。', 62)}</em>
+                    <em>{clipText(getSchoolAdmissionInfo(school) || getSchoolOverview(school) || '学校信息持续整理中。', 62)}</em>
                     {tags.length ? <small>{tags.join(' · ')}</small> : null}
                   </div>
                   <div className="district-channel-row-score">

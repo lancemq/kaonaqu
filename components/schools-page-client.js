@@ -13,6 +13,7 @@ import {
   getSchoolTrainingDirections,
   getSchoolType
 } from '../lib/site-utils';
+import { getSchoolOverview } from '../lib/school-content';
 
 const SCHOOLS_PER_PAGE = 10;
 
@@ -22,7 +23,7 @@ function getOwnershipLabel(school) {
 }
 
 function getSchoolPositioning(school) {
-  const desc = clipText(school?.description, 84);
+  const desc = clipText(getSchoolOverview(school), 84);
   if (desc && desc !== '暂无') {
     return desc;
   }
