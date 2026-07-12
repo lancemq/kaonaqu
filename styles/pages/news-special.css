@@ -487,6 +487,22 @@ body[data-page="news"] .policy-glossary-list {
     border-top: 1px solid var(--channel-line);
 }
 
+body[data-page="news"] .policy-process-section,
+body[data-page="news"] .policy-relation-section,
+body[data-page="news"] .policy-glossary-list {
+    display: grid;
+    gap: 22px;
+    align-content: start;
+}
+
+body[data-page="news"] .policy-block-intro {
+    margin: 0;
+    max-width: 780px;
+    color: var(--channel-muted);
+    font-size: 14px;
+    line-height: 1.72;
+}
+
 body[data-page="news"] .special-cards h2,
 body[data-page="news"] .policy-process-section h2,
 body[data-page="news"] .policy-relation-section h2,

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Fragment } from 'react';
 import { NewsAerialFooter, NewsAerialNav } from './news-aerial-ui';
 
 export function TopicSectionLabel({ children }) {
@@ -25,6 +26,139 @@ export function TopicEntry({ item }) {
   );
 }
 
+function PolicyProcessFlow({ steps, flow }) {
+  if (flow) {
+    return (
+      <div className="policy-process-flow">
+        {steps.map((step, index) => (
+          <Fragment key={step.title}>
+            <article className="policy-process-card">
+              <span className="policy-process-label">{step.label}</span>
+              <h3>{step.title}</h3>
+              {step.tags?.length ? (
+                <div className="policy-process-tags">
+                  {step.tags.map((tag) => (<span key={tag}>{tag}</span>))}
+                </div>
+              ) : null}
+              {step.desc ? <p>{step.desc}</p> : null}
+            </article>
+            {index < steps.length - 1 ? (
+              <div className="policy-process-arrow" aria-hidden="true">→</div>
+            ) : null}
+          </Fragment>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="special-card-grid">
+      {steps.map((step) => (
+        <article key={step.title} className="policy-process-card">
+          <span className="policy-process-label">{step.label}</span>
+          <h3>{step.title}</h3>
+          {step.tags?.length ? (
+            <div className="policy-process-tags">
+              {step.tags.map((tag) => (<span key={tag}>{tag}</span>))}
+            </div>
+          ) : null}
+          {step.desc ? <p>{step.desc}</p> : null}
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function PolicyRelationGrid({ items }) {
+  return (
+    <div className="policy-relation-grid">
+      {items.map((item) => (
+        <article key={item.title}>
+          <span className="policy-process-label">{item.value}</span>
+          <h3>{item.title}</h3>
+          {item.detail ? <p>{item.detail}</p> : null}
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function PolicyGlossary({ groups }) {
+  return (
+    <div className="policy-term-stack">
+      {groups.map((group) => (
+        <div key={group.heading} className="policy-term-group">
+          <h3>{group.heading}</h3>
+          <div className="policy-term-stack">
+            {group.terms.map((term) => (
+              <article key={term.term} className="policy-term-card">
+                {term.meta?.length ? (
+                  <div className="policy-term-meta">
+                    {term.meta.map((m) => (<span key={m.label}>{m.label}：{m.value}</span>))}
+                  </div>
+                ) : null}
+                <h4>{term.term}</h4>
+                {term.details?.length ? (
+                  <div className="policy-term-detail-grid">
+                    {term.details.map((d) => (
+                      <article key={d.label}>
+                        <span>{d.label}</span>
+                        <p>{d.value}</p>
+                      </article>
+                    ))}
+                  </div>
+                ) : null}
+                {term.desc ? <p>{term.desc}</p> : null}
+                {term.source ? <span className="policy-term-source">来源：{term.source}</span> : null}
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PolicyFaqStack({ items }) {
+  return (
+    <div className="policy-faq-stack">
+      {items.map((item, index) => (
+        <article key={item.question} className="policy-faq-card">
+          <span className="policy-faq-index">{String(index + 1).padStart(2, '0')}</span>
+          <div className="policy-faq-body">
+            <h3>{item.question}</h3>
+            <p className="policy-faq-answer">{item.answer}</p>
+            {item.meta?.length ? (
+              <div className="policy-faq-meta">
+                {item.meta.map((m) => (
+                  <article key={m.label}>
+                    <span>{m.label}</span>
+                    <p>{m.value}</p>
+                  </article>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function PolicyBlock({ block }) {
+  const wrapper = block.wrapper || 'policy-process-section';
+  return (
+    <section id={block.id} className={wrapper} aria-label={block.title}>
+      <TopicSectionLabel>{block.kicker}</TopicSectionLabel>
+      <h2>{block.title}</h2>
+      {block.intro ? <p className="policy-block-intro">{block.intro}</p> : null}
+      {block.type === 'process' ? <PolicyProcessFlow steps={block.steps} flow={block.flow} /> : null}
+      {block.type === 'relation' ? <PolicyRelationGrid items={block.items} /> : null}
+      {block.type === 'glossary' ? <PolicyGlossary groups={block.groups} /> : null}
+      {block.type === 'faq' ? <PolicyFaqStack items={block.items} /> : null}
+    </section>
+  );
+}
+
 export function NewsTopicSpecialPage({
   variant,
   kicker,
@@ -44,6 +178,7 @@ export function NewsTopicSpecialPage({
   policyItems,
   sideLinks,
   sideNotes,
+  policyBlocks,
   contentId
 }) {
   const variantHref = {
@@ -123,6 +258,10 @@ export function NewsTopicSpecialPage({
           ))}
         </div>
       </section>
+
+      {policyBlocks && policyBlocks.length > 0
+        ? policyBlocks.map((block) => <PolicyBlock key={block.id} block={block} />)
+        : null}
 
       <section className="special-content" id={contentId}>
         <section className="special-main">
