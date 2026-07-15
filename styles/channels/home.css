@@ -348,6 +348,97 @@ body[data-page="home"] .home-feature-panel .channel-kicker p {
     color: var(--channel-blue-soft);
 }
 
+body[data-page="home"] .home-focus-intro {
+    margin: 4px 0 4px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 14px;
+    line-height: 1.62;
+    -webkit-line-clamp: 3;
+}
+
+body[data-page="home"] .home-focus-topics {
+    display: grid;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+body[data-page="home"] .home-focus-topic {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: 18px 18px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+body[data-page="home"] .home-focus-topic:hover {
+    border-color: var(--channel-blue);
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+body[data-page="home"] .home-focus-topic-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+body[data-page="home"] .home-focus-topic-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--channel-blue);
+    color: #fff;
+    font-family: var(--channel-font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+body[data-page="home"] .home-focus-topic-head strong {
+    color: #fff;
+    font-family: var(--channel-font-heading);
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+body[data-page="home"] .home-focus-topic-tag {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-family: var(--channel-font-caption);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+body[data-page="home"] .home-focus-topic p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-line-clamp: 2;
+}
+
+body[data-page="home"] .home-focus-topic-link {
+    align-self: end;
+    color: var(--channel-blue-soft, #9fd0ff);
+    font-size: 13px;
+    font-weight: 700;
+}
+
 body[data-page="home"] .home-news-specials-slab {
     min-height: 520px;
 }

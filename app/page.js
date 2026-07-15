@@ -60,6 +60,24 @@ const NEWS_SPECIALS = [
   }
 ];
 
+// FOCUS 区块：中招 / 高招 两大升学主线的专题页入口
+const FOCUS_TOPICS = [
+  {
+    title: '中招专题',
+    label: '中考',
+    icon: '中',
+    href: '/news/zhongkao-special',
+    description: '上海中考招生政策、志愿填报、录取节奏与关键节点汇总'
+  },
+  {
+    title: '高招专题',
+    label: '高考',
+    icon: '高',
+    href: '/news/gaokao-special',
+    description: '高考综合改革、考试安排、招生录取等权威政策解读'
+  }
+];
+
 const KNOWLEDGE_TOPICS = [
   { label: '九年级中考总览', meta: 'GRADE 9', href: '/knowledge/grade-9' },
   { label: '数学压轴题路径', meta: 'MATH', href: '/knowledge/math-grade9' },
@@ -194,7 +212,6 @@ function SectionLabel({ children }) {
 export default async function HomePage() {
   const { districts, schools, news } = await loadDataStore();
   const sortedNews = sortNews(news);
-  const headline = sortedNews[0] || null;
   const featuredNews = pickFeaturedNews(sortedNews);
   const featuredSchools = getFeaturedSchools(schools);
   const districtHighlights = getDistrictHighlights(districts, schools);
@@ -297,11 +314,23 @@ export default async function HomePage() {
           <Link className="home-text-link" href="/news">查看全部新闻</Link>
         </div>
 
-        <aside className="home-feature-panel">
+        <aside className="home-feature-panel home-focus-panel">
           <SectionLabel>FOCUS</SectionLabel>
-          <h2>{headline?.title || '本周重点'}</h2>
-          <p>{headline?.summary || '从所有动态中挑出真正影响选择的信息，帮你抓住时间窗口。'}</p>
-          <Link href={getNewsHref(headline)}>阅读全文</Link>
+          <h2>中招 · 高招专题</h2>
+          <p className="home-focus-intro">聚焦上海中考与高考两大升学主线，进入专题一站式掌握政策、节点与录取节奏。</p>
+          <div className="home-focus-topics">
+            {FOCUS_TOPICS.map((topic) => (
+              <Link className="home-focus-topic" href={topic.href} key={topic.href}>
+                <div className="home-focus-topic-head">
+                  <span aria-hidden="true" className="home-focus-topic-icon">{topic.icon}</span>
+                  <strong>{topic.title}</strong>
+                  <em className="home-focus-topic-tag">{topic.label}</em>
+                </div>
+                <p>{topic.description}</p>
+                <span className="home-focus-topic-link">查看专题 →</span>
+              </Link>
+            ))}
+          </div>
         </aside>
       </section>
 
