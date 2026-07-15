@@ -159,7 +159,7 @@ function findSchoolByName(schools, name) {
 function getSchoolCompletenessScore(school) {
   const tags = Array.isArray(school.tags) ? school.tags.length : 0;
   const features = Array.isArray(school.features) ? school.features.length : 0;
-  return tags * 2 + features * 2 + [school.address, school.phone, school.website, school.admissionNotes].filter(Boolean).length;
+  return tags * 2 + features * 2 + [school.address, school.phone, school.website, school.admissionInfo?.notes].filter(Boolean).length;
 }
 
 function getFeaturedSchools(schools) {

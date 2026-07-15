@@ -158,7 +158,7 @@ async function listSchools(filters = {}) {
       school.schoolKeyLevel,
       school.eliteCohort,
       school.address,
-      school.admissionNotes,
+      school.admissionInfo?.notes,
       school.features
     ], q);
   }));

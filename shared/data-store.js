@@ -116,10 +116,17 @@ function rowToSchool(row) {
     isBoarding: row.is_boarding,
     isInternational: row.is_international,
     image: row.image,
-    admissionNotes: row.admission_notes,
+    // 统一招生信息源：所有招生字段都来自 admission_info
+    admissionInfo: {
+      code: row.admission_info?.code || '',
+      methods: Array.isArray(row.admission_info?.methods) ? row.admission_info.methods : [],
+      routes: Array.isArray(row.admission_info?.routes) ? row.admission_info.routes : [],
+      notes: row.admission_info?.notes || ''
+    },
+    // 兼容别名（全部派生自 admission_info）
     admissionCode: row.admission_info?.code || '',
-    admissionMethods: row.admission_info?.methods || [],
-    admissionRoutes: row.admission_info?.routes || [],
+    admissionMethods: Array.isArray(row.admission_info?.methods) ? row.admission_info.methods : [],
+    admissionRoutes: Array.isArray(row.admission_info?.routes) ? row.admission_info.routes : [],
     contentFile: slug ? `content/schools/${slug}.md` : '',
     profileDepth: row.profile_depth || 'enhanced',
     features: row.features || [],
@@ -136,7 +143,7 @@ function rowToSchool(row) {
 const LOCAL_SCHOOL_DB_FIELDS = new Set([
   'id', 'dbId', 'name', 'districtName', 'schoolStageLabel', 'schoolPropertyLabel',
   'schoolKeyLevel', 'eliteCohort', 'group', 'address', 'phone', 'website', 'foundingYear',
-  'isBoarding', 'isInternational', 'image', 'admissionNotes',
+  'isBoarding', 'isInternational', 'image', 'admissionInfo',
   'profileDepth', 'features', 'scoreLines', 'content', 'admissionCode', 'admissionMethods', 'admissionRoutes'
 ]);
 
@@ -284,15 +291,17 @@ function schoolToRow(school = {}) {
     is_boarding: !!school.isBoarding,
     is_international: !!school.isInternational,
     image: school.image || '',
-    admission_notes: school.admissionNotes || '',
     profile_depth: school.profileDepth || 'enhanced',
     features: Array.isArray(school.features) ? school.features : [],
     score_lines: Array.isArray(school.scoreLines) ? school.scoreLines : [],
     content: Array.isArray(school.content) ? school.content : [],
     admission_info: {
-      code: school.admissionCode || '',
-      methods: Array.isArray(school.admissionMethods) ? school.admissionMethods : [],
-      routes: Array.isArray(school.admissionRoutes) ? school.admissionRoutes : []
+      code: school.admissionInfo?.code || school.admissionCode || '',
+      methods: Array.isArray(school.admissionInfo?.methods) ? school.admissionInfo.methods
+        : (Array.isArray(school.admissionMethods) ? school.admissionMethods : []),
+      routes: Array.isArray(school.admissionInfo?.routes) ? school.admissionInfo.routes
+        : (Array.isArray(school.admissionRoutes) ? school.admissionRoutes : []),
+      notes: school.admissionInfo?.notes || ''
     }
   };
 }

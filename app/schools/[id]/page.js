@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import { getSchoolDataQuality } from '../../../lib/school-data-quality';
 import {
-  getSchoolAdmissionInfo,
+  getSchoolAdmissionStructured,
   getSchoolDistrictName,
   getSchoolFeatures,
   getSchoolOwnershipLabel,
@@ -117,7 +117,8 @@ export default async function SchoolDetailPage({ params }) {
   const ownershipName = getSchoolOwnershipLabel(school) || school.schoolPropertyLabel || '';
   const schoolAttribute = school.schoolKeyLevel || ownershipName || '—';
   const schoolSummary = getSchoolOverview(school);
-  const admissionInfo = getSchoolAdmissionInfo(school);
+  const admissionInfo = getSchoolAdmissionStructured(school);
+  const hasAdmission = Boolean(admissionInfo.code || admissionInfo.methods.length || admissionInfo.routes.length || admissionInfo.notes);
   const updatedText = formatSchoolMonth(school.updatedAt);
 
   const jsonLd = {
@@ -149,14 +150,7 @@ export default async function SchoolDetailPage({ params }) {
     [school.group || schoolAttribute || '—', '学校体系']
   ];
   const sections = [
-    ['办学特色', features.join('、') || trainingDirections.join('、') || ''],
-    ['招生方式', admissionInfo || ''],
-    ['升学出口', [
-      school.qingbeiCount ? `清北录取：${school.qingbeiCount}` : '',
-      school.fudanJiaodaCount ? `复旦交大：${school.fudanJiaodaCount}` : '',
-      school.project985Rate ? `985高校：${school.project985Rate}` : '',
-      school.firstTierRate ? `一本率：${school.firstTierRate}` : ''
-    ].filter(Boolean).join('；')]
+    ['办学特色', features.join('、') || trainingDirections.join('、') || '']
   ].filter(([, text]) => String(text || '').trim());
   const scoreLines = Array.isArray(school.scoreLines) ? school.scoreLines : [];
   const normalizeScoreYear = (y) => {
@@ -252,6 +246,50 @@ export default async function SchoolDetailPage({ params }) {
             </section>
           ))}
 
+          {hasAdmission ? (
+            <section className="school-pencil-section school-pencil-admission" key="admission">
+              <h2>招生信息</h2>
+              {admissionInfo.code ? (
+                <div className="school-pencil-admission-code">
+                  <span>招生代码</span>
+                  <strong>{admissionInfo.code}</strong>
+                </div>
+              ) : null}
+              {admissionInfo.methods.length ? (
+                <div className="school-pencil-admission-block">
+                  <h3>招生方式</h3>
+                  <ul className="school-pencil-admission-chips">
+                    {admissionInfo.methods.map((m, i) => {
+                      const label = typeof m === 'string' ? m : (m.route || m.name || m.label || m.type || '');
+                      const tip = typeof m === 'object' ? (m.description || m.stage || '') : '';
+                      return <li key={`${label}-${i}`} title={tip}>{label}</li>;
+                    })}
+                  </ul>
+                </div>
+              ) : null}
+              {admissionInfo.routes.length ? (
+                <div className="school-pencil-admission-block">
+                  <h3>升学路径</h3>
+                  <ul className="school-pencil-admission-chips">
+                    {admissionInfo.routes.map((r, i) => {
+                      const label = typeof r === 'string' ? r : (r.type || r.name || r.label || r.route || '');
+                      const tip = typeof r === 'object' ? (r.description || (r.year ? `${r.year}年` : '') || '') : '';
+                      return <li key={`${label}-${i}`} title={tip}>{label}</li>;
+                    })}
+                  </ul>
+                </div>
+              ) : null}
+              {admissionInfo.notes ? (
+                <p className="school-pencil-admission-notes">{admissionInfo.notes}</p>
+              ) : null}
+            </section>
+          ) : (
+            <section className="school-pencil-section school-pencil-admission is-empty" key="admission">
+              <h2>招生信息</h2>
+              <p className="school-pencil-admission-notes">该校招生信息以当年上海市及本区教育局发布的官方文件为准。</p>
+            </section>
+          )}
+
           {competitionRows.length ? (
             <section className="school-pencil-section">
               <h2>竞赛成绩</h2>
@@ -307,7 +345,7 @@ export default async function SchoolDetailPage({ params }) {
 
           {admissionRows.length ? (
             <section className="school-pencil-card">
-              <div className="school-pencil-kicker"><span></span><p>ADMISSION</p></div>
+              <div className="school-pencil-kicker"><span></span><p>OUTCOMES</p></div>
               <h2>升学出口</h2>
               {admissionRows.map(([label, value]) => (
                 <p key={label}><span>{label}</span><strong>{value}</strong></p>

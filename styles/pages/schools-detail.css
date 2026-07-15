@@ -1107,6 +1107,94 @@ body[data-page="schools"] .school-pencil-section .rich-block-divider {
     margin: 8px 0;
 }
 
+/* 招生信息结构化区块 */
+body[data-page="schools"] .school-pencil-admission {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+}
+
+body[data-page="schools"] .school-pencil-admission.is-empty .school-pencil-admission-notes {
+    color: #8a909a;
+    font-style: italic;
+}
+
+body[data-page="schools"] .school-pencil-admission-code {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 8px 16px;
+    width: fit-content;
+    border: 1px solid #b8d8f0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f0f6ff 0%, #e6f1fe 100%);
+}
+
+body[data-page="schools"] .school-pencil-admission-code span {
+    color: #2b6fa8;
+    font-family: var(--channel-font-caption);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+body[data-page="schools"] .school-pencil-admission-code strong {
+    color: #1a1a1a;
+    font-family: var(--channel-font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+body[data-page="schools"] .school-pencil-admission-block {
+    display: grid;
+    gap: 8px;
+}
+
+body[data-page="schools"] .school-pencil-admission-block h3 {
+    margin: 0;
+    color: #555;
+    font-family: var(--channel-font-caption);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+body[data-page="schools"] .school-pencil-admission-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body[data-page="schools"] .school-pencil-admission-chips li {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 14px;
+    border: 0.5px solid #d9e6c4;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #f4f9ec 0%, #eaf3da 100%);
+    color: #5a7d2a;
+    font-family: var(--channel-font-caption);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 1px 2px rgba(122, 162, 47, 0.08);
+}
+
+body[data-page="schools"] .school-pencil-admission-notes {
+    margin: 0;
+    padding: 14px 16px;
+    border-left: 3px solid #4a9fd8;
+    background: #f7fbff;
+    color: #444;
+    font-size: 15px;
+    line-height: 27px;
+    border-radius: 0 8px 8px 0;
+}
+
 body[data-page="schools"] .school-pencil-group-link {
     width: fit-content;
     padding: 6px 0;
