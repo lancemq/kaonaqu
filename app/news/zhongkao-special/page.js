@@ -263,11 +263,6 @@ export default async function ZhongkaoSpecialPage() {
       'admission-2026-special-education-high-school'
     ]
   );
-  const stageEntries = [
-    { label: '批次与分数', title: '先建立中招整体框架', description: '三大批次、750 分构成、名额分配，一条线看清。', count: 3, anchor: '#zk-batches' },
-    { label: '招生类型', title: '再看自主招生与加分', description: '四类自主招生、政策性照顾加分与同分优先。', count: 2, anchor: '#zk-zizhao' },
-    { label: '志愿与节点', title: '吃透志愿与时间线', description: '填报规则、全年时间链与常见误区。', count: 3, anchor: '#zk-zhiyuan' }
-  ];
   function getCurrentPhaseLabel() {
     const now = new Date();
     const month = now.getMonth() + 1;
@@ -295,14 +290,6 @@ export default async function ZhongkaoSpecialPage() {
         { value: '65%', label: '市重点名额分配比例' },
         { value: zhongkaoNews.length || '0', label: '当年动态' }
       ]}
-      facts={[
-        { title: '三批次顺序先分清', detail: '自主招生 → 名额分配综合评价 → 统一招生，依次投档，前批录走后批失效。' },
-        { title: '总分是 750 不是 660', detail: '上海中考满分 750，由七科（含开卷、日常考核、提前测试）组成。' },
-        { title: '名额分配看 800 分', detail: '学业考 750 + 综合素质评价 50 = 800 分排序，综评合格即满分。' }
-      ]}
-      stageTitle="先判断自己现在更该看哪一段"
-      stageDescription="从录取批次到计分规则，再到志愿录取与加分，把中招政策拆成能直接行动的三块。"
-      stageEntries={stageEntries}
       policyBlocks={policyBlocks}
       lead={leadNews ? toTopicEntry(leadNews) : null}
       checklist={currentChecklist}

@@ -263,11 +263,6 @@ export default async function GaokaoSpecialPage() {
       'exam-2026-xuekao-seven-subject-requirements'
     ]
   );
-  const stageEntries = [
-    { label: '模式与批次', title: '先看清考试与录取框架', description: '3+3 与 660 分、本科各批次与志愿数量。', count: 2, anchor: '#gk-mode' },
-    { label: '特殊路径', title: '再看综评、强基与艺体', description: '综合评价、强基计划、院校专业组与艺体招生。', count: 4, anchor: '#gk-zongping' },
-    { label: '志愿与时间', title: '吃透平行志愿与时间线', description: '院校专业组、学业水平、三通道与常见误区。', count: 4, anchor: '#gk-zhuanyezu' }
-  ];
   function getCurrentPhaseLabel() {
     const now = new Date();
     const month = now.getMonth() + 1;
@@ -295,14 +290,6 @@ export default async function GaokaoSpecialPage() {
         { value: '24', label: '普通批平行志愿' },
         { value: gaokaoNews.length || '0', label: '当年动态' }
       ]}
-      facts={[
-        { title: '总分是 660 不是 750', detail: '上海秋考 3+3 满分为 660 分，与外省市 750 分制不可直接比较。' },
-        { title: '院校专业组是投档单位', detail: '本科普通批 24 个院校专业组平行志愿，调剂仅限组内，存在一轮投档退档风险。' },
-        { title: '综评要看校测', detail: '11 所院校高考 85% + 校测 15%，且须 5 月先报名初审，否则无资格。' }
-      ]}
-      stageTitle="先判断自己现在更该进入哪一条高招路径"
-      stageDescription="考试模式、录取批次、综合评价与强基、院校专业组与艺体，分开读避免把不同批次和资格混在一起。"
-      stageEntries={stageEntries}
       policyBlocks={policyBlocks}
       lead={leadNews ? toTopicEntry(leadNews) : null}
       checklist={currentChecklist}

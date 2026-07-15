@@ -240,24 +240,26 @@ export function NewsTopicSpecialPage({
         </section>
       ) : null}
 
-      <section className="special-stage-wrap" aria-label="专题阅读路径">
-        <div className="special-stage-head">
-          <TopicSectionLabel>PATH</TopicSectionLabel>
-          <h2>{stageTitle}</h2>
-          <p>{stageDescription}</p>
-        </div>
-        <div className="special-stage-grid">
-          {stageEntries.map((item, index) => (
-            <a key={item.label} href={item.anchor} className="special-stage-card">
-              <span>{item.label}</span>
-              <strong>{item.count} 条内容</strong>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <b>{String(index + 1).padStart(2, '0')}</b>
-            </a>
-          ))}
-        </div>
-      </section>
+      {stageEntries && stageEntries.length > 0 ? (
+        <section className="special-stage-wrap" aria-label="专题阅读路径">
+          <div className="special-stage-head">
+            <TopicSectionLabel>PATH</TopicSectionLabel>
+            <h2>{stageTitle}</h2>
+            <p>{stageDescription}</p>
+          </div>
+          <div className="special-stage-grid">
+            {stageEntries.map((item, index) => (
+              <a key={item.label} href={item.anchor} className="special-stage-card">
+                <span>{item.label}</span>
+                <strong>{item.count} 条内容</strong>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <b>{String(index + 1).padStart(2, '0')}</b>
+              </a>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {policyBlocks && policyBlocks.length > 0
         ? policyBlocks.map((block) => <PolicyBlock key={block.id} block={block} />)
