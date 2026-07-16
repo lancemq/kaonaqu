@@ -3,45 +3,15 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
-  filterSchools,
-  clipText,
   formatSchoolUpdate,
-  getUpdateSortValue,
-  getSchoolDistrictName,
-  getSchoolStage,
-  getSchoolSpecializationLabels,
-  getSchoolTrainingDirections,
-  getSchoolType
+  getUpdateSortValue
 } from '../lib/site-utils';
-import { getSchoolOverview } from '../lib/school-content';
 
 const SCHOOLS_PER_PAGE = 10;
 
 function getOwnershipLabel(school) {
   const label = String(school?.schoolPropertyLabel || '').trim();
   return label || '—';
-}
-
-function getSchoolPositioning(school) {
-  const desc = clipText(getSchoolOverview(school), 84);
-  if (desc && desc !== '暂无') {
-    return desc;
-  }
-  const directions = getSchoolTrainingDirections(school);
-  if (directions.length) {
-    return `培养方向：${directions.slice(0, 2).join('、')}`;
-  }
-  return '';
-}
-
-function buildCardTags(school) {
-  const values = [
-    ...getSchoolSpecializationLabels(school),
-    ...(school.features || []),
-    ...getSchoolTrainingDirections(school)
-  ].filter(Boolean);
-
-  return Array.from(new Set(values)).slice(0, 4);
 }
 
 export default function SchoolsPageClient({
@@ -109,9 +79,11 @@ export default function SchoolsPageClient({
 
   const filteredSchools = useMemo(
     () => {
-      let result = filterSchools(schools, {
-        district: activeDistrict,
-        query: searchQuery
+      const q = searchQuery.trim().toLowerCase();
+      let result = schools.filter((s) => {
+        if (activeDistrict !== 'all' && s.districtId !== activeDistrict) return false;
+        if (q && !s.searchText.includes(q)) return false;
+        return true;
       });
       if (activeStage !== 'all') {
         result = result.filter((s) => String(s?.schoolStageLabel || '').trim() === activeStage);
@@ -364,28 +336,25 @@ export default function SchoolsPageClient({
               <div className="schools-aerial-empty">
                 <p>没有匹配的学校，请调整筛选条件。</p>
               </div>
-            ) : pagedSchools.map((school) => {
-              const cardTags = buildCardTags(school);
-              return (
-                <article key={school.id} className="schools-aerial-card-wrap">
-                  <Link href={`/schools/${school.id}`} className="schools-aerial-card">
-                    <div className="schools-aerial-card-main">
-                      <p>{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getOwnershipLabel(school)}</p>
-                      <h3>{school.name}</h3>
-                      <span>{getSchoolPositioning(school) || '查看学校画像、招生路径与择校提示。'}</span>
-                      <div className="schools-aerial-card-tags">
-                        {cardTags.slice(0, 4).map((tag) => <em key={tag}>{tag}</em>)}
-                      </div>
+            ) : pagedSchools.map((school) => (
+              <article key={school.id} className="schools-aerial-card-wrap">
+                <Link href={`/schools/${school.id}`} className="schools-aerial-card">
+                  <div className="schools-aerial-card-main">
+                    <p>{school.districtName} / {school.schoolStageLabel} / {getOwnershipLabel(school)}</p>
+                    <h3>{school.name}</h3>
+                    <span>{school.positioning || '查看学校画像、招生路径与择校提示。'}</span>
+                    <div className="schools-aerial-card-tags">
+                      {school.tags.slice(0, 4).map((tag) => <em key={tag}>{tag}</em>)}
                     </div>
-                    <div className="schools-aerial-card-side">
-                      <strong>{school.eliteCohort || school.schoolKeyLevel || getSchoolType(school) || '—'}</strong>
-                      <small>更新于 {formatSchoolUpdate(school.updatedAt)}</small>
-                      <b>查看详情 →</b>
-                    </div>
-                  </Link>
-                </article>
-              );
-            })}
+                  </div>
+                  <div className="schools-aerial-card-side">
+                    <strong>{school.eliteCohort || school.schoolKeyLevel || school.schoolPropertyLabel || '—'}</strong>
+                    <small>更新于 {formatSchoolUpdate(school.updatedAt)}</small>
+                    <b>查看详情 →</b>
+                  </div>
+                </Link>
+              </article>
+            ))}
           </div>
 
           <div className="pager">

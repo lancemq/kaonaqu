@@ -1,8 +1,73 @@
 import { createRequire } from 'module';
 import SchoolsPageClient from '../../components/schools-page-client';
+import { getSchoolOverview } from '../../lib/school-content';
+import {
+  getSchoolTrainingDirections,
+  getSchoolSpecializationLabels,
+  getSchoolDistrictName,
+  getSchoolFeatures,
+  getSchoolAdmissionInfo,
+  getSchoolStage,
+  getSchoolType,
+  clipText
+} from '../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../shared/data-store');
+
+// 列表卡只需轻量字段：服务端用完整 school 对象预计算 content 衍生值，
+// 避免把 content / scoreLines / admissionInfo / address 等"详情级大对象"全量下发。
+// 实测全量序列化约 1.93MB，轻量模型约数百 KB（降数倍），筛选交互逻辑保持不变。
+function buildSchoolSearchText(school) {
+  const haystack = [
+    school.name,
+    getSchoolDistrictName(school),
+    getSchoolStage(school),
+    getSchoolType(school),
+    school.schoolKeyLevel,
+    school.eliteCohort,
+    school.address,
+    getSchoolAdmissionInfo(school),
+    ...getSchoolTrainingDirections(school),
+    ...getSchoolFeatures(school)
+  ].join(' ').toLowerCase();
+  return haystack;
+}
+
+function getSchoolPositioning(school) {
+  const desc = clipText(getSchoolOverview(school), 84);
+  if (desc && desc !== '暂无') return desc;
+  const directions = getSchoolTrainingDirections(school);
+  if (directions.length) return `培养方向：${directions.slice(0, 2).join('、')}`;
+  return '';
+}
+
+function buildCardTags(school) {
+  const values = [
+    ...getSchoolSpecializationLabels(school),
+    ...getSchoolFeatures(school),
+    ...getSchoolTrainingDirections(school)
+  ].filter(Boolean);
+  return Array.from(new Set(values)).slice(0, 4);
+}
+
+function toSchoolListCard(school) {
+  return {
+    id: school.id,
+    name: school.name,
+    districtId: school.districtId || '',
+    districtName: getSchoolDistrictName(school),
+    schoolStageLabel: school.schoolStageLabel || '',
+    schoolPropertyLabel: school.schoolPropertyLabel || '',
+    schoolKeyLevel: school.schoolKeyLevel || '',
+    eliteCohort: school.eliteCohort || '',
+    updatedAt: school.updatedAt || '',
+    schoolStage: school.schoolStage || '',
+    positioning: getSchoolPositioning(school),
+    tags: buildCardTags(school),
+    searchText: buildSchoolSearchText(school)
+  };
+}
 
 export const metadata = {
   title: '上海初中高中学校库 - 按区查询学校信息 | 考哪去',
@@ -13,7 +78,8 @@ export const metadata = {
 export const revalidate = 86400;
 
 export default async function SchoolsPage({ searchParams }) {
-  const { districts, schools, news } = await loadDataStore();
+  const { districts, schools } = await loadDataStore();
+  const listSchools = schools.map(toSchoolListCard);
   const params = await searchParams;
   const initialDistrict = typeof params?.district === 'string' ? params.district : 'all';
   const initialStage = typeof params?.stage === 'string' ? params.stage : 'all';
@@ -38,8 +104,7 @@ export default async function SchoolsPage({ searchParams }) {
       />
       <SchoolsPageClient
         districts={districts}
-        schools={schools}
-        news={news}
+        schools={listSchools}
         initialDistrict={initialDistrict}
         initialStage={initialStage}
         initialProperty={initialProperty}

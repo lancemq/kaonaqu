@@ -523,7 +523,13 @@ async function writeNewsCache(news) {
 
 // 数据来源始终是线上数据库；schools.json / news.json 仅作为运行时缓存。
 // DB 可读时：取数并刷新本地缓存；DB 不可读时：降级到本地缓存文件。
-async function loadDataStore() {
+// 进程内 memo 缓存：学校数据极少变动，避免每次请求都打 Supabase 查询 888 行。
+// 缓存命中时仍返回同一份不可变 state；调用方均只读不修改，安全共享。
+let _storeCache = null;
+let _storeCacheAt = 0;
+const STORE_CACHE_TTL_MS = 60 * 1000;
+
+async function loadDataStoreFresh() {
   if (isSupabaseConfigured()) {
     try {
       const [schools, news] = await Promise.all([
@@ -544,6 +550,16 @@ async function loadDataStore() {
 
   // 降级：读本地缓存（运行时由数据库生成的 schools.json / news.json 等）
   return loadLocalData();
+}
+
+async function loadDataStore() {
+  const now = Date.now();
+  if (_storeCache && now - _storeCacheAt < STORE_CACHE_TTL_MS) {
+    return _storeCache;
+  }
+  _storeCache = await loadDataStoreFresh();
+  _storeCacheAt = now;
+  return _storeCache;
 }
 
 module.exports = {
