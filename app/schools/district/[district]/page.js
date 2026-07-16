@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import {
   clipText,
-  formatSchoolUpdate,
   getDistrictSchoolTopic,
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
@@ -34,7 +33,7 @@ function sortSchoolsBySignal(list) {
     .sort((left, right) => {
       const rightSignal = (right.features?.length || 0) + (right.tags?.length || 0);
       const leftSignal = (left.features?.length || 0) + (left.tags?.length || 0);
-      return rightSignal - leftSignal || String(right.updatedAt || '').localeCompare(String(left.updatedAt || ''));
+      return rightSignal - leftSignal;
     });
 }
 
@@ -116,7 +115,6 @@ export default async function DistrictSchoolsPage({ params }) {
     complete: sortedSchools.filter((school) => school.schoolStage === 'complete')
   };
   const featured = sortedSchools.slice(0, 6);
-  const latestUpdated = formatSchoolUpdate(sortedSchools[0]?.updatedAt);
   const relatedDistricts = districts
     .filter((item) => item.id !== districtInfo.id)
     .slice()
@@ -169,7 +167,6 @@ export default async function DistrictSchoolsPage({ params }) {
           <p>{districtOverview}</p>
         </div>
         <div className="district-channel-overview-stats">
-          <article><strong>{latestUpdated}</strong><span>最近更新</span></article>
           <article><strong>{topStage?.label || '学段'}</strong><span>主要学段</span></article>
           <article><strong>{districtSchools.filter((school) => school.schoolPropertyLabel === '民办').length}</strong><span>民办记录</span></article>
         </div>
@@ -215,7 +212,6 @@ export default async function DistrictSchoolsPage({ params }) {
                   </div>
                   <div className="district-channel-row-score">
                     <strong>{getSchoolType(school) || '—'}</strong>
-                    <span>{formatSchoolUpdate(school.updatedAt)}</span>
                   </div>
                 </Link>
               );

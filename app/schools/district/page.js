@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { createRequire } from 'module';
 import {
   clipText,
-  formatSchoolUpdate,
   getDistrictSchoolTopic,
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
@@ -21,17 +20,8 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic';
 
-function getLatestUpdate(schools) {
-  const latest = schools
-    .map((school) => String(school.updatedAt || '').trim())
-    .filter(Boolean)
-    .sort()
-    .at(-1);
-
-  if (!latest) return '持续整理';
-
-  const match = latest.match(/^(\d{4})-(\d{2})-(\d{2})/);
-  return match ? `${match[1]}.${match[2]}.${match[3]}` : formatSchoolUpdate(latest);
+function getLatestUpdate() {
+  return '持续整理';
 }
 
 function countByStage(schools, stage) {
@@ -50,7 +40,7 @@ function buildDistrictRows(districts, schools) {
         complete: countByStage(districtSchools, 'complete'),
         publicCount: districtSchools.filter((school) => school.schoolPropertyLabel === '公办').length,
         privateCount: districtSchools.filter((school) => school.schoolPropertyLabel === '民办').length,
-        latestUpdated: getLatestUpdate(districtSchools),
+        latestUpdated: getLatestUpdate(),
         topic: getDistrictSchoolTopic(district),
         overview: district.districtOverview || district.description || '区域学校信息持续整理中。'
       };

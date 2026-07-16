@@ -61,7 +61,6 @@ function toSchoolListCard(school) {
     schoolPropertyLabel: school.schoolPropertyLabel || '',
     schoolKeyLevel: school.schoolKeyLevel || '',
     eliteCohort: school.eliteCohort || '',
-    updatedAt: school.updatedAt || '',
     schoolStage: school.schoolStage || '',
     positioning: getSchoolPositioning(school),
     tags: buildCardTags(school),

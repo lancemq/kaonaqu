@@ -2,10 +2,6 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import {
-  formatSchoolUpdate,
-  getUpdateSortValue
-} from '../lib/site-utils';
 
 const SCHOOLS_PER_PAGE = 10;
 
@@ -156,14 +152,6 @@ export default function SchoolsPageClient({
   const currentDistrictLabel = activeDistrict === 'all'
     ? '全市范围'
     : (districts.find((item) => item.id === activeDistrict)?.name || activeDistrict);
-
-  const latestUpdated = useMemo(() => {
-    const values = schools
-      .map((school) => String(school.updatedAt || '').trim())
-      .filter(Boolean)
-      .sort((left, right) => getUpdateSortValue(right) - getUpdateSortValue(left));
-    return formatSchoolUpdate(values[0]);
-  }, [schools]);
 
   const activeFilterCount = activeFilterSummary.length;
 
@@ -349,7 +337,6 @@ export default function SchoolsPageClient({
                   </div>
                   <div className="schools-aerial-card-side">
                     <strong>{school.eliteCohort || school.schoolKeyLevel || school.schoolPropertyLabel || '—'}</strong>
-                    <small>更新于 {formatSchoolUpdate(school.updatedAt)}</small>
                     <b>查看详情 →</b>
                   </div>
                 </Link>

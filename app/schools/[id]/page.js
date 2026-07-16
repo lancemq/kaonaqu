@@ -63,12 +63,6 @@ function renderInlineMarkdown(text) {
   return parts;
 }
 
-function formatSchoolMonth(value) {
-  const text = String(value || '').trim();
-  const match = text.match(/^(\d{4})[-/.](\d{1,2})/);
-  return match ? `${match[1]}-${match[2].padStart(2, '0')}` : text;
-}
-
 export async function generateMetadata({ params }) {
   const { schools } = await loadDataStore();
   const { id } = await params;
@@ -119,7 +113,6 @@ export default async function SchoolDetailPage({ params }) {
   const schoolSummary = getSchoolOverview(school);
   const admissionInfo = getSchoolAdmissionStructured(school);
   const hasAdmission = Boolean(admissionInfo.code || admissionInfo.methods.length || admissionInfo.routes.length || admissionInfo.notes);
-  const updatedText = formatSchoolMonth(school.updatedAt);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -140,8 +133,7 @@ export default async function SchoolDetailPage({ params }) {
   const chipItems = [
     districtName ? { text: districtName, type: 'district' } : null,
     stageName ? { text: stageName, type: 'stage' } : null,
-    ownershipName ? { text: ownershipName, type: 'ownership' } : null,
-    updatedText ? { text: `更新于 ${updatedText}`, type: 'updated' } : null
+    ownershipName ? { text: ownershipName, type: 'ownership' } : null
   ].filter(Boolean);
   const headerStats = [
     [school.foundingYear || '—', '建校时间'],
@@ -182,8 +174,7 @@ export default async function SchoolDetailPage({ params }) {
     ['办学属性', school.schoolPropertyLabel || ''],
     ['学校类型', school.categoryName || school.category || school.schoolKeyLevel || ''],
     ['所在区域', districtName],
-    ['学段', stageName],
-    ['更新时间', updatedText]
+    ['学段', stageName]
   ].filter(([, value]) => String(value || '').trim());
   const admissionRows = [
     ['清北录取', school.qingbeiCount || school.topUniversityCount],
