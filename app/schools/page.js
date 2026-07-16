@@ -15,10 +15,10 @@ import {
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../shared/data-store');
 
-// 列表卡只需轻量字段：服务端用完整 school 对象预计算 content 衍生值，
-// 避免把 content / scoreLines / admissionInfo / address 等"详情级大对象"全量下发。
-// 实测全量序列化约 1.93MB，轻量模型约数百 KB（降数倍），筛选交互逻辑保持不变。
-function buildSchoolSearchText(school) {
+const SCHOOLS_PER_PAGE = 10;
+
+// 仅服务端用于 query 匹配，绝不随列表下发客户端
+function buildSearchText(school) {
   const haystack = [
     school.name,
     getSchoolDistrictName(school),
@@ -51,6 +51,8 @@ function buildCardTags(school) {
   return Array.from(new Set(values)).slice(0, 4);
 }
 
+// 仅展示所需字段（不含 searchText），只对被筛选出的 ≤10 所调用，
+// 因此服务端 content 解析/概览/训练方向开销从 888× 降到 10×。
 function toSchoolListCard(school) {
   return {
     id: school.id,
@@ -63,9 +65,30 @@ function toSchoolListCard(school) {
     eliteCohort: school.eliteCohort || '',
     schoolStage: school.schoolStage || '',
     positioning: getSchoolPositioning(school),
-    tags: buildCardTags(school),
-    searchText: buildSchoolSearchText(school)
+    tags: buildCardTags(school)
   };
+}
+
+function filterSchools(schools, filters) {
+  const q = (filters.query || '').trim().toLowerCase();
+  return schools.filter((s) => {
+    if (filters.district !== 'all' && s.districtId !== filters.district) return false;
+    if (filters.stage !== 'all' && (s.schoolStageLabel || '') !== filters.stage) return false;
+    if (filters.property !== 'all' && (s.schoolPropertyLabel || '') !== filters.property) return false;
+    if (filters.keyLevel !== 'all' && (s.schoolKeyLevel || '') !== filters.keyLevel) return false;
+    if (filters.cohort !== 'all' && (s.eliteCohort || '') !== filters.cohort) return false;
+    if (q && !buildSearchText(s).includes(q)) return false;
+    return true;
+  });
+}
+
+function distinctLabels(schools, pick) {
+  const set = new Set();
+  for (const s of schools) {
+    const v = pick(s);
+    if (v) set.add(v);
+  }
+  return Array.from(set);
 }
 
 export const metadata = {
@@ -74,18 +97,42 @@ export const metadata = {
   keywords: ['上海学校', '上海初中', '上海高中', '学校查询', '择校', '上海16区学校']
 };
 
+// 读 searchParams → 动态渲染（按 M3 全服务端筛选/分页），revalidate 仅作语义标注。
 export const revalidate = 86400;
 
 export default async function SchoolsPage({ searchParams }) {
   const { districts, schools } = await loadDataStore();
-  const listSchools = schools.map(toSchoolListCard);
   const params = await searchParams;
-  const initialDistrict = typeof params?.district === 'string' ? params.district : 'all';
-  const initialStage = typeof params?.stage === 'string' ? params.stage : 'all';
-  const initialProperty = typeof params?.property === 'string' ? params.property : 'all';
-  const initialKeyLevel = typeof params?.keyLevel === 'string' ? params.keyLevel : 'all';
-  const initialCohort = typeof params?.cohort === 'string' ? params.cohort : 'all';
-  const initialQuery = typeof params?.query === 'string' ? params.query : '';
+
+  const filters = {
+    district: typeof params?.district === 'string' ? params.district : 'all',
+    stage: typeof params?.stage === 'string' ? params.stage : 'all',
+    property: typeof params?.property === 'string' ? params.property : 'all',
+    keyLevel: typeof params?.keyLevel === 'string' ? params.keyLevel : 'all',
+    cohort: typeof params?.cohort === 'string' ? params.cohort : 'all',
+    query: typeof params?.query === 'string' ? params.query : ''
+  };
+  const requestedPage = parseInt(typeof params?.page === 'string' ? params.page : '1', 10);
+  const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+
+  const filtered = filterSchools(schools, filters);
+  const total = filtered.length;
+  const totalPages = Math.max(1, Math.ceil(total / SCHOOLS_PER_PAGE));
+  const safePage = Math.min(page, totalPages);
+  const pageItems = filtered.slice((safePage - 1) * SCHOOLS_PER_PAGE, safePage * SCHOOLS_PER_PAGE);
+  const cards = pageItems.map(toSchoolListCard);
+
+  const filterOptions = {
+    stage: distinctLabels(schools, (s) => (s.schoolStageLabel || '').trim()),
+    property: distinctLabels(schools, (s) => (s.schoolPropertyLabel || '').trim()),
+    keyLevel: distinctLabels(schools, (s) => (s.schoolKeyLevel || '').trim()),
+    cohort: distinctLabels(schools, (s) => (s.eliteCohort || '').trim())
+  };
+
+  const stageTotals = { junior: 0, senior_high: 0, complete: 0 };
+  for (const s of schools) {
+    if (stageTotals[s.schoolStage] !== undefined) stageTotals[s.schoolStage] += 1;
+  }
 
   const itemListJsonLd = {
     '@context': 'https://schema.org',
@@ -103,13 +150,13 @@ export default async function SchoolsPage({ searchParams }) {
       />
       <SchoolsPageClient
         districts={districts}
-        schools={listSchools}
-        initialDistrict={initialDistrict}
-        initialStage={initialStage}
-        initialProperty={initialProperty}
-        initialKeyLevel={initialKeyLevel}
-        initialCohort={initialCohort}
-        initialQuery={initialQuery}
+        schools={cards}
+        total={total}
+        totalPages={totalPages}
+        currentPage={safePage}
+        filters={filters}
+        filterOptions={filterOptions}
+        stageTotals={stageTotals}
       />
     </>
   );

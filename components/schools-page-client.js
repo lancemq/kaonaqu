@@ -1,102 +1,60 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useMemo, useState, useTransition } from 'react';
 
-const SCHOOLS_PER_PAGE = 10;
+const FILTER_KEYS = ['district', 'stage', 'property', 'keyLevel', 'cohort', 'query'];
 
 function getOwnershipLabel(school) {
   const label = String(school?.schoolPropertyLabel || '').trim();
   return label || '—';
 }
 
+function buildHref(base, next) {
+  const merged = { ...base, page: 1, ...next };
+  const qs = new URLSearchParams();
+  for (const key of FILTER_KEYS) {
+    const v = merged[key];
+    if (v && v !== 'all') qs.set(key, v);
+  }
+  if (merged.page && Number(merged.page) > 1) qs.set('page', String(merged.page));
+  const s = qs.toString();
+  return s ? `/schools?${s}` : '/schools';
+}
+
 export default function SchoolsPageClient({
-  districts,
-  schools,
-  initialDistrict = 'all',
-  initialStage = 'all',
-  initialProperty = 'all',
-  initialKeyLevel = 'all',
-  initialCohort = 'all',
-  initialQuery = ''
+  districts = [],
+  schools = [],
+  total = 0,
+  totalPages = 1,
+  currentPage = 1,
+  filters = { district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', query: '' },
+  filterOptions = { stage: [], property: [], keyLevel: [], cohort: [] },
+  stageTotals = { junior: 0, senior_high: 0, complete: 0 }
 }) {
-  const [activeDistrict, setActiveDistrict] = useState(initialDistrict);
-  const [activeStage, setActiveStage] = useState(initialStage);
-  const [activeProperty, setActiveProperty] = useState(initialProperty);
-  const [activeKeyLevel, setActiveKeyLevel] = useState(initialKeyLevel);
-  const [activeCohort, setActiveCohort] = useState(initialCohort);
-  const [queryInput, setQueryInput] = useState(initialQuery);
-  const [searchQuery, setSearchQuery] = useState(initialQuery);
-  const [currentPage, setCurrentPage] = useState(1);
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const [queryInput, setQueryInput] = useState(filters.query || '');
 
-  const stageOptions = useMemo(() => {
-    const map = new Map();
-    for (const school of schools) {
-      const label = String(school?.schoolStageLabel || '').trim();
-      if (label && !map.has(label)) {
-        map.set(label, { value: label, label });
-      }
-    }
-    return [{ value: 'all', label: '全部学段' }, ...map.values()];
-  }, [schools]);
+  // 服务端是唯一数据源：URL 变化即重新请求并下发当前页 10 条。
+  // queryInput 仅在用户本地输入时变更，提交后由 filters.query 回写。
+  useEffect(() => {
+    setQueryInput(filters.query || '');
+  }, [filters.query]);
 
-  const propertyOptions = useMemo(() => {
-    const map = new Map();
-    for (const school of schools) {
-      const label = String(school?.schoolPropertyLabel || '').trim();
-      if (label && !map.has(label)) {
-        map.set(label, { value: label, label });
-      }
-    }
-    return [{ value: 'all', label: '全部性质' }, ...map.values()];
-  }, [schools]);
+  const navigate = (next) => {
+    startTransition(() => {
+      router.push(buildHref(filters, next));
+    });
+  };
 
-  const keyLevelOptions = useMemo(() => {
-    const map = new Map();
-    for (const school of schools) {
-      const label = String(school?.schoolKeyLevel || '').trim();
-      if (label && !map.has(label)) {
-        map.set(label, { value: label, label });
-      }
-    }
-    return [{ value: 'all', label: '全部等级' }, ...map.values()];
-  }, [schools]);
-
-  const cohortOptions = useMemo(() => {
-    const map = new Map();
-    for (const school of schools) {
-      const label = String(school?.eliteCohort || '').trim();
-      if (label && !map.has(label)) {
-        map.set(label, { value: label, label });
-      }
-    }
-    return [{ value: 'all', label: '全部荣誉' }, ...map.values()];
-  }, [schools]);
-
-  const filteredSchools = useMemo(
-    () => {
-      const q = searchQuery.trim().toLowerCase();
-      let result = schools.filter((s) => {
-        if (activeDistrict !== 'all' && s.districtId !== activeDistrict) return false;
-        if (q && !s.searchText.includes(q)) return false;
-        return true;
-      });
-      if (activeStage !== 'all') {
-        result = result.filter((s) => String(s?.schoolStageLabel || '').trim() === activeStage);
-      }
-      if (activeProperty !== 'all') {
-        result = result.filter((s) => String(s?.schoolPropertyLabel || '').trim() === activeProperty);
-      }
-      if (activeKeyLevel !== 'all') {
-        result = result.filter((s) => String(s?.schoolKeyLevel || '').trim() === activeKeyLevel);
-      }
-      if (activeCohort !== 'all') {
-        result = result.filter((s) => String(s?.eliteCohort || '').trim() === activeCohort);
-      }
-      return result;
-    },
-    [schools, activeDistrict, searchQuery, activeStage, activeProperty, activeKeyLevel, activeCohort]
-  );
+  const activeDistrict = filters.district;
+  const activeStage = filters.stage;
+  const activeProperty = filters.property;
+  const activeKeyLevel = filters.keyLevel;
+  const activeCohort = filters.cohort;
+  const searchQuery = filters.query || '';
 
   const highlightedDistricts = useMemo(
     () => districts.slice().sort((left, right) => Number(right.schoolCount || 0) - Number(left.schoolCount || 0)).slice(0, 6),
@@ -109,70 +67,26 @@ export default function SchoolsPageClient({
       const district = districts.find((item) => item.id === activeDistrict);
       lines.push(`区域：${district?.name || district?.districtName || activeDistrict}`);
     }
-    if (activeStage !== 'all') {
-      lines.push(`学段：${stageOptions.find((item) => item.value === activeStage)?.label || activeStage}`);
-    }
-    if (activeProperty !== 'all') {
-      lines.push(`办学性质：${activeProperty}`);
-    }
-    if (activeKeyLevel !== 'all') {
-      lines.push(`等级：${activeKeyLevel}`);
-    }
-    if (activeCohort !== 'all') {
-      lines.push(`荣誉：${activeCohort}`);
-    }
-    if (searchQuery) {
-      lines.push(`关键词：${searchQuery}`);
-    }
+    if (activeStage !== 'all') lines.push(`学段：${activeStage}`);
+    if (activeProperty !== 'all') lines.push(`办学性质：${activeProperty}`);
+    if (activeKeyLevel !== 'all') lines.push(`等级：${activeKeyLevel}`);
+    if (activeCohort !== 'all') lines.push(`荣誉：${activeCohort}`);
+    if (searchQuery) lines.push(`关键词：${searchQuery}`);
     return lines;
   }, [activeDistrict, activeStage, activeProperty, activeKeyLevel, activeCohort, searchQuery, districts]);
 
-  const totalPages = Math.max(1, Math.ceil(filteredSchools.length / SCHOOLS_PER_PAGE));
-  const pagedSchools = useMemo(() => {
-    const start = (currentPage - 1) * SCHOOLS_PER_PAGE;
-    return filteredSchools.slice(start, start + SCHOOLS_PER_PAGE);
-  }, [filteredSchools, currentPage]);
-
-  const stageStats = useMemo(() => {
-    const counts = { junior: 0, senior_high: 0, complete: 0 };
-    for (const school of filteredSchools) {
-      counts[school.schoolStage] = (counts[school.schoolStage] || 0) + 1;
-    }
-    return counts;
-  }, [filteredSchools]);
-
-  const schoolStageTotals = useMemo(() => {
-    const counts = { junior: 0, senior_high: 0, complete: 0 };
-    for (const school of schools) {
-      counts[school.schoolStage] = (counts[school.schoolStage] || 0) + 1;
-    }
-    return counts;
-  }, [schools]);
-
+  const totalDb = stageTotals.junior + stageTotals.senior_high + stageTotals.complete;
   const currentDistrictLabel = activeDistrict === 'all'
     ? '全市范围'
     : (districts.find((item) => item.id === activeDistrict)?.name || activeDistrict);
-
-  const activeFilterCount = activeFilterSummary.length;
-
   const resultDescriptor = activeFilterSummary.length
-    ? `${currentDistrictLabel}下匹配 ${filteredSchools.length} 所学校`
-    : `数据库收录 ${schools.length} 所学校`;
+    ? `${currentDistrictLabel}下匹配 ${total} 所学校`
+    : `数据库收录 ${totalDb} 所学校`;
 
-  const applySearch = () => {
-    setSearchQuery(queryInput.trim());
-    setCurrentPage(1);
-  };
-
+  const applySearch = () => navigate({ query: queryInput.trim() });
   const resetFilters = () => {
-    setActiveDistrict('all');
-    setActiveStage('all');
-    setActiveProperty('all');
-    setActiveKeyLevel('all');
-    setActiveCohort('all');
     setQueryInput('');
-    setSearchQuery('');
-    setCurrentPage(1);
+    navigate({ district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', query: '' });
   };
 
   return (
@@ -195,7 +109,7 @@ export default function SchoolsPageClient({
           <section className="channel-hero-copy" aria-label="学校频道概览">
             <div className="channel-kicker"><span aria-hidden="true"></span><p>SCHOOL DATABASE</p></div>
             <h1>上海学校数据库</h1>
-            <p>收录全市 {schools.length.toLocaleString('zh-CN')} 所学校详细信息，按区域、类型精准筛选，全面了解各校特色与升学数据。</p>
+            <p>收录全市 {totalDb.toLocaleString('zh-CN')} 所学校详细信息，按区域、类型精准筛选，全面了解各校特色与升学数据。</p>
             <div className="schools-aerial-searchbar">
               <span aria-hidden="true"></span>
               <input
@@ -216,9 +130,9 @@ export default function SchoolsPageClient({
           </section>
 
           <aside className="channel-hero-stats" aria-label="学校数据统计">
-            <article><strong>{schools.length}</strong><span>收录学校</span></article>
+            <article><strong>{totalDb}</strong><span>收录学校</span></article>
             <article><strong>{districts.length}</strong><span>覆盖区域</span></article>
-            <article><strong>{schoolStageTotals.senior_high}</strong><span>高中样本</span></article>
+            <article><strong>{stageTotals.senior_high}</strong><span>高中样本</span></article>
           </aside>
         </div>
       </header>
@@ -232,7 +146,11 @@ export default function SchoolsPageClient({
 
           <section className="schools-aerial-filter-block">
             <label htmlFor="prototype-district-filter">区域</label>
-            <select id="prototype-district-filter" value={activeDistrict} onChange={(event) => { setActiveDistrict(event.target.value); setCurrentPage(1); }}>
+            <select
+              id="prototype-district-filter"
+              value={activeDistrict}
+              onChange={(event) => navigate({ district: event.target.value })}
+            >
               <option value="all">全部区域</option>
               {districts.map((district) => (
                 <option key={district.id} value={district.id}>{district.name || district.districtName}</option>
@@ -243,9 +161,9 @@ export default function SchoolsPageClient({
           <section className="schools-aerial-filter-block">
             <label>学段</label>
             <div className="schools-aerial-filter-stack">
-              {stageOptions.slice(1).map((option) => (
-                <button key={option.value} type="button" className={activeStage === option.value ? 'is-active' : ''} onClick={() => { setActiveStage(activeStage === option.value ? 'all' : option.value); setCurrentPage(1); }}>
-                  {option.label}
+              {filterOptions.stage.map((option) => (
+                <button key={option} type="button" className={activeStage === option ? 'is-active' : ''} onClick={() => navigate({ stage: activeStage === option ? 'all' : option })}>
+                  {option}
                 </button>
               ))}
             </div>
@@ -254,9 +172,9 @@ export default function SchoolsPageClient({
           <section className="schools-aerial-filter-block">
             <label>办学性质</label>
             <div className="schools-aerial-filter-stack">
-              {propertyOptions.slice(1).map((option) => (
-                <button key={option.value} type="button" className={activeProperty === option.value ? 'is-active' : ''} onClick={() => { setActiveProperty(activeProperty === option.value ? 'all' : option.value); setCurrentPage(1); }}>
-                  {option.label}
+              {filterOptions.property.map((option) => (
+                <button key={option} type="button" className={activeProperty === option ? 'is-active' : ''} onClick={() => navigate({ property: activeProperty === option ? 'all' : option })}>
+                  {option}
                 </button>
               ))}
             </div>
@@ -265,9 +183,9 @@ export default function SchoolsPageClient({
           <section className="schools-aerial-filter-block">
             <label>等级</label>
             <div className="schools-aerial-filter-stack">
-              {keyLevelOptions.slice(1).map((option) => (
-                <button key={option.value} type="button" className={activeKeyLevel === option.value ? 'is-active' : ''} onClick={() => { setActiveKeyLevel(activeKeyLevel === option.value ? 'all' : option.value); setCurrentPage(1); }}>
-                  {option.label}
+              {filterOptions.keyLevel.map((option) => (
+                <button key={option} type="button" className={activeKeyLevel === option ? 'is-active' : ''} onClick={() => navigate({ keyLevel: activeKeyLevel === option ? 'all' : option })}>
+                  {option}
                 </button>
               ))}
             </div>
@@ -276,9 +194,9 @@ export default function SchoolsPageClient({
           <section className="schools-aerial-filter-block">
             <label>荣誉</label>
             <div className="schools-aerial-filter-stack">
-              {cohortOptions.slice(1).map((option) => (
-                <button key={option.value} type="button" className={activeCohort === option.value ? 'is-active' : ''} onClick={() => { setActiveCohort(activeCohort === option.value ? 'all' : option.value); setCurrentPage(1); }}>
-                  {option.label}
+              {filterOptions.cohort.map((option) => (
+                <button key={option} type="button" className={activeCohort === option ? 'is-active' : ''} onClick={() => navigate({ cohort: activeCohort === option ? 'all' : option })}>
+                  {option}
                 </button>
               ))}
             </div>
@@ -310,21 +228,26 @@ export default function SchoolsPageClient({
           <button className="schools-aerial-reset" type="button" onClick={resetFilters}>清空全部条件</button>
         </aside>
 
-        <section className="schools-aerial-results" aria-label="学校检索结果">
+        <section
+          className="schools-aerial-results"
+          aria-label="学校检索结果"
+          aria-busy={isPending}
+          style={{ opacity: isPending ? 0.55 : 1, transition: 'opacity 120ms' }}
+        >
           <header className="schools-aerial-results-head">
             <div>
-              <span>{filteredSchools.length}</span>
+              <span>{total}</span>
               <h2>所学校</h2>
             </div>
             <p>{activeFilterSummary.length ? activeFilterSummary.join(' · ') : '未筛选，展示全量结果。'}</p>
           </header>
 
           <div className="schools-aerial-cardlist">
-            {pagedSchools.length === 0 ? (
+            {schools.length === 0 ? (
               <div className="schools-aerial-empty">
                 <p>没有匹配的学校，请调整筛选条件。</p>
               </div>
-            ) : pagedSchools.map((school) => (
+            ) : schools.map((school) => (
               <article key={school.id} className="schools-aerial-card-wrap">
                 <Link href={`/schools/${school.id}`} className="schools-aerial-card">
                   <div className="schools-aerial-card-main">
@@ -345,9 +268,9 @@ export default function SchoolsPageClient({
           </div>
 
           <div className="pager">
-            <button type="button" onClick={() => setCurrentPage((page) => Math.max(1, page - 1))} disabled={currentPage === 1}>上一页</button>
+            <button type="button" onClick={() => navigate({ page: Math.max(1, currentPage - 1) })} disabled={currentPage === 1}>上一页</button>
             <span>{currentPage} / {totalPages}</span>
-            <button type="button" onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))} disabled={currentPage === totalPages}>下一页</button>
+            <button type="button" onClick={() => navigate({ page: Math.min(totalPages, currentPage + 1) })} disabled={currentPage === totalPages}>下一页</button>
           </div>
         </section>
       </section>
