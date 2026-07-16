@@ -141,9 +141,9 @@ function rowToSchool(row) {
 // 派生字段 districtId / schoolStage / contentFile 不是 DB 列，读取时补回、写回时剥离，
 // 以保证本地文件始终与数据库 schema 对齐，同时本地回退模式仍可用。
 const LOCAL_SCHOOL_DB_FIELDS = new Set([
-  'id', 'dbId', 'name', 'districtName', 'schoolStageLabel', 'schoolPropertyLabel',
+  'id', 'dbId', 'name', 'districtId', 'districtName', 'schoolStage', 'schoolStageLabel', 'schoolPropertyLabel',
   'schoolKeyLevel', 'eliteCohort', 'group', 'address', 'phone', 'website', 'foundingYear',
-  'isBoarding', 'isInternational', 'image', 'admissionInfo',
+  'isBoarding', 'isInternational', 'image', 'admissionInfo', 'contentFile',
   'profileDepth', 'features', 'scoreLines', 'content', 'admissionCode', 'admissionMethods', 'admissionRoutes'
 ]);
 
@@ -513,6 +513,17 @@ async function writeSchoolCache(schools) {
   }
 }
 
+// 用与线上写缓存完全一致的逻辑重建本地 schools 缓存：
+// 读取现有 data/schools.json → deriveLocalSchoolFields 补齐派生字段 → stripLocalSchoolFields → 回写。
+// 用途：① 纠正历史上被 LOCAL_SCHOOL_DB_FIELDS 剥离的有损缓存；
+//       ② 在无 Supabase 的环境预生成一份自包含、字段完整的降级缓存（避免 Supabase 不可用时列表为空）。
+async function regenerateSchoolCache() {
+  const raw = await readLocalJson(DATASET_FILES.schools);
+  const derived = (Array.isArray(raw) ? raw : []).map(deriveLocalSchoolFields);
+  await writeSchoolCache(derived);
+  return derived.length;
+}
+
 async function writeNewsCache(news) {
   try {
     await writeLocalJson(DATASET_FILES.news, news);
@@ -571,6 +582,7 @@ module.exports = {
   schoolToRow,
   newsToRow,
   loadNewsFromSupabase,
+  regenerateSchoolCache,
   createSchoolInSupabase,
   updateSchoolInSupabase,
   deleteSchoolFromSupabase,
