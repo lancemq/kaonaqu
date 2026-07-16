@@ -546,7 +546,7 @@ function renderNewsDetail(item, news, schools) {
               <h2>相关文章</h2>
               <div className="news-detail-related-text">
                 {relatedNews.map((entry) => (
-                  <Link key={entry.id} href={`/news/${entry.id}`}>{entry.title}</Link>
+                  <Link key={entry.id} href={`/news/${encodeURIComponent(entry.id)}`}>{entry.title}</Link>
                 ))}
               </div>
             </section>
@@ -695,7 +695,7 @@ function renderPolicyDetail(item, news) {
               <SectionKicker inverse>RELATED</SectionKicker>
               <h2>对应新闻稿</h2>
               <div className="news-detail-related-text">
-                <Link href={`/news/${mappedNews.id}`}>{mappedNews.title}</Link>
+                <Link href={`/news/${encodeURIComponent(mappedNews.id)}`}>{mappedNews.title}</Link>
               </div>
             </section>
           ) : null}

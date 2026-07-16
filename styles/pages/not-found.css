@@ -1,0 +1,86 @@
+/* Brand 404 page — self-contained, does not rely on body[data-page] scoping */
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--site-surface-soft);
+}
+
+.not-found-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 72px 24px 96px;
+  gap: 14px;
+}
+
+.not-found-eyebrow {
+  margin: 0;
+  font-family: var(--channel-font-data);
+  font-size: 88px;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--channel-blue);
+  letter-spacing: -0.02em;
+}
+
+.not-found-body h1 {
+  margin: 0;
+  font-family: var(--channel-font-heading);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--channel-text);
+}
+
+.not-found-desc {
+  margin: 0;
+  max-width: 460px;
+  color: var(--channel-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  font-family: var(--channel-font-body);
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.not-found-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: var(--site-radius-sm);
+  background: #ffffff;
+  color: var(--channel-text);
+  border: 1px solid var(--channel-line);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.not-found-btn:hover,
+.not-found-btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: var(--site-shadow-sm);
+}
+
+.not-found-btn.is-primary {
+  background: var(--site-accent);
+  border-color: var(--site-accent);
+  color: #ffffff;
+}
+
+.not-found-btn.is-primary:hover,
+.not-found-btn.is-primary:focus-visible {
+  background: var(--site-accent-dark);
+}

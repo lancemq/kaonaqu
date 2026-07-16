@@ -37,7 +37,7 @@ function pickItemsById(items, ids) {
 }
 
 function getDetailHref(item) {
-  return item?.newsType ? `/news/${item.id}` : getPolicyDetailHref(item);
+  return getPolicyDetailHref(item);
 }
 
 function toTopicEntry(item) {
