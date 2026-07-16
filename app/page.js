@@ -1,3 +1,4 @@
+import '../styles/channels/home.css';
 import Link from 'next/link';
 import { createRequire } from 'module';
 import {

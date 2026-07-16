@@ -510,17 +510,6 @@ body[data-page="news"] .news-detail-footer p {
         flex-direction: column;
     }
 
-    body[data-page="news"] .channel-nav {
-        display: grid;
-        justify-content: stretch;
-        gap: 16px;
-    }
-
-    body[data-page="news"] .channel-brand {
-        display: grid;
-        gap: 4px;
-    }
-
     body[data-page="news"] .channel-nav-links {
         overflow-x: auto;
         padding-bottom: 4px;

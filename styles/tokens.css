@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@500;700;800&display=swap");
-
 :root {
     /* Fonts */
-    --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
+    --font-mono: "Geist Mono", monospace;
 
     /* Site design tokens — site-wide, consumed by every channel */
     --site-surface: #ffffff;
@@ -42,5 +40,5 @@
     --muted: #6b7384;
     --ink: #1a1d29;
     --blue: #2563eb;
-    --coral: #2563eb;
+    --accent: #2563eb;
 }

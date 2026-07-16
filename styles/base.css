@@ -94,8 +94,8 @@ a {
     border: 1px solid rgba(26, 29, 41, 0.08);
     border-radius: 999px;
     background: var(--surface-tint);
-    color: var(--coral);
-    font-family: "JetBrains Mono", "Sora", monospace;
+    color: var(--accent);
+    font-family: "Geist Mono", "Sora", monospace;
     font-size: 0.7rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -105,7 +105,7 @@ a {
 .text-link {
     display: inline-block;
     margin-top: 14px;
-    color: var(--coral);
+    color: var(--accent);
     text-decoration: none;
     font-weight: 600;
 }
@@ -142,7 +142,7 @@ summary:focus-visible {
 }
 
 .relation-badge-campus {
-    color: #2563eb;
+    color: var(--site-accent);
     background: rgba(59, 130, 246, 0.12);
 }
 

@@ -146,7 +146,7 @@ body[data-page="schools"] .highlight-card-group .highlight-card-header {
 }
 
 body[data-page="schools"] .highlight-card-group .text-link {
-    color: #2563eb;
+    color: var(--site-accent);
     font-weight: 700;
 }
 

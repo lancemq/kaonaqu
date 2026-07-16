@@ -1,3 +1,4 @@
+import '../styles/pages/not-found.css';
 import Link from 'next/link';
 
 export const metadata = {

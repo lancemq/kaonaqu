@@ -1559,11 +1559,6 @@ body[data-page="schools"] .school-detail-statline {
     width: 320px;
 }
 
-body[data-page="schools"] .school-detail-statline article {
-    display: grid;
-    gap: 4px;
-}
-
 body[data-page="schools"] .school-detail-statline strong {
     color: #fff;
     font-size: 32px;
@@ -2138,10 +2133,6 @@ body[data-page="schools"] .school-detail-tags {
         width: 100%;
     }
 
-    body[data-page="schools"] .school-detail-fact-grid,
-    body[data-page="schools"] .school-detail-path-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 760px) {
@@ -2166,7 +2157,4 @@ body[data-page="schools"] .school-detail-tags {
         max-width: 100%;
     }
 
-    body[data-page="schools"] .school-detail-statline {
-        grid-template-columns: 1fr;
-    }
 }
