@@ -46,7 +46,7 @@ function pickItemsById(items, ids) {
 }
 
 function getDetailHref(item) {
-  return item?.newsType ? `/news/${item.id}` : getPolicyDetailHref(item);
+  return getPolicyDetailHref(item);
 }
 
 function toTopicEntry(item) {
@@ -77,7 +77,6 @@ export default async function SportsReformPage() {
     [...sportsNews, ...sportsPolicies],
     [
       'policy-2026-sports-exam-reform',
-      'exam-2026-sports-timeline',
       'policy-2026-sports-injury-rules',
       'policy-2026-gaoshuiping-yundong',
       '2026-tiyu-zhaosheng',
