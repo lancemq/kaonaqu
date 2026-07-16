@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
 import NewsPageClient from '../../components/news-page-client';
+import { getNewsCategoryLabel } from '../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../shared/data-store');
@@ -45,9 +46,86 @@ function SectionLabel({ children }) {
   );
 }
 
+// ---- 列表轻量视图模型：服务端预计算派生展示字段，避免把 content 等详情级大对象随列表下发 ----
+function sanitizePolicyText(text, title = '') {
+  let value = String(text || '');
+  if (!value) return '';
+  value = value
+    .replace(/无障碍 首页[\s\S]*?内容概述\s*/g, '')
+    .replace(/索取号：[^。]*?/g, '')
+    .replace(/发布日期：\d{4}-\d{2}-\d{2}/g, '')
+    .replace(/字体 \[ 大 中 小 ]/g, '')
+    .replace(/查阅全文[\s\S]*$/g, '')
+    .replace(/\[返回上一页][\s\S]*$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (title && value.startsWith(title)) {
+    value = value.slice(title.length).trim();
+  }
+  return value;
+}
+
+function clipText(text, maxLength) {
+  if (!text || text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength).trim()}...`;
+}
+
+function getPolicyLabel(policy) {
+  const title = String(policy.title || '');
+  if (title.includes('义务教育')) return '义务教育';
+  if (title.includes('普通高校') || title.includes('高考') || title.includes('春季考试')) return '高招政策';
+  return '中招政策';
+}
+
+function getPolicySummaryText(policy) {
+  const summary = sanitizePolicyText(policy.summary, policy.title);
+  const contentText = Array.isArray(policy.content)
+    ? policy.content.map((b) => b.text || (Array.isArray(b.items) ? b.items.join(' ') : '')).join(' ')
+    : (policy.content || '');
+  const content = sanitizePolicyText(contentText, policy.title);
+  return clipText(summary || content || '查看政策原文与关键内容。', 130);
+}
+
+function getItemKicker(item) {
+  if (item.newsType === 'policy') {
+    return `${getPolicyLabel(item)} / 政策文件`;
+  }
+  return `${item.examType === 'zhongkao' ? '中招新闻' : item.examType === 'gaokao' ? '高招新闻' : '综合资讯'} / ${getNewsCategoryLabel(item)}`;
+}
+
+function toNewsListCard(item) {
+  const itemType = item.newsType === 'policy' ? 'policy' : 'news';
+  const summaryText = itemType === 'policy'
+    ? getPolicySummaryText(item)
+    : (item.summary || '进入详情查看完整内容。');
+  return {
+    id: item.id,
+    title: item.title,
+    itemType,
+    newsType: item.newsType,
+    examType: item.examType || '',
+    category: item.category || '',
+    sourceName: item.source?.name || '',
+    publishedAt: item.publishedAt || '',
+    date: item.date || '',
+    summaryText,
+    kicker: getItemKicker(item),
+    primarySchoolId: item.primarySchoolId || ''
+  };
+}
+
+function buildMinimalSchoolNames(news, schools) {
+  const ids = new Set(news.map((n) => n.primarySchoolId).filter(Boolean));
+  if (ids.size === 0) return {};
+  return Object.fromEntries(
+    schools.filter((s) => ids.has(s.id)).map((s) => [s.id, s.name || ''])
+  );
+}
+
 export default async function NewsPage() {
   const { news, schools } = await loadDataStore();
-  const schoolNamesById = Object.fromEntries(schools.map((school) => [school.id, school.name || '']));
+  const newsCards = news.map(toNewsListCard);
+  const schoolNamesById = buildMinimalSchoolNames(news, schools);
   const currentYear = getCurrentYear(news);
   const currentYearNews = news.filter((item) => isCurrentYearItem(item, currentYear));
   const currentYearPolicies = news.filter((item) => item.newsType === 'policy' && isRenderablePolicy(item, currentYear));
@@ -111,7 +189,7 @@ export default async function NewsPage() {
       </header>
 
       <NewsPageClient
-        news={news}
+        news={newsCards}
         schoolNamesById={schoolNamesById}
         currentYear={currentYear}
       />

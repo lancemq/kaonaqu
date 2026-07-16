@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import admissionTimeline from '../lib/admission-timeline';
-import { filterNews, getNewsCategoryLabel } from '../lib/site-utils';
+import { filterNews } from '../lib/site-utils';
 
 const NEWS_PER_PAGE = 7;
 
@@ -30,62 +30,13 @@ const SPORTS_SPECIAL = {
   href: '/news/sports-reform'
 };
 
-function sanitizePolicyText(text, title = '') {
-  let value = String(text || '');
-  if (!value) return '';
-
-  value = value
-    .replace(/无障碍 首页[\s\S]*?内容概述\s*/g, '')
-    .replace(/索取号：[^。]*?/g, '')
-    .replace(/发布日期：\d{4}-\d{2}-\d{2}/g, '')
-    .replace(/字体 \[ 大 中 小 ]/g, '')
-    .replace(/查阅全文[\s\S]*$/g, '')
-    .replace(/\[返回上一页][\s\S]*$/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-
-  if (title && value.startsWith(title)) {
-    value = value.slice(title.length).trim();
-  }
-
-  return value;
-}
-
-function clipText(text, maxLength) {
-  if (!text || text.length <= maxLength) return text;
-  return `${text.slice(0, maxLength).trim()}...`;
-}
-
-function getPolicySummaryText(policy) {
-  const summary = sanitizePolicyText(policy.summary, policy.title);
-  const contentText = Array.isArray(policy.content)
-    ? policy.content.map((b) => b.text || (Array.isArray(b.items) ? b.items.join(' ') : '')).join(' ')
-    : (policy.content || '');
-  const content = sanitizePolicyText(contentText, policy.title);
-  return clipText(summary || content || '查看政策原文与关键内容。', 130);
-}
-
 function isCurrentYearItem(item, year) {
   const publishedYear = Number(String(item?.publishedAt || item?.date || '').slice(0, 4)) || 0;
   return publishedYear === year;
 }
 
-function getPolicyLabel(policy) {
-  const title = String(policy.title || '');
-  if (title.includes('义务教育')) return '义务教育';
-  if (title.includes('普通高校') || title.includes('高考') || title.includes('春季考试')) return '高招政策';
-  return '中招政策';
-}
-
 function getItemHref(item) {
   return `/news/${encodeURIComponent(item.id)}`;
-}
-
-function getItemKicker(item) {
-  if (item.itemType === 'policy') {
-    return `${getPolicyLabel(item)} / 政策文件`;
-  }
-  return `${item.examType === 'zhongkao' ? '中招新闻' : item.examType === 'gaokao' ? '高招新闻' : '综合资讯'} / ${getNewsCategoryLabel(item)}`;
 }
 
 function SectionLabel({ children }) {
@@ -108,10 +59,7 @@ export default function NewsPageClient({ news, schoolNamesById = {}, currentYear
   const [currentPage, setCurrentPage] = useState(1);
 
   const visibleItems = useMemo(() => {
-    return filterNews(currentYearNews, activeFilter).map((item) => ({
-      ...item,
-      itemType: item.newsType === 'policy' ? 'policy' : 'news'
-    }));
+    return filterNews(currentYearNews, activeFilter);
   }, [activeFilter, currentYearNews]);
 
   const rankedItems = useMemo(
@@ -163,10 +111,10 @@ export default function NewsPageClient({ news, schoolNamesById = {}, currentYear
             return (
               <Link className="news-article-row" href={getItemHref(item)} key={`${item.itemType}-${item.id}`}>
                 <div className="news-article-copy">
-                  <span>{getItemKicker(item)}</span>
+                  <span>{item.kicker}</span>
                   <h3>{item.title}</h3>
                   {linkedSchool ? <p className="news-article-signal">涉及学校 / {linkedSchool}</p> : null}
-                  <p>{item.itemType === 'policy' ? getPolicySummaryText(item) : item.summary || '进入详情查看完整内容。'}</p>
+                  <p>{item.summaryText}</p>
                 </div>
                 <div className="news-article-meta">
                   <time>{item.publishedAt || item.date || 'DATE'}</time>
