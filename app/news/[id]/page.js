@@ -7,11 +7,30 @@ import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyEx
 const require = createRequire(import.meta.url);
 const { loadDataStore, getNewsById } = require('../../../shared/data-store');
 
+// 将正文里“名称（网址）”形式的裸网址转换为 Markdown 链接 [名称](网址)，
+// 使显示只保留可读名称、名称本身为可点击链接、原始网址不出现。
+// 覆盖三种形态：引号名称（“名称”/“名称”网站）、《》标题、括号前紧邻的名称。
+function preprocessInlineUrlParens(text) {
+  const RE =
+    /(([“"])([^”"]+)([”"])([学校官网网站平台]*)|《([^》]+)》|((?<![\p{L}\p{N}])[^\s），。、；：'"“”《》\]/|]+))\s*[（(]\s*(https?:\/\/[^\s），。、；：'"">]+|www\.[^\s），。、；：'"">]+)\s*[）)]/gu;
+  return String(text || '').replace(
+    RE,
+    (m, p1, p2open, p3name, p4close, p5suffix, p6title, p7bare, p8url) => {
+      const href = String(p8url || '').startsWith('www.') ? `https://${p8url}` : (p8url || '');
+      if (p3name !== undefined) return `${p2open}[${p3name}](${href})${p4close}${p5suffix}`;
+      if (p6title !== undefined) return `《[${p6title}](${href})》`;
+      if (p7bare !== undefined) return `[${p7bare}](${href})`;
+      return m;
+    }
+  );
+}
+
 // ===== news markdown 渲染 =====
 function renderInlineMarkdown(text) {
   const parts = [];
-  const value = String(text || '');
-  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const value = preprocessInlineUrlParens(text);
+  const regex =
+    /\[([^\]]+)\]\(([^)]+)\)|(https?:\/\/[^\s）>，。、；：'"]+)|(www\.[^\s）>，。、；：'"]+)/g;
   let lastIndex = 0;
   let match;
 
@@ -19,11 +38,26 @@ function renderInlineMarkdown(text) {
     if (match.index > lastIndex) {
       parts.push(value.slice(lastIndex, match.index));
     }
-    parts.push(
-      <a key={`${match[2]}-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
-        {match[1]}
-      </a>
-    );
+    if (match[1] !== undefined) {
+      parts.push(
+        <a key={`${match[2]}-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
+          {match[1]}
+        </a>
+      );
+    } else if (match[3] !== undefined) {
+      parts.push(
+        <a key={`link-${match.index}`} className="text-link" href={match[3]} target="_blank" rel="noreferrer">
+          {match[3]}
+        </a>
+      );
+    } else if (match[4] !== undefined) {
+      const href = `https://${match[4]}`;
+      parts.push(
+        <a key={`link-${match.index}`} className="text-link" href={href} target="_blank" rel="noreferrer">
+          {match[4]}
+        </a>
+      );
+    }
     lastIndex = match.lastIndex;
   }
 
@@ -167,11 +201,14 @@ function renderNewsBlocks(blocks) {
   return nodes;
 }
 
-// ===== policy markdown 渲染（含表格 / 引用 / 有序列表 / 加粗 / 斜体）=====
+// ===== policy markdown 渲染（含表格 / 引用 / 有序列表 / 加粗 / 斜体 / 裸网址链接）=====
+// 同时支持：Markdown 链接 [文字](网址)、加粗 **x**、斜体 *x*，以及裸网址
+// （https://... 与 www. 域名）——裸网址自动转为可点击外链，避免以纯文本呈现。
 function renderPolicyInlineMarkdown(text) {
   const parts = [];
-  const value = String(text || '');
-  const regex = /\[([^\]]+)\]\(([^)]*)\)|\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+  const value = preprocessInlineUrlParens(text);
+  const regex =
+    /\[([^\]]+)\]\(([^)]*)\)|\*\*([^*]+)\*\*|\*([^*]+)\*|(https?:\/\/[^\s）>，。、；：'"]+)|(www\.[^\s）>，。、；：'"]+)/g;
   let lastIndex = 0;
   let match;
 
@@ -188,8 +225,21 @@ function renderPolicyInlineMarkdown(text) {
       );
     } else if (match[3] !== undefined) {
       parts.push(<strong key={`strong-${match.index}`}>{match[3]}</strong>);
-    } else {
+    } else if (match[4] !== undefined) {
       parts.push(<em key={`em-${match.index}`}>{match[4]}</em>);
+    } else if (match[5] !== undefined) {
+      parts.push(
+        <a key={`link-${match.index}`} className="text-link" href={match[5]} target="_blank" rel="noreferrer">
+          {match[5]}
+        </a>
+      );
+    } else if (match[6] !== undefined) {
+      const href = `https://${match[6]}`;
+      parts.push(
+        <a key={`link-${match.index}`} className="text-link" href={href} target="_blank" rel="noreferrer">
+          {match[6]}
+        </a>
+      );
     }
 
     lastIndex = regex.lastIndex;
@@ -437,6 +487,26 @@ export default async function NewsDetailPage({ params }) {
   return renderNewsDetail(newsItem, news, schools);
 }
 
+// 新闻来源：渲染为可点击外链（显示来源名，不显示网址文本）
+function SourceLink({ source, fallbackName }) {
+  const name = source?.name || fallbackName || '未知来源';
+  const url = source?.url;
+  if (!url) {
+    return <span>{name}</span>;
+  }
+  return (
+    <a
+      className="news-detail-source-link"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {name}
+      <span className="news-detail-source-arrow" aria-hidden="true">↗</span>
+    </a>
+  );
+}
+
 function renderNewsDetail(item, news, schools) {
   const policyNews = news.filter((n) => n.newsType === 'policy');
   const relatedPolicies = buildRelatedPolicies(policyNews, item);
@@ -502,7 +572,7 @@ function renderNewsDetail(item, news, schools) {
         <div className="news-detail-meta-row">
           <span className="news-detail-category">{articleType}</span>
           <time dateTime={item.publishedAt || item.updatedAt || ''}>{displayDate}</time>
-          <span>{sourceName}</span>
+          <SourceLink source={item.source} fallbackName={sourceName} />
         </div>
 
         <h1>{item.title}</h1>
@@ -652,7 +722,7 @@ function renderPolicyDetail(item, news) {
         <div className="news-detail-meta-row">
           <span className="news-detail-category">政策</span>
           <time dateTime={item.publishedAt || ''}>{displayDate}</time>
-          <span>{sourceName}</span>
+          <SourceLink source={item.source} fallbackName={sourceName} />
         </div>
 
         <h1>{item.title}</h1>

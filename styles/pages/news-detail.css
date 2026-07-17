@@ -132,6 +132,30 @@ body[data-page="news"] .news-detail-category {
     letter-spacing: 2px;
 }
 
+/* 新闻来源：可点击外链（不显示网址文本） */
+body[data-page="news"] .news-detail-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+body[data-page="news"] .news-detail-source-link:hover {
+    color: var(--channel-blue-strong, var(--channel-blue));
+    opacity: 0.82;
+    text-decoration: underline;
+}
+
+body[data-page="news"] .news-detail-source-arrow {
+    font-size: 12px;
+    line-height: 1;
+}
+
 body[data-page="news"] .news-detail-header h1 {
     max-width: 880px;
     margin: 0;
