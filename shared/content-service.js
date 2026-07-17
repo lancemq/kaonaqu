@@ -6,6 +6,7 @@ const {
 const { isSupabaseConfigured } = require('./supabase-client');
 const {
   loadDataStore,
+  getSchoolById: getSchoolByIdFull,
   sortBySchoolPriority,
   createSchoolInSupabase,
   updateSchoolInSupabase,
@@ -165,8 +166,9 @@ async function listSchools(filters = {}) {
 }
 
 async function getSchoolById(id) {
-  const schools = await listSchools({});
-  return schools.find((item) => item.id === id) || null;
+  // 直接按 id 取完整记录（含 content/scoreLines/admissionInfo），
+  // 而非依赖 loadDataStore 的全量列表（已瘦身去掉 content，且 2.66MB 不可缓存）。
+  return getSchoolByIdFull(id);
 }
 
 async function createSchool(input) {

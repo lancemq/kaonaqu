@@ -15,7 +15,7 @@ import { renderBlocks } from '../../../components/BlockRenderer';
 import { getSchoolOverview } from '../../../lib/school-content';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../shared/data-store');
+const { loadDataStore, getSchoolById } = require('../../../shared/data-store');
 
 function resolveSchoolById(schools, rawId) {
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
@@ -94,9 +94,10 @@ export async function generateMetadata({ params }) {
 export const revalidate = 86400;
 
 export default async function SchoolDetailPage({ params }) {
-  const { schools } = await loadDataStore();
   const { id } = await params;
-  const school = resolveSchoolById(schools, id);
+  // 详情页需完整记录（content/scoreLines/admissionInfo），按 id 单校完整查询
+  // （响应极小，经 Next Data Cache 按 id 缓存；loadDataStore 已瘦身去掉 content）。
+  const school = await getSchoolById(id);
 
   if (!school) {
     notFound();

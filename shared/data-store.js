@@ -80,11 +80,26 @@ function sortBySchoolPriority(items) {
   });
 }
 
+// 列表轻量查询：显式排除体积最大的 content / admission_info / score_lines 三列，
+// 使响应保持在 Next.js Data Cache 单条 2MB 上限内。实测（888 校）：
+//   select *                      2.66MB -> 超限不可缓存
+//   去 content                    1.61MB -> 2.33MB 仍超限（Next 缓存含响应开销）
+//   去 content+admission_info+score_lines  0.44MB -> ~0.62MB 可缓存 ✅
+// admission_info（notes 长文本，单列约 1MB）与 score_lines 仅详情/列表卡片需要，
+// 由 getSchoolById / getSchoolsByIds（完整查询，按 id 缓存）单独取回；
+// 列表筛选/搜索依赖的 features/address/labels 等均保留。
+const SCHOOLS_LIST_COLUMNS = [
+  'id', 'slug', 'name', 'district_name', 'school_stage_label', 'school_property_label',
+  'school_key_level', 'elite_cohort', 'group', 'address', 'phone', 'website',
+  'founding_year', 'is_boarding', 'is_international', 'image', 'profile_depth',
+  'features'
+].join(',');
+
 async function loadSchoolsFromSupabase() {
   const client = getServiceClient();
   const { data, error } = await client
     .from(SCHOOLS_TABLE)
-    .select('*')
+    .select(SCHOOLS_LIST_COLUMNS)
     .order('id', { ascending: true });
 
   if (error) {
@@ -94,6 +109,49 @@ async function loadSchoolsFromSupabase() {
   return (data || [])
     .map((row) => rowToSchool(row))
     .filter(Boolean);
+}
+
+// 单校完整查询（详情页 / 列表 ≤10 张卡 / API）。仅一所，响应极小，
+// 经 Next.js Data Cache 按 id 缓存（revalidate 见 supabase-client.cachedFetch）。
+// 兼容 Next 动态路由 params：可能是数组或编码后的 slug。
+async function getSchoolById(rawId) {
+  if (rawId == null) return null;
+  const id = Array.isArray(rawId) ? rawId[0] : rawId;
+  const normalizedId = String(id || '');
+  let decodedId = normalizedId;
+  try {
+    decodedId = decodeURIComponent(normalizedId);
+  } catch {
+    // 已解码则保持原值
+  }
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select('*')
+    .eq('slug', decodedId)
+    .maybeSingle();
+
+  if (error) {
+    throw error;
+  }
+  return data ? rowToSchool(data) : null;
+}
+
+// 批量完整查询（列表页当前页 ≤10 所卡片用，需 content 概览）。
+// 仅这几所取完整，避免 888 所全量 content 拉回。
+async function getSchoolsByIds(ids) {
+  if (!Array.isArray(ids) || ids.length === 0) return [];
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select('*')
+    .in('slug', ids);
+
+  if (error) {
+    throw error;
+  }
+  const byId = new Map((data || []).map((row) => [row.slug, rowToSchool(row)]));
+  return ids.map((id) => byId.get(id) || null).filter(Boolean);
 }
 
 // news content 支持 JSON block 数组（新）与 Markdown 字符串（旧）两种格式。
@@ -424,6 +482,8 @@ async function loadDataStore() {
 module.exports = {
   ensureDatasets,
   loadDataStore,
+  getSchoolById,
+  getSchoolsByIds,
   rowToSchool,
   rowToNews,
   schoolToRow,

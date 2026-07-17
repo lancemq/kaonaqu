@@ -13,7 +13,7 @@ import {
 } from '../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../shared/data-store');
+const { loadDataStore, getSchoolsByIds } = require('../../shared/data-store');
 
 const SCHOOLS_PER_PAGE = 10;
 
@@ -120,7 +120,10 @@ export default async function SchoolsPage({ searchParams }) {
   const totalPages = Math.max(1, Math.ceil(total / SCHOOLS_PER_PAGE));
   const safePage = Math.min(page, totalPages);
   const pageItems = filtered.slice((safePage - 1) * SCHOOLS_PER_PAGE, safePage * SCHOOLS_PER_PAGE);
-  const cards = pageItems.map(toSchoolListCard);
+  // 列表筛选/搜索基于瘦身后的全量（slim，无 content）；当前页 ≤10 张卡需 content 概览，
+  // 单独按 id 批量取完整（getSchoolsByIds，经 Next Data Cache 缓存）。
+  const fullPageSchools = await getSchoolsByIds(pageItems.map((s) => s.id));
+  const cards = fullPageSchools.map(toSchoolListCard);
 
   const filterOptions = {
     stage: distinctLabels(schools, (s) => (s.schoolStageLabel || '').trim()),
