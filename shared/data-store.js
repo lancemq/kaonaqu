@@ -154,6 +154,32 @@ async function getSchoolsByIds(ids) {
   return ids.map((id) => byId.get(id) || null).filter(Boolean);
 }
 
+// 单条新闻完整查询（详情页 / API 用，需 content）。
+// 经 Next.js Data Cache 按 id 缓存。兼容 Next 动态路由 params：数组或编码后的 id。
+// 与 resolveNewsById 对齐：先用原始 id 匹配，再用 decodeURIComponent 后匹配。
+async function getNewsById(rawId) {
+  if (rawId == null) return null;
+  const id = Array.isArray(rawId) ? rawId[0] : rawId;
+  const normalizedId = String(id || '');
+  let decodedId = normalizedId;
+  try {
+    decodedId = decodeURIComponent(normalizedId);
+  } catch {
+    // 已解码则保持原值
+  }
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(NEWS_TABLE)
+    .select('*')
+    .in('id', [normalizedId, decodedId])
+    .limit(1);
+
+  if (error) {
+    throw error;
+  }
+  return data && data.length ? rowToNews(data[0]) : null;
+}
+
 // news content 支持 JSON block 数组（新）与 Markdown 字符串（旧）两种格式。
 // JSON 字符串解析为数组；旧 Markdown 包装为 [{type:'markdown', text}] 由渲染器兼容。
 function parseNewsContent(raw) {
@@ -205,7 +231,7 @@ async function loadNewsFromSupabase() {
   const client = getServiceClient();
   const { data, error } = await client
     .from(NEWS_TABLE)
-    .select('*')
+    .select('id,title,news_type,category,exam_type,summary,published_at,updated_at,source,district_id,district_name,primary_school_id,related_school_ids,school_link_reason,school_link_confidence')
     .order('published_at', { ascending: false });
 
   if (error) {
@@ -484,6 +510,7 @@ module.exports = {
   loadDataStore,
   getSchoolById,
   getSchoolsByIds,
+  getNewsById,
   rowToSchool,
   rowToNews,
   schoolToRow,

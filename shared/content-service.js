@@ -7,6 +7,7 @@ const { isSupabaseConfigured } = require('./supabase-client');
 const {
   loadDataStore,
   getSchoolById: getSchoolByIdFull,
+  getNewsById: getNewsByIdFull,
   sortBySchoolPriority,
   createSchoolInSupabase,
   updateSchoolInSupabase,
@@ -230,8 +231,7 @@ async function listNews(filters = {}) {
 }
 
 async function getNewsById(id) {
-  const { news } = await loadDataStore();
-  return news.find((item) => item.id === id) || null;
+  return getNewsByIdFull(id);
 }
 
 async function createNews(input) {

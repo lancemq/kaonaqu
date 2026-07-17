@@ -50,8 +50,7 @@ function schoolValue(school, key) {
     group: school.group || '待补充',
     address: school.address || '待补充',
     phone: school.phone || '待补充',
-    feature: featureText || '待补充',
-    updated: school.updatedAt ? String(school.updatedAt).slice(0, 10).replaceAll('-', '.') : '持续整理'
+    feature: featureText || '待补充'
   };
   return values[key] || '—';
 }
@@ -124,8 +123,7 @@ const METRICS = [
   { key: 'group', label: '所属体系' },
   { key: 'feature', label: '特色方向' },
   { key: 'address', label: '学校地址' },
-  { key: 'phone', label: '联系电话' },
-  { key: 'updated', label: '资料更新' }
+  { key: 'phone', label: '联系电话' }
 ];
 
 export default function SchoolsCompareClient({ schools, initialSchools }) {

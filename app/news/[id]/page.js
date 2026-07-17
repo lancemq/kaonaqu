@@ -5,7 +5,7 @@ import { getPolicyDetailHref, getPolicyMappedNewsId } from '../../../lib/policy-
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../shared/data-store');
+const { loadDataStore, getNewsById } = require('../../../shared/data-store');
 
 // ===== news markdown 渲染 =====
 function renderInlineMarkdown(text) {
@@ -441,12 +441,12 @@ export async function generateMetadata({ params }) {
 export const revalidate = 3600;
 
 export default async function NewsDetailPage({ params }) {
-  const { news, schools } = await loadDataStore();
   const { id } = await params;
-  const newsItem = resolveNewsById(news, id);
+  const newsItem = await getNewsById(id);
   if (!newsItem) {
     notFound();
   }
+  const { news, schools } = await loadDataStore();
   if (newsItem.newsType === 'policy') {
     return renderPolicyDetail(newsItem, news);
   }
