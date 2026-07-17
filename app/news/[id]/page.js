@@ -223,21 +223,6 @@ function cleanPolicyText(text, title = '') {
   return value;
 }
 
-// ===== 解析 =====
-function resolveNewsById(news, rawId) {
-  const id = Array.isArray(rawId) ? rawId[0] : rawId;
-  const normalizedId = String(id || '');
-  const decodedId = (() => {
-    try {
-      return decodeURIComponent(normalizedId);
-    } catch {
-      return normalizedId;
-    }
-  })();
-
-  return news.find((item) => item.id === normalizedId) || news.find((item) => item.id === decodedId) || null;
-}
-
 // ===== 标签 =====
 function getExamTypeLabel(newsItem) {
   if (newsItem.examType === 'zhongkao') return '中招';
@@ -408,9 +393,8 @@ const KNOWLEDGE_TOPICS = [
 ];
 
 export async function generateMetadata({ params }) {
-  const { news } = await loadDataStore();
   const { id } = await params;
-  const newsItem = resolveNewsById(news, id);
+  const newsItem = await getNewsById(id);
 
   if (newsItem) {
     const isPolicy = newsItem.newsType === 'policy';
