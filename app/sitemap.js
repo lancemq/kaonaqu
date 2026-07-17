@@ -1,6 +1,6 @@
 const { readFileSync } = require('fs');
 const { join } = require('path');
-const { loadDataStore } = require('../shared/data-store');
+const { loadNewsIds } = require('../shared/data-store');
 
 const BASE = 'https://kaonaqu.xyz';
 const SPECIAL_PAGES = [
@@ -37,11 +37,11 @@ function parseExtraUrls() {
 }
 
 module.exports = async function sitemap() {
-  const { news } = await loadDataStore();
+  const newsIds = await loadNewsIds();
   const today = new Date().toISOString().slice(0, 10);
 
-  const newsUrls = [...news, ...SPECIAL_PAGES.map((id) => ({ id }))].map((item) => ({
-    url: `${BASE}/news/${encodeURIComponent(item.id)}`,
+  const newsUrls = [...newsIds, ...SPECIAL_PAGES].map((id) => ({
+    url: `${BASE}/news/${encodeURIComponent(id)}`,
     lastmod: today,
     changefreq: 'daily',
     priority: 0.8

@@ -51,7 +51,7 @@ async function handle(request, paramsPromise) {
     });
 
     // 写操作成功后立即失效 Data Cache（异步失效，调用立即返回）。
-    // 让后续 GET /api/* 与页面 loadDataStore() 拿到最新数据，避免 60s 延迟。
+    // 让后续 GET /api/* 与页面查询函数拿到最新数据，避免 60s 延迟。
     if (request.method !== 'GET') {
       revalidateTag(SUPABASE_DATA_TAG);
     }

@@ -15,21 +15,7 @@ import { renderBlocks } from '../../../components/BlockRenderer';
 import { getSchoolOverview } from '../../../lib/school-content';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore, getSchoolById } = require('../../../shared/data-store');
-
-function resolveSchoolById(schools, rawId) {
-  const id = Array.isArray(rawId) ? rawId[0] : rawId;
-  const normalizedId = String(id || '');
-  const decodedId = (() => {
-    try {
-      return decodeURIComponent(normalizedId);
-    } catch {
-      return normalizedId;
-    }
-  })();
-
-  return schools.find((item) => item.id === normalizedId) || schools.find((item) => item.id === decodedId) || null;
-}
+const { getSchoolById } = require('../../../shared/data-store');
 
 function renderInlineMarkdown(text) {
   const parts = [];
@@ -64,9 +50,8 @@ function renderInlineMarkdown(text) {
 }
 
 export async function generateMetadata({ params }) {
-  const { schools } = await loadDataStore();
   const { id } = await params;
-  const school = resolveSchoolById(schools, id);
+  const school = await getSchoolById(id);
 
   if (!school) {
     return { title: '学校详情 | 考哪去' };
@@ -94,7 +79,7 @@ export async function generateMetadata({ params }) {
 export default async function SchoolDetailPage({ params }) {
   const { id } = await params;
   // 详情页需完整记录（content/scoreLines/admissionInfo），按 id 单校完整查询
-  // （响应极小，经 Next Data Cache 按 id 缓存；loadDataStore 已瘦身去掉 content）。
+  // （响应极小，经 Next Data Cache 按 id 缓存）。
   const school = await getSchoolById(id);
 
   if (!school) {

@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 import SchoolsCompareClient from '../../../components/schools-compare-client';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../shared/data-store');
+const { loadSchoolsList } = require('../../../shared/data-store');
 
 export const metadata = {
   title: '上海学校信息对比工具 | 考哪去',
@@ -11,7 +11,7 @@ export const metadata = {
 
 
 export default async function SchoolsComparePage({ searchParams }) {
-  const { schools } = await loadDataStore();
+  const schools = await loadSchoolsList();
   const params = await searchParams;
   const initialSchools = typeof params?.schools === 'string' ? params.schools : '';
 

@@ -51,7 +51,7 @@ export interface ScoreMatchResult {
   source: MatchSource;
 }
 
-// 学校数据由调用方（服务端 loadDataStore）传入，不再静态打包 schools.json。
+// 学校数据由调用方（服务端 loadSchoolsMinimal）传入，不再静态打包 schools.json。
 
 // 从新字段 eliteCohort / schoolKeyLevel 获取匹配键（兼容旧 tier）
 function getMatchKey(s: SchoolRecord): string {

@@ -5,7 +5,7 @@ import { getPolicyDetailHref, getPolicyMappedNewsId } from '../../../lib/policy-
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore, getNewsById } = require('../../../shared/data-store');
+const { getNewsById, loadNewsList, loadSchoolsForRelated } = require('../../../shared/data-store');
 
 // 将正文里“名称（网址）”形式的裸网址转换为 Markdown 链接 [名称](网址)，
 // 使显示只保留可读名称、名称本身为可点击链接、原始网址不出现。
@@ -329,20 +329,6 @@ function buildRelatedNews(news, current) {
     .slice(0, 4);
 }
 
-function buildRelatedSchools(schools, current) {
-  const linkedSchool = current.primarySchoolId
-    ? schools.find((school) => school.id === current.primarySchoolId)
-    : null;
-  const candidates = [
-    linkedSchool,
-    ...schools.filter((school) => school.id !== linkedSchool?.id)
-  ].filter(Boolean);
-
-  return candidates
-    .filter((school) => String(school.name || '').trim())
-    .slice(0, 4);
-}
-
 function getStageLabel(item) {
   const text = `${item.title || ''} ${item.summary || ''}`;
   if (text.includes('成绩')) return '成绩公布';
@@ -478,11 +464,12 @@ export default async function NewsDetailPage({ params }) {
   if (!newsItem) {
     notFound();
   }
-  const { news, schools } = await loadDataStore();
+  const news = await loadNewsList();
   if (newsItem.newsType === 'policy') {
     return renderPolicyDetail(newsItem, news);
   }
-  return renderNewsDetail(newsItem, news, schools);
+  const relatedSchools = await loadSchoolsForRelated(newsItem.primarySchoolId, 4);
+  return renderNewsDetail(newsItem, news, relatedSchools);
 }
 
 // 新闻来源：渲染为可点击外链（显示来源名，不显示网址文本）
@@ -505,11 +492,10 @@ function SourceLink({ source, fallbackName }) {
   );
 }
 
-function renderNewsDetail(item, news, schools) {
+function renderNewsDetail(item, news, relatedSchools) {
   const policyNews = news.filter((n) => n.newsType === 'policy');
   const relatedPolicies = buildRelatedPolicies(policyNews, item);
   const relatedNews = buildRelatedNews(news, item);
-  const relatedSchools = buildRelatedSchools(schools, item);
   const sourceName = item.source?.name || '未知来源';
   const articleType = getNewsCategoryLabel(item);
   const articleBodyMarkdown = item.content || '';

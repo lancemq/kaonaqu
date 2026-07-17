@@ -1,11 +1,13 @@
 const {
   cleanString,
   slugify,
-  validateRequired
+  validateRequired,
+  buildDistricts
 } = require('./data-schema');
 const { isSupabaseConfigured } = require('./supabase-client');
 const {
-  loadDataStore,
+  loadSchoolsList,
+  loadNewsList,
   getSchoolById: getSchoolByIdFull,
   getNewsById: getNewsByIdFull,
   sortBySchoolPriority,
@@ -126,12 +128,12 @@ function buildNewsRecord(input = {}) {
 }
 
 async function listDistricts() {
-  const { districts } = await loadDataStore();
-  return districts;
+  const [schools, news] = await Promise.all([loadSchoolsList(), loadNewsList()]);
+  return buildDistricts(schools, news);
 }
 
 async function listSchools(filters = {}) {
-  const { schools } = await loadDataStore();
+  const schools = await loadSchoolsList();
   const q = cleanString(filters.q).toLowerCase();
   const districtId = cleanString(filters.district || filters.districtId);
   const stage = cleanString(filters.stage || filters.schoolStage);
@@ -168,7 +170,7 @@ async function listSchools(filters = {}) {
 
 async function getSchoolById(id) {
   // 直接按 id 取完整记录（含 content/scoreLines/admissionInfo），
-  // 而非依赖 loadDataStore 的全量列表（已瘦身去掉 content，且 2.66MB 不可缓存）。
+  // 而非全量列表查询（已瘦身去掉 content，且 2.66MB 不可缓存）。
   return getSchoolByIdFull(id);
 }
 
@@ -182,7 +184,7 @@ async function createSchool(input) {
 
 async function updateSchool(id, input) {
   requireSupabase();
-  // 取现有记录合并（getSchoolById 经 loadDataStore 读 DB）
+  // 取现有记录合并（getSchoolById 直接查 DB）
   const current = await getSchoolById(id);
   if (!current) {
     const error = new Error('学校不存在');
@@ -201,7 +203,7 @@ async function deleteSchool(id) {
 }
 
 async function listNews(filters = {}) {
-  const { news } = await loadDataStore();
+  const news = await loadNewsList();
   const q = cleanString(filters.q).toLowerCase();
   const districtId = cleanString(filters.district || filters.districtId);
   const examType = cleanString(filters.examType || filters.exam_type);
@@ -244,7 +246,7 @@ async function createNews(input) {
 
 async function updateNews(id, input) {
   requireSupabase();
-  // 取现有记录合并（getNewsById 经 loadDataStore 读 DB）
+  // 取现有记录合并（getNewsById 直接查 DB）
   const current = await getNewsById(id);
   if (!current) {
     const error = new Error('新闻不存在');

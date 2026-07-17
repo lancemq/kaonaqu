@@ -13,7 +13,8 @@ import {
 } from '../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore, getSchoolsByIds } = require('../../shared/data-store');
+const { loadSchoolsList, getSchoolsByIds } = require('../../shared/data-store');
+const { buildDistricts } = require('../../shared/data-schema');
 
 const SCHOOLS_PER_PAGE = 10;
 
@@ -101,7 +102,8 @@ export const metadata = {
 // Supabase 查询经 Next Data Cache 缓存（revalidate: 60s，tags: ['supabase-data']）。
 
 export default async function SchoolsPage({ searchParams }) {
-  const { districts, schools } = await loadDataStore();
+  const schools = await loadSchoolsList();
+  const districts = buildDistricts(schools, []);
   const params = await searchParams;
 
   const filters = {

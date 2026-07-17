@@ -12,7 +12,7 @@ import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { readPolicyPlainText } from '../../../lib/policy-content-files.mjs';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../shared/data-store');
+const { loadNewsList } = require('../../../shared/data-store');
 
 export const metadata = {
   title: '政策概念速查 | 考哪去',
@@ -172,7 +172,7 @@ function groupPoliciesByTopic(policies) {
 }
 
 export default async function PolicyGlossaryPage() {
-  const { news } = await loadDataStore();
+  const news = await loadNewsList();
   const currentYear = getCurrentYear(news);
   const officialPolicies = news
     .filter((n) => n.newsType === 'policy')

@@ -1,4 +1,4 @@
-const { buildDistricts, DISTRICT_NAME_TO_ID } = require('./data-schema');
+const { DISTRICT_NAME_TO_ID, DISTRICT_ID_TO_NAME } = require('./data-schema');
 const { isSupabaseConfigured, getServiceClient, SCHOOLS_TABLE, NEWS_TABLE } = require('./supabase-client');
 
 
@@ -96,21 +96,9 @@ const SCHOOLS_LIST_COLUMNS = [
   'features', 'info_verified'
 ].join(',');
 
-async function loadSchoolsFromSupabase() {
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select(SCHOOLS_LIST_COLUMNS)
-    .order('id', { ascending: true });
-
-  if (error) {
-    throw error;
-  }
-
-  return (data || [])
-    .map((row) => rowToSchool(row))
-    .filter(Boolean);
-}
+// 新闻列表轻量查询：排除体积最大的 content 列。
+// 列表页只展示标题/摘要等元数据，content 仅详情页需要（由 getNewsById 取完整行）。
+const NEWS_LIST_COLUMNS = 'id,title,news_type,category,exam_type,summary,published_at,updated_at,source,district_id,district_name,primary_school_id,related_school_ids,school_link_reason,school_link_confidence';
 
 // 单校完整查询（详情页 / 列表 ≤10 张卡 / API）。仅一所，响应极小，
 // 经 Next.js Data Cache 按 id 缓存（revalidate 见 supabase-client.cachedFetch）。
@@ -228,20 +216,149 @@ function rowToNews(row) {
   };
 }
 
-async function loadNewsFromSupabase() {
+// === 按页面需求拆分的查询函数（取代 loadDataStore 一把梭） ===
+// 每个函数仅查该页面所需字段，减小 Supabase 响应体积与 Data Cache 占用。
+
+// 全量学校列表（轻量，排除 content/admission_info/score_lines）。供学校列表页、
+// 教育集团页、对比页、区域列表页等需全量学校的页面使用。0.44MB。
+async function loadSchoolsList() {
+  if (!isSupabaseConfigured()) return [];
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select(SCHOOLS_LIST_COLUMNS)
+    .order('id', { ascending: true });
+  if (error) throw error;
+  return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
+}
+
+// 全量新闻列表（轻量，排除 content）。供新闻列表页、首页、专题页等使用。0.1MB。
+async function loadNewsList() {
+  if (!isSupabaseConfigured()) return [];
   const client = getServiceClient();
   const { data, error } = await client
     .from(NEWS_TABLE)
-    .select('id,title,news_type,category,exam_type,summary,published_at,updated_at,source,district_id,district_name,primary_school_id,related_school_ids,school_link_reason,school_link_confidence')
+    .select(NEWS_LIST_COLUMNS)
     .order('published_at', { ascending: false });
+  if (error) throw error;
+  return (data || []).map((row) => rowToNews(row)).filter(Boolean);
+}
 
-  if (error) {
-    throw error;
+// 按区域 ID 查学校（区域详情页）。仅该区 ~50 所，而非全量 888 所。~0.02MB。
+async function loadSchoolsByDistrict(districtId) {
+  if (!isSupabaseConfigured()) return [];
+  const districtName = DISTRICT_ID_TO_NAME[districtId];
+  if (!districtName) return [];
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select(SCHOOLS_LIST_COLUMNS)
+    .eq('district_name', districtName)
+    .order('id', { ascending: true });
+  if (error) throw error;
+  return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
+}
+
+// 仅取新闻 id 列表（sitemap 用）。~5KB。
+async function loadNewsIds() {
+  if (!isSupabaseConfigured()) return [];
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(NEWS_TABLE)
+    .select('id')
+    .order('published_at', { ascending: false });
+  if (error) throw error;
+  return (data || []).map((row) => row.id).filter(Boolean);
+}
+
+// 分数匹配页所需最小字段集。~0.15MB（比全量 0.44MB 少 66%）。
+async function loadSchoolsMinimal() {
+  if (!isSupabaseConfigured()) return [];
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select('slug,name,district_name,school_stage_label,school_key_level,elite_cohort,group')
+    .order('id', { ascending: true });
+  if (error) throw error;
+  return (data || []).map((row) => ({
+    id: row.slug || '',
+    name: row.name || '',
+    districtId: DISTRICT_NAME_TO_ID[row.district_name] || '',
+    districtName: row.district_name || '',
+    schoolStage: inferSchoolStage(row.school_stage_label),
+    eliteCohort: row.elite_cohort || '',
+    schoolKeyLevel: row.school_key_level || '',
+    group: row.group || ''
+  }));
+}
+
+// 按 id 批量取学校名映射（新闻列表页 schoolNameMap 用）。~3KB。
+async function loadSchoolNamesByIds(ids) {
+  if (!isSupabaseConfigured()) return {};
+  if (!Array.isArray(ids) || ids.length === 0) return {};
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select('slug,name')
+    .in('slug', ids);
+  if (error) throw error;
+  const map = {};
+  for (const row of data || []) {
+    map[row.slug] = row.name;
   }
+  return map;
+}
 
-  return (data || [])
-    .map((row) => rowToNews(row))
-    .filter(Boolean);
+// 新闻详情页相关学校：主校 + 按优先级填充。~2KB。
+async function loadSchoolsForRelated(primarySchoolId, limit = 4) {
+  if (!isSupabaseConfigured()) return [];
+  const client = getServiceClient();
+
+  const primaryPromise = primarySchoolId
+    ? client.from(SCHOOLS_TABLE)
+        .select(SCHOOLS_LIST_COLUMNS)
+        .eq('slug', primarySchoolId)
+        .maybeSingle()
+        .then(({ data, error }) => {
+          if (error) throw error;
+          return data ? rowToSchool(data) : null;
+        })
+    : Promise.resolve(null);
+
+  // 填充：排除主校，多取以便排序后裁剪
+  const fillerPromise = client.from(SCHOOLS_TABLE)
+    .select(SCHOOLS_LIST_COLUMNS)
+    .neq('slug', primarySchoolId || '')
+    .limit(limit + 4)
+    .then(({ data, error }) => {
+      if (error) throw error;
+      return sortBySchoolPriority((data || []).map((row) => rowToSchool(row)).filter(Boolean));
+    });
+
+  const [primary, fillers] = await Promise.all([primaryPromise, fillerPromise]);
+  const result = [];
+  if (primary) result.push(primary);
+  for (const s of fillers) {
+    if (result.length >= limit) break;
+    result.push(s);
+  }
+  return result;
+}
+
+// 按区域统计学校数（区域详情页侧栏排序用）。~15KB。
+async function loadSchoolCountsByDistrict() {
+  if (!isSupabaseConfigured()) return {};
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select('district_name');
+  if (error) throw error;
+  const counts = {};
+  for (const row of data || []) {
+    const name = row.district_name;
+    if (name) counts[name] = (counts[name] || 0) + 1;
+  }
+  return counts;
 }
 
 // === Supabase 写入 ===
@@ -311,8 +428,7 @@ function newsToRow(news = {}) {
   };
 }
 
-// CRUD 写入：操作 DB，不写本地缓存（本地缓存只读，由 loadDataStore 读 DB 时刷新）。
-// DB 不可用时抛错（写操作不降级到本地）。
+// CRUD 写入：操作 DB，不写本地缓存。写操作后由 route.js 调 revalidateTag 失效 Data Cache。
 
 async function createSchoolInSupabase(school) {
   const client = getServiceClient();
@@ -468,34 +584,7 @@ async function deleteNewsFromSupabase(id) {
   return { ok: true, id };
 }
 
-function ensureDatasets(data = {}) {
-  const schools = Array.isArray(data.schools) ? data.schools : [];
-  const news = Array.isArray(data.news) ? data.news : [];
-  const districts = buildDistricts(schools, news);
-
-  return { districts, schools, news };
-}
-
-// 数据来源始终是线上数据库（Supabase 为唯一权威源）。
-// schools.json / news.json 不再作为文件系统缓存——serverless 上写不进、读不到、跨实例不共享，已于 2026-07-17 移除。
-// Vercel 上的跨实例缓存由 Supabase 查询层的 Next.js Data Cache 承担（见 shared/supabase-client.js 的 cachedFetch，
-// revalidate: 60s，tags: ['supabase-data']）。
-// 不再维护进程内 memo：serverless 实例生命周期不可控、与 Data Cache 职责重叠，统一由 Data Cache 一层兜底。
-async function loadDataStore() {
-  if (!isSupabaseConfigured()) {
-    console.warn('[data-store] Supabase 未配置，返回空数据集');
-    return ensureDatasets({ schools: [], news: [] });
-  }
-  const [schools, news] = await Promise.all([
-    loadSchoolsFromSupabase(),
-    loadNewsFromSupabase()
-  ]);
-  return ensureDatasets({ schools, news });
-}
-
 module.exports = {
-  ensureDatasets,
-  loadDataStore,
   getSchoolById,
   getSchoolsByIds,
   getNewsById,
@@ -503,12 +592,19 @@ module.exports = {
   rowToNews,
   schoolToRow,
   newsToRow,
-  loadNewsFromSupabase,
   createSchoolInSupabase,
   updateSchoolInSupabase,
   deleteSchoolFromSupabase,
   createNewsInSupabase,
   updateNewsInSupabase,
   deleteNewsFromSupabase,
-  sortBySchoolPriority
+  sortBySchoolPriority,
+  loadSchoolsList,
+  loadNewsList,
+  loadSchoolsByDistrict,
+  loadNewsIds,
+  loadSchoolsMinimal,
+  loadSchoolNamesByIds,
+  loadSchoolsForRelated,
+  loadSchoolCountsByDistrict
 };

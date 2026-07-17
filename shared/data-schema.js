@@ -22,6 +22,7 @@ const DISTRICT_CATALOG = [
 ];
 
 const DISTRICT_NAME_TO_ID = Object.fromEntries(DISTRICT_CATALOG.map((item) => [item.name, item.id]));
+const DISTRICT_ID_TO_NAME = Object.fromEntries(DISTRICT_CATALOG.map((item) => [item.id, item.name]));
 
 function cleanString(value) {
   if (value === undefined || value === null) {
@@ -72,6 +73,7 @@ function validateRequired(record, requiredFields) {
 module.exports = {
   DISTRICT_CATALOG,
   DISTRICT_NAME_TO_ID,
+  DISTRICT_ID_TO_NAME,
   buildDistricts,
   cleanString,
   slugify,

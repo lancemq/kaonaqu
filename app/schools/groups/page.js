@@ -2,7 +2,8 @@ import { createRequire } from 'module';
 import GroupsPageClient from '../../../components/groups-page-client';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../shared/data-store');
+const { loadSchoolsList } = require('../../../shared/data-store');
+const { DISTRICT_CATALOG } = require('../../../shared/data-schema');
 
 export const metadata = {
   title: '上海教育集团大全 | 考哪去',
@@ -11,7 +12,8 @@ export const metadata = {
 
 
 export default async function GroupsPage({ searchParams }) {
-  const { districts, schools, news } = await loadDataStore();
+  const schools = await loadSchoolsList();
+  const districts = DISTRICT_CATALOG;
   const params = await searchParams;
   const initialDistrict = typeof params?.district === 'string' ? params.district : 'all';
   const initialStage = typeof params?.stage === 'string' ? params.stage : 'all';
@@ -23,7 +25,6 @@ export default async function GroupsPage({ searchParams }) {
       <GroupsPageClient
         districts={districts}
         schools={schools}
-        news={news}
         initialDistrict={initialDistrict}
         initialStage={initialStage}
         initialTier={initialTier}

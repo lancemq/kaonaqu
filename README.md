@@ -68,7 +68,7 @@ Next API Route 统一入口在 `app/api/[...slug]/route.js`，业务处理复用
 
 ```text
 Supabase (schools / news 表)
-  -> shared/data-store.js loadDataStore()（DB 优先，读后刷新本地缓存）
+  -> shared/data-store.js 按页面需求查询函数（loadSchoolsList/loadNewsList 等）
   -> lib/* / shared/*
   -> app/* 页面与 app/api/* 接口
 ```

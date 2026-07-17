@@ -11,7 +11,8 @@ import {
 import { getSchoolOverview } from '../../../lib/school-content';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../shared/data-store');
+const { loadSchoolsList } = require('../../../shared/data-store');
+const { DISTRICT_CATALOG } = require('../../../shared/data-schema');
 
 export const metadata = {
   title: '上海学校区域频道 - 16区学校结构与区域专题 | 考哪去',
@@ -99,7 +100,8 @@ function Footer() {
 }
 
 export default async function DistrictIndexPage() {
-  const { districts, schools } = await loadDataStore();
+  const schools = await loadSchoolsList();
+  const districts = DISTRICT_CATALOG;
   const districtRows = buildDistrictRows(districts, schools);
   const totals = {
     districts: districtRows.length,

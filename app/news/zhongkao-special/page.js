@@ -4,7 +4,7 @@ import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getPolicyExamType } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../shared/data-store');
+const { loadNewsList } = require('../../../shared/data-store');
 
 export const metadata = {
   title: '上海中招政策详解 | 考哪去',
@@ -241,7 +241,7 @@ const policyBlocks = [
 ];
 
 export default async function ZhongkaoSpecialPage() {
-  const { news } = await loadDataStore();
+  const news = await loadNewsList();
   const currentYear = getCurrentYear(news);
   const zhongkaoNews = news
     .filter((item) => item.examType === 'zhongkao' && isCurrentYearItem(item, currentYear))

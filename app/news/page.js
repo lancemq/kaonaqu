@@ -4,7 +4,7 @@ import NewsPageClient from '../../components/news-page-client';
 import { getNewsCategoryLabel } from '../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../shared/data-store');
+const { loadNewsList, loadSchoolNamesByIds } = require('../../shared/data-store');
 
 export const metadata = {
   title: '上海中考高考新闻政策 | 考哪去',
@@ -112,18 +112,11 @@ function toNewsListCard(item) {
   };
 }
 
-function buildMinimalSchoolNames(news, schools) {
-  const ids = new Set(news.map((n) => n.primarySchoolId).filter(Boolean));
-  if (ids.size === 0) return {};
-  return Object.fromEntries(
-    schools.filter((s) => ids.has(s.id)).map((s) => [s.id, s.name || ''])
-  );
-}
-
 export default async function NewsPage() {
-  const { news, schools } = await loadDataStore();
+  const news = await loadNewsList();
   const newsCards = news.map(toNewsListCard);
-  const schoolNamesById = buildMinimalSchoolNames(news, schools);
+  const schoolIds = [...new Set(news.map((n) => n.primarySchoolId).filter(Boolean))];
+  const schoolNamesById = await loadSchoolNamesByIds(schoolIds);
   const currentYear = getCurrentYear(news);
   const currentYearNews = news.filter((item) => isCurrentYearItem(item, currentYear));
   const currentYearPolicies = news.filter((item) => item.newsType === 'policy' && isRenderablePolicy(item, currentYear));

@@ -14,7 +14,8 @@ import {
 import { getSchoolOverview } from '../../../../lib/school-content';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../../shared/data-store');
+const { loadSchoolsByDistrict, loadSchoolCountsByDistrict } = require('../../../../shared/data-store');
+const { DISTRICT_CATALOG } = require('../../../../shared/data-schema');
 
 function buildCardTags(school) {
   const values = [
@@ -75,9 +76,8 @@ function Footer() {
 }
 
 export async function generateMetadata({ params }) {
-  const { districts } = await loadDataStore();
   const { district } = await params;
-  const districtInfo = districts.find((item) => item.id === district);
+  const districtInfo = DISTRICT_CATALOG.find((item) => item.id === district);
   if (!districtInfo) {
     return { title: '区级学校专题 | 考哪去' };
   }
@@ -97,15 +97,17 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function DistrictSchoolsPage({ params }) {
-  const { districts, schools } = await loadDataStore();
   const { district } = await params;
-  const districtInfo = districts.find((item) => item.id === district);
+  const districtInfo = DISTRICT_CATALOG.find((item) => item.id === district);
 
   if (!districtInfo) {
     notFound();
   }
 
-  const districtSchools = schools.filter((school) => school.districtId === districtInfo.id);
+  const [districtSchools, schoolCounts] = await Promise.all([
+    loadSchoolsByDistrict(district),
+    loadSchoolCountsByDistrict()
+  ]);
   const sortedSchools = sortSchoolsBySignal(districtSchools);
   const stageBuckets = {
     junior: sortedSchools.filter((school) => school.schoolStage === 'junior'),
@@ -113,9 +115,12 @@ export default async function DistrictSchoolsPage({ params }) {
     complete: sortedSchools.filter((school) => school.schoolStage === 'complete')
   };
   const featured = sortedSchools.slice(0, 6);
-  const relatedDistricts = districts
+  const relatedDistricts = DISTRICT_CATALOG
     .filter((item) => item.id !== districtInfo.id)
-    .slice()
+    .map((item) => ({
+      ...item,
+      schoolCount: schoolCounts[item.name] || 0
+    }))
     .sort((left, right) => Number(right.schoolCount || 0) - Number(left.schoolCount || 0))
     .slice(0, 5);
   const stageGroups = [

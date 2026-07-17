@@ -4,7 +4,7 @@ import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel } from '../../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../../../shared/data-store');
+const { loadNewsList } = require('../../../shared/data-store');
 
 export const metadata = {
   title: '上海体育考试改革专题 | 考哪去',
@@ -61,7 +61,7 @@ function toTopicEntry(item) {
 }
 
 export default async function SportsReformPage() {
-  const { news } = await loadDataStore();
+  const news = await loadNewsList();
   const currentYear = getCurrentYear(news);
   const sportsNews = news
     .filter((item) => isCurrentYearItem(item, currentYear) && isSportsItem(item))

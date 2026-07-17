@@ -12,7 +12,8 @@ import {
 } from '../lib/site-utils';
 
 const require = createRequire(import.meta.url);
-const { loadDataStore } = require('../shared/data-store');
+const { loadSchoolsList, loadNewsList } = require('../shared/data-store');
+const { DISTRICT_CATALOG } = require('../shared/data-schema');
 
 const FEATURED_SCHOOL_NAMES = [
   '复旦大学附属中学',
@@ -209,7 +210,8 @@ function SectionLabel({ children }) {
 }
 
 export default async function HomePage() {
-  const { districts, schools, news } = await loadDataStore();
+  const [schools, news] = await Promise.all([loadSchoolsList(), loadNewsList()]);
+  const districts = DISTRICT_CATALOG;
   const sortedNews = sortNews(news);
   const featuredNews = pickFeaturedNews(sortedNews);
   const featuredSchools = getFeaturedSchools(schools);
