@@ -1,87 +1,7 @@
-const fs = require('fs').promises;
-const fsSync = require('fs');
-const path = require('path');
 const { buildDistricts, DISTRICT_NAME_TO_ID } = require('./data-schema');
 const { isSupabaseConfigured, getServiceClient, SCHOOLS_TABLE, NEWS_TABLE } = require('./supabase-client');
 
-function resolveDataDir() {
-  const candidates = [
-    process.env.KAONAQU_RUNTIME_ROOT_DATA_DIR,
-    path.join(process.cwd(), 'data'),
-    path.join(__dirname, '..', 'data'),
-    path.join(process.cwd(), '..', 'data'),
-    path.join(process.cwd(), '..', '..', 'data')
-  ].filter(Boolean);
 
-  return candidates.find((candidate) => fsSync.existsSync(candidate)) || candidates[0];
-}
-
-const DATA_DIR = resolveDataDir();
-const DATASET_FILES = {
-  districts: 'districts.json',
-  schools: 'schools.json',
-  news: 'news.json'
-};
-
-// 打包兜底：惰性、容错加载。
-// 注意：schools.json 与 news.json 现均视为运行时缓存（由数据库生成、已 gitignore，不在仓库中），
-// 因此刻意不在这里 require 它们——文件缺失时模块加载也不应崩溃。
-function safeRequire(p) {
-  try {
-    return require(p);
-  } catch (e) {
-    return undefined;
-  }
-}
-
-const BUNDLED_DATASETS = {
-  districts: safeRequire('../data/districts.json')
-};
-
-function getDatasetKeyByFilename(filename) {
-  return Object.entries(DATASET_FILES).find(([, value]) => value === filename)?.[0] || null;
-}
-
-async function readLocalJson(filename) {
-  const filePath = path.join(DATA_DIR, filename);
-  try {
-    const content = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(content);
-  } catch (error) {
-    const datasetKey = getDatasetKeyByFilename(filename);
-    if (!datasetKey) {
-      throw error;
-    }
-    const fallback = BUNDLED_DATASETS[datasetKey];
-    if (Array.isArray(fallback)) {
-      return fallback;
-    }
-    // 缓存/源文件均不可用（如 schools.json 尚未由数据库生成）：
-    // 返回空集合，避免整站因缺数据而崩溃（数据库不可用时优雅降级）。
-    console.warn(`[data-store] 无法读取 ${filename} 且无打包兜底，返回空集合`);
-    return [];
-  }
-}
-
-async function writeLocalJson(filename, payload) {
-  await fs.writeFile(path.join(DATA_DIR, filename), `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
-}
-
-async function loadLocalData() {
-  const [districts, schoolsRaw, newsRaw] = await Promise.all([
-    readLocalJson(DATASET_FILES.districts),
-    readLocalJson(DATASET_FILES.schools),
-    readLocalJson(DATASET_FILES.news)
-  ]);
-  const schools = (Array.isArray(schoolsRaw) ? schoolsRaw : []).map(deriveLocalSchoolFields);
-  // 本地降级路径也需 parseNewsContent，与 rowToNews（DB 路径）保持一致
-  const news = (Array.isArray(newsRaw) ? newsRaw : []).map((item) => ({
-    ...item,
-    content: parseNewsContent(item.content)
-  }));
-
-  return { districts, schools, news };
-}
 
 // === Supabase 读取 ===
 
@@ -136,38 +56,6 @@ function rowToSchool(row) {
 }
 
 // === 本地 JSON 与数据库表对齐 ===
-// data/schools.json 只应保留线上 schools 表存在的字段（camelCase 映射）。
-// 共 24 个：线上 22 列（含 score_lines / content jsonb 数组；学校概览/办学成就已迁入 content，不再单独存 description/achievements） + admission_info(jsonb) 拆出的 admissionCode/Methods/Routes。
-// 派生字段 districtId / schoolStage / contentFile 不是 DB 列，读取时补回、写回时剥离，
-// 以保证本地文件始终与数据库 schema 对齐，同时本地回退模式仍可用。
-const LOCAL_SCHOOL_DB_FIELDS = new Set([
-  'id', 'dbId', 'name', 'districtId', 'districtName', 'schoolStage', 'schoolStageLabel', 'schoolPropertyLabel',
-  'schoolKeyLevel', 'eliteCohort', 'group', 'address', 'phone', 'website', 'foundingYear',
-  'isBoarding', 'isInternational', 'image', 'admissionInfo', 'contentFile',
-  'profileDepth', 'features', 'scoreLines', 'content', 'admissionCode', 'admissionMethods', 'admissionRoutes'
-]);
-
-// 仅保留线上表存在的字段（写回文件前调用）
-function stripLocalSchoolFields(rec) {
-  if (!rec || typeof rec !== 'object') return rec;
-  const out = {};
-  for (const k of Object.keys(rec)) {
-    if (LOCAL_SCHOOL_DB_FIELDS.has(k)) out[k] = rec[k];
-  }
-  return out;
-}
-
-// 读取本地数据时补回派生字段（与 rowToSchool 对 DB 行的处理保持一致）
-function deriveLocalSchoolFields(rec) {
-  if (!rec || typeof rec !== 'object') return rec;
-  const slug = rec.id || '';
-  return {
-    ...rec,
-    districtId: DISTRICT_NAME_TO_ID[rec.districtName] || '',
-    schoolStage: inferSchoolStage(rec.schoolStageLabel),
-    contentFile: slug ? `content/schools/${slug}.md` : ''
-  };
-}
 
 // 学校排序：eliteCohort 非空优先 + schoolKeyLevel 重点优先
 const KEY_LEVEL_PRIORITY = {
@@ -502,38 +390,9 @@ function ensureDatasets(data = {}) {
   return { districts, schools, news };
 }
 
-// 将数据库数据 best-effort 写回本地缓存（schools.json / news.json）。
-// 目的：保证 data/schools.json 与 data/news.json 始终与线上数据库对齐（数据库变化时即同步）。
-// 在只读文件系统（部分 serverless 环境）下静默失败，不影响主流程。
-async function writeSchoolCache(schools) {
-  try {
-    await writeLocalJson(DATASET_FILES.schools, schools.map(stripLocalSchoolFields));
-  } catch (e) {
-    console.warn('[data-store] 写 schools 缓存失败（忽略）:', e?.message || e);
-  }
-}
-
-// 用与线上写缓存完全一致的逻辑重建本地 schools 缓存：
-// 读取现有 data/schools.json → deriveLocalSchoolFields 补齐派生字段 → stripLocalSchoolFields → 回写。
-// 用途：① 纠正历史上被 LOCAL_SCHOOL_DB_FIELDS 剥离的有损缓存；
-//       ② 在无 Supabase 的环境预生成一份自包含、字段完整的降级缓存（避免 Supabase 不可用时列表为空）。
-async function regenerateSchoolCache() {
-  const raw = await readLocalJson(DATASET_FILES.schools);
-  const derived = (Array.isArray(raw) ? raw : []).map(deriveLocalSchoolFields);
-  await writeSchoolCache(derived);
-  return derived.length;
-}
-
-async function writeNewsCache(news) {
-  try {
-    await writeLocalJson(DATASET_FILES.news, news);
-  } catch (e) {
-    console.warn('[data-store] 写 news 缓存失败（忽略）:', e?.message || e);
-  }
-}
-
-// 数据来源始终是线上数据库；schools.json / news.json 仅作为运行时缓存。
-// DB 可读时：取数并刷新本地缓存；DB 不可读时：降级到本地缓存文件。
+// 数据来源始终是线上数据库（Supabase 为唯一权威源）。
+// schools.json / news.json 不再作为文件系统缓存——serverless 上写不进、读不到、跨实例不共享，已于 2026-07-17 移除。
+// Vercel 上的跨实例缓存改由 Supabase 查询层的 Next.js Data Cache 承担（见 shared/supabase-client.js）。
 // 进程内 memo 缓存：学校数据极少变动，避免每次请求都打 Supabase 查询 888 行。
 // 缓存命中时仍返回同一份不可变 state；调用方均只读不修改，安全共享。
 let _storeCache = null;
@@ -541,26 +400,15 @@ let _storeCacheAt = 0;
 const STORE_CACHE_TTL_MS = 60 * 1000;
 
 async function loadDataStoreFresh() {
-  if (isSupabaseConfigured()) {
-    try {
-      const [schools, news] = await Promise.all([
-        loadSchoolsFromSupabase(),
-        loadNewsFromSupabase()
-      ]);
-      const state = ensureDatasets({ schools, news });
-      // 数据库数据写回本地缓存，使 schools.json / news.json 始终与线上一致
-      await Promise.all([
-        writeSchoolCache(state.schools),
-        writeNewsCache(state.news)
-      ]);
-      return state;
-    } catch (err) {
-      console.warn('[data-store] Supabase 读取失败，降级到本地缓存:', err?.message || err);
-    }
+  if (!isSupabaseConfigured()) {
+    console.warn('[data-store] Supabase 未配置，返回空数据集（schools/news 无文件系统缓存）');
+    return ensureDatasets({ schools: [], news: [] });
   }
-
-  // 降级：读本地缓存（运行时由数据库生成的 schools.json / news.json 等）
-  return loadLocalData();
+  const [schools, news] = await Promise.all([
+    loadSchoolsFromSupabase(),
+    loadNewsFromSupabase()
+  ]);
+  return ensureDatasets({ schools, news });
 }
 
 async function loadDataStore() {
@@ -576,13 +424,11 @@ async function loadDataStore() {
 module.exports = {
   ensureDatasets,
   loadDataStore,
-  loadLocalData,
   rowToSchool,
   rowToNews,
   schoolToRow,
   newsToRow,
   loadNewsFromSupabase,
-  regenerateSchoolCache,
   createSchoolInSupabase,
   updateSchoolInSupabase,
   deleteSchoolFromSupabase,

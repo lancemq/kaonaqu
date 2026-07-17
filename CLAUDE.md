@@ -29,10 +29,10 @@ TypeScript 为可选（`strict: false`，`allowJs: true`）；仅 `score-match-e
 content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 ```
 
-- 学校与新闻数据权威源均为线上数据库（`schools` / `news` 表）；`data/schools.json` 与 `data/news.json` 是运行时由数据库生成的缓存文件（已 gitignore，从仓库移除），每次读取数据库时自动刷新并与线上对齐。其余 `data/*.json`（`districts.json`/`policies.json`/`knowledge-pages.json`）为提交的运行数据。
+- 学校与新闻数据权威源均为线上数据库（`schools` / `news` 表），Supabase 为**唯一数据源**（2026-07-17 已移除 schools/news 的文件系统 json 缓存：不再写回、不再降级读取，serverless 上写不进/读不到/跨实例不共享）。`districts` 由 `buildDistricts(schools, news)` 从学校数据动态聚合生成，不依赖 `data/districts.json` 文件。其余 `data/*.json`（`districts.json`/`policies.json`/`knowledge-pages.json`）为提交的运行数据。
 - `content/` 存放 Markdown 长文（news / schools / policies 详情、knowledge 结构化 JSON）。
-- `shared/data-store.js` 通过 `KAONAQU_RUNTIME_ROOT_DATA_DIR` 环境变量定位数据目录；`loadDataStore()` DB 优先（读 DB 后 best-effort 写回本地缓存），DB 不可用时降级到本地缓存文件（`districts.json` 仍有打包快照兜底，schools/news 缓存缺失则返回空集合）。
-- 增删改直接操作 DB（`createXxxInSupabase`/`updateXxxInSupabase`/`deleteXxxFromSupabase`），本地缓存只读（由 `loadDataStore` 读 DB 时经 `writeSchoolCache`/`writeNewsCache` 刷新）；DB 未配置时写操作抛 503。
+- `shared/data-store.js` 的 `loadDataStore()` 以 Supabase 为唯一源（未配置时返回空数据集，不再降级读本地文件）；进程内 60s memo 缓存避免每次请求打库。Vercel 上的**跨实例缓存**由 Supabase 查询层的 Next.js Data Cache 承担（`shared/supabase-client.js` 的 `cachedFetch` 给所有 Supabase 查询附加 `next: { revalidate: 60, tags: ['supabase-data'] }`，持久化在 Vercel 缓存层、跨实例共享）。
+- 增删改直接操作 DB（`createXxxInSupabase`/`updateXxxInSupabase`/`deleteXxxFromSupabase`），写操作后列表至多 60s 经 Data Cache revalidate 自动刷新（如需更强一致性可在写路径调 `revalidateTag('supabase-data')`）；DB 未配置时写操作抛 503。
 
 ### API 层：单一 catch-all 入口
 
