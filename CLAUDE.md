@@ -31,7 +31,7 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 
 - 学校与新闻数据权威源均为线上数据库（`schools` / `news` 表），Supabase 为**唯一数据源**（2026-07-17 已移除 schools/news 的文件系统 json 缓存：不再写回、不再降级读取，serverless 上写不进/读不到/跨实例不共享）。`districts` 由 `buildDistricts(schools, news)` 从学校数据动态聚合生成，不依赖 `data/districts.json` 文件。其余 `data/*.json`（`districts.json`/`policies.json`/`knowledge-pages.json`）为提交的运行数据。
 - `content/` 存放 Markdown 长文（news / schools / policies 详情、knowledge 结构化 JSON）。
-- `shared/data-store.js` 的 `loadDataStore()` 以 Supabase 为唯一源（未配置时返回空数据集，不再降级读本地文件）；进程内 60s memo 缓存避免每次请求打库。Vercel 上的**跨实例缓存**由 Supabase 查询层的 Next.js Data Cache 承担（`shared/supabase-client.js` 的 `cachedFetch` 给所有 Supabase 查询附加 `next: { revalidate: 60, tags: ['supabase-data'] }`，持久化在 Vercel 缓存层、跨实例共享）。
+- `shared/data-store.js` 的 `loadDataStore()` 以 Supabase 为唯一源（未配置时返回空数据集，不再降级读本地文件）。**缓存层只有 Next.js Data Cache 一层**（`shared/supabase-client.js` 的 `cachedFetch` 给所有 Supabase 查询附加 `next: { revalidate: 60, tags: ['supabase-data'] }`，持久化在 Vercel 缓存层、跨实例共享）；不再维护进程内 memo（与 Data Cache 职责重叠、serverless 实例生命周期不可控）。页面级 ISR（`export const revalidate`）也已全部移除，所有页面默认动态渲染，数据缓存统一由 Data Cache 兜底。写操作（POST/PUT/DELETE）成功后由 `app/api/[...slug]/route.js` 调 `revalidateTag('supabase-data')` 立即失效缓存，保证读自己写一致性；`revalidateTag` 是 Next 框架函数只能在 route 内调，所以不在 CJS 的 `shared/` 内调。
 - 增删改直接操作 DB（`createXxxInSupabase`/`updateXxxInSupabase`/`deleteXxxFromSupabase`），写操作后列表至多 60s 经 Data Cache revalidate 自动刷新（如需更强一致性可在写路径调 `revalidateTag('supabase-data')`）；DB 未配置时写操作抛 503。
 
 ### API 层：单一 catch-all 入口
@@ -39,6 +39,7 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 - 所有 REST 接口走 `app/api/[...slug]/route.js`，转给 `shared/api-router.js` 的 `handleApiRequest({ method, pathname, query, body })`。
 - 业务逻辑在 `shared/content-service.js`（CRUD 写 DB + 搜索 + 轻量归一化 `buildSchoolRecord`/`buildNewsRecord`），区域目录与基础工具在 `shared/data-schema.js`，DB 行↔应用对象映射在 `shared/data-store.js`（`rowToSchool`/`schoolToRow`、`rowToNews`/`newsToRow`）。
 - 新增接口：在 `api-router.js` 加 `pathname` 分支即可，无需新建 route 文件。
+- **写操作鉴权**：`POST`/`PUT`/`DELETE` 必须带 `Authorization: Bearer $KNQ_ADMIN_TOKEN`，由 `route.js` 的 `checkWriteAuth` 闸门拦截（`crypto.timingSafeEqual` 恒定时间比较）；未配置 `KNQ_ADMIN_TOKEN` 时 fail-closed（一律 403）。`GET`/`OPTIONS` 只读放行。CORS 走 `KNQ_API_ALLOW_ORIGINS` 白名单（不能用 `*`，否则带 `Authorization` 的跨域请求会被浏览器拒）。
 
 ### 页面与频道
 
@@ -51,7 +52,7 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 | `/schools` 及 `/schools/[id]`、`/compare`、`/schools/score-match`、`/schools/district`、`/schools/groups` 等 | schools | `schools-page-client.js` / `schools-compare-client.js` / `score-match-client.tsx` / `groups-page-client.js` |
 | `/knowledge` 与 `/knowledge/[[...slug]]` | knowledge | `knowledge-page.js` |
 
-页面 server 组件（如 `app/schools/page.js`）通过 `loadDataStore()` 取数，透传给 client 组件做交互；多数页面 `export const revalidate = 86400`（ISR 一天）。
+页面 server 组件（如 `app/schools/page.js`）通过 `loadDataStore()` 取数，透传给 client 组件做交互；所有页面默认动态渲染，数据缓存统一走 Next.js Data Cache（60s，`tag: supabase-data`）。
 
 ### 样式系统
 
@@ -72,4 +73,4 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 - 新增 API 接口走 `shared/api-router.js` 而非新建 route 文件。
 - 不要在 `theme-*.css` 里复制 `:root` 全套令牌；只写差异。
 - `.codex/`、`data/top100-schools.json`、`data/schools.json`、`data/news.json`、`reports/` 已 gitignore，勿提交。
-- Vercel 部署：Root Directory 为仓库根，Framework Preset 选 Next.js，Build Command 用默认 `next build`。需配置 Supabase 环境变量（`KNQ_SUPABASE_URL`/`KNQ_SUPABASE_SERVICE_ROLE_KEY`/`KNQ_SUPABASE_ANON_KEY`）。
+- Vercel 部署：Root Directory 为仓库根，Framework Preset 选 Next.js，Build Command 用默认 `next build`。需配置 Supabase 环境变量（`KNQ_SUPABASE_URL`/`KNQ_SUPABASE_SERVICE_ROLE_KEY`/`KNQ_SUPABASE_ANON_KEY`）与写 API 鉴权变量（`KNQ_ADMIN_TOKEN`/`KNQ_API_ALLOW_ORIGINS`，见 `.env.example`）。

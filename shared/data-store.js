@@ -478,16 +478,12 @@ function ensureDatasets(data = {}) {
 
 // 数据来源始终是线上数据库（Supabase 为唯一权威源）。
 // schools.json / news.json 不再作为文件系统缓存——serverless 上写不进、读不到、跨实例不共享，已于 2026-07-17 移除。
-// Vercel 上的跨实例缓存改由 Supabase 查询层的 Next.js Data Cache 承担（见 shared/supabase-client.js）。
-// 进程内 memo 缓存：学校数据极少变动，避免每次请求都打 Supabase 查询 888 行。
-// 缓存命中时仍返回同一份不可变 state；调用方均只读不修改，安全共享。
-let _storeCache = null;
-let _storeCacheAt = 0;
-const STORE_CACHE_TTL_MS = 60 * 1000;
-
-async function loadDataStoreFresh() {
+// Vercel 上的跨实例缓存由 Supabase 查询层的 Next.js Data Cache 承担（见 shared/supabase-client.js 的 cachedFetch，
+// revalidate: 60s，tags: ['supabase-data']）。
+// 不再维护进程内 memo：serverless 实例生命周期不可控、与 Data Cache 职责重叠，统一由 Data Cache 一层兜底。
+async function loadDataStore() {
   if (!isSupabaseConfigured()) {
-    console.warn('[data-store] Supabase 未配置，返回空数据集（schools/news 无文件系统缓存）');
+    console.warn('[data-store] Supabase 未配置，返回空数据集');
     return ensureDatasets({ schools: [], news: [] });
   }
   const [schools, news] = await Promise.all([
@@ -495,16 +491,6 @@ async function loadDataStoreFresh() {
     loadNewsFromSupabase()
   ]);
   return ensureDatasets({ schools, news });
-}
-
-async function loadDataStore() {
-  const now = Date.now();
-  if (_storeCache && now - _storeCacheAt < STORE_CACHE_TTL_MS) {
-    return _storeCache;
-  }
-  _storeCache = await loadDataStoreFresh();
-  _storeCacheAt = now;
-  return _storeCache;
 }
 
 module.exports = {

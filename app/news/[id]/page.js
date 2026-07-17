@@ -472,8 +472,6 @@ export async function generateMetadata({ params }) {
   return { title: '新闻详情 | 考哪去' };
 }
 
-export const revalidate = 3600;
-
 export default async function NewsDetailPage({ params }) {
   const { id } = await params;
   const newsItem = await getNewsById(id);

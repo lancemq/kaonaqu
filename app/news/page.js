@@ -12,8 +12,6 @@ export const metadata = {
   keywords: ['上海中考新闻', '上海高考政策', '中招安排', '高招消息', '上海升学动态']
 };
 
-export const revalidate = 3600;
-
 function getCurrentYear(news) {
   const years = news
     .map((item) => {

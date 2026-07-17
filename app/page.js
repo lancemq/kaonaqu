@@ -14,8 +14,6 @@ import {
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../shared/data-store');
 
-export const revalidate = 3600;
-
 const FEATURED_SCHOOL_NAMES = [
   '复旦大学附属中学',
   '上海中学',

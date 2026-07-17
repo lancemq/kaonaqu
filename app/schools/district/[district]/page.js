@@ -16,8 +16,6 @@ import { getSchoolOverview } from '../../../../lib/school-content';
 const require = createRequire(import.meta.url);
 const { loadDataStore } = require('../../../../shared/data-store');
 
-export const revalidate = 86400;
-
 function buildCardTags(school) {
   const values = [
     ...(school.tags || []),

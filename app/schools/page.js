@@ -97,8 +97,8 @@ export const metadata = {
   keywords: ['上海学校', '上海初中', '上海高中', '学校查询', '择校', '上海16区学校']
 };
 
-// 读 searchParams → 动态渲染（按 M3 全服务端筛选/分页），revalidate 仅作语义标注。
-export const revalidate = 86400;
+// 读 searchParams -> 动态渲染，Data Cache 兜底数据。
+export const dynamic = 'force-dynamic';
 
 export default async function SchoolsPage({ searchParams }) {
   const { districts, schools } = await loadDataStore();

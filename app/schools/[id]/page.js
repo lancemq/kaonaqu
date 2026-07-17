@@ -91,8 +91,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export const revalidate = 86400;
-
 export default async function SchoolDetailPage({ params }) {
   const { id } = await params;
   // 详情页需完整记录（content/scoreLines/admissionInfo），按 id 单校完整查询

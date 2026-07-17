@@ -60,6 +60,7 @@ Next API Route 统一入口在 `app/api/[...slug]/route.js`，业务处理复用
 - `POST /api/news` / `PUT /api/news?id=<news-id>` / `DELETE /api/news?id=<news-id>`
 
 > 写操作（POST/PUT/DELETE）直接变更线上数据库，需配置 Supabase；未配置时返回 503。
+> 写操作必须带 `Authorization: Bearer $KNQ_ADMIN_TOKEN`，否则返回 401/403；GET 只读放行。
 
 ## 数据链路
 
@@ -89,6 +90,10 @@ Supabase (schools / news 表)
 2. Framework Preset 选择 Next.js
 3. Build Command 使用默认 `next build`
 4. 配置 Supabase 环境变量：`KNQ_SUPABASE_URL`、`KNQ_SUPABASE_SERVICE_ROLE_KEY`、`KNQ_SUPABASE_ANON_KEY`
-5. 部署后访问 `/`、`/news`、`/schools`、`/knowledge`
+5. 配置写 API 鉴权变量：
+   - `KNQ_ADMIN_TOKEN`：≥32 字符随机串（`openssl rand -hex 32`）。未配置时所有写操作一律 403。
+   - `KNQ_API_ALLOW_ORIGINS`：CORS 白名单（逗号分隔），默认 `http://localhost:3000,https://kaonaqu.xyz`。
+   - 调用写 API 时带 `Authorization: Bearer <token>`。
+6. 部署后访问 `/`、`/news`、`/schools`、`/knowledge`
 
 `vercel.json` 当前仅负责 `cleanUrls` 配置。
