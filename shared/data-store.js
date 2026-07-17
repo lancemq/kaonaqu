@@ -51,7 +51,8 @@ function rowToSchool(row) {
     profileDepth: row.profile_depth || 'enhanced',
     features: row.features || [],
     scoreLines: Array.isArray(row.score_lines) ? row.score_lines : [],
-    content: Array.isArray(row.content) ? row.content : []
+    content: Array.isArray(row.content) ? row.content : [],
+    infoVerified: !!row.info_verified
   };
 }
 
@@ -92,7 +93,7 @@ const SCHOOLS_LIST_COLUMNS = [
   'id', 'slug', 'name', 'district_name', 'school_stage_label', 'school_property_label',
   'school_key_level', 'elite_cohort', 'group', 'address', 'phone', 'website',
   'founding_year', 'is_boarding', 'is_international', 'image', 'profile_depth',
-  'features'
+  'features', 'info_verified'
 ].join(',');
 
 async function loadSchoolsFromSupabase() {
@@ -274,7 +275,8 @@ function schoolToRow(school = {}) {
       routes: Array.isArray(school.admissionInfo?.routes) ? school.admissionInfo.routes
         : (Array.isArray(school.admissionRoutes) ? school.admissionRoutes : []),
       notes: school.admissionInfo?.notes || ''
-    }
+    },
+    info_verified: !!school.infoVerified
   };
 }
 
