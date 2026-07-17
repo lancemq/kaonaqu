@@ -6,6 +6,12 @@ const require = createRequire(import.meta.url);
 const { handleApiRequest } = require('../../../shared/api-router');
 const { checkWriteAuth, getCorsOrigin, corsHeaders } = require('../../../shared/api-auth');
 
+// Route handler 不继承 layout 的 fetchCache 段配置，需单独设置。
+// force-cache 使 GET 请求的 Supabase 查询被 Data Cache 缓存（revalidate: 60s），
+// 即使 handler 内先访问了 request.method / headers / searchParams 等 Request-time API。
+// 写操作（POST/PUT/DELETE）不受影响（非 GET，Data Cache 不缓存）。
+export const fetchCache = 'force-cache';
+
 // 写操作（POST/PUT/DELETE）成功后立即失效 Data Cache，确保读自己写一致性。
 // tag 与 shared/supabase-client.js cachedFetch 的 tags 对齐。
 const SUPABASE_DATA_TAG = 'supabase-data';

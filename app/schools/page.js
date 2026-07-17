@@ -97,8 +97,8 @@ export const metadata = {
   keywords: ['上海学校', '上海初中', '上海高中', '学校查询', '择校', '上海16区学校']
 };
 
-// 读 searchParams -> 动态渲染，Data Cache 兜底数据。
-export const dynamic = 'force-dynamic';
+// searchParams 自动使页面动态渲染；fetchCache 由 app/layout.js 统一设为 force-cache，
+// Supabase 查询经 Next Data Cache 缓存（revalidate: 60s，tags: ['supabase-data']）。
 
 export default async function SchoolsPage({ searchParams }) {
   const { districts, schools } = await loadDataStore();

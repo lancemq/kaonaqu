@@ -9,7 +9,6 @@ export const metadata = {
   description: '按教育集团检索上海初中、高中学校，了解各教育集团旗下成员校、分布区域、梯队构成，适合升学择校参考。'
 };
 
-export const dynamic = 'force-dynamic';
 
 export default async function GroupsPage({ searchParams }) {
   const { districts, schools, news } = await loadDataStore();

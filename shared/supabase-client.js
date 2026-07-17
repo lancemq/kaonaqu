@@ -39,9 +39,12 @@ const NEWS_TABLE = process.env.SUPABASE_NEWS_TABLE || 'news';
 // - 在非 Next 运行时（如迁移脚本）globalThis.fetch 未被 patch，next 选项被忽略，自动降级为不缓存。
 // - 写操作成功后由 app/api/[...slug]/route.js 调 revalidateTag('supabase-data') 立即失效，
 //   保证读自己写一致性（revalidateTag 是 Next 框架函数，只能在 route/server component 调用，故不放在这里）。
-// - 必须显式 cache: 'force-cache'：Next 16 Previous Model 下，route handler 调用 request.headers /
-//   searchParams / request.json() 等 Request-time API 后会进入 dynamic 渲染，fetch 默认 cache: 'no-store'，
-//   即使设了 next.revalidate 也不会被缓存。显式 force-cache 覆盖该默认行为。
+// - 需配合 route 段配置 fetchCache = 'force-cache'（见 app/layout.js / app/api/[...slug]/route.js）：
+//   Next 16 Previous Model 的 auto 模式下，route handler / page 调用 request.headers /
+//   searchParams / params / request.json() 等 Request-time API 后，fetch 默认 cache: 'no-store'，
+//   即使 fetch 显式设了 cache: 'force-cache' 也会被忽略。段级 fetchCache = 'force-cache'
+//   覆盖该默认行为，使 Request-time API 之后的 fetch 也能被 Data Cache 缓存。
+//   cachedFetch 内的 cache: 'force-cache' 为冗余兜底（段配置已覆盖）。
 function cachedFetch(input, init = {}) {
   // 每次调用读取当前 globalThis.fetch：Next 运行期已被 patch，能正确处理 next 缓存选项；
   // 非 Next 环境（迁移脚本）则为原生 fetch，忽略 next（自动降级为不缓存）。

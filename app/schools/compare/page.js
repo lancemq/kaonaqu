@@ -9,7 +9,6 @@ export const metadata = {
   description: '多维度对比上海初高中学校信息，包括梯队、集团、招生政策、特色标签等，辅助升学择校决策。'
 };
 
-export const dynamic = 'force-dynamic';
 
 export default async function SchoolsComparePage({ searchParams }) {
   const { schools } = await loadDataStore();

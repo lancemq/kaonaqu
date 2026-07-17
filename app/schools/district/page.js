@@ -18,7 +18,6 @@ export const metadata = {
   description: '按上海16区查看学校结构、区域教育特点、初高中分布与学校专题入口，适合按区比较上海学校资源。'
 };
 
-export const dynamic = 'force-dynamic';
 
 function getLatestUpdate() {
   return '持续整理';
