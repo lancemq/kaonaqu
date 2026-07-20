@@ -404,13 +404,20 @@ function GradePage({ page }) {
 function DetailSidebar({ page }) {
   const trail = getPageTrail(page);
   const meta = getSubjectMeta(page);
+  const relatedPages = page.relatedPages?.length ? page.relatedPages : null;
   return (
     <aside className="knowledge-detail-sidebar" aria-label="知识详情侧栏">
       <section>
         <SectionKicker label="RELATED" />
-        {GRADE_RIBBON.filter((grade) => !grade.disabled).slice(1, 4).map((grade) => (
-          <Link href={grade.href} key={grade.label}><span>{grade.label}</span><em>→</em></Link>
-        ))}
+        {relatedPages ? (
+          relatedPages.map((rel) => (
+            <Link href={rel.href} key={rel.slug}><span>{rel.label}</span><em>→</em></Link>
+          ))
+        ) : (
+          GRADE_RIBBON.filter((grade) => !grade.disabled).slice(1, 4).map((grade) => (
+            <Link href={grade.href} key={grade.label}><span>{grade.label}</span><em>→</em></Link>
+          ))
+        )}
       </section>
       <section className="is-dark">
         <SectionKicker label="QUICK ACCESS" />

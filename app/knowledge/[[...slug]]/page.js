@@ -1,7 +1,7 @@
 import '../../../styles/channels/knowledge.css';
 import { notFound } from 'next/navigation';
 import KnowledgePage from '../../../components/knowledge-page';
-import { getKnowledgePage, listKnowledgeSlugs } from '../../../lib/knowledge-content.mjs';
+import { getKnowledgePage, listKnowledgeSlugs, buildKnowledgeJsonLd } from '../../../lib/knowledge-content.mjs';
 
 export async function generateStaticParams() {
   return listKnowledgeSlugs();
@@ -19,6 +19,7 @@ export async function generateMetadata({ params }) {
   return {
     title: page.title,
     description: page.description,
+    keywords: page.keywords,
     alternates: {
       canonical: page.href
     },
@@ -40,5 +41,18 @@ export default async function KnowledgeRoutePage({ params }) {
     notFound();
   }
 
-  return <KnowledgePage page={page} />;
+  const jsonLdBlocks = buildKnowledgeJsonLd(page);
+
+  return (
+    <>
+      {jsonLdBlocks.map((block, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+        />
+      ))}
+      <KnowledgePage page={page} />
+    </>
+  );
 }
