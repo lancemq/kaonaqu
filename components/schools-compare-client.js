@@ -136,6 +136,11 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
   const [selectedIds, setSelectedIds] = useState(initialIds);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // bagIds = items.map(...) 每次渲染都生成新数组引用；若直接作为 effect 依赖会导致
+  // effect 每轮都重跑 → setSelectedIds 又触发重渲染 → 无限循环（Maximum update depth exceeded）。
+  // 改用稳定字符串 key 作为依赖，并在函数式更新里做内容相等判断，彻底切断反馈环。
+  const bagKey = bagIds.join(',');
+
   useEffect(() => {
     if (!bagReady) return;
     if (initialIds.length > 0) {
@@ -145,16 +150,15 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
         return { id, name: school?.name || id };
       }));
       setSelectedIds(sanitized);
-    } else if (bagIds.length > 0) {
-      setSelectedIds(bagIds);
+      return;
     }
+    // bag 驱动模式：仅当内容真正变化时才更新，避免无限渲染循环
+    setSelectedIds((prev) => {
+      if (prev.length === bagIds.length && prev.every((id, i) => id === bagIds[i])) return prev;
+      return bagIds;
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bagReady]);
-
-  useEffect(() => {
-    if (!bagReady || initialIds.length > 0) return;
-    setSelectedIds(bagIds);
-  }, [bagIds, bagReady, initialIds.length]);
+  }, [bagReady, bagKey, initialIds.length]);
 
   const selectedSchools = useMemo(
     () => selectedIds.map((id) => schools.find((school) => school.id === id)).filter(Boolean),
