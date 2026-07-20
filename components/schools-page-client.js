@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Pager from './pager';
+import { useCompareBag } from './compare-bag';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState, useTransition } from 'react';
 
@@ -28,6 +29,7 @@ function buildHref(base, next) {
     if (v && v !== 'all') qs.set(key, v);
   }
   if (merged.sort && merged.sort !== 'priority') qs.set('sort', merged.sort);
+  if (Array.isArray(merged.features) && merged.features.length) qs.set('features', merged.features.join(','));
   if (merged.page && Number(merged.page) > 1) qs.set('page', String(merged.page));
   const s = qs.toString();
   return s ? `/schools?${s}` : '/schools';
@@ -59,8 +61,8 @@ export default function SchoolsPageClient({
   total = 0,
   totalPages = 1,
   currentPage = 1,
-  filters = { district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', boarding: 'all', international: 'all', sort: 'priority', query: '' },
-  filterOptions = { stage: [], property: [], keyLevel: [], cohort: [] },
+  filters = { district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', boarding: 'all', international: 'all', features: [], sort: 'priority', query: '' },
+  filterOptions = { stage: [], property: [], keyLevel: [], cohort: [], featureFilters: [] },
   stageTotals = { junior: 0, senior_high: 0, complete: 0 }
 }) {
   const router = useRouter();
@@ -87,7 +89,11 @@ export default function SchoolsPageClient({
   const activeBoarding = filters.boarding;
   const activeInternational = filters.international;
   const activeSort = filters.sort || 'priority';
+  const activeFeatures = Array.isArray(filters.features) ? filters.features : [];
   const searchQuery = filters.query || '';
+
+  // 对比篮：localStorage 持久化，跨组件（列表页 ↔ 对比页）通过事件同步
+  const { ids: bagIds, ready: bagReady, has: bagHas, toggle: bagToggle, clear: clearBag, max: bagMax } = useCompareBag();
 
   const highlightedDistricts = useMemo(
     () => districts.slice().sort((left, right) => Number(right.schoolCount || 0) - Number(left.schoolCount || 0)).slice(0, 6),
@@ -107,13 +113,19 @@ export default function SchoolsPageClient({
     if (activeBoarding === 'boarding') lines.push('寄宿制');
     if (activeBoarding === 'day') lines.push('走读');
     if (activeInternational === 'international') lines.push('国际课程');
+    if (activeFeatures.length) {
+      const labels = activeFeatures
+        .map((fid) => filterOptions.featureFilters.find((f) => f.id === fid)?.label)
+        .filter(Boolean);
+      if (labels.length) lines.push(`特色：${labels.join('/')}`);
+    }
     if (searchQuery) lines.push(`关键词：${searchQuery}`);
     if (activeSort !== 'priority') {
       const opt = SORT_OPTIONS.find((o) => o.value === activeSort);
       if (opt) lines.push(`排序：${opt.label}`);
     }
     return lines;
-  }, [activeDistrict, activeStage, activeProperty, activeKeyLevel, activeCohort, activeBoarding, activeInternational, activeSort, searchQuery, districts]);
+  }, [activeDistrict, activeStage, activeProperty, activeKeyLevel, activeCohort, activeBoarding, activeInternational, activeFeatures, activeSort, searchQuery, districts, filterOptions.featureFilters]);
 
   const totalDb = stageTotals.junior + stageTotals.senior_high + stageTotals.complete;
   const currentDistrictLabel = activeDistrict === 'all'
@@ -124,9 +136,15 @@ export default function SchoolsPageClient({
     : `数据库收录 ${totalDb} 所学校`;
 
   const applySearch = () => navigate({ query: queryInput.trim() });
+  const toggleFeature = (fid) => {
+    const next = activeFeatures.includes(fid)
+      ? activeFeatures.filter((id) => id !== fid)
+      : [...activeFeatures, fid];
+    navigate({ features: next });
+  };
   const resetFilters = () => {
     setQueryInput('');
-    navigate({ district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', boarding: 'all', international: 'all', sort: 'priority', query: '' });
+    navigate({ district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', boarding: 'all', international: 'all', features: [], sort: 'priority', query: '' });
   };
 
   return (
@@ -258,6 +276,17 @@ export default function SchoolsPageClient({
           </section>
 
           <section className="schools-aerial-filter-block">
+            <label>特色标签</label>
+            <div className="schools-aerial-filter-stack schools-aerial-feature-chips">
+              {filterOptions.featureFilters.map((option) => (
+                <button key={option.id} type="button" className={activeFeatures.includes(option.id) ? 'is-active' : ''} onClick={() => toggleFeature(option.id)}>
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="schools-aerial-filter-block">
             <label>快速工具</label>
             <div className="schools-aerial-tool-stack">
               <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
@@ -266,6 +295,18 @@ export default function SchoolsPageClient({
               <Link href="/schools/groups"><span>教育集团</span><i>→</i></Link>
               <Link href="/schools/district"><span>区域专题</span><i>→</i></Link>
             </div>
+          </section>
+
+          <section className="schools-aerial-filter-block schools-aerial-compare-basket-block">
+            <label>对比篮</label>
+            <div className="schools-aerial-compare-basket">
+              <span>{bagReady ? `${bagIds.length}/${bagMax}` : `0/${bagMax}`} 所</span>
+              <Link href="/schools/compare">查看对比 →</Link>
+              {bagReady && bagIds.length > 0 && (
+                <button type="button" className="schools-aerial-compare-clear" onClick={() => clearBag()}>清空</button>
+              )}
+            </div>
+            <p className="schools-aerial-compare-hint">在右侧卡片点「加入对比」，最多可同时对比 {bagMax} 所。</p>
           </section>
 
           <section className="schools-aerial-filter-block">
@@ -317,6 +358,16 @@ export default function SchoolsPageClient({
               </div>
             ) : schools.map((school) => (
               <article key={school.id} className="schools-aerial-card-wrap">
+                {bagReady && (
+                  <button
+                    type="button"
+                    className={`schools-aerial-compare-toggle ${bagHas(school.id) ? 'is-added' : ''}`}
+                    aria-pressed={bagHas(school.id)}
+                    onClick={() => bagToggle(school.id, school.name)}
+                  >
+                    {bagHas(school.id) ? '✓ 已加入' : '＋ 对比'}
+                  </button>
+                )}
                 <Link href={`/schools/${school.id}`} className="schools-aerial-card">
                   <div className="schools-aerial-card-main">
                     <p>{school.districtName} / {school.schoolStageLabel} / {getOwnershipLabel(school)}</p>

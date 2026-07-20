@@ -52,6 +52,24 @@ function buildCardTags(school) {
   return Array.from(new Set(values)).slice(0, 4);
 }
 
+// 精选「择校高频」特色维度（P1 特色标签筛选用）。match 为 features 数组里的子串，
+// 命中任一即视为具备该特色。寄宿制/国际课程已有独立维度，此处不再重复。
+const FEATURE_FILTERS = [
+  { id: 'science', label: '科技 / STEM', match: ['科技', 'STEM', '实验'] },
+  { id: 'arts', label: '艺术', match: ['艺术', '传统文化'] },
+  { id: 'sports', label: '体育', match: ['体育', '体艺'] },
+  { id: 'research', label: '探究 / 研究', match: ['探究', '研究性', '创新人才'] },
+  { id: 'smallClass', label: '小班化', match: ['小班化'] },
+  { id: 'bilingual', label: '双语 / 国际理解', match: ['国际理解', '双语'] }
+];
+
+function schoolHasFeature(school, featureId) {
+  const def = FEATURE_FILTERS.find((f) => f.id === featureId);
+  if (!def) return true;
+  const feats = Array.isArray(school.features) ? school.features : [];
+  return def.match.some((kw) => feats.some((f) => String(f).includes(kw)));
+}
+
 // 仅展示所需字段（不含 searchText），只对被筛选出的 ≤10 所调用，
 // 因此服务端 content 解析/概览/训练方向开销从 888× 降到 10×。
 function toSchoolListCard(school) {
@@ -86,6 +104,12 @@ function filterSchools(schools, filters) {
     if (filters.international !== 'all') {
       const wantIntl = filters.international === 'international';
       if (!!s.isInternational !== wantIntl) return false;
+    }
+    if (Array.isArray(filters.features) && filters.features.length) {
+      // 多选 AND 语义：同时具备所有勾选的特色维度
+      for (const fid of filters.features) {
+        if (!schoolHasFeature(s, fid)) return false;
+      }
     }
     if (q && !buildSearchText(s).includes(q)) return false;
     return true;
@@ -176,6 +200,7 @@ export default async function SchoolsPage({ searchParams }) {
     cohort: typeof params?.cohort === 'string' ? params.cohort : 'all',
     boarding: typeof params?.boarding === 'string' ? params.boarding : 'all',
     international: typeof params?.international === 'string' ? params.international : 'all',
+    features: typeof params?.features === 'string' ? params.features.split(',').filter(Boolean) : [],
     sort: typeof params?.sort === 'string' ? params.sort : 'priority',
     query: typeof params?.query === 'string' ? params.query : ''
   };
@@ -202,7 +227,8 @@ export default async function SchoolsPage({ searchParams }) {
     stage: distinctLabels(schools, (s) => (s.schoolStageLabel || '').trim()),
     property: distinctLabels(schools, (s) => (s.schoolPropertyLabel || '').trim()),
     keyLevel: distinctLabels(schools, (s) => (s.schoolKeyLevel || '').trim()),
-    cohort: distinctLabels(schools, (s) => (s.eliteCohort || '').trim())
+    cohort: distinctLabels(schools, (s) => (s.eliteCohort || '').trim()),
+    featureFilters: FEATURE_FILTERS.map(({ id, label }) => ({ id, label }))
   };
 
   const stageTotals = { junior: 0, senior_high: 0, complete: 0 };

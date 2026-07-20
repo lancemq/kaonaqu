@@ -513,6 +513,96 @@ body[data-page="schools"] .schools-aerial-card-score-note {
     color: var(--channel-muted);
 }
 
+/* P1：特色标签筛选 chips（覆盖 filter-stack 的 width:100%） */
+body[data-page="schools"] .schools-aerial-feature-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+body[data-page="schools"] .schools-aerial-feature-chips button {
+    width: auto;
+    min-height: 30px;
+    padding: 0 13px;
+    border-radius: 999px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* P1：卡片「加入对比」角标 */
+body[data-page="schools"] .schools-aerial-compare-toggle {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    height: 28px;
+    padding: 0 12px;
+    border: 1px solid var(--channel-line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+body[data-page="schools"] .schools-aerial-compare-toggle:hover {
+    border-color: var(--channel-blue);
+}
+
+body[data-page="schools"] .schools-aerial-compare-toggle.is-added {
+    background: var(--channel-blue);
+    border-color: var(--channel-blue);
+    color: #fff;
+}
+
+/* P1：侧栏对比篮 */
+body[data-page="schools"] .schools-aerial-compare-basket {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+}
+
+body[data-page="schools"] .schools-aerial-compare-basket > span {
+    font-family: var(--channel-font-data);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--channel-text);
+}
+
+body[data-page="schools"] .schools-aerial-compare-basket > a {
+    color: var(--channel-blue);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+body[data-page="schools"] .schools-aerial-compare-clear {
+    height: 26px;
+    padding: 0 10px;
+    border: 1px solid var(--channel-line);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--channel-muted);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+body[data-page="schools"] .schools-aerial-compare-clear:hover {
+    border-color: var(--channel-blue);
+    color: var(--channel-blue);
+}
+
+body[data-page="schools"] .schools-aerial-compare-hint {
+    margin: 8px 0 0;
+    color: var(--channel-muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
 /* P0：排序控件 */
 body[data-page="schools"] .schools-aerial-results-head-right {
     display: flex;
