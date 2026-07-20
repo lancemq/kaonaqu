@@ -66,7 +66,8 @@ function toSchoolListCard(school) {
     eliteCohort: school.eliteCohort || '',
     schoolStage: school.schoolStage || '',
     positioning: getSchoolPositioning(school),
-    tags: buildCardTags(school)
+    tags: buildCardTags(school),
+    scoreLines: Array.isArray(school.scoreLines) ? school.scoreLines : []
   };
 }
 
@@ -78,6 +79,14 @@ function filterSchools(schools, filters) {
     if (filters.property !== 'all' && (s.schoolPropertyLabel || '') !== filters.property) return false;
     if (filters.keyLevel !== 'all' && (s.schoolKeyLevel || '') !== filters.keyLevel) return false;
     if (filters.cohort !== 'all' && (s.eliteCohort || '') !== filters.cohort) return false;
+    if (filters.boarding !== 'all') {
+      const wantBoarding = filters.boarding === 'boarding';
+      if (!!s.isBoarding !== wantBoarding) return false;
+    }
+    if (filters.international !== 'all') {
+      const wantIntl = filters.international === 'international';
+      if (!!s.isInternational !== wantIntl) return false;
+    }
     if (q && !buildSearchText(s).includes(q)) return false;
     return true;
   });
@@ -90,6 +99,59 @@ function distinctLabels(schools, pick) {
     if (v) set.add(v);
   }
   return Array.from(set);
+}
+
+// 排序用的层级权重（与 data-store 的 KEY_LEVEL_PRIORITY 对齐，仅用于列表排序）
+const KEY_LEVEL_SORT = {
+  '市重点': 100, '三公': 95, '区重点': 80, '顶级民办': 70,
+  '优质公办': 65, '一般高中': 60, '顶级公办(初中)': 58, '强公办(初中)': 55,
+  '顶级民办(初中)': 48, '强民办(初中)': 50, '一般初中': 40
+};
+
+function getLatestScoreLine(school) {
+  const lines = Array.isArray(school.scoreLines) ? school.scoreLines : [];
+  if (!lines.length) return null;
+  let best = lines[0];
+  for (const line of lines) {
+    if (Number(line.year) > Number(best.year)) best = line;
+  }
+  return best;
+}
+
+function scoreValue(line) {
+  if (!line) return -1;
+  const n = parseFloat(String(line.score == null ? '' : line.score).replace(/[^0-9.]/g, ''));
+  return Number.isFinite(n) ? n : -1;
+}
+
+function sortByPriority(list) {
+  return list.slice().sort((a, b) => {
+    const aCohort = String(a.eliteCohort || '').trim() ? 1 : 0;
+    const bCohort = String(b.eliteCohort || '').trim() ? 1 : 0;
+    if (aCohort !== bCohort) return bCohort - aCohort;
+    const aLevel = KEY_LEVEL_SORT[String(a.schoolKeyLevel || '').trim()] || 0;
+    const bLevel = KEY_LEVEL_SORT[String(b.schoolKeyLevel || '').trim()] || 0;
+    if (aLevel !== bLevel) return bLevel - aLevel;
+    return String(a.districtName || '').localeCompare(String(b.districtName || ''), 'zh');
+  });
+}
+
+function sortSchools(schools, sort) {
+  const list = schools.slice();
+  switch (sort) {
+    case 'level':
+      return list.sort((a, b) => (KEY_LEVEL_SORT[String(b.schoolKeyLevel || '').trim()] || 0) - (KEY_LEVEL_SORT[String(a.schoolKeyLevel || '').trim()] || 0));
+    case 'district':
+      return list.sort((a, b) => String(a.districtName || '').localeCompare(String(b.districtName || ''), 'zh'));
+    case 'year':
+      return list.sort((a, b) => (Number(a.foundingYear) || 0) - (Number(b.foundingYear) || 0));
+    case 'score':
+      // 轻量列表无 scoreLines，先按 priority 近似；当前页完整数据在下方按分数重排
+      return sortByPriority(list);
+    case 'priority':
+    default:
+      return sortByPriority(list);
+  }
 }
 
 export const metadata = {
@@ -112,19 +174,28 @@ export default async function SchoolsPage({ searchParams }) {
     property: typeof params?.property === 'string' ? params.property : 'all',
     keyLevel: typeof params?.keyLevel === 'string' ? params.keyLevel : 'all',
     cohort: typeof params?.cohort === 'string' ? params.cohort : 'all',
+    boarding: typeof params?.boarding === 'string' ? params.boarding : 'all',
+    international: typeof params?.international === 'string' ? params.international : 'all',
+    sort: typeof params?.sort === 'string' ? params.sort : 'priority',
     query: typeof params?.query === 'string' ? params.query : ''
   };
   const requestedPage = parseInt(typeof params?.page === 'string' ? params.page : '1', 10);
   const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
 
-  const filtered = filterSchools(schools, filters);
-  const total = filtered.length;
+  const sorted = sortSchools(filterSchools(schools, filters), filters.sort);
+  const total = sorted.length;
   const totalPages = Math.max(1, Math.ceil(total / SCHOOLS_PER_PAGE));
   const safePage = Math.min(page, totalPages);
-  const pageItems = filtered.slice((safePage - 1) * SCHOOLS_PER_PAGE, safePage * SCHOOLS_PER_PAGE);
+  const pageItems = sorted.slice((safePage - 1) * SCHOOLS_PER_PAGE, safePage * SCHOOLS_PER_PAGE);
   // 列表筛选/搜索基于瘦身后的全量（slim，无 content）；当前页 ≤10 张卡需 content 概览，
   // 单独按 id 批量取完整（getSchoolsByIds，经 Next Data Cache 缓存）。
-  const fullPageSchools = await getSchoolsByIds(pageItems.map((s) => s.id));
+  let fullPageSchools = await getSchoolsByIds(pageItems.map((s) => s.id));
+  // 按录取分数线排序时，当前页用完整数据的分数重排（仅 ≤10 所，开销可忽略）
+  if (filters.sort === 'score') {
+    fullPageSchools = fullPageSchools.slice().sort(
+      (a, b) => scoreValue(getLatestScoreLine(b)) - scoreValue(getLatestScoreLine(a))
+    );
+  }
   const cards = fullPageSchools.map(toSchoolListCard);
 
   const filterOptions = {

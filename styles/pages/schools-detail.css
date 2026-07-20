@@ -485,6 +485,75 @@ body[data-page="schools"] .schools-aerial-card-side small {
     font-size: 11px;
 }
 
+/* P0：卡片录取分数线条 */
+body[data-page="schools"] .schools-aerial-card-score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: -1px;
+    padding: 8px 20px;
+    border: 1px solid var(--channel-line);
+    border-top: none;
+    background: var(--channel-blue-soft);
+    font-size: 12px;
+}
+
+body[data-page="schools"] .schools-aerial-card-score-year {
+    color: var(--channel-blue);
+    font-family: var(--channel-font-data);
+    letter-spacing: 1px;
+}
+
+body[data-page="schools"] .schools-aerial-card-score-value {
+    color: var(--channel-text);
+    font-weight: 700;
+}
+
+body[data-page="schools"] .schools-aerial-card-score-note {
+    color: var(--channel-muted);
+}
+
+/* P0：排序控件 */
+body[data-page="schools"] .schools-aerial-results-head-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body[data-page="schools"] .schools-aerial-sort-label {
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+body[data-page="schools"] .schools-aerial-sort {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--channel-line);
+    border-radius: 0;
+    background: #fff;
+    color: var(--channel-text);
+    font-family: var(--channel-font-caption);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+body[data-page="schools"] .schools-aerial-sort:focus {
+    outline: none;
+    border-color: var(--channel-blue);
+}
+
+@media (max-width: 1120px) {
+    body[data-page="schools"] .schools-aerial-results-head {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+    body[data-page="schools"] .schools-aerial-results-head p {
+        text-align: left;
+    }
+}
+
 body[data-page="schools"] .channel-footer,
 body[data-page="schools"] .school-detail-footer {
     display: flex;

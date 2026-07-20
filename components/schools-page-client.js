@@ -5,7 +5,15 @@ import Pager from './pager';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState, useTransition } from 'react';
 
-const FILTER_KEYS = ['district', 'stage', 'property', 'keyLevel', 'cohort', 'query'];
+const FILTER_KEYS = ['district', 'stage', 'property', 'keyLevel', 'cohort', 'boarding', 'international', 'query', 'sort'];
+
+const SORT_OPTIONS = [
+  { value: 'priority', label: '默认排序' },
+  { value: 'level', label: '按等级' },
+  { value: 'district', label: '按区域' },
+  { value: 'year', label: '按建校年份' },
+  { value: 'score', label: '按录取分数线' }
+];
 
 function getOwnershipLabel(school) {
   const label = String(school?.schoolPropertyLabel || '').trim();
@@ -15,13 +23,34 @@ function getOwnershipLabel(school) {
 function buildHref(base, next) {
   const merged = { ...base, page: 1, ...next };
   const qs = new URLSearchParams();
-  for (const key of FILTER_KEYS) {
+  for (const key of ['district', 'stage', 'property', 'keyLevel', 'cohort', 'boarding', 'international', 'query']) {
     const v = merged[key];
     if (v && v !== 'all') qs.set(key, v);
   }
+  if (merged.sort && merged.sort !== 'priority') qs.set('sort', merged.sort);
   if (merged.page && Number(merged.page) > 1) qs.set('page', String(merged.page));
   const s = qs.toString();
   return s ? `/schools?${s}` : '/schools';
+}
+
+function ScoreLineBadge({ scoreLines }) {
+  const lines = Array.isArray(scoreLines) ? scoreLines : [];
+  if (!lines.length) return null;
+  let best = lines[0];
+  for (const line of lines) {
+    if (Number(line.year) > Number(best.year)) best = line;
+  }
+  const scoreText = best.score != null && String(best.score).trim() !== '' ? String(best.score) : null;
+  return (
+    <div className="schools-aerial-card-score">
+      <span className="schools-aerial-card-score-year">{best.year} 年</span>
+      {scoreText ? (
+        <span className="schools-aerial-card-score-value">录取线 {scoreText}</span>
+      ) : (
+        <span className="schools-aerial-card-score-note">{best.note || '近年无统一录取线'}</span>
+      )}
+    </div>
+  );
 }
 
 export default function SchoolsPageClient({
@@ -30,7 +59,7 @@ export default function SchoolsPageClient({
   total = 0,
   totalPages = 1,
   currentPage = 1,
-  filters = { district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', query: '' },
+  filters = { district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', boarding: 'all', international: 'all', sort: 'priority', query: '' },
   filterOptions = { stage: [], property: [], keyLevel: [], cohort: [] },
   stageTotals = { junior: 0, senior_high: 0, complete: 0 }
 }) {
@@ -55,6 +84,9 @@ export default function SchoolsPageClient({
   const activeProperty = filters.property;
   const activeKeyLevel = filters.keyLevel;
   const activeCohort = filters.cohort;
+  const activeBoarding = filters.boarding;
+  const activeInternational = filters.international;
+  const activeSort = filters.sort || 'priority';
   const searchQuery = filters.query || '';
 
   const highlightedDistricts = useMemo(
@@ -72,9 +104,16 @@ export default function SchoolsPageClient({
     if (activeProperty !== 'all') lines.push(`办学性质：${activeProperty}`);
     if (activeKeyLevel !== 'all') lines.push(`等级：${activeKeyLevel}`);
     if (activeCohort !== 'all') lines.push(`荣誉：${activeCohort}`);
+    if (activeBoarding === 'boarding') lines.push('寄宿制');
+    if (activeBoarding === 'day') lines.push('走读');
+    if (activeInternational === 'international') lines.push('国际课程');
     if (searchQuery) lines.push(`关键词：${searchQuery}`);
+    if (activeSort !== 'priority') {
+      const opt = SORT_OPTIONS.find((o) => o.value === activeSort);
+      if (opt) lines.push(`排序：${opt.label}`);
+    }
     return lines;
-  }, [activeDistrict, activeStage, activeProperty, activeKeyLevel, activeCohort, searchQuery, districts]);
+  }, [activeDistrict, activeStage, activeProperty, activeKeyLevel, activeCohort, activeBoarding, activeInternational, activeSort, searchQuery, districts]);
 
   const totalDb = stageTotals.junior + stageTotals.senior_high + stageTotals.complete;
   const currentDistrictLabel = activeDistrict === 'all'
@@ -87,7 +126,7 @@ export default function SchoolsPageClient({
   const applySearch = () => navigate({ query: queryInput.trim() });
   const resetFilters = () => {
     setQueryInput('');
-    navigate({ district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', query: '' });
+    navigate({ district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', boarding: 'all', international: 'all', sort: 'priority', query: '' });
   };
 
   return (
@@ -204,6 +243,21 @@ export default function SchoolsPageClient({
           </section>
 
           <section className="schools-aerial-filter-block">
+            <label>寄宿 / 走读</label>
+            <div className="schools-aerial-filter-stack">
+              <button type="button" className={activeBoarding === 'boarding' ? 'is-active' : ''} onClick={() => navigate({ boarding: activeBoarding === 'boarding' ? 'all' : 'boarding' })}>寄宿制</button>
+              <button type="button" className={activeBoarding === 'day' ? 'is-active' : ''} onClick={() => navigate({ boarding: activeBoarding === 'day' ? 'all' : 'day' })}>走读</button>
+            </div>
+          </section>
+
+          <section className="schools-aerial-filter-block">
+            <label>国际课程</label>
+            <div className="schools-aerial-filter-stack">
+              <button type="button" className={activeInternational === 'international' ? 'is-active' : ''} onClick={() => navigate({ international: activeInternational === 'international' ? 'all' : 'international' })}>国际课程 / 中外合作</button>
+            </div>
+          </section>
+
+          <section className="schools-aerial-filter-block">
             <label>快速工具</label>
             <div className="schools-aerial-tool-stack">
               <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
@@ -240,6 +294,19 @@ export default function SchoolsPageClient({
               <span>{total}</span>
               <h2>所学校</h2>
             </div>
+            <div className="schools-aerial-results-head-right">
+              <label htmlFor="prototype-sort-filter" className="schools-aerial-sort-label">排序</label>
+              <select
+                id="prototype-sort-filter"
+                className="schools-aerial-sort"
+                value={activeSort}
+                onChange={(event) => navigate({ sort: event.target.value })}
+              >
+                {SORT_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </div>
             <p>{activeFilterSummary.length ? activeFilterSummary.join(' · ') : '未筛选，展示全量结果。'}</p>
           </header>
 
@@ -264,6 +331,7 @@ export default function SchoolsPageClient({
                     <b>查看详情 →</b>
                   </div>
                 </Link>
+                <ScoreLineBadge scoreLines={school.scoreLines} />
               </article>
             ))}
           </div>
