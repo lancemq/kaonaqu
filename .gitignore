@@ -74,5 +74,8 @@ data/schools.json
 data/news.json
 data/backups/
 reports/
+
+# Large research working directory (raw + normalized school research data)
+schools-research/
 .vercel
 .env*.local
