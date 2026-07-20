@@ -220,7 +220,7 @@ body[data-page="home"] .channel-hero-stats article {
 
 body[data-page="home"] .channel-hero-stats span,
 body[data-page="home"] .home-news-card span,
-body[data-page="home"] .home-school-card span,
+body[data-page="home"] .home-school-meta,
 body[data-page="home"] .home-topic-grid span {
     color: var(--channel-blue-soft);
     font-family: var(--channel-font-data);
@@ -318,6 +318,41 @@ body[data-page="home"] .home-feature-panel p {
     -webkit-line-clamp: 3;
 }
 
+/* 紧凑头条列表（4 大卡下方） */
+body[data-page="home"] .home-news-list {
+    display: grid;
+    margin-top: 8px;
+    border-top: 1px solid var(--channel-line);
+}
+
+body[data-page="home"] .home-news-list-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--channel-line);
+}
+
+body[data-page="home"] .home-news-list-item span {
+    flex: 0 0 auto;
+    color: var(--channel-muted);
+    font-family: var(--channel-font-data);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+body[data-page="home"] .home-news-list-item strong {
+    color: var(--channel-text);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: color 180ms ease;
+}
+
+body[data-page="home"] .home-news-list-item:hover strong {
+    color: var(--channel-blue);
+}
+
 body[data-page="home"] .home-text-link,
 body[data-page="home"] .home-feature-panel > a,
 body[data-page="home"] .home-photo-slab a {
@@ -360,6 +395,35 @@ body[data-page="home"] .home-focus-topics {
     display: grid;
     gap: 14px;
     margin-top: 8px;
+}
+
+/* 平台更新动态：动态指标 */
+body[data-page="home"] .home-focus-stats {
+    display: grid;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+body[data-page="home"] .home-focus-stats > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+body[data-page="home"] .home-focus-stats strong {
+    color: #fff;
+    font-family: var(--channel-font-data);
+    font-size: 34px;
+    line-height: 1;
+}
+
+body[data-page="home"] .home-focus-stats span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    line-height: 1.4;
 }
 
 body[data-page="home"] .home-focus-topic {
@@ -608,6 +672,63 @@ body[data-page="home"] .home-school-card strong {
     font-size: 13px;
 }
 
+/* 学校卡：头部行（元信息 + 已核实标记） */
+body[data-page="home"] .home-school-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+body[data-page="home"] .home-school-verified {
+    flex: 0 0 auto;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(31, 157, 87, 0.12);
+    color: #1f9d57;
+    font-family: var(--channel-font-caption);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-style: normal;
+    white-space: nowrap;
+}
+
+/* 层级徽标（市重点 / 区重点） */
+body[data-page="home"] .home-school-level {
+    align-self: start;
+    margin-top: 2px;
+    padding: 3px 9px;
+    width: fit-content;
+    border-radius: 4px;
+    background: var(--channel-ink);
+    color: #fff;
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* 特色标签 chips */
+body[data-page="home"] .home-school-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 14px;
+}
+
+body[data-page="home"] .home-school-tags span {
+    padding: 3px 9px;
+    border: 1px solid var(--channel-line);
+    border-radius: 999px;
+    color: var(--channel-muted);
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
 body[data-page="home"] .home-school-photo-slab {
     display: grid;
     align-items: center;
@@ -655,10 +776,10 @@ body[data-page="home"] .home-district-list {
 }
 
 body[data-page="home"] .home-district-list a {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 18px;
+    gap: 4px 18px;
     padding: 14px 0;
     border-bottom: 1px solid var(--channel-line);
 }
@@ -672,6 +793,13 @@ body[data-page="home"] .home-district-list strong {
     color: var(--channel-muted);
     font-family: var(--channel-font-data);
     font-size: 12px;
+}
+
+body[data-page="home"] .home-district-list em {
+    grid-column: 1 / -1;
+    color: var(--channel-muted);
+    font-size: 12px;
+    font-style: normal;
 }
 
 

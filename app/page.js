@@ -6,8 +6,8 @@ import {
   getNewsSection,
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
-  getSchoolStage,
-  getSchoolType
+  getSchoolFeatures,
+  getSchoolStage
 } from '../lib/site-utils';
 
 const require = createRequire(import.meta.url);
@@ -59,23 +59,7 @@ const NEWS_SPECIALS = [
   }
 ];
 
-// FOCUS 区块：中招 / 高招 两大升学主线的专题页入口
-const FOCUS_TOPICS = [
-  {
-    title: '中招专题',
-    label: '中考',
-    icon: '中',
-    href: '/news/zhongkao-special',
-    description: '上海中考招生政策、志愿填报、录取节奏与关键节点汇总'
-  },
-  {
-    title: '高招专题',
-    label: '高考',
-    icon: '高',
-    href: '/news/gaokao-special',
-    description: '高考综合改革、考试安排、招生录取等权威政策解读'
-  }
-];
+// FOCUS 区块：首页右侧"平台更新动态"面板（动态指标，非专题入口）
 
 const KNOWLEDGE_TOPICS = [
   { label: '九年级中考总览', meta: 'GRADE 9', href: '/knowledge/grade-9' },
@@ -89,28 +73,28 @@ function getNewsHref(item) {
 }
 
 // 选取最新的新闻展示，优先覆盖不同分区（保持多样性）
-function pickFeaturedNews(news) {
+function pickFeaturedNews(news, count = 4) {
   // news 已按 publishedAt 降序排列
   const picked = [];
   const usedSections = new Set();
 
   // 第一轮：按时间取，每个分区最多 1 条
   for (const item of news) {
-    if (picked.length >= 4) break;
+    if (picked.length >= count) break;
     const section = getNewsSection(item);
     if (usedSections.has(section)) continue;
     usedSections.add(section);
     picked.push(item);
   }
 
-  // 第二轮：分区不够 4 个，按时间补足
+  // 第二轮：分区不够，按时间补足
   for (const item of news) {
-    if (picked.length >= 4) break;
+    if (picked.length >= count) break;
     if (picked.some((existing) => existing.id === item.id)) continue;
     picked.push(item);
   }
 
-  return picked.slice(0, 4);
+  return picked.slice(0, count);
 }
 
 function sortNews(news) {
@@ -133,6 +117,22 @@ function getSchoolCompletenessScore(school) {
   return tags * 2 + features * 2 + [school.address, school.phone, school.website, school.admissionInfo?.notes].filter(Boolean).length;
 }
 
+// 层级徽标：剥离「(高中)/(初中)」后缀，如「市重点(高中)」→「市重点」
+function getSchoolKeyLevelLabel(school) {
+  const raw = String(school?.schoolKeyLevel || '').trim();
+  return raw ? raw.replace(/[（(].*?[）)]/g, '') : '';
+}
+
+// 层级权重（用于区县代表学校排序），与 data-store 的 KEY_LEVEL_PRIORITY 对齐
+function keyLevelRank(school) {
+  const raw = String(school?.schoolKeyLevel || '').replace(/[（(].*?[）)]/g, '').trim();
+  const PRIORITY = {
+    '市重点': 100, '三公': 95, '区重点': 80, '顶级民办': 70,
+    '优质公办': 65, '一般高中': 60, '一般初中': 40
+  };
+  return PRIORITY[raw] || 0;
+}
+
 function getFeaturedSchools(schools) {
   const selected = FEATURED_SCHOOL_NAMES.map((name) => findSchoolByName(schools, name)).filter(Boolean);
   const selectedIds = new Set(selected.map((school) => school.id));
@@ -145,10 +145,17 @@ function getFeaturedSchools(schools) {
 
 function getDistrictHighlights(districts, schools) {
   return districts
-    .map((district) => ({
-      ...district,
-      visibleSchoolCount: schools.filter((school) => school.districtId === district.id).length
-    }))
+    .map((district) => {
+      const inDistrict = schools.filter((school) => school.districtId === district.id);
+      const topSchool = inDistrict
+        .slice()
+        .sort((left, right) => keyLevelRank(right) - keyLevelRank(left))[0];
+      return {
+        ...district,
+        visibleSchoolCount: inDistrict.length,
+        topSchoolName: topSchool ? topSchool.name : ''
+      };
+    })
     .sort((left, right) => (right.visibleSchoolCount || 0) - (left.visibleSchoolCount || 0))
     .slice(0, 6);
 }
@@ -166,7 +173,15 @@ export default async function HomePage() {
   const [schools, news] = await Promise.all([loadSchoolsList(), loadNewsList()]);
   const districts = DISTRICT_CATALOG;
   const sortedNews = sortNews(news);
-  const featuredNews = pickFeaturedNews(sortedNews);
+  const featuredNews = pickFeaturedNews(sortedNews, 4);
+  const headlineNews = sortedNews
+    .filter((item) => !featuredNews.some((featured) => featured.id === item.id))
+    .slice(0, 5);
+
+  const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
+  const recentNewsCount = news.filter((item) => String(item.publishedAt || '') >= weekAgo).length;
+  const verifiedSchoolsCount = schools.filter((school) => school.infoVerified).length;
+
   const featuredSchools = getFeaturedSchools(schools);
   const districtHighlights = getDistrictHighlights(districts, schools);
 
@@ -236,9 +251,9 @@ export default async function HomePage() {
               <p>本市升学动态</p>
             </article>
             <article>
-              <span>02 / SCHOOLS</span>
-              <strong>{schools.length}+</strong>
-              <p>可查询学校</p>
+              <span>02 / VERIFIED</span>
+              <strong>{verifiedSchoolsCount}+</strong>
+              <p>学校信息已核实</p>
             </article>
             <article>
               <span>03 / DISTRICTS</span>
@@ -265,26 +280,33 @@ export default async function HomePage() {
             ))}
           </div>
 
+          <div className="home-news-list">
+            {headlineNews.map((item) => (
+              <Link className="home-news-list-item" href={getNewsHref(item)} key={item.id}>
+                <span>{item.publishedAt || 'DATE PENDING'}</span>
+                <strong>{item.title}</strong>
+              </Link>
+            ))}
+          </div>
+
           <Link className="home-text-link" href="/news">查看全部新闻</Link>
         </div>
 
         <aside className="home-feature-panel home-focus-panel">
           <SectionLabel>FOCUS</SectionLabel>
-          <h2>中招 · 高招专题</h2>
-          <p className="home-focus-intro">聚焦上海中考与高考两大升学主线，进入专题一站式掌握政策、节点与录取节奏。</p>
-          <div className="home-focus-topics">
-            {FOCUS_TOPICS.map((topic) => (
-              <Link className="home-focus-topic" href={topic.href} key={topic.href}>
-                <div className="home-focus-topic-head">
-                  <span aria-hidden="true" className="home-focus-topic-icon">{topic.icon}</span>
-                  <strong>{topic.title}</strong>
-                  <em className="home-focus-topic-tag">{topic.label}</em>
-                </div>
-                <p>{topic.description}</p>
-                <span className="home-focus-topic-link">查看专题 →</span>
-              </Link>
-            ))}
+          <h2>平台更新动态</h2>
+          <p className="home-focus-intro">我们持续校正学校信息、追踪官方政策发布，让升学数据保持新鲜可信。</p>
+          <div className="home-focus-stats">
+            <div>
+              <strong>{recentNewsCount}</strong>
+              <span>近 7 天新增升学动态</span>
+            </div>
+            <div>
+              <strong>{verifiedSchoolsCount}</strong>
+              <span>所学校信息已核实</span>
+            </div>
           </div>
+          <Link className="home-focus-topic-link" href="/news">查看全部动态 →</Link>
         </aside>
       </section>
 
@@ -328,14 +350,28 @@ export default async function HomePage() {
         </div>
 
         <div className="home-school-grid">
-          {featuredSchools.map((school) => (
-            <Link className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
-              <span>{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
-              <h3>{school.name}</h3>
-              <p>{getSchoolAdmissionInfo(school)}</p>
-              <strong>{getSchoolType(school)}</strong>
-            </Link>
-          ))}
+          {featuredSchools.map((school) => {
+            const features = getSchoolFeatures(school).slice(0, 3);
+            const keyLevel = getSchoolKeyLevelLabel(school);
+            return (
+              <Link className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
+                <div className="home-school-card-top">
+                  <span className="home-school-meta">{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
+                  {school.infoVerified && <em className="home-school-verified">已核实</em>}
+                </div>
+                <h3>{school.name}</h3>
+                {keyLevel && <span className="home-school-level">{keyLevel}</span>}
+                <p>{getSchoolAdmissionInfo(school)}</p>
+                {features.length > 0 && (
+                  <div className="home-school-tags">
+                    {features.map((feature) => (
+                      <span key={feature}>{feature}</span>
+                    ))}
+                  </div>
+                )}
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -372,6 +408,7 @@ export default async function HomePage() {
               <Link href={`/schools/district/${district.id}`} key={district.id}>
                 <span>{district.name}</span>
                 <strong>{district.visibleSchoolCount || district.schoolCount || 0} 所学校</strong>
+                {district.topSchoolName && <em>代表：{district.topSchoolName}</em>}
               </Link>
             ))}
           </div>
