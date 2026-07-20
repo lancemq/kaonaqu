@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import GradeSubjectExplorer from './knowledge-grade-explorer';
+import KnowledgeFilter from './knowledge-filter';
+import { buildKnowledgeNav, getAllKnowledgePagesMeta } from '../lib/knowledge-content.mjs';
 
 const NAV_ITEMS = [
   { label: '首页', href: '/' },
@@ -295,11 +297,13 @@ function ExamTips() {
   );
 }
 
-function ChannelPage({ page }) {
+async function ChannelPage({ page }) {
+  const [nav, allPages] = await Promise.all([buildKnowledgeNav(), getAllKnowledgePagesMeta()]);
   return (
     <>
       <ChannelHero page={page} />
-      <GradeSubjectExplorer />
+      <KnowledgeFilter pages={allPages} />
+      <GradeSubjectExplorer nav={nav} />
       <LearningPaths />
       <HotTopics />
       <ExamTips />
