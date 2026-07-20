@@ -37,21 +37,45 @@ function buildHref(base, next) {
 
 function ScoreLineBadge({ scoreLines }) {
   const lines = Array.isArray(scoreLines) ? scoreLines : [];
-  if (!lines.length) return null;
-  let best = lines[0];
-  for (const line of lines) {
-    if (Number(line.year) > Number(best.year)) best = line;
+  let year = null;
+  let scoreText = null;
+  let note = '近年无统一录取线';
+  if (lines.length) {
+    let best = lines[0];
+    for (const line of lines) {
+      if (Number(line.year) > Number(best.year)) best = line;
+    }
+    year = best.year;
+    scoreText = best.score != null && String(best.score).trim() !== '' ? String(best.score) : null;
+    note = best.note || note;
   }
-  const scoreText = best.score != null && String(best.score).trim() !== '' ? String(best.score) : null;
   return (
     <div className="schools-aerial-card-score">
-      <span className="schools-aerial-card-score-year">{best.year} 年</span>
+      {year ? <span className="schools-aerial-card-score-year">{year} 年</span> : null}
       {scoreText ? (
         <span className="schools-aerial-card-score-value">录取线 {scoreText}</span>
       ) : (
-        <span className="schools-aerial-card-score-note">{best.note || '近年无统一录取线'}</span>
+        <span className="schools-aerial-card-score-note">{note}</span>
       )}
     </div>
+  );
+}
+
+function FilterSection({ id, label, open, onToggle, active, badge, children }) {
+  return (
+    <section className={`schools-aerial-filter-block schools-aerial-section ${open ? 'is-open' : 'is-closed'}`}>
+      <button type="button" className="schools-aerial-section-head" onClick={() => onToggle(id)} aria-expanded={open}>
+        <span className="schools-aerial-section-title">
+          {label}
+          {active ? <i className="schools-aerial-section-flag" aria-hidden="true" /> : null}
+        </span>
+        <span className="schools-aerial-section-right">
+          {badge != null ? <span className="schools-aerial-section-badge">{badge}</span> : null}
+          <i className="schools-aerial-section-chevron" aria-hidden="true" />
+        </span>
+      </button>
+      {open ? <div className="schools-aerial-section-body">{children}</div> : null}
+    </section>
   );
 }
 
@@ -147,6 +171,19 @@ export default function SchoolsPageClient({
     navigate({ district: 'all', stage: 'all', property: 'all', keyLevel: 'all', cohort: 'all', boarding: 'all', international: 'all', features: [], sort: 'priority', query: '' });
   };
 
+  // 侧栏手风琴：默认展开高频筛选，次要条件收进「更多条件 / 工具与导航」
+  const [openSections, setOpenSections] = useState(() => new Set(['district', 'stage', 'keyLevel', 'feature']));
+  const toggleSection = (id) => {
+    setOpenSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const moreActive = activeProperty !== 'all' || activeCohort !== 'all' || activeBoarding !== 'all' || activeInternational !== 'all';
+
   return (
     <main className="schools-aerial-page">
       <nav className="channel-nav" aria-label="顶部导航">
@@ -202,8 +239,17 @@ export default function SchoolsPageClient({
             <h2>筛选条件</h2>
           </div>
 
-          <section className="schools-aerial-filter-block">
-            <label htmlFor="prototype-district-filter">区域</label>
+          <section className="schools-aerial-filter-block schools-aerial-basket-top">
+            <div className="schools-aerial-compare-basket">
+              <span>{bagReady ? `${bagIds.length}/${bagMax}` : `0/${bagMax}`} 所</span>
+              <Link href="/schools/compare">查看对比 →</Link>
+              {bagReady && bagIds.length > 0 && (
+                <button type="button" className="schools-aerial-compare-clear" onClick={() => clearBag()}>清空</button>
+              )}
+            </div>
+          </section>
+
+          <FilterSection id="district" label="区域" open={openSections.has('district')} onToggle={toggleSection} active={activeDistrict !== 'all'}>
             <select
               id="prototype-district-filter"
               value={activeDistrict}
@@ -214,10 +260,9 @@ export default function SchoolsPageClient({
                 <option key={district.id} value={district.id}>{district.name || district.districtName}</option>
               ))}
             </select>
-          </section>
+          </FilterSection>
 
-          <section className="schools-aerial-filter-block">
-            <label>学段</label>
+          <FilterSection id="stage" label="学段" open={openSections.has('stage')} onToggle={toggleSection} active={activeStage !== 'all'}>
             <div className="schools-aerial-filter-stack">
               {filterOptions.stage.map((option) => (
                 <button key={option} type="button" className={activeStage === option ? 'is-active' : ''} onClick={() => navigate({ stage: activeStage === option ? 'all' : option })}>
@@ -225,21 +270,9 @@ export default function SchoolsPageClient({
                 </button>
               ))}
             </div>
-          </section>
+          </FilterSection>
 
-          <section className="schools-aerial-filter-block">
-            <label>办学性质</label>
-            <div className="schools-aerial-filter-stack">
-              {filterOptions.property.map((option) => (
-                <button key={option} type="button" className={activeProperty === option ? 'is-active' : ''} onClick={() => navigate({ property: activeProperty === option ? 'all' : option })}>
-                  {option}
-                </button>
-              ))}
-            </div>
-          </section>
-
-          <section className="schools-aerial-filter-block">
-            <label>等级</label>
+          <FilterSection id="keyLevel" label="等级" open={openSections.has('keyLevel')} onToggle={toggleSection} active={activeKeyLevel !== 'all'}>
             <div className="schools-aerial-filter-stack">
               {filterOptions.keyLevel.map((option) => (
                 <button key={option} type="button" className={activeKeyLevel === option ? 'is-active' : ''} onClick={() => navigate({ keyLevel: activeKeyLevel === option ? 'all' : option })}>
@@ -247,36 +280,9 @@ export default function SchoolsPageClient({
                 </button>
               ))}
             </div>
-          </section>
+          </FilterSection>
 
-          <section className="schools-aerial-filter-block">
-            <label>荣誉</label>
-            <div className="schools-aerial-filter-stack">
-              {filterOptions.cohort.map((option) => (
-                <button key={option} type="button" className={activeCohort === option ? 'is-active' : ''} onClick={() => navigate({ cohort: activeCohort === option ? 'all' : option })}>
-                  {option}
-                </button>
-              ))}
-            </div>
-          </section>
-
-          <section className="schools-aerial-filter-block">
-            <label>寄宿 / 走读</label>
-            <div className="schools-aerial-filter-stack">
-              <button type="button" className={activeBoarding === 'boarding' ? 'is-active' : ''} onClick={() => navigate({ boarding: activeBoarding === 'boarding' ? 'all' : 'boarding' })}>寄宿制</button>
-              <button type="button" className={activeBoarding === 'day' ? 'is-active' : ''} onClick={() => navigate({ boarding: activeBoarding === 'day' ? 'all' : 'day' })}>走读</button>
-            </div>
-          </section>
-
-          <section className="schools-aerial-filter-block">
-            <label>国际课程</label>
-            <div className="schools-aerial-filter-stack">
-              <button type="button" className={activeInternational === 'international' ? 'is-active' : ''} onClick={() => navigate({ international: activeInternational === 'international' ? 'all' : 'international' })}>国际课程 / 中外合作</button>
-            </div>
-          </section>
-
-          <section className="schools-aerial-filter-block">
-            <label>特色标签</label>
+          <FilterSection id="feature" label="特色标签" open={openSections.has('feature')} onToggle={toggleSection} active={activeFeatures.length > 0}>
             <div className="schools-aerial-filter-stack schools-aerial-feature-chips">
               {filterOptions.featureFilters.map((option) => (
                 <button key={option.id} type="button" className={activeFeatures.includes(option.id) ? 'is-active' : ''} onClick={() => toggleFeature(option.id)}>
@@ -284,42 +290,81 @@ export default function SchoolsPageClient({
                 </button>
               ))}
             </div>
-          </section>
+          </FilterSection>
 
-          <section className="schools-aerial-filter-block">
-            <label>快速工具</label>
-            <div className="schools-aerial-tool-stack">
-              <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
-              <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
-              <Link href="/news/admission-timeline"><span>政策日历</span><i>→</i></Link>
-              <Link href="/schools/groups"><span>教育集团</span><i>→</i></Link>
-              <Link href="/schools/district"><span>区域专题</span><i>→</i></Link>
-            </div>
-          </section>
+          <FilterSection id="more" label="更多条件" open={openSections.has('more')} onToggle={toggleSection} active={moreActive}>
+            <div className="schools-aerial-subgroup">
+              <div className="schools-aerial-filter-block">
+                <label>办学性质</label>
+                <div className="schools-aerial-filter-stack">
+                  {filterOptions.property.map((option) => (
+                    <button key={option} type="button" className={activeProperty === option ? 'is-active' : ''} onClick={() => navigate({ property: activeProperty === option ? 'all' : option })}>
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          <section className="schools-aerial-filter-block schools-aerial-compare-basket-block">
-            <label>对比篮</label>
-            <div className="schools-aerial-compare-basket">
-              <span>{bagReady ? `${bagIds.length}/${bagMax}` : `0/${bagMax}`} 所</span>
-              <Link href="/schools/compare">查看对比 →</Link>
-              {bagReady && bagIds.length > 0 && (
-                <button type="button" className="schools-aerial-compare-clear" onClick={() => clearBag()}>清空</button>
-              )}
-            </div>
-            <p className="schools-aerial-compare-hint">在右侧卡片点「加入对比」，最多可同时对比 {bagMax} 所。</p>
-          </section>
+              <div className="schools-aerial-filter-block">
+                <label>荣誉</label>
+                <div className="schools-aerial-filter-stack">
+                  {filterOptions.cohort.map((option) => (
+                    <button key={option} type="button" className={activeCohort === option ? 'is-active' : ''} onClick={() => navigate({ cohort: activeCohort === option ? 'all' : option })}>
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          <section className="schools-aerial-filter-block">
-            <label>热门区域</label>
-            <div className="schools-aerial-tool-stack">
-              {highlightedDistricts.map((district) => (
-                <Link key={district.id} href={`/schools/district/${district.id}`}>
-                  <span>{district.name || district.districtName}</span>
-                  <i>{district.schoolCount || 0} 所</i>
-                </Link>
-              ))}
+              <div className="schools-aerial-filter-block">
+                <label>寄宿 / 走读</label>
+                <div className="schools-aerial-filter-stack">
+                  <button type="button" className={activeBoarding === 'boarding' ? 'is-active' : ''} onClick={() => navigate({ boarding: activeBoarding === 'boarding' ? 'all' : 'boarding' })}>寄宿制</button>
+                  <button type="button" className={activeBoarding === 'day' ? 'is-active' : ''} onClick={() => navigate({ boarding: activeBoarding === 'day' ? 'all' : 'day' })}>走读</button>
+                </div>
+              </div>
+
+              <div className="schools-aerial-filter-block">
+                <label>国际课程</label>
+                <div className="schools-aerial-filter-stack">
+                  <button type="button" className={activeInternational === 'international' ? 'is-active' : ''} onClick={() => navigate({ international: activeInternational === 'international' ? 'all' : 'international' })}>国际课程 / 中外合作</button>
+                </div>
+              </div>
             </div>
-          </section>
+          </FilterSection>
+
+          <FilterSection
+            id="tools"
+            label="工具与导航"
+            open={openSections.has('tools')}
+            onToggle={toggleSection}
+            badge={bagReady && bagIds.length > 0 ? bagIds.length : null}
+          >
+            <div className="schools-aerial-subgroup">
+              <div className="schools-aerial-filter-block">
+                <label>快速工具</label>
+                <div className="schools-aerial-tool-stack">
+                  <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
+                  <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
+                  <Link href="/news/admission-timeline"><span>政策日历</span><i>→</i></Link>
+                  <Link href="/schools/groups"><span>教育集团</span><i>→</i></Link>
+                  <Link href="/schools/district"><span>区域专题</span><i>→</i></Link>
+                </div>
+              </div>
+
+              <div className="schools-aerial-filter-block">
+                <label>热门区域</label>
+                <div className="schools-aerial-tool-stack">
+                  {highlightedDistricts.map((district) => (
+                    <Link key={district.id} href={`/schools/district/${district.id}`}>
+                      <span>{district.name || district.districtName}</span>
+                      <i>{district.schoolCount || 0} 所</i>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FilterSection>
 
           <button className="schools-aerial-reset" type="button" onClick={resetFilters}>清空全部条件</button>
         </aside>
@@ -358,16 +403,6 @@ export default function SchoolsPageClient({
               </div>
             ) : schools.map((school) => (
               <article key={school.id} className="schools-aerial-card-wrap">
-                {bagReady && (
-                  <button
-                    type="button"
-                    className={`schools-aerial-compare-toggle ${bagHas(school.id) ? 'is-added' : ''}`}
-                    aria-pressed={bagHas(school.id)}
-                    onClick={() => bagToggle(school.id, school.name)}
-                  >
-                    {bagHas(school.id) ? '✓ 已加入' : '＋ 对比'}
-                  </button>
-                )}
                 <Link href={`/schools/${school.id}`} className="schools-aerial-card">
                   <div className="schools-aerial-card-main">
                     <p>{school.districtName} / {school.schoolStageLabel} / {getOwnershipLabel(school)}</p>
@@ -382,7 +417,19 @@ export default function SchoolsPageClient({
                     <b>查看详情 →</b>
                   </div>
                 </Link>
-                <ScoreLineBadge scoreLines={school.scoreLines} />
+                <div className="schools-aerial-card-foot">
+                  <ScoreLineBadge scoreLines={school.scoreLines} />
+                  {bagReady && (
+                    <button
+                      type="button"
+                      className={`schools-aerial-compare-toggle ${bagHas(school.id) ? 'is-added' : ''}`}
+                      aria-pressed={bagHas(school.id)}
+                      onClick={() => bagToggle(school.id, school.name)}
+                    >
+                      {bagHas(school.id) ? '✓ 已加入对比' : '＋ 加入对比'}
+                    </button>
+                  )}
+                </div>
               </article>
             ))}
           </div>

@@ -253,7 +253,89 @@ body[data-page="schools"] .schools-aerial-cardlist {
 }
 
 body[data-page="schools"] .schools-aerial-sidebar {
-    gap: 24px;
+    gap: 16px;
+}
+
+/* 顶部常驻对比篮（精简，不占手风琴空间） */
+body[data-page="schools"] .schools-aerial-basket-top {
+    gap: 0;
+    padding: 12px 14px;
+    border: 1px solid var(--channel-line);
+    border-radius: 8px;
+    background: var(--channel-blue-soft);
+}
+
+/* 手风琴折叠区块 */
+body[data-page="schools"] .schools-aerial-section {
+    display: block;
+    gap: 0;
+}
+
+body[data-page="schools"] .schools-aerial-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 4px 2px;
+    border: none;
+    background: none;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+}
+
+body[data-page="schools"] .schools-aerial-section-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body[data-page="schools"] .schools-aerial-section-flag {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--channel-blue);
+}
+
+body[data-page="schools"] .schools-aerial-section-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body[data-page="schools"] .schools-aerial-section-badge {
+    padding: 1px 9px;
+    border-radius: 999px;
+    background: var(--channel-blue);
+    color: #fff;
+    font-family: var(--channel-font-caption);
+    font-size: 10px;
+}
+
+body[data-page="schools"] .schools-aerial-section-chevron {
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid var(--channel-muted);
+    border-bottom: 1.5px solid var(--channel-muted);
+    transform: rotate(45deg);
+    transition: transform 160ms ease;
+}
+
+body[data-page="schools"] .schools-aerial-section.is-open .schools-aerial-section-chevron {
+    transform: rotate(-135deg);
+}
+
+body[data-page="schools"] .schools-aerial-section-body {
+    padding-top: 12px;
+}
+
+body[data-page="schools"] .schools-aerial-subgroup {
+    display: grid;
+    gap: 16px;
 }
 
 body[data-page="schools"] .schools-aerial-results {
@@ -485,17 +567,25 @@ body[data-page="schools"] .schools-aerial-card-side small {
     font-size: 11px;
 }
 
-/* P0：卡片录取分数线条 */
-body[data-page="schools"] .schools-aerial-card-score {
+/* 卡片底部页脚条：录取线 + 加入对比（一体化，不再浮层遮挡） */
+body[data-page="schools"] .schools-aerial-card-foot {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 12px;
     margin-top: -1px;
-    padding: 8px 20px;
+    padding: 9px 20px;
     border: 1px solid var(--channel-line);
     border-top: none;
     background: var(--channel-blue-soft);
     font-size: 12px;
+}
+
+body[data-page="schools"] .schools-aerial-card-score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
 }
 
 body[data-page="schools"] .schools-aerial-card-score-year {
@@ -529,27 +619,25 @@ body[data-page="schools"] .schools-aerial-feature-chips button {
     font-size: 12px;
 }
 
-/* P1：卡片「加入对比」角标 */
+/* 卡片「加入对比」ghost 按钮（位于页脚条右侧，与站点风格统一） */
 body[data-page="schools"] .schools-aerial-compare-toggle {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 2;
+    flex: none;
     height: 28px;
-    padding: 0 12px;
-    border: 1px solid var(--channel-line);
+    padding: 0 14px;
+    border: 1px solid var(--channel-blue);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.92);
+    background: #fff;
     color: var(--channel-blue);
     font-family: var(--channel-font-caption);
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.5px;
+    white-space: nowrap;
     cursor: pointer;
     transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
 body[data-page="schools"] .schools-aerial-compare-toggle:hover {
-    border-color: var(--channel-blue);
+    background: rgba(74, 159, 216, 0.08);
 }
 
 body[data-page="schools"] .schools-aerial-compare-toggle.is-added {
