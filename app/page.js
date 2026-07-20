@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { createRequire } from 'module';
 import {
   getNewsCategoryLabel,
-  getNewsPriorityScore,
   getNewsSection,
   getSchoolAdmissionInfo,
   getSchoolDistrictName,
@@ -89,84 +88,38 @@ function getNewsHref(item) {
   return item?.id ? `/news/${encodeURIComponent(item.id)}` : '/news';
 }
 
-const NEWS_FILLER_HEADINGS = new Set([
-  '核心信息', '这条信息为什么值得看', '适合谁先看', '阅读提示', '官方原文', '这条文件最适合看什么'
-]);
-
-function getNewsRichness(item) {
-  const content = item.content;
-  if (!content || (Array.isArray(content) && !content.length)) return 0;
-
-  // block 数组（新格式）
-  if (Array.isArray(content)) {
-    let inFiller = false, subst = 0;
-    for (const block of content) {
-      if (block.type === 'heading') {
-        inFiller = NEWS_FILLER_HEADINGS.has(block.text);
-        continue;
-      }
-      if (block.type === 'divider') continue;
-      const text = block.text || (Array.isArray(block.items) ? block.items.join('') : '');
-      const clean = String(text).replace(/[#>*_`~\-\[\]\(\)!]/g, '').replace(/\s+/g, '');
-      if (!clean || inFiller) continue;
-      subst += clean.length;
-    }
-    return subst;
-  }
-
-  // 旧 Markdown 字符串（兼容）
-  const raw = String(content);
-  let inFiller = false, overviewSeen = false, overviewDone = false, subst = 0;
-  for (const line of raw.split('\n')) {
-    const heading = line.match(/^##\s+(.+?)\s*$/);
-    if (heading) {
-      const title = heading[1].trim();
-      inFiller = NEWS_FILLER_HEADINGS.has(title);
-      if (title === '新闻概览') { overviewSeen = true; inFiller = false; overviewDone = false; }
-      continue;
-    }
-    if (line.startsWith('---')) continue;
-    const clean = line.replace(/[#>*_`~\-\[\]\(\)!]/g, '').replace(/\s+/g, '');
-    if (!clean) continue;
-    if (inFiller) continue;
-    if (overviewSeen && !overviewDone) { overviewDone = true; continue; }
-    subst += clean.length;
-  }
-  return subst;
-}
-
+// 选取最新的新闻展示，优先覆盖不同分区（保持多样性）
 function pickFeaturedNews(news) {
-  const ranked = news
-    .slice()
-    .map((item) => ({ item, richness: getNewsRichness(item) }))
-    .sort((a, b) => b.richness - a.richness);
+  // news 已按 publishedAt 降序排列
   const picked = [];
   const usedSections = new Set();
-  for (const { item } of ranked) {
+
+  // 第一轮：按时间取，每个分区最多 1 条
+  for (const item of news) {
     if (picked.length >= 4) break;
     const section = getNewsSection(item);
     if (usedSections.has(section)) continue;
     usedSections.add(section);
     picked.push(item);
   }
-  for (const { item } of ranked) {
+
+  // 第二轮：分区不够 4 个，按时间补足
+  for (const item of news) {
     if (picked.length >= 4) break;
     if (picked.some((existing) => existing.id === item.id)) continue;
     picked.push(item);
   }
+
   return picked.slice(0, 4);
 }
 
 function sortNews(news) {
+  // 按发布时间降序，最新的排前面
   return news
     .slice()
-    .sort((left, right) => {
-      const scoreDiff = getNewsPriorityScore(right) - getNewsPriorityScore(left);
-      if (scoreDiff !== 0) {
-        return scoreDiff;
-      }
-      return String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''));
-    });
+    .sort((left, right) =>
+      String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''))
+    );
 }
 
 function findSchoolByName(schools, name) {
