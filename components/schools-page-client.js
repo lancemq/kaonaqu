@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Pager from './pager';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState, useTransition } from 'react';
 
@@ -267,11 +268,11 @@ export default function SchoolsPageClient({
             ))}
           </div>
 
-          <div className="pager">
-            <button type="button" onClick={() => navigate({ page: Math.max(1, currentPage - 1) })} disabled={currentPage === 1}>上一页</button>
-            <span>{currentPage} / {totalPages}</span>
-            <button type="button" onClick={() => navigate({ page: Math.min(totalPages, currentPage + 1) })} disabled={currentPage === totalPages}>下一页</button>
-          </div>
+          <Pager
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={(page) => navigate({ page })}
+          />
         </section>
       </section>
 

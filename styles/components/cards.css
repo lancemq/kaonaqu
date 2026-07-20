@@ -97,6 +97,82 @@
     cursor: not-allowed;
 }
 
+/* Enhanced pager — windowed page numbers + quick jump */
+.pager.pager-enhanced {
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+.pager-enhanced .pager-page,
+.pager-enhanced .pager-prev,
+.pager-enhanced .pager-next {
+    min-width: 40px;
+}
+
+.pager-enhanced .pager-page.is-current {
+    border-color: var(--channel-ink);
+    background: var(--channel-ink);
+    color: #fff;
+}
+
+.pager-enhanced .pager-next,
+.pager-enhanced .pager-jump button {
+    border-color: var(--channel-ink);
+    background: var(--channel-ink);
+    color: #fff;
+}
+
+.pager-enhanced .pager-ellipsis {
+    min-height: 40px;
+    padding: 0 4px;
+    border: none;
+    background: transparent;
+    color: var(--channel-muted);
+    font-family: var(--channel-font-body);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: default;
+}
+
+.pager-enhanced .pager-status {
+    border: none;
+    background: transparent;
+    color: var(--channel-muted);
+    font-family: var(--channel-font-body);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: default;
+}
+
+.pager-enhanced .pager-jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 6px;
+    color: var(--channel-muted);
+    font-family: var(--channel-font-body);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.pager-enhanced .pager-jump input {
+    width: 56px;
+    min-height: 40px;
+    padding: 0 8px;
+    border: 1px solid var(--channel-line);
+    border-radius: 0;
+    font-family: var(--channel-font-body);
+    font-size: 13px;
+    text-align: center;
+    color: var(--channel-text);
+    background: #fff;
+}
+
+.pager-enhanced .pager-jump input:focus {
+    outline: 2px solid var(--channel-ink);
+    outline-offset: -2px;
+}
+
 /* Channel footer — shared across home/news/schools (knowledge keeps its own) */
 .channel-footer {
     display: grid;

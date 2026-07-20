@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
 import NewsPageClient from '../../components/news-page-client';
-import { getNewsCategoryLabel } from '../../lib/site-utils';
+import { getNewsCategoryLabel, filterNews } from '../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadNewsList, loadSchoolNamesByIds } = require('../../shared/data-store');
@@ -112,13 +112,29 @@ function toNewsListCard(item) {
   };
 }
 
-export default async function NewsPage() {
+export default async function NewsPage({ searchParams }) {
   const news = await loadNewsList();
-  const newsCards = news.map(toNewsListCard);
-  const schoolIds = [...new Set(news.map((n) => n.primarySchoolId).filter(Boolean))];
-  const schoolNamesById = await loadSchoolNamesByIds(schoolIds);
+  const params = await searchParams;
+  const activeFilter = typeof params?.filter === 'string' && params.filter !== 'all' ? params.filter : 'all';
+  const requestedPage = parseInt(typeof params?.page === 'string' ? params.page : '1', 10);
+  const requestedPageSafe = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+
   const currentYear = getCurrentYear(news);
-  const currentYearNews = news.filter((item) => isCurrentYearItem(item, currentYear));
+  const currentYearNews = news
+    .filter((item) => isCurrentYearItem(item, currentYear))
+    .sort((left, right) => String(right.publishedAt || '').localeCompare(String(left.publishedAt || '')));
+  const filteredNews = filterNews(currentYearNews, activeFilter);
+
+  const NEWS_PER_PAGE = 7;
+  const total = filteredNews.length;
+  const totalPages = Math.max(1, Math.ceil(total / NEWS_PER_PAGE));
+  const safePage = Math.min(requestedPageSafe, totalPages);
+  const pageItems = filteredNews.slice((safePage - 1) * NEWS_PER_PAGE, safePage * NEWS_PER_PAGE);
+  const newsCards = pageItems.map(toNewsListCard);
+
+  const schoolIds = [...new Set(pageItems.map((n) => n.primarySchoolId).filter(Boolean))];
+  const schoolNamesById = await loadSchoolNamesByIds(schoolIds);
+
   const currentYearPolicies = news.filter((item) => item.newsType === 'policy' && isRenderablePolicy(item, currentYear));
   const today = new Date().toISOString().slice(0, 10);
   const todayUpdates = currentYearNews.filter((item) => String(item.publishedAt || item.updatedAt || '').startsWith(today)).length;
@@ -182,7 +198,10 @@ export default async function NewsPage() {
       <NewsPageClient
         news={newsCards}
         schoolNamesById={schoolNamesById}
-        currentYear={currentYear}
+        total={total}
+        totalPages={totalPages}
+        currentPage={safePage}
+        activeFilter={activeFilter}
       />
 
       <div className="channel-color-bar" aria-hidden="true">

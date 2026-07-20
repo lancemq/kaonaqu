@@ -1,11 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useTransition } from 'react';
+import Pager from './pager';
 import admissionTimeline from '../lib/admission-timeline';
-import { filterNews } from '../lib/site-utils';
-
-const NEWS_PER_PAGE = 7;
 
 const FILTERS = [
   ['all', '全部'],
@@ -30,11 +29,6 @@ const SPORTS_SPECIAL = {
   href: '/news/sports-reform'
 };
 
-function isCurrentYearItem(item, year) {
-  const publishedYear = Number(String(item?.publishedAt || item?.date || '').slice(0, 4)) || 0;
-  return publishedYear === year;
-}
-
 function getItemHref(item) {
   return `/news/${encodeURIComponent(item.id)}`;
 }
@@ -48,28 +42,27 @@ function SectionLabel({ children }) {
   );
 }
 
-export default function NewsPageClient({ news, schoolNamesById = {}, currentYear }) {
-  const currentYearNews = useMemo(
-    () => news
-      .filter((item) => isCurrentYearItem(item, currentYear))
-      .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''))),
-    [news, currentYear]
-  );
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
+// 将筛选/分页状态写入 URL，浏览器前进/后退即可保留筛选条件
+function buildNewsHref(base, next) {
+  const merged = { ...base, page: 1, ...next };
+  const qs = new URLSearchParams();
+  if (merged.filter && merged.filter !== 'all') qs.set('filter', merged.filter);
+  if (merged.page && Number(merged.page) > 1) qs.set('page', String(merged.page));
+  const s = qs.toString();
+  return s ? `/news?${s}` : '/news';
+}
 
-  const visibleItems = useMemo(() => {
-    return filterNews(currentYearNews, activeFilter);
-  }, [activeFilter, currentYearNews]);
+export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, totalPages = 1, currentPage = 1, activeFilter = 'all' }) {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
-  const rankedItems = useMemo(
-    () => visibleItems
-      .slice()
-      .sort((left, right) => String(right.publishedAt || right.date || '').localeCompare(String(left.publishedAt || left.date || ''))),
-    [visibleItems]
-  );
-  const totalPages = Math.max(1, Math.ceil(rankedItems.length / NEWS_PER_PAGE));
-  const pagedItems = rankedItems.slice((currentPage - 1) * NEWS_PER_PAGE, currentPage * NEWS_PER_PAGE);
+  // 服务端是唯一数据源：URL 变化即重新请求并下发当前页卡片。
+  const navigate = (next) => {
+    startTransition(() => {
+      router.push(buildNewsHref({ filter: activeFilter, page: currentPage }, next));
+    });
+  };
+
   const timelinePreview = admissionTimeline.slice(0, 3);
 
   return (
@@ -81,7 +74,7 @@ export default function NewsPageClient({ news, schoolNamesById = {}, currentYear
             <h2>全部新闻</h2>
           </div>
           <div className="news-result-count">
-            <strong>{rankedItems.length}</strong>
+            <strong>{total}</strong>
             <span>条结果</span>
           </div>
         </div>
@@ -93,18 +86,19 @@ export default function NewsPageClient({ news, schoolNamesById = {}, currentYear
               key={value}
               type="button"
               aria-pressed={activeFilter === value}
-              onClick={() => {
-                setActiveFilter(value);
-                setCurrentPage(1);
-              }}
+              onClick={() => navigate({ filter: value })}
             >
               {label}
             </button>
           ))}
         </div>
 
-        <div className="news-article-list">
-          {pagedItems.length ? pagedItems.map((item) => {
+        <div
+          className="news-article-list"
+          aria-busy={isPending}
+          style={{ opacity: isPending ? 0.55 : 1, transition: 'opacity 120ms' }}
+        >
+          {news.length ? news.map((item) => {
             const linkedSchool = item.itemType === 'news' && item.primarySchoolId
               ? schoolNamesById[item.primarySchoolId] || ''
               : '';
@@ -133,23 +127,11 @@ export default function NewsPageClient({ news, schoolNamesById = {}, currentYear
           )}
         </div>
 
-        <div className="pager">
-          <button
-            type="button"
-            onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
-            disabled={currentPage === 1}
-          >
-            上一页
-          </button>
-          <span>第 {currentPage} 页 / 共 {totalPages} 页</span>
-          <button
-            type="button"
-            onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
-            disabled={currentPage === totalPages}
-          >
-            下一页
-          </button>
-        </div>
+        <Pager
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => navigate({ page })}
+        />
       </div>
 
       <aside className="news-aerial-sidebar">
