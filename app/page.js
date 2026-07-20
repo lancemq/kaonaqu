@@ -180,7 +180,6 @@ export default async function HomePage() {
 
   const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
   const recentNewsCount = news.filter((item) => String(item.publishedAt || '') >= weekAgo).length;
-  const verifiedSchoolsCount = schools.filter((school) => school.infoVerified).length;
 
   const featuredSchools = getFeaturedSchools(schools);
   const districtHighlights = getDistrictHighlights(districts, schools);
@@ -251,14 +250,14 @@ export default async function HomePage() {
               <p>本市升学动态</p>
             </article>
             <article>
-              <span>02 / VERIFIED</span>
-              <strong>{verifiedSchoolsCount}+</strong>
-              <p>学校信息已核实</p>
-            </article>
-            <article>
-              <span>03 / DISTRICTS</span>
+              <span>02 / DISTRICTS</span>
               <strong>{districts.length}</strong>
               <p>覆盖区县</p>
+            </article>
+            <article>
+              <span>03 / SCHOOLS</span>
+              <strong>{schools.length}</strong>
+              <p>收录学校</p>
             </article>
           </aside>
         </section>
@@ -300,10 +299,6 @@ export default async function HomePage() {
             <div>
               <strong>{recentNewsCount}</strong>
               <span>近 7 天新增升学动态</span>
-            </div>
-            <div>
-              <strong>{verifiedSchoolsCount}</strong>
-              <span>所学校信息已核实</span>
             </div>
           </div>
           <Link className="home-focus-topic-link" href="/news">查看全部动态 →</Link>
@@ -357,7 +352,6 @@ export default async function HomePage() {
               <Link className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
                 <div className="home-school-card-top">
                   <span className="home-school-meta">{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
-                  {school.infoVerified && <em className="home-school-verified">已核实</em>}
                 </div>
                 <h3>{school.name}</h3>
                 {keyLevel && <span className="home-school-level">{keyLevel}</span>}

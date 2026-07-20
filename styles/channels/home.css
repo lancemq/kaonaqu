@@ -680,20 +680,6 @@ body[data-page="home"] .home-school-card-top {
     gap: 10px;
 }
 
-body[data-page="home"] .home-school-verified {
-    flex: 0 0 auto;
-    padding: 2px 7px;
-    border-radius: 4px;
-    background: rgba(31, 157, 87, 0.12);
-    color: #1f9d57;
-    font-family: var(--channel-font-caption);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-style: normal;
-    white-space: nowrap;
-}
-
 /* 层级徽标（市重点 / 区重点） */
 body[data-page="home"] .home-school-level {
     align-self: start;

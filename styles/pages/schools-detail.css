@@ -262,7 +262,7 @@ body[data-page="schools"] .schools-aerial-basket-top {
     padding: 12px 14px;
     border: 1px solid var(--channel-line);
     border-radius: 8px;
-    background: var(--channel-blue-soft);
+    background: rgba(26, 29, 41, 0.03);
 }
 
 /* 手风琴折叠区块 */
@@ -298,7 +298,7 @@ body[data-page="schools"] .schools-aerial-section-flag {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--channel-blue);
+    background: var(--channel-ink);
 }
 
 body[data-page="schools"] .schools-aerial-section-right {
@@ -310,7 +310,7 @@ body[data-page="schools"] .schools-aerial-section-right {
 body[data-page="schools"] .schools-aerial-section-badge {
     padding: 1px 9px;
     border-radius: 999px;
-    background: var(--channel-blue);
+    background: var(--channel-ink);
     color: #fff;
     font-family: var(--channel-font-caption);
     font-size: 10px;
@@ -507,7 +507,7 @@ body[data-page="schools"] .schools-aerial-card-main {
 
 body[data-page="schools"] .schools-aerial-card-main p {
     margin: 0;
-    color: var(--channel-blue);
+    color: var(--channel-muted);
     font-family: var(--channel-font-data);
     font-size: 11px;
     letter-spacing: 1px;
@@ -533,7 +533,19 @@ body[data-page="schools"] .schools-aerial-card-tags {
     gap: 8px;
 }
 
-body[data-page="schools"] .schools-aerial-card-tags em,
+body[data-page="schools"] .schools-aerial-card-tags em {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    padding: 0 10px;
+    background: rgba(26, 29, 41, 0.05);
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
+    font-size: 9px;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
 body[data-page="schools"] .school-detail-tags em {
     display: inline-flex;
     align-items: center;
@@ -577,7 +589,7 @@ body[data-page="schools"] .schools-aerial-card-foot {
     padding: 9px 20px;
     border: 1px solid var(--channel-line);
     border-top: none;
-    background: var(--channel-blue-soft);
+    background: rgba(26, 29, 41, 0.03);
     font-size: 12px;
 }
 
@@ -589,7 +601,7 @@ body[data-page="schools"] .schools-aerial-card-score {
 }
 
 body[data-page="schools"] .schools-aerial-card-score-year {
-    color: var(--channel-blue);
+    color: var(--channel-muted);
     font-family: var(--channel-font-data);
     letter-spacing: 1px;
 }

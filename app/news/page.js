@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { createRequire } from 'module';
 import NewsPageClient from '../../components/news-page-client';
-import { getNewsCategoryLabel, filterNews } from '../../lib/site-utils';
+import { getNewsCategoryLabel, filterNews, getNewsSection } from '../../lib/site-utils';
 
 const require = createRequire(import.meta.url);
 const { loadNewsList, loadSchoolNamesByIds } = require('../../shared/data-store');
@@ -108,6 +108,7 @@ function toNewsListCard(item) {
     date: item.date || '',
     summaryText,
     kicker: getItemKicker(item),
+    section: getNewsSection(item),
     primarySchoolId: item.primarySchoolId || ''
   };
 }

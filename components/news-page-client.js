@@ -8,12 +8,25 @@ import admissionTimeline from '../lib/admission-timeline';
 
 const FILTERS = [
   ['all', '全部'],
-  ['policy', '中考政策'],
-  ['guide', '高考政策'],
+  ['policy', '政策文件'],
+  ['guide', '备考指南'],
   ['school', '学校动态'],
   ['exam', '考试通知'],
   ['admission', '招生简章']
 ];
+
+// 卡片分类色 chip：与 getNewsSection 的 section 值一一对应
+const SECTION_CHIP = {
+  policy: '政策',
+  guide: '指南',
+  school: '学校',
+  exam: '考试',
+  admission: '招生'
+};
+
+function getSectionChip(section) {
+  return SECTION_CHIP[section] || '资讯';
+}
 
 const QUICK_LINKS = [
   { label: '中招专题', href: '/news/zhongkao-special' },
@@ -105,14 +118,17 @@ export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, 
             return (
               <Link className="news-article-row" href={getItemHref(item)} key={`${item.itemType}-${item.id}`}>
                 <div className="news-article-copy">
-                  <span>{item.kicker}</span>
+                  <div className="news-article-tags">
+                    <span className={`news-article-chip is-${item.section || 'default'}`}>{getSectionChip(item.section)}</span>
+                    <span className="news-article-kicker">{item.kicker}</span>
+                  </div>
                   <h3>{item.title}</h3>
                   {linkedSchool ? <p className="news-article-signal">涉及学校 / {linkedSchool}</p> : null}
                   <p>{item.summaryText}</p>
                 </div>
                 <div className="news-article-meta">
                   <time>{item.publishedAt || item.date || 'DATE'}</time>
-                  <strong>阅读</strong>
+                  <span className="news-article-cta">查看 →</span>
                 </div>
               </Link>
             );
