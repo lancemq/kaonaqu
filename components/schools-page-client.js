@@ -172,7 +172,7 @@ export default function SchoolsPageClient({
   };
 
   // 侧栏手风琴：默认展开高频筛选，次要条件收进「更多条件 / 工具与导航」
-  const [openSections, setOpenSections] = useState(() => new Set(['district', 'stage', 'keyLevel', 'feature']));
+  const [openSections, setOpenSections] = useState(() => new Set(['district', 'stage', 'cohort', 'keyLevel', 'feature']));
   const toggleSection = (id) => {
     setOpenSections((prev) => {
       const next = new Set(prev);
@@ -182,7 +182,7 @@ export default function SchoolsPageClient({
     });
   };
 
-  const moreActive = activeProperty !== 'all' || activeCohort !== 'all' || activeBoarding !== 'all' || activeInternational !== 'all';
+  const moreActive = activeProperty !== 'all' || activeBoarding !== 'all' || activeInternational !== 'all';
 
   return (
     <main className="schools-aerial-page">
@@ -272,6 +272,16 @@ export default function SchoolsPageClient({
             </div>
           </FilterSection>
 
+          <FilterSection id="cohort" label="荣誉" open={openSections.has('cohort')} onToggle={toggleSection} active={activeCohort !== 'all'}>
+            <div className="schools-aerial-filter-stack">
+              {filterOptions.cohort.map((option) => (
+                <button key={option} type="button" className={activeCohort === option ? 'is-active' : ''} onClick={() => navigate({ cohort: activeCohort === option ? 'all' : option })}>
+                  {option}
+                </button>
+              ))}
+            </div>
+          </FilterSection>
+
           <FilterSection id="keyLevel" label="等级" open={openSections.has('keyLevel')} onToggle={toggleSection} active={activeKeyLevel !== 'all'}>
             <div className="schools-aerial-filter-stack">
               {filterOptions.keyLevel.map((option) => (
@@ -299,17 +309,6 @@ export default function SchoolsPageClient({
                 <div className="schools-aerial-filter-stack">
                   {filterOptions.property.map((option) => (
                     <button key={option} type="button" className={activeProperty === option ? 'is-active' : ''} onClick={() => navigate({ property: activeProperty === option ? 'all' : option })}>
-                      {option}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="schools-aerial-filter-block">
-                <label>荣誉</label>
-                <div className="schools-aerial-filter-stack">
-                  {filterOptions.cohort.map((option) => (
-                    <button key={option} type="button" className={activeCohort === option ? 'is-active' : ''} onClick={() => navigate({ cohort: activeCohort === option ? 'all' : option })}>
                       {option}
                     </button>
                   ))}
