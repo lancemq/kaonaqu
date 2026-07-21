@@ -246,10 +246,6 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
     return schoolValue(school, metric.key);
   };
 
-  const insight = usingExample
-    ? '当前展示三所示例学校。添加学校后，对比表会切换为你的真实选择，并同步到比较篮和分享链接。'
-    : `${displaySchools.map((school) => school.name).join('、')} 已加入横向对比。建议先看区县、梯队和学段，再结合特色方向与通勤距离筛选。`;
-
   return (
     <main className="schools-aerial-page compare-aerial-page">
       <SiteNav />
@@ -332,14 +328,6 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
               <div className="compare-aerial-years"><span>2024</span><span>2025</span><span>2026</span></div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="compare-aerial-insight" aria-label="对比总结">
-        <div>
-          <CompareKicker>SUMMARY</CompareKicker>
-          <h2>对比总结</h2>
-          <p>{insight}</p>
         </div>
       </section>
 

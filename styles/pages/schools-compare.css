@@ -87,8 +87,7 @@ body[data-page="schools"] .channel-kicker p {
     letter-spacing: 4px;
 }
 
-body[data-page="schools"] .channel-hero .channel-kicker p,
-body[data-page="schools"] .compare-aerial-insight .channel-kicker p {
+body[data-page="schools"] .channel-hero .channel-kicker p {
     color: var(--channel-blue-soft);
 }
 
@@ -369,33 +368,6 @@ body[data-page="schools"] .compare-aerial-years {
     font-size: 9px;
 }
 
-body[data-page="schools"] .compare-aerial-insight {
-    padding: 20px 80px 60px;
-    background: #fff;
-}
-
-body[data-page="schools"] .compare-aerial-insight > div {
-    display: grid;
-    gap: 14px;
-    padding: 24px;
-    background: var(--channel-ink);
-    color: #fff;
-}
-
-body[data-page="schools"] .compare-aerial-insight h2 {
-    margin: 0;
-    color: #fff;
-    font-family: var(--channel-font-heading);
-    font-size: 20px;
-}
-
-body[data-page="schools"] .compare-aerial-insight p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 13px;
-    line-height: 1.65;
-}
-
 @media (max-width: 900px) {
     body[data-page="schools"] .compare-aerial-table-section {
         overflow-x: auto;
@@ -423,8 +395,7 @@ body[data-page="schools"] .compare-aerial-insight p {
 
     body[data-page="schools"] .compare-aerial-selectbar,
     body[data-page="schools"] .compare-aerial-table-section,
-    body[data-page="schools"] .compare-aerial-chart-section,
-    body[data-page="schools"] .compare-aerial-insight {
+    body[data-page="schools"] .compare-aerial-chart-section {
         padding-left: 20px;
         padding-right: 20px;
     }
