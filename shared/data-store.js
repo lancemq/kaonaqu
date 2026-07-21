@@ -86,19 +86,20 @@ function sortBySchoolPriority(items) {
   });
 }
 
-// 列表轻量查询：显式排除体积最大的 content / admission_info / score_lines 三列，
+// 列表轻量查询：显式排除体积最大的 content / admission_info 两列，
 // 使响应保持在 Next.js Data Cache 单条 2MB 上限内。实测（888 校）：
 //   select *                      2.66MB -> 超限不可缓存
 //   去 content                    1.61MB -> 2.33MB 仍超限（Next 缓存含响应开销）
-//   去 content+admission_info+score_lines  0.44MB -> ~0.62MB 可缓存 ✅
-// admission_info（notes 长文本，单列约 1MB）与 score_lines 仅详情/列表卡片需要，
-// 由 getSchoolById / getSchoolsByIds（完整查询，按 id 缓存）单独取回；
+//   去 content+admission_info（保留 score_lines）  0.44MB -> ~0.46MB 可缓存 ✅
+// score_lines 单列极小（824 校为 []，仅 64 校含真实线约 300B/校，合计 ≈20KB），
+// 故重新纳入列表列，供对比页"近年录取分/走势"直接消费真实线，无需二次按 id 取回；
+// admission_info（notes 长文本，单列约 1MB）仍仅详情页需要，由 getSchoolById 取回。
 // 列表筛选/搜索依赖的 features/address/labels 等均保留。
 const SCHOOLS_LIST_COLUMNS = [
   'id', 'slug', 'name', 'district_name', 'school_stage_label', 'school_property_label',
   'school_key_level', 'elite_cohort', 'group', 'address', 'phone', 'website',
   'founding_year', 'is_boarding', 'is_international', 'image', 'profile_depth',
-  'features', 'info_verified'
+  'features', 'info_verified', 'score_lines'
 ].join(',');
 
 // 新闻列表轻量查询：排除体积最大的 content 列。
@@ -282,7 +283,7 @@ async function loadSchoolsMinimal() {
   const client = getServiceClient();
   const { data, error } = await client
     .from(SCHOOLS_TABLE)
-    .select('slug,name,district_name,school_stage_label,school_key_level,elite_cohort,group')
+    .select('slug,name,district_name,school_stage_label,school_key_level,elite_cohort,group,is_international')
     .order('id', { ascending: true });
   if (error) throw error;
   return (data || []).map((row) => ({
@@ -293,7 +294,8 @@ async function loadSchoolsMinimal() {
     schoolStage: inferSchoolStage(row.school_stage_label),
     eliteCohort: row.elite_cohort || '',
     schoolKeyLevel: row.school_key_level || '',
-    group: row.group || ''
+    group: row.group || '',
+    isInternational: row.is_international === true
   }));
 }
 
