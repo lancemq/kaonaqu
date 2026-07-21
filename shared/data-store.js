@@ -283,7 +283,7 @@ async function loadSchoolsMinimal() {
   const client = getServiceClient();
   const { data, error } = await client
     .from(SCHOOLS_TABLE)
-    .select('slug,name,district_name,school_stage_label,school_key_level,elite_cohort,group,is_international')
+    .select('slug,name,district_name,school_stage_label,school_key_level,elite_cohort,group,is_international,score_lines')
     .order('id', { ascending: true });
   if (error) throw error;
   return (data || []).map((row) => ({
@@ -295,7 +295,8 @@ async function loadSchoolsMinimal() {
     eliteCohort: row.elite_cohort || '',
     schoolKeyLevel: row.school_key_level || '',
     group: row.group || '',
-    isInternational: row.is_international === true
+    isInternational: row.is_international === true,
+    scoreLines: Array.isArray(row.score_lines) ? row.score_lines : []
   }));
 }
 

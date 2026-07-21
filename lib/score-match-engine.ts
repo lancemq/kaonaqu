@@ -1,16 +1,16 @@
 // 估分择校匹配引擎
-// 输入"分数 + 区域 + 考试类型"，按 tier 参考区间给出冲刺/匹配/保底三档可填报高中建议。
+// 输入"分数 + 区域 + 考试类型"，按参考区间给出冲刺/匹配/保底三档可填报高中建议。
 //
-// 数据来源说明：
-// - 中考：覆盖全部高中，用 tier 参考区间（非该校精确录取线，标注 source='tier_reference'）
-// - 高考：仅对有 rich profile scoreLines 的头部校做精确匹配（source='rich_profile'）
-// 后续爬取真实分数线补入 schools.json / rich profile 后，精度自然升级。
+// 数据来源说明（精度优先级）：
+// - 有真实录取线（schools.score_lines）的学校：用最新一年录取线 ± 带宽精确匹配（source='real_line'）
+// - 无真实线的学校：回退到同 tier 参考区间（source='tier_reference'）
+// - 国际课程方向：优先真实线，回退到国际课程默认参考区间
 
 'use client';
 
 export type ExamType = 'zhongkao' | 'international';
 export type MatchCategory = 'reach' | 'match' | 'safety';
-type MatchSource = 'tier_reference' | 'rich_profile';
+type MatchSource = 'tier_reference' | 'real_line' | 'rich_profile';
 
 // 历年录取分数线（与 schools 表 score_lines 列、详情页"历年分数线"对齐）
 export interface ScoreLine {
@@ -158,7 +158,7 @@ function categorizeByTier(score: number, range: { min: number; max: number }): M
 }
 
 /**
- * 中考分支：用 tier 参考区间匹配全部高中
+ * 中考分支：有真实录取线的学校用真实线精确匹配，其余回退 tier 参考区间
  */
 function matchZhongkao(score: number, districtId: string | undefined, schools: SchoolRecord[]): ScoreMatchResult[] {
   const results: ScoreMatchResult[] = [];
@@ -167,20 +167,9 @@ function matchZhongkao(score: number, districtId: string | undefined, schools: S
   );
 
   for (const school of seniorHighs) {
-    const key = getMatchKey(school);
-    const range = resolveTierRange(key);
-    if (!range) continue;
-
-    const category = categorizeByTier(score, range);
-    if (!category) continue;
-
-    results.push({
-      school,
-      category,
-      estimatedRange: range,
-      reason: `${key}参考区间 ${range.min}-${range.max}`,
-      source: 'tier_reference'
-    });
+    // 无回退默认区间（高中必须能落到真实线或 tier 区间，否则本就无可靠参考）
+    const r = buildMatchResult(school, score, null, '');
+    if (r) results.push(r);
   }
 
   return applyDistrictAndSort(results, districtId);
@@ -189,29 +178,90 @@ function matchZhongkao(score: number, districtId: string | undefined, schools: S
 /**
  * 国际课程 / 海外方向分支：平台仅覆盖上海高中，无大学录取数据，
  * 原"高考分匹配高中录取线"语义错位，重定位为面向 isInternational 学校的国际课程参考。
- * 国际课程班通常综合中考成绩、校测与简历录取，以下为参考示意。
+ * 国际课程班通常综合中考成绩、校测与简历录取，优先真实线，回退国际课程默认参考区间。
  */
 function matchInternational(score: number, districtId: string | undefined, schools: SchoolRecord[]): ScoreMatchResult[] {
   const results: ScoreMatchResult[] = [];
   const intlSchools = (schools || []).filter((s) => s.isInternational);
 
   for (const school of intlSchools) {
-    const key = getMatchKey(school);
-    const range = resolveTierRange(key) || INTERNATIONAL_DEFAULT_RANGE;
-
-    const category = categorizeByTier(score, range);
-    if (!category) continue;
-
-    results.push({
-      school,
-      category,
-      estimatedRange: range,
-      reason: `国际课程参考区间 ${range.min}-${range.max}`,
-      source: 'tier_reference'
-    });
+    // 回退区间：国际课程默认参考区间
+    const r = buildMatchResult(school, score, INTERNATIONAL_DEFAULT_RANGE, '国际课程');
+    if (r) results.push(r);
   }
 
   return applyDistrictAndSort(results, districtId);
+}
+
+// 真实录取线的判定带宽（同一校历年录取线通常在 ±10 内波动，±此值内判为"匹配"）
+const REAL_LINE_MATCH_BAND = 10;
+
+/**
+ * 提取某校真实录取线信息：取数值有效、年份最新的线作为参考点，
+ * 并给出近年分数区间（min/max）用于展示。无有效数值线（如"无/摇号"占位）返回 null。
+ */
+function getRealLineInfo(school: SchoolRecord): { year: number; score: number; min: number; max: number; count: number } | null {
+  const lines = (school.scoreLines || []).filter(
+    (l) => Number.isFinite(Number(l.year)) && Number.isFinite(Number(l.score))
+  );
+  if (!lines.length) return null;
+
+  const sorted = lines.slice().sort((a, b) => Number(a.year) - Number(b.year));
+  const latest = sorted[sorted.length - 1];
+  const scores = sorted.map((l) => Number(l.score));
+  const min = Math.min(...scores);
+  const max = Math.max(...scores);
+  return { year: Number(latest.year), score: Number(latest.score), min, max, count: lines.length };
+}
+
+/**
+ * 真实线判定档位（围绕最新录取线 ref）
+ */
+function categorizeByRealLine(score: number, ref: number): MatchCategory | null {
+  if (score >= ref + REAL_LINE_MATCH_BAND) return 'safety';
+  if (score >= ref - REAL_LINE_MATCH_BAND) return 'match';
+  if (score >= ref - REAL_LINE_MATCH_BAND - REACH_GAP) return 'reach';
+  return null;
+}
+
+/**
+ * 真实录取线优先、tier 参考区间回退的统一匹配构造。
+ * 有真实线 → source='real_line'，区间用近年 min/max；
+ * 无真实线 → 用 normalizeTierKey 归一后的 tier 区间（fallbackRange 作为最终兜底）。
+ */
+function buildMatchResult(
+  school: SchoolRecord,
+  score: number,
+  fallbackRange: { min: number; max: number } | null,
+  fallbackLabel: string
+): ScoreMatchResult | null {
+  const real = getRealLineInfo(school);
+  if (real) {
+    const category = categorizeByRealLine(score, real.score);
+    if (!category) return null;
+    const trend = real.count > 1 ? `（近年 ${real.min}-${real.max}）` : '';
+    return {
+      school,
+      category,
+      estimatedRange: { min: real.min, max: real.max },
+      reason: `${real.year}年录取线 ${real.score}${trend}`,
+      source: 'real_line'
+    };
+  }
+
+  const key = getMatchKey(school);
+  const range = resolveTierRange(key) || fallbackRange;
+  if (!range) return null;
+  const label = resolveTierRange(key) ? key : fallbackLabel;
+  const category = categorizeByTier(score, range);
+  if (!category) return null;
+  return {
+    school,
+    category,
+    estimatedRange: range,
+    reason: `${label}参考区间 ${range.min}-${range.max}`,
+    source: 'tier_reference'
+  };
 }
 
 /**

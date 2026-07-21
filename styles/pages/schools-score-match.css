@@ -384,6 +384,12 @@ body[data-page="schools"] .score-match-aerial-source {
     font-weight: 700;
 }
 
+body[data-page="schools"] .score-match-aerial-source-real_line {
+    border-color: #1f9d6b;
+    color: #1f9d6b;
+    background: #eafaf2;
+}
+
 body[data-page="schools"] .score-match-aerial-card-link {
     color: #1a1a1a;
     font-size: 12px;

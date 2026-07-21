@@ -168,7 +168,7 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
         </div>
 
         <p className="score-match-aerial-disclaimer">
-          分数基于同 tier 学校参考区间，非该校精确录取线；最终以当年市/区招考机构发布为准。
+          已收录真实录取线的学校按近年录取线精确匹配（绿色"真实录取线"标记），其余按同 tier 参考区间估算；最终以当年市/区招考机构发布为准。
         </p>
         {examType === 'international' ? (
           <p className="score-match-aerial-disclaimer score-match-aerial-disclaimer-warn">
@@ -230,6 +230,12 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
   );
 }
 
+const SOURCE_LABEL: Record<string, string> = {
+  real_line: '真实录取线',
+  rich_profile: 'rich profile 参考线',
+  tier_reference: 'tier 参考区间'
+};
+
 function ResultCard({ result }: { result: ScoreMatchResult }) {
   const { school, estimatedRange, reason, source } = result;
   return (
@@ -248,7 +254,7 @@ function ResultCard({ result }: { result: ScoreMatchResult }) {
         <p className="score-match-aerial-card-reason">{reason}</p>
         <div className="score-match-aerial-card-foot">
           <span className={`score-match-aerial-source score-match-aerial-source-${source}`}>
-            {source === 'rich_profile' ? 'rich profile 参考线' : 'tier 参考区间'}
+            {SOURCE_LABEL[source] || '参考'}
           </span>
           <span className="score-match-aerial-card-link">查看详情</span>
         </div>
