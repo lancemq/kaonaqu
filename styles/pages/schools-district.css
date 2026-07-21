@@ -175,6 +175,12 @@ body[data-page="schools"] .district-channel-list-head > p {
     line-height: 1.65;
 }
 
+body[data-page="schools"] .district-channel-overview .district-guide {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--channel-line);
+}
+
 body[data-page="schools"] .district-channel-overview-stats {
     display: flex;
     gap: 32px;

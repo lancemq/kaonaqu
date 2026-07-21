@@ -181,6 +181,15 @@ export default async function HomePage() {
   const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
   const recentNewsCount = news.filter((item) => String(item.publishedAt || '') >= weekAgo).length;
 
+  // FOCUS 面板的动态卡片：取左栏未用到的最新动态，避免重复
+  const focusTopicNews = sortedNews
+    .filter(
+      (item) =>
+        !featuredNews.some((featured) => featured.id === item.id) &&
+        !headlineNews.some((headline) => headline.id === item.id)
+    )
+    .slice(0, 2);
+
   const featuredSchools = getFeaturedSchools(schools);
   const districtHighlights = getDistrictHighlights(districts, schools);
 
@@ -294,13 +303,40 @@ export default async function HomePage() {
         <aside className="home-feature-panel home-focus-panel">
           <SectionLabel>FOCUS</SectionLabel>
           <h2>平台更新动态</h2>
-          <p className="home-focus-intro">我们持续校正学校信息、追踪官方政策发布，让升学数据保持新鲜可信。</p>
+          <p className="home-focus-intro">持续追踪官方政策发布、汇集重点学校资料，让升学信息保持新鲜可查。</p>
           <div className="home-focus-stats">
             <div>
               <strong>{recentNewsCount}</strong>
               <span>近 7 天新增升学动态</span>
             </div>
+            <div>
+              <strong>{schools.length}+</strong>
+              <span>收录学校 · {districts.length} 个区县全覆盖</span>
+            </div>
+            <div>
+              <strong>{news.length}</strong>
+              <span>累计升学政策与动态</span>
+            </div>
           </div>
+          {focusTopicNews.length > 0 && (
+            <div className="home-focus-topics">
+              {focusTopicNews.map((item) => {
+                const date = String(item.publishedAt || '');
+                return (
+                  <Link className="home-focus-topic" href={getNewsHref(item)} key={item.id}>
+                    <div className="home-focus-topic-head">
+                      <span className="home-focus-topic-icon" aria-hidden="true">
+                        {getNewsCategoryLabel(item).slice(0, 1)}
+                      </span>
+                      <strong>{item.title}</strong>
+                      <span className="home-focus-topic-tag">{date ? date.slice(5) : 'NEW'}</span>
+                    </div>
+                    <p>{item.summary || '进入详情查看完整内容。'}</p>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
           <Link className="home-focus-topic-link" href="/news">查看全部动态 →</Link>
         </aside>
       </section>

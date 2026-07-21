@@ -256,6 +256,12 @@ body[data-page="schools"] .score-match-aerial-disclaimer {
     line-height: 1.6;
 }
 
+body[data-page="schools"] .score-match-aerial-disclaimer-warn {
+    border-left-color: #e0a000;
+    background: #fff8e8;
+    color: #8a6d00;
+}
+
 body[data-page="schools"] .score-match-aerial-results {
     display: grid;
     gap: 24px;
@@ -297,6 +303,18 @@ body[data-page="schools"] .score-match-aerial-column > header em {
     font-family: "Geist Mono", monospace;
     font-size: 12px;
     opacity: 0.7;
+}
+
+body[data-page="schools"] .score-match-aerial-column-reach > header {
+    background: #e8843a;
+}
+
+body[data-page="schools"] .score-match-aerial-column-match > header {
+    background: #2f7fb8;
+}
+
+body[data-page="schools"] .score-match-aerial-column-safety > header {
+    background: #3a9e72;
 }
 
 body[data-page="schools"] .score-match-aerial-column ul {
@@ -376,6 +394,12 @@ body[data-page="schools"] .score-match-aerial-source {
     font-family: "Geist Mono", monospace;
     font-size: 11px;
     font-weight: 700;
+}
+
+body[data-page="schools"] .score-match-aerial-source-real_line {
+    border-color: #1f9d6b;
+    color: #1f9d6b;
+    background: #eafaf2;
 }
 
 body[data-page="schools"] .score-match-aerial-card-link {

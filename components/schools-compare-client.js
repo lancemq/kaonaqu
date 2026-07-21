@@ -73,6 +73,42 @@ function getTrendBars(school, index) {
   return [base - 8 + index * 2, base - 3 + index * 2, base + index * 2].map((value) => Math.max(36, Math.min(96, value)));
 }
 
+// 真实录取线（scoreLines）可用时取最近一年；否则返回 null
+function getLatestRealScore(school) {
+  const lines = Array.isArray(school?.scoreLines) ? school.scoreLines : [];
+  const valid = lines
+    .map((l) => ({ year: String(l.year || ''), score: Number(l.score) }))
+    .filter((o) => /^\d{4}$/.test(o.year) && Number.isFinite(o.score));
+  if (!valid.length) return null;
+  valid.sort((a, b) => b.year.localeCompare(a.year));
+  return valid[0];
+}
+
+// 录取分展示：真实优先，缺失则用启发式预估（标注示意时由列名体现）
+function getScoreDisplay(school, index) {
+  const real = getLatestRealScore(school);
+  if (real) return `${real.score}（${real.year}）`;
+  return getSyntheticScore(school, index * 2);
+}
+
+// 走势柱：真实线≥2 年用真实值，否则退化为示意柱
+function getTrendValues(school, index) {
+  const lines = Array.isArray(school?.scoreLines) ? school.scoreLines : [];
+  const nums = lines
+    .map((l) => ({ year: String(l.year || ''), score: Number(l.score) }))
+    .filter((o) => /^\d{4}$/.test(o.year) && Number.isFinite(o.score));
+  if (nums.length >= 2) {
+    const recent = nums.slice(-3);
+    const min = Math.min(...recent.map((o) => o.score));
+    const max = Math.max(...recent.map((o) => o.score));
+    return recent.map((o) => {
+      const t = max === min ? 0.6 : (o.score - min) / (max - min);
+      return Math.round(36 + t * 60);
+    });
+  }
+  return getTrendBars(school, index);
+}
+
 function CompareKicker({ children }) {
   return (
     <div className="channel-kicker">
@@ -118,7 +154,7 @@ const METRICS = [
   { key: 'ownership', label: '办学性质' },
   { key: 'stage', label: '覆盖学段' },
   { key: 'founded', label: '建校时间' },
-  { key: 'score', label: '预估录取分', strong: true },
+  { key: 'score', label: '近年录取分', strong: true },
   { key: 'tier', label: '梯队定位' },
   { key: 'group', label: '所属体系' },
   { key: 'feature', label: '特色方向' },
@@ -206,13 +242,9 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
   };
 
   const renderMetricValue = (school, metric, index) => {
-    if (metric.key === 'score') return getSyntheticScore(school, index * 2);
+    if (metric.key === 'score') return getScoreDisplay(school, index);
     return schoolValue(school, metric.key);
   };
-
-  const insight = usingExample
-    ? '当前展示三所示例学校。添加学校后，对比表会切换为你的真实选择，并同步到比较篮和分享链接。'
-    : `${displaySchools.map((school) => school.name).join('、')} 已加入横向对比。建议先看区县、梯队和学段，再结合特色方向与通勤距离筛选。`;
 
   return (
     <main className="schools-aerial-page compare-aerial-page">
@@ -283,26 +315,19 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
       <section className="compare-aerial-chart-section" aria-label="录取分走势">
         <CompareKicker>SCORE TREND</CompareKicker>
         <h2>近三年录取分走势</h2>
+        <p className="compare-aerial-chart-note">注：真实录取线优先展示（逐年回填中）；暂无数据的学校显示基于梯队参考区间生成的示意柱。</p>
         <div className="compare-aerial-chart-grid">
           {displaySchools.map((school, schoolIndex) => (
             <article key={school.id}>
               <strong>{school.name.length > 10 ? `${school.name.slice(0, 10)}…` : school.name}</strong>
               <div className="compare-aerial-bars">
-                {getTrendBars(school, schoolIndex).map((height, index) => (
+                {getTrendValues(school, schoolIndex).map((height, index) => (
                   <span style={{ height: `${height}px` }} key={index}></span>
                 ))}
               </div>
               <div className="compare-aerial-years"><span>2024</span><span>2025</span><span>2026</span></div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="compare-aerial-insight" aria-label="对比总结">
-        <div>
-          <CompareKicker>SUMMARY</CompareKicker>
-          <h2>对比总结</h2>
-          <p>{insight}</p>
         </div>
       </section>
 

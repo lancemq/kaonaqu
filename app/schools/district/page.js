@@ -20,8 +20,18 @@ export const metadata = {
 };
 
 
-function getLatestUpdate() {
-  return '持续整理';
+function getVerifiedCount(schools) {
+  return (schools || []).filter((school) => school.infoVerified).length;
+}
+
+function rankSchool(school) {
+  const level = String(school?.schoolKeyLevel || '');
+  let score = 0;
+  if (level.includes('市重点')) score += 100;
+  else if (level.includes('区重点')) score += 80;
+  if (school?.infoVerified) score += 10;
+  score += (school?.features?.length || 0) + (school?.tags?.length || 0);
+  return score;
 }
 
 function countByStage(schools, stage) {
@@ -40,9 +50,8 @@ function buildDistrictRows(districts, schools) {
         complete: countByStage(districtSchools, 'complete'),
         publicCount: districtSchools.filter((school) => school.schoolPropertyLabel === '公办').length,
         privateCount: districtSchools.filter((school) => school.schoolPropertyLabel === '民办').length,
-        latestUpdated: getLatestUpdate(),
         topic: getDistrictSchoolTopic(district),
-        overview: district.districtOverview || district.description || '区域学校信息持续整理中。'
+        overview: district.districtOverview || getDistrictSchoolTopic(district) || district.description || '区域学校信息持续整理中。'
       };
     })
     .sort((left, right) => Number(right.total || 0) - Number(left.total || 0));
@@ -52,11 +61,7 @@ function getDistrictFeaturedSchool(district, schools) {
   return schools
     .filter((school) => school.districtId === district.id)
     .slice()
-    .sort((left, right) => {
-      const rightSignal = (right.features?.length || 0) + (right.tags?.length || 0);
-      const leftSignal = (left.features?.length || 0) + (left.tags?.length || 0);
-      return rightSignal - leftSignal;
-    })
+    .sort((left, right) => rankSchool(right) - rankSchool(left))
     .at(0);
 }
 
@@ -122,8 +127,30 @@ export default async function DistrictIndexPage() {
     { label: '分数匹配', href: '/schools/score-match' }
   ];
 
+  const collectionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: '上海学校区域频道',
+    description: '按上海16区查看学校结构、区域教育特点、初高中分布与学校专题入口。',
+    url: 'https://kaonaqu.com/schools/district',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: districtRows.length,
+      itemListElement: districtRows.map((district, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: district.name,
+        url: `https://kaonaqu.com/schools/district/${district.id}`
+      }))
+    }
+  };
+
   return (
     <main className="schools-aerial-page district-channel-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
       <SiteNav />
 
       <header className="channel-hero" id="top">
@@ -152,7 +179,7 @@ export default async function DistrictIndexPage() {
         <div className="district-channel-overview-stats">
           <article><strong>{leadDistrict?.name || '浦东新区'}</strong><span>学校记录最多</span></article>
           <article><strong>{totals.junior}</strong><span>初中记录</span></article>
-          <article><strong>{getLatestUpdate(schools)}</strong><span>最近更新</span></article>
+          <article><strong>{getVerifiedCount(schools)}</strong><span>已人工校正</span></article>
         </div>
       </section>
 
@@ -222,7 +249,7 @@ export default async function DistrictIndexPage() {
             <Link className="is-active" href="/schools?stage=senior_high">高中学校</Link>
             <Link href="/schools?stage=junior">初中学校</Link>
             <Link href="/schools?stage=complete">完全中学</Link>
-            <Link href="/schools?ownership=private">民办学校</Link>
+            <Link href="/schools?property=民办">民办学校</Link>
           </section>
 
           <section className="channel-side-card">

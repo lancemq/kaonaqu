@@ -26,14 +26,20 @@ function buildCardTags(school) {
   return Array.from(new Set(values)).slice(0, 4);
 }
 
+function rankSchool(school) {
+  const level = String(school?.schoolKeyLevel || '');
+  let score = 0;
+  if (level.includes('市重点')) score += 100;
+  else if (level.includes('区重点')) score += 80;
+  if (school?.infoVerified) score += 10;
+  score += (school?.features?.length || 0) + (school?.tags?.length || 0);
+  return score;
+}
+
 function sortSchoolsBySignal(list) {
   return list
     .slice()
-    .sort((left, right) => {
-      const rightSignal = (right.features?.length || 0) + (right.tags?.length || 0);
-      const leftSignal = (left.features?.length || 0) + (left.tags?.length || 0);
-      return rightSignal - leftSignal;
-    });
+    .sort((left, right) => rankSchool(right) - rankSchool(left));
 }
 
 function SectionKicker({ children }) {
@@ -129,7 +135,23 @@ export default async function DistrictSchoolsPage({ params }) {
     { id: 'complete', label: '完全中学', items: stageBuckets.complete, note: '适合关注初高中贯通培养路径。' }
   ].filter((group) => group.items.length);
   const topStage = stageGroups.slice().sort((left, right) => right.items.length - left.items.length)[0];
-  const districtOverview = districtInfo.districtOverview || `${districtInfo.name}学校信息持续整理中，可先按学段和办学性质查看区内学校结构。`;
+  const districtOverview = districtInfo.districtOverview || getDistrictSchoolTopic(districtInfo) || `${districtInfo.name}学校信息持续整理中，可先按学段和办学性质查看区内学校结构。`;
+  const publicCount = districtSchools.filter((school) => school.schoolPropertyLabel === '公办').length;
+  const privateCount = districtSchools.filter((school) => school.schoolPropertyLabel === '民办').length;
+  const internationalCount = districtSchools.filter((school) => school.isInternational).length;
+  const keySchools = districtSchools.filter((school) => /市重点|区重点/.test(school.schoolKeyLevel || ''));
+  const keyCount = keySchools.length;
+  const keyNames = keySchools.slice(0, 3).map((school) => school.name);
+  const districtGuide = `本区共收录 ${districtSchools.length} 所学校，其中高中 ${stageBuckets.senior_high.length} 所、初中 ${stageBuckets.junior.length} 所${stageBuckets.complete.length ? `、完全中学 ${stageBuckets.complete.length} 所` : ''}。${keyCount ? `头部学校以${keyNames.join('、')}等为代表` : '暂未标注重点层级'}，适合结合学段、办学性质与特色课程做横向比较。`;
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '学校', item: 'https://kaonaqu.com/schools' },
+      { '@type': 'ListItem', position: 2, name: '区域频道', item: 'https://kaonaqu.com/schools/district' },
+      { '@type': 'ListItem', position: 3, name: districtInfo.name, item: `https://kaonaqu.com/schools/district/${districtInfo.id}` }
+    ]
+  };
   const itemListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -143,6 +165,10 @@ export default async function DistrictSchoolsPage({ params }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <SiteNav />
 
@@ -168,10 +194,14 @@ export default async function DistrictSchoolsPage({ params }) {
         <div>
           <h2>区域概况</h2>
           <p>{districtOverview}</p>
+          <p className="district-guide">{districtGuide}</p>
         </div>
         <div className="district-channel-overview-stats">
           <article><strong>{topStage?.label || '学段'}</strong><span>主要学段</span></article>
-          <article><strong>{districtSchools.filter((school) => school.schoolPropertyLabel === '民办').length}</strong><span>民办记录</span></article>
+          <article><strong>{publicCount}</strong><span>公办记录</span></article>
+          <article><strong>{privateCount}</strong><span>民办记录</span></article>
+          <article><strong>{internationalCount}</strong><span>国际课程校</span></article>
+          <article><strong>{keyCount}</strong><span>头部校</span></article>
         </div>
       </section>
 

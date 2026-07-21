@@ -6,7 +6,7 @@ import {
   getAllDistricts,
   groupResultsByCategory,
   matchSchoolsByScore,
-  MAX_SCORE,
+  MAX_SCORE_PER_EXAM,
   type ExamType,
   type MatchCategory,
   type ScoreMatchResult,
@@ -20,8 +20,8 @@ const CATEGORY_META: Record<MatchCategory, { label: string; hint: string; tone: 
 };
 
 const EXAM_OPTIONS: { value: ExamType; label: string; fullMark: string }[] = [
-  { value: 'zhongkao', label: '中考', fullMark: '满分 660' },
-  { value: 'gaokao', label: '高考', fullMark: '满分 660' }
+  { value: 'zhongkao', label: '中考', fullMark: '满分 750' },
+  { value: 'international', label: '国际课程', fullMark: '参考中考分' }
 ];
 
 export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] }) {
@@ -41,7 +41,8 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
 
   const applyMatch = () => {
     const parsed = Number(scoreInput);
-    if (!Number.isFinite(parsed) || parsed < 0 || parsed > MAX_SCORE) {
+    const max = MAX_SCORE_PER_EXAM[examType];
+    if (!Number.isFinite(parsed) || parsed < 0 || parsed > max) {
       setSubmitted(true);
       setScore(null);
       return;
@@ -62,7 +63,7 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
   const heroStats = [
     { value: '3', label: '档位建议' },
     { value: String(districts.length), label: '覆盖区域' },
-    { value: String(MAX_SCORE), label: '满分参考' },
+    { value: String(MAX_SCORE_PER_EXAM[examType]), label: '满分参考' },
     { value: '8', label: '每档上限' }
   ];
 
@@ -86,7 +87,7 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
           <div className="channel-hero-copy">
             <p className="channel-kicker"><span aria-hidden="true"></span>SCORE MATCH</p>
             <h1>估分择校</h1>
-            <p>输入中考或高考成绩与所在区域，按学校层级参考区间给出冲刺、匹配、保底三档可填报高中建议。</p>
+            <p>输入中考成绩或切换至国际课程方向，选择所在区域，按学校层级参考区间给出冲刺、匹配、保底三档可填报高中建议。</p>
           </div>
           <aside className="channel-hero-stats" aria-label="估分择校统计">
             {heroStats.map((item) => (
@@ -133,11 +134,11 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
                 type="number"
                 inputMode="numeric"
                 min={0}
-                max={MAX_SCORE}
+                max={MAX_SCORE_PER_EXAM[examType]}
                 value={scoreInput}
                 onChange={(e) => setScoreInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); applyMatch(); } }}
-                placeholder={`0 - ${MAX_SCORE}`}
+                placeholder={`0 - ${MAX_SCORE_PER_EXAM[examType]}`}
               />
               <em>{EXAM_OPTIONS.find((o) => o.value === examType)?.fullMark}</em>
             </label>
@@ -167,8 +168,13 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
         </div>
 
         <p className="score-match-aerial-disclaimer">
-          分数基于同 tier 学校参考区间，非该校精确录取线；最终以当年市/区招考机构发布为准。
+          已收录真实录取线的学校按近年录取线精确匹配（绿色"真实录取线"标记），其余按同 tier 参考区间估算；最终以当年市/区招考机构发布为准。
         </p>
+        {examType === 'international' ? (
+          <p className="score-match-aerial-disclaimer score-match-aerial-disclaimer-warn">
+            国际课程 / 海外方向：本平台仅覆盖上海高中信息，无大学录取数据。国际课程班通常综合中考成绩、校测与简历录取，以下为参考示意，不代表高考志愿结果。
+          </p>
+        ) : null}
       </section>
 
       <section className="score-match-aerial-results" aria-label="择校建议">
@@ -224,6 +230,12 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
   );
 }
 
+const SOURCE_LABEL: Record<string, string> = {
+  real_line: '真实录取线',
+  rich_profile: 'rich profile 参考线',
+  tier_reference: 'tier 参考区间'
+};
+
 function ResultCard({ result }: { result: ScoreMatchResult }) {
   const { school, estimatedRange, reason, source } = result;
   return (
@@ -242,7 +254,7 @@ function ResultCard({ result }: { result: ScoreMatchResult }) {
         <p className="score-match-aerial-card-reason">{reason}</p>
         <div className="score-match-aerial-card-foot">
           <span className={`score-match-aerial-source score-match-aerial-source-${source}`}>
-            {source === 'rich_profile' ? 'rich profile 参考线' : 'tier 参考区间'}
+            {SOURCE_LABEL[source] || '参考'}
           </span>
           <span className="score-match-aerial-card-link">查看详情</span>
         </div>
