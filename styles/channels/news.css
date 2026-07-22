@@ -68,6 +68,7 @@ body[data-page="news"] .channel-nav-links a {
     justify-content: center;
     min-height: 40px;
     padding: 0 18px;
+    border-radius: var(--site-radius-sm);
     font-size: 14px;
     font-weight: 500;
 }
@@ -92,7 +93,7 @@ body[data-page="news"] .channel-hero::before {
     inset: 0;
     z-index: -2;
     content: "";
-    background-image: url("https://images.unsplash.com/photo-1741708011328-5783c77329e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
+    background-image: var(--channel-hero-bg);
     background-position: center;
     background-size: cover;
 }
@@ -105,7 +106,7 @@ body[data-page="news"] .channel-hero::after {
     background:
         linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        rgba(0, 0, 0, 0.52);
+        rgba(0, 0, 0, 0.22);
     background-size: var(--news-hero-grid-size), var(--news-hero-grid-size), auto;
 }
 
@@ -252,7 +253,7 @@ body[data-page="news"] .news-filter-button {
     min-height: 36px;
     padding: 0 16px;
     border: 1px solid var(--channel-line);
-    border-radius: 0;
+    border-radius: var(--site-radius-sm);
     background: #fff;
     color: var(--channel-text);
     font-family: var(--channel-font-body);
@@ -387,6 +388,7 @@ body[data-page="news"] .news-hot-card {
     display: grid;
     gap: 16px;
     padding: 24px;
+    border-radius: var(--site-radius-md);
     background: var(--channel-ink);
     color: #fff;
 }
@@ -427,6 +429,7 @@ body[data-page="news"] .news-timeline-card {
     gap: 14px;
     padding: 20px;
     border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-md);
     background: #fff;
 }
 

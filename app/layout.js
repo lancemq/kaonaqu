@@ -1,6 +1,37 @@
 import { Analytics } from '@vercel/analytics/react';
+import { Funnel_Sans, Geist, Geist_Mono, Noto_Sans_SC } from 'next/font/google';
 import BodyPageFlag from '../components/body-page-flag';
 import '../styles/index.css';
+
+// 字体自托管（next/font 构建时下载、运行时同源分发，无第三方依赖）：
+// 4 个家族 = Funnel Sans(标题) + Geist(正文) + Geist Mono(数据) + Noto Sans SC(中文)。
+// 通过 CSS 变量注入，styles/tokens.css 的 --channel-font-* 引用这些变量。
+const fontFunnel = Funnel_Sans({
+  subsets: ['latin'],
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-funnel',
+  display: 'swap'
+});
+const fontGeist = Geist({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-geist',
+  display: 'swap'
+});
+const fontGeistMono = Geist_Mono({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-geist-mono',
+  display: 'swap'
+});
+// 中文：按需分片（unicode-range），不做 preload，避免大量分片预载标签
+const fontNotoSansSC = Noto_Sans_SC({
+  subsets: ['chinese-simplified', 'latin'],
+  weight: ['400', '500', '700', '800'],
+  variable: '--font-noto-sans-sc',
+  display: 'swap',
+  preload: false
+});
 
 // 统一设置 fetchCache = 'force-cache'：使 Next.js Data Cache 对所有页面生效。
 // Previous Model auto 模式下，调用 searchParams / params / cookies 等 Request-time API
@@ -40,7 +71,7 @@ export default function RootLayout({ children }) {
       <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7712476875404468" crossOrigin="anonymous"></script>
       </head>
-      <body>
+      <body className={`${fontFunnel.variable} ${fontGeist.variable} ${fontGeistMono.variable} ${fontNotoSansSC.variable}`}>
         <BodyPageFlag />
         {children}
         <Analytics />

@@ -13,7 +13,6 @@ body[data-page="schools"] .school-detail-page a {
     text-decoration: none;
 }
 
-body[data-page="schools"] .channel-nav,
 body[data-page="schools"] .channel-nav {
     display: flex;
     align-items: center;
@@ -24,14 +23,12 @@ body[data-page="schools"] .channel-nav {
     background: #fff;
 }
 
-body[data-page="schools"] .channel-brand,
 body[data-page="schools"] .channel-brand {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-body[data-page="schools"] .channel-brand strong,
 body[data-page="schools"] .channel-brand strong,
 body[data-page="schools"] .channel-footer strong,
 body[data-page="schools"] .school-detail-footer strong {
@@ -43,7 +40,6 @@ body[data-page="schools"] .school-detail-footer strong {
 }
 
 body[data-page="schools"] .channel-brand span,
-body[data-page="schools"] .channel-brand span,
 body[data-page="schools"] .channel-footer span,
 body[data-page="schools"] .school-detail-footer span {
     color: var(--channel-muted);
@@ -53,25 +49,23 @@ body[data-page="schools"] .school-detail-footer span {
     white-space: nowrap;
 }
 
-body[data-page="schools"] .channel-nav-links,
 body[data-page="schools"] .channel-nav-links {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-body[data-page="schools"] .channel-nav-links a,
 body[data-page="schools"] .channel-nav-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 40px;
     padding: 0 18px;
+    border-radius: var(--site-radius-sm);
     font-size: 14px;
     font-weight: 500;
 }
 
-body[data-page="schools"] .channel-nav-links a.is-active,
 body[data-page="schools"] .channel-nav-links a.is-active {
     background: var(--channel-ink);
     color: #fff;
@@ -92,7 +86,7 @@ body[data-page="schools"] .channel-hero::before {
     inset: 0;
     z-index: -2;
     content: "";
-    background-image: url("https://images.unsplash.com/photo-1774131231781-62ac008585bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
+    background-image: var(--channel-hero-bg);
     background-position: center;
     background-size: cover;
 }
@@ -102,7 +96,7 @@ body[data-page="schools"] .channel-hero::after {
     inset: 0;
     z-index: -1;
     content: "";
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.22);
 }
 
 body[data-page="schools"] .channel-hero-content {
@@ -122,21 +116,18 @@ body[data-page="schools"] .channel-hero-copy {
     width: min(100%, 580px);
 }
 
-body[data-page="schools"] .channel-kicker,
 body[data-page="schools"] .channel-kicker {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-body[data-page="schools"] .channel-kicker span,
 body[data-page="schools"] .channel-kicker span {
     width: 6px;
     height: 6px;
     background: var(--channel-blue);
 }
 
-body[data-page="schools"] .channel-kicker p,
 body[data-page="schools"] .channel-kicker p {
     margin: 0;
     color: var(--channel-blue-soft);
@@ -377,6 +368,7 @@ body[data-page="schools"] .schools-aerial-reset {
     width: 100%;
     min-height: 35px;
     border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-sm);
     background: #fff;
     color: var(--channel-text);
     padding: 0 14px;
@@ -431,6 +423,7 @@ body[data-page="schools"] .schools-aerial-tool-stack a {
     min-height: 55px;
     padding: 10px 14px;
     border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-sm);
     font-size: 13px;
     font-weight: 600;
 }
@@ -481,6 +474,13 @@ body[data-page="schools"] .schools-aerial-cardlist {
 
 body[data-page="schools"] .schools-aerial-card-wrap {
     position: relative;
+    border-radius: var(--site-radius-md);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+body[data-page="schools"] .schools-aerial-card-wrap:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--site-shadow-md);
 }
 
 body[data-page="schools"] .schools-aerial-card {
@@ -490,13 +490,13 @@ body[data-page="schools"] .schools-aerial-card {
     min-height: 122px;
     padding: 20px;
     border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-md) var(--site-radius-md) 0 0;
     background: #fff;
-    transition: border-color 180ms ease, transform 180ms ease;
+    transition: border-color 180ms ease;
 }
 
 body[data-page="schools"] .schools-aerial-card:hover {
     border-color: var(--channel-blue);
-    transform: translateY(-1px);
 }
 
 body[data-page="schools"] .schools-aerial-card-main {
@@ -589,6 +589,7 @@ body[data-page="schools"] .schools-aerial-card-foot {
     padding: 9px 20px;
     border: 1px solid var(--channel-line);
     border-top: none;
+    border-radius: 0 0 var(--site-radius-md) var(--site-radius-md);
     background: rgba(26, 29, 41, 0.03);
     font-size: 12px;
 }
@@ -1001,6 +1002,7 @@ body[data-page="schools"] .school-detail-side-card {
     gap: 12px;
     padding: 20px;
     border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-md);
     background: #fff;
 }
 
@@ -1954,7 +1956,7 @@ body[data-page="schools"] .school-detail-header::before {
     inset: 0;
     z-index: -2;
     content: "";
-    background-image: url("https://images.unsplash.com/photo-1709785976701-fa80d44f0320?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
+    background-image: var(--channel-hero-bg);
     background-position: center;
     background-size: cover;
 }
@@ -1964,7 +1966,7 @@ body[data-page="schools"] .school-detail-header::after {
     inset: 0;
     z-index: -1;
     content: "";
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.22);
 }
 
 body[data-page="schools"] .school-detail-hero-copy {

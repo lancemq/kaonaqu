@@ -28,7 +28,7 @@ body[data-page="schools"] .channel-hero::before {
     inset: 0;
     z-index: -2;
     content: "";
-    background-image: url("https://images.unsplash.com/photo-1610390199618-6cc01a36ba37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
+    background-image: var(--channel-hero-bg);
     background-position: center;
     background-size: cover;
 }
@@ -38,7 +38,7 @@ body[data-page="schools"] .channel-hero::after {
     inset: 0;
     z-index: -1;
     content: "";
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.22);
 }
 
 body[data-page="schools"] .channel-hero-content {

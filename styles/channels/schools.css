@@ -17,7 +17,7 @@ body[data-page="schools"] .schools-datadesk-cardkicker {
 body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-heading,
 body[data-page="schools"] .school-datadesk-detail-article .news-detail-markdown-subheading {
     color: var(--schools-tone-text);
-    font-family: "Noto Serif SC", serif;
+    font-family: var(--channel-font-heading);
 }
 
 body[data-page="schools"] .school-datadesk-detail-article.news-detail-markdown {
@@ -114,7 +114,7 @@ body[data-page="schools"] .highlight-card-header {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: "Noto Serif SC", serif;
+    font-family: var(--channel-font-heading);
     font-size: 1rem;
     font-weight: 700;
     color: var(--site-text);
@@ -151,7 +151,7 @@ body[data-page="schools"] .highlight-card-group .text-link {
 }
 
 body[data-page="schools"] {
-    background: var(--channel-paper) !important;
+    background: var(--channel-paper);
     color: var(--channel-text);
     font-family: var(--channel-font-body);
 }
@@ -159,4 +159,25 @@ body[data-page="schools"] {
 body[data-page="schools"]::before,
 body[data-page="schools"]::after {
     display: none;
+}
+
+/* 学校关系徽标（主校/分校/校区/附校，className 由 lib/school-curation.js 生成） */
+.relation-badge-main {
+    color: #1d4ed8;
+    background: rgba(29, 78, 216, 0.14);
+}
+
+.relation-badge-branch {
+    color: #1d4ed8;
+    background: rgba(37, 99, 235, 0.12);
+}
+
+.relation-badge-campus {
+    color: var(--site-accent);
+    background: rgba(59, 130, 246, 0.12);
+}
+
+.relation-badge-affiliate {
+    color: #1d4ed8;
+    background: rgba(59, 130, 246, 0.14);
 }

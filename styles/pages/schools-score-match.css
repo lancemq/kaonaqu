@@ -4,7 +4,7 @@ body[data-page="schools"] .score-match-aerial-page {
     overflow: hidden;
     background: #fff;
     color: #1a1a1a;
-    font-family: Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-body);
 }
 
 body[data-page="schools"] .score-match-aerial-page a {
@@ -26,7 +26,7 @@ body[data-page="schools"] .channel-hero::before {
     inset: 0;
     z-index: -2;
     content: "";
-    background-image: url("https://images.unsplash.com/photo-1769284026886-b64643d70da0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
+    background-image: var(--channel-hero-bg);
     background-position: center;
     background-size: cover;
 }
@@ -36,7 +36,7 @@ body[data-page="schools"] .channel-hero::after {
     inset: 0;
     z-index: -1;
     content: "";
-    background: rgba(0, 0, 0, 0.52);
+    background: rgba(0, 0, 0, 0.22);
 }
 
 body[data-page="schools"] .channel-hero-content {
@@ -59,7 +59,7 @@ body[data-page="schools"] .channel-kicker {
     gap: 10px;
     margin: 0;
     color: #4a9fd8;
-    font-family: Newsreader, "Noto Serif SC", serif;
+    font-family: var(--channel-font-caption);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -74,7 +74,7 @@ body[data-page="schools"] .channel-kicker span {
 
 body[data-page="schools"] .channel-hero h1 {
     margin: 20px 0 16px;
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
     font-size: clamp(42px, 5vw, 58px);
     line-height: 1.04;
 }
@@ -102,7 +102,7 @@ body[data-page="schools"] .channel-hero-stats article {
 }
 
 body[data-page="schools"] .channel-hero-stats strong {
-    font-family: "Geist Mono", monospace;
+    font-family: var(--channel-font-data);
     font-size: 36px;
     line-height: 1;
 }
@@ -131,7 +131,7 @@ body[data-page="schools"] .score-match-aerial-tools-head h2,
 body[data-page="schools"] .score-match-aerial-section-head h2 {
     margin: 0;
     color: #1a1a1a;
-    font-family: "Funnel Sans", Geist, "Noto Sans SC", sans-serif;
+    font-family: var(--channel-font-heading);
     font-size: 28px;
     line-height: 1.2;
 }
@@ -160,7 +160,7 @@ body[data-page="schools"] .score-match-aerial-form-row {
 
 body[data-page="schools"] .score-match-aerial-form-row > span {
     color: #666;
-    font-family: "Geist Mono", monospace;
+    font-family: var(--channel-font-data);
     font-size: 12px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -213,7 +213,7 @@ body[data-page="schools"] .score-match-aerial-scorefield select {
 body[data-page="schools"] .score-match-aerial-scorefield em {
     color: #999;
     font-style: normal;
-    font-family: "Geist Mono", monospace;
+    font-family: var(--channel-font-data);
     font-size: 12px;
     white-space: nowrap;
 }
@@ -300,7 +300,7 @@ body[data-page="schools"] .score-match-aerial-column > header span {
 
 body[data-page="schools"] .score-match-aerial-column > header em {
     font-style: normal;
-    font-family: "Geist Mono", monospace;
+    font-family: var(--channel-font-data);
     font-size: 12px;
     opacity: 0.7;
 }
@@ -355,7 +355,7 @@ body[data-page="schools"] .score-match-aerial-card-tier {
     padding: 2px 8px;
     border: 1px solid #eef0f2;
     color: #666;
-    font-family: "Geist Mono", monospace;
+    font-family: var(--channel-font-data);
     font-size: 11px;
     font-weight: 700;
 }
@@ -391,7 +391,7 @@ body[data-page="schools"] .score-match-aerial-source {
     padding: 2px 8px;
     border: 1px solid #eef0f2;
     color: #666;
-    font-family: "Geist Mono", monospace;
+    font-family: var(--channel-font-data);
     font-size: 11px;
     font-weight: 700;
 }

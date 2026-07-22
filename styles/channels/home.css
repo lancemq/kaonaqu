@@ -69,6 +69,7 @@ body[data-page="home"] .channel-nav-links a {
     justify-content: center;
     min-height: 40px;
     padding: 0 18px;
+    border-radius: var(--site-radius-sm);
     color: var(--channel-text);
     font-size: 14px;
     font-weight: 500;
@@ -104,20 +105,11 @@ body[data-page="home"] .home-cta-slab::before {
     background-size: cover;
 }
 
-body[data-page="home"] .channel-hero::before {
-    background-image: url("https://images.unsplash.com/photo-1762512347272-8c03d08dbaec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
-}
-
-body[data-page="home"] .home-photo-slab::before {
-    background-image: url("https://images.unsplash.com/photo-1769092992447-18050cf9bd26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
-}
-
-body[data-page="home"] .home-news-specials-slab::before {
-    background-image: url("https://images.unsplash.com/photo-1771765856781-3adbac14d75b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
-}
-
+body[data-page="home"] .channel-hero::before,
+body[data-page="home"] .home-photo-slab::before,
+body[data-page="home"] .home-news-specials-slab::before,
 body[data-page="home"] .home-cta-slab::before {
-    background-image: url("https://images.unsplash.com/photo-1773343930595-e2d1eb0b843d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1600");
+    background-image: var(--channel-hero-bg);
 }
 
 body[data-page="home"] .channel-hero::after,
@@ -128,7 +120,7 @@ body[data-page="home"] .home-cta-slab::after {
     inset: 0;
     z-index: -1;
     content: "";
-    background: rgba(0, 0, 0, 0.52);
+    background: rgba(0, 0, 0, 0.22);
 }
 
 body[data-page="home"] .channel-hero-grid {
@@ -194,6 +186,7 @@ body[data-page="home"] .home-cta-actions a {
     min-height: 48px;
     padding: 0 22px;
     border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: var(--site-radius-sm);
     color: #fff;
     font-size: 14px;
     font-weight: 700;
@@ -289,6 +282,7 @@ body[data-page="home"] .home-school-card {
     min-height: 180px;
     padding: 24px;
     border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-md);
     background: #fff;
 }
 
@@ -370,6 +364,7 @@ body[data-page="home"] .home-feature-panel {
     align-content: start;
     gap: 8px;
     padding: 28px;
+    border-radius: var(--site-radius-md);
     background: var(--channel-ink);
     color: #fff;
 }
@@ -432,6 +427,7 @@ body[data-page="home"] .home-focus-topic {
     gap: 10px;
     padding: 18px 18px 16px;
     border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.06);
     color: #fff;
     transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
@@ -563,6 +559,8 @@ body[data-page="home"] .home-news-special-card {
     min-width: 0;
     min-height: 214px;
     padding: 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--site-radius-md);
     background: rgba(255, 255, 255, 0.09);
     color: #fff;
 }
@@ -744,6 +742,7 @@ body[data-page="home"] .home-topic-grid a {
     gap: 8px;
     padding: 18px;
     border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-md);
 }
 
 body[data-page="home"] .home-topic-grid strong {
@@ -802,6 +801,7 @@ body[data-page="home"] .home-floating-links {
     display: grid;
     gap: 14px;
     padding: 24px 28px;
+    border-radius: var(--site-radius-md);
     background: #fff;
     color: var(--channel-text);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
@@ -827,7 +827,7 @@ body[data-page="home"] .home-floating-links a,
 body[data-page="home"] .channel-nav-links a,
 body[data-page="home"] .home-hero-actions a,
 body[data-page="home"] .home-cta-actions a {
-    transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+    transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
 body[data-page="home"] .home-news-card:hover,
@@ -835,6 +835,13 @@ body[data-page="home"] .home-school-card:hover,
 body[data-page="home"] .home-news-special-card:hover,
 body[data-page="home"] .home-topic-grid a:hover {
     border-color: var(--channel-blue);
+}
+
+body[data-page="home"] .home-news-card:hover,
+body[data-page="home"] .home-school-card:hover,
+body[data-page="home"] .home-topic-grid a:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--site-shadow-md);
 }
 
 body[data-page="home"] .home-news-special-card:hover {

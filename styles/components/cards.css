@@ -79,6 +79,7 @@
     min-height: 40px;
     padding: 0 18px;
     border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-sm);
     background: #fff;
     color: var(--channel-text);
     font-family: var(--channel-font-body);
@@ -160,7 +161,7 @@
     min-height: 40px;
     padding: 0 8px;
     border: 1px solid var(--channel-line);
-    border-radius: 0;
+    border-radius: var(--site-radius-sm);
     font-family: var(--channel-font-body);
     font-size: 13px;
     text-align: center;

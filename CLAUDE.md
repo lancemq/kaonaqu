@@ -56,10 +56,12 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 
 ### 样式系统
 
-- `styles/index.css` 依次 import `base.css` → `theme-{home,news,schools,knowledge}.css`。
-- **站点设计令牌统一定义在 `base.css` `:root`**（`--site-*`、`--font-*`、`--channel-*`）；各频道 `theme-*.css` 只覆盖与默认值不同的变量，禁止重复声明整套令牌。
+- `styles/index.css`（由 `app/layout.js` 引入）依次 import `tokens.css` → `base.css` → `components/cards.css`；各频道/页面 CSS 由对应页面组件自行 import（如 `app/page.js` → `styles/channels/home.css`）。
+- 目录分层：`tokens.css`（设计令牌）→ `base.css`（全局 reset 与共享基元）→ `channels/{home,news,schools,knowledge}.css`（频道级）→ `pages/*.css`（单页级，如 schools-detail / news-special）→ `components/*.css`（共享组件，如 pager、对比袋）。
+- **站点设计令牌统一定义在 `tokens.css` `:root`**（`--site-*`、`--channel-*`、hero 品牌渐变 `--channel-hero-bg`）；频道内只引用/按需覆盖，禁止复制整套令牌。Hero 背景统一用 `--channel-hero-bg` 纯 CSS 渐变，不使用外链图。
+- 字体：`app/layout.js` 用 `next/font/google` 自托管 4 个家族（Funnel Sans / Geist / Geist Mono / Noto Sans SC），以 CSS 变量（`--font-funnel` 等）注入 `<body>`；样式里一律写 `var(--channel-font-heading/body/caption/data)`，**禁止硬编码字体名**（next/font 会哈希字体家族名）。
 - 频道切换靠 `body[data-page="..."]` 选择器；`--channel-accent` 等变量按频道重定义。
-- 改全局视觉先动 `base.css`；只动某一频道才动对应 `theme-*.css`。
+- 改全局视觉先动 `tokens.css` / `base.css`；只动某一频道才动对应 `channels/*.css`。
 
 ### lib/ 与 shared/ 的边界
 
@@ -71,6 +73,6 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 
 - 提交信息使用中文，遵循 `<type>(<scope>): <subject>` 风格（见 `git log`：`refactor(schools):`、`style:`、`feat(news):`、`fix(news):`）。
 - 新增 API 接口走 `shared/api-router.js` 而非新建 route 文件。
-- 不要在 `theme-*.css` 里复制 `:root` 全套令牌；只写差异。
+- 不要在 `channels/*.css` 里复制 `:root` 全套令牌；只写差异。
 - `.codex/`、`data/top100-schools.json`、`data/schools.json`、`data/news.json`、`reports/` 已 gitignore，勿提交。
 - Vercel 部署：Root Directory 为仓库根，Framework Preset 选 Next.js，Build Command 用默认 `next build`。需配置 Supabase 环境变量（`KNQ_SUPABASE_URL`/`KNQ_SUPABASE_SERVICE_ROLE_KEY`/`KNQ_SUPABASE_ANON_KEY`）与写 API 鉴权变量（`KNQ_ADMIN_TOKEN`/`KNQ_API_ALLOW_ORIGINS`，见 `.env.example`）。

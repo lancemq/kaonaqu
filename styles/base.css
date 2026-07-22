@@ -9,12 +9,12 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: "Sora", "Noto Sans SC", sans-serif;
-    color: var(--text);
+    font-family: var(--channel-font-body);
+    color: var(--site-text);
     background:
         linear-gradient(rgba(26, 29, 41, 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(26, 29, 41, 0.04) 1px, transparent 1px),
-        linear-gradient(180deg, #ffffff 0%, var(--bg) 42%, #e2e8f0 100%);
+        linear-gradient(180deg, #ffffff 0%, var(--site-surface-soft) 42%, #e2e8f0 100%);
     background-size: 36px 36px, 36px 36px, auto;
 }
 
@@ -45,15 +45,6 @@ body::after {
     border-radius: 50%;
     background: radial-gradient(circle, rgba(37, 99, 235, 0.08), rgba(37, 99, 235, 0));
     filter: blur(18px);
-}
-
-/* Shared Typography */
-.news-glossary-relation-card h3 {
-    margin: 0;
-    font-family: "Noto Serif SC", serif;
-    font-size: 1rem;
-    line-height: 1.24;
-    letter-spacing: -0.04em;
 }
 
 /* Shared Layout Primitives */
@@ -93,9 +84,9 @@ a {
     padding: 8px 12px;
     border: 1px solid rgba(26, 29, 41, 0.08);
     border-radius: 999px;
-    background: var(--surface-tint);
-    color: var(--accent);
-    font-family: "Geist Mono", "Sora", monospace;
+    background: var(--site-surface-soft);
+    color: var(--site-accent);
+    font-family: var(--channel-font-data);
     font-size: 0.7rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -105,7 +96,7 @@ a {
 .text-link {
     display: inline-block;
     margin-top: 14px;
-    color: var(--accent);
+    color: var(--site-accent);
     text-decoration: none;
     font-weight: 600;
 }
@@ -115,7 +106,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 summary:focus-visible {
-    outline: 2px solid var(--blue);
+    outline: 2px solid var(--site-accent);
     outline-offset: 2px;
 }
 
@@ -129,34 +120,4 @@ summary:focus-visible {
     *::after {
         transition: none !important;
     }
-}
-
-.relation-badge-main {
-    color: #1d4ed8;
-    background: rgba(29, 78, 216, 0.14);
-}
-
-.relation-badge-branch {
-    color: #1d4ed8;
-    background: rgba(37, 99, 235, 0.12);
-}
-
-.relation-badge-campus {
-    color: var(--site-accent);
-    background: rgba(59, 130, 246, 0.12);
-}
-
-.relation-badge-affiliate {
-    color: #1d4ed8;
-    background: rgba(59, 130, 246, 0.14);
-}
-
-/* Prototype-driven editorial refresh */
-
-.home-hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 0;
-    flex-wrap: wrap;
 }
