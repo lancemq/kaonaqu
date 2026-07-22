@@ -133,17 +133,57 @@ export default async function SchoolDetailPage({ params }) {
     const s = String(y || '').trim();
     return /^\d{4}$/.test(s) ? `${s}年` : (s || '—');
   };
+  // 同年可能含 统招线 + 名额分配线（已用 plan 区分）；按年份倒序、统招优先排列
+  const planRank = (p) => ((p && String(p).includes('统一招生')) ? 0 : 1);
   const scoreRows = scoreLines.length
-    ? scoreLines.map((row) => [
-        normalizeScoreYear(row.year),
-        String(row.score ?? row.minScore ?? '').trim() || '—'
-      ])
+    ? scoreLines
+        .map((row) => ({
+          year: normalizeScoreYear(row.year),
+          yearNum: Number(row.year) || 0,
+          score: String(row.score ?? row.minScore ?? '').trim() || '—',
+          plan: row.plan ? String(row.plan).trim() : '',
+          note: row.note ? String(row.note).trim() : ''
+        }))
+        .sort((a, b) => (b.yearNum - a.yearNum) || (planRank(a.plan) - planRank(b.plan)))
     : [
-        ['2025年', school.score2025],
-        ['2024年', school.score2024],
-        ['2023年', school.score2023]
-      ].filter(([, score]) => score);
+        { year: '2025年', score: school.score2025, plan: '', note: '' },
+        { year: '2024年', score: school.score2024, plan: '', note: '' },
+        { year: '2023年', score: school.score2023, plan: '', note: '' }
+      ].filter((r) => r.score);
   const scoreLineNote = (scoreLines.find((r) => r.note && String(r.note).trim()) || {}).note || '';
+  const hasPerRowNote = scoreRows.some((r) => r.note);
+  // 高考办学成果（outcome_stats）：按年合并 综评 + 喜报
+  const outcomeStats = Array.isArray(school.outcomeStats) ? school.outcomeStats : [];
+  const gaokaoEntries = outcomeStats.filter((entry) => entry.exam === '高考');
+  const outcomeByYearMap = {};
+  gaokaoEntries.forEach((entry) => {
+    const yearKey = entry.year;
+    if (!outcomeByYearMap[yearKey]) outcomeByYearMap[yearKey] = { year: yearKey, verified: true, entries: [] };
+    outcomeByYearMap[yearKey].entries.push(entry);
+    if (!entry.verified) outcomeByYearMap[yearKey].verified = false;
+  });
+  const outcomeYearRows = Object.keys(outcomeByYearMap)
+    .sort((a, b) => String(b).localeCompare(String(a)))
+    .map((yearKey) => {
+      const group = outcomeByYearMap[yearKey];
+      const zongping = group.entries.find((e) => e.kind === '综评' && e.metrics && typeof e.metrics.zongpingTotal === 'number');
+      const fuJiao = group.entries.find((e) => e.kind === '综评' && e.metrics && typeof e.metrics.fuJiao === 'number');
+      const xibao = group.entries.find((e) => e.kind === '喜报');
+      const xbMetrics = xibao && xibao.metrics ? xibao.metrics : {};
+      return {
+        year: yearKey,
+        verified: group.verified,
+        zongpingTotal: zongping ? zongping.metrics.zongpingTotal : null,
+        fuJiao: fuJiao ? fuJiao.metrics.fuJiao : null,
+        fuJiaoQB: typeof xbMetrics.fuJiaoQB === 'number' ? xbMetrics.fuJiaoQB : null,
+        qingbei: typeof xbMetrics.qingbei === 'number' ? xbMetrics.qingbei : null,
+        score600plus: typeof xbMetrics.score600plus === 'number' ? xbMetrics.score600plus : null,
+        topScore: typeof xbMetrics.topScore === 'number' ? xbMetrics.topScore : null,
+        note: (xibao && xibao.note) || (zongping && zongping.note) || ''
+      };
+    });
+  const hasOutcome = outcomeYearRows.length > 0;
+  const latestOutcome = outcomeYearRows[0] || null;
   const competitionRows = Array.isArray(school.competitions)
     ? school.competitions.slice(0, 5).map((item) => [item.name || item.title, item.count || item.result || item.level])
     : [];
@@ -265,6 +305,43 @@ export default async function SchoolDetailPage({ params }) {
             </section>
           )}
 
+          {hasOutcome ? (
+            <section className="school-pencil-section school-pencil-outcome" key="outcome">
+              <h2>近年高考办学成果</h2>
+              <p className="school-pencil-outcome-intro">
+                下列数据基于<strong>上海市教育考试院</strong>公布的<strong>综合评价录取生源高中分布</strong>（综评合计、复交综评批），以及各校公开发布的办学喜报（清北、复交总计、600+ 人数）。综评类数据来源官方、标注「已核验」；喜报类来自媒体整理、标注「待核实」。
+              </p>
+              <div className="school-pencil-outcome-table">
+                <div className="outcome-head">
+                  <span>年份</span>
+                  <span>综评合计</span>
+                  <span>复交（综评批）</span>
+                  <span>清北</span>
+                  <span>600+ 人数</span>
+                </div>
+                {outcomeYearRows.map((row) => (
+                  <div className="outcome-row" key={row.year}>
+                    <strong>
+                      {row.year}年
+                      {row.verified ? (
+                        <em className="is-verified">已核验</em>
+                      ) : (
+                        <em className="is-unverified">待核实</em>
+                      )}
+                    </strong>
+                    <b>{row.zongpingTotal != null ? row.zongpingTotal : '—'}</b>
+                    <span>{row.fuJiao != null ? row.fuJiao : (row.fuJiaoQB != null ? `${row.fuJiaoQB}（总）` : '—')}</span>
+                    <span>{row.qingbei != null ? row.qingbei : '—'}</span>
+                    <span>{row.score600plus != null ? row.score600plus : '—'}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="school-pencil-outcome-note">
+                说明：综评合计 = 通过综合评价批次被复旦、交大、同济、华师、华理、上财、上外、东华、上中医、上大等 11 所上海高校录取的总人数；复交（综评批）仅含复旦 + 交大综合评价批次；清北 / 600+ 取自喜报，可能含强基、普通批，跨源口径略有差异，仅供参考。
+              </p>
+            </section>
+          ) : null}
+
           {competitionRows.length ? (
             <section className="school-pencil-section">
               <h2>竞赛成绩</h2>
@@ -307,14 +384,16 @@ export default async function SchoolDetailPage({ params }) {
               <h2>历年分数线</h2>
               <div className="school-pencil-score-table">
                 <div className="score-head"><span>年份</span><span>录取分数</span></div>
-                {scoreRows.map(([year, score]) => (
-                  <div className="score-row" key={year}>
-                    <strong>{year}</strong>
-                    <b className={/^[0-9]/.test(score) ? '' : 'is-text'}>{score}</b>
+                {scoreRows.map((r) => (
+                  <div className="score-row" key={`${r.year}-${r.plan}`}>
+                    <strong className="score-year">{r.year}</strong>
+                    <b className={/^[0-9]/.test(r.score) ? 'score-val' : 'score-val is-text'}>{r.score}</b>
+                    {r.plan ? <span className="score-plan">{r.plan}</span> : null}
+                    {r.note ? <span className="score-note">{r.note}</span> : null}
                   </div>
                 ))}
               </div>
-              {scoreLineNote ? <p className="school-pencil-score-note">{scoreLineNote}</p> : null}
+              {scoreLineNote && !hasPerRowNote ? <p className="school-pencil-score-note">{scoreLineNote}</p> : null}
             </section>
           ) : null}
 
@@ -325,6 +404,25 @@ export default async function SchoolDetailPage({ params }) {
               {admissionRows.map(([label, value]) => (
                 <p key={label}><span>{label}</span><strong>{value}</strong></p>
               ))}
+            </section>
+          ) : null}
+
+          {latestOutcome ? (
+            <section className="school-pencil-card school-pencil-outcome-card">
+              <div className="school-pencil-kicker"><span></span><p>OUTCOMES · {latestOutcome.year}年</p></div>
+              <h2>高考办学成果</h2>
+              <dl>
+                {latestOutcome.zongpingTotal != null ? <div><dt>综评合计</dt><dd>{latestOutcome.zongpingTotal} 人</dd></div> : null}
+                {latestOutcome.fuJiao != null ? <div><dt>复交（综评批）</dt><dd>{latestOutcome.fuJiao} 人</dd></div> : null}
+                {latestOutcome.fuJiaoQB != null ? <div><dt>复交（总计）</dt><dd>{latestOutcome.fuJiaoQB} 人</dd></div> : null}
+                {latestOutcome.qingbei != null ? <div><dt>清北录取</dt><dd>{latestOutcome.qingbei} 人</dd></div> : null}
+                {latestOutcome.score600plus != null ? <div><dt>600+ 人数</dt><dd>{latestOutcome.score600plus} 人</dd></div> : null}
+                {latestOutcome.topScore != null ? <div><dt>最高分</dt><dd>{latestOutcome.topScore}</dd></div> : null}
+              </dl>
+              <p className="school-pencil-outcome-source">
+                {latestOutcome.verified ? '综评数据已核验（上海市教育考试院公示）' : '含喜报类数据，待核实，仅供参考'}
+                {latestOutcome.note ? ` · ${latestOutcome.note}` : ''}
+              </p>
             </section>
           ) : null}
 

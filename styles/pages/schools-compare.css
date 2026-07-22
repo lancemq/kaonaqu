@@ -368,6 +368,11 @@ body[data-page="schools"] .compare-aerial-years {
     font-size: 9px;
 }
 
+body[data-page="schools"] .compare-aerial-bars span.is-empty {
+    width: 48px;
+    background: repeating-linear-gradient(45deg, #eef0f2, #eef0f2 4px, #e3e6ea 4px, #e3e6ea 8px);
+}
+
 @media (max-width: 900px) {
     body[data-page="schools"] .compare-aerial-table-section {
         overflow-x: auto;

@@ -51,6 +51,7 @@ function rowToSchool(row) {
     profileDepth: row.profile_depth || 'enhanced',
     features: row.features || [],
     scoreLines: Array.isArray(row.score_lines) ? row.score_lines : [],
+    outcomeStats: Array.isArray(row.outcome_stats) ? row.outcome_stats : [],
     content: Array.isArray(row.content) ? row.content : [],
     infoVerified: !!row.info_verified
   };
@@ -99,7 +100,7 @@ const SCHOOLS_LIST_COLUMNS = [
   'id', 'slug', 'name', 'district_name', 'school_stage_label', 'school_property_label',
   'school_key_level', 'elite_cohort', 'group', 'address', 'phone', 'website',
   'founding_year', 'is_boarding', 'is_international', 'image', 'profile_depth',
-  'features', 'info_verified', 'score_lines'
+  'features', 'info_verified', 'score_lines', 'outcome_stats'
 ].join(',');
 
 // 新闻列表轻量查询：排除体积最大的 content 列。
@@ -392,6 +393,7 @@ function schoolToRow(school = {}) {
     profile_depth: school.profileDepth || 'enhanced',
     features: Array.isArray(school.features) ? school.features : [],
     score_lines: Array.isArray(school.scoreLines) ? school.scoreLines : [],
+    outcome_stats: Array.isArray(school.outcomeStats) ? school.outcomeStats : [],
     content: Array.isArray(school.content) ? school.content : [],
     admission_info: {
       code: school.admissionInfo?.code || school.admissionCode || '',

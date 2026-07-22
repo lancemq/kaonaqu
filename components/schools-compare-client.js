@@ -109,6 +109,28 @@ function getTrendValues(school, index) {
   return getTrendBars(school, index);
 }
 
+// 高考办学成果（outcome_stats）：取最新一年综评合计
+function getLatestGaokaoZongping(school) {
+  const entries = (school?.outcomeStats || []).filter(
+    (e) => e.exam === '高考' && e.kind === '综评' && e.metrics && typeof e.metrics.zongpingTotal === 'number'
+  );
+  if (!entries.length) return null;
+  entries.sort((a, b) => String(b.year).localeCompare(String(a.year)));
+  return entries[0];
+}
+
+// 返回 { years:[...], map:{year:zongpingTotal} }，按年升序
+function getGaokaoZongpingSeries(school) {
+  const map = {};
+  (school?.outcomeStats || []).forEach((e) => {
+    if (e.exam === '高考' && e.kind === '综评' && e.metrics && typeof e.metrics.zongpingTotal === 'number') {
+      map[e.year] = e.metrics.zongpingTotal;
+    }
+  });
+  const years = Object.keys(map).sort((a, b) => String(a).localeCompare(String(b)));
+  return { years, map };
+}
+
 function CompareKicker({ children }) {
   return (
     <div className="channel-kicker">
@@ -155,6 +177,7 @@ const METRICS = [
   { key: 'stage', label: '覆盖学段' },
   { key: 'founded', label: '建校时间' },
   { key: 'score', label: '近年录取分', strong: true },
+  { key: 'outcome', label: '高考综评合计' },
   { key: 'tier', label: '梯队定位' },
   { key: 'group', label: '所属体系' },
   { key: 'feature', label: '特色方向' },
@@ -243,6 +266,10 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
 
   const renderMetricValue = (school, metric, index) => {
     if (metric.key === 'score') return getScoreDisplay(school, index);
+    if (metric.key === 'outcome') {
+      const latest = getLatestGaokaoZongping(school);
+      return latest ? `${latest.metrics.zongpingTotal}（${latest.year}年）` : '—';
+    }
     return schoolValue(school, metric.key);
   };
 
@@ -328,6 +355,34 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
               <div className="compare-aerial-years"><span>2024</span><span>2025</span><span>2026</span></div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="compare-aerial-chart-section" aria-label="高考综评走势">
+        <CompareKicker>GAOKAO ZONGPING</CompareKicker>
+        <h2>近年高考综评录取走势</h2>
+        <p className="compare-aerial-chart-note">综评合计 = 通过综合评价批次被复旦、交大等 11 所上海高校录取的总人数（来源：上海市教育考试院公示）。有数据的学校显示真实逐年走势，暂无数据则不显示。</p>
+        <div className="compare-aerial-chart-grid">
+          {displaySchools.map((school) => {
+            const { years, map } = getGaokaoZongpingSeries(school);
+            const allValues = displaySchools.flatMap((s) => Object.values(getGaokaoZongpingSeries(s).map));
+            const maxValue = allValues.length ? Math.max(...allValues) : 1;
+            return (
+              <article key={school.id}>
+                <strong>{school.name.length > 10 ? `${school.name.slice(0, 10)}…` : school.name}</strong>
+                <div className="compare-aerial-bars">
+                  {years.length ? years.map((year) => {
+                    const value = map[year];
+                    const height = Math.max(8, Math.round((value / maxValue) * 96));
+                    return <span style={{ height: `${height}px` }} key={year} title={`${year}年：${value} 人`}></span>;
+                  }) : <span className="is-empty" style={{ height: '8px' }}></span>}
+                </div>
+                <div className="compare-aerial-years">
+                  {years.length ? years.map((year) => <span key={year}>{year}</span>) : <span>暂无数据</span>}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 

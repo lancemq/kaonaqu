@@ -1706,6 +1706,199 @@ body[data-page="schools"] .school-pencil-score-note {
     line-height: 19px;
 }
 
+/* 历年分数线：同年 统招线 + 名额分配线 用 plan 区分；plan/note 全宽展示 */
+body[data-page="schools"] .school-pencil-score-table .score-row {
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    row-gap: 2px;
+}
+body[data-page="schools"] .school-pencil-score-table .score-row .score-year {
+    color: #1a1a1a;
+    font-family: var(--channel-font-data);
+    font-size: 15px;
+}
+body[data-page="schools"] .school-pencil-score-table .score-row .score-val {
+    color: #4a9fd8;
+    font-family: var(--channel-font-data);
+    font-size: 16px;
+    text-align: right;
+}
+body[data-page="schools"] .school-pencil-score-table .score-row .score-val.is-text {
+    color: #8a8f99;
+    font-family: var(--channel-font-caption);
+    font-size: 13px;
+}
+body[data-page="schools"] .school-pencil-score-table .score-row .score-plan,
+body[data-page="schools"] .school-pencil-score-table .score-row .score-note {
+    grid-column: 1 / -1;
+}
+body[data-page="schools"] .school-pencil-score-table .score-row .score-plan {
+    justify-self: start;
+    margin-top: 1px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: #eef4fb;
+    color: #2f6fb0;
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    line-height: 16px;
+}
+body[data-page="schools"] .school-pencil-score-table .score-row .score-note {
+    justify-self: start;
+    color: #8a8f99;
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    line-height: 16px;
+}
+
+/* 高考办学成果（outcome_stats）展示 */
+body[data-page="schools"] .school-pencil-outcome-intro {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+body[data-page="schools"] .school-pencil-outcome-intro strong {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table {
+    display: grid;
+    border: 1px solid #eef0f2;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table .outcome-head,
+body[data-page="schools"] .school-pencil-outcome-table .outcome-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.3fr 0.8fr 1.1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 14px;
+    border-bottom: 1px solid #eef0f2;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table .outcome-head {
+    background: #0a0a0a;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table .outcome-head span {
+    color: #fff;
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table .outcome-row:last-child {
+    border-bottom: none;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table .outcome-row strong {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table .outcome-row b {
+    color: #4a9fd8;
+    font-family: var(--channel-font-data);
+    font-size: 16px;
+    text-align: right;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table .outcome-row span {
+    color: #666;
+    font-size: 14px;
+    text-align: right;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table em.is-verified,
+body[data-page="schools"] .school-pencil-outcome-table em.is-unverified {
+    font-family: var(--channel-font-caption);
+    font-size: 9px;
+    font-style: normal;
+    letter-spacing: 1px;
+    padding: 1px 6px;
+    border-radius: 999px;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table em.is-verified {
+    background: #e6f4ea;
+    color: #2f7d4f;
+}
+
+body[data-page="schools"] .school-pencil-outcome-table em.is-unverified {
+    background: #fbeede;
+    color: #a06a1f;
+}
+
+body[data-page="schools"] .school-pencil-outcome-note {
+    margin: 12px 0 0;
+    color: #8a8f99;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+body[data-page="schools"] .school-pencil-outcome-card dl {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+}
+
+body[data-page="schools"] .school-pencil-outcome-card dl div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid #eef0f2;
+}
+
+body[data-page="schools"] .school-pencil-outcome-card dt {
+    color: #666;
+    font-size: 12px;
+}
+
+body[data-page="schools"] .school-pencil-outcome-card dd {
+    margin: 0;
+    color: #1a1a1a;
+    font-family: var(--channel-font-data);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: right;
+}
+
+body[data-page="schools"] .school-pencil-outcome-source {
+    margin: 12px 0 0;
+    padding-top: 10px;
+    border-top: 1px solid #eef0f2;
+    color: #8a8f99;
+    font-size: 11px;
+    line-height: 17px;
+}
+
+@media (max-width: 760px) {
+    body[data-page="schools"] .school-pencil-outcome-table .outcome-head,
+    body[data-page="schools"] .school-pencil-outcome-table .outcome-row {
+        grid-template-columns: 1.2fr 1fr 1fr 0.7fr 1fr;
+        gap: 4px;
+        padding: 9px 8px;
+    }
+
+    body[data-page="schools"] .school-pencil-outcome-table .outcome-row b,
+    body[data-page="schools"] .school-pencil-outcome-table .outcome-row span {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 1120px) {
     body[data-page="schools"] .school-pencil-body {
         grid-template-columns: 1fr;
