@@ -1,51 +1,13 @@
 import Link from 'next/link';
 import GradeSubjectExplorer from './knowledge-grade-explorer';
 import KnowledgeFilter from './knowledge-filter';
-import { buildKnowledgeNav, getAllKnowledgePagesMeta } from '../lib/knowledge-content.mjs';
+import { buildKnowledgeNav, getAllKnowledgePagesMeta, getGradeQuickLinks } from '../lib/knowledge-content.mjs';
 
 const NAV_ITEMS = [
   { label: '首页', href: '/' },
   { label: '新闻', href: '/news' },
   { label: '学校', href: '/schools' },
   { label: '知识', href: '/knowledge' }
-];
-
-const GRADE_RIBBON = [
-  { label: '六年级', desc: '小升初衔接 · 基础巩固', href: '/knowledge/grade-7', disabled: true },
-  { label: '七年级', desc: '能力提升 · 拓展思维', href: '/knowledge/grade-7' },
-  { label: '八年级', desc: '关键学年 · 备战中考', href: '/knowledge/grade-8', featured: true },
-  { label: '九年级', desc: '中考冲刺 · 全面复习', href: '/knowledge/grade-9' },
-  { label: '高一', desc: '选科规划 · 打好基础', href: '/knowledge/senior-1' },
-  { label: '高二', desc: '深化学习 · 备战等级考', href: '/knowledge/senior-2' },
-  { label: '高三', desc: '高考冲刺 · 志愿指导', href: '/knowledge/senior-3' }
-];
-
-const LEARNING_PATHS = [
-  { title: '中考数学满分路径', desc: '从基础巩固到压轴突破的系统学习方案', meta: '6 阶段 · 32 讲', href: '/knowledge/math-grade9' },
-  { title: '物理入门到精通', desc: '零基础掌握八年级物理核心概念与实验', meta: '实验 · 公式 · 例题', href: '/knowledge/physics-grade8' },
-  { title: '英语阅读理解进阶', desc: '完形填空与阅读理解题型分类突破指南', meta: '题型训练 · 写作', href: '/knowledge/english-grade8' },
-  { title: '文言文通关攻略', desc: '课内文言文精讲与课外阅读拓展训练', meta: '古诗文 · 翻译', href: '/knowledge/chinese-grade8' }
-];
-
-const HOT_TOPICS = [
-  { count: '24 讲', title: '中考数学压轴题突破', desc: '函数综合与几何证明', href: '/knowledge/math-grade9' },
-  { count: '18 讲', title: '初中物理实验大全', desc: '操作要点与数据处理', href: '/knowledge/physics-grade9' },
-  { count: '15 讲', title: '英语满分作文模板', desc: '常考主题与表达升级', href: '/knowledge/english-grade9' },
-  { count: '12 讲', title: '化学方程式配平', desc: '守恒思想与计算基础', href: '/knowledge/chemistry-grade9' }
-];
-
-const EXAM_TIPS = [
-  { title: '制定科学的复习计划', desc: '按周拆分章节、题型和错题订正，不把所有任务堆到考前。' },
-  { title: '建立错题本系统', desc: '记录错因、对应知识点和同类题，复习时优先处理重复错误。' },
-  { title: '模拟考试环境训练', desc: '固定时间、固定顺序完成整卷，训练稳定输出和时间分配。' }
-];
-
-const RECENT_UPDATES = [
-  '二次函数压轴题精讲新增 6 道真题解析',
-  '物理电学实验专题更新操作视频',
-  '中考英语听力新增2025年真题训练',
-  '九年级化学方程式配平技巧上线',
-  '初中数学几何辅助线专题全面升级'
 ];
 
 function getKnowledgePageKind(page) {
@@ -227,86 +189,31 @@ function ChannelHero({ page }) {
   );
 }
 
-function LearningPaths() {
+function ChannelRibbons({ ribbons = [] }) {
+  if (!ribbons.length) return null;
   return (
-    <section className="knowledge-section knowledge-learning-zone">
-      <div className="knowledge-section-head">
-        <SectionKicker label="LEARNING PATHS" />
-        <Link href="/knowledge/grade-8">查看全部 →</Link>
-      </div>
-      <h2>学习路径</h2>
-      <div className="knowledge-path-grid">
-        {LEARNING_PATHS.map((path) => (
-          <Link className="knowledge-path-card" href={path.href} key={path.title}>
-            <strong>{path.title}</strong>
-            <p>{path.desc}</p>
-            <span>{path.meta}</span>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function HotTopics() {
-  return (
-    <section className="knowledge-section knowledge-hot-zone">
-      <SectionKicker label="HOT TOPICS" />
-      <h2>热门专题</h2>
-      <div className="knowledge-hot-grid">
-        {HOT_TOPICS.map((topic) => (
-          <Link className="knowledge-hot-card" href={topic.href} key={topic.title}>
-            <span>{topic.count}</span>
-            <strong>{topic.title}</strong>
-            <p>{topic.desc}</p>
-            <em>查看 →</em>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ExamTips() {
-  return (
-    <section className="knowledge-exam-zone">
-      <div className="knowledge-tips-main">
-        <SectionKicker label="EXAM TIPS" />
-        <h2>备考锦囊</h2>
-        <p>来自一线教师和学霸的实战备考经验，帮你高效规划学习路径。</p>
-        <div className="knowledge-tip-list">
-          {EXAM_TIPS.map((tip) => (
-            <article key={tip.title}>
-              <span />
-              <div>
-                <strong>{tip.title}</strong>
-                <p>{tip.desc}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-      <aside className="knowledge-updates-card">
-        <SectionKicker label="RECENT UPDATES" />
-        <h3>最新更新</h3>
-        {RECENT_UPDATES.map((item) => (
-          <p key={item}><span>·</span>{item}</p>
-        ))}
-      </aside>
+    <section className="knowledge-channel-ribbons" aria-label="学段概况">
+      {ribbons.map((ribbon) => (
+        <article key={ribbon.label}>
+          <span>{ribbon.label}</span>
+          <strong>{ribbon.title}</strong>
+          <p>{ribbon.description}</p>
+        </article>
+      ))}
     </section>
   );
 }
 
 async function ChannelPage({ page }) {
   const [nav, allPages] = await Promise.all([buildKnowledgeNav(), getAllKnowledgePagesMeta()]);
+  const sections = page.sections || [];
   return (
     <>
       <ChannelHero page={page} />
       <KnowledgeFilter pages={allPages} />
       <GradeSubjectExplorer nav={nav} />
-      <LearningPaths />
-      <HotTopics />
-      <ExamTips />
+      <ChannelRibbons ribbons={page.ribbons} />
+      {sections.map((section) => <StructuredSection section={section} key={section.id} />)}
     </>
   );
 }
@@ -337,10 +244,11 @@ function GradeHero({ page }) {
 }
 
 function StructuredSection({ section }) {
+  const kicker = section.kicker || section.id.toUpperCase();
   if (section.type === 'list') {
     return (
       <section className="knowledge-section knowledge-list-section" id={section.id}>
-        <SectionKicker label={section.id.toUpperCase()} />
+        <SectionKicker label={kicker} />
         <h2>{section.title}</h2>
         <ul>
           {section.items.map((item) => <li key={item}>{item}</li>)}
@@ -351,7 +259,7 @@ function StructuredSection({ section }) {
 
   return (
     <section className="knowledge-section knowledge-structured-grid-section" id={section.id}>
-      <SectionKicker label={section.id.toUpperCase()} />
+      <SectionKicker label={kicker} />
       <h2>{section.title}</h2>
       <div className={section.type === 'cardGrid' ? 'knowledge-card-grid' : 'knowledge-overview-grid'}>
         {section.cards.map((card, index) => {
@@ -418,7 +326,7 @@ function DetailSidebar({ page }) {
             <Link href={rel.href} key={rel.slug}><span>{rel.label}</span><em>→</em></Link>
           ))
         ) : (
-          GRADE_RIBBON.filter((grade) => !grade.disabled).slice(1, 4).map((grade) => (
+          getGradeQuickLinks().filter((grade) => !grade.disabled).slice(1, 4).map((grade) => (
             <Link href={grade.href} key={grade.label}><span>{grade.label}</span><em>→</em></Link>
           ))
         )}

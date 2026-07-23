@@ -1176,3 +1176,50 @@ a.knowledge-index-card:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* Channel homepage segment ribbons (single source: structured index) */
+.knowledge-channel-ribbons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 1180px;
+    margin: 8px auto 0;
+    padding: 24px;
+    border-top: 1px solid var(--channel-line);
+    border-bottom: 1px solid var(--channel-line);
+}
+
+.knowledge-channel-ribbons article {
+    min-height: 122px;
+    padding: 20px;
+    display: grid;
+    gap: 12px;
+    border: 1px solid var(--channel-line);
+    background: #ffffff;
+}
+
+.knowledge-channel-ribbons span {
+    color: var(--channel-blue);
+    font-family: var(--channel-font-caption);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+}
+
+.knowledge-channel-ribbons strong {
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
+    font-size: 20px;
+}
+
+.knowledge-channel-ribbons p {
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 880px) {
+    .knowledge-channel-ribbons {
+        grid-template-columns: 1fr;
+    }
+}
