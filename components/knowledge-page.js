@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import GradeSubjectExplorer from './knowledge-grade-explorer';
-import KnowledgeFilter from './knowledge-filter';
-import { buildKnowledgeNav, getAllKnowledgePagesMeta, getGradeQuickLinks } from '../lib/knowledge-content.mjs';
+import { buildKnowledgeNav, getGradeQuickLinks } from '../lib/knowledge-content.mjs';
 
 const NAV_ITEMS = [
   { label: '首页', href: '/' },
@@ -160,11 +159,15 @@ function SectionKicker({ label }) {
 }
 
 function ChannelHero({ page }) {
-  const stats = page.hero?.stats?.length ? page.hero.stats : [
+  const hero = page.hero || {};
+  const stats = hero.stats?.length ? hero.stats : [
     { value: '40+', label: '学科档案' },
     { value: '6', label: '年级入口' },
     { value: '持续', label: '内容更新' }
   ];
+  const kicker = hero.kicker || '知识体系';
+  const title = hero.title || '知识专题';
+  const summary = hero.summary || page.description;
 
   return (
     <section className="channel-hero">
@@ -172,9 +175,9 @@ function ChannelHero({ page }) {
       <div className="knowledge-hero-tint" />
       <div className="channel-hero-content">
         <div className="channel-hero-copy">
-          <SectionKicker label="KNOWLEDGE SYSTEM" />
-          <h1>知识专题</h1>
-          <p>{page.hero?.summary || page.description}</p>
+          <SectionKicker label={kicker} />
+          <h1>{title}</h1>
+          <p>{summary}</p>
         </div>
         <div className="channel-hero-stats" aria-label="知识频道统计">
           {stats.slice(0, 3).map((stat) => (
@@ -205,12 +208,11 @@ function ChannelRibbons({ ribbons = [] }) {
 }
 
 async function ChannelPage({ page }) {
-  const [nav, allPages] = await Promise.all([buildKnowledgeNav(), getAllKnowledgePagesMeta()]);
+  const nav = await buildKnowledgeNav();
   const sections = page.sections || [];
   return (
     <>
       <ChannelHero page={page} />
-      <KnowledgeFilter pages={allPages} />
       <GradeSubjectExplorer nav={nav} />
       <ChannelRibbons ribbons={page.ribbons} />
       {sections.map((section) => <StructuredSection section={section} key={section.id} />)}
