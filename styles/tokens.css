@@ -18,6 +18,15 @@
     --color-accent-strong: #1d4ed8; /* hover / active */
     --color-accent-soft: #B3D9F0;   /* 浅蓝：仅作填充，绝不作文字 */
 
+    /* 语义状态色：已校正 / 未校正（独立于品牌色，承载"数据可信度"语义） */
+    --status-verified-bg: #e6f4ea;
+    --status-verified-text: #2f7d4f;     /* 深绿字 / 浅绿底：AA 通过 */
+    --status-unverified-bg: #fbeede;
+    --status-unverified-text: #a06a1f;   /* 深琥珀字 / 浅琥珀底：AA 通过 */
+
+    /* 品牌蓝低透明度叠层（focus ring / 选中底色），避免 rgba 内联重复写死 #2563eb */
+    --color-accent-tint: rgba(37, 99, 235, 0.1);
+
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 20px;
@@ -42,6 +51,13 @@
     --channel-line: var(--color-line);
     --channel-paper: var(--color-paper);
     --channel-accent: var(--color-accent);
+
+    /* 语义状态色（channel 命名空间别名，供 pages/* 使用） */
+    --channel-status-verified-bg: var(--status-verified-bg);
+    --channel-status-verified-text: var(--status-verified-text);
+    --channel-status-unverified-bg: var(--status-unverified-bg);
+    --channel-status-unverified-text: var(--status-unverified-text);
+    --channel-accent-tint: var(--color-accent-tint);
 
     /* 中文衬线（标题用，与正文无衬线形成层级对比）；latin 仍用 Funnel Sans 显示体 */
     --font-serif-cjk: var(--font-noto-serif-sc), "Songti SC", "STSong", "SimSun", serif;

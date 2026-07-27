@@ -398,7 +398,7 @@ body[data-page="schools"] .schools-aerial-filter-block select:hover {
 body[data-page="schools"] .schools-aerial-filter-block select:focus {
     outline: none;
     border-color: var(--channel-blue);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    box-shadow: 0 0 0 3px var(--channel-accent-tint);
 }
 
 body[data-page="schools"] .schools-aerial-filter-stack,
@@ -650,7 +650,7 @@ body[data-page="schools"] .schools-aerial-compare-toggle {
 }
 
 body[data-page="schools"] .schools-aerial-compare-toggle:hover {
-    background: rgba(37, 99, 235, 0.08);
+    background: var(--channel-accent-tint);
 }
 
 body[data-page="schools"] .schools-aerial-compare-toggle.is-added {
@@ -1833,13 +1833,13 @@ body[data-page="schools"] .school-pencil-outcome-table em.is-unverified {
 }
 
 body[data-page="schools"] .school-pencil-outcome-table em.is-verified {
-    background: #e6f4ea;
-    color: #2f7d4f;
+    background: var(--channel-status-verified-bg);
+    color: var(--channel-status-verified-text);
 }
 
 body[data-page="schools"] .school-pencil-outcome-table em.is-unverified {
-    background: #fbeede;
-    color: #a06a1f;
+    background: var(--channel-status-unverified-bg);
+    color: var(--channel-status-unverified-text);
 }
 
 body[data-page="schools"] .school-pencil-outcome-note {
