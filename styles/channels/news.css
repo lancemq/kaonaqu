@@ -1,7 +1,6 @@
 :root {
     --news-hero-height: 420px;
     --news-hero-padding: 60px 80px;
-    --news-hero-grid-size: 120px 92px;
 }
 
 body[data-page="news"] {
@@ -12,7 +11,7 @@ body[data-page="news"] {
 }
 
 body[data-page="news"] .news-aerial-page {
-    width: min(100%, 1440px);
+    width: min(100%, var(--content-max));
     margin: 0 auto;
     overflow: hidden;
     background: var(--channel-paper);
@@ -103,11 +102,7 @@ body[data-page="news"] .channel-hero::after {
     inset: 0;
     z-index: -1;
     content: "";
-    background:
-        linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        rgba(0, 0, 0, 0.22);
-    background-size: var(--news-hero-grid-size), var(--news-hero-grid-size), auto;
+    background: rgba(0, 0, 0, 0.24);
 }
 
 body[data-page="news"] .channel-hero-content {
@@ -150,10 +145,10 @@ body[data-page="news"] .channel-kicker p {
 body[data-page="news"] .channel-hero-copy h1 {
     margin: 20px 0 18px;
     font-family: var(--channel-font-heading);
-    font-size: clamp(48px, 5vw, 52px);
+    font-size: var(--channel-hero-title-size);
     font-weight: 700;
     line-height: 1.06;
-    letter-spacing: 0;
+    letter-spacing: var(--channel-hero-title-spacing);
 }
 
 body[data-page="news"] .channel-hero-copy p {
@@ -345,12 +340,13 @@ body[data-page="news"] .news-article-chip {
     letter-spacing: 1px;
 }
 
-body[data-page="news"] .news-article-chip.is-policy { color: #A32D2D; background: #FCEBEB; }
-body[data-page="news"] .news-article-chip.is-guide { color: #854F0B; background: #FAEEDA; }
-body[data-page="news"] .news-article-chip.is-school { color: #3B6D11; background: #EAF3DE; }
-body[data-page="news"] .news-article-chip.is-exam { color: #185FA5; background: #E6F1FB; }
-body[data-page="news"] .news-article-chip.is-admission { color: #534AB7; background: #EEEDFE; }
-body[data-page="news"] .news-article-chip.is-default { color: #5F5E5A; background: #F1EFE8; }
+body[data-page="news"] .news-article-chip.is-policy,
+body[data-page="news"] .news-article-chip.is-guide,
+body[data-page="news"] .news-article-chip.is-school,
+body[data-page="news"] .news-article-chip.is-default { color: var(--channel-muted); background: var(--color-surface); }
+
+body[data-page="news"] .news-article-chip.is-exam,
+body[data-page="news"] .news-article-chip.is-admission { color: var(--channel-blue); background: var(--color-accent-soft); }
 
 body[data-page="news"] .news-article-meta {
     display: grid;

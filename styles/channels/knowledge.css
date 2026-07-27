@@ -14,7 +14,7 @@ body[data-page="knowledge"] a {
 }
 
 .knowledge-page {
-    width: min(100%, 1440px);
+    width: min(100%, var(--content-max));
     margin: 0 auto;
     min-height: 100vh;
     overflow: hidden;
@@ -151,9 +151,9 @@ body[data-page="knowledge"] a {
     margin: 0;
     color: #ffffff;
     font-family: var(--channel-font-heading);
-    font-size: 48px;
+    font-size: var(--channel-hero-title-size);
     line-height: 1.06;
-    letter-spacing: -0.02em;
+    letter-spacing: var(--channel-hero-title-spacing);
 }
 
 .channel-hero-copy p {
@@ -218,7 +218,7 @@ body[data-page="knowledge"] a {
 
 .knowledge-grade-tile:not(.is-active):not(.is-disabled):hover {
     border-color: var(--channel-blue);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: var(--site-shadow-sm);
 }
 
@@ -353,8 +353,8 @@ a.knowledge-path-card:hover,
 a.knowledge-hot-card:hover,
 a.knowledge-index-card:hover {
     border-color: var(--channel-blue);
-    transform: translateY(-3px);
-    box-shadow: var(--site-shadow-md);
+    transform: translateY(-1px);
+    box-shadow: var(--site-shadow-sm);
 }
 
 .knowledge-subject-card {

@@ -105,9 +105,9 @@ body[data-page="schools"] .highlight-card {
 }
 
 body[data-page="schools"] .highlight-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     border-color: color-mix(in srgb, var(--schools-tone-accent) 34%, transparent);
-    box-shadow: var(--site-shadow-md);
+    box-shadow: var(--site-shadow-sm);
 }
 
 body[data-page="schools"] .highlight-card-header {
@@ -154,11 +154,6 @@ body[data-page="schools"] {
     background: var(--channel-paper);
     color: var(--channel-text);
     font-family: var(--channel-font-body);
-}
-
-body[data-page="schools"]::before,
-body[data-page="schools"]::after {
-    display: none;
 }
 
 /* 学校关系徽标（主校/分校/校区/附校，className 由 lib/school-curation.js 生成） */

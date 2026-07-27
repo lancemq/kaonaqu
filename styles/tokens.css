@@ -25,6 +25,14 @@
     --shadow-sm: 0 1px 3px rgba(14, 17, 22, 0.04), 0 4px 12px rgba(14, 17, 22, 0.03);
     --shadow-md: 0 4px 16px rgba(14, 17, 22, 0.08), 0 8px 32px rgba(14, 17, 22, 0.06);
 
+    /* Layout rhythm & unified display tokens */
+    --content-max: 1280px;          /* 容器最大宽度（原 1440，收拢更易读、更克制） */
+    --space-gutter: 64px;           /* 桌面端横向留白 */
+    --space-section: 64px;          /* 纵向区块间距 */
+
+    --channel-hero-title-size: clamp(40px, 4.6vw, 56px);
+    --channel-hero-title-spacing: -0.02em;
+
     /* ---------- Channel-facing tokens（channels/* 与 pages/* 使用） ---------- */
     --channel-blue: var(--color-accent);
     --channel-blue-soft: var(--color-accent-soft);

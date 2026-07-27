@@ -1,5 +1,5 @@
 body[data-page="news"] .news-special-aerial-page {
-    width: min(100%, 1440px);
+    width: min(100%, var(--content-max));
     margin: 0 auto;
     overflow: hidden;
     background: #fff;
@@ -325,7 +325,7 @@ body[data-page="news"] .news-special-aerial-side-card a:first-of-type {
 }
 
 body[data-page="news"] .special-page {
-    width: min(100%, 1440px);
+    width: min(100%, var(--content-max));
     margin: 0 auto;
     overflow: hidden;
     background: #fff;
@@ -1512,7 +1512,7 @@ body[data-page="news"] .channel-side-card.compact a {
 }
 
 body[data-page="news"] .admission-timeline-page {
-    width: min(100%, 1440px);
+    width: min(100%, var(--content-max));
     margin: 0 auto;
     overflow: hidden;
     background: #fff;

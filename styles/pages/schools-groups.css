@@ -182,7 +182,7 @@
 }
 
 body[data-page="schools"] .school-groups-aerial-page {
-    width: min(100%, 1440px);
+    width: min(100%, var(--content-max));
     margin: 0 auto;
     overflow: hidden;
     background: #fff;

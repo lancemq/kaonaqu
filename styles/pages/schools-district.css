@@ -3,7 +3,7 @@
 
 
 body[data-page="schools"] .district-channel-page {
-    width: min(100%, 1440px);
+    width: min(100%, var(--content-max));
     margin: 0 auto;
     overflow: hidden;
     background: var(--channel-paper);

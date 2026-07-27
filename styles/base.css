@@ -11,40 +11,7 @@ body {
     min-height: 100vh;
     font-family: var(--channel-font-body);
     color: var(--site-text);
-    background:
-        linear-gradient(rgba(26, 29, 41, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(26, 29, 41, 0.04) 1px, transparent 1px),
-        linear-gradient(180deg, #ffffff 0%, var(--site-surface-soft) 42%, #e2e8f0 100%);
-    background-size: 36px 36px, 36px 36px, auto;
-}
-
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    inset: auto;
-    pointer-events: none;
-    z-index: 0;
-}
-
-body::before {
-    top: 32px;
-    right: 32px;
-    width: min(34vw, 420px);
-    height: min(34vw, 420px);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0));
-    filter: blur(14px);
-}
-
-body::after {
-    left: 28px;
-    bottom: 18px;
-    width: min(36vw, 460px);
-    height: min(24vw, 280px);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.08), rgba(37, 99, 235, 0));
-    filter: blur(18px);
+    background: var(--color-paper);
 }
 
 /* Shared Layout Primitives */
