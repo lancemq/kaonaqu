@@ -297,6 +297,25 @@ body[data-page="knowledge"] a {
     line-height: 1.6;
 }
 
+.knowledge-subject-updated {
+    margin: 10px 0 0 !important;
+    font-size: 13px !important;
+    color: var(--channel-accent, #2f6df6) !important;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.knowledge-subject-updated::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    vertical-align: middle;
+}
+
 .knowledge-subject-strip,
 .knowledge-path-grid,
 .knowledge-hot-grid,

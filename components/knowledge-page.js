@@ -95,15 +95,23 @@ function getSubjectMeta(page) {
   ];
 }
 
+const GRADE_TOKEN_LABELS = {
+  'grade-7': '七年级', 'grade-8': '八年级', 'grade-9': '九年级',
+  'senior-1': '高一', 'senior-2': '高二', 'senior-3': '高三',
+  grade7: '七年级', grade8: '八年级', grade9: '九年级',
+  senior1: '高一', senior2: '高二', senior3: '高三'
+};
+
 function inferGradeLabel(page) {
+  if (page?.grade && GRADE_TOKEN_LABELS[page.grade]) return GRADE_TOKEN_LABELS[page.grade];
   const title = page.title || '';
   const slug = page.slug || '';
-  if (title.includes('七年级') || slug.includes('grade7')) return '七年级';
-  if (title.includes('八年级') || slug.includes('grade8')) return '八年级';
-  if (title.includes('九年级') || slug.includes('grade9')) return '九年级';
-  if (title.includes('高一') || slug.includes('senior1')) return '高一';
-  if (title.includes('高二') || slug.includes('senior2')) return '高二';
-  if (title.includes('高三') || slug.includes('senior3')) return '高三';
+  if (title.includes('七年级') || slug.includes('grade7') || slug.includes('grade-7')) return '七年级';
+  if (title.includes('八年级') || slug.includes('grade8') || slug.includes('grade-8')) return '八年级';
+  if (title.includes('九年级') || slug.includes('grade9') || slug.includes('grade-9')) return '九年级';
+  if (title.includes('高一') || slug.includes('senior1') || slug.includes('senior-1')) return '高一';
+  if (title.includes('高二') || slug.includes('senior2') || slug.includes('senior-2')) return '高二';
+  if (title.includes('高三') || slug.includes('senior3') || slug.includes('senior-3')) return '高三';
   return '知识专题';
 }
 
@@ -315,10 +323,20 @@ function GradePage({ page }) {
   );
 }
 
+function stageFromGrade(grade) {
+  if (!grade) return null;
+  if (grade.startsWith('grade')) return '初中';
+  if (grade.startsWith('senior')) return '高中';
+  return null;
+}
+
 function DetailSidebar({ page }) {
   const trail = getPageTrail(page);
   const meta = getSubjectMeta(page);
   const relatedPages = page.relatedPages?.length ? page.relatedPages : null;
+  const stage = stageFromGrade(page.grade);
+  const schoolHref = stage ? `/schools?stage=${encodeURIComponent(stage)}` : '/schools';
+  const newsHref = '/news?filter=exam';
   return (
     <aside className="knowledge-detail-sidebar" aria-label="知识详情侧栏">
       <section>
@@ -332,6 +350,14 @@ function DetailSidebar({ page }) {
             <Link href={grade.href} key={grade.label}><span>{grade.label}</span><em>→</em></Link>
           ))
         )}
+      </section>
+      <section>
+        <SectionKicker label="SCHOOLS" />
+        <Link href={schoolHref}><span>{stage ? `查看${stage}学校` : '查看全部学校'}</span><em>→</em></Link>
+      </section>
+      <section>
+        <SectionKicker label="NEWS" />
+        <Link href={newsHref}><span>考试升学新闻</span><em>→</em></Link>
       </section>
       <section className="is-dark">
         <SectionKicker label="QUICK ACCESS" />
@@ -366,6 +392,9 @@ function SubjectHeader({ page }) {
         <h1>{heading.title}</h1>
       </div>
       <p>{heading.desc}</p>
+      {page.updatedAt ? (
+        <p className="knowledge-subject-updated">最后更新：{page.updatedAt}</p>
+      ) : null}
       <div className="knowledge-subject-stats">
         {meta.map((item) => (
           <article key={item.label}>
