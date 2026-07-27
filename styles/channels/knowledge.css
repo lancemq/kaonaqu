@@ -1107,3 +1107,586 @@ a.knowledge-index-card:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================================
+   学科详情页 · 富组件视觉系统
+   为 richBlocks 中已存在、但此前无样式的语义 className 接上版式。
+   纯 CSS 增强，不改变数据层与渲染逻辑；复用站点 design token。
+   ============================================================ */
+.knowledge-detail-main {
+    /* 语义色板（与站点 channel token 同族） */
+    --kb-mistake: #e5484d;
+    --kb-mistake-soft: #fdeced;
+    --kb-mistake-line: #f6c9cb;
+    --kb-important: #d98300;
+    --kb-important-soft: #fff3e0;
+    --kb-important-line: #f6d9a8;
+    --kb-blue: #3d8fc4;
+    --kb-blue-soft: #eaf4fb;
+    --kb-blue-line: #bfe0f2;
+    --kb-green: #1f9d6b;
+    --kb-green-soft: #e8f6ef;
+    --kb-red: #e5484d;
+}
+
+/* ---- 章节 unit：chapter / section-title / section-lead / topic-stats ---- */
+.knowledge-detail-main .chapter {
+    gap: 18px;
+}
+
+.knowledge-detail-main .section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-left: 16px;
+    border-left: 4px solid var(--kb-blue);
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .section-lead {
+    margin-top: -2px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .topic-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.knowledge-detail-main .topic-stats li {
+    position: relative;
+    padding-left: 16px;
+    color: var(--channel-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.knowledge-detail-main .topic-stats li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--kb-blue);
+}
+
+/* ---- 提示框体系（aside：易错 / 方法 / 重点） ---- */
+.knowledge-detail-main .mistakes,
+.knowledge-detail-main .method,
+.knowledge-detail-main .important {
+    display: grid;
+    gap: 8px;
+    margin: 4px 0;
+    padding: 16px 18px;
+    border: 1px solid var(--kb-blue-line);
+    border-left-width: 4px;
+    border-radius: var(--site-radius-sm);
+    background: var(--kb-blue-soft);
+}
+
+.knowledge-detail-main .mistakes {
+    border-color: var(--kb-mistake-line);
+    border-left-color: var(--kb-mistake);
+    background: var(--kb-mistake-soft);
+}
+
+.knowledge-detail-main .important {
+    border-color: var(--kb-important-line);
+    border-left-color: var(--kb-important);
+    background: var(--kb-important-soft);
+}
+
+.knowledge-detail-main .callout-title {
+    margin: 0;
+    font-family: var(--channel-font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--kb-blue);
+}
+
+.knowledge-detail-main .mistakes .callout-title {
+    color: var(--kb-mistake);
+}
+
+.knowledge-detail-main .important .callout-title {
+    color: var(--kb-important);
+}
+
+.knowledge-detail-main .mistakes > p,
+.knowledge-detail-main .method > p,
+.knowledge-detail-main .important > p {
+    margin: 0;
+    color: var(--channel-text);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ---- 例题 / 真题卡（exam / example 内联 aside） ---- */
+.knowledge-detail-main .exam,
+.knowledge-detail-main .example {
+    display: grid;
+    gap: 10px;
+    margin: 4px 0;
+    padding: 18px;
+    border: 1px solid var(--kb-blue-line);
+    border-radius: var(--site-radius-md);
+    background: linear-gradient(180deg, #f6fafe, #ffffff);
+}
+
+.knowledge-detail-main .exam-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.knowledge-detail-main .exam-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--kb-blue-soft);
+    color: var(--kb-blue);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.knowledge-detail-main .exam-title {
+    margin: 0;
+    font-family: var(--channel-font-heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .exam-q {
+    margin: 0;
+    color: var(--channel-text);
+    font-size: 14.5px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+}
+
+.knowledge-detail-main .example-label {
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--kb-blue);
+    text-transform: uppercase;
+}
+
+.knowledge-detail-main .example-title {
+    margin: 0;
+    font-family: var(--channel-font-heading);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .example-q,
+.knowledge-detail-main .example-a {
+    margin: 0;
+    color: var(--channel-text);
+    font-size: 14.5px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+}
+
+.knowledge-detail-main .example-a {
+    padding-top: 10px;
+    border-top: 1px dashed var(--channel-line);
+    color: var(--channel-muted);
+}
+
+/* ---- 例题卡（example-grid 内的 article） ---- */
+.knowledge-detail-main .example-card {
+    gap: 10px;
+    border-color: var(--kb-blue-line);
+}
+
+.knowledge-detail-main .example-card .example-tag {
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--kb-blue-soft);
+    color: var(--kb-blue);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.knowledge-detail-main .example-card h4 {
+    margin: 0;
+    font-family: var(--channel-font-heading);
+    font-size: 16px;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .example-card p {
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 13.5px;
+    line-height: 1.65;
+}
+
+.knowledge-detail-main .example-card .answer {
+    padding-top: 8px;
+    border-top: 1px dashed var(--channel-line);
+    color: var(--channel-text);
+    font-weight: 600;
+}
+
+/* ---- 公式框（formula） ---- */
+.knowledge-detail-main .formula {
+    gap: 6px;
+    border-color: var(--kb-blue-line);
+    background: var(--kb-blue-soft);
+}
+
+.knowledge-detail-main .formula-label {
+    font-family: var(--channel-font-caption);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--kb-blue);
+}
+
+.knowledge-detail-main .formula-body {
+    display: grid;
+    gap: 4px;
+}
+
+.knowledge-detail-main .formula-body p {
+    margin: 0;
+    font-family: var(--channel-font-data);
+    font-size: 15px;
+    color: var(--channel-text);
+    line-height: 1.7;
+}
+
+/* ---- 对比双栏（compare） ---- */
+.knowledge-detail-main .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 4px 0;
+}
+
+.knowledge-detail-main .compare-cell {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid var(--channel-line);
+    border-top: 3px solid var(--kb-blue);
+    border-radius: var(--site-radius-sm);
+    background: #ffffff;
+}
+
+.knowledge-detail-main .compare-cell:first-child {
+    border-top-color: var(--kb-green);
+}
+
+.knowledge-detail-main .compare-cell:last-child {
+    border-top-color: var(--kb-red);
+}
+
+.knowledge-detail-main .compare-title {
+    font-family: var(--channel-font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .compare-cell:first-child .compare-title {
+    color: var(--kb-green);
+}
+
+.knowledge-detail-main .compare-cell:last-child .compare-title {
+    color: var(--kb-red);
+}
+
+/* ---- 时间轴（timeline） ---- */
+.knowledge-detail-main .timeline {
+    display: grid;
+    gap: 0;
+    margin: 4px 0;
+    padding: 4px 0 4px 24px;
+    list-style: none;
+    border-left: 2px solid var(--kb-blue-line);
+}
+
+.knowledge-detail-main .timeline > li {
+    position: relative;
+    padding: 8px 0 8px 16px;
+}
+
+.knowledge-detail-main .timeline > li::before {
+    content: '';
+    position: absolute;
+    left: -21px;
+    top: 13px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--kb-blue);
+}
+
+.knowledge-detail-main .timeline-year {
+    font-family: var(--channel-font-data);
+    font-weight: 700;
+    color: var(--kb-blue);
+    font-size: 14px;
+}
+
+/* ---- 步骤（step-list） / 要点（key-points） ---- */
+.knowledge-detail-main .step-list {
+    display: grid;
+    gap: 10px;
+    margin: 4px 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: kbstep;
+}
+
+.knowledge-detail-main .step-list > li {
+    position: relative;
+    padding: 12px 14px 12px 46px;
+    border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-sm);
+    background: #ffffff;
+    color: var(--channel-text);
+    line-height: 1.65;
+    counter-increment: kbstep;
+}
+
+.knowledge-detail-main .step-list > li::before {
+    content: counter(kbstep);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--kb-blue);
+    color: #ffffff;
+    font-family: var(--channel-font-data);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.knowledge-detail-main .key-points {
+    display: grid;
+    gap: 8px;
+    margin: 4px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.knowledge-detail-main .key-points > li {
+    position: relative;
+    padding: 8px 12px 8px 30px;
+    border-radius: var(--site-radius-sm);
+    background: var(--kb-blue-soft);
+    color: var(--channel-text);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.knowledge-detail-main .key-points > li::before {
+    content: '◆';
+    position: absolute;
+    left: 12px;
+    top: 9px;
+    color: var(--kb-blue);
+    font-size: 11px;
+}
+
+/* ---- 实验卡（lab-board / lab-card / lab-pill / lab-meta） ---- */
+.knowledge-detail-main .lab-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+}
+
+.knowledge-detail-main .lab-card {
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+    border: 1px solid var(--channel-line);
+    border-radius: var(--site-radius-md);
+    background: #ffffff;
+}
+
+.knowledge-detail-main .lab-card h4 {
+    margin: 0;
+    font-family: var(--channel-font-heading);
+    font-size: 16px;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .lab-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.knowledge-detail-main .lab-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--kb-green-soft);
+    color: var(--kb-green);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.knowledge-detail-main .lab-card p {
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+/* ---- 案例卡（case-card / case-lead） ---- */
+.knowledge-detail-main .case-card {
+    border-color: var(--channel-line);
+    background: #ffffff;
+}
+
+.knowledge-detail-main .case-card h4 {
+    margin: 0;
+    font-family: var(--channel-font-heading);
+    font-size: 15px;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .case-card p {
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.knowledge-detail-main .case-lead {
+    margin: 0 0 4px;
+    color: var(--channel-text);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* ---- 概念卡（concept-card）强化 ---- */
+.knowledge-detail-main .concept-card h4 {
+    margin: 0;
+    font-family: var(--channel-font-heading);
+    font-size: 15px;
+    color: var(--kb-blue);
+}
+
+.knowledge-detail-main .concept-card p {
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ---- 词汇清单（vocab-list） ---- */
+.knowledge-detail-main .vocab-list {
+    display: grid;
+    gap: 6px;
+    margin: 4px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.knowledge-detail-main .vocab-list > li {
+    padding: 8px 12px;
+    border-left: 3px solid var(--kb-blue-line);
+    background: #fbfdff;
+    color: var(--channel-text);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ---- 表格（unit-table / comparison-table） ---- */
+.knowledge-detail-main .unit-table,
+.knowledge-detail-main .comparison-table {
+    font-size: 14px;
+}
+
+.knowledge-detail-main .unit-table tbody tr:nth-child(even),
+.knowledge-detail-main .comparison-table tbody tr:nth-child(even) {
+    background: #fafbfc;
+}
+
+/* ---- 页头（page-header / action-link） ---- */
+.knowledge-detail-main .page-header {
+    gap: 10px;
+}
+
+.knowledge-detail-main .page-header h1 {
+    font-family: var(--channel-font-heading);
+    font-size: 30px;
+    line-height: 1.15;
+    color: var(--channel-text);
+}
+
+.knowledge-detail-main .page-header p {
+    max-width: 900px;
+    color: var(--channel-muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.knowledge-detail-main .page-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.knowledge-detail-main .action-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid var(--kb-blue-line);
+    border-radius: 999px;
+    background: var(--kb-blue-soft);
+    color: var(--kb-blue);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 160ms ease, color 160ms ease;
+}
+
+.knowledge-detail-main .action-link:hover {
+    background: var(--kb-blue);
+    color: #ffffff;
+}
+
+/* ---- 窄屏：对比双栏 / 实验板单列 ---- */
+@media (max-width: 760px) {
+    .knowledge-detail-main .compare,
+    .knowledge-detail-main .lab-board {
+        grid-template-columns: 1fr;
+    }
+}
