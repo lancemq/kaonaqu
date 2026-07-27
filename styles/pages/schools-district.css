@@ -70,7 +70,7 @@ body[data-page="schools"] .district-channel-breadcrumb span {
 }
 
 body[data-page="schools"] .district-channel-breadcrumb strong {
-    color: var(--channel-blue-soft);
+    color: var(--channel-blue);
 }
 
 body[data-page="schools"] .channel-kicker {
@@ -95,7 +95,7 @@ body[data-page="schools"] .channel-kicker p {
 
 body[data-page="schools"] .channel-hero .channel-kicker p,
 body[data-page="schools"] .channel-side-card.is-dark .channel-kicker p {
-    color: var(--channel-blue-soft);
+    color: var(--channel-blue);
 }
 
 body[data-page="schools"] .channel-hero h1 {
@@ -329,7 +329,7 @@ body[data-page="schools"] .district-channel-featured-card p {
 
 body[data-page="schools"] .district-channel-featured-card b {
     margin-top: auto;
-    color: var(--channel-blue-soft);
+    color: var(--channel-blue);
     font-size: 13px;
 }
 

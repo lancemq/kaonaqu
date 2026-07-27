@@ -2,40 +2,64 @@
     /* Fonts（next/font 注入的变量，见 app/layout.js） */
     --font-mono: var(--font-geist-mono), monospace;
 
-    /* Site design tokens — site-wide, consumed by every channel */
-    --site-surface: #ffffff;
-    --site-surface-soft: #f0f3f8;
-    --site-surface-strong: #ffffff;
-    --site-text: #1a1d29;
-    --site-muted: #6b7384;
-    --site-muted-strong: #4a5263;
-    --site-line: rgba(26, 29, 41, 0.08);
-    --site-dark: #1a1d29;
-    --site-dark-text: #f0f3f8;
-    --site-accent: #2563eb;
-    --site-accent-dark: #1d4ed8;
-    --site-radius-md: 14px;
-    --site-radius-sm: 8px;
-    --site-shadow-sm: 0 1px 3px rgba(26, 29, 41, 0.04), 0 4px 12px rgba(26, 29, 41, 0.03);
-    --site-shadow-md: 0 4px 16px rgba(26, 29, 41, 0.08), 0 8px 32px rgba(26, 29, 41, 0.06);
-    --channel-accent: var(--site-accent);
+    /* ============================================================
+       Unified Design Tokens — single source of truth
+       所有 channel-* 与 site-* 别名都映射到下方这组基础令牌，
+       保证全站颜色/间距一致，且文字对比度满足 WCAG AA。
+       ============================================================ */
+    --color-ink: #0E1116;            /* 近黑：标题、深色表面/页脚 */
+    --color-text: #1F2430;          /* 正文主色（白底 AA 通过） */
+    --color-muted: #5B6472;         /* 次级文字（白底 6.4:1，AA 通过） */
+    --color-line: #E8EAED;          /* 边框 / 分隔线 */
+    --color-surface: #F6F7F9;       /* 浅色区块 / 面板底 */
+    --color-paper: #FFFFFF;         /* 卡片 / 页面底 */
 
-    /* Hero 品牌渐变（替代原 Unsplash 外链图，纯 CSS、零外链） */
-    --channel-hero-bg:
-        radial-gradient(60% 75% at 78% 8%, rgba(74, 159, 216, 0.42), rgba(74, 159, 216, 0) 72%),
-        radial-gradient(50% 60% at 6% 92%, rgba(37, 99, 235, 0.30), rgba(37, 99, 235, 0) 70%),
-        linear-gradient(115deg, #0b1220 0%, #10315a 55%, #0b1e38 100%);
+    --color-accent: #2563eb;        /* 主蓝：白底 5.2:1，AA 通过 */
+    --color-accent-strong: #1d4ed8; /* hover / active */
+    --color-accent-soft: #B3D9F0;   /* 浅蓝：仅作填充，绝不作文字 */
 
-    /* Channel design tokens — shared across home/news/schools/knowledge */
-    --channel-blue: #4A9FD8;
-    --channel-blue-soft: #B3D9F0;
-    --channel-ink: #0A0A0A;
-    --channel-text: #1A1A1A;
-    --channel-muted: #666666;
-    --channel-line: #EEF0F2;
-    --channel-paper: #FFFFFF;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    --shadow-sm: 0 1px 3px rgba(14, 17, 22, 0.04), 0 4px 12px rgba(14, 17, 22, 0.03);
+    --shadow-md: 0 4px 16px rgba(14, 17, 22, 0.08), 0 8px 32px rgba(14, 17, 22, 0.06);
+
+    /* ---------- Channel-facing tokens（channels/* 与 pages/* 使用） ---------- */
+    --channel-blue: var(--color-accent);
+    --channel-blue-soft: var(--color-accent-soft);
+    --channel-ink: var(--color-ink);
+    --channel-text: var(--color-text);
+    --channel-muted: var(--color-muted);
+    --channel-line: var(--color-line);
+    --channel-paper: var(--color-paper);
+    --channel-accent: var(--color-accent);
+
     --channel-font-heading: var(--font-funnel), var(--font-noto-sans-sc), sans-serif;
     --channel-font-body: var(--font-geist), var(--font-noto-sans-sc), sans-serif;
     --channel-font-caption: var(--font-geist), var(--font-noto-sans-sc), sans-serif;
     --channel-font-data: var(--font-geist-mono), "SFMono-Regular", Consolas, monospace;
+
+    /* ---------- Site-facing tokens（base.css / cards.css / 历史用法） ---------- */
+    --site-surface: var(--color-paper);
+    --site-surface-soft: var(--color-surface);
+    --site-surface-strong: var(--color-paper);
+    --site-text: var(--color-text);
+    --site-muted: var(--color-muted);
+    --site-muted-strong: var(--color-muted);
+    --site-line: var(--color-line);
+    --site-dark: var(--color-ink);
+    --site-dark-text: #f0f3f8;
+    --site-accent: var(--color-accent);
+    --site-accent-dark: var(--color-accent-strong);
+    --site-radius-sm: var(--radius-sm);
+    --site-radius-md: var(--radius-md);
+    --site-shadow-sm: var(--shadow-sm);
+    --site-shadow-md: var(--shadow-md);
+
+    /* Hero 品牌渐变（纯 CSS、零外链；统一使用强调蓝） */
+    --channel-hero-bg:
+        radial-gradient(60% 75% at 78% 8%, rgba(37, 99, 235, 0.42), rgba(37, 99, 235, 0) 72%),
+        radial-gradient(50% 60% at 6% 92%, rgba(37, 99, 235, 0.30), rgba(37, 99, 235, 0) 70%),
+        linear-gradient(115deg, #0b1220 0%, #10315a 55%, #0b1e38 100%);
 }

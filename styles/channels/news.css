@@ -178,7 +178,7 @@ body[data-page="news"] .channel-hero-stats article {
 }
 
 body[data-page="news"] .channel-hero-stats span {
-    color: var(--channel-blue-soft);
+    color: var(--channel-blue);
     font-family: var(--channel-font-caption);
     font-size: 12px;
     letter-spacing: 2px;
@@ -394,7 +394,7 @@ body[data-page="news"] .news-hot-card {
 }
 
 body[data-page="news"] .news-hot-card .channel-kicker p {
-    color: var(--channel-blue-soft);
+    color: var(--channel-blue);
 }
 
 body[data-page="news"] .news-hot-card h2 {
@@ -419,7 +419,7 @@ body[data-page="news"] .news-hot-card a span {
 }
 
 body[data-page="news"] .news-hot-card a strong {
-    color: var(--channel-blue-soft);
+    color: var(--channel-blue);
     font-family: var(--channel-font-data);
 }
 

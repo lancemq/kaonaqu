@@ -130,7 +130,7 @@ body[data-page="schools"] .channel-kicker span {
 
 body[data-page="schools"] .channel-kicker p {
     margin: 0;
-    color: var(--channel-blue-soft);
+    color: var(--channel-blue);
     font-family: var(--channel-font-caption);
     font-size: 12px;
     letter-spacing: 4px;
@@ -143,7 +143,7 @@ body[data-page="schools"] .channel-kicker p {
 }
 
 body[data-page="schools"] .school-detail-side-card.is-dark .channel-kicker p {
-    color: var(--channel-blue-soft);
+    color: var(--channel-blue);
 }
 
 body[data-page="schools"] .channel-hero h1 {
