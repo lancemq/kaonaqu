@@ -43,7 +43,9 @@
     --channel-paper: var(--color-paper);
     --channel-accent: var(--color-accent);
 
-    --channel-font-heading: var(--font-funnel), var(--font-noto-sans-sc), sans-serif;
+    /* 中文衬线（标题用，与正文无衬线形成层级对比）；latin 仍用 Funnel Sans 显示体 */
+    --font-serif-cjk: var(--font-noto-serif-sc), "Songti SC", "STSong", "SimSun", serif;
+    --channel-font-heading: var(--font-funnel), var(--font-serif-cjk);
     --channel-font-body: var(--font-geist), var(--font-noto-sans-sc), sans-serif;
     --channel-font-caption: var(--font-geist), var(--font-noto-sans-sc), sans-serif;
     --channel-font-data: var(--font-geist-mono), "SFMono-Regular", Consolas, monospace;

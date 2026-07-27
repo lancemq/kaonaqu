@@ -1,10 +1,10 @@
 import { Analytics } from '@vercel/analytics/react';
-import { Funnel_Sans, Geist, Geist_Mono, Noto_Sans_SC } from 'next/font/google';
+import { Funnel_Sans, Geist, Geist_Mono, Noto_Sans_SC, Noto_Serif_SC } from 'next/font/google';
 import BodyPageFlag from '../components/body-page-flag';
 import '../styles/index.css';
 
 // 字体自托管（next/font 构建时下载、运行时同源分发，无第三方依赖）：
-// 4 个家族 = Funnel Sans(标题) + Geist(正文) + Geist Mono(数据) + Noto Sans SC(中文)。
+// 5 个家族 = Funnel Sans(标题latin显示体) + Geist(正文) + Geist Mono(数据) + Noto Sans SC(中文正文) + Noto Serif SC(中文标题衬线)。
 // 通过 CSS 变量注入，styles/tokens.css 的 --channel-font-* 引用这些变量。
 const fontFunnel = Funnel_Sans({
   subsets: ['latin'],
@@ -29,6 +29,14 @@ const fontNotoSansSC = Noto_Sans_SC({
   subsets: ['chinese-simplified', 'latin'],
   weight: ['400', '500', '700', '800'],
   variable: '--font-noto-sans-sc',
+  display: 'swap',
+  preload: false
+});
+// 中文衬线（标题用，与正文无衬线形成层级对比）；latin 仍用 Funnel Sans 显示体
+const fontNotoSerifSC = Noto_Serif_SC({
+  subsets: ['chinese-simplified', 'latin'],
+  weight: ['500', '600', '700', '900'],
+  variable: '--font-noto-serif-sc',
   display: 'swap',
   preload: false
 });
@@ -71,7 +79,7 @@ export default function RootLayout({ children }) {
       <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7712476875404468" crossOrigin="anonymous"></script>
       </head>
-      <body className={`${fontFunnel.variable} ${fontGeist.variable} ${fontGeistMono.variable} ${fontNotoSansSC.variable}`}>
+      <body className={`${fontFunnel.variable} ${fontGeist.variable} ${fontGeistMono.variable} ${fontNotoSansSC.variable} ${fontNotoSerifSC.variable}`}>
         <BodyPageFlag />
         {children}
         <Analytics />
