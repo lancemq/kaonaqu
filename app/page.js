@@ -321,7 +321,6 @@ export default async function HomePage() {
           {focusTopicNews.length > 0 && (
             <div className="home-focus-topics">
               {focusTopicNews.map((item) => {
-                const date = String(item.publishedAt || '');
                 return (
                   <Link className="home-focus-topic" href={getNewsHref(item)} key={item.id}>
                     <div className="home-focus-topic-head">
@@ -329,7 +328,6 @@ export default async function HomePage() {
                         {getNewsCategoryLabel(item).slice(0, 1)}
                       </span>
                       <strong>{item.title}</strong>
-                      <span className="home-focus-topic-tag">{date ? date.slice(5) : 'NEW'}</span>
                     </div>
                     <p>{item.summary || '进入详情查看完整内容。'}</p>
                   </Link>
