@@ -193,49 +193,7 @@ body[data-page="news"] .news-detail-markdown {
     max-width: var(--measure-read);
 }
 
-body[data-page="news"] .news-detail-markdown-heading {
-    margin: 0;
-    color: var(--channel-text);
-    font-family: var(--channel-font-heading);
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: 0;
-}
-
-body[data-page="news"] .news-detail-markdown-subheading {
-    margin: 0;
-    color: var(--channel-text);
-    font-family: var(--channel-font-heading);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.35;
-}
-
-body[data-page="news"] .news-detail-markdown-paragraph,
-body[data-page="news"] .news-detail-markdown-list {
-    margin: 0;
-    color: var(--channel-muted);
-    font-size: 15px;
-    line-height: 1.75;
-}
-
-body[data-page="news"] .news-detail-markdown-list {
-    display: grid;
-    gap: 8px;
-    padding-left: 1.2em;
-}
-
-body[data-page="news"] .news-detail-markdown-list li::marker {
-    color: var(--channel-blue);
-}
-
-body[data-page="news"] .news-detail-markdown .text-link {
-    color: var(--channel-blue);
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
+/* 新闻正文结构化内容（rich-block-*）样式已由全局 components/rich-blocks.css 统一提供，此处不再重复。 */
 
 body[data-page="news"] .news-detail-tags {
     display: flex;

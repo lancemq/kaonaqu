@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import { getPolicyDetailHref, getPolicyMappedNewsId } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
+import { renderBlocks } from '../../../components/BlockRenderer';
 
 const require = createRequire(import.meta.url);
 const { getNewsById, loadNewsList, loadSchoolsForRelated } = require('../../../shared/data-store');
@@ -86,7 +87,7 @@ function renderNewsMarkdown(markdown) {
   const flushList = () => {
     if (!listItems.length) return;
     nodes.push(
-      <ul key={`list-${key++}`} className="news-detail-markdown-list">
+      <ul key={`list-${key++}`} className="rich-block-list">
         {listItems.map((item, index) => (
           <li key={`item-${index}`}>{renderInlineMarkdown(item)}</li>
         ))}
@@ -109,13 +110,13 @@ function renderNewsMarkdown(markdown) {
         continue;
       }
       skipping = false;
-      nodes.push(<h3 key={`h3-${key++}`} className="news-detail-markdown-heading">{title}</h3>);
+      nodes.push(<h3 key={`h3-${key++}`} className="rich-block-heading">{title}</h3>);
       continue;
     }
     if (skipping) continue;
     if (line.startsWith('### ')) {
       flushList();
-      nodes.push(<h4 key={`h4-${key++}`} className="news-detail-markdown-subheading">{line.slice(4)}</h4>);
+      nodes.push(<h4 key={`h4-${key++}`} className="rich-block-subheading">{line.slice(4)}</h4>);
       continue;
     }
     if (line.startsWith('- ')) {
@@ -124,7 +125,7 @@ function renderNewsMarkdown(markdown) {
     }
     flushList();
     nodes.push(
-      <p key={`p-${key++}`} className="news-detail-markdown-paragraph">
+      <p key={`p-${key++}`} className="rich-block-paragraph">
         {renderInlineMarkdown(line)}
       </p>
     );
@@ -134,122 +135,22 @@ function renderNewsMarkdown(markdown) {
   return nodes;
 }
 
-// ===== news block 渲染（结构化 JSON content）=====
-// content 现为 block 数组：heading/paragraph/list/quote/divider。
-// 旧 Markdown 字符串数据包装为 [{type:'markdown',text}] 走 renderNewsMarkdown 兼容。
-// inline 格式（加粗/斜体/链接）复用 renderPolicyInlineMarkdown 解析。
-function renderNewsBlocks(blocks) {
+// ===== news block 渲染：统一复用共享 renderBlocks（与学校详情同源）=====
+// 结构化 block 数组（heading/paragraph/list/quote/divider）直接交给 renderBlocks。
+// 仅保留对旧 Markdown 字符串 block（type:'markdown'）的兼容：先展开为节点再并入。
+// topHeadingTag/subHeadingTag 设为 h3/h4，避免与页面 h1 标题争层级（等同原 ## → h3 行为）。
+function renderNewsContent(blocks) {
   if (!Array.isArray(blocks)) return null;
-  // 跳过编辑口径导读 section（与原 renderNewsMarkdown 的 SKIP_SECTIONS 行为一致）
-  const SKIP_SECTIONS = new Set([
-    '这条信息为什么值得看',
-    '适合谁先看',
-    '适合谁看',
-    '适合谁读'
-  ]);
-  const nodes = [];
-  let skipping = false;
-
-  blocks.forEach((block, i) => {
-    // level<=2 的 heading 切换 skipping 状态
-    if (block.type === 'heading' && block.level <= 2) {
-      skipping = SKIP_SECTIONS.has(block.text);
+  const expanded = [];
+  for (const block of blocks) {
+    if (block && block.type === 'markdown') {
+      const legacy = renderNewsMarkdown(block.text) || [];
+      for (const node of legacy) expanded.push(node);
+    } else {
+      expanded.push(block);
     }
-    if (skipping) return;
-
-    const key = `block-${i}`;
-    switch (block.type) {
-      case 'heading': {
-        const text = renderPolicyInlineMarkdown(block.text);
-        // level 1/2 → h3（与原 ## 行为一致，避免比页面 h1 title 更突出）
-        if (block.level <= 2) {
-          nodes.push(<h3 key={key} className="news-detail-markdown-heading">{text}</h3>);
-        } else {
-          nodes.push(<h4 key={key} className="news-detail-markdown-subheading">{text}</h4>);
-        }
-        break;
-      }
-      case 'paragraph':
-        nodes.push(<p key={key} className="news-detail-markdown-paragraph">{renderPolicyInlineMarkdown(block.text)}</p>);
-        break;
-      case 'list': {
-        const Tag = block.ordered ? 'ol' : 'ul';
-        nodes.push(
-          <Tag key={key} className="news-detail-markdown-list">
-            {(block.items || []).map((listItem, j) => (
-              <li key={`${key}-${j}`}>{renderPolicyInlineMarkdown(listItem)}</li>
-            ))}
-          </Tag>
-        );
-        break;
-      }
-      case 'quote':
-        nodes.push(<blockquote key={key} className="news-detail-markdown-quote">{renderPolicyInlineMarkdown(block.text)}</blockquote>);
-        break;
-      case 'divider':
-        nodes.push(<hr key={key} className="news-detail-markdown-divider" />);
-        break;
-      case 'markdown':
-        // 兼容旧 Markdown 字符串数据
-        nodes.push(...(renderNewsMarkdown(block.text) || []));
-        break;
-      default:
-        break;
-    }
-  });
-
-  return nodes;
-}
-
-// ===== policy markdown 渲染（含表格 / 引用 / 有序列表 / 加粗 / 斜体 / 裸网址链接）=====
-// 同时支持：Markdown 链接 [文字](网址)、加粗 **x**、斜体 *x*，以及裸网址
-// （https://... 与 www. 域名）——裸网址自动转为可点击外链，避免以纯文本呈现。
-function renderPolicyInlineMarkdown(text) {
-  const parts = [];
-  const value = preprocessInlineUrlParens(text);
-  const regex =
-    /\[([^\]]+)\]\(([^)]*)\)|\*\*([^*]+)\*\*|\*([^*]+)\*|(https?:\/\/[^\s）>，。、；：'"]+)|(www\.[^\s）>，。、；：'"]+)/g;
-  let lastIndex = 0;
-  let match;
-
-  while ((match = regex.exec(value)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push(value.slice(lastIndex, match.index));
-    }
-
-    if (match[1] !== undefined) {
-      parts.push(
-        <a key={`link-${match.index}`} className="text-link" href={match[2]} target="_blank" rel="noreferrer">
-          {match[1] || match[2]}
-        </a>
-      );
-    } else if (match[3] !== undefined) {
-      parts.push(<strong key={`strong-${match.index}`}>{match[3]}</strong>);
-    } else if (match[4] !== undefined) {
-      parts.push(<em key={`em-${match.index}`}>{match[4]}</em>);
-    } else if (match[5] !== undefined) {
-      parts.push(
-        <a key={`link-${match.index}`} className="text-link" href={match[5]} target="_blank" rel="noreferrer">
-          {match[5]}
-        </a>
-      );
-    } else if (match[6] !== undefined) {
-      const href = `https://${match[6]}`;
-      parts.push(
-        <a key={`link-${match.index}`} className="text-link" href={href} target="_blank" rel="noreferrer">
-          {match[6]}
-        </a>
-      );
-    }
-
-    lastIndex = regex.lastIndex;
   }
-
-  if (lastIndex < value.length) {
-    parts.push(value.slice(lastIndex));
-  }
-
-  return parts;
+  return renderBlocks(expanded, { topHeadingTag: 'h3', subHeadingTag: 'h4' });
 }
 
 function cleanPolicyText(text, title = '') {
@@ -566,7 +467,7 @@ function renderNewsDetail(item, news, relatedSchools) {
       <section className="news-detail-body">
         <article className="news-detail-main" id="article-body">
           <div className="news-detail-markdown">
-            {renderNewsBlocks(articleBodyMarkdown)}
+            {renderNewsContent(articleBodyMarkdown)}
           </div>
 
           <div className="news-detail-tags" aria-label="文章标签">
@@ -716,7 +617,7 @@ function renderPolicyDetail(item, news) {
       <section className="news-detail-body">
         <article className="news-detail-main" id="article-body">
           <div className="news-detail-markdown">
-            {renderNewsBlocks(articleBodyMarkdown)}
+            {renderNewsContent(articleBodyMarkdown)}
           </div>
 
           <div className="news-detail-tags" aria-label="文章标签">

@@ -80,6 +80,14 @@ export default function RootLayout({ children }) {
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7712476875404468" crossOrigin="anonymous"></script>
       </head>
       <body className={`${fontFunnel.variable} ${fontGeist.variable} ${fontGeistMono.variable} ${fontNotoSansSC.variable} ${fontNotoSerifSC.variable}`}>
+        {/* 首屏同步设置 data-page，避免频道 CSS（body[data-page=...]）因客户端 useEffect 延迟而首屏闪烁（FOUC）。
+            SPA 路由切换由 BodyPageFlag 的 useEffect 负责更新。 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var p=location.pathname||'/';var r=p.indexOf('/news')===0?'news':p.indexOf('/schools')===0?'schools':p.indexOf('/knowledge')===0?'knowledge':'home';document.body.setAttribute('data-page',r);}catch(e){}})();"
+          }}
+        />
         <BodyPageFlag />
         {children}
         <Analytics />
