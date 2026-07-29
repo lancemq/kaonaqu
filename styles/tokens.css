@@ -27,6 +27,33 @@
     /* 品牌蓝低透明度叠层（focus ring / 选中底色），避免 rgba 内联重复写死 #2563eb */
     --color-accent-tint: rgba(37, 99, 235, 0.1);
 
+    /* ---------- Spacing scale（4px 基准，纵向节奏单一来源） ---------- */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-15: 60px;
+    --space-16: 64px;
+    --space-20: 80px;
+    --space-24: 96px;
+    --space-32: 128px;
+
+    /* ---------- Breakpoints（仅作集中记录；media 查询仍用原值） ---------- */
+    --bp-sm: 760px;
+    --bp-md: 960px;
+    --bp-lg: 1120px;
+    --bp-xl: 1180px;
+
+    /* ---------- Reading measure & containers ---------- */
+    --measure-read: 800px;
+    --content-narrow: 960px;
+    --content-wide: 1180px;
+
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 20px;
@@ -51,6 +78,8 @@
     --channel-line: var(--color-line);
     --channel-paper: var(--color-paper);
     --channel-accent: var(--color-accent);
+    --channel-accent-strong: var(--color-accent-strong);
+    --channel-blue-strong: var(--color-accent-strong);
 
     /* 语义状态色（channel 命名空间别名，供 pages/* 使用） */
     --channel-status-verified-bg: var(--status-verified-bg);
@@ -88,4 +117,82 @@
         radial-gradient(60% 75% at 78% 8%, rgba(37, 99, 235, 0.42), rgba(37, 99, 235, 0) 72%),
         radial-gradient(50% 60% at 6% 92%, rgba(37, 99, 235, 0.30), rgba(37, 99, 235, 0) 70%),
         linear-gradient(115deg, #0b1220 0%, #10315a 55%, #0b1e38 100%);
+}
+
+/* ============================================================
+   Per-channel identity — 每个频道一套强调色，根治"频道视觉身份塌缩"。
+   仅覆盖强调色族（蓝 / accent），暗色 chrome（--channel-ink）保持中性，
+   保证导航 / 页脚 / 分页等暗色组件跨频道统一。
+   通过重写基础别名变量，全站所有 var(--channel-blue)/var(--site-accent)/
+   var(--color-accent)/var(--channel-hero-bg) 引用自动换肤，零布局改动。
+   body[data-page] 由客户端组件设置，与现有频道 CSS 作用域一致。
+   ============================================================ */
+
+/* 新闻：编辑感玫红（时效 / 重点） */
+body[data-page="news"] {
+    --color-accent: #e11d48;
+    --color-accent-strong: #be123c;
+    --color-accent-soft: #fecdd3;
+    --color-accent-tint: rgba(225, 29, 72, 0.10);
+
+    --channel-blue: #e11d48;
+    --channel-blue-soft: #fecdd3;
+    --channel-blue-strong: #be123c;
+    --channel-accent: #e11d48;
+    --channel-accent-strong: #be123c;
+    --channel-accent-tint: rgba(225, 29, 72, 0.10);
+
+    --site-accent: #e11d48;
+    --site-accent-dark: #be123c;
+
+    --channel-hero-bg:
+        radial-gradient(60% 75% at 78% 8%, rgba(225, 29, 72, 0.42), rgba(225, 29, 72, 0) 72%),
+        radial-gradient(50% 60% at 6% 92%, rgba(225, 29, 72, 0.30), rgba(225, 29, 72, 0) 70%),
+        linear-gradient(115deg, #1a0b14 0%, #3a1228 55%, #1a0b16 100%);
+}
+
+/* 学校：探索感青绿（检索 / 比对） */
+body[data-page="schools"] {
+    --color-accent: #0f766e;
+    --color-accent-strong: #115e59;
+    --color-accent-soft: #99f6e4;
+    --color-accent-tint: rgba(15, 118, 110, 0.10);
+
+    --channel-blue: #0f766e;
+    --channel-blue-soft: #99f6e4;
+    --channel-blue-strong: #115e59;
+    --channel-accent: #0f766e;
+    --channel-accent-strong: #115e59;
+    --channel-accent-tint: rgba(15, 118, 110, 0.10);
+
+    --site-accent: #0f766e;
+    --site-accent-dark: #115e59;
+
+    --channel-hero-bg:
+        radial-gradient(60% 75% at 78% 8%, rgba(15, 118, 110, 0.42), rgba(15, 118, 110, 0) 72%),
+        radial-gradient(50% 60% at 6% 92%, rgba(15, 118, 110, 0.30), rgba(15, 118, 110, 0) 70%),
+        linear-gradient(115deg, #07140f 0%, #0c302b 55%, #07140f 100%);
+}
+
+/* 知识：体系感紫（学习 / 结构） */
+body[data-page="knowledge"] {
+    --color-accent: #7c3aed;
+    --color-accent-strong: #6d28d9;
+    --color-accent-soft: #ddd6fe;
+    --color-accent-tint: rgba(124, 58, 237, 0.10);
+
+    --channel-blue: #7c3aed;
+    --channel-blue-soft: #ddd6fe;
+    --channel-blue-strong: #6d28d9;
+    --channel-accent: #7c3aed;
+    --channel-accent-strong: #6d28d9;
+    --channel-accent-tint: rgba(124, 58, 237, 0.10);
+
+    --site-accent: #7c3aed;
+    --site-accent-dark: #6d28d9;
+
+    --channel-hero-bg:
+        radial-gradient(60% 75% at 78% 8%, rgba(124, 58, 237, 0.42), rgba(124, 58, 237, 0) 72%),
+        radial-gradient(50% 60% at 6% 92%, rgba(124, 58, 237, 0.30), rgba(124, 58, 237, 0) 70%),
+        linear-gradient(115deg, #120a1f 0%, #241046 55%, #120a1f 100%);
 }

@@ -1,0 +1,84 @@
+/* ============================================================
+   Rich content component layer — canonical structured-block styles
+   供 BlockRenderer / 任意结构化内容渲染复用（新闻详情、学校详情、未来页面）。
+   使用 channel token，自动随 per-channel 主题换肤。
+   刻意"不"依赖 body[data-page]：首屏 SSR 即生效，避免 FOUC；
+   学校详情页的 .school-pencil-section 作用域规则优先级更高，会自然覆盖此处。
+   ============================================================ */
+
+.rich-block-heading {
+    margin: 0;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+.rich-block-subheading {
+    margin: 0;
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.rich-block-paragraph {
+    margin: 0;
+    color: var(--channel-muted);
+    font-family: var(--channel-font-body);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.rich-block-list {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+    padding-left: 1.2em;
+    color: var(--channel-muted);
+    font-family: var(--channel-font-body);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.rich-block-list li::marker {
+    color: var(--channel-blue);
+    font-weight: 700;
+}
+
+.rich-block-quote {
+    margin: 0;
+    padding: 12px 18px;
+    border-left: 3px solid var(--channel-blue);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--channel-accent-tint, rgba(37, 99, 235, 0.08));
+    color: var(--channel-text);
+    font-family: var(--channel-font-body);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.rich-block-divider {
+    margin: 8px 0;
+    border: 0;
+    border-top: 1px solid var(--channel-line);
+}
+
+/* inline 链接与新闻详情 .text-link 保持视觉一致 */
+.rich-block-paragraph .text-link,
+.rich-block-list .text-link,
+.rich-block-quote .text-link {
+    color: var(--channel-blue);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rich-block-quote {
+        transition: none;
+    }
+}
