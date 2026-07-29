@@ -170,7 +170,7 @@ function ChannelHero({ page }) {
   const hero = page.hero || {};
   const stats = hero.stats?.length ? hero.stats : [
     { value: '40+', label: '学科档案' },
-    { value: '6', label: '年级入口' },
+    { value: '7', label: '年级入口' },
     { value: '持续', label: '内容更新' }
   ];
   const kicker = hero.kicker || '知识体系';

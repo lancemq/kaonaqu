@@ -65,7 +65,7 @@ const KNOWLEDGE_TOPICS = [
   { label: '九年级中考总览', meta: 'GRADE 9', href: '/knowledge/grade-9' },
   { label: '数学压轴题路径', meta: 'MATH', href: '/knowledge/math-grade9' },
   { label: '物理实验专题', meta: 'PHYSICS', href: '/knowledge/physics-grade9' },
-  { label: '高中衔接准备', meta: 'SENIOR', href: '/knowledge/grade-7' }
+  { label: '高中衔接准备', meta: 'SENIOR', href: '/knowledge/senior-1' }
 ];
 
 function getNewsHref(item) {

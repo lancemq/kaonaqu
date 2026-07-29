@@ -1,4 +1,4 @@
-const { readFileSync } = require('fs');
+const { readFileSync, readdirSync } = require('fs');
 const { join } = require('path');
 const { loadNewsIds } = require('../shared/data-store');
 
@@ -12,24 +12,27 @@ const SPECIAL_PAGES = [
   'sports-reform'
 ];
 
-// Knowledge URLs are generated live from content/knowledge/_index.json (the same
-// manifest the route reads), so the sitemap never drifts when a slug is added,
-// renamed, or removed. The hand-maintained knowledge entries in
+// Knowledge URLs are generated live by scanning content/knowledge (the same
+// directory the route reads via fs.readdir), so the sitemap never drifts when a
+// slug is added, renamed, or removed. The hand-maintained knowledge entries in
 // data/sitemap-extra.xml are therefore ignored below.
 function knowledgeUrls() {
-  const manifestPath = join(process.cwd(), 'content', 'knowledge', '_index.json');
-  let manifest;
+  const dir = join(process.cwd(), 'content', 'knowledge');
+  let files;
   try {
-    manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    files = readdirSync(dir);
   } catch {
     return [];
   }
-  return Object.keys(manifest).map((slug) => ({
-    url: slug === 'index' ? `${BASE}/knowledge` : `${BASE}/knowledge/${slug}`,
-    lastmod: new Date().toISOString().slice(0, 10),
-    changefreq: 'weekly',
-    priority: 0.6
-  }));
+  return files
+    .filter((f) => f.endsWith('.json') && f !== '_index.json')
+    .map((f) => f.slice(0, -'.json'.length))
+    .map((slug) => ({
+      url: slug === 'index' ? `${BASE}/knowledge` : `${BASE}/knowledge/${slug}`,
+      lastmod: new Date().toISOString().slice(0, 10),
+      changefreq: 'weekly',
+      priority: 0.6
+    }));
 }
 
 // News URLs are generated live from the data store so the sitemap never
