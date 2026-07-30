@@ -2,7 +2,6 @@ import Link from 'next/link';
 import GradeSubjectExplorer from './knowledge-grade-explorer';
 import { buildKnowledgeNav, getGradeQuickLinks } from '../lib/knowledge-content.mjs';
 import { MathBlock, renderInlineMath } from './knowledge-math';
-import KnowledgeMindMap from './knowledge-mindmap';
 import KnowledgeQuiz from './knowledge-quiz';
 import { FREQ_LABELS } from '../lib/knowledge-meta.mjs';
 
@@ -138,47 +137,6 @@ function MetaBadges({ difficulty, examFrequency }) {
       ) : null}
     </div>
   );
-}
-
-function headingsToTree(title, headings) {
-  const root = { label: title, children: [] };
-  const stack = [{ level: 0, node: root }];
-  for (const h of headings) {
-    if (!h.label) continue;
-    const node = { label: h.label, children: [] };
-    while (stack.length > 1 && stack[stack.length - 1].level >= h.level) stack.pop();
-    stack[stack.length - 1].node.children.push(node);
-    stack.push({ level: h.level, node });
-  }
-  return root;
-}
-
-// 由页面结构生成知识导图树：结构化页取 sections→cards/items；
-// 学科主题页（rich blocks）取标题层级（h2/h3/h4）。
-function buildKnowledgeTree(page) {
-  if (!page) return null;
-  if (page.renderMode === 'structured') {
-    const root = { label: page.hero?.title || page.title || '本页', children: [] };
-    (page.sections || []).forEach((section) => {
-      const children = [];
-      if (Array.isArray(section.cards)) section.cards.forEach((c) => children.push({ label: c.title }));
-      else if (Array.isArray(section.items)) section.items.forEach((it) => children.push({ label: it }));
-      else if (Array.isArray(section.equations)) {
-        section.equations.forEach((eq) => children.push({ label: eq.caption || eq.tex }));
-      }
-      if (children.length) root.children.push({ label: section.title, children });
-    });
-    return root;
-  }
-  const headings = [];
-  function visit(node) {
-    if (node && ['h2', 'h3', 'h4'].includes(node.tag)) {
-      headings.push({ level: Number(node.tag[1]), label: textFromNodes(node.children) });
-    }
-    node?.children?.forEach(visit);
-  }
-  (page.richBlocks || []).forEach(visit);
-  return headingsToTree(page.title || '本页', headings);
 }
 
 function SiteNav() {
@@ -403,7 +361,6 @@ function GradePage({ page }) {
         </section>
       ) : null}
       {page.sections.map((section) => <StructuredSection section={section} key={section.id} />)}
-      <KnowledgeMindMap tree={buildKnowledgeTree(page)} title="本年级知识结构" />
       {page.quizzes?.length ? (
         <KnowledgeQuiz questions={page.quizzes} slug={page.slug} />
       ) : null}
@@ -571,7 +528,6 @@ function SubjectPage({ page }) {
         </article>
         <DetailSidebar page={page} />
       </section>
-      <KnowledgeMindMap tree={buildKnowledgeTree(page)} title="本页知识结构" />
       {page.quizzes?.length ? (
         <KnowledgeQuiz questions={page.quizzes} slug={page.slug} />
       ) : null}
