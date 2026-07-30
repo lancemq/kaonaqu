@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import GradeSubjectExplorer from './knowledge-grade-explorer';
 import { buildKnowledgeNav, getGradeQuickLinks } from '../lib/knowledge-content.mjs';
+import { MathBlock, renderInlineMath } from './knowledge-math';
+import KnowledgeMindMap from './knowledge-mindmap';
+import KnowledgeQuiz from './knowledge-quiz';
+import { FREQ_LABELS } from '../lib/knowledge-meta.mjs';
 
 const NAV_ITEMS = [
   { label: '首页', href: '/' },
@@ -113,6 +117,68 @@ function inferGradeLabel(page) {
   if (title.includes('高二') || slug.includes('senior2') || slug.includes('senior-2')) return '高二';
   if (title.includes('高三') || slug.includes('senior3') || slug.includes('senior-3')) return '高三';
   return '知识专题';
+}
+
+function MetaBadges({ difficulty, examFrequency }) {
+  if (!difficulty && !examFrequency) return null;
+  return (
+    <div className="kb-badges">
+      {difficulty ? (
+        <span className="kb-badge kb-badge-diff" data-level={difficulty} title={`难度 ${difficulty}/5`}>
+          <em>难度</em>
+          {String('★'.repeat(difficulty))}
+          <span className="kb-badge-dim">{String('☆'.repeat(5 - difficulty))}</span>
+        </span>
+      ) : null}
+      {examFrequency ? (
+        <span className={`kb-badge kb-badge-freq freq-${examFrequency}`}>
+          <em>考频</em>
+          {FREQ_LABELS[examFrequency] || examFrequency}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+function headingsToTree(title, headings) {
+  const root = { label: title, children: [] };
+  const stack = [{ level: 0, node: root }];
+  for (const h of headings) {
+    if (!h.label) continue;
+    const node = { label: h.label, children: [] };
+    while (stack.length > 1 && stack[stack.length - 1].level >= h.level) stack.pop();
+    stack[stack.length - 1].node.children.push(node);
+    stack.push({ level: h.level, node });
+  }
+  return root;
+}
+
+// 由页面结构生成知识导图树：结构化页取 sections→cards/items；
+// 学科主题页（rich blocks）取标题层级（h2/h3/h4）。
+function buildKnowledgeTree(page) {
+  if (!page) return null;
+  if (page.renderMode === 'structured') {
+    const root = { label: page.hero?.title || page.title || '本页', children: [] };
+    (page.sections || []).forEach((section) => {
+      const children = [];
+      if (Array.isArray(section.cards)) section.cards.forEach((c) => children.push({ label: c.title }));
+      else if (Array.isArray(section.items)) section.items.forEach((it) => children.push({ label: it }));
+      else if (Array.isArray(section.equations)) {
+        section.equations.forEach((eq) => children.push({ label: eq.caption || eq.tex }));
+      }
+      if (children.length) root.children.push({ label: section.title, children });
+    });
+    return root;
+  }
+  const headings = [];
+  function visit(node) {
+    if (node && ['h2', 'h3', 'h4'].includes(node.tag)) {
+      headings.push({ level: Number(node.tag[1]), label: textFromNodes(node.children) });
+    }
+    node?.children?.forEach(visit);
+  }
+  (page.richBlocks || []).forEach(visit);
+  return headingsToTree(page.title || '本页', headings);
 }
 
 function SiteNav() {
@@ -237,6 +303,7 @@ function GradeHero({ page }) {
       </div>
       <SectionKicker label="GRADE OVERVIEW" />
       <h1>{page.hero?.title || page.title.replace(' | 考哪去', '')}</h1>
+      <MetaBadges difficulty={page.difficulty} examFrequency={page.examFrequency} />
       <p>{page.hero?.summary || page.description}</p>
       {stats.length ? (
         <div className="knowledge-grade-stats">
@@ -263,6 +330,23 @@ function StructuredSection({ section }) {
         <ul>
           {section.items.map((item) => <li key={item}>{item}</li>)}
         </ul>
+      </section>
+    );
+  }
+
+  if (section.type === 'math') {
+    return (
+      <section className="knowledge-section knowledge-math-section" id={section.id}>
+        <SectionKicker label={kicker} />
+        <h2>{section.title}</h2>
+        {section.intro ? (
+          <p className="knowledge-math-intro">{renderInlineMath(section.intro)}</p>
+        ) : null}
+        <div className="knowledge-math-grid">
+          {(section.equations || []).map((eq, i) => (
+            <MathBlock key={i} tex={eq.tex} display={eq.display !== false} caption={eq.caption} />
+          ))}
+        </div>
       </section>
     );
   }
@@ -319,6 +403,10 @@ function GradePage({ page }) {
         </section>
       ) : null}
       {page.sections.map((section) => <StructuredSection section={section} key={section.id} />)}
+      <KnowledgeMindMap tree={buildKnowledgeTree(page)} title="本年级知识结构" />
+      {page.quizzes?.length ? (
+        <KnowledgeQuiz questions={page.quizzes} slug={page.slug} />
+      ) : null}
     </>
   );
 }
@@ -391,6 +479,7 @@ function SubjectHeader({ page }) {
         <span>{inferGradeLabel(page)}</span>
         <h1>{heading.title}</h1>
       </div>
+      <MetaBadges difficulty={page.difficulty} examFrequency={page.examFrequency} />
       <p>{heading.desc}</p>
       {page.updatedAt ? (
         <p className="knowledge-subject-updated">最后更新：{page.updatedAt}</p>
@@ -419,7 +508,7 @@ function RichTextNodes({ nodes = [], headingState }) {
 
 function RichTextNode({ headingState, node }) {
   if (!node) return null;
-  if (node.type === 'text') return node.text;
+  if (node.type === 'text') return renderInlineMath(node.text);
 
   const children = <RichTextNodes headingState={headingState} nodes={node.children} />;
   const props = {};
@@ -482,6 +571,10 @@ function SubjectPage({ page }) {
         </article>
         <DetailSidebar page={page} />
       </section>
+      <KnowledgeMindMap tree={buildKnowledgeTree(page)} title="本页知识结构" />
+      {page.quizzes?.length ? (
+        <KnowledgeQuiz questions={page.quizzes} slug={page.slug} />
+      ) : null}
     </>
   );
 }

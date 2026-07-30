@@ -1,4 +1,5 @@
 import '../../../styles/channels/knowledge.css';
+import 'katex/dist/katex.min.css';
 import { notFound } from 'next/navigation';
 import KnowledgePage from '../../../components/knowledge-page';
 import { getKnowledgePage, listKnowledgeSlugs, buildKnowledgeJsonLd } from '../../../lib/knowledge-content.mjs';

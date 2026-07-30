@@ -1749,3 +1749,517 @@ a.knowledge-index-card:hover {
         padding: 0 16px;
     }
 }
+
+/* ============================================================
+   P2 知识板块增强：难度/考频徽章 · 公式 · 知识导图 · 自测错题本
+   ============================================================ */
+
+/* ---- 难度 / 考频徽章 ---- */
+.kb-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 4px;
+}
+
+.kb-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    border: 1px solid transparent;
+}
+
+.kb-badge em {
+    font-style: normal;
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+.kb-badge-diff {
+    color: #b45309;
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.32);
+    letter-spacing: 1px;
+}
+
+.kb-badge-dim {
+    opacity: 0.35;
+    margin-left: -3px;
+}
+
+.kb-badge-freq {
+    color: var(--channel-text);
+    background: var(--channel-accent-tint, rgba(37, 99, 235, 0.08));
+    border-color: var(--kb-blue-line);
+}
+
+.kb-badge-freq.freq-high {
+    color: #b91c1c;
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.32);
+}
+
+.kb-badge-freq.freq-mid {
+    color: #b45309;
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.32);
+}
+
+.kb-badge-freq.freq-low {
+    color: #047857;
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.32);
+}
+
+/* ---- 公式速查 ---- */
+.knowledge-math-intro {
+    max-width: var(--measure-read, 800px);
+    color: var(--channel-muted);
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 0 0 18px;
+}
+
+.knowledge-math-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.knowledge-math {
+    margin: 0;
+    padding: 18px 20px;
+    border: 1px solid var(--kb-blue-line);
+    border-radius: var(--radius-sm, 8px);
+    background: linear-gradient(180deg, #fff, var(--kb-blue-soft, rgba(124, 58, 237, 0.06)));
+}
+
+.knowledge-math.is-display .knowledge-math-render {
+    display: block;
+    text-align: center;
+    overflow-x: auto;
+    padding: 6px 0;
+}
+
+.knowledge-math.is-inline {
+    display: inline-block;
+    padding: 2px 10px;
+    margin: 0 4px;
+    vertical-align: middle;
+}
+
+.knowledge-math-render {
+    color: var(--channel-text);
+}
+
+.knowledge-math-caption {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--kb-blue);
+    font-weight: 700;
+}
+
+.kb-math-inline {
+    display: inline-block;
+}
+
+.kb-math-error {
+    color: #b91c1c;
+    font-family: var(--channel-font-mono, monospace);
+}
+
+.knowledge-detail-main .knowledge-math-section {
+    scroll-margin-top: 90px;
+}
+
+/* ---- 知识导图 ---- */
+.knowledge-mindmap {
+    max-width: 920px;
+    margin: 8px auto 0;
+    padding: 28px 32px 36px;
+}
+
+.knowledge-mindmap .knowledge-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.knowledge-mindmap h2 {
+    font-family: var(--channel-font-heading);
+    font-size: 22px;
+    color: var(--channel-text);
+    margin: 2px 0 18px;
+}
+
+.km-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.km-controls button {
+    border: 1px solid var(--kb-blue-line);
+    background: #fff;
+    color: var(--kb-blue);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease;
+}
+
+.km-controls button:hover {
+    background: var(--kb-blue);
+    color: #fff;
+}
+
+.knowledge-mindmap .km-root,
+.knowledge-mindmap .km-children {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.knowledge-mindmap .km-children {
+    padding-left: 1.4rem;
+    position: relative;
+}
+
+.knowledge-mindmap .km-children::before {
+    content: '';
+    position: absolute;
+    top: 0.2rem;
+    bottom: 0.9rem;
+    left: 0.5rem;
+    border-left: 1px solid var(--kb-blue-line);
+}
+
+.knowledge-mindmap .km-branch,
+.knowledge-mindmap .km-leaf {
+    position: relative;
+}
+
+.knowledge-mindmap .km-branch::before,
+.knowledge-mindmap .km-leaf::before {
+    content: '';
+    position: absolute;
+    top: 1.05rem;
+    left: -0.9rem;
+    width: 0.9rem;
+    border-top: 1px solid var(--kb-blue-line);
+}
+
+.knowledge-mindmap .km-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+.knowledge-mindmap .km-toggle {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--kb-blue-line);
+    background: #fff;
+    color: var(--kb-blue);
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.knowledge-mindmap .km-label {
+    color: var(--channel-text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.knowledge-mindmap .km-leaf > .km-label {
+    color: var(--channel-muted);
+    font-weight: 500;
+}
+
+/* ---- 自测 / 错题本 ---- */
+.knowledge-quiz {
+    max-width: 920px;
+    margin: 8px auto 0;
+    padding: 28px 32px 40px;
+}
+
+.knowledge-quiz .knowledge-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.knowledge-quiz h2 {
+    font-family: var(--channel-font-heading);
+    font-size: 22px;
+    color: var(--channel-text);
+    margin: 2px 0 18px;
+}
+
+.kq-wrongbook-btn {
+    border: 1px solid var(--kb-blue-line);
+    background: #fff;
+    color: var(--kb-blue);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.kq-wrongbook-btn:hover {
+    background: var(--kb-blue);
+    color: #fff;
+}
+
+.kq-wrongbook {
+    border: 1px solid var(--kb-blue-line);
+    border-radius: var(--radius-sm, 8px);
+    background: var(--kb-blue-soft, rgba(124, 58, 237, 0.06));
+    padding: 14px 16px;
+    margin-bottom: 20px;
+}
+
+.kq-wrongbook-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.kq-wrongbook-head strong {
+    color: var(--channel-text);
+}
+
+.kq-clear {
+    border: none;
+    background: none;
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.kq-wrongbook ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.kq-wrongbook li {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--channel-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.kq-wrongbook li button {
+    flex: none;
+    border: 1px solid var(--kb-blue-line);
+    background: #fff;
+    color: var(--kb-blue);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.kq-empty {
+    color: var(--channel-muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+.kq-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 18px;
+    counter-reset: q;
+}
+
+.kq-item {
+    border: 1px solid var(--channel-line);
+    border-radius: var(--radius-sm, 8px);
+    padding: 18px 20px;
+    background: #fff;
+}
+
+.kq-q {
+    display: flex;
+    gap: 10px;
+    margin: 0 0 12px;
+    color: var(--channel-text);
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+.kq-num {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--kb-blue);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kq-options {
+    display: grid;
+    gap: 8px;
+}
+
+.kq-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid var(--channel-line);
+    border-radius: var(--radius-sm, 8px);
+    background: #fff;
+    color: var(--channel-text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 140ms ease, background 140ms ease;
+}
+
+.kq-option:hover:not(:disabled) {
+    border-color: var(--kb-blue);
+}
+
+.kq-option.is-chosen {
+    border-color: var(--kb-blue);
+    background: var(--kb-blue-soft, rgba(124, 58, 237, 0.08));
+}
+
+.kq-option.is-correct {
+    border-color: #16a34a;
+    background: rgba(22, 163, 74, 0.1);
+    color: #15803d;
+}
+
+.kq-option.is-wrong {
+    border-color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+    color: #b91c1c;
+}
+
+.kq-opt-key {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--channel-line);
+    color: var(--channel-text);
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kq-option.is-correct .kq-opt-key,
+.kq-option.is-wrong .kq-opt-key {
+    background: currentColor;
+    color: #fff;
+}
+
+.kq-submit {
+    margin-top: 12px;
+    border: 1px solid var(--kb-blue);
+    background: var(--kb-blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.kq-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.kq-feedback {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm, 8px);
+    border-left: 3px solid var(--kb-blue);
+    background: var(--channel-accent-tint, rgba(37, 99, 235, 0.08));
+}
+
+.kq-feedback.is-correct {
+    border-left-color: #16a34a;
+    background: rgba(22, 163, 74, 0.1);
+}
+
+.kq-feedback.is-wrong {
+    border-left-color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.kq-feedback strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--channel-text);
+}
+
+.kq-feedback p {
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.kq-retry {
+    margin-top: 8px;
+    border: none;
+    background: none;
+    color: var(--kb-blue);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+    .knowledge-mindmap,
+    .knowledge-quiz {
+        padding: 22px 16px 30px;
+    }
+}
+
