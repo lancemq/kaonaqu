@@ -79,7 +79,10 @@ export default function RootLayout({ children }) {
       <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7712476875404468" crossOrigin="anonymous"></script>
       </head>
-      <body className={`${fontFunnel.variable} ${fontGeist.variable} ${fontGeistMono.variable} ${fontNotoSansSC.variable} ${fontNotoSerifSC.variable}`}>
+      <body
+        className={`${fontFunnel.variable} ${fontGeist.variable} ${fontGeistMono.variable} ${fontNotoSansSC.variable} ${fontNotoSerifSC.variable}`}
+        suppressHydrationWarning
+      >
         {/* 首屏同步设置 data-page，避免频道 CSS（body[data-page=...]）因客户端 useEffect 延迟而首屏闪烁（FOUC）。
             SPA 路由切换由 BodyPageFlag 的 useEffect 负责更新。 */}
         <script
