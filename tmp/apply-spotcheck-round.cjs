@@ -165,7 +165,7 @@ function mergeOutcome(cur, add) {
     if (code) adm.code = code;
     const cleanNote = cleanNotes(r.notes);
     if (cleanNote && !String(adm.notes || '').includes(cleanNote.slice(0, 30))) {
-      adm.notes = adm.notes ? `${adm.notes}\n【2026-07抽查】${cleanNote}` : `【2026-07抽查】${cleanNote}`;
+      adm.notes = adm.notes ? `${adm.notes}\n【2026-08抽查】${cleanNote}` : `【2026-08抽查】${cleanNote}`;
     }
     next.admissionInfo = adm;
 
@@ -177,6 +177,10 @@ function mergeOutcome(cur, add) {
     if (OUTCOME_APPEND[r.dbName]) {
       const m = mergeOutcome(cur.outcomeStats, OUTCOME_APPEND[r.dbName]);
       next.outcomeStats = m.list; outAdded = m.added;
+    }
+    if (Array.isArray(r.outcomeStats) && r.outcomeStats.length) {
+      const m = mergeOutcome(next.outcomeStats || cur.outcomeStats, r.outcomeStats);
+      next.outcomeStats = m.list; outAdded += m.added;
     }
     next.infoVerified = true;
 
