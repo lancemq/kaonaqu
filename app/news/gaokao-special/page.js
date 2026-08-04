@@ -8,12 +8,12 @@ const require = createRequire(import.meta.url);
 const { loadNewsList } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: `${label}高招政策详解 | 考哪去`,
     description: `以 2026 年${label}市普通高校招生办法为依据，系统说明${label}高考"3+3"模式与 660 分构成、综合评价与强基计划、院校专业组平行志愿、学业水平考试、艺体招生与政策性照顾加分，附关键时间节点与常见误区。`,
-    alternates: { canonical: '/news/gaokao-special' }
+    alternates: { canonical: `/${region}/news/gaokao-special` }
   };
 }
 

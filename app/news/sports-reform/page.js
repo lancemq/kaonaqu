@@ -8,12 +8,12 @@ const require = createRequire(import.meta.url);
 const { loadNewsList } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: `${label}体育考试改革专题 | 考哪去`,
     description: `集中查看${label}中考体育改革、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生相关信息，方便家长和学生按专题快速了解。`,
-    alternates: { canonical: '/news/sports-reform' }
+    alternates: { canonical: `/${region}/news/sports-reform` }
   };
 }
 

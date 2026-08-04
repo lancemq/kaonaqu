@@ -1,4 +1,4 @@
-// 给路径加 region 前缀的纯函数（ESM 零依赖，server/client/middleware 共用）。
+// 给路径加 region 前缀的纯函数（ESM 零依赖，server/client/proxy 共用）。
 // regionPath('/schools', 'shanghai') -> '/shanghai/schools'
 // regionPath('/', 'shanghai') -> '/shanghai'（根路径不加尾斜杠）
 // 保留 query/hash；非字符串（Next URL 对象等）透传不处理。

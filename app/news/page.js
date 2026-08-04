@@ -9,12 +9,13 @@ const require = createRequire(import.meta.url);
 const { loadNewsList, loadSchoolNamesByIds } = require('../../shared/data-store');
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: `${label}中考高考新闻政策 | 考哪去`,
     description: `${label}中考、高考最新政策、考试安排、招生消息与学校动态聚合，帮你少翻信息，先抓重点。`,
-    keywords: [`${label}中考新闻`, `${label}高考政策`, '中招安排', '高招消息', `${label}升学动态`]
+    keywords: [`${label}中考新闻`, `${label}高考政策`, '中招安排', '高招消息', `${label}升学动态`],
+    alternates: { canonical: `/${region}/news` }
   };
 }
 

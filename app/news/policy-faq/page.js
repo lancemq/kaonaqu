@@ -5,6 +5,7 @@ import {
   PolicyToolSideCard
 } from '../../../components/news-policy-tool-ui';
 import { getRegionContext } from '../../../lib/region-server.mjs';
+import { RegionLink } from '../../../components/region-link';
 
 const faqGroups = [
   {
@@ -312,7 +313,7 @@ export default function PolicyFaqPage() {
         <PolicyToolLabel>WORKFLOW</PolicyToolLabel>
         <h2 id="policy-faq-cta-title">把问答变成可执行清单</h2>
         <p>先用本页确认判断顺序，再去概念速查页核对术语边界，最后把具体时间写入招生日程。政策不是背下来，而是拆成下一步动作。</p>
-        <a href="/news/policy-glossary">进入政策概念速查</a>
+        <RegionLink href="/news/policy-glossary">进入政策概念速查</RegionLink>
       </section>
     </PolicyToolShell>
     </>

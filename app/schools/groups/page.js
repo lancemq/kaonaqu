@@ -7,11 +7,12 @@ const { loadSchoolsList } = require('../../../shared/data-store');
 const { DISTRICT_CATALOG } = require('../../../shared/data-schema');
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: `${label}教育集团大全 | 考哪去`,
-    description: `按教育集团检索${label}初中、高中学校，了解各教育集团旗下成员校、分布区域、梯队构成，适合升学择校参考。`
+    description: `按教育集团检索${label}初中、高中学校，了解各教育集团旗下成员校、分布区域、梯队构成，适合升学择校参考。`,
+    alternates: { canonical: `/${region}/schools/groups` }
   };
 }
 

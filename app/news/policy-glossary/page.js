@@ -16,12 +16,12 @@ const require = createRequire(import.meta.url);
 const { loadNewsList } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: '政策概念速查 | 考哪去',
     description: `集中查看${label}升学常见政策术语与当年关键政策文件，包括中本贯通、名额到区、名额到校、自主招生录取等重点概念与官方政策原文。`,
-    alternates: { canonical: '/news/policy-glossary' }
+    alternates: { canonical: `/${region}/news/policy-glossary` }
   };
 }
 

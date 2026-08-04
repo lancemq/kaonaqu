@@ -1,6 +1,9 @@
 import { RegionLink } from './region-link';
 import { Fragment } from 'react';
 import { NewsAerialFooter, NewsAerialNav } from './news-aerial-ui';
+import { getRegionContext } from '../lib/region-server.mjs';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 
 export function TopicSectionLabel({ children }) {
   return (
@@ -159,7 +162,7 @@ function PolicyBlock({ block }) {
   );
 }
 
-export function NewsTopicSpecialPage({
+export async function NewsTopicSpecialPage({
   variant,
   kicker,
   title,
@@ -181,6 +184,7 @@ export function NewsTopicSpecialPage({
   policyBlocks,
   contentId
 }) {
+  const { region } = await getRegionContext();
   const variantHref = {
     zhongkao: '/news/zhongkao-special',
     gaokao: '/news/gaokao-special',
@@ -190,9 +194,9 @@ export function NewsTopicSpecialPage({
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: title,
-    url: `https://kaonaqu.xyz${variantHref}`,
+    url: `${SITE_URL}/${region}${variantHref}`,
     description,
-    isPartOf: { '@type': 'WebSite', name: '考哪去', url: 'https://kaonaqu.xyz' }
+    isPartOf: { '@type': 'WebSite', name: '考哪去', url: SITE_URL }
   } : null;
 
   return (

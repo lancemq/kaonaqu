@@ -3,7 +3,7 @@
 // 全站导航区域选择器：放在各频道 channel-nav-links 末尾。
 // 当前仅支持上海（KNOWN_REGIONS 只有 shanghai）；新增地区时在此追加，
 // 并同步 shared/region-list.mjs 与 shared/region-config.js。
-// 选上海 -> 无前缀路径（/schools）；选其他 -> /{region}/schools（middleware rewrite）。
+// 选上海/其他 -> /{region}/schools（统一带前缀，由 proxy.js rewrite 到无前缀实际路由）。
 import { useEffect, useRef, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useRegion } from './region-context';

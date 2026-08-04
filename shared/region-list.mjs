@@ -1,7 +1,7 @@
 // 合法地区列表 —— 多地区路由的"白名单"。
 //
 // 纯数据 + 纯 ESM，零依赖，可安全用于：
-//   - middleware.js（Edge/Node runtime）
+//   - proxy.js（Next 16 约定，原 middleware.js）
 //   - components/body-page-flag.js（client bundle）
 //   - lib/region-server.mjs（server）
 //

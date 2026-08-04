@@ -4,11 +4,12 @@ import { getRegionContext } from '../../../lib/region-server.mjs';
 const { loadSchoolsMinimal } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: `${label}估分择校 | 考哪去`,
-    description: '输入中考/高考成绩与所在区域，按学校层级参考区间给出冲刺、匹配、保底三档可填报高中建议。'
+    description: '输入中考/高考成绩与所在区域，按学校层级参考区间给出冲刺、匹配、保底三档可填报高中建议。',
+    alternates: { canonical: `/${region}/schools/score-match` }
   };
 }
 

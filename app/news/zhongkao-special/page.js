@@ -8,12 +8,12 @@ const require = createRequire(import.meta.url);
 const { loadNewsList } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: `${label}中招政策详解 | 考哪去`,
     description: `以 2026 年${label}市中招办法为依据，系统说明${label}中考招生录取的三大批次、750 分构成、名额分配综合评价、自主招生、志愿填报与政策性照顾加分，附关键时间节点与常见误区。`,
-    alternates: { canonical: '/news/zhongkao-special' }
+    alternates: { canonical: `/${region}/news/zhongkao-special` }
   };
 }
 

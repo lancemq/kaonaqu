@@ -61,6 +61,7 @@ export async function generateMetadata({ params }) {
     return { title: '学校详情 | 考哪去' };
   }
 
+  const { region } = await getRegionContext();
   const district = getSchoolDistrictName(school);
   const stage = getSchoolStage(school);
   const ownership = getSchoolOwnershipLabel(school);
@@ -70,6 +71,7 @@ export async function generateMetadata({ params }) {
     title: `${school.name}（${district}${ownership}${stage}）招生联系方式 | 考哪去`,
     description: `${school.name}位于${district}，${ownership}${stage}。${features ? '特色：' + features : ''}查看学校画像、招生路径与择校提示。`,
     keywords: [school.name, district, stage, ownership, '上海学校', '招生', '择校'].filter(Boolean),
+    alternates: { canonical: `/${region}/schools/${encodeURIComponent(id)}` },
     openGraph: {
       type: 'article',
       locale: 'zh_CN',

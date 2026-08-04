@@ -1,7 +1,7 @@
 // 地区配置：集中所有"地区专属"规则（区目录、学校层级权重、考试满分、品牌、
 // SEO 文案模板等）。纯数据 + 纯函数，零外部依赖（不引入 supabase / next），
 // 可被 shared/（CJS require）、app server 组件（createRequire 桥接）、
-// 以及阶段 2 的 middleware（经 .mjs 入口）安全引用。
+// 以及阶段 2 的 proxy（经 .mjs 入口）安全引用。
 //
 // 多地区扩展时：在 REGIONS 下新增一个 region 条目，复制上海配置后改值即可，
 // 无需改框架代码。上海（DEFAULT_REGION）保持现有行为不变。

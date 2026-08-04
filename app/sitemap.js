@@ -5,6 +5,7 @@ import { createRequire } from 'module';
 // shared/ 是 CommonJS，app/ 下 ESM 通过 createRequire 桥接（见 CLAUDE.md）。
 const require = createRequire(import.meta.url);
 const { loadNewsIds } = require('../shared/data-store');
+const { getDistrictCatalog } = require('../shared/region-config');
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 // sitemap 当前只生成上海地区 URL；新增地区后需按区域生成多套 URL。
@@ -24,6 +25,30 @@ const SPECIAL_PAGES = [
 // directory the route reads via fs.readdir), so the sitemap never drifts when a
 // slug is added, renamed, or removed. The hand-maintained knowledge entries in
 // data/sitemap-extra.xml are therefore ignored below.
+// District (区域) URLs are generated live from the region catalog so the
+// sitemap never drifts when a district is added/renamed. Previously omitted,
+// leaving the /schools/district/* pages uncrawled.
+function districtUrls() {
+  const catalog = getDistrictCatalog(REGION);
+  const urls = [
+    {
+      url: `${BASE_WITH_REGION}/schools/district`,
+      lastmod: new Date().toISOString().slice(0, 10),
+      changefreq: 'weekly',
+      priority: 0.6
+    }
+  ];
+  for (const d of catalog) {
+    urls.push({
+      url: `${BASE_WITH_REGION}/schools/district/${d.id}`,
+      lastmod: new Date().toISOString().slice(0, 10),
+      changefreq: 'weekly',
+      priority: 0.6
+    });
+  }
+  return urls;
+}
+
 function knowledgeUrls() {
   const dir = join(process.cwd(), 'content', 'knowledge');
   let files;
@@ -83,6 +108,10 @@ export default async function sitemap() {
 
   const extraUrls = parseExtraUrls();
   const knowledgeSet = knowledgeUrls();
+  // 静态工具页：compare/groups/district 已在 sitemap-extra.xml，仅补 score-match
+  const toolUrls = [
+    { url: `${BASE_WITH_REGION}/schools/score-match`, lastmod: today, changefreq: 'weekly', priority: 0.6 }
+  ];
 
-  return [...newsUrls, ...extraUrls, ...knowledgeSet];
+  return [...newsUrls, ...extraUrls, ...knowledgeSet, ...toolUrls, ...districtUrls()];
 };

@@ -16,12 +16,15 @@ const require = createRequire(import.meta.url);
 const { loadSchoolsList } = require('../../../shared/data-store');
 const { DISTRICT_CATALOG } = require('../../../shared/data-schema');
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: `${label}学校区域频道 - 16区学校结构与区域专题 | 考哪去`,
-    description: `按${label}16区查看学校结构、区域教育特点、初高中分布与学校专题入口，适合按区比较${label}学校资源。`
+    description: `按${label}16区查看学校结构、区域教育特点、初高中分布与学校专题入口，适合按区比较${label}学校资源。`,
+    alternates: { canonical: `/${region}/schools/district` }
   };
 }
 
@@ -142,7 +145,7 @@ export default async function DistrictIndexPage() {
     '@type': 'CollectionPage',
     name: '上海学校区域频道',
     description: '按上海16区查看学校结构、区域教育特点、初高中分布与学校专题入口。',
-    url: 'https://kaonaqu.com/schools/district',
+    url: `${SITE_URL}/${region}/schools/district`,
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: districtRows.length,
@@ -150,7 +153,7 @@ export default async function DistrictIndexPage() {
         '@type': 'ListItem',
         position: index + 1,
         name: district.name,
-        url: `https://kaonaqu.com/schools/district/${district.id}`
+        url: `${SITE_URL}/${region}/schools/district/${district.id}`
       }))
     }
   };

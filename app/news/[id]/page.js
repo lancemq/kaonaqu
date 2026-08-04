@@ -339,6 +339,7 @@ const KNOWLEDGE_TOPICS = [
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const newsItem = await getNewsById(id);
+  const { region } = await getRegionContext();
 
   if (newsItem) {
     const isPolicy = newsItem.newsType === 'policy';
@@ -353,6 +354,7 @@ export async function generateMetadata({ params }) {
       title: `${newsItem.title} - ${titleSuffix} | 考哪去`,
       description: newsItem.summary || '查看上海升学新闻与政策详情。',
       keywords: [examLabel, '上海升学', '政策解读', isPolicy ? '政策' : newsItem.newsType === 'exam' ? '考试' : '招生'],
+      alternates: { canonical: `/${region}/news/${encodeURIComponent(id)}` },
       openGraph: {
         type: 'article',
         locale: 'zh_CN',

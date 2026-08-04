@@ -180,12 +180,13 @@ function sortSchools(schools, sort) {
 }
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: `${label}初中高中学校库 - 按区查询学校信息 | 考哪去`,
     description: `按区域检索${label}初中、高中学校信息，查看16区学校介绍、类型、学段、特色标签与梯队说明，适合升学择校参考。`,
-    keywords: [`${label}学校`, `${label}初中`, `${label}高中`, '学校查询', '择校', `${label}16区学校`]
+    keywords: [`${label}学校`, `${label}初中`, `${label}高中`, '学校查询', '择校', `${label}16区学校`],
+    alternates: { canonical: `/${region}/schools` }
   };
 }
 

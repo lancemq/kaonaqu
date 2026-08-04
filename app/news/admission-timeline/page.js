@@ -1,16 +1,15 @@
-import Link from 'next/link';
 import { RegionLink } from '../../../components/region-link';
 import admissionTimeline from '../../../lib/admission-timeline';
 import { NewsAerialFooter, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
 import { getRegionContext } from '../../../lib/region-server.mjs';
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const label = config.label;
   return {
     title: '官方招生日程 | 考哪去',
     description: `集中查看${label}升学官方招生日程，包括中招报名、体育类考试、补报名、志愿确认、考试安排和特殊教育招生关键时间节点。`,
-    alternates: { canonical: '/news/admission-timeline' }
+    alternates: { canonical: `/${region}/news/admission-timeline` }
   };
 }
 
@@ -85,7 +84,7 @@ function TimelineCard({ item, compact = false }) {
       <p>{compact ? item.summary : item.detail || item.summary}</p>
       <div className="admission-timeline-card-meta">
         <strong>{item.window}</strong>
-        {item.links?.[0] ? <Link href={item.links[0].href}>{item.links[0].label}</Link> : null}
+        {item.links?.[0] ? <RegionLink href={item.links[0].href}>{item.links[0].label}</RegionLink> : null}
       </div>
     </article>
   );

@@ -19,6 +19,8 @@ const require = createRequire(import.meta.url);
 const { loadSchoolsByDistrict, loadSchoolCountsByDistrict } = require('../../../../shared/data-store');
 const { DISTRICT_CATALOG } = require('../../../../shared/data-schema');
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+
 function buildCardTags(school) {
   const values = [
     ...(school.tags || []),
@@ -93,10 +95,13 @@ export async function generateMetadata({ params }) {
     return { title: '区级学校专题 | 考哪去' };
   }
 
+  const { region } = await getRegionContext();
+
   return {
     title: `${districtInfo.name}初中高中学校名单 - 上海16区学校查询 | 考哪去`,
     description: `查看${districtInfo.name}学校分布、${districtInfo.name}重点初中高中名单、办学类型与培养方向，上海升学择校参考。`,
     keywords: [districtInfo.name, '上海学校', '初中', '高中', '择校', `${districtInfo.name}教育`],
+    alternates: { canonical: `/${region}/schools/district/${district}` },
     openGraph: {
       type: 'article',
       locale: 'zh_CN',
@@ -153,9 +158,9 @@ export default async function DistrictSchoolsPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: '学校', item: 'https://kaonaqu.com/schools' },
-      { '@type': 'ListItem', position: 2, name: '区域频道', item: 'https://kaonaqu.com/schools/district' },
-      { '@type': 'ListItem', position: 3, name: districtInfo.name, item: `https://kaonaqu.com/schools/district/${districtInfo.id}` }
+      { '@type': 'ListItem', position: 1, name: '学校', item: `${SITE_URL}/${region}/schools` },
+      { '@type': 'ListItem', position: 2, name: '区域频道', item: `${SITE_URL}/${region}/schools/district` },
+      { '@type': 'ListItem', position: 3, name: districtInfo.name, item: `${SITE_URL}/${region}/schools/district/${districtInfo.id}` }
     ]
   };
   const itemListJsonLd = {
