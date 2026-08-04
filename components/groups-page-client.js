@@ -1,7 +1,9 @@
 'use client';
 
-import Link from 'next/link';
+import { RegionLink } from './region-link';
 import { useMemo, useState } from 'react';
+import { useRegion } from './region-context';
+import { RegionSelector } from './region-selector';
 import {
   getSchoolDistrictName,
   getSchoolStage,
@@ -99,6 +101,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
   const [queryInput, setQueryInput] = useState(initialQuery);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [expandedGroup, setExpandedGroup] = useState(null);
+  const { brandSuffix, brandSuffixFull } = useRegion();
 
   const groupsData = useMemo(() => {
     const groupsMap = new Map();
@@ -220,15 +223,16 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
   return (
     <>
       <nav className="channel-nav" aria-label="顶部导航">
-        <Link className="channel-brand" href="/" aria-label="考哪去首页">
+        <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
           <strong>考哪去</strong>
-          <span>SHANGHAI EDUCATION</span>
-        </Link>
+          <span>{brandSuffix}</span>
+        </RegionLink>
         <div className="channel-nav-links">
-          <Link href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link className="is-active" href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
+          <RegionLink href="/">首页</RegionLink>
+          <RegionLink href="/news">新闻</RegionLink>
+          <RegionLink className="is-active" href="/schools">学校</RegionLink>
+          <RegionLink href="/knowledge">知识</RegionLink>
+          <RegionSelector />
         </div>
       </nav>
 
@@ -349,10 +353,10 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
               {expandedGroup === group.name ? (
                 <div className="school-group-members">
                   {group.schools.slice(0, 8).map((school) => (
-                    <Link key={school.id} href={`/schools/${school.id}`}>
+                    <RegionLink key={school.id} href={`/schools/${school.id}`}>
                       <strong>{school.name}</strong>
                       <span>{getDistrictLabel(districts, school.districtId || school.district)} / {getSchoolStage(school)} / {getSchoolType(school)}</span>
-                    </Link>
+                    </RegionLink>
                   ))}
                 </div>
               ) : null}
@@ -385,12 +389,12 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
 
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
-        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
+        <div><strong>考哪去</strong><span>{brandSuffixFull}</span></div>
         <nav aria-label="页脚导航">
-          <Link href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
+          <RegionLink href="/">首页</RegionLink>
+          <RegionLink href="/news">新闻</RegionLink>
+          <RegionLink href="/schools">学校</RegionLink>
+          <RegionLink href="/knowledge">知识</RegionLink>
         </nav>
         <p>© 2026 考哪去</p>
       </footer>
@@ -428,13 +432,13 @@ function GroupCard({ group, districts, isExpanded, onToggle }) {
       {isExpanded ? (
         <div className="school-group-members">
           {group.schools.map((school) => (
-            <Link key={school.id} className="school-group-member" href={`/schools/${school.id}`}>
+            <RegionLink key={school.id} className="school-group-member" href={`/schools/${school.id}`}>
               <div>
                 <strong>{school.name}</strong>
                 <span>{getDistrictLabel(districts, school.districtId)} · {getSchoolStage(school)} · {getSchoolType(school)}</span>
               </div>
               <span>{school.eliteCohort || school.schoolKeyLevel ? (TIER_LABELS[school.eliteCohort || school.schoolKeyLevel] || school.eliteCohort || school.schoolKeyLevel) : '详情'}</span>
-            </Link>
+            </RegionLink>
           ))}
         </div>
       ) : null}

@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Link from 'next/link';
+import { RegionLink } from '../../../components/region-link';
 import { createRequire } from 'module';
 import {
   PolicyToolLabel,
@@ -10,15 +10,20 @@ import {
 import policyGlossary from '../../../lib/policy-glossary';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { readPolicyPlainText } from '../../../lib/policy-content-files.mjs';
+import { getRegionContext } from '../../../lib/region-server.mjs';
 
 const require = createRequire(import.meta.url);
 const { loadNewsList } = require('../../../shared/data-store');
 
-export const metadata = {
-  title: '政策概念速查 | 考哪去',
-  description: '集中查看上海升学常见政策术语与当年关键政策文件，包括中本贯通、名额到区、名额到校、自主招生录取等重点概念与官方政策原文。',
-  alternates: { canonical: '/news/policy-glossary' }
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: '政策概念速查 | 考哪去',
+    description: `集中查看${label}升学常见政策术语与当年关键政策文件，包括中本贯通、名额到区、名额到校、自主招生录取等重点概念与官方政策原文。`,
+    alternates: { canonical: '/news/policy-glossary' }
+  };
+}
 
 function sanitizePolicyText(text, title = '') {
   let value = String(text || '');
@@ -172,7 +177,8 @@ function groupPoliciesByTopic(policies) {
 }
 
 export default async function PolicyGlossaryPage() {
-  const news = await loadNewsList();
+  const { region } = await getRegionContext();
+  const news = await loadNewsList(region);
   const currentYear = getCurrentYear(news);
   const officialPolicies = news
     .filter((n) => n.newsType === 'policy')
@@ -260,7 +266,7 @@ export default async function PolicyGlossaryPage() {
                   const priority = buildPolicyPriority(item);
                   const lens = buildPolicyLens(item);
                   return (
-                    <Link key={item.id} href={getPolicyDetailHref(item)} className="policy-term-card">
+                    <RegionLink key={item.id} href={getPolicyDetailHref(item)} className="policy-term-card">
                       <div className="policy-term-meta">
                         <span>{priority.tier} 级</span>
                         <span>{lens.label}</span>
@@ -283,7 +289,7 @@ export default async function PolicyGlossaryPage() {
                         </article>
                       </div>
                       <p className="policy-term-source">{buildReadingHint(item)}</p>
-                    </Link>
+                    </RegionLink>
                   );
                 })}
               </div>

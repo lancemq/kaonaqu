@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { RegionLink } from '../../../components/region-link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import { getSchoolDataQuality } from '../../../lib/school-data-quality';
@@ -13,9 +13,13 @@ import {
 } from '../../../lib/site-utils';
 import { renderBlocks } from '../../../components/BlockRenderer';
 import { getSchoolOverview } from '../../../lib/school-content';
+import { getRegionContext } from '../../../lib/region-server.mjs';
+import { RegionSelector } from '../../../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { getSchoolById } = require('../../../shared/data-store');
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 
 function renderInlineMarkdown(text) {
   const parts = [];
@@ -81,6 +85,7 @@ export default async function SchoolDetailPage({ params }) {
   // 详情页需完整记录（content/scoreLines/admissionInfo），按 id 单校完整查询
   // （响应极小，经 Next Data Cache 按 id 缓存）。
   const school = await getSchoolById(id);
+  const { region, config } = await getRegionContext();
 
   if (!school) {
     notFound();
@@ -102,7 +107,7 @@ export default async function SchoolDetailPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'School',
     'name': school.name,
-    'url': `https://kaonaqu.xyz/schools/${encodeURIComponent(school.id)}`,
+    'url': `${SITE_URL}/${region}/schools/${encodeURIComponent(school.id)}`,
     ...(schoolSummary ? { 'description': schoolSummary } : {}),
     'address': {
       '@type': 'PostalAddress',
@@ -215,17 +220,17 @@ export default async function SchoolDetailPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <nav className="channel-nav" aria-label="顶部导航">
-        <Link className="channel-brand" href="/" aria-label="考哪去首页"><strong>考哪去</strong><span>SHANGHAI EDUCATION</span></Link>
-        <div className="channel-nav-links"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link className="is-active" href="/schools">学校</Link><Link href="/knowledge">知识</Link></div>
+        <RegionLink className="channel-brand" href="/" aria-label="考哪去首页"><strong>考哪去</strong><span>{config.brandSuffix}</span></RegionLink>
+        <div className="channel-nav-links"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink className="is-active" href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink><RegionSelector /></div>
       </nav>
 
       <nav className="school-pencil-breadcrumb" aria-label="面包屑">
-        <Link href="/">首页</Link>
+        <RegionLink href="/">首页</RegionLink>
         <i aria-hidden="true">/</i>
-        <Link href="/schools">学校</Link>
+        <RegionLink href="/schools">学校</RegionLink>
         <i aria-hidden="true">/</i>
         {districtHref ? (
-          <Link href={districtHref}>{districtName}</Link>
+          <RegionLink href={districtHref}>{districtName}</RegionLink>
         ) : (
           <span>{districtName}</span>
         )}
@@ -441,7 +446,7 @@ export default async function SchoolDetailPage({ params }) {
       </section>
 
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <footer className="school-detail-footer"><div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div><p>© 2026 考哪去</p></footer>
+      <footer className="school-detail-footer"><div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div><p>© 2026 考哪去</p></footer>
     </main>
   );
 }

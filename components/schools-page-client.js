@@ -1,10 +1,13 @@
 'use client';
 
-import Link from 'next/link';
+import { RegionLink } from './region-link';
+import { regionPath } from '../shared/region-path.mjs';
 import Pager from './pager';
 import { useCompareBag } from './compare-bag';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState, useTransition } from 'react';
+import { useRegion } from './region-context';
+import { RegionSelector } from './region-selector';
 
 const FILTER_KEYS = ['district', 'stage', 'property', 'keyLevel', 'cohort', 'boarding', 'international', 'query', 'sort'];
 
@@ -92,6 +95,7 @@ export default function SchoolsPageClient({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [queryInput, setQueryInput] = useState(filters.query || '');
+  const { region, brandSuffix, brandSuffixFull } = useRegion();
 
   // 服务端是唯一数据源：URL 变化即重新请求并下发当前页 10 条。
   // queryInput 仅在用户本地输入时变更，提交后由 filters.query 回写。
@@ -101,7 +105,7 @@ export default function SchoolsPageClient({
 
   const navigate = (next) => {
     startTransition(() => {
-      router.push(buildHref(filters, next));
+      router.push(regionPath(buildHref(filters, next), region));
     });
   };
 
@@ -187,15 +191,16 @@ export default function SchoolsPageClient({
   return (
     <main className="schools-aerial-page">
       <nav className="channel-nav" aria-label="顶部导航">
-        <Link className="channel-brand" href="/" aria-label="考哪去首页">
+        <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
           <strong>考哪去</strong>
-          <span>SHANGHAI EDUCATION</span>
-        </Link>
+          <span>{brandSuffix}</span>
+        </RegionLink>
         <div className="channel-nav-links">
-          <Link href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link className="is-active" href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
+          <RegionLink href="/">首页</RegionLink>
+          <RegionLink href="/news">新闻</RegionLink>
+          <RegionLink className="is-active" href="/schools">学校</RegionLink>
+          <RegionLink href="/knowledge">知识</RegionLink>
+          <RegionSelector />
         </div>
       </nav>
 
@@ -242,7 +247,7 @@ export default function SchoolsPageClient({
           <section className="schools-aerial-filter-block schools-aerial-basket-top">
             <div className="schools-aerial-compare-basket">
               <span>{bagReady ? `${bagIds.length}/${bagMax}` : `0/${bagMax}`} 所</span>
-              <Link href="/schools/compare">查看对比 →</Link>
+              <RegionLink href="/schools/compare">查看对比 →</RegionLink>
               {bagReady && bagIds.length > 0 && (
                 <button type="button" className="schools-aerial-compare-clear" onClick={() => clearBag()}>清空</button>
               )}
@@ -343,11 +348,11 @@ export default function SchoolsPageClient({
               <div className="schools-aerial-filter-block">
                 <label>快速工具</label>
                 <div className="schools-aerial-tool-stack">
-                  <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
-                  <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
-                  <Link href="/news/admission-timeline"><span>政策日历</span><i>→</i></Link>
-                  <Link href="/schools/groups"><span>教育集团</span><i>→</i></Link>
-                  <Link href="/schools/district"><span>区域专题</span><i>→</i></Link>
+                  <RegionLink href="/schools/compare"><span>学校对比</span><i>→</i></RegionLink>
+                  <RegionLink href="/schools/score-match"><span>分数匹配</span><i>→</i></RegionLink>
+                  <RegionLink href="/news/admission-timeline"><span>政策日历</span><i>→</i></RegionLink>
+                  <RegionLink href="/schools/groups"><span>教育集团</span><i>→</i></RegionLink>
+                  <RegionLink href="/schools/district"><span>区域专题</span><i>→</i></RegionLink>
                 </div>
               </div>
 
@@ -355,10 +360,10 @@ export default function SchoolsPageClient({
                 <label>热门区域</label>
                 <div className="schools-aerial-tool-stack">
                   {highlightedDistricts.map((district) => (
-                    <Link key={district.id} href={`/schools/district/${district.id}`}>
+                    <RegionLink key={district.id} href={`/schools/district/${district.id}`}>
                       <span>{district.name || district.districtName}</span>
                       <i>{district.schoolCount || 0} 所</i>
-                    </Link>
+                    </RegionLink>
                   ))}
                 </div>
               </div>
@@ -402,7 +407,7 @@ export default function SchoolsPageClient({
               </div>
             ) : schools.map((school) => (
               <article key={school.id} className="schools-aerial-card-wrap">
-                <Link href={`/schools/${school.id}`} className="schools-aerial-card">
+                <RegionLink href={`/schools/${school.id}`} className="schools-aerial-card">
                   <div className="schools-aerial-card-main">
                     <p>{school.districtName} / {school.schoolStageLabel} / {getOwnershipLabel(school)}</p>
                     <h3>{school.name}</h3>
@@ -415,7 +420,7 @@ export default function SchoolsPageClient({
                     <strong>{school.eliteCohort || school.schoolKeyLevel || school.schoolPropertyLabel || '—'}</strong>
                     <b>查看详情 →</b>
                   </div>
-                </Link>
+                </RegionLink>
                 <div className="schools-aerial-card-foot">
                   <ScoreLineBadge scoreLines={school.scoreLines} />
                   {bagReady && (
@@ -443,8 +448,8 @@ export default function SchoolsPageClient({
 
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
-        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
-        <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
+        <div><strong>考哪去</strong><span>{brandSuffixFull}</span></div>
+        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink></nav>
         <p>© 2026 考哪去</p>
       </footer>
     </main>

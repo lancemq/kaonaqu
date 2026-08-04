@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { RegionLink } from '../../../components/region-link';
 import { createRequire } from 'module';
 import {
   clipText,
@@ -9,15 +9,21 @@ import {
   getSchoolType
 } from '../../../lib/site-utils';
 import { getSchoolOverview } from '../../../lib/school-content';
+import { getRegionContext } from '../../../lib/region-server.mjs';
+import { RegionSelector } from '../../../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsList } = require('../../../shared/data-store');
 const { DISTRICT_CATALOG } = require('../../../shared/data-schema');
 
-export const metadata = {
-  title: '上海学校区域频道 - 16区学校结构与区域专题 | 考哪去',
-  description: '按上海16区查看学校结构、区域教育特点、初高中分布与学校专题入口，适合按区比较上海学校资源。'
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: `${label}学校区域频道 - 16区学校结构与区域专题 | 考哪去`,
+    description: `按${label}16区查看学校结构、区域教育特点、初高中分布与学校专题入口，适合按区比较${label}学校资源。`
+  };
+}
 
 
 function getVerifiedCount(schools) {
@@ -74,30 +80,33 @@ function SectionKicker({ children }) {
   );
 }
 
-function SiteNav() {
+async function SiteNav() {
+  const { config } = await getRegionContext();
   return (
     <nav className="channel-nav" aria-label="顶部导航">
-      <Link className="channel-brand" href="/" aria-label="考哪去首页">
+      <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
         <strong>考哪去</strong>
-        <span>SHANGHAI EDUCATION</span>
-      </Link>
+        <span>{config.brandSuffix}</span>
+      </RegionLink>
       <div className="channel-nav-links">
-        <Link href="/">首页</Link>
-        <Link href="/news">新闻</Link>
-        <Link className="is-active" href="/schools">学校</Link>
-        <Link href="/knowledge">知识</Link>
+        <RegionLink href="/">首页</RegionLink>
+        <RegionLink href="/news">新闻</RegionLink>
+        <RegionLink className="is-active" href="/schools">学校</RegionLink>
+        <RegionLink href="/knowledge">知识</RegionLink>
+        <RegionSelector />
       </div>
     </nav>
   );
 }
 
-function Footer() {
+async function Footer() {
+  const { config } = await getRegionContext();
   return (
     <>
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
-        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
-        <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
+        <div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div>
+        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink></nav>
         <p>© 2026 考哪去</p>
       </footer>
     </>
@@ -105,7 +114,8 @@ function Footer() {
 }
 
 export default async function DistrictIndexPage() {
-  const schools = await loadSchoolsList();
+  const { region, config } = await getRegionContext();
+  const schools = await loadSchoolsList(region);
   const districts = DISTRICT_CATALOG;
   const districtRows = buildDistrictRows(districts, schools);
   const totals = {
@@ -156,7 +166,7 @@ export default async function DistrictIndexPage() {
       <header className="channel-hero" id="top">
         <div className="channel-hero-content">
           <section className="channel-hero-copy" aria-label="上海学校区域频道概览">
-            <div className="district-channel-breadcrumb"><Link href="/schools">学校</Link><span>/</span><strong>区域频道</strong></div>
+            <div className="district-channel-breadcrumb"><RegionLink href="/schools">学校</RegionLink><span>/</span><strong>区域频道</strong></div>
             <SectionKicker>DISTRICT CHANNEL</SectionKicker>
             <h1>上海学校区域频道</h1>
             <p>从区域进入，先看各区学校密度、初高中结构和区域教育特点，再进入具体区县专题和学校详情。</p>
@@ -189,14 +199,14 @@ export default async function DistrictIndexPage() {
         <p>先从学校记录更多、结构更丰富的区域切入，适合做第一轮横向比较。</p>
         <div className="district-channel-zone-grid">
           {zoneDistricts.map((district) => (
-            <Link className="district-channel-zone-card" href={`/schools/district/${district.id}`} key={district.id}>
+            <RegionLink className="district-channel-zone-card" href={`/schools/district/${district.id}`} key={district.id}>
               <div>
                 <strong>{district.name}</strong>
                 <span>{district.total} 所</span>
               </div>
               <p>{clipText(district.topic, 42)}</p>
               <em>高中 {district.seniorHigh} · 初中 {district.junior}</em>
-            </Link>
+            </RegionLink>
           ))}
         </div>
       </section>
@@ -206,12 +216,12 @@ export default async function DistrictIndexPage() {
         <h2>区域名校</h2>
         <div className="district-channel-featured-grid">
           {featuredSchools.map(({ district, school }) => (
-            <Link className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
+            <RegionLink className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
               <div><span>{district.name}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
               <strong>{school.name}</strong>
               <p>{clipText(getSchoolAdmissionInfo(school) || getSchoolOverview(school) || '学校信息持续整理中。', 46)}</p>
               <b>进入 →</b>
-            </Link>
+            </RegionLink>
           ))}
         </div>
       </section>
@@ -228,7 +238,7 @@ export default async function DistrictIndexPage() {
 
           <div className="district-channel-row-list">
             {districtRows.map((district) => (
-              <Link className="district-channel-row" href={`/schools/district/${district.id}`} key={district.id}>
+              <RegionLink className="district-channel-row" href={`/schools/district/${district.id}`} key={district.id}>
                 <div className="district-channel-row-info">
                   <strong>{district.name}</strong>
                   <span>{clipText(district.overview, 54)}</span>
@@ -237,7 +247,7 @@ export default async function DistrictIndexPage() {
                   <strong>{district.total}</strong>
                   <span>学校</span>
                 </div>
-              </Link>
+              </RegionLink>
             ))}
           </div>
         </div>
@@ -246,20 +256,20 @@ export default async function DistrictIndexPage() {
           <section className="channel-side-card">
             <SectionKicker>QUICK FILTER</SectionKicker>
             <h2>快速筛选</h2>
-            <Link className="is-active" href="/schools?stage=senior_high">高中学校</Link>
-            <Link href="/schools?stage=junior">初中学校</Link>
-            <Link href="/schools?stage=complete">完全中学</Link>
-            <Link href="/schools?property=民办">民办学校</Link>
+            <RegionLink className="is-active" href="/schools?stage=senior_high">高中学校</RegionLink>
+            <RegionLink href="/schools?stage=junior">初中学校</RegionLink>
+            <RegionLink href="/schools?stage=complete">完全中学</RegionLink>
+            <RegionLink href="/schools?property=民办">民办学校</RegionLink>
           </section>
 
           <section className="channel-side-card">
             <SectionKicker>TOP AREAS</SectionKicker>
             <h2>热门区域</h2>
             {zoneDistricts.slice(0, 5).map((district) => (
-              <Link href={`/schools/district/${district.id}`} key={district.id}>
+              <RegionLink href={`/schools/district/${district.id}`} key={district.id}>
                 <span>{district.name} · {district.total} 所</span>
                 <i>→</i>
-              </Link>
+              </RegionLink>
             ))}
           </section>
 
@@ -267,10 +277,10 @@ export default async function DistrictIndexPage() {
             <SectionKicker>TOOLS</SectionKicker>
             <h2>区域工具</h2>
             {relatedTools.map((tool) => (
-              <Link href={tool.href} key={tool.href}>
+              <RegionLink href={tool.href} key={tool.href}>
                 <span>{tool.label}</span>
                 <i>→</i>
-              </Link>
+              </RegionLink>
             ))}
           </section>
         </aside>

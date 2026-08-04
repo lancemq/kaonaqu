@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import { RegionLink } from './region-link';
 
 function SectionKicker({ label }) {
   return (
@@ -103,12 +103,12 @@ export default function GradeSubjectExplorer({ nav }) {
           <div className="knowledge-subject-strip">
             {results.map((s) =>
               s.exists ? (
-                <Link className="knowledge-subject-card" href={s.href} key={`${s.gradeKey}-${s.slug}`}>
+                <RegionLink className="knowledge-subject-card" href={s.href} key={`${s.gradeKey}-${s.slug}`}>
                   <span>{s.gradeLabel}</span>
                   <strong>{s.title}</strong>
                   <p>{s.desc}</p>
                   <em>进入 →</em>
-                </Link>
+                </RegionLink>
               ) : (
                 <div className="knowledge-subject-card is-disabled" key={`${s.gradeKey}-${s.slug}`} aria-disabled="true">
                   <span>{s.gradeLabel}</span>
@@ -128,31 +128,31 @@ export default function GradeSubjectExplorer({ nav }) {
           <h2>{grade.label} · 衔接准备</h2>
           <p>{grade.desc}</p>
           <div className="knowledge-subject-strip">
-            <Link className="knowledge-subject-card knowledge-subject-card--cta" href={grade.href}>
+            <RegionLink className="knowledge-subject-card knowledge-subject-card--cta" href={grade.href}>
               <span>{grade.label}</span>
               <strong>进入{grade.label}衔接页</strong>
               <p>查看小升初衔接重点、习惯方法与升学建议</p>
               <em>进入 →</em>
-            </Link>
+            </RegionLink>
           </div>
         </section>
       ) : (
         <section className="knowledge-section knowledge-featured-subjects">
           <div className="knowledge-section-head">
             <SectionKicker label={grade?.label || ''} />
-            {grade && !grade.disabled ? <Link href={grade.href}>查看{grade.label}全部 →</Link> : null}
+            {grade && !grade.disabled ? <RegionLink href={grade.href}>查看{grade.label}全部 →</RegionLink> : null}
           </div>
           <h2>{grade?.label} · 核心学科</h2>
           <p>{grade?.desc}</p>
           <div className="knowledge-subject-strip">
             {subjects.map((subject) =>
               subject.exists ? (
-                <Link className="knowledge-subject-card" href={subject.href} key={subject.slug}>
+                <RegionLink className="knowledge-subject-card" href={subject.href} key={subject.slug}>
                   <span>{grade?.label}</span>
                   <strong>{subject.title}</strong>
                   <p>{subject.desc}</p>
                   <em>进入 →</em>
-                </Link>
+                </RegionLink>
               ) : (
                 <div className="knowledge-subject-card is-disabled" key={subject.slug} aria-disabled="true">
                   <span>{grade?.label}</span>

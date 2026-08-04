@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { RegionLink } from './region-link';
 import { Fragment } from 'react';
 import { NewsAerialFooter, NewsAerialNav } from './news-aerial-ui';
 
@@ -13,7 +13,7 @@ export function TopicSectionLabel({ children }) {
 
 export function TopicEntry({ item }) {
   return (
-    <Link className="special-entry" href={item.href}>
+    <RegionLink className="special-entry" href={item.href}>
       <div className="special-entry-date">{item.date || '暂无日期'}</div>
       <div className="special-entry-body">
         <div className="special-entry-meta">
@@ -22,7 +22,7 @@ export function TopicEntry({ item }) {
         <h3>{item.title}</h3>
         <p>{item.summary || '暂无摘要'}</p>
       </div>
-    </Link>
+    </RegionLink>
   );
 }
 
@@ -270,10 +270,10 @@ export function NewsTopicSpecialPage({
           {lead ? (
             <section className="special-lead">
               <TopicSectionLabel>TOP STORY</TopicSectionLabel>
-              <Link href={lead.href}>
+              <RegionLink href={lead.href}>
                 <h2>{lead.title}</h2>
                 <p>{lead.summary || '暂无摘要'}</p>
-              </Link>
+              </RegionLink>
             </section>
           ) : null}
 
@@ -336,7 +336,7 @@ export function NewsTopicSpecialPage({
             {sideLinks.map((item) => (
               <a key={item.href} href={item.href}>{item.label}</a>
             ))}
-            <Link href="/news/admission-timeline">查看官方招生日程</Link>
+            <RegionLink href="/news/admission-timeline">查看官方招生日程</RegionLink>
           </section>
         </aside>
       </section>

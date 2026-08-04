@@ -1,9 +1,12 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import Link from 'next/link';
+import { RegionLink } from './region-link';
+import { regionPath } from '../shared/region-path.mjs';
 import { useRouter } from 'next/navigation';
 import { useCompareBag } from './compare-bag';
+import { useRegion } from './region-context';
+import { RegionSelector } from './region-selector';
 import {
   getSchoolDistrictName,
   getSchoolStage,
@@ -141,29 +144,32 @@ function CompareKicker({ children }) {
 }
 
 function SiteNav() {
+  const { brandSuffix, brandSuffixFull } = useRegion();
   return (
     <nav className="channel-nav" aria-label="顶部导航">
-      <Link className="channel-brand" href="/" aria-label="考哪去首页">
+      <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
         <strong>考哪去</strong>
-        <span>SHANGHAI EDUCATION</span>
-      </Link>
+        <span>{brandSuffix}</span>
+      </RegionLink>
       <div className="channel-nav-links">
-        <Link href="/">首页</Link>
-        <Link href="/news">新闻</Link>
-        <Link className="is-active" href="/schools">学校</Link>
-        <Link href="/knowledge">知识</Link>
+        <RegionLink href="/">首页</RegionLink>
+        <RegionLink href="/news">新闻</RegionLink>
+        <RegionLink className="is-active" href="/schools">学校</RegionLink>
+        <RegionLink href="/knowledge">知识</RegionLink>
+        <RegionSelector />
       </div>
     </nav>
   );
 }
 
 function Footer() {
+  const { brandSuffix, brandSuffixFull } = useRegion();
   return (
     <>
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
-        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
-        <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
+        <div><strong>考哪去</strong><span>{brandSuffixFull}</span></div>
+        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink></nav>
         <p>© 2026 考哪去</p>
       </footer>
     </>
@@ -187,6 +193,7 @@ const METRICS = [
 
 export default function SchoolsCompareClient({ schools, initialSchools }) {
   const router = useRouter();
+  const { region } = useRegion();
   const { ids: bagIds, ready: bagReady, replaceAll, remove, clear: clearBag, max } = useCompareBag();
   const initialIds = useMemo(
     () => (initialSchools ? initialSchools.split(',').filter(Boolean) : []),
@@ -241,7 +248,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
       const school = schools.find((item) => item.id === id);
       return { id, name: school?.name || id };
     }));
-    router.push(newIds.length ? `/schools/compare?schools=${newIds.join(',')}` : '/schools/compare');
+    router.push(regionPath(newIds.length ? `/schools/compare?schools=${newIds.join(',')}` : '/schools/compare', region));
   };
 
   const addSchool = (id) => {
@@ -255,13 +262,13 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
     const newIds = selectedIds.filter((schoolId) => schoolId !== id);
     setSelectedIds(newIds);
     remove(id);
-    router.push(newIds.length ? `/schools/compare?schools=${newIds.join(',')}` : '/schools/compare');
+    router.push(regionPath(newIds.length ? `/schools/compare?schools=${newIds.join(',')}` : '/schools/compare', region));
   };
 
   const clearAll = () => {
     setSelectedIds([]);
     clearBag();
-    router.push('/schools/compare');
+    router.push(regionPath('/schools/compare', region));
   };
 
   const renderMetricValue = (school, metric, index) => {
@@ -280,7 +287,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
       <header className="channel-hero" id="top">
         <div className="channel-hero-content">
           <section className="channel-hero-copy" aria-label="学校对比工具概览">
-            <div className="compare-aerial-breadcrumb"><Link href="/schools">学校</Link><span>/</span><strong>学校对比</strong></div>
+            <div className="compare-aerial-breadcrumb"><RegionLink href="/schools">学校</RegionLink><span>/</span><strong>学校对比</strong></div>
             <CompareKicker>COMPARE SCHOOLS</CompareKicker>
             <h1>学校对比</h1>
             <p>多校横向对比，从区域、学段、梯队、办学特色到联系方式，一屏看清学校差异。</p>

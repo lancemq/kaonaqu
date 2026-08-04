@@ -1,0 +1,126 @@
+/* 区域选择器（全站导航右上角）
+   放在 channel-nav-links 末尾，颜色用 --channel-* 自动适配各频道主题。 */
+
+.region-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.region-selector-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--channel-line, var(--site-line, #e5e7eb));
+  border-radius: var(--site-radius-sm, 8px);
+  background: transparent;
+  color: var(--channel-text, #1f2937);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--channel-font-body, inherit);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.region-selector-trigger:hover {
+  background: var(--channel-ink, #111827);
+  color: #fff;
+  border-color: var(--channel-ink, #111827);
+}
+
+.region-selector-trigger:focus-visible {
+  outline: 2px solid var(--channel-accent, #2563eb);
+  outline-offset: 2px;
+}
+
+.region-selector-pin {
+  flex: none;
+  opacity: 0.8;
+}
+
+.region-selector-label {
+  white-space: nowrap;
+}
+
+.region-selector-caret {
+  flex: none;
+  opacity: 0.6;
+  transition: transform 0.15s;
+}
+
+.region-selector-trigger[aria-expanded='true'] .region-selector-caret {
+  transform: rotate(180deg);
+}
+
+.region-selector-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 168px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--channel-line, #e5e7eb);
+  border-radius: var(--site-radius-sm, 8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.region-selector-menu li[role='option'] {
+  margin: 0;
+}
+
+.region-selector-menu button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 36px;
+  padding: 0 10px;
+  border: none;
+  background: transparent;
+  color: var(--channel-text, #1f2937);
+  font-size: 13px;
+  font-family: var(--channel-font-body, inherit);
+  cursor: pointer;
+  border-radius: var(--site-radius-sm, 6px);
+  text-align: left;
+}
+
+.region-selector-menu button:hover {
+  background: var(--channel-line, #f3f4f6);
+}
+
+.region-selector-menu li[aria-selected='true'] button {
+  color: var(--channel-accent, #2563eb);
+  font-weight: 600;
+}
+
+.region-selector-menu li[aria-selected='true'] svg {
+  color: var(--channel-accent, #2563eb);
+}
+
+.region-selector-hint {
+  margin-top: 2px;
+  padding: 6px 10px;
+  border-top: 1px solid var(--channel-line, #e5e7eb);
+  color: var(--channel-muted, #9ca3af);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* 移动端：选择器与 links 一起折行时仍可点 */
+@media (max-width: 720px) {
+  .region-selector {
+    margin-left: 8px;
+  }
+  .region-selector-trigger {
+    min-height: 36px;
+    padding: 0 10px;
+  }
+}

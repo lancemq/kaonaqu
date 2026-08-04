@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { RegionLink } from '../../../../components/region-link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import {
@@ -12,6 +12,8 @@ import {
   getSchoolType
 } from '../../../../lib/site-utils';
 import { getSchoolOverview } from '../../../../lib/school-content';
+import { getRegionContext } from '../../../../lib/region-server.mjs';
+import { RegionSelector } from '../../../../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsByDistrict, loadSchoolCountsByDistrict } = require('../../../../shared/data-store');
@@ -51,30 +53,33 @@ function SectionKicker({ children }) {
   );
 }
 
-function SiteNav() {
+async function SiteNav() {
+  const { config } = await getRegionContext();
   return (
     <nav className="channel-nav" aria-label="顶部导航">
-      <Link className="channel-brand" href="/" aria-label="考哪去首页">
+      <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
         <strong>考哪去</strong>
-        <span>SHANGHAI EDUCATION</span>
-      </Link>
+        <span>{config.brandSuffix}</span>
+      </RegionLink>
       <div className="channel-nav-links">
-        <Link href="/">首页</Link>
-        <Link href="/news">新闻</Link>
-        <Link className="is-active" href="/schools">学校</Link>
-        <Link href="/knowledge">知识</Link>
+        <RegionLink href="/">首页</RegionLink>
+        <RegionLink href="/news">新闻</RegionLink>
+        <RegionLink className="is-active" href="/schools">学校</RegionLink>
+        <RegionLink href="/knowledge">知识</RegionLink>
+        <RegionSelector />
       </div>
     </nav>
   );
 }
 
-function Footer() {
+async function Footer() {
+  const { config } = await getRegionContext();
   return (
     <>
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
-        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
-        <nav aria-label="页脚导航"><Link href="/">首页</Link><Link href="/news">新闻</Link><Link href="/schools">学校</Link><Link href="/knowledge">知识</Link></nav>
+        <div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div>
+        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink></nav>
         <p>© 2026 考哪去</p>
       </footer>
     </>
@@ -110,9 +115,10 @@ export default async function DistrictSchoolsPage({ params }) {
     notFound();
   }
 
+  const { region, config } = await getRegionContext();
   const [districtSchools, schoolCounts] = await Promise.all([
-    loadSchoolsByDistrict(district),
-    loadSchoolCountsByDistrict()
+    loadSchoolsByDistrict(district, region),
+    loadSchoolCountsByDistrict(region)
   ]);
   const sortedSchools = sortSchoolsBySignal(districtSchools);
   const stageBuckets = {
@@ -175,7 +181,7 @@ export default async function DistrictSchoolsPage({ params }) {
       <header className="channel-hero district-detail-hero" id="top">
         <div className="channel-hero-content">
           <section className="channel-hero-copy" aria-label={`${districtInfo.name}学校专题概览`}>
-            <div className="district-channel-breadcrumb"><Link href="/schools">学校</Link><span>/</span><Link href="/schools/district">区域频道</Link><span>/</span><strong>{districtInfo.name}</strong></div>
+            <div className="district-channel-breadcrumb"><RegionLink href="/schools">学校</RegionLink><span>/</span><RegionLink href="/schools/district">区域频道</RegionLink><span>/</span><strong>{districtInfo.name}</strong></div>
             <SectionKicker>DISTRICT DATABASE</SectionKicker>
             <h1>{districtInfo.name}学校专题</h1>
             <p>{getDistrictSchoolTopic(districtInfo)}</p>
@@ -211,12 +217,12 @@ export default async function DistrictSchoolsPage({ params }) {
           <h2>{districtInfo.name}优先学校</h2>
           <div className="district-channel-featured-grid">
             {featured.slice(0, 3).map((school) => (
-              <Link className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
+              <RegionLink className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
                 <div><span>{getSchoolStage(school)}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
                 <strong>{school.name}</strong>
                 <p>{clipText(getSchoolAdmissionInfo(school) || getSchoolOverview(school) || '学校信息持续整理中。', 46)}</p>
                 <b>进入 →</b>
-              </Link>
+              </RegionLink>
             ))}
           </div>
         </section>
@@ -236,7 +242,7 @@ export default async function DistrictSchoolsPage({ params }) {
             {sortedSchools.map((school) => {
               const tags = buildCardTags(school);
               return (
-                <Link className="district-channel-row district-detail-school-row" href={`/schools/${school.id}`} key={school.id}>
+                <RegionLink className="district-channel-row district-detail-school-row" href={`/schools/${school.id}`} key={school.id}>
                   <div className="district-channel-row-info">
                     <strong>{school.name}</strong>
                     <span>{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getSchoolOwnershipLabel(school) || '学校信息'}</span>
@@ -246,7 +252,7 @@ export default async function DistrictSchoolsPage({ params }) {
                   <div className="district-channel-row-score">
                     <strong>{getSchoolType(school) || '—'}</strong>
                   </div>
-                </Link>
+                </RegionLink>
               );
             })}
           </div>
@@ -257,10 +263,10 @@ export default async function DistrictSchoolsPage({ params }) {
             <SectionKicker>STAGE</SectionKicker>
             <h2>学段分布</h2>
             {stageGroups.map((group, index) => (
-              <Link className={index === 0 ? 'is-active' : undefined} href={`/schools?district=${districtInfo.id}&stage=${group.id}`} key={group.id}>
+              <RegionLink className={index === 0 ? 'is-active' : undefined} href={`/schools?district=${districtInfo.id}&stage=${group.id}`} key={group.id}>
                 <span>{group.label} · {group.items.length} 所</span>
                 <i>→</i>
-              </Link>
+              </RegionLink>
             ))}
           </section>
 
@@ -268,19 +274,19 @@ export default async function DistrictSchoolsPage({ params }) {
             <SectionKicker>RELATED</SectionKicker>
             <h2>周边区域</h2>
             {relatedDistricts.map((item) => (
-              <Link href={`/schools/district/${item.id}`} key={item.id}>
+              <RegionLink href={`/schools/district/${item.id}`} key={item.id}>
                 <span>{item.name} · {item.schoolCount || 0} 所</span>
                 <i>→</i>
-              </Link>
+              </RegionLink>
             ))}
           </section>
 
           <section className="channel-side-card is-dark">
             <SectionKicker>TOOLS</SectionKicker>
             <h2>区域工具</h2>
-            <Link href="/schools"><span>学校数据库</span><i>→</i></Link>
-            <Link href="/schools/compare"><span>学校对比</span><i>→</i></Link>
-            <Link href="/schools/score-match"><span>分数匹配</span><i>→</i></Link>
+            <RegionLink href="/schools"><span>学校数据库</span><i>→</i></RegionLink>
+            <RegionLink href="/schools/compare"><span>学校对比</span><i>→</i></RegionLink>
+            <RegionLink href="/schools/score-match"><span>分数匹配</span><i>→</i></RegionLink>
           </section>
         </aside>
       </section>

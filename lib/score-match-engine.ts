@@ -297,9 +297,9 @@ function categoryOrder(c: MatchCategory): number {
   return 2;
 }
 
-export function matchSchoolsByScore(input: ScoreMatchInput, schools: SchoolRecord[]): ScoreMatchResult[] {
+export function matchSchoolsByScore(input: ScoreMatchInput, schools: SchoolRecord[], maxScore: number = MAX_SCORE): ScoreMatchResult[] {
   const { score, districtId, examType } = input;
-  if (!Number.isFinite(score) || score < 0 || score > MAX_SCORE) return [];
+  if (!Number.isFinite(score) || score < 0 || score > maxScore) return [];
 
   const all = examType === 'international' ? matchInternational(score, districtId, schools) : matchZhongkao(score, districtId, schools);
 

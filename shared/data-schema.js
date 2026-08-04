@@ -1,28 +1,22 @@
 // 数据 schema：区域目录 + 基础工具函数。
 // normalizeSchool/normalizeNews/normalizePolicy 及其专属辅助函数已移除
 // （CRUD 改为直接操作 DB，归一化在 content-service.buildSchoolRecord/buildNewsRecord 内完成）。
+//
+// 区目录现由 shared/region-config.js 按 region 提供（多地区扩展）。
+// 此处导出的 DISTRICT_CATALOG / DISTRICT_NAME_TO_ID / DISTRICT_ID_TO_NAME
+// 为 DEFAULT_REGION（上海）视图，保持向后兼容；region-aware 调用方应改用
+// region-config 的 getDistrictCatalog(region) 等。
 
-const DISTRICT_CATALOG = [
-  { id: 'huangpu', name: '黄浦区', description: '上海市中心城区，教育资源丰富' },
-  { id: 'xuhui', name: '徐汇区', description: '教育强区，名校集中' },
-  { id: 'changning', name: '长宁区', description: '国际化程度高，教育质量优秀' },
-  { id: 'jingan', name: '静安区', description: '市中心区域，优质教育资源集中' },
-  { id: 'putuo', name: '普陀区', description: '教育资源均衡发展' },
-  { id: 'hongkou', name: '虹口区', description: '历史悠久，教育传统深厚' },
-  { id: 'yangpu', name: '杨浦区', description: '高校聚集，教育资源丰富' },
-  { id: 'minhang', name: '闵行区', description: '新兴教育区域，发展迅速' },
-  { id: 'baoshan', name: '宝山区', description: '教育资源不断完善' },
-  { id: 'jiading', name: '嘉定区', description: '历史文化名城，教育发展良好' },
-  { id: 'pudong', name: '浦东新区', description: '经济发达，教育资源丰富' },
-  { id: 'jinshan', name: '金山区', description: '教育资源稳步提升' },
-  { id: 'songjiang', name: '松江区', description: '大学城区域，教育氛围浓厚' },
-  { id: 'qingpu', name: '青浦区', description: '教育资源快速发展' },
-  { id: 'fengxian', name: '奉贤区', description: '教育资源持续改善' },
-  { id: 'chongming', name: '崇明区', description: '生态岛，教育资源特色发展' }
-];
+const {
+  DEFAULT_REGION,
+  getDistrictCatalog,
+  getDistrictNameToId,
+  getDistrictIdToName
+} = require('./region-config');
 
-const DISTRICT_NAME_TO_ID = Object.fromEntries(DISTRICT_CATALOG.map((item) => [item.name, item.id]));
-const DISTRICT_ID_TO_NAME = Object.fromEntries(DISTRICT_CATALOG.map((item) => [item.id, item.name]));
+const DISTRICT_CATALOG = getDistrictCatalog(DEFAULT_REGION);
+const DISTRICT_NAME_TO_ID = getDistrictNameToId(DEFAULT_REGION);
+const DISTRICT_ID_TO_NAME = getDistrictIdToName(DEFAULT_REGION);
 
 function cleanString(value) {
   if (value === undefined || value === null) {
@@ -41,9 +35,12 @@ function slugify(value) {
 }
 
 // 由 schools/news 派生区域聚合（学校数、政策数、最新政策标题）。
-function buildDistricts(schools, news) {
+// region 默认 DEFAULT_REGION（上海）；多地区调用方传入对应 region，
+// 内部按该 region 的区目录聚合（非该 region 的区会被忽略，符合地区隔离语义）。
+function buildDistricts(schools, news, region = DEFAULT_REGION) {
+  const catalog = getDistrictCatalog(region);
   const policyNews = (Array.isArray(news) ? news : []).filter((item) => item.newsType === 'policy');
-  return DISTRICT_CATALOG.map((district) => {
+  return catalog.map((district) => {
     const districtSchools = schools.filter((school) => school.districtId === district.id);
     const districtPolicies = policyNews.filter((policy) => policy.districtId === district.id);
     const latestPolicy = districtPolicies

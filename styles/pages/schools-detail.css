@@ -1793,6 +1793,7 @@ body[data-page="schools"] .school-pencil-outcome-table .outcome-head span {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 body[data-page="schools"] .school-pencil-outcome-table .outcome-row:last-child {
@@ -1802,6 +1803,7 @@ body[data-page="schools"] .school-pencil-outcome-table .outcome-row:last-child {
 body[data-page="schools"] .school-pencil-outcome-table .outcome-row strong {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 6px;
     color: var(--channel-ink);
@@ -1813,13 +1815,13 @@ body[data-page="schools"] .school-pencil-outcome-table .outcome-row b {
     color: var(--channel-blue);
     font-family: var(--channel-font-data);
     font-size: 16px;
-    text-align: right;
+    text-align: center;
 }
 
 body[data-page="schools"] .school-pencil-outcome-table .outcome-row span {
     color: var(--channel-muted);
     font-size: 14px;
-    text-align: right;
+    text-align: center;
 }
 
 body[data-page="schools"] .school-pencil-outcome-table em.is-verified,

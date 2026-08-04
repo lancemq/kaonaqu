@@ -4,6 +4,7 @@ import {
   PolicyToolShell,
   PolicyToolSideCard
 } from '../../../components/news-policy-tool-ui';
+import { getRegionContext } from '../../../lib/region-server.mjs';
 
 const faqGroups = [
   {
@@ -193,10 +194,14 @@ const relatedLinks = [
   { label: '政策概念速查 →', href: '/news/policy-glossary' }
 ];
 
-export const metadata = {
-  title: '上海中考高考政策问答 - 高频问题与录取规则 | 考哪去',
-  description: '集中查看上海中考、高考升学中最常问的政策问题，包括报名资格、时间节点、志愿规则、高招通道选择、信息口径与下一步判断。'
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: `${label}中考高考政策问答 - 高频问题与录取规则 | 考哪去`,
+    description: `集中查看${label}中考、高考升学中最常问的政策问题，包括报名资格、时间节点、志愿规则、高招通道选择、信息口径与下一步判断。`
+  };
+}
 
 export default function PolicyFaqPage() {
   const faqCount = faqGroups.reduce((count, group) => count + group.items.length, 0);

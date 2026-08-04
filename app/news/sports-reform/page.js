@@ -2,15 +2,20 @@ import { createRequire } from 'module';
 import { NewsTopicSpecialPage } from '../../../components/news-topic-special-ui';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel } from '../../../lib/site-utils';
+import { getRegionContext } from '../../../lib/region-server.mjs';
 
 const require = createRequire(import.meta.url);
 const { loadNewsList } = require('../../../shared/data-store');
 
-export const metadata = {
-  title: '上海体育考试改革专题 | 考哪去',
-  description: '集中查看上海中考体育改革、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生相关信息，方便家长和学生按专题快速了解。',
-  alternates: { canonical: '/news/sports-reform' }
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: `${label}体育考试改革专题 | 考哪去`,
+    description: `集中查看${label}中考体育改革、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生相关信息，方便家长和学生按专题快速了解。`,
+    alternates: { canonical: '/news/sports-reform' }
+  };
+}
 
 function getCurrentYear(news) {
   const years = news
@@ -61,7 +66,8 @@ function toTopicEntry(item) {
 }
 
 export default async function SportsReformPage() {
-  const news = await loadNewsList();
+  const { region } = await getRegionContext();
+  const news = await loadNewsList(region);
   const currentYear = getCurrentYear(news);
   const sportsNews = news
     .filter((item) => isCurrentYearItem(item, currentYear) && isSportsItem(item))

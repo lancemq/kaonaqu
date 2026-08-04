@@ -1,5 +1,10 @@
-const { DISTRICT_NAME_TO_ID, DISTRICT_ID_TO_NAME } = require('./data-schema');
 const { isSupabaseConfigured, getServiceClient, SCHOOLS_TABLE, NEWS_TABLE } = require('./supabase-client');
+const {
+  DEFAULT_REGION,
+  getKeyLevelPriority,
+  getDistrictNameToId,
+  getDistrictIdToName
+} = require('./region-config');
 
 
 
@@ -13,6 +18,16 @@ function inferSchoolStage(stageLabel) {
   return 'senior_high';
 }
 
+// region 未在 region-config 注册时容错兜底 DEFAULT_REGION：
+// DB 可能有未配置地区的数据，映射层不应因此抛错；districtId 兜底空字符串。
+function districtNameToIdSafe(region, name) {
+  try {
+    return getDistrictNameToId(region || DEFAULT_REGION)[name] || '';
+  } catch {
+    return getDistrictNameToId(DEFAULT_REGION)[name] || '';
+  }
+}
+
 // rowToSchool：完全从数据库行映射，仅返回 DB 列对应的字段 + 运行时派生字段
 function rowToSchool(row) {
   if (!row) return null;
@@ -21,8 +36,9 @@ function rowToSchool(row) {
     id: slug,
     dbId: row.id,
     name: row.name,
-    districtId: DISTRICT_NAME_TO_ID[row.district_name] || '',
+    districtId: districtNameToIdSafe(row.region, row.district_name),
     districtName: row.district_name,
+    region: row.region || DEFAULT_REGION,
     schoolStage: inferSchoolStage(row.school_stage_label),
     schoolStageLabel: row.school_stage_label,
     schoolPropertyLabel: row.school_property_label,
@@ -59,21 +75,13 @@ function rowToSchool(row) {
 
 // === 本地 JSON 与数据库表对齐 ===
 
-// 学校排序：eliteCohort 非空优先 + schoolKeyLevel 重点优先
+// 学校排序：eliteCohort 非空优先 + schoolKeyLevel 重点优先。
+// 层级权重现由 shared/region-config.js 按 region 提供（原内联词表已迁出，值不变）。
 // ⚠️ 键必须与 DB 真实 school_key_level 词表严格对齐（带 (高中)/(初中) 后缀），
 // 否则除"一般高中/一般初中"外所有层级都匹配不到、优先级落 0，层级排序实质失效。
 // DB 词表（8 值）：市重点(高中)/区重点(高中)/顶级公办(初中)/顶级民办(初中)/
 //   强公办(初中)/强民办(初中)/一般高中/一般初中。
-const KEY_LEVEL_PRIORITY = {
-  '市重点(高中)': 100,
-  '顶级公办(初中)': 95,
-  '顶级民办(初中)': 95,
-  '区重点(高中)': 80,
-  '强民办(初中)': 72,
-  '强公办(初中)': 70,
-  '一般高中': 60,
-  '一般初中': 40
-};
+const KEY_LEVEL_PRIORITY = getKeyLevelPriority(DEFAULT_REGION);
 
 function sortBySchoolPriority(items) {
   return items.slice().sort((a, b) => {
@@ -121,16 +129,19 @@ async function getSchoolById(rawId) {
     // 已解码则保持原值
   }
   const client = getServiceClient();
+  // 用 limit(1) 而非 maybeSingle()：影子表 school_new 无 slug 唯一约束，
+  // 若存在重复 slug 行（历史数据/多次拷贝），maybeSingle 会抛 PGRST116。
+  // limit(1) 取首条，对重复数据鲁棒；正常唯一 slug 行为不变。
   const { data, error } = await client
     .from(SCHOOLS_TABLE)
     .select('*')
     .eq('slug', decodedId)
-    .maybeSingle();
+    .limit(1);
 
   if (error) {
     throw error;
   }
-  return data ? rowToSchool(data) : null;
+  return data && data.length ? rowToSchool(data[0]) : null;
 }
 
 // 批量完整查询（列表页当前页 ≤10 所卡片用，需 content 概览）。
@@ -214,6 +225,7 @@ function rowToNews(row) {
     },
     districtId: row.district_id || '',
     districtName: row.district_name || '',
+    region: row.region || DEFAULT_REGION,
     primarySchoolId: row.primary_school_id || '',
     relatedSchoolIds: Array.isArray(row.related_school_ids) ? row.related_school_ids : [],
     schoolLinkReason: row.school_link_reason || '',
@@ -228,38 +240,41 @@ function rowToNews(row) {
 
 // 全量学校列表（轻量，排除 content/admission_info/score_lines）。供学校列表页、
 // 教育集团页、对比页、区域列表页等需全量学校的页面使用。0.44MB。
-async function loadSchoolsList() {
+async function loadSchoolsList(region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
   const client = getServiceClient();
   const { data, error } = await client
     .from(SCHOOLS_TABLE)
     .select(SCHOOLS_LIST_COLUMNS)
+    .eq('region', region)
     .order('id', { ascending: true });
   if (error) throw error;
   return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
 }
 
 // 全量新闻列表（轻量，排除 content）。供新闻列表页、首页、专题页等使用。0.1MB。
-async function loadNewsList() {
+async function loadNewsList(region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
   const client = getServiceClient();
   const { data, error } = await client
     .from(NEWS_TABLE)
     .select(NEWS_LIST_COLUMNS)
+    .eq('region', region)
     .order('published_at', { ascending: false });
   if (error) throw error;
   return (data || []).map((row) => rowToNews(row)).filter(Boolean);
 }
 
 // 按区域 ID 查学校（区域详情页）。仅该区 ~50 所，而非全量 888 所。~0.02MB。
-async function loadSchoolsByDistrict(districtId) {
+async function loadSchoolsByDistrict(districtId, region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
-  const districtName = DISTRICT_ID_TO_NAME[districtId];
+  const districtName = getDistrictIdToName(region)[districtId];
   if (!districtName) return [];
   const client = getServiceClient();
   const { data, error } = await client
     .from(SCHOOLS_TABLE)
     .select(SCHOOLS_LIST_COLUMNS)
+    .eq('region', region)
     .eq('district_name', districtName)
     .order('id', { ascending: true });
   if (error) throw error;
@@ -267,31 +282,35 @@ async function loadSchoolsByDistrict(districtId) {
 }
 
 // 仅取新闻 id 列表（sitemap 用）。~5KB。
-async function loadNewsIds() {
+async function loadNewsIds(region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
   const client = getServiceClient();
   const { data, error } = await client
     .from(NEWS_TABLE)
     .select('id')
+    .eq('region', region)
     .order('published_at', { ascending: false });
   if (error) throw error;
   return (data || []).map((row) => row.id).filter(Boolean);
 }
 
 // 分数匹配页所需最小字段集。~0.15MB（比全量 0.44MB 少 66%）。
-async function loadSchoolsMinimal() {
+async function loadSchoolsMinimal(region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
   const client = getServiceClient();
+  const nameToId = getDistrictNameToId(region);
   const { data, error } = await client
     .from(SCHOOLS_TABLE)
     .select('slug,name,district_name,school_stage_label,school_key_level,elite_cohort,group,is_international,score_lines')
+    .eq('region', region)
     .order('id', { ascending: true });
   if (error) throw error;
   return (data || []).map((row) => ({
     id: row.slug || '',
     name: row.name || '',
-    districtId: DISTRICT_NAME_TO_ID[row.district_name] || '',
+    districtId: nameToId[row.district_name] || '',
     districtName: row.district_name || '',
+    region: row.region || region,
     schoolStage: inferSchoolStage(row.school_stage_label),
     eliteCohort: row.elite_cohort || '',
     schoolKeyLevel: row.school_key_level || '',
@@ -319,7 +338,7 @@ async function loadSchoolNamesByIds(ids) {
 }
 
 // 新闻详情页相关学校：主校 + 按优先级填充。~2KB。
-async function loadSchoolsForRelated(primarySchoolId, limit = 4) {
+async function loadSchoolsForRelated(primarySchoolId, limit = 4, region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
   const client = getServiceClient();
 
@@ -334,9 +353,10 @@ async function loadSchoolsForRelated(primarySchoolId, limit = 4) {
         })
     : Promise.resolve(null);
 
-  // 填充：排除主校，多取以便排序后裁剪
+  // 填充：同地区、排除主校，多取以便排序后裁剪
   const fillerPromise = client.from(SCHOOLS_TABLE)
     .select(SCHOOLS_LIST_COLUMNS)
+    .eq('region', region)
     .neq('slug', primarySchoolId || '')
     .limit(limit + 4)
     .then(({ data, error }) => {
@@ -355,12 +375,13 @@ async function loadSchoolsForRelated(primarySchoolId, limit = 4) {
 }
 
 // 按区域统计学校数（区域详情页侧栏排序用）。~15KB。
-async function loadSchoolCountsByDistrict() {
+async function loadSchoolCountsByDistrict(region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return {};
   const client = getServiceClient();
   const { data, error } = await client
     .from(SCHOOLS_TABLE)
-    .select('district_name');
+    .select('district_name')
+    .eq('region', region);
   if (error) throw error;
   const counts = {};
   for (const row of data || []) {
@@ -378,6 +399,7 @@ function schoolToRow(school = {}) {
     slug: school.id || '',
     name: school.name || '',
     district_name: school.districtName || '',
+    region: school.region || DEFAULT_REGION,
     school_stage_label: school.schoolStageLabel || '',
     school_property_label: school.schoolPropertyLabel || '',
     school_key_level: school.schoolKeyLevel || '',
@@ -429,6 +451,7 @@ function newsToRow(news = {}) {
     },
     district_id: news.districtId || '',
     district_name: news.districtName || '',
+    region: news.region || DEFAULT_REGION,
     primary_school_id: news.primarySchoolId || '',
     related_school_ids: Array.isArray(news.relatedSchoolIds) ? news.relatedSchoolIds : [],
     school_link_reason: news.schoolLinkReason || '',

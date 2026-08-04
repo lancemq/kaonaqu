@@ -2,15 +2,20 @@ import { createRequire } from 'module';
 import { NewsTopicSpecialPage } from '../../../components/news-topic-special-ui';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getPolicyExamType } from '../../../lib/site-utils';
+import { getRegionContext } from '../../../lib/region-server.mjs';
 
 const require = createRequire(import.meta.url);
 const { loadNewsList } = require('../../../shared/data-store');
 
-export const metadata = {
-  title: '上海高招政策详解 | 考哪去',
-  description: '以 2026 年上海市普通高校招生办法为依据，系统说明上海高考"3+3"模式与 660 分构成、综合评价与强基计划、院校专业组平行志愿、学业水平考试、艺体招生与政策性照顾加分，附关键时间节点与常见误区。',
-  alternates: { canonical: '/news/gaokao-special' }
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: `${label}高招政策详解 | 考哪去`,
+    description: `以 2026 年${label}市普通高校招生办法为依据，系统说明${label}高考"3+3"模式与 660 分构成、综合评价与强基计划、院校专业组平行志愿、学业水平考试、艺体招生与政策性照顾加分，附关键时间节点与常见误区。`,
+    alternates: { canonical: '/news/gaokao-special' }
+  };
+}
 
 function getCurrentYear(news) {
   const years = news
@@ -241,7 +246,8 @@ const policyBlocks = [
 ];
 
 export default async function GaokaoSpecialPage() {
-  const news = await loadNewsList();
+  const { region } = await getRegionContext();
+  const news = await loadNewsList(region);
   const currentYear = getCurrentYear(news);
   const gaokaoNews = news
     .filter((item) => item.examType === 'gaokao' && isCurrentYearItem(item, currentYear))

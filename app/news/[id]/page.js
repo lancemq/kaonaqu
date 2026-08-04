@@ -1,12 +1,16 @@
-import Link from 'next/link';
+import { RegionLink } from '../../../components/region-link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import { getPolicyDetailHref, getPolicyMappedNewsId } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getNewsPriorityScore, getNewsSection, getPolicyExamType } from '../../../lib/site-utils';
 import { renderBlocks } from '../../../components/BlockRenderer';
+import { getRegionContext } from '../../../lib/region-server.mjs';
+import { RegionSelector } from '../../../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { getNewsById, loadNewsList, loadSchoolsForRelated } = require('../../../shared/data-store');
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 
 // 将正文里“名称（网址）”形式的裸网址转换为 Markdown 链接 [名称](网址)，
 // 使显示只保留可读名称、名称本身为可点击链接、原始网址不出现。
@@ -271,24 +275,27 @@ function SectionKicker({ children, inverse = false }) {
   );
 }
 
-function NewsDetailNav() {
+async function NewsDetailNav() {
+  const { config } = await getRegionContext();
   return (
     <nav className="channel-nav" aria-label="顶部导航">
-      <Link className="channel-brand" href="/" aria-label="考哪去首页">
+      <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
         <strong>考哪去</strong>
-        <span>SHANGHAI EDUCATION</span>
-      </Link>
+        <span>{config.brandSuffix}</span>
+      </RegionLink>
       <div className="channel-nav-links">
-        <Link href="/">首页</Link>
-        <Link className="is-active" href="/news">新闻</Link>
-        <Link href="/schools">学校</Link>
-        <Link href="/knowledge">知识</Link>
+        <RegionLink href="/">首页</RegionLink>
+        <RegionLink className="is-active" href="/news">新闻</RegionLink>
+        <RegionLink href="/schools">学校</RegionLink>
+        <RegionLink href="/knowledge">知识</RegionLink>
+        <RegionSelector />
       </div>
     </nav>
   );
 }
 
-function NewsDetailFooter() {
+async function NewsDetailFooter() {
+  const { config } = await getRegionContext();
   return (
     <>
       <div className="channel-color-bar" aria-hidden="true">
@@ -301,7 +308,7 @@ function NewsDetailFooter() {
       <footer className="news-detail-footer">
         <div>
           <strong>考哪去</strong>
-          <span>SHANGHAI EDUCATION PLATFORM</span>
+          <span>{config.brandSuffixFull}</span>
         </div>
         <p>© 2026 考哪去</p>
       </footer>
@@ -313,10 +320,10 @@ function SidebarList({ items, getHref, getLabel }) {
   return (
     <div className="news-detail-sidebar-list">
       {items.map((item) => (
-        <Link key={item.id || getLabel(item)} href={getHref(item)}>
+        <RegionLink key={item.id || getLabel(item)} href={getHref(item)}>
           <span>{getLabel(item)}</span>
           <i aria-hidden="true">→</i>
-        </Link>
+        </RegionLink>
       ))}
     </div>
   );
@@ -365,12 +372,13 @@ export default async function NewsDetailPage({ params }) {
   if (!newsItem) {
     notFound();
   }
-  const news = await loadNewsList();
+  const { region, config } = await getRegionContext();
+  const news = await loadNewsList(region);
   if (newsItem.newsType === 'policy') {
-    return renderPolicyDetail(newsItem, news);
+    return renderPolicyDetail(newsItem, news, region);
   }
-  const relatedSchools = await loadSchoolsForRelated(newsItem.primarySchoolId, 4);
-  return renderNewsDetail(newsItem, news, relatedSchools);
+  const relatedSchools = await loadSchoolsForRelated(newsItem.primarySchoolId, 4, region);
+  return renderNewsDetail(newsItem, news, relatedSchools, region);
 }
 
 // 新闻来源：渲染为可点击外链（显示来源名，不显示网址文本）
@@ -393,7 +401,7 @@ function SourceLink({ source, fallbackName }) {
   );
 }
 
-function renderNewsDetail(item, news, relatedSchools) {
+function renderNewsDetail(item, news, relatedSchools, region) {
   const policyNews = news.filter((n) => n.newsType === 'policy');
   const relatedPolicies = buildRelatedPolicies(policyNews, item);
   const relatedNews = buildRelatedNews(news, item);
@@ -424,16 +432,16 @@ function renderNewsDetail(item, news, relatedSchools) {
     "author": {
       "@type": "Organization",
       "name": sourceName,
-      "url": item.source?.url || 'https://kaonaqu.xyz'
+      "url": item.source?.url || SITE_URL
     },
     "publisher": {
       "@type": "Organization",
       "name": "考哪去",
-      "url": "https://kaonaqu.xyz"
+      "url": SITE_URL
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://kaonaqu.xyz/news/${encodeURIComponent(item.id)}`
+      "@id": `${SITE_URL}/${region}/news/${encodeURIComponent(item.id)}`
     }
   };
 
@@ -447,9 +455,9 @@ function renderNewsDetail(item, news, relatedSchools) {
 
       <header className="news-detail-header" id="top">
         <nav className="news-detail-breadcrumb" aria-label="面包屑">
-          <Link href="/">首页</Link>
+          <RegionLink href="/">首页</RegionLink>
           <span>/</span>
-          <Link href="/news">新闻</Link>
+          <RegionLink href="/news">新闻</RegionLink>
           <span>/</span>
           <strong>{articleType}</strong>
         </nav>
@@ -485,7 +493,7 @@ function renderNewsDetail(item, news, relatedSchools) {
               <h2>相关文章</h2>
               <div className="news-detail-related-text">
                 {relatedNews.map((entry) => (
-                  <Link key={entry.id} href={`/news/${encodeURIComponent(entry.id)}`}>{entry.title}</Link>
+                  <RegionLink key={entry.id} href={`/news/${encodeURIComponent(entry.id)}`}>{entry.title}</RegionLink>
                 ))}
               </div>
             </section>
@@ -527,7 +535,7 @@ function renderNewsDetail(item, news, relatedSchools) {
               <h2>相关政策</h2>
               <div className="news-detail-related-text is-light">
                 {relatedPolicies.map((policy) => (
-                  <Link key={policy.id} href={getPolicyDetailHref(policy)}>{policy.title}</Link>
+                  <RegionLink key={policy.id} href={getPolicyDetailHref(policy)}>{policy.title}</RegionLink>
                 ))}
               </div>
             </section>
@@ -540,7 +548,7 @@ function renderNewsDetail(item, news, relatedSchools) {
   );
 }
 
-function renderPolicyDetail(item, news) {
+function renderPolicyDetail(item, news, region) {
   const mappedNewsId = getPolicyMappedNewsId(item);
   const mappedNews = mappedNewsId ? news.find((entry) => entry.id === mappedNewsId) : null;
   const articleBodyMarkdown = item.content || '';
@@ -566,16 +574,16 @@ function renderPolicyDetail(item, news) {
     "author": {
       "@type": "Organization",
       "name": sourceName,
-      "url": item.source?.url || 'https://kaonaqu.xyz'
+      "url": item.source?.url || SITE_URL
     },
     "publisher": {
       "@type": "Organization",
       "name": "考哪去",
-      "url": "https://kaonaqu.xyz"
+      "url": SITE_URL
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://kaonaqu.xyz/news/${encodeURIComponent(item.id)}`
+      "@id": `${SITE_URL}/${region}/news/${encodeURIComponent(item.id)}`
     }
   };
 
@@ -597,9 +605,9 @@ function renderPolicyDetail(item, news) {
 
       <header className="news-detail-header" id="top">
         <nav className="news-detail-breadcrumb" aria-label="面包屑">
-          <Link href="/">首页</Link>
+          <RegionLink href="/">首页</RegionLink>
           <span>/</span>
-          <Link href="/news">新闻</Link>
+          <RegionLink href="/news">新闻</RegionLink>
           <span>/</span>
           <strong>政策</strong>
         </nav>
@@ -634,7 +642,7 @@ function renderPolicyDetail(item, news) {
               <SectionKicker inverse>RELATED</SectionKicker>
               <h2>对应新闻稿</h2>
               <div className="news-detail-related-text">
-                <Link href={`/news/${encodeURIComponent(mappedNews.id)}`}>{mappedNews.title}</Link>
+                <RegionLink href={`/news/${encodeURIComponent(mappedNews.id)}`}>{mappedNews.title}</RegionLink>
               </div>
             </section>
           ) : null}
@@ -645,7 +653,7 @@ function renderPolicyDetail(item, news) {
               <h2>相关政策</h2>
               <div className="news-detail-related-text is-light">
                 {relatedPolicies.map((policy) => (
-                  <Link key={policy.id} href={getPolicyDetailHref(policy)}>{policy.title}</Link>
+                  <RegionLink key={policy.id} href={getPolicyDetailHref(policy)}>{policy.title}</RegionLink>
                 ))}
               </div>
             </section>

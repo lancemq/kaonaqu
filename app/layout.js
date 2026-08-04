@@ -1,6 +1,8 @@
 import { Analytics } from '@vercel/analytics/react';
 import { Funnel_Sans, Geist, Geist_Mono, Noto_Sans_SC, Noto_Serif_SC } from 'next/font/google';
 import BodyPageFlag from '../components/body-page-flag';
+import { RegionProvider } from '../components/region-context';
+import { getRegionContext } from '../lib/region-server.mjs';
 import '../styles/index.css';
 
 // 字体自托管（next/font 构建时下载、运行时同源分发，无第三方依赖）：
@@ -50,50 +52,69 @@ const fontNotoSerifSC = Noto_Serif_SC({
 // 故各页面不再使用 force-dynamic（searchParams/params 已自动使页面动态渲染）。
 export const fetchCache = 'force-cache';
 
-export const metadata = {
-  metadataBase: new URL('https://kaonaqu.xyz'),
-  title: '考哪去 | 上海中考高考政策、学校信息与知识体系平台',
-  description: '考哪去聚合上海中考、高考新闻政策、学校信息和初高中知识体系，覆盖升学动态、学校筛选、知识点梳理与年级学习路径。',
-  keywords: ['上海中考', '上海高考', '上海学校', '升学政策', '中招', '高招', '上海教育'],
-  alternates: {
-    canonical: '/'
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'zh_CN',
-    siteName: '考哪去',
-    title: '考哪去 | 上海中考高考政策、学校信息与知识体系平台',
-    description: '考哪去聚合上海中考、高考新闻政策、学校信息和初高中知识体系，覆盖升学动态、学校筛选、知识点梳理与年级学习路径。',
-    url: 'https://kaonaqu.xyz'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: '考哪去 | 上海中考高考政策、学校信息与知识体系平台',
-    description: '考哪去聚合上海中考、高考新闻政策、学校信息和初高中知识体系，覆盖升学动态、学校筛选、知识点梳理与年级学习路径。'
-  }
-};
+export async function generateMetadata() {
+  const { region, config } = await getRegionContext();
+  const label = config.label;
+  const title = config.seo.titleTemplate.replace('{label}', label);
+  const description = config.seo.descriptionTemplate.replace('{label}', label);
+  const keywords = config.seo.keywords.map((k) => k.replace('{label}', label));
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+  return {
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    keywords,
+    alternates: {
+      canonical: `/${region}`
+    },
+    openGraph: {
+      type: 'website',
+      locale: 'zh_CN',
+      siteName: '考哪去',
+      title,
+      description,
+      url: siteUrl
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description
+    }
+  };
+}
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const { region, config } = await getRegionContext();
+  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-7712476875404468';
   return (
     <html lang="zh-CN">
       <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7712476875404468" crossOrigin="anonymous"></script>
+        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`} crossOrigin="anonymous"></script>
       </head>
       <body
         className={`${fontFunnel.variable} ${fontGeist.variable} ${fontGeistMono.variable} ${fontNotoSansSC.variable} ${fontNotoSerifSC.variable}`}
         suppressHydrationWarning
       >
         {/* 首屏同步设置 data-page，避免频道 CSS（body[data-page=...]）因客户端 useEffect 延迟而首屏闪烁（FOUC）。
-            SPA 路由切换由 BodyPageFlag 的 useEffect 负责更新。 */}
+            SPA 路由切换由 BodyPageFlag 的 useEffect 负责更新。
+            内联 R=['shanghai'] 为已知地区白名单（与 shared/region-list.mjs 同步），用于剥离 /{region}/ 前缀。 */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var p=location.pathname||'/';var r=p.indexOf('/news')===0?'news':p.indexOf('/schools')===0?'schools':p.indexOf('/knowledge')===0?'knowledge':'home';document.body.setAttribute('data-page',r);}catch(e){}})();"
+              "(function(){try{var p=location.pathname||'/';var R=['shanghai'];function sp(x){var s=x.split('/');if(s.length>2&&R.indexOf(s[1])>=0){return '/'+s.slice(2).join('/');}return x;}var pp=sp(p);var r=pp.indexOf('/news')===0?'news':pp.indexOf('/schools')===0?'schools':pp.indexOf('/knowledge')===0?'knowledge':'home';document.body.setAttribute('data-page',r);}catch(e){}})();"
           }}
         />
-        <BodyPageFlag />
-        {children}
-        <Analytics />
+        <RegionProvider
+          region={region}
+          label={config.label}
+          brandSuffix={config.brandSuffix}
+          brandSuffixFull={config.brandSuffixFull}
+          examTotal={config.examTotal}
+        >
+          <BodyPageFlag />
+          {children}
+          <Analytics />
+        </RegionProvider>
       </body>
     </html>
   );

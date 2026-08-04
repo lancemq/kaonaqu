@@ -5,6 +5,7 @@ const {
   buildDistricts
 } = require('./data-schema');
 const { isSupabaseConfigured } = require('./supabase-client');
+const { DEFAULT_REGION } = require('./region-config');
 const {
   loadSchoolsList,
   loadNewsList,
@@ -127,13 +128,14 @@ function buildNewsRecord(input = {}) {
   };
 }
 
-async function listDistricts() {
-  const [schools, news] = await Promise.all([loadSchoolsList(), loadNewsList()]);
-  return buildDistricts(schools, news);
+async function listDistricts(region = DEFAULT_REGION) {
+  const [schools, news] = await Promise.all([loadSchoolsList(region), loadNewsList(region)]);
+  return buildDistricts(schools, news, region);
 }
 
 async function listSchools(filters = {}) {
-  const schools = await loadSchoolsList();
+  const region = cleanString(filters.region) || DEFAULT_REGION;
+  const schools = await loadSchoolsList(region);
   const q = cleanString(filters.q).toLowerCase();
   const districtId = cleanString(filters.district || filters.districtId);
   const stage = cleanString(filters.stage || filters.schoolStage);
@@ -177,9 +179,10 @@ async function getSchoolById(id) {
 async function createSchool(input) {
   requireSupabase();
   const id = cleanString(input.id) || slugify(`${cleanString(input.districtId || input.district)}-${cleanString(input.name)}`);
-  const school = buildSchoolRecord({ ...input, id });
+  const region = cleanString(input.region) || DEFAULT_REGION;
+  const school = buildSchoolRecord({ ...input, id, region });
   requireFields(school, ['id', 'name', 'districtName']);
-  return createSchoolInSupabase({ ...school, updatedAt: new Date().toISOString() });
+  return createSchoolInSupabase({ ...school, region, updatedAt: new Date().toISOString() });
 }
 
 async function updateSchool(id, input) {
@@ -203,7 +206,8 @@ async function deleteSchool(id) {
 }
 
 async function listNews(filters = {}) {
-  const news = await loadNewsList();
+  const region = cleanString(filters.region) || DEFAULT_REGION;
+  const news = await loadNewsList(region);
   const q = cleanString(filters.q).toLowerCase();
   const districtId = cleanString(filters.district || filters.districtId);
   const examType = cleanString(filters.examType || filters.exam_type);
@@ -239,9 +243,10 @@ async function getNewsById(id) {
 async function createNews(input) {
   requireSupabase();
   const id = cleanString(input.id) || slugify(`${cleanString(input.category || input.examType || 'news')}-${cleanString(input.title)}`);
-  const news = buildNewsRecord({ ...input, id });
+  const region = cleanString(input.region) || DEFAULT_REGION;
+  const news = buildNewsRecord({ ...input, id, region });
   requireFields(news, ['id', 'title']);
-  return createNewsInSupabase({ ...news, updatedAt: new Date().toISOString() });
+  return createNewsInSupabase({ ...news, region, updatedAt: new Date().toISOString() });
 }
 
 async function updateNews(id, input) {

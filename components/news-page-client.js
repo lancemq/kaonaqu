@@ -1,6 +1,8 @@
 'use client';
 
-import Link from 'next/link';
+import { RegionLink } from './region-link';
+import { useRegion } from './region-context';
+import { regionPath } from '../shared/region-path.mjs';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import Pager from './pager';
@@ -67,12 +69,13 @@ function buildNewsHref(base, next) {
 
 export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, totalPages = 1, currentPage = 1, activeFilter = 'all' }) {
   const router = useRouter();
+  const { region } = useRegion();
   const [isPending, startTransition] = useTransition();
 
   // 服务端是唯一数据源：URL 变化即重新请求并下发当前页卡片。
   const navigate = (next) => {
     startTransition(() => {
-      router.push(buildNewsHref({ filter: activeFilter, page: currentPage }, next));
+      router.push(regionPath(buildNewsHref({ filter: activeFilter, page: currentPage }, next), region));
     });
   };
 
@@ -116,7 +119,7 @@ export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, 
               ? schoolNamesById[item.primarySchoolId] || ''
               : '';
             return (
-              <Link className="news-article-row" href={getItemHref(item)} key={`${item.itemType}-${item.id}`}>
+              <RegionLink className="news-article-row" href={getItemHref(item)} key={`${item.itemType}-${item.id}`}>
                 <div className="news-article-copy">
                   <div className="news-article-tags">
                     <span className={`news-article-chip is-${item.section || 'default'}`}>{getSectionChip(item.section)}</span>
@@ -130,7 +133,7 @@ export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, 
                   <time>{item.publishedAt || item.date || 'DATE'}</time>
                   <span className="news-article-cta">查看 →</span>
                 </div>
-              </Link>
+              </RegionLink>
             );
           }) : (
             <article className="news-article-row news-article-empty">
@@ -155,17 +158,17 @@ export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, 
           <SectionLabel>SPECIALS</SectionLabel>
           <h2>{SPORTS_SPECIAL.title}</h2>
           <p>{SPORTS_SPECIAL.summary}</p>
-          <Link href={SPORTS_SPECIAL.href}>
+          <RegionLink href={SPORTS_SPECIAL.href}>
             <span>{SPORTS_SPECIAL.label}</span>
             <strong>进入</strong>
-          </Link>
+          </RegionLink>
         </section>
 
         <section className="news-quick-card">
           <SectionLabel>RESOURCES</SectionLabel>
           <div className="news-quick-grid">
             {QUICK_LINKS.map((item) => (
-              <Link href={item.href} key={item.href}>{item.label}</Link>
+              <RegionLink href={item.href} key={item.href}>{item.label}</RegionLink>
             ))}
           </div>
         </section>
@@ -174,10 +177,10 @@ export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, 
           <section className="news-timeline-card">
             <SectionLabel>TIMELINE</SectionLabel>
             {timelinePreview.map((item) => (
-              <Link href="/news/admission-timeline" key={item.title}>
+              <RegionLink href="/news/admission-timeline" key={item.title}>
                 <span>{item.window}</span>
                 <strong>{item.title}</strong>
-              </Link>
+              </RegionLink>
             ))}
           </section>
         ) : null}

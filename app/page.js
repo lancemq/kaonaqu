@@ -1,5 +1,5 @@
 import '../styles/channels/home.css';
-import Link from 'next/link';
+import { RegionLink } from '../components/region-link';
 import { createRequire } from 'module';
 import {
   getNewsCategoryLabel,
@@ -9,6 +9,8 @@ import {
   getSchoolFeatures,
   getSchoolStage
 } from '../lib/site-utils';
+import { getRegionContext } from '../lib/region-server.mjs';
+import { RegionSelector } from '../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsList, loadNewsList } = require('../shared/data-store');
@@ -67,6 +69,8 @@ const KNOWLEDGE_TOPICS = [
   { label: '物理实验专题', meta: 'PHYSICS', href: '/knowledge/physics-grade9' },
   { label: '高中衔接准备', meta: 'SENIOR', href: '/knowledge/senior-1' }
 ];
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 
 function getNewsHref(item) {
   return item?.id ? `/news/${encodeURIComponent(item.id)}` : '/news';
@@ -170,7 +174,8 @@ function SectionLabel({ children }) {
 }
 
 export default async function HomePage() {
-  const [schools, news] = await Promise.all([loadSchoolsList(), loadNewsList()]);
+  const { region, config } = await getRegionContext();
+  const [schools, news] = await Promise.all([loadSchoolsList(region), loadNewsList(region)]);
   const districts = DISTRICT_CATALOG;
   const sortedNews = sortNews(news);
   const featuredNews = pickFeaturedNews(sortedNews, 4);
@@ -199,18 +204,18 @@ export default async function HomePage() {
       {
         '@type': 'Organization',
         name: '考哪去',
-        url: 'https://kaonaqu.xyz',
+        url: SITE_URL,
         description: '上海升学信息平台，聚合中考高考政策、学校信息、区县专题和初高中知识体系。',
-        areaServed: '上海'
+        areaServed: config.label
       },
       {
         '@type': 'WebSite',
         name: '考哪去',
-        url: 'https://kaonaqu.xyz',
+        url: SITE_URL,
         description: '上海升学信息平台，聚合中考高考政策、学校信息、区县专题和初高中知识体系。',
         potentialAction: {
           '@type': 'SearchAction',
-          target: 'https://kaonaqu.xyz/schools?query={search_term_string}',
+          target: `${SITE_URL}/${region}/schools?query={search_term_string}`,
           'query-input': 'required name=search_term_string'
         }
       }
@@ -225,15 +230,16 @@ export default async function HomePage() {
       />
 
       <nav className="channel-nav" aria-label="顶部导航">
-        <Link className="channel-brand" href="/" aria-label="考哪去首页">
+        <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
           <strong>考哪去</strong>
-          <span>SHANGHAI EDUCATION</span>
-        </Link>
+          <span>{config.brandSuffix}</span>
+        </RegionLink>
         <div className="channel-nav-links">
-          <Link className="is-active" href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
+          <RegionLink className="is-active" href="/">首页</RegionLink>
+          <RegionLink href="/news">新闻</RegionLink>
+          <RegionLink href="/schools">学校</RegionLink>
+          <RegionLink href="/knowledge">知识</RegionLink>
+          <RegionSelector />
         </div>
       </nav>
 
@@ -247,8 +253,8 @@ export default async function HomePage() {
               政策动态、重点学校、知识路径和区县判断收束在一个入口。先看全局，再进入具体选择。
             </p>
             <div className="home-hero-actions">
-              <Link href="/news">查看最新动态</Link>
-              <Link href="/schools">进入学校库</Link>
+              <RegionLink href="/news">查看最新动态</RegionLink>
+              <RegionLink href="/schools">进入学校库</RegionLink>
             </div>
           </div>
 
@@ -280,24 +286,24 @@ export default async function HomePage() {
 
           <div className="home-news-grid">
             {featuredNews.map((item) => (
-              <Link className="home-news-card" href={getNewsHref(item)} key={item.id}>
+              <RegionLink className="home-news-card" href={getNewsHref(item)} key={item.id}>
                 <span>{getNewsCategoryLabel(item)} / {item.publishedAt || 'DATE PENDING'}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary || '进入详情查看完整内容。'}</p>
-              </Link>
+              </RegionLink>
             ))}
           </div>
 
           <div className="home-news-list">
             {headlineNews.map((item) => (
-              <Link className="home-news-list-item" href={getNewsHref(item)} key={item.id}>
+              <RegionLink className="home-news-list-item" href={getNewsHref(item)} key={item.id}>
                 <span>{item.publishedAt || 'DATE PENDING'}</span>
                 <strong>{item.title}</strong>
-              </Link>
+              </RegionLink>
             ))}
           </div>
 
-          <Link className="home-text-link" href="/news">查看全部新闻</Link>
+          <RegionLink className="home-text-link" href="/news">查看全部新闻</RegionLink>
         </div>
 
         <aside className="home-feature-panel home-focus-panel">
@@ -322,7 +328,7 @@ export default async function HomePage() {
             <div className="home-focus-topics">
               {focusTopicNews.map((item) => {
                 return (
-                  <Link className="home-focus-topic" href={getNewsHref(item)} key={item.id}>
+                  <RegionLink className="home-focus-topic" href={getNewsHref(item)} key={item.id}>
                     <div className="home-focus-topic-head">
                       <span className="home-focus-topic-icon" aria-hidden="true">
                         {getNewsCategoryLabel(item).slice(0, 1)}
@@ -330,12 +336,12 @@ export default async function HomePage() {
                       <strong>{item.title}</strong>
                     </div>
                     <p>{item.summary || '进入详情查看完整内容。'}</p>
-                  </Link>
+                  </RegionLink>
                 );
               })}
             </div>
           )}
-          <Link className="home-focus-topic-link" href="/news">查看全部动态 →</Link>
+          <RegionLink className="home-focus-topic-link" href="/news">查看全部动态 →</RegionLink>
         </aside>
       </section>
 
@@ -347,12 +353,12 @@ export default async function HomePage() {
               <h2>新闻专题</h2>
               <p>按专题分类浏览，快速找到您关心的升学信息。</p>
             </div>
-            <Link href="/news">全部新闻 →</Link>
+            <RegionLink href="/news">全部新闻 →</RegionLink>
           </div>
 
           <div className="home-news-specials-grid">
             {NEWS_SPECIALS.map((special) => (
-              <Link className="home-news-special-card" href={special.href} key={special.href}>
+              <RegionLink className="home-news-special-card" href={special.href} key={special.href}>
                 <div className="home-news-special-card-top">
                   <span aria-hidden="true">{special.icon}</span>
                   <strong>{special.label}</strong>
@@ -360,7 +366,7 @@ export default async function HomePage() {
                 <h3>{special.title}</h3>
                 <p>{special.description}</p>
                 <em>查看专题 →</em>
-              </Link>
+              </RegionLink>
             ))}
           </div>
         </div>
@@ -374,7 +380,7 @@ export default async function HomePage() {
             <span>{schools.length}+ 所学校</span>
             <span>{districts.length} 个区县</span>
             <span>市重点 / 区重点 / 特色高中</span>
-            <Link href="/schools">全部学校</Link>
+            <RegionLink href="/schools">全部学校</RegionLink>
           </div>
         </div>
 
@@ -383,7 +389,7 @@ export default async function HomePage() {
             const features = getSchoolFeatures(school).slice(0, 3);
             const keyLevel = getSchoolKeyLevelLabel(school);
             return (
-              <Link className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
+              <RegionLink className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
                 <div className="home-school-card-top">
                   <span className="home-school-meta">{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
                 </div>
@@ -397,7 +403,7 @@ export default async function HomePage() {
                     ))}
                   </div>
                 )}
-              </Link>
+              </RegionLink>
             );
           })}
         </div>
@@ -408,7 +414,7 @@ export default async function HomePage() {
           <SectionLabel>SCHOOL LANDSCAPE</SectionLabel>
           <h2>先看区域格局，再比较具体学校</h2>
           <p>把学校放回区县和升学路径里看，择校判断会更接近真实场景。</p>
-          <Link href="/schools/district">查看区县专题</Link>
+          <RegionLink href="/schools/district">查看区县专题</RegionLink>
         </div>
       </section>
 
@@ -419,13 +425,13 @@ export default async function HomePage() {
           <p>覆盖初中到高中全学段学科知识，按年级、科目精准定位，助力系统性学习与备考。</p>
           <div className="home-topic-grid">
             {KNOWLEDGE_TOPICS.map((topic) => (
-              <Link href={topic.href} key={topic.href}>
+              <RegionLink href={topic.href} key={topic.href}>
                 <span>{topic.meta}</span>
                 <strong>{topic.label}</strong>
-              </Link>
+              </RegionLink>
             ))}
           </div>
-          <Link className="home-text-link" href="/knowledge">进入知识体系</Link>
+          <RegionLink className="home-text-link" href="/knowledge">进入知识体系</RegionLink>
         </div>
 
         <aside className="home-district-column">
@@ -433,11 +439,11 @@ export default async function HomePage() {
           <h2>热门区县</h2>
           <div className="home-district-list">
             {districtHighlights.map((district) => (
-              <Link href={`/schools/district/${district.id}`} key={district.id}>
+              <RegionLink href={`/schools/district/${district.id}`} key={district.id}>
                 <span>{district.name}</span>
                 <strong>{district.visibleSchoolCount || district.schoolCount || 0} 所学校</strong>
                 {district.topSchoolName && <em>代表：{district.topSchoolName}</em>}
-              </Link>
+              </RegionLink>
             ))}
           </div>
         </aside>
@@ -457,8 +463,8 @@ export default async function HomePage() {
           <h2>继续探索上海升学路径</h2>
           <p>从政策时间线、学校数据库、区县专题和知识体系里选择下一步。</p>
           <div className="home-cta-actions">
-            <Link href="/news">查看升学动态</Link>
-            <Link href="/schools">查询学校信息</Link>
+            <RegionLink href="/news">查看升学动态</RegionLink>
+            <RegionLink href="/schools">查询学校信息</RegionLink>
           </div>
         </div>
 
@@ -466,10 +472,10 @@ export default async function HomePage() {
           <SectionLabel>QUICK ENTRY</SectionLabel>
           <h3>快速入口</h3>
           {QUICK_LINKS.map((item) => (
-            <Link href={item.href} key={item.href}>
+            <RegionLink href={item.href} key={item.href}>
               <span>{item.label}</span>
               <strong>→</strong>
-            </Link>
+            </RegionLink>
           ))}
         </aside>
       </section>
@@ -477,13 +483,13 @@ export default async function HomePage() {
       <footer className="channel-footer">
         <div>
           <strong>考哪去</strong>
-          <span>SHANGHAI EDUCATION PLATFORM</span>
+          <span>{config.brandSuffixFull}</span>
         </div>
         <nav aria-label="页脚导航">
-          <Link href="/news">新闻政策</Link>
-          <Link href="/schools">学校信息</Link>
-          <Link href="/knowledge">知识体系</Link>
-          <Link href="/schools/district">区县专题</Link>
+          <RegionLink href="/news">新闻政策</RegionLink>
+          <RegionLink href="/schools">学校信息</RegionLink>
+          <RegionLink href="/knowledge">知识体系</RegionLink>
+          <RegionLink href="/schools/district">区县专题</RegionLink>
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

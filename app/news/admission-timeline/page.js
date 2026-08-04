@@ -1,12 +1,18 @@
 import Link from 'next/link';
+import { RegionLink } from '../../../components/region-link';
 import admissionTimeline from '../../../lib/admission-timeline';
 import { NewsAerialFooter, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
+import { getRegionContext } from '../../../lib/region-server.mjs';
 
-export const metadata = {
-  title: '官方招生日程 | 考哪去',
-  description: '集中查看上海升学官方招生日程，包括中招报名、体育类考试、补报名、志愿确认、考试安排和特殊教育招生关键时间节点。',
-  alternates: { canonical: '/news/admission-timeline' }
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: '官方招生日程 | 考哪去',
+    description: `集中查看${label}升学官方招生日程，包括中招报名、体育类考试、补报名、志愿确认、考试安排和特殊教育招生关键时间节点。`,
+    alternates: { canonical: '/news/admission-timeline' }
+  };
+}
 
 const TRACK_LABELS = {
   zhongkao: '中招',
@@ -178,10 +184,10 @@ export default function AdmissionTimelinePage() {
           <h2>查完时间，再进入对应专题核对规则</h2>
         </div>
         <nav aria-label="招生日程相关入口">
-          <Link href="/news/zhongkao-special">中招专题</Link>
-          <Link href="/news/gaokao-special">高招专题</Link>
-          <Link href="/news/policy-faq">政策问答</Link>
-          <Link href="/news/policy-glossary">政策速查</Link>
+          <RegionLink href="/news/zhongkao-special">中招专题</RegionLink>
+          <RegionLink href="/news/gaokao-special">高招专题</RegionLink>
+          <RegionLink href="/news/policy-faq">政策问答</RegionLink>
+          <RegionLink href="/news/policy-glossary">政策速查</RegionLink>
         </nav>
       </section>
 

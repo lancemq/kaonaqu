@@ -11,6 +11,7 @@ import {
   getSchoolType,
   clipText
 } from '../../lib/site-utils';
+import { getRegionContext } from '../../lib/region-server.mjs';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsList, getSchoolsByIds } = require('../../shared/data-store');
@@ -178,18 +179,23 @@ function sortSchools(schools, sort) {
   }
 }
 
-export const metadata = {
-  title: '上海初中高中学校库 - 按区查询学校信息 | 考哪去',
-  description: '按区域检索上海初中、高中学校信息，查看16区学校介绍、类型、学段、特色标签与梯队说明，适合升学择校参考。',
-  keywords: ['上海学校', '上海初中', '上海高中', '学校查询', '择校', '上海16区学校']
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: `${label}初中高中学校库 - 按区查询学校信息 | 考哪去`,
+    description: `按区域检索${label}初中、高中学校信息，查看16区学校介绍、类型、学段、特色标签与梯队说明，适合升学择校参考。`,
+    keywords: [`${label}学校`, `${label}初中`, `${label}高中`, '学校查询', '择校', `${label}16区学校`]
+  };
+}
 
 // searchParams 自动使页面动态渲染；fetchCache 由 app/layout.js 统一设为 force-cache，
 // Supabase 查询经 Next Data Cache 缓存（revalidate: 60s，tags: ['supabase-data']）。
 
 export default async function SchoolsPage({ searchParams }) {
-  const schools = await loadSchoolsList();
-  const districts = buildDistricts(schools, []);
+  const { region } = await getRegionContext();
+  const schools = await loadSchoolsList(region);
+  const districts = buildDistricts(schools, [], region);
   const params = await searchParams;
 
   const filters = {

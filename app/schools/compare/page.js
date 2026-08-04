@@ -1,17 +1,23 @@
 import { createRequire } from 'module';
 import SchoolsCompareClient from '../../../components/schools-compare-client';
+import { getRegionContext } from '../../../lib/region-server.mjs';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsList } = require('../../../shared/data-store');
 
-export const metadata = {
-  title: '上海学校信息对比工具 | 考哪去',
-  description: '多维度对比上海初高中学校信息，包括梯队、集团、招生政策、特色标签等，辅助升学择校决策。'
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: `${label}学校信息对比工具 | 考哪去`,
+    description: `多维度对比${label}初高中学校信息，包括梯队、集团、招生政策、特色标签等，辅助升学择校决策。`
+  };
+}
 
 
 export default async function SchoolsComparePage({ searchParams }) {
-  const schools = await loadSchoolsList();
+  const { region } = await getRegionContext();
+  const schools = await loadSchoolsList(region);
   const params = await searchParams;
   const initialSchools = typeof params?.schools === 'string' ? params.schools : '';
 

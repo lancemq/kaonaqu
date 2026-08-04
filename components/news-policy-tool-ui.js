@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { RegionLink } from './region-link';
 import { NewsAerialFooter, NewsAerialNav } from './news-aerial-ui';
 
 export function PolicyToolLabel({ children }) {
@@ -73,6 +73,6 @@ export function PolicyToolSideCard({ dark = false, label, children }) {
 
 export function PolicyToolLinks({ links }) {
   return links.map((link) => (
-    <Link key={link.href} href={link.href}>{link.label}</Link>
+    <RegionLink key={link.href} href={link.href}>{link.label}</RegionLink>
   ));
 }

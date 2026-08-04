@@ -1,9 +1,11 @@
-import Link from 'next/link';
+import { RegionLink } from './region-link';
 import GradeSubjectExplorer from './knowledge-grade-explorer';
 import { buildKnowledgeNav, getGradeQuickLinks } from '../lib/knowledge-content.mjs';
 import { MathBlock, renderInlineMath } from './knowledge-math';
 import KnowledgeQuiz from './knowledge-quiz';
 import { FREQ_LABELS } from '../lib/knowledge-meta.mjs';
+import { getRegionContext } from '../lib/region-server.mjs';
+import { RegionSelector } from './region-selector';
 
 const NAV_ITEMS = [
   { label: '首页', href: '/' },
@@ -139,30 +141,31 @@ function MetaBadges({ difficulty, examFrequency }) {
   );
 }
 
-function SiteNav() {
+function SiteNav({ brandSuffix }) {
   return (
     <header className="channel-nav">
-      <Link className="channel-brand" href="/">
+      <RegionLink className="channel-brand" href="/">
         <strong>考哪去</strong>
-        <span>SHANGHAI EDUCATION</span>
-      </Link>
+        <span>{brandSuffix}</span>
+      </RegionLink>
       <nav className="channel-nav-links" aria-label="主导航">
         {NAV_ITEMS.map((item) => (
-          <Link className={item.href === '/knowledge' ? 'is-active' : undefined} href={item.href} key={item.href}>
+          <RegionLink className={item.href === '/knowledge' ? 'is-active' : undefined} href={item.href} key={item.href}>
             {item.label}
-          </Link>
+          </RegionLink>
         ))}
+        <RegionSelector />
       </nav>
     </header>
   );
 }
 
-function Footer() {
+function Footer({ brandSuffixFull }) {
   return (
     <footer className="knowledge-footer">
       <div>
         <strong>考哪去</strong>
-        <span>SHANGHAI EDUCATION PLATFORM</span>
+        <span>{brandSuffixFull}</span>
       </div>
       <p>© 2026 考哪去</p>
     </footer>
@@ -257,7 +260,7 @@ function GradeHero({ page }) {
   return (
     <section className="knowledge-grade-hero">
       <div className="knowledge-breadcrumbs">
-        <Link href="/">首页</Link><span>/</span><Link href="/knowledge">知识</Link><span>/</span><em>{page.breadcrumbItems?.at(-1)?.label || inferGradeLabel(page)}</em>
+        <RegionLink href="/">首页</RegionLink><span>/</span><RegionLink href="/knowledge">知识</RegionLink><span>/</span><em>{page.breadcrumbItems?.at(-1)?.label || inferGradeLabel(page)}</em>
       </div>
       <SectionKicker label="GRADE OVERVIEW" />
       <h1>{page.hero?.title || page.title.replace(' | 考哪去', '')}</h1>
@@ -324,7 +327,7 @@ function StructuredSection({ section }) {
             </>
           );
           return card.href ? (
-            <Link className="knowledge-index-card" href={card.href} key={card.title}>{content}</Link>
+            <RegionLink className="knowledge-index-card" href={card.href} key={card.title}>{content}</RegionLink>
           ) : (
             <article className="knowledge-index-card" key={card.title}>{content}</article>
           );
@@ -344,7 +347,7 @@ function GradePage({ page }) {
           <p>{page.header.description}</p>
           <div>
             {page.header.actions?.map((action) => (
-              <Link href={action.href} key={action.href}>{action.label}</Link>
+              <RegionLink href={action.href} key={action.href}>{action.label}</RegionLink>
             ))}
           </div>
         </section>
@@ -388,21 +391,21 @@ function DetailSidebar({ page }) {
         <SectionKicker label="RELATED" />
         {relatedPages ? (
           relatedPages.map((rel) => (
-            <Link href={rel.href} key={rel.slug}><span>{rel.label}</span><em>→</em></Link>
+            <RegionLink href={rel.href} key={rel.slug}><span>{rel.label}</span><em>→</em></RegionLink>
           ))
         ) : (
           getGradeQuickLinks().filter((grade) => !grade.disabled).slice(1, 4).map((grade) => (
-            <Link href={grade.href} key={grade.label}><span>{grade.label}</span><em>→</em></Link>
+            <RegionLink href={grade.href} key={grade.label}><span>{grade.label}</span><em>→</em></RegionLink>
           ))
         )}
       </section>
       <section>
         <SectionKicker label="SCHOOLS" />
-        <Link href={schoolHref}><span>{stage ? `查看${stage}学校` : '查看全部学校'}</span><em>→</em></Link>
+        <RegionLink href={schoolHref}><span>{stage ? `查看${stage}学校` : '查看全部学校'}</span><em>→</em></RegionLink>
       </section>
       <section>
         <SectionKicker label="NEWS" />
-        <Link href={newsHref}><span>考试升学新闻</span><em>→</em></Link>
+        <RegionLink href={newsHref}><span>考试升学新闻</span><em>→</em></RegionLink>
       </section>
       <section className="is-dark">
         <SectionKicker label="QUICK ACCESS" />
@@ -430,7 +433,7 @@ function SubjectHeader({ page }) {
   return (
     <section className="knowledge-subject-header">
       <div className="knowledge-breadcrumbs">
-        <Link href="/">首页</Link><span>/</span><Link href="/knowledge">知识</Link><span>/</span><em>{inferGradeLabel(page)}</em>
+        <RegionLink href="/">首页</RegionLink><span>/</span><RegionLink href="/knowledge">知识</RegionLink><span>/</span><em>{inferGradeLabel(page)}</em>
       </div>
       <div className="knowledge-subject-title-row">
         <span>{inferGradeLabel(page)}</span>
@@ -482,7 +485,8 @@ function RichTextNode({ headingState, node }) {
 
   if (node.tag === 'a') {
     const href = node.href || '#';
-    if (href.startsWith('/')) return <Link {...props} href={href}>{children}</Link>;
+    if (href.startsWith('/api/')) return <a {...props} href={href}>{children}</a>;
+    if (href.startsWith('/')) return <RegionLink {...props} href={href}>{children}</RegionLink>;
     return <a {...props} href={href} target={node.target} rel={node.rel || (node.target === '_blank' ? 'noopener noreferrer' : undefined)}>{children}</a>;
   }
 
@@ -535,17 +539,19 @@ function SubjectPage({ page }) {
   );
 }
 
-export default function KnowledgePage({ page }) {
+export default async function KnowledgePage({ page }) {
   const pageKind = getKnowledgePageKind(page);
+  const { config } = await getRegionContext();
+  const { brandSuffix, brandSuffixFull } = config;
 
   return (
     <main className={`knowledge-page knowledge-page-${pageKind}`} data-knowledge-slug={page.slug}>
-      <SiteNav />
+      <SiteNav brandSuffix={brandSuffix} />
       {pageKind === 'channel' ? <ChannelPage page={page} /> : null}
       {pageKind === 'grade' ? (page.renderMode === 'structured' ? <GradePage page={page} /> : <SubjectPage page={page} />) : null}
       {pageKind === 'subject' ? <SubjectPage page={page} /> : null}
       <ColorBlocks />
-      <Footer />
+      <Footer brandSuffixFull={brandSuffixFull} />
     </main>
   );
 }

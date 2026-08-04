@@ -1,7 +1,9 @@
 'use client';
 
-import Link from 'next/link';
+import { RegionLink } from './region-link';
 import { useMemo, useState } from 'react';
+import { useRegion } from './region-context';
+import { RegionSelector } from './region-selector';
 import {
   getAllDistricts,
   groupResultsByCategory,
@@ -31,17 +33,19 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
   const [score, setScore] = useState<number | null>(null);
   const [districtId, setDistrictId] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const { brandSuffix, brandSuffixFull, examTotal } = useRegion();
+  const examMaxScore = examTotal?.zhongkao || MAX_SCORE_PER_EXAM.zhongkao;
 
   const results = useMemo(() => {
     if (score === null) return [];
-    return matchSchoolsByScore({ score, districtId: districtId || undefined, examType }, schools);
-  }, [score, districtId, examType, schools]);
+    return matchSchoolsByScore({ score, districtId: districtId || undefined, examType }, schools, examMaxScore);
+  }, [score, districtId, examType, schools, examMaxScore]);
 
   const grouped = useMemo(() => groupResultsByCategory(results), [results]);
 
   const applyMatch = () => {
     const parsed = Number(scoreInput);
-    const max = MAX_SCORE_PER_EXAM[examType];
+    const max = examMaxScore;
     if (!Number.isFinite(parsed) || parsed < 0 || parsed > max) {
       setSubmitted(true);
       setScore(null);
@@ -63,22 +67,23 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
   const heroStats = [
     { value: '3', label: '档位建议' },
     { value: String(districts.length), label: '覆盖区域' },
-    { value: String(MAX_SCORE_PER_EXAM[examType]), label: '满分参考' },
+    { value: String(examMaxScore), label: '满分参考' },
     { value: '8', label: '每档上限' }
   ];
 
   return (
     <>
       <nav className="channel-nav" aria-label="顶部导航">
-        <Link className="channel-brand" href="/" aria-label="考哪去首页">
+        <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
           <strong>考哪去</strong>
-          <span>SHANGHAI EDUCATION</span>
-        </Link>
+          <span>{brandSuffix}</span>
+        </RegionLink>
         <div className="channel-nav-links">
-          <Link href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link className="is-active" href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
+          <RegionLink href="/">首页</RegionLink>
+          <RegionLink href="/news">新闻</RegionLink>
+          <RegionLink className="is-active" href="/schools">学校</RegionLink>
+          <RegionLink href="/knowledge">知识</RegionLink>
+          <RegionSelector />
         </div>
       </nav>
 
@@ -134,13 +139,13 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
                 type="number"
                 inputMode="numeric"
                 min={0}
-                max={MAX_SCORE_PER_EXAM[examType]}
+                max={examMaxScore}
                 value={scoreInput}
                 onChange={(e) => setScoreInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); applyMatch(); } }}
-                placeholder={`0 - ${MAX_SCORE_PER_EXAM[examType]}`}
+                placeholder={`0 - ${examMaxScore}`}
               />
-              <em>{EXAM_OPTIONS.find((o) => o.value === examType)?.fullMark}</em>
+              <em>{examType === 'international' ? '参考中考分' : `满分 ${examMaxScore}`}</em>
             </label>
           </div>
 
@@ -217,12 +222,12 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
 
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
-        <div><strong>考哪去</strong><span>SHANGHAI EDUCATION PLATFORM</span></div>
+        <div><strong>考哪去</strong><span>{brandSuffixFull}</span></div>
         <nav aria-label="页脚导航">
-          <Link href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
+          <RegionLink href="/">首页</RegionLink>
+          <RegionLink href="/news">新闻</RegionLink>
+          <RegionLink href="/schools">学校</RegionLink>
+          <RegionLink href="/knowledge">知识</RegionLink>
         </nav>
         <p>© 2026 考哪去</p>
       </footer>
@@ -240,7 +245,7 @@ function ResultCard({ result }: { result: ScoreMatchResult }) {
   const { school, estimatedRange, reason, source } = result;
   return (
     <li>
-      <Link className="score-match-aerial-card" href={`/schools/${school.id}`}>
+      <RegionLink className="score-match-aerial-card" href={`/schools/${school.id}`}>
         <div className="score-match-aerial-card-head">
           <strong>{school.name}</strong>
           <span className="score-match-aerial-card-tier">{school.eliteCohort || school.schoolKeyLevel}</span>
@@ -258,7 +263,7 @@ function ResultCard({ result }: { result: ScoreMatchResult }) {
           </span>
           <span className="score-match-aerial-card-link">查看详情</span>
         </div>
-      </Link>
+      </RegionLink>
     </li>
   );
 }

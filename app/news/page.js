@@ -1,16 +1,22 @@
-import Link from 'next/link';
+import { RegionLink } from '../../components/region-link';
 import { createRequire } from 'module';
 import NewsPageClient from '../../components/news-page-client';
 import { getNewsCategoryLabel, filterNews, getNewsSection } from '../../lib/site-utils';
+import { getRegionContext } from '../../lib/region-server.mjs';
+import { RegionSelector } from '../../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { loadNewsList, loadSchoolNamesByIds } = require('../../shared/data-store');
 
-export const metadata = {
-  title: '上海中考高考新闻政策 | 考哪去',
-  description: '上海中考、高考最新政策、考试安排、招生消息与学校动态聚合，帮你少翻信息，先抓重点。',
-  keywords: ['上海中考新闻', '上海高考政策', '中招安排', '高招消息', '上海升学动态']
-};
+export async function generateMetadata() {
+  const { config } = await getRegionContext();
+  const label = config.label;
+  return {
+    title: `${label}中考高考新闻政策 | 考哪去`,
+    description: `${label}中考、高考最新政策、考试安排、招生消息与学校动态聚合，帮你少翻信息，先抓重点。`,
+    keywords: [`${label}中考新闻`, `${label}高考政策`, '中招安排', '高招消息', `${label}升学动态`]
+  };
+}
 
 function getCurrentYear(news) {
   const years = news
@@ -114,7 +120,8 @@ function toNewsListCard(item) {
 }
 
 export default async function NewsPage({ searchParams }) {
-  const news = await loadNewsList();
+  const { region, config } = await getRegionContext();
+  const news = await loadNewsList(region);
   const params = await searchParams;
   const activeFilter = typeof params?.filter === 'string' && params.filter !== 'all' ? params.filter : 'all';
   const requestedPage = parseInt(typeof params?.page === 'string' ? params.page : '1', 10);
@@ -156,15 +163,16 @@ export default async function NewsPage({ searchParams }) {
       />
 
       <nav className="channel-nav" aria-label="顶部导航">
-        <Link className="channel-brand" href="/" aria-label="考哪去首页">
+        <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
           <strong>考哪去</strong>
-          <span>SHANGHAI EDUCATION</span>
-        </Link>
+          <span>{config.brandSuffix}</span>
+        </RegionLink>
         <div className="channel-nav-links">
-          <Link href="/">首页</Link>
-          <Link className="is-active" href="/news">新闻</Link>
-          <Link href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
+          <RegionLink href="/">首页</RegionLink>
+          <RegionLink className="is-active" href="/news">新闻</RegionLink>
+          <RegionLink href="/schools">学校</RegionLink>
+          <RegionLink href="/knowledge">知识</RegionLink>
+          <RegionSelector />
         </div>
       </nav>
 
@@ -216,13 +224,13 @@ export default async function NewsPage({ searchParams }) {
       <footer className="channel-footer">
         <div>
           <strong>考哪去</strong>
-          <span>SHANGHAI EDUCATION PLATFORM</span>
+          <span>{config.brandSuffixFull}</span>
         </div>
         <nav aria-label="页脚导航">
-          <Link href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
+          <RegionLink href="/">首页</RegionLink>
+          <RegionLink href="/news">新闻</RegionLink>
+          <RegionLink href="/schools">学校</RegionLink>
+          <RegionLink href="/knowledge">知识</RegionLink>
         </nav>
         <p>© 2026 考哪去</p>
       </footer>
