@@ -66,7 +66,7 @@ export default async function NotFound() {
         <p className="not-found-eyebrow">404</p>
         <h1>页面走丢了</h1>
         <p className="not-found-desc">
-          您访问的页面不存在、已被移动，或正在维护中。试试从下方入口继续浏览上海中考、高考的最新资讯。
+          您访问的页面不存在、已被移动，或正在维护中。试试从下方入口继续浏览{config.label}中考、高考的最新资讯。
         </p>
         <div className="not-found-actions">
           <RegionLink className="not-found-btn is-primary" href="/">返回首页</RegionLink>

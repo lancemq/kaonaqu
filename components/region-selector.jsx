@@ -1,17 +1,14 @@
 'use client';
 
 // 全站导航区域选择器：放在各频道 channel-nav-links 末尾。
-// 当前仅支持上海（KNOWN_REGIONS 只有 shanghai）；新增地区时在此追加，
-// 并同步 shared/region-list.mjs 与 shared/region-config.js。
+// 地区列表（REGIONS/DEFAULT_REGION）来自 shared/region-list.mjs 的 REGION_ENTRIES，
+// 与 region-config.js REGIONS 键保持一致；新增地区时只需改 shared/ 两处。
 // 选上海/其他 -> /{region}/schools（统一带前缀，由 proxy.js rewrite 到无前缀实际路由）。
 import { useEffect, useRef, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useRegion } from './region-context';
 import { regionPath } from '../shared/region-path.mjs';
-
-// 已知区域（与 shared/region-list.mjs / region-config.js 同步；当前仅上海）
-const REGIONS = [{ value: 'shanghai', label: '上海' }];
-const DEFAULT_REGION = 'shanghai';
+import { REGION_ENTRIES as REGIONS, DEFAULT_REGION } from '../shared/region-list.mjs';
 
 // 剥离 URL 中的 region 前缀，得到无前缀路径（/shanghai/schools -> /schools）
 function stripRegionPrefix(pathname) {

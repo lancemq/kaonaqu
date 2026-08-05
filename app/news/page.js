@@ -35,11 +35,11 @@ function isCurrentYearItem(item, year) {
   return publishedYear === year;
 }
 
-function isRenderablePolicy(policy, currentYear) {
+function isRenderablePolicy(policy, currentYear, officialName) {
   const title = String(policy?.title || '').trim();
-  if (!title || title === '上海市教育委员会') return false;
+  if (!title || title === officialName) return false;
   if (!isCurrentYearItem(policy, currentYear)) return false;
-  return policy.source?.type === 'official' || String(policy.source?.name || '').includes('上海市教育委员会');
+  return policy.source?.type === 'official' || String(policy.source?.name || '').includes(officialName);
 }
 
 function SectionLabel({ children }) {
@@ -144,15 +144,15 @@ export default async function NewsPage({ searchParams }) {
   const schoolIds = [...new Set(pageItems.map((n) => n.primarySchoolId).filter(Boolean))];
   const schoolNamesById = await loadSchoolNamesByIds(schoolIds);
 
-  const currentYearPolicies = news.filter((item) => item.newsType === 'policy' && isRenderablePolicy(item, currentYear));
+  const currentYearPolicies = news.filter((item) => item.newsType === 'policy' && isRenderablePolicy(item, currentYear, config.officialSourceName));
   const today = new Date().toISOString().slice(0, 10);
   const todayUpdates = currentYearNews.filter((item) => String(item.publishedAt || item.updatedAt || '').startsWith(today)).length;
 
   const itemListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: '上海升学新闻政策列表',
-    description: `${currentYear}年上海中考高考新闻政策汇总`,
+    name: `${config.label}升学新闻政策列表`,
+    description: `${currentYear}年${config.label}中考高考新闻政策汇总`,
     numberOfItems: news.length
   };
 

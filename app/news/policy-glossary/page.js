@@ -59,12 +59,12 @@ function getCurrentYear(items) {
   return years[0] || new Date().getFullYear();
 }
 
-function isRenderablePolicy(policy, currentYear) {
+function isRenderablePolicy(policy, currentYear, officialName) {
   const title = String(policy?.title || '').trim();
-  if (!title || title === '上海市教育委员会') return false;
+  if (!title || title === officialName) return false;
   const publishedYear = Number(policy?.year) || Number(String(policy?.publishedAt || '').slice(0, 4)) || 0;
   if (publishedYear !== currentYear) return false;
-  return policy.source?.type === 'official' || String(policy.source?.name || '').includes('上海市教育委员会');
+  return policy.source?.type === 'official' || String(policy.source?.name || '').includes(officialName);
 }
 
 function getPolicySummary(policy) {
@@ -177,12 +177,12 @@ function groupPoliciesByTopic(policies) {
 }
 
 export default async function PolicyGlossaryPage() {
-  const { region } = await getRegionContext();
+  const { region, config } = await getRegionContext();
   const news = await loadNewsList(region);
   const currentYear = getCurrentYear(news);
   const officialPolicies = news
     .filter((n) => n.newsType === 'policy')
-    .filter((item) => isRenderablePolicy(item, currentYear))
+    .filter((item) => isRenderablePolicy(item, currentYear, config.officialSourceName))
     .sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));
 
   const policyGroups = groupPoliciesByTopic(officialPolicies);

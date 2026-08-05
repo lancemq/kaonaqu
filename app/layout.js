@@ -3,6 +3,7 @@ import { Funnel_Sans, Geist, Geist_Mono, Noto_Sans_SC, Noto_Serif_SC } from 'nex
 import BodyPageFlag from '../components/body-page-flag';
 import { RegionProvider } from '../components/region-context';
 import { getRegionContext } from '../lib/region-server.mjs';
+import { KNOWN_REGIONS } from '../shared/region-list.mjs';
 import '../styles/index.css';
 
 // 字体自托管（next/font 构建时下载、运行时同源分发，无第三方依赖）：
@@ -97,11 +98,11 @@ export default async function RootLayout({ children }) {
       >
         {/* 首屏同步设置 data-page，避免频道 CSS（body[data-page=...]）因客户端 useEffect 延迟而首屏闪烁（FOUC）。
             SPA 路由切换由 BodyPageFlag 的 useEffect 负责更新。
-            内联 R=['shanghai'] 为已知地区白名单（与 shared/region-list.mjs 同步），用于剥离 /{region}/ 前缀。 */}
+            内联 R 由 KNOWN_REGIONS 注入（与 shared/region-list.mjs 同步），用于剥离 /{region}/ 前缀。 */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var p=location.pathname||'/';var R=['shanghai'];function sp(x){var s=x.split('/');if(s.length>2&&R.indexOf(s[1])>=0){return '/'+s.slice(2).join('/');}return x;}var pp=sp(p);var r=pp.indexOf('/news')===0?'news':pp.indexOf('/schools')===0?'schools':pp.indexOf('/knowledge')===0?'knowledge':'home';document.body.setAttribute('data-page',r);}catch(e){}})();"
+              `(function(){try{var p=location.pathname||'/';var R=${JSON.stringify(KNOWN_REGIONS)};function sp(x){var s=x.split('/');if(s.length>2&&R.indexOf(s[1])>=0){return '/'+s.slice(2).join('/');}return x;}var pp=sp(p);var r=pp.indexOf('/news')===0?'news':pp.indexOf('/schools')===0?'schools':pp.indexOf('/knowledge')===0?'knowledge':'home';document.body.setAttribute('data-page',r);}catch(e){}})();`
           }}
         />
         <RegionProvider

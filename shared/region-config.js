@@ -17,6 +17,9 @@ const SHANGHAI = {
   // 品牌副标题（原 13+ 文件硬编码的 SHANGHAI EDUCATION / ... PLATFORM）
   brandSuffix: 'SHANGHAI EDUCATION',
   brandSuffixFull: 'SHANGHAI EDUCATION PLATFORM',
+  // 教育主管部门名称：用于判断政策来源是否为官方机构（isRenderablePolicy 等），
+  // 新闻/政策列表页据此过滤机构页本身与非官方来源。新增地区时改为对应省市教委名称。
+  officialSourceName: '上海市教育委员会',
   // 各考试满分（上海中考 750；上海高考 660）
   examTotal: { zhongkao: 750, gaokao: 660 },
   // 区目录（原 shared/data-schema.js:5-22，上海 16 区）
