@@ -10,7 +10,7 @@ export async function generateMetadata() {
   const label = config.label;
   return {
     title: `${label}学校信息对比工具 | 考哪去`,
-    description: `多维度对比${label}初高中学校信息，包括梯队、集团、招生政策、特色标签等，辅助升学择校决策。`,
+    description: `横向对比${label}初高中学校的梯队、集团、招生政策与特色标签，一屏看清差异。`,
     alternates: { canonical: `/${region}/schools/compare` }
   };
 }

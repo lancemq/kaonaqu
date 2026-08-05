@@ -23,7 +23,7 @@ export async function generateMetadata() {
   const label = config.label;
   return {
     title: `${label}学校区域频道 - 16区学校结构与区域专题 | 考哪去`,
-    description: `按${label}16区查看学校结构、区域教育特点、初高中分布与学校专题入口，适合按区比较${label}学校资源。`,
+    description: `按${label}16区查看学校结构、区域教育特点、初高中分布与学校专题入口。`,
     alternates: { canonical: `/${region}/schools/district` }
   };
 }

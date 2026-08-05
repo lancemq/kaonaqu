@@ -147,7 +147,7 @@ export default function AdmissionTimelinePage() {
         <div className="admission-timeline-heading">
           <NewsAerialKicker>DUAL TRACK TIMELINE</NewsAerialKicker>
           <h2>中招 & 高招关键节点一览</h2>
-          <p>沿时间轴左右展开，蓝色 = 中招，深色 = 高招。上下对照，一目了然。</p>
+          <p>沿时间轴左右展开，蓝色 = 中招，深色 = 高招，可上下对照查看。</p>
           <div className="admission-timeline-legend" aria-label="时间轴图例">
             <span><i></i>中招 {zhongkaoCount} 个节点</span>
             <span><i></i>高招 {gaokaoCount} 个节点</span>
