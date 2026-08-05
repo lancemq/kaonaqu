@@ -43,7 +43,7 @@ const NEWS_SPECIALS = [
     label: '必读',
     icon: '高',
     href: '/news/gaokao-special',
-    description: '高考综合改革、考试安排、招生录取等权威政策解读'
+    description: '高考综合改革、考试安排、招生录取等政策解读，附批次与志愿规则。'
   },
   {
     title: '体育改革',
@@ -282,7 +282,7 @@ export default async function HomePage() {
         <div className="home-news-column">
           <SectionLabel>LATEST NEWS</SectionLabel>
           <h2>最新升学动态</h2>
-          <p className="home-section-intro">汇集上海中考、高考最新政策发布与新闻动态，一站式掌握升学关键信息。</p>
+          <p className="home-section-intro">按发布时间汇集上海中考、高考最新政策与新闻动态，先看最新，再进对应专题。</p>
 
           <div className="home-news-grid">
             {featuredNews.map((item) => (
@@ -309,7 +309,7 @@ export default async function HomePage() {
         <aside className="home-feature-panel home-focus-panel">
           <SectionLabel>FOCUS</SectionLabel>
           <h2>平台更新动态</h2>
-          <p className="home-focus-intro">持续追踪官方政策发布、汇集重点学校资料，让升学信息保持新鲜可查。</p>
+          <p className="home-focus-intro">官方政策与重点学校资料同步更新，近 7 天持续新增动态。</p>
           <div className="home-focus-stats">
             <div>
               <strong>{recentNewsCount}</strong>
@@ -351,7 +351,7 @@ export default async function HomePage() {
             <div>
               <SectionLabel>TOPIC ENTRIES</SectionLabel>
               <h2>新闻专题</h2>
-              <p>按专题分类浏览，快速找到您关心的升学信息。</p>
+              <p>按专题分类浏览，直接进入对应政策与录取规则。</p>
             </div>
             <RegionLink href="/news">全部新闻 →</RegionLink>
           </div>
@@ -422,7 +422,7 @@ export default async function HomePage() {
         <div className="home-knowledge-column">
           <SectionLabel>KNOWLEDGE INDEX</SectionLabel>
           <h2>知识专题</h2>
-          <p>覆盖初中到高中全学段学科知识，按年级、科目精准定位，助力系统性学习与备考。</p>
+          <p>初中到高中各年级、各学科的知识档案与专题入口，按年级和科目直接进入。</p>
           <div className="home-topic-grid">
             {KNOWLEDGE_TOPICS.map((topic) => (
               <RegionLink href={topic.href} key={topic.href}>

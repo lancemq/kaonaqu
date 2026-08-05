@@ -56,8 +56,8 @@ const SHANGHAI = {
   // SEO 文案模板（{label} 占位地区名，阶段 3 metadata 参数化时使用）
   seo: {
     areaServed: '上海',
-    titleTemplate: '考哪去 | {label}中考高考政策、学校信息与知识体系平台',
-    descriptionTemplate: '考哪去聚合{label}中考、高考新闻政策、学校信息和初高中知识体系，覆盖升学动态、学校筛选、知识点梳理与年级学习路径。',
+    titleTemplate: '考哪去 | {label}中考高考政策、学校信息与知识体系',
+    descriptionTemplate: '考哪去汇集{label}中考、高考政策与新闻，提供学校查询、区县专题和初高中知识点整理。',
     keywords: ['{label}中考', '{label}高考', '{label}学校', '升学政策', '中招', '高招', '{label}教育']
   }
 };

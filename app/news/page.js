@@ -13,7 +13,7 @@ export async function generateMetadata() {
   const label = config.label;
   return {
     title: `${label}中考高考新闻政策 | 考哪去`,
-    description: `${label}中考、高考最新政策、考试安排、招生消息与学校动态聚合，帮你少翻信息，先抓重点。`,
+    description: `${label}中考、高考最新政策、考试安排与招生消息汇总，先看重点再看细节。`,
     keywords: [`${label}中考新闻`, `${label}高考政策`, '中招安排', '高招消息', `${label}升学动态`],
     alternates: { canonical: `/${region}/news` }
   };
@@ -182,7 +182,7 @@ export default async function NewsPage({ searchParams }) {
           <div className="channel-hero-copy">
             <SectionLabel>NEWS CHANNEL</SectionLabel>
             <h1>新闻动态</h1>
-            <p>实时追踪上海中考、高考最新政策发布与升学新闻，一站式掌握关键信息动态。</p>
+            <p>按发布时间汇集上海中考、高考政策与升学新闻，先看最新动态，再进对应专题。</p>
           </div>
 
           <aside className="channel-hero-stats" aria-label="新闻统计">

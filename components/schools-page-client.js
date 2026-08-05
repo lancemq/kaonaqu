@@ -209,7 +209,7 @@ export default function SchoolsPageClient({
           <section className="channel-hero-copy" aria-label="学校频道概览">
             <div className="channel-kicker"><span aria-hidden="true"></span><p>SCHOOL DATABASE</p></div>
             <h1>上海学校数据库</h1>
-            <p>收录全市 {totalDb.toLocaleString('zh-CN')} 所学校详细信息，按区域、类型精准筛选，全面了解各校特色与升学数据。</p>
+            <p>收录全市 {totalDb.toLocaleString('zh-CN')} 所学校，按区域、类型、梯队筛选，查看各校特色与录取数据。</p>
             <div className="schools-aerial-searchbar">
               <span aria-hidden="true"></span>
               <input
