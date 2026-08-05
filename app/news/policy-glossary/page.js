@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { RegionLink } from '../../../components/region-link';
+import { redirect } from 'next/navigation';
 import { createRequire } from 'module';
 import {
   PolicyToolLabel,
@@ -17,6 +18,7 @@ const { loadNewsList } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: '政策概念速查 | 考哪去',
@@ -178,6 +180,7 @@ function groupPoliciesByTopic(policies) {
 
 export default async function PolicyGlossaryPage() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const news = await loadNewsList(region);
   const currentYear = getCurrentYear(news);
   const officialPolicies = news

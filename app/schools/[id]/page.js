@@ -1,5 +1,5 @@
 import { RegionLink } from '../../../components/region-link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { createRequire } from 'module';
 import { getSchoolDataQuality } from '../../../lib/school-data-quality';
 import {
@@ -54,6 +54,8 @@ function renderInlineMarkdown(text) {
 }
 
 export async function generateMetadata({ params }) {
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const { id } = await params;
   const school = await getSchoolById(id);
 
@@ -61,7 +63,6 @@ export async function generateMetadata({ params }) {
     return { title: '学校详情 | 考哪去' };
   }
 
-  const { region } = await getRegionContext();
   const district = getSchoolDistrictName(school);
   const stage = getSchoolStage(school);
   const ownership = getSchoolOwnershipLabel(school);
@@ -83,11 +84,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function SchoolDetailPage({ params }) {
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const { id } = await params;
   // 详情页需完整记录（content/scoreLines/admissionInfo），按 id 单校完整查询
   // （响应极小，经 Next Data Cache 按 id 缓存）。
   const school = await getSchoolById(id);
-  const { region, config } = await getRegionContext();
 
   if (!school) {
     notFound();

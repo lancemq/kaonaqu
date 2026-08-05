@@ -144,7 +144,7 @@ function CompareKicker({ children }) {
 }
 
 function SiteNav() {
-  const { brandSuffix, brandSuffixFull } = useRegion();
+  const { brandSuffix, brandSuffixFull, features } = useRegion();
   return (
     <nav className="channel-nav" aria-label="顶部导航">
       <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
@@ -154,8 +154,8 @@ function SiteNav() {
       <div className="channel-nav-links">
         <RegionLink href="/">首页</RegionLink>
         <RegionLink href="/news">新闻</RegionLink>
-        <RegionLink className="is-active" href="/schools">学校</RegionLink>
-        <RegionLink href="/knowledge">知识</RegionLink>
+        {features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
+        {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         <RegionSelector />
       </div>
     </nav>
@@ -163,13 +163,13 @@ function SiteNav() {
 }
 
 function Footer() {
-  const { brandSuffix, brandSuffixFull } = useRegion();
+  const { brandSuffix, brandSuffixFull, features } = useRegion();
   return (
     <>
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
         <div><strong>考哪去</strong><span>{brandSuffixFull}</span></div>
-        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink></nav>
+        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{features.schools && <RegionLink href="/schools">学校</RegionLink>}{features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}</nav>
         <p>© 2026 考哪去</p>
       </footer>
     </>

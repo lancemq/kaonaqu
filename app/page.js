@@ -175,6 +175,7 @@ function SectionLabel({ children }) {
 
 export default async function HomePage() {
   const { region, config } = await getRegionContext();
+  const features = config.features;
   const [schools, news] = await Promise.all([loadSchoolsList(region), loadNewsList(region)]);
   const districts = DISTRICT_CATALOG;
   const sortedNews = sortNews(news);
@@ -197,7 +198,13 @@ export default async function HomePage() {
 
   const featuredSchools = getFeaturedSchools(schools);
   const districtHighlights = getDistrictHighlights(districts, schools);
+  const visibleQuickLinks = QUICK_LINKS.filter((item) => {
+    if (item.href.startsWith('/schools')) return features.compare;
+    if (item.href.startsWith('/knowledge')) return features.knowledge;
+    return true;
+  });
 
+  const seoDescription = config.seo.descriptionTemplate.replace('{label}', config.label);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -205,14 +212,14 @@ export default async function HomePage() {
         '@type': 'Organization',
         name: '考哪去',
         url: SITE_URL,
-        description: '上海升学信息平台，聚合中考高考政策、学校信息、区县专题和初高中知识体系。',
+        description: seoDescription,
         areaServed: config.label
       },
       {
         '@type': 'WebSite',
         name: '考哪去',
         url: SITE_URL,
-        description: '上海升学信息平台，聚合中考高考政策、学校信息、区县专题和初高中知识体系。',
+        description: seoDescription,
         potentialAction: {
           '@type': 'SearchAction',
           target: `${SITE_URL}/${region}/schools?query={search_term_string}`,
@@ -237,8 +244,8 @@ export default async function HomePage() {
         <div className="channel-nav-links">
           <RegionLink className="is-active" href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
           <RegionSelector />
         </div>
       </nav>
@@ -247,14 +254,16 @@ export default async function HomePage() {
         <div className="channel-hero-grid" aria-hidden="true"></div>
         <section className="channel-hero-content" aria-label="首页概览">
           <div className="channel-hero-copy">
-            <SectionLabel>SHANGHAI EDUCATION SIGNAL</SectionLabel>
-            <h1>上海升学信息，从这里俯瞰全局</h1>
+            <SectionLabel>{config.brandSuffix} SIGNAL</SectionLabel>
+            <h1>{config.label}升学信息，从这里俯瞰全局</h1>
             <p>
-              政策动态、重点学校、知识路径和区县判断收束在一个入口。先看全局，再进入具体选择。
+              {features.schools && features.knowledge
+                ? '政策动态、重点学校、知识路径和区县判断收束在一个入口。先看全局，再进入具体选择。'
+                : '中考高考政策与升学新闻动态收束在一个入口。先看全局，再进入对应专题。'}
             </p>
             <div className="home-hero-actions">
               <RegionLink href="/news">查看最新动态</RegionLink>
-              <RegionLink href="/schools">进入学校库</RegionLink>
+              {features.schools && <RegionLink href="/schools">进入学校库</RegionLink>}
             </div>
           </div>
 
@@ -269,11 +278,13 @@ export default async function HomePage() {
               <strong>{districts.length}</strong>
               <p>覆盖区县</p>
             </article>
-            <article>
-              <span>03 / SCHOOLS</span>
-              <strong>{schools.length}</strong>
-              <p>收录学校</p>
-            </article>
+            {features.schools && (
+              <article>
+                <span>03 / SCHOOLS</span>
+                <strong>{schools.length}</strong>
+                <p>收录学校</p>
+              </article>
+            )}
           </aside>
         </section>
       </header>
@@ -282,7 +293,7 @@ export default async function HomePage() {
         <div className="home-news-column">
           <SectionLabel>LATEST NEWS</SectionLabel>
           <h2>最新升学动态</h2>
-          <p className="home-section-intro">按发布时间汇集上海中考、高考最新政策与新闻动态，先看最新，再进对应专题。</p>
+          <p className="home-section-intro">按发布时间汇集{config.label}中考、高考最新政策与新闻动态，先看最新，再进对应专题。</p>
 
           <div className="home-news-grid">
             {featuredNews.map((item) => (
@@ -309,16 +320,18 @@ export default async function HomePage() {
         <aside className="home-feature-panel home-focus-panel">
           <SectionLabel>FOCUS</SectionLabel>
           <h2>平台更新动态</h2>
-          <p className="home-focus-intro">官方政策与重点学校资料同步更新，近 7 天持续新增动态。</p>
+          <p className="home-focus-intro">{features.schools ? '官方政策与重点学校资料同步更新，近 7 天持续新增动态。' : '官方政策与升学动态同步更新，近 7 天持续新增。'}</p>
           <div className="home-focus-stats">
             <div>
               <strong>{recentNewsCount}</strong>
               <span>近 7 天新增升学动态</span>
             </div>
-            <div>
-              <strong>{schools.length}+</strong>
-              <span>收录学校 · {districts.length} 个区县全覆盖</span>
-            </div>
+            {features.schools && (
+              <div>
+                <strong>{schools.length}+</strong>
+                <span>收录学校 · {districts.length} 个区县全覆盖</span>
+              </div>
+            )}
             <div>
               <strong>{news.length}</strong>
               <span>累计升学政策与动态</span>
@@ -372,82 +385,88 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="home-schools-slab">
-        <SectionLabel>FEATURED SCHOOLS</SectionLabel>
-        <div className="home-section-heading-row">
-          <h2>重点学校一览</h2>
-          <div className="home-school-stats" aria-label="学校摘要">
-            <span>{schools.length}+ 所学校</span>
-            <span>{districts.length} 个区县</span>
-            <span>市重点 / 区重点 / 特色高中</span>
-            <RegionLink href="/schools">全部学校</RegionLink>
+      {features.schools && (
+        <section className="home-schools-slab">
+          <SectionLabel>FEATURED SCHOOLS</SectionLabel>
+          <div className="home-section-heading-row">
+            <h2>重点学校一览</h2>
+            <div className="home-school-stats" aria-label="学校摘要">
+              <span>{schools.length}+ 所学校</span>
+              <span>{districts.length} 个区县</span>
+              <span>市重点 / 区重点 / 特色高中</span>
+              <RegionLink href="/schools">全部学校</RegionLink>
+            </div>
           </div>
-        </div>
 
-        <div className="home-school-grid">
-          {featuredSchools.map((school) => {
-            const features = getSchoolFeatures(school).slice(0, 3);
-            const keyLevel = getSchoolKeyLevelLabel(school);
-            return (
-              <RegionLink className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
-                <div className="home-school-card-top">
-                  <span className="home-school-meta">{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
-                </div>
-                <h3>{school.name}</h3>
-                {keyLevel && <span className="home-school-level">{keyLevel}</span>}
-                <p>{getSchoolAdmissionInfo(school)}</p>
-                {features.length > 0 && (
-                  <div className="home-school-tags">
-                    {features.map((feature) => (
-                      <span key={feature}>{feature}</span>
-                    ))}
+          <div className="home-school-grid">
+            {featuredSchools.map((school) => {
+              const features = getSchoolFeatures(school).slice(0, 3);
+              const keyLevel = getSchoolKeyLevelLabel(school);
+              return (
+                <RegionLink className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
+                  <div className="home-school-card-top">
+                    <span className="home-school-meta">{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
                   </div>
-                )}
-              </RegionLink>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="home-photo-slab home-school-photo-slab">
-        <div>
-          <SectionLabel>SCHOOL LANDSCAPE</SectionLabel>
-          <h2>先看区域格局，再比较具体学校</h2>
-          <p>把学校放回区县和升学路径里看，择校判断会更接近真实场景。</p>
-          <RegionLink href="/schools/district">查看区县专题</RegionLink>
-        </div>
-      </section>
-
-      <section className="home-knowledge-districts">
-        <div className="home-knowledge-column">
-          <SectionLabel>KNOWLEDGE INDEX</SectionLabel>
-          <h2>知识专题</h2>
-          <p>初中到高中各年级、各学科的知识档案与专题入口，按年级和科目直接进入。</p>
-          <div className="home-topic-grid">
-            {KNOWLEDGE_TOPICS.map((topic) => (
-              <RegionLink href={topic.href} key={topic.href}>
-                <span>{topic.meta}</span>
-                <strong>{topic.label}</strong>
-              </RegionLink>
-            ))}
+                  <h3>{school.name}</h3>
+                  {keyLevel && <span className="home-school-level">{keyLevel}</span>}
+                  <p>{getSchoolAdmissionInfo(school)}</p>
+                  {features.length > 0 && (
+                    <div className="home-school-tags">
+                      {features.map((feature) => (
+                        <span key={feature}>{feature}</span>
+                      ))}
+                    </div>
+                  )}
+                </RegionLink>
+              );
+            })}
           </div>
-          <RegionLink className="home-text-link" href="/knowledge">进入知识体系</RegionLink>
-        </div>
+        </section>
+      )}
 
-        <aside className="home-district-column">
-          <SectionLabel>DISTRICTS</SectionLabel>
-          <h2>热门区县</h2>
-          <div className="home-district-list">
-            {districtHighlights.map((district) => (
-              <RegionLink href={`/schools/district/${district.id}`} key={district.id}>
-                <span>{district.name}</span>
-                <strong>{district.visibleSchoolCount || district.schoolCount || 0} 所学校</strong>
-                {district.topSchoolName && <em>代表：{district.topSchoolName}</em>}
-              </RegionLink>
-            ))}
+      {features.schools && (
+        <section className="home-photo-slab home-school-photo-slab">
+          <div>
+            <SectionLabel>SCHOOL LANDSCAPE</SectionLabel>
+            <h2>先看区域格局，再比较具体学校</h2>
+            <p>把学校放回区县和升学路径里看，择校判断会更接近真实场景。</p>
+            <RegionLink href="/schools/district">查看区县专题</RegionLink>
           </div>
-        </aside>
-      </section>
+        </section>
+      )}
+
+      {features.knowledge && (
+        <section className="home-knowledge-districts">
+          <div className="home-knowledge-column">
+            <SectionLabel>KNOWLEDGE INDEX</SectionLabel>
+            <h2>知识专题</h2>
+            <p>初中到高中各年级、各学科的知识档案与专题入口，按年级和科目直接进入。</p>
+            <div className="home-topic-grid">
+              {KNOWLEDGE_TOPICS.map((topic) => (
+                <RegionLink href={topic.href} key={topic.href}>
+                  <span>{topic.meta}</span>
+                  <strong>{topic.label}</strong>
+                </RegionLink>
+              ))}
+            </div>
+            <RegionLink className="home-text-link" href="/knowledge">进入知识体系</RegionLink>
+          </div>
+
+          <aside className="home-district-column">
+            <SectionLabel>DISTRICTS</SectionLabel>
+            <h2>热门区县</h2>
+            <div className="home-district-list">
+              {districtHighlights.map((district) => (
+                <RegionLink href={`/schools/district/${district.id}`} key={district.id}>
+                  <span>{district.name}</span>
+                  <strong>{district.visibleSchoolCount || district.schoolCount || 0} 所学校</strong>
+                  {district.topSchoolName && <em>代表：{district.topSchoolName}</em>}
+                </RegionLink>
+              ))}
+            </div>
+          </aside>
+        </section>
+      )}
 
       <div className="channel-color-bar" aria-hidden="true">
         <span></span>
@@ -460,18 +479,22 @@ export default async function HomePage() {
       <section className="home-cta-slab">
         <div className="home-cta-copy">
           <SectionLabel>NEXT STEP</SectionLabel>
-          <h2>继续探索上海升学路径</h2>
-          <p>从政策时间线、学校数据库、区县专题和知识体系里选择下一步。</p>
+          <h2>继续探索{config.label}升学路径</h2>
+          <p>
+            {features.schools && features.knowledge
+              ? '从政策时间线、学校数据库、区县专题和知识体系里选择下一步。'
+              : '从政策时间线与新闻专题里选择下一步。'}
+          </p>
           <div className="home-cta-actions">
             <RegionLink href="/news">查看升学动态</RegionLink>
-            <RegionLink href="/schools">查询学校信息</RegionLink>
+            {features.schools && <RegionLink href="/schools">查询学校信息</RegionLink>}
           </div>
         </div>
 
         <aside className="home-floating-links">
           <SectionLabel>QUICK ENTRY</SectionLabel>
           <h3>快速入口</h3>
-          {QUICK_LINKS.map((item) => (
+          {visibleQuickLinks.map((item) => (
             <RegionLink href={item.href} key={item.href}>
               <span>{item.label}</span>
               <strong>→</strong>
@@ -487,9 +510,9 @@ export default async function HomePage() {
         </div>
         <nav aria-label="页脚导航">
           <RegionLink href="/news">新闻政策</RegionLink>
-          <RegionLink href="/schools">学校信息</RegionLink>
-          <RegionLink href="/knowledge">知识体系</RegionLink>
-          <RegionLink href="/schools/district">区县专题</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校信息</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识体系</RegionLink>}
+          {features.district && <RegionLink href="/schools/district">区县专题</RegionLink>}
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

@@ -95,7 +95,7 @@ export default function SchoolsPageClient({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [queryInput, setQueryInput] = useState(filters.query || '');
-  const { region, brandSuffix, brandSuffixFull } = useRegion();
+  const { region, brandSuffix, brandSuffixFull, features } = useRegion();
 
   // 服务端是唯一数据源：URL 变化即重新请求并下发当前页 10 条。
   // queryInput 仅在用户本地输入时变更，提交后由 filters.query 回写。
@@ -198,8 +198,8 @@ export default function SchoolsPageClient({
         <div className="channel-nav-links">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink className="is-active" href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
           <RegionSelector />
         </div>
       </nav>
@@ -449,7 +449,7 @@ export default function SchoolsPageClient({
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
         <div><strong>考哪去</strong><span>{brandSuffixFull}</span></div>
-        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink></nav>
+        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{features.schools && <RegionLink href="/schools">学校</RegionLink>}{features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}</nav>
         <p>© 2026 考哪去</p>
       </footer>
     </main>

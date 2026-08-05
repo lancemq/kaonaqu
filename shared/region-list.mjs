@@ -17,12 +17,15 @@
 export const DEFAULT_REGION = 'shanghai';
 
 // 已知地区名（小写、[a-z0-9-]），与 region-config.js REGIONS 的键保持一致。
-export const KNOWN_REGIONS = ['shanghai'];
+export const KNOWN_REGIONS = ['shanghai', 'suzhou'];
 
 // RegionSelector 下拉选项（value=地区名、label=展示名）。
 // label 与 region-config.js 对应地区配置的 label 同步；
 // 新增地区时两处 label 都要改，避免下拉文案与品牌/SEO 不一致。
-export const REGION_ENTRIES = [{ value: 'shanghai', label: '上海' }];
+export const REGION_ENTRIES = [
+  { value: 'shanghai', label: '上海' },
+  { value: 'suzhou', label: '苏州' }
+];
 
 export function isKnownRegion(name) {
   return name != null && KNOWN_REGIONS.includes(String(name));

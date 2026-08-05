@@ -1,4 +1,5 @@
 import { createRequire } from 'module';
+import { redirect } from 'next/navigation';
 import { NewsTopicSpecialPage } from '../../../components/news-topic-special-ui';
 import { getPolicyDetailHref } from '../../../lib/policy-detail';
 import { getNewsCategoryLabel, getPolicyExamType } from '../../../lib/site-utils';
@@ -9,6 +10,7 @@ const { loadNewsList } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: `${label}高招政策详解 | 考哪去`,
@@ -246,7 +248,8 @@ const policyBlocks = [
 ];
 
 export default async function GaokaoSpecialPage() {
-  const { region } = await getRegionContext();
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const news = await loadNewsList(region);
   const currentYear = getCurrentYear(news);
   const gaokaoNews = news

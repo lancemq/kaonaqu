@@ -33,7 +33,7 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
   const [score, setScore] = useState<number | null>(null);
   const [districtId, setDistrictId] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const { brandSuffix, brandSuffixFull, examTotal } = useRegion();
+  const { brandSuffix, brandSuffixFull, examTotal, features } = useRegion();
   const examMaxScore = examTotal?.zhongkao || MAX_SCORE_PER_EXAM.zhongkao;
 
   const results = useMemo(() => {
@@ -81,8 +81,8 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
         <div className="channel-nav-links">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink className="is-active" href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
           <RegionSelector />
         </div>
       </nav>
@@ -226,8 +226,8 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
         <nav aria-label="页脚导航">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

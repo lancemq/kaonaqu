@@ -7,9 +7,9 @@ import { createContext, useContext } from 'react';
 // 兜底值确保无 Provider 时（如独立测试）不崩溃，回退上海。
 const RegionContext = createContext(null);
 
-export function RegionProvider({ region, label, brandSuffix, brandSuffixFull, examTotal, children }) {
+export function RegionProvider({ region, label, brandSuffix, brandSuffixFull, examTotal, features, children }) {
   return (
-    <RegionContext.Provider value={{ region, label, brandSuffix, brandSuffixFull, examTotal }}>
+    <RegionContext.Provider value={{ region, label, brandSuffix, brandSuffixFull, examTotal, features }}>
       {children}
     </RegionContext.Provider>
   );
@@ -23,6 +23,7 @@ export function useRegion() {
     label: '上海',
     brandSuffix: 'SHANGHAI EDUCATION',
     brandSuffixFull: 'SHANGHAI EDUCATION PLATFORM',
-    examTotal: { zhongkao: 750, gaokao: 660 }
+    examTotal: { zhongkao: 750, gaokao: 660 },
+    features: { schools: true, knowledge: true, compare: true, groups: true, district: true, scoreMatch: true }
   };
 }

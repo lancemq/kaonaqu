@@ -277,6 +277,7 @@ function SectionKicker({ children, inverse = false }) {
 
 async function NewsDetailNav() {
   const { config } = await getRegionContext();
+  const features = config.features;
   return (
     <nav className="channel-nav" aria-label="顶部导航">
       <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
@@ -286,8 +287,8 @@ async function NewsDetailNav() {
       <div className="channel-nav-links">
         <RegionLink href="/">首页</RegionLink>
         <RegionLink className="is-active" href="/news">新闻</RegionLink>
-        <RegionLink href="/schools">学校</RegionLink>
-        <RegionLink href="/knowledge">知识</RegionLink>
+        {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+        {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         <RegionSelector />
       </div>
     </nav>
@@ -339,28 +340,29 @@ const KNOWLEDGE_TOPICS = [
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const newsItem = await getNewsById(id);
-  const { region } = await getRegionContext();
+  const { region, config } = await getRegionContext();
+  const cityLabel = config.label;
 
   if (newsItem) {
     const isPolicy = newsItem.newsType === 'policy';
     const examType = isPolicy
       ? getPolicyExamType(newsItem)
-      : (newsItem.examType === 'zhongkao' ? '中考' : newsItem.examType === 'gaokao' ? '高考' : '上海升学');
+      : (newsItem.examType === 'zhongkao' ? '中考' : newsItem.examType === 'gaokao' ? '高考' : `${cityLabel}升学`);
     const examLabel = isPolicy
       ? (examType === 'zhongkao' ? '中考' : examType === 'gaokao' ? '高考' : '升学')
       : examType;
-    const titleSuffix = isPolicy ? `上海${examLabel}政策原文` : `${examType}政策解读`;
+    const titleSuffix = isPolicy ? `${cityLabel}${examLabel}政策原文` : `${examType}政策解读`;
     return {
       title: `${newsItem.title} - ${titleSuffix} | 考哪去`,
-      description: newsItem.summary || '查看上海升学新闻与政策详情。',
-      keywords: [examLabel, '上海升学', '政策解读', isPolicy ? '政策' : newsItem.newsType === 'exam' ? '考试' : '招生'],
+      description: newsItem.summary || `查看${cityLabel}升学新闻与政策详情。`,
+      keywords: [examLabel, `${cityLabel}升学`, '政策解读', isPolicy ? '政策' : newsItem.newsType === 'exam' ? '考试' : '招生'],
       alternates: { canonical: `/${region}/news/${encodeURIComponent(id)}` },
       openGraph: {
         type: 'article',
         locale: 'zh_CN',
         siteName: '考哪去',
         title: `${newsItem.title} - ${titleSuffix} | 考哪去`,
-        description: newsItem.summary || '查看上海升学新闻与政策详情。'
+        description: newsItem.summary || `查看${cityLabel}升学新闻与政策详情。`
       }
     };
   }

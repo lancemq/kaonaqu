@@ -1,5 +1,5 @@
 import { RegionLink } from '../../../../components/region-link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { createRequire } from 'module';
 import {
   clipText,
@@ -89,13 +89,13 @@ async function Footer() {
 }
 
 export async function generateMetadata({ params }) {
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const { district } = await params;
   const districtInfo = DISTRICT_CATALOG.find((item) => item.id === district);
   if (!districtInfo) {
     return { title: '区级学校专题 | 考哪去' };
   }
-
-  const { region } = await getRegionContext();
 
   return {
     title: `${districtInfo.name}初中高中学校名单 - 上海16区学校查询 | 考哪去`,
@@ -113,14 +113,14 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function DistrictSchoolsPage({ params }) {
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const { district } = await params;
   const districtInfo = DISTRICT_CATALOG.find((item) => item.id === district);
 
   if (!districtInfo) {
     notFound();
   }
-
-  const { region, config } = await getRegionContext();
   const [districtSchools, schoolCounts] = await Promise.all([
     loadSchoolsByDistrict(district, region),
     loadSchoolCountsByDistrict(region)

@@ -111,6 +111,7 @@ export default async function RootLayout({ children }) {
           brandSuffix={config.brandSuffix}
           brandSuffixFull={config.brandSuffixFull}
           examTotal={config.examTotal}
+          features={config.features}
         >
           <BodyPageFlag />
           {children}

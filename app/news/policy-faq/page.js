@@ -4,6 +4,7 @@ import {
   PolicyToolShell,
   PolicyToolSideCard
 } from '../../../components/news-policy-tool-ui';
+import { redirect } from 'next/navigation';
 import { getRegionContext } from '../../../lib/region-server.mjs';
 import { RegionLink } from '../../../components/region-link';
 
@@ -196,7 +197,8 @@ const relatedLinks = [
 ];
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: `${label}中考高考政策问答 - 高频问题与录取规则 | 考哪去`,
@@ -204,7 +206,9 @@ export async function generateMetadata() {
   };
 }
 
-export default function PolicyFaqPage() {
+export default async function PolicyFaqPage() {
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const faqCount = faqGroups.reduce((count, group) => count + group.items.length, 0);
   const faqPageJsonLd = {
     '@context': 'https://schema.org',

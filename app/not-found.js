@@ -13,6 +13,7 @@ export async function generateMetadata() {
 }
 
 function NotFoundNav({ config }) {
+  const features = config.features;
   return (
     <nav className="channel-nav" aria-label="顶部导航">
       <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
@@ -22,8 +23,8 @@ function NotFoundNav({ config }) {
       <div className="channel-nav-links">
         <RegionLink href="/">首页</RegionLink>
         <RegionLink href="/news">新闻</RegionLink>
-        <RegionLink href="/schools">学校</RegionLink>
-        <RegionLink href="/knowledge">知识</RegionLink>
+        {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+        {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         <RegionSelector />
       </div>
     </nav>
@@ -31,6 +32,7 @@ function NotFoundNav({ config }) {
 }
 
 function NotFoundFooter({ config }) {
+  const features = config.features;
   return (
     <>
       <div className="channel-color-bar" aria-hidden="true">
@@ -48,8 +50,8 @@ function NotFoundFooter({ config }) {
         <nav aria-label="页脚导航">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         </nav>
         <p>© 2026 考哪去</p>
       </footer>
@@ -59,6 +61,7 @@ function NotFoundFooter({ config }) {
 
 export default async function NotFound() {
   const { config } = await getRegionContext();
+  const features = config.features;
   return (
     <main className="not-found-page">
       <NotFoundNav config={config} />
@@ -71,8 +74,8 @@ export default async function NotFound() {
         <div className="not-found-actions">
           <RegionLink className="not-found-btn is-primary" href="/">返回首页</RegionLink>
           <RegionLink className="not-found-btn" href="/news">浏览新闻</RegionLink>
-          <RegionLink className="not-found-btn" href="/schools">查找学校</RegionLink>
-          <RegionLink className="not-found-btn" href="/knowledge">升学知识</RegionLink>
+          {features.schools && <RegionLink className="not-found-btn" href="/schools">查找学校</RegionLink>}
+          {features.knowledge && <RegionLink className="not-found-btn" href="/knowledge">升学知识</RegionLink>}
         </div>
       </section>
       <NotFoundFooter config={config} />

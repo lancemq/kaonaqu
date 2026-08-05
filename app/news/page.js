@@ -122,6 +122,7 @@ function toNewsListCard(item) {
 
 export default async function NewsPage({ searchParams }) {
   const { region, config } = await getRegionContext();
+  const features = config.features;
   const news = await loadNewsList(region);
   const params = await searchParams;
   const activeFilter = typeof params?.filter === 'string' && params.filter !== 'all' ? params.filter : 'all';
@@ -171,8 +172,8 @@ export default async function NewsPage({ searchParams }) {
         <div className="channel-nav-links">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink className="is-active" href="/news">新闻</RegionLink>
-          <RegionLink href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
           <RegionSelector />
         </div>
       </nav>
@@ -182,7 +183,7 @@ export default async function NewsPage({ searchParams }) {
           <div className="channel-hero-copy">
             <SectionLabel>NEWS CHANNEL</SectionLabel>
             <h1>新闻动态</h1>
-            <p>按发布时间汇集上海中考、高考政策与升学新闻，先看最新动态，再进对应专题。</p>
+            <p>按发布时间汇集{config.label}中考、高考政策与升学新闻，先看最新动态，再进对应专题。</p>
           </div>
 
           <aside className="channel-hero-stats" aria-label="新闻统计">
@@ -230,8 +231,8 @@ export default async function NewsPage({ searchParams }) {
         <nav aria-label="页脚导航">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

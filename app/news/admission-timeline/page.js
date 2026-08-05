@@ -1,10 +1,12 @@
 import { RegionLink } from '../../../components/region-link';
+import { redirect } from 'next/navigation';
 import admissionTimeline from '../../../lib/admission-timeline';
 import { NewsAerialFooter, NewsAerialKicker, NewsAerialNav } from '../../../components/news-aerial-ui';
 import { getRegionContext } from '../../../lib/region-server.mjs';
 
 export async function generateMetadata() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: '官方招生日程 | 考哪去',
@@ -90,7 +92,9 @@ function TimelineCard({ item, compact = false }) {
   );
 }
 
-export default function AdmissionTimelinePage() {
+export default async function AdmissionTimelinePage() {
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const sortedTimeline = [...admissionTimeline].sort((a, b) => parseWindowValue(a.window) - parseWindowValue(b.window));
   const todayValue = getTodayValue();
   const upcomingItems = sortedTimeline.filter((item) => parseWindowValue(item.window) >= todayValue);

@@ -101,7 +101,7 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
   const [queryInput, setQueryInput] = useState(initialQuery);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [expandedGroup, setExpandedGroup] = useState(null);
-  const { brandSuffix, brandSuffixFull } = useRegion();
+  const { brandSuffix, brandSuffixFull, features } = useRegion();
 
   const groupsData = useMemo(() => {
     const groupsMap = new Map();
@@ -230,8 +230,8 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
         <div className="channel-nav-links">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink className="is-active" href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
           <RegionSelector />
         </div>
       </nav>
@@ -393,8 +393,8 @@ export default function GroupsPageClient({ districts, schools, initialDistrict =
         <nav aria-label="页脚导航">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

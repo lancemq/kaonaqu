@@ -141,7 +141,12 @@ function MetaBadges({ difficulty, examFrequency }) {
   );
 }
 
-function SiteNav({ brandSuffix }) {
+function SiteNav({ brandSuffix, features }) {
+  const visibleItems = NAV_ITEMS.filter((item) => {
+    if (item.href === '/schools') return features.schools;
+    if (item.href === '/knowledge') return features.knowledge;
+    return true;
+  });
   return (
     <header className="channel-nav">
       <RegionLink className="channel-brand" href="/">
@@ -149,7 +154,7 @@ function SiteNav({ brandSuffix }) {
         <span>{brandSuffix}</span>
       </RegionLink>
       <nav className="channel-nav-links" aria-label="主导航">
-        {NAV_ITEMS.map((item) => (
+        {visibleItems.map((item) => (
           <RegionLink className={item.href === '/knowledge' ? 'is-active' : undefined} href={item.href} key={item.href}>
             {item.label}
           </RegionLink>
@@ -378,7 +383,7 @@ function stageFromGrade(grade) {
   return null;
 }
 
-function DetailSidebar({ page }) {
+function DetailSidebar({ page, features }) {
   const trail = getPageTrail(page);
   const meta = getSubjectMeta(page);
   const relatedPages = page.relatedPages?.length ? page.relatedPages : null;
@@ -399,10 +404,12 @@ function DetailSidebar({ page }) {
           ))
         )}
       </section>
-      <section>
-        <SectionKicker label="SCHOOLS" />
-        <RegionLink href={schoolHref}><span>{stage ? `查看${stage}学校` : '查看全部学校'}</span><em>→</em></RegionLink>
-      </section>
+      {features.schools && (
+        <section>
+          <SectionKicker label="SCHOOLS" />
+          <RegionLink href={schoolHref}><span>{stage ? `查看${stage}学校` : '查看全部学校'}</span><em>→</em></RegionLink>
+        </section>
+      )}
       <section>
         <SectionKicker label="NEWS" />
         <RegionLink href={newsHref}><span>考试升学新闻</span><em>→</em></RegionLink>
@@ -530,7 +537,7 @@ function SubjectPage({ page }) {
         <article className="knowledge-detail-main">
           <RichTextNodes headingState={headingState} nodes={articleBlocks} />
         </article>
-        <DetailSidebar page={page} />
+        <DetailSidebar page={page} features={features} />
       </section>
       {page.quizzes?.length ? (
         <KnowledgeQuiz questions={page.quizzes} slug={page.slug} />
@@ -542,11 +549,11 @@ function SubjectPage({ page }) {
 export default async function KnowledgePage({ page }) {
   const pageKind = getKnowledgePageKind(page);
   const { config } = await getRegionContext();
-  const { brandSuffix, brandSuffixFull } = config;
+  const { brandSuffix, brandSuffixFull, features } = config;
 
   return (
     <main className={`knowledge-page knowledge-page-${pageKind}`} data-knowledge-slug={page.slug}>
-      <SiteNav brandSuffix={brandSuffix} />
+      <SiteNav brandSuffix={brandSuffix} features={features} />
       {pageKind === 'channel' ? <ChannelPage page={page} /> : null}
       {pageKind === 'grade' ? (page.renderMode === 'structured' ? <GradePage page={page} /> : <SubjectPage page={page} />) : null}
       {pageKind === 'subject' ? <SubjectPage page={page} /> : null}

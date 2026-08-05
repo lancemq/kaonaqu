@@ -1,6 +1,6 @@
 import '../../../styles/channels/knowledge.css';
 import 'katex/dist/katex.min.css';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import KnowledgePage from '../../../components/knowledge-page';
 import { getKnowledgePage, listKnowledgeSlugs, buildKnowledgeJsonLd } from '../../../lib/knowledge-content.mjs';
 import { getRegionContext } from '../../../lib/region-server.mjs';
@@ -10,6 +10,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
+  const { region, config } = await getRegionContext();
+  if (config.features.knowledge === false) redirect(`/${region}/news`);
   const page = await getKnowledgePage((await params).slug || []);
 
   if (!page) {
@@ -17,8 +19,6 @@ export async function generateMetadata({ params }) {
       title: '知识体系 | 考哪去'
     };
   }
-
-  const { region } = await getRegionContext();
 
   return {
     title: page.title,
@@ -39,13 +39,14 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function KnowledgeRoutePage({ params }) {
+  const { region, config } = await getRegionContext();
+  if (config.features.knowledge === false) redirect(`/${region}/news`);
   const page = await getKnowledgePage((await params).slug || []);
 
   if (!page) {
     notFound();
   }
 
-  const { region } = await getRegionContext();
   const jsonLdBlocks = buildKnowledgeJsonLd(page, region);
 
   return (

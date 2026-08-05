@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import ScoreMatchClient from '../../../components/score-match-client';
 import { getRegionContext } from '../../../lib/region-server.mjs';
 
@@ -5,6 +6,7 @@ const { loadSchoolsMinimal } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: `${label}估分择校 | 考哪去`,
@@ -17,7 +19,8 @@ export async function generateMetadata() {
 // 写操作后 revalidateTag 立即失效，保证评分匹配使用的数据不过时。
 
 export default async function ScoreMatchPage() {
-  const { region } = await getRegionContext();
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const matchSchools = await loadSchoolsMinimal(region);
 
   return (

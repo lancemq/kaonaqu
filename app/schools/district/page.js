@@ -1,4 +1,5 @@
 import { RegionLink } from '../../../components/region-link';
+import { redirect } from 'next/navigation';
 import { createRequire } from 'module';
 import {
   clipText,
@@ -20,6 +21,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 
 export async function generateMetadata() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: `${label}学校区域频道 - 16区学校结构与区域专题 | 考哪去`,
@@ -118,6 +120,7 @@ async function Footer() {
 
 export default async function DistrictIndexPage() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const schools = await loadSchoolsList(region);
   const districts = DISTRICT_CATALOG;
   const districtRows = buildDistrictRows(districts, schools);

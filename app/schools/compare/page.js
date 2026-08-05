@@ -1,4 +1,5 @@
 import { createRequire } from 'module';
+import { redirect } from 'next/navigation';
 import SchoolsCompareClient from '../../../components/schools-compare-client';
 import { getRegionContext } from '../../../lib/region-server.mjs';
 
@@ -7,6 +8,7 @@ const { loadSchoolsList } = require('../../../shared/data-store');
 
 export async function generateMetadata() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: `${label}学校信息对比工具 | 考哪去`,
@@ -17,7 +19,8 @@ export async function generateMetadata() {
 
 
 export default async function SchoolsComparePage({ searchParams }) {
-  const { region } = await getRegionContext();
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const schools = await loadSchoolsList(region);
   const params = await searchParams;
   const initialSchools = typeof params?.schools === 'string' ? params.schools : '';

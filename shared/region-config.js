@@ -59,11 +59,71 @@ const SHANGHAI = {
     titleTemplate: '考哪去 | {label}中考高考政策、学校信息与知识体系',
     descriptionTemplate: '考哪去汇集{label}中考、高考政策与新闻，提供学校查询、区县专题和初高中知识点整理。',
     keywords: ['{label}中考', '{label}高考', '{label}学校', '升学政策', '中招', '高招', '{label}教育']
+  },
+  // 频道开关：控制各频道对该地区是否可见。news 始终可用（无开关）。
+  // 新增地区时按需关闭尚未准备好内容的频道（如苏州仅新闻）。
+  features: {
+    schools: true,
+    knowledge: true,
+    compare: true,
+    groups: true,
+    district: true,
+    scoreMatch: true
+  }
+};
+
+const SUZHOU = {
+  label: '苏州',
+  brandSuffix: 'SUZHOU EDUCATION',
+  brandSuffixFull: 'SUZHOU EDUCATION PLATFORM',
+  officialSourceName: '苏州市教育局',
+  // 各考试满分（江苏苏州中考 740；江苏高考 3+1+2 共 750）
+  examTotal: { zhongkao: 740, gaokao: 750 },
+  // 苏州区县目录（5 市辖区 + 苏州工业园区功能区 + 4 县级市）
+  districtCatalog: [
+    { id: 'gusu', name: '姑苏区', description: '苏州古城核心区，教育资源丰富' },
+    { id: 'huqiu', name: '虎丘区', description: '含苏州高新区，高新产业与教育资源集聚' },
+    { id: 'wuzhong', name: '吴中区', description: '太湖新城拓展，教育快速发展' },
+    { id: 'xiangcheng', name: '相城区', description: '教育资源持续完善' },
+    { id: 'wujiang', name: '吴江区', description: '长三角一体化示范区，教育质量优良' },
+    { id: 'sip', name: '苏州工业园区', description: '中外合作办学与国际化教育集中' },
+    { id: 'changshu', name: '常熟市', description: '县域教育强市' },
+    { id: 'zhangjiagang', name: '张家港市', description: '县域教育优质均衡' },
+    { id: 'kunshan', name: '昆山市', description: '县域教育高地，名校聚集' },
+    { id: 'taicang', name: '太仓市', description: '德资企业集聚，职教特色鲜明' }
+  ],
+  // 学校层级排序权重（与上海共用 8 值词表；key 须与 DB school_key_level 词表对齐）
+  keyLevelPriority: {
+    '市重点(高中)': 100,
+    '顶级公办(初中)': 95,
+    '顶级民办(初中)': 95,
+    '区重点(高中)': 80,
+    '强民办(初中)': 72,
+    '强公办(初中)': 70,
+    '一般高中': 60,
+    '一般初中': 40
+  },
+  seo: {
+    areaServed: '苏州',
+    titleTemplate: '考哪去 | {label}中考高考政策与升学新闻',
+    descriptionTemplate: '考哪去汇集{label}中考、高考政策与升学新闻。',
+    keywords: ['{label}中考', '{label}高考', '{label}新闻', '升学政策', '中招', '高招', '{label}教育']
+  },
+  // 苏州仅开放新闻频道：schools/knowledge/compare/groups/district/scoreMatch 均关闭，
+  // 访问时由 proxy 308 重定向到 /suzhou/news。
+  features: {
+    schools: false,
+    knowledge: false,
+    compare: false,
+    groups: false,
+    district: false,
+    scoreMatch: false
   }
 };
 
 const REGIONS = {
-  shanghai: SHANGHAI
+  shanghai: SHANGHAI,
+  suzhou: SUZHOU
 };
 
 // 取某地区完整配置；未知 region 抛错（fail-fast，避免静默回退到上海导致数据串区）。
@@ -95,6 +155,10 @@ function getKeyLevelPriority(region) {
   return getRegionConfig(region).keyLevelPriority;
 }
 
+function getRegionFeatures(region) {
+  return getRegionConfig(region).features;
+}
+
 module.exports = {
   DEFAULT_REGION,
   REGIONS,
@@ -102,5 +166,6 @@ module.exports = {
   getDistrictCatalog,
   getDistrictNameToId,
   getDistrictIdToName,
-  getKeyLevelPriority
+  getKeyLevelPriority,
+  getRegionFeatures
 };

@@ -5,7 +5,7 @@ import { useRegion } from './region-context';
 import { RegionSelector } from './region-selector';
 
 export function NewsAerialNav() {
-  const { brandSuffix, brandSuffixFull } = useRegion();
+  const { brandSuffix, brandSuffixFull, features } = useRegion();
   return (
     <nav className="channel-nav" aria-label="顶部导航">
       <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
@@ -15,8 +15,8 @@ export function NewsAerialNav() {
       <div className="channel-nav-links">
         <RegionLink href="/">首页</RegionLink>
         <RegionLink className="is-active" href="/news">新闻</RegionLink>
-        <RegionLink href="/schools">学校</RegionLink>
-        <RegionLink href="/knowledge">知识</RegionLink>
+        {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+        {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         <RegionSelector />
       </div>
     </nav>
@@ -52,7 +52,7 @@ export function NewsAerialHero({ kicker, title, description, imageClass = '' }) 
 }
 
 export function NewsAerialFooter() {
-  const { brandSuffix, brandSuffixFull } = useRegion();
+  const { brandSuffix, brandSuffixFull, features } = useRegion();
   return (
     <>
       <div className="channel-color-bar" aria-hidden="true">
@@ -70,8 +70,8 @@ export function NewsAerialFooter() {
         <nav aria-label="页脚导航">
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
-          <RegionLink href="/schools">学校</RegionLink>
-          <RegionLink href="/knowledge">知识</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

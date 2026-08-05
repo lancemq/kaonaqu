@@ -1,4 +1,5 @@
 import { createRequire } from 'module';
+import { redirect } from 'next/navigation';
 import SchoolsPageClient from '../../components/schools-page-client';
 import { getSchoolOverview } from '../../lib/school-content';
 import {
@@ -181,6 +182,7 @@ function sortSchools(schools, sort) {
 
 export async function generateMetadata() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: `${label}初中高中学校库 - 按区查询学校信息 | 考哪去`,
@@ -194,7 +196,8 @@ export async function generateMetadata() {
 // Supabase 查询经 Next Data Cache 缓存（revalidate: 60s，tags: ['supabase-data']）。
 
 export default async function SchoolsPage({ searchParams }) {
-  const { region } = await getRegionContext();
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const schools = await loadSchoolsList(region);
   const districts = buildDistricts(schools, [], region);
   const params = await searchParams;

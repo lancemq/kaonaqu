@@ -1,4 +1,5 @@
 import { createRequire } from 'module';
+import { redirect } from 'next/navigation';
 import GroupsPageClient from '../../../components/groups-page-client';
 import { getRegionContext } from '../../../lib/region-server.mjs';
 
@@ -8,6 +9,7 @@ const { DISTRICT_CATALOG } = require('../../../shared/data-schema');
 
 export async function generateMetadata() {
   const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
     title: `${label}教育集团大全 | 考哪去`,
@@ -18,7 +20,8 @@ export async function generateMetadata() {
 
 
 export default async function GroupsPage({ searchParams }) {
-  const { region } = await getRegionContext();
+  const { region, config } = await getRegionContext();
+  if (config.features.schools === false) redirect(`/${region}/news`);
   const schools = await loadSchoolsList(region);
   const districts = DISTRICT_CATALOG;
   const params = await searchParams;
