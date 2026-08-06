@@ -105,7 +105,7 @@ function sortBySchoolPriority(items) {
 // admission_info（notes 长文本，单列约 1MB）仍仅详情页需要，由 getSchoolById 取回。
 // 列表筛选/搜索依赖的 features/address/labels 等均保留。
 const SCHOOLS_LIST_COLUMNS = [
-  'id', 'slug', 'name', 'district_name', 'school_stage_label', 'school_property_label',
+  'id', 'slug', 'name', 'region', 'district_name', 'school_stage_label', 'school_property_label',
   'school_key_level', 'elite_cohort', 'group', 'address', 'phone', 'website',
   'founding_year', 'is_boarding', 'is_international', 'image', 'profile_depth',
   'features', 'info_verified', 'score_lines', 'outcome_stats'
