@@ -49,7 +49,7 @@ export function RegionSelector({ className = '' }) {
     setOpen(false);
     if (value === region) return;
     const base = stripRegionPrefix(pathname || '/');
-    router.push(regionPath(base, value));
+    window.location.assign(regionPath(base, value));
   };
 
   return (
