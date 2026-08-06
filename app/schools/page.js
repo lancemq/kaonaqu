@@ -186,8 +186,8 @@ export async function generateMetadata() {
   const label = config.label;
   return {
     title: `${label}初中高中学校库 - 按区查询学校信息 | 考哪去`,
-    description: `按区域检索${label}初高中学校，查看16区学校介绍、类型、学段、特色标签与梯队说明。`,
-    keywords: [`${label}学校`, `${label}初中`, `${label}高中`, '学校查询', '择校', `${label}16区学校`],
+    description: `按区域检索${label}初高中学校，查看各区学校介绍、类型、学段、特色标签与梯队说明。`,
+    keywords: [`${label}学校`, `${label}初中`, `${label}高中`, '学校查询', '择校', `${label}各区学校`],
     alternates: { canonical: `/${region}/schools` }
   };
 }
@@ -198,6 +198,7 @@ export async function generateMetadata() {
 export default async function SchoolsPage({ searchParams }) {
   const { region, config } = await getRegionContext();
   if (config.features.schools === false) redirect(`/${region}/news`);
+  const label = config.label;
   const schools = await loadSchoolsList(region);
   const districts = buildDistricts(schools, [], region);
   const params = await searchParams;
@@ -249,8 +250,8 @@ export default async function SchoolsPage({ searchParams }) {
   const itemListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    'name': '上海初中高中学校列表',
-    'description': '按区域检索上海初中、高中学校信息',
+    'name': `${label}初中高中学校列表`,
+    'description': `按区域检索${label}初中、高中学校信息`,
     'numberOfItems': schools.length
   };
 

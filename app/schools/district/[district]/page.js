@@ -17,7 +17,7 @@ import { RegionSelector } from '../../../../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsByDistrict, loadSchoolCountsByDistrict } = require('../../../../shared/data-store');
-const { DISTRICT_CATALOG } = require('../../../../shared/data-schema');
+const { getDistrictCatalog } = require('../../../../shared/region-config');
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 
@@ -92,21 +92,21 @@ export async function generateMetadata({ params }) {
   const { region, config } = await getRegionContext();
   if (config.features.schools === false) redirect(`/${region}/news`);
   const { district } = await params;
-  const districtInfo = DISTRICT_CATALOG.find((item) => item.id === district);
+  const districtInfo = getDistrictCatalog(region).find((item) => item.id === district);
   if (!districtInfo) {
     return { title: '区级学校专题 | 考哪去' };
   }
 
   return {
-    title: `${districtInfo.name}初中高中学校名单 - 上海16区学校查询 | 考哪去`,
-    description: `查看${districtInfo.name}学校分布、${districtInfo.name}重点初中高中名单、办学类型与培养方向，上海升学择校参考。`,
-    keywords: [districtInfo.name, '上海学校', '初中', '高中', '择校', `${districtInfo.name}教育`],
+    title: `${districtInfo.name}初中高中学校名单 - ${config.label}学校查询 | 考哪去`,
+    description: `查看${districtInfo.name}学校分布、${districtInfo.name}重点初中高中名单、办学类型与培养方向，${config.label}升学择校参考。`,
+    keywords: [districtInfo.name, `${config.label}学校`, '初中', '高中', '择校', `${districtInfo.name}教育`],
     alternates: { canonical: `/${region}/schools/district/${district}` },
     openGraph: {
       type: 'article',
       locale: 'zh_CN',
       siteName: '考哪去',
-      title: `${districtInfo.name}初中高中学校名单 - 上海16区学校查询 | 考哪去`,
+      title: `${districtInfo.name}初中高中学校名单 - ${config.label}学校查询 | 考哪去`,
       description: `查看${districtInfo.name}学校分布、重点初中高中与培养方向。`
     }
   };
@@ -116,7 +116,7 @@ export default async function DistrictSchoolsPage({ params }) {
   const { region, config } = await getRegionContext();
   if (config.features.schools === false) redirect(`/${region}/news`);
   const { district } = await params;
-  const districtInfo = DISTRICT_CATALOG.find((item) => item.id === district);
+  const districtInfo = getDistrictCatalog(region).find((item) => item.id === district);
 
   if (!districtInfo) {
     notFound();
@@ -132,7 +132,7 @@ export default async function DistrictSchoolsPage({ params }) {
     complete: sortedSchools.filter((school) => school.schoolStage === 'complete')
   };
   const featured = sortedSchools.slice(0, 6);
-  const relatedDistricts = DISTRICT_CATALOG
+  const relatedDistricts = getDistrictCatalog(region)
     .filter((item) => item.id !== districtInfo.id)
     .map((item) => ({
       ...item,

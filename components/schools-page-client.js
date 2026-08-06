@@ -95,7 +95,7 @@ export default function SchoolsPageClient({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [queryInput, setQueryInput] = useState(filters.query || '');
-  const { region, brandSuffix, brandSuffixFull, features } = useRegion();
+  const { region, label, brandSuffix, brandSuffixFull, features } = useRegion();
 
   // 服务端是唯一数据源：URL 变化即重新请求并下发当前页 10 条。
   // queryInput 仅在用户本地输入时变更，提交后由 filters.query 回写。
@@ -208,7 +208,7 @@ export default function SchoolsPageClient({
         <div className="channel-hero-content">
           <section className="channel-hero-copy" aria-label="学校频道概览">
             <div className="channel-kicker"><span aria-hidden="true"></span><p>SCHOOL DATABASE</p></div>
-            <h1>上海学校数据库</h1>
+            <h1>{label}学校数据库</h1>
             <p>收录全市 {totalDb.toLocaleString('zh-CN')} 所学校，按区域、类型、梯队筛选，查看各校特色与录取数据。</p>
             <div className="schools-aerial-searchbar">
               <span aria-hidden="true"></span>
@@ -351,7 +351,9 @@ export default function SchoolsPageClient({
                   <RegionLink href="/schools/compare"><span>学校对比</span><i>→</i></RegionLink>
                   <RegionLink href="/schools/score-match"><span>分数匹配</span><i>→</i></RegionLink>
                   <RegionLink href="/news/admission-timeline"><span>政策日历</span><i>→</i></RegionLink>
-                  <RegionLink href="/schools/groups"><span>教育集团</span><i>→</i></RegionLink>
+                  {features.groups && (
+                    <RegionLink href="/schools/groups"><span>教育集团</span><i>→</i></RegionLink>
+                  )}
                   <RegionLink href="/schools/district"><span>区域专题</span><i>→</i></RegionLink>
                 </div>
               </div>

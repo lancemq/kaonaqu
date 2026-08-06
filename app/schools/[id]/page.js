@@ -71,7 +71,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${school.name}（${district}${ownership}${stage}）招生联系方式 | 考哪去`,
     description: `${school.name}位于${district}，${ownership}${stage}。${features ? '特色：' + features : ''}查看学校画像、招生路径与择校提示。`,
-    keywords: [school.name, district, stage, ownership, '上海学校', '招生', '择校'].filter(Boolean),
+    keywords: [school.name, district, stage, ownership, `${config.label}学校`, '招生', '择校'].filter(Boolean),
     alternates: { canonical: `/${region}/schools/${encodeURIComponent(id)}` },
     openGraph: {
       type: 'article',
@@ -86,6 +86,7 @@ export async function generateMetadata({ params }) {
 export default async function SchoolDetailPage({ params }) {
   const { region, config } = await getRegionContext();
   if (config.features.schools === false) redirect(`/${region}/news`);
+  const cityLabel = config.label + '市';
   const { id } = await params;
   // 详情页需完整记录（content/scoreLines/admissionInfo），按 id 单校完整查询
   // （响应极小，经 Next Data Cache 按 id 缓存）。
@@ -310,7 +311,7 @@ export default async function SchoolDetailPage({ params }) {
           ) : (
             <section className="school-pencil-section school-pencil-admission is-empty" key="admission">
               <h2>招生信息</h2>
-              <p className="school-pencil-admission-notes">该校招生信息以当年上海市及本区教育局发布的官方文件为准。</p>
+              <p className="school-pencil-admission-notes">该校招生信息以当年${cityLabel}及本区教育局发布的官方文件为准。</p>
             </section>
           )}
 
@@ -318,7 +319,7 @@ export default async function SchoolDetailPage({ params }) {
             <section className="school-pencil-section school-pencil-outcome" key="outcome">
               <h2>近年高考办学成果</h2>
               <p className="school-pencil-outcome-intro">
-                下列数据基于<strong>上海市教育考试院</strong>公布的<strong>综合评价录取生源高中分布</strong>（综评合计、复交综评批），以及各校公开发布的办学喜报（清北、复交总计、600+ 人数）。综评类数据来源官方、标注「已核验」；喜报类来自媒体整理、标注「待核实」。
+                下列数据基于<strong>{cityLabel}教育考试院</strong>公布的<strong>综合评价录取生源高中分布</strong>（综评合计、复交综评批），以及各校公开发布的办学喜报（清北、复交总计、600+ 人数）。综评类数据来源官方、标注「已核验」；喜报类来自媒体整理、标注「待核实」。
               </p>
               <div className="school-pencil-outcome-table">
                 <div className="outcome-head">
@@ -346,7 +347,7 @@ export default async function SchoolDetailPage({ params }) {
                 ))}
               </div>
               <p className="school-pencil-outcome-note">
-                说明：综评合计 = 通过综合评价批次被复旦、交大、同济、华师、华理、上财、上外、东华、上中医、上大等 11 所上海高校录取的总人数；复交（综评批）仅含复旦 + 交大综合评价批次；清北 / 600+ 取自喜报，可能含强基、普通批，跨源口径略有差异，仅供参考。
+                说明：综评合计 = 通过综合评价批次被复旦、交大、同济、华师、华理、上财、上外、东华、上中医、上大等 11 所${cityLabel}高校录取的总人数；复交（综评批）仅含复旦 + 交大综合评价批次；清北 / 600+ 取自喜报，可能含强基、普通批，跨源口径略有差异，仅供参考。
               </p>
             </section>
           ) : null}
@@ -429,7 +430,7 @@ export default async function SchoolDetailPage({ params }) {
                 {latestOutcome.topScore != null ? <div><dt>最高分</dt><dd>{latestOutcome.topScore}</dd></div> : null}
               </dl>
               <p className="school-pencil-outcome-source">
-                {latestOutcome.verified ? '综评数据已核验（上海市教育考试院公示）' : '含喜报类数据，待核实，仅供参考'}
+                {latestOutcome.verified ? `综评数据已核验（${cityLabel}教育考试院公示）` : '含喜报类数据，待核实，仅供参考'}
                 {latestOutcome.note ? ` · ${latestOutcome.note}` : ''}
               </p>
             </section>

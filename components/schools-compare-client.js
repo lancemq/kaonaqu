@@ -193,7 +193,7 @@ const METRICS = [
 
 export default function SchoolsCompareClient({ schools, initialSchools }) {
   const router = useRouter();
-  const { region } = useRegion();
+  const { region, label } = useRegion();
   const { ids: bagIds, ready: bagReady, replaceAll, remove, clear: clearBag, max } = useCompareBag();
   const initialIds = useMemo(
     () => (initialSchools ? initialSchools.split(',').filter(Boolean) : []),
@@ -368,7 +368,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
       <section className="compare-aerial-chart-section" aria-label="高考综评走势">
         <CompareKicker>GAOKAO ZONGPING</CompareKicker>
         <h2>近年高考综评录取走势</h2>
-        <p className="compare-aerial-chart-note">综评合计 = 通过综合评价批次被复旦、交大等 11 所上海高校录取的总人数（来源：上海市教育考试院公示）。有数据的学校显示真实逐年走势，暂无数据则不显示。</p>
+        <p className="compare-aerial-chart-note">综评合计 = 通过综合评价批次被{label}市重点高校录取的总人数（来源：{label}市教育考试院公示）。有数据的学校显示真实逐年走势，暂无数据则不显示。</p>
         <div className="compare-aerial-chart-grid">
           {displaySchools.map((school) => {
             const { years, map } = getGaokaoZongpingSeries(school);

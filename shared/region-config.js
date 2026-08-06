@@ -110,15 +110,16 @@ const SUZHOU = {
     descriptionTemplate: '考哪去汇集{label}中考、高考政策与升学新闻。',
     keywords: ['{label}中考', '{label}高考', '{label}新闻', '升学政策', '中招', '高招', '{label}教育']
   },
-  // 苏州仅开放新闻频道：schools/knowledge/compare/groups/district/scoreMatch 均关闭，
-  // 访问时由 proxy 308 重定向到 /suzhou/news。
+  // 苏州学校数据已于 2026-08-06 全量入库（385 所初高中，含 2023–2026 分数线与区县）。
+  // 开放 schools/district/compare/scoreMatch；groups 暂关（采集数据 group 字段普遍空）；
+  // knowledge 为上海专属学科内容，苏州暂无，保持关闭。
   features: {
-    schools: false,
+    schools: true,
     knowledge: false,
-    compare: false,
+    compare: true,
     groups: false,
-    district: false,
-    scoreMatch: false
+    district: true,
+    scoreMatch: true
   }
 };
 

@@ -15,7 +15,7 @@ import { RegionSelector } from '../../../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsList } = require('../../../shared/data-store');
-const { DISTRICT_CATALOG } = require('../../../shared/data-schema');
+const { getDistrictCatalog } = require('../../../shared/region-config');
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 
@@ -24,8 +24,8 @@ export async function generateMetadata() {
   if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   return {
-    title: `${label}学校区域频道 - 16区学校结构与区域专题 | 考哪去`,
-    description: `按${label}16区查看学校结构、区域教育特点、初高中分布与学校专题入口。`,
+    title: `${label}学校区域频道 - 各区学校结构与区域专题 | 考哪去`,
+    description: `按${label}各区查看学校结构、区域教育特点、初高中分布与学校专题入口。`,
     alternates: { canonical: `/${region}/schools/district` }
   };
 }
@@ -121,8 +121,9 @@ async function Footer() {
 export default async function DistrictIndexPage() {
   const { region, config } = await getRegionContext();
   if (config.features.schools === false) redirect(`/${region}/news`);
+  const label = config.label;
   const schools = await loadSchoolsList(region);
-  const districts = DISTRICT_CATALOG;
+  const districts = getDistrictCatalog(region);
   const districtRows = buildDistrictRows(districts, schools);
   const totals = {
     districts: districtRows.length,
@@ -146,8 +147,8 @@ export default async function DistrictIndexPage() {
   const collectionJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: '上海学校区域频道',
-    description: '按上海16区查看学校结构、区域教育特点、初高中分布与学校专题入口。',
+    name: `${label}学校区域频道`,
+    description: `按${label}各区查看学校结构、区域教育特点、初高中分布与学校专题入口。`,
     url: `${SITE_URL}/${region}/schools/district`,
     mainEntity: {
       '@type': 'ItemList',
@@ -171,10 +172,10 @@ export default async function DistrictIndexPage() {
 
       <header className="channel-hero" id="top">
         <div className="channel-hero-content">
-          <section className="channel-hero-copy" aria-label="上海学校区域频道概览">
+          <section className="channel-hero-copy" aria-label={`${label}学校区域频道概览`}>
             <div className="district-channel-breadcrumb"><RegionLink href="/schools">学校</RegionLink><span>/</span><strong>区域频道</strong></div>
             <SectionKicker>DISTRICT CHANNEL</SectionKicker>
-            <h1>上海学校区域频道</h1>
+            <h1>{label}学校区域频道</h1>
             <p>从区域进入，先看各区学校密度、初高中结构和区域教育特点，再进入具体区县专题和学校详情。</p>
           </section>
 
@@ -190,7 +191,7 @@ export default async function DistrictIndexPage() {
       <section className="district-channel-overview" aria-label="区域频道概况">
         <div>
           <h2>区域概况</h2>
-          <p>上海学校资源在中心城区、近郊新城和远郊生态区之间差异明显。按区浏览可以先判断学校密度、通勤范围、头部学校和学段结构，再进入具体学校做细分比较。</p>
+          <p>{label}学校资源在各区域之间差异明显。按区浏览可以先判断学校密度、通勤范围、头部学校和学段结构，再进入具体学校做细分比较。</p>
         </div>
         <div className="district-channel-overview-stats">
           <article><strong>{leadDistrict?.name || '浦东新区'}</strong><span>学校记录最多</span></article>
@@ -232,12 +233,12 @@ export default async function DistrictIndexPage() {
         </div>
       </section>
 
-      <section className="district-channel-schools" aria-label="上海各区学校入口">
+      <section className="district-channel-schools" aria-label={`${label}各区学校入口`}>
         <div className="district-channel-main-list">
           <div className="district-channel-list-head">
             <div>
               <SectionKicker>ALL DISTRICTS</SectionKicker>
-              <h2>上海各区入口</h2>
+              <h2>{label}各区入口</h2>
             </div>
             <p>按学校数量排序，点击进入对应区级学校专题。</p>
           </div>
