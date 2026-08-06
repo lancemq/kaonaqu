@@ -38,7 +38,7 @@ export const REGION_ENTRIES = [
     brandSuffix: 'SUZHOU EDUCATION',
     brandSuffixFull: 'SUZHOU EDUCATION PLATFORM',
     examTotal: { zhongkao: 740, gaokao: 750 },
-    features: { schools: false, knowledge: false, compare: false, groups: false, district: false, scoreMatch: false }
+    features: { schools: true, knowledge: false, compare: true, groups: false, district: true, scoreMatch: true }
   }
 ];
 

@@ -226,7 +226,7 @@ export default async function SchoolDetailPage({ params }) {
       />
       <nav className="channel-nav" aria-label="顶部导航">
         <RegionLink className="channel-brand" href="/" aria-label="考哪去首页"><strong>考哪去</strong><span>{config.brandSuffix}</span></RegionLink>
-        <div className="channel-nav-links"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink className="is-active" href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink><RegionSelector /></div>
+        <div className="channel-nav-links"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{config.features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}{config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}<RegionSelector /></div>
       </nav>
 
       <nav className="school-pencil-breadcrumb" aria-label="面包屑">
