@@ -105,14 +105,7 @@ export default async function RootLayout({ children }) {
               `(function(){try{var p=location.pathname||'/';var R=${JSON.stringify(KNOWN_REGIONS)};function sp(x){var s=x.split('/');if(s.length>2&&R.indexOf(s[1])>=0){return '/'+s.slice(2).join('/');}return x;}var pp=sp(p);var r=pp.indexOf('/news')===0?'news':pp.indexOf('/schools')===0?'schools':pp.indexOf('/knowledge')===0?'knowledge':'home';document.body.setAttribute('data-page',r);}catch(e){}})();`
           }}
         />
-        <RegionProvider
-          region={region}
-          label={config.label}
-          brandSuffix={config.brandSuffix}
-          brandSuffixFull={config.brandSuffixFull}
-          examTotal={config.examTotal}
-          features={config.features}
-        >
+        <RegionProvider>
           <BodyPageFlag />
           {children}
           <Analytics />

@@ -19,12 +19,27 @@ export const DEFAULT_REGION = 'shanghai';
 // 已知地区名（小写、[a-z0-9-]），与 region-config.js REGIONS 的键保持一致。
 export const KNOWN_REGIONS = ['shanghai', 'suzhou'];
 
-// RegionSelector 下拉选项（value=地区名、label=展示名）。
-// label 与 region-config.js 对应地区配置的 label 同步；
-// 新增地区时两处 label 都要改，避免下拉文案与品牌/SEO 不一致。
+// RegionSelector 下拉选项 + client 端 region 元数据（value=地区名、label=展示名）。
+// 含 client 组件需要的字段（brand/examTotal/features），与 region-config.js 对应地区配置同步；
+// 新增地区时两处都要改，避免下拉/品牌/features 与 server 端不一致。
+// useRegion() 从 pathname 解析 region 后从此处取这些字段（client 导航实时更新）。
 export const REGION_ENTRIES = [
-  { value: 'shanghai', label: '上海' },
-  { value: 'suzhou', label: '苏州' }
+  {
+    value: 'shanghai',
+    label: '上海',
+    brandSuffix: 'SHANGHAI EDUCATION',
+    brandSuffixFull: 'SHANGHAI EDUCATION PLATFORM',
+    examTotal: { zhongkao: 750, gaokao: 660 },
+    features: { schools: true, knowledge: true, compare: true, groups: true, district: true, scoreMatch: true }
+  },
+  {
+    value: 'suzhou',
+    label: '苏州',
+    brandSuffix: 'SUZHOU EDUCATION',
+    brandSuffixFull: 'SUZHOU EDUCATION PLATFORM',
+    examTotal: { zhongkao: 740, gaokao: 750 },
+    features: { schools: false, knowledge: false, compare: false, groups: false, district: false, scoreMatch: false }
+  }
 ];
 
 export function isKnownRegion(name) {
