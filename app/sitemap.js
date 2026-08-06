@@ -19,6 +19,13 @@ const SPECIAL_PAGES = [
   'sports-reform'
 ];
 
+// 苏州专题：schools 关闭但新闻专题可访问（路径不在 proxy NEWS_SPECIAL_PATHS，不重定向）
+const SUZHOU_SPECIAL_PAGES = [
+  'suzhou-zhongkao',
+  'suzhou-pathways',
+  'suzhou-gaokao'
+];
+
 // Knowledge URLs are generated live by scanning content/knowledge (the same
 // directory the route reads via fs.readdir), so the sitemap never drifts when a
 // slug is added, renamed, or removed. The hand-maintained knowledge entries in
@@ -111,8 +118,8 @@ export default async function sitemap() {
     const features = getRegionFeatures(region);
     const newsIds = await loadNewsIds(region);
 
-    // 新闻专题：schools 关闭时跳过（专题重定向了，sitemap 不含）
-    const specialPages = features.schools ? SPECIAL_PAGES : [];
+    // 新闻专题：苏州用苏州专属专题；其余地区 schools 关闭时跳过（专题重定向了，sitemap 不含）
+    const specialPages = region === 'suzhou' ? SUZHOU_SPECIAL_PAGES : (features.schools ? SPECIAL_PAGES : []);
     const newsUrls = [...newsIds, ...specialPages].map((id) => ({
       url: `${baseWithRegion}/news/${encodeURIComponent(id)}`,
       lastmod: today,
