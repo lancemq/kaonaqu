@@ -277,7 +277,7 @@ export default function SchoolsPageClient({
             </div>
           </FilterSection>
 
-          <FilterSection id="cohort" label="荣誉" open={openSections.has('cohort')} onToggle={toggleSection} active={activeCohort !== 'all'}>
+          <FilterSection id="cohort" label={region === 'suzhou' ? '办学星级' : '荣誉'} open={openSections.has('cohort')} onToggle={toggleSection} active={activeCohort !== 'all'}>
             <div className="schools-aerial-filter-stack">
               {filterOptions.cohort.map((option) => (
                 <button key={option} type="button" className={activeCohort === option ? 'is-active' : ''} onClick={() => navigate({ cohort: activeCohort === option ? 'all' : option })}>

@@ -12,6 +12,7 @@ import {
   getSchoolType,
   clipText
 } from '../../lib/site-utils';
+import { deriveSchoolStar } from '../../lib/school-taxonomy';
 import { getRegionContext } from '../../lib/region-server.mjs';
 
 const require = createRequire(import.meta.url);
@@ -32,7 +33,8 @@ function buildSearchText(school) {
     school.address,
     getSchoolAdmissionInfo(school),
     ...getSchoolTrainingDirections(school),
-    ...getSchoolFeatures(school)
+    ...getSchoolFeatures(school),
+    school.schoolStar || school.eliteCohort || ''
   ].join(' ').toLowerCase();
   return haystack;
 }
@@ -83,7 +85,7 @@ function toSchoolListCard(school) {
     schoolStageLabel: school.schoolStageLabel || '',
     schoolPropertyLabel: school.schoolPropertyLabel || '',
     schoolKeyLevel: school.schoolKeyLevel || '',
-    eliteCohort: school.eliteCohort || '',
+    eliteCohort: school.schoolStar || school.eliteCohort || '',
     schoolStage: school.schoolStage || '',
     positioning: getSchoolPositioning(school),
     tags: buildCardTags(school),
@@ -91,14 +93,17 @@ function toSchoolListCard(school) {
   };
 }
 
-function filterSchools(schools, filters) {
+function filterSchools(schools, filters, region = DEFAULT_REGION) {
   const q = (filters.query || '').trim().toLowerCase();
+  // 苏州无上海式「四校/八大金刚」荣誉层级，办学星级（四星/三星/二星/一星）由 features 派生，
+  // 故 cohort 维度在苏州取 schoolStar，上海取 eliteCohort。
+  const cohortOf = (s) => (region === 'suzhou' ? (s.schoolStar || '') : (s.eliteCohort || ''));
   return schools.filter((s) => {
     if (filters.district !== 'all' && s.districtId !== filters.district) return false;
     if (filters.stage !== 'all' && (s.schoolStageLabel || '') !== filters.stage) return false;
     if (filters.property !== 'all' && (s.schoolPropertyLabel || '') !== filters.property) return false;
     if (filters.keyLevel !== 'all' && (s.schoolKeyLevel || '') !== filters.keyLevel) return false;
-    if (filters.cohort !== 'all' && (s.eliteCohort || '') !== filters.cohort) return false;
+    if (filters.cohort !== 'all' && cohortOf(s) !== filters.cohort) return false;
     if (filters.boarding !== 'all') {
       const wantBoarding = filters.boarding === 'boarding';
       if (!!s.isBoarding !== wantBoarding) return false;
@@ -150,10 +155,10 @@ function scoreValue(line) {
   return Number.isFinite(n) ? n : -1;
 }
 
-function sortByPriority(list) {
+function sortByPriority(list, region = DEFAULT_REGION) {
   return list.slice().sort((a, b) => {
-    const aCohort = String(a.eliteCohort || '').trim() ? 1 : 0;
-    const bCohort = String(b.eliteCohort || '').trim() ? 1 : 0;
+    const aCohort = String(region === 'suzhou' ? (a.schoolStar || '') : (a.eliteCohort || '')).trim() ? 1 : 0;
+    const bCohort = String(region === 'suzhou' ? (b.schoolStar || '') : (b.eliteCohort || '')).trim() ? 1 : 0;
     if (aCohort !== bCohort) return bCohort - aCohort;
     const aLevel = KEY_LEVEL_SORT[String(a.schoolKeyLevel || '').trim()] || 0;
     const bLevel = KEY_LEVEL_SORT[String(b.schoolKeyLevel || '').trim()] || 0;
@@ -162,7 +167,7 @@ function sortByPriority(list) {
   });
 }
 
-function sortSchools(schools, sort) {
+function sortSchools(schools, sort, region = DEFAULT_REGION) {
   const list = schools.slice();
   switch (sort) {
     case 'level':
@@ -173,10 +178,10 @@ function sortSchools(schools, sort) {
       return list.sort((a, b) => (Number(a.foundingYear) || 0) - (Number(b.foundingYear) || 0));
     case 'score':
       // 轻量列表无 scoreLines，先按 priority 近似；当前页完整数据在下方按分数重排
-      return sortByPriority(list);
+      return sortByPriority(list, region);
     case 'priority':
     default:
-      return sortByPriority(list);
+      return sortByPriority(list, region);
   }
 }
 
@@ -200,6 +205,9 @@ export default async function SchoolsPage({ searchParams }) {
   if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   const schools = await loadSchoolsList(region);
+  // 苏州学校无上海式荣誉层级，从 features 派生办学星级（四星/三星/二星/一星），
+  // 供列表筛选的「荣誉」维度在苏州改用星级。上海仍用 eliteCohort。
+  for (const s of schools) s.schoolStar = deriveSchoolStar(s);
   const districts = buildDistricts(schools, [], region);
   const params = await searchParams;
 
@@ -218,7 +226,7 @@ export default async function SchoolsPage({ searchParams }) {
   const requestedPage = parseInt(typeof params?.page === 'string' ? params.page : '1', 10);
   const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
 
-  const sorted = sortSchools(filterSchools(schools, filters), filters.sort);
+  const sorted = sortSchools(filterSchools(schools, filters, region), filters.sort, region);
   const total = sorted.length;
   const totalPages = Math.max(1, Math.ceil(total / SCHOOLS_PER_PAGE));
   const safePage = Math.min(page, totalPages);
@@ -238,7 +246,7 @@ export default async function SchoolsPage({ searchParams }) {
     stage: distinctLabels(schools, (s) => (s.schoolStageLabel || '').trim()),
     property: distinctLabels(schools, (s) => (s.schoolPropertyLabel || '').trim()),
     keyLevel: distinctLabels(schools, (s) => (s.schoolKeyLevel || '').trim()),
-    cohort: distinctLabels(schools, (s) => (s.eliteCohort || '').trim()),
+    cohort: distinctLabels(schools, (s) => (region === 'suzhou' ? (s.schoolStar || '') : (s.eliteCohort || ''))),
     featureFilters: FEATURE_FILTERS.map(({ id, label }) => ({ id, label }))
   };
 
