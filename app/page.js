@@ -36,7 +36,7 @@ const NEWS_SPECIALS = [
     label: '热门',
     icon: '中',
     href: '/news/zhongkao-special',
-    description: '上海中考招生政策、志愿填报、录取节奏与关键节点汇总'
+    description: '{label}中考招生政策、志愿填报、录取节奏与关键节点汇总'
   },
   {
     title: '高招专题',
@@ -377,7 +377,7 @@ export default async function HomePage() {
                   <strong>{special.label}</strong>
                 </div>
                 <h3>{special.title}</h3>
-                <p>{special.description}</p>
+                <p>{special.description.replace('{label}', config.label)}</p>
                 <em>查看专题 →</em>
               </RegionLink>
             ))}

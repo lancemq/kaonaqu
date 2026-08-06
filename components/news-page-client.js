@@ -39,7 +39,7 @@ const QUICK_LINKS = [
 
 const SPORTS_SPECIAL = {
   label: '体育改革',
-  title: '上海体育考试改革专题',
+  title: '{label}体育考试改革专题',
   summary: '中考体育新规、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生，一页串起来看。',
   href: '/news/sports-reform'
 };
@@ -69,7 +69,7 @@ function buildNewsHref(base, next) {
 
 export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, totalPages = 1, currentPage = 1, activeFilter = 'all' }) {
   const router = useRouter();
-  const { region } = useRegion();
+  const { region, label } = useRegion();
   const [isPending, startTransition] = useTransition();
 
   // 服务端是唯一数据源：URL 变化即重新请求并下发当前页卡片。
@@ -156,7 +156,7 @@ export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, 
       <aside className="news-aerial-sidebar">
         <section className="news-hot-card">
           <SectionLabel>SPECIALS</SectionLabel>
-          <h2>{SPORTS_SPECIAL.title}</h2>
+          <h2>{SPORTS_SPECIAL.title.replace('{label}', label)}</h2>
           <p>{SPORTS_SPECIAL.summary}</p>
           <RegionLink href={SPORTS_SPECIAL.href}>
             <span>{SPORTS_SPECIAL.label}</span>
