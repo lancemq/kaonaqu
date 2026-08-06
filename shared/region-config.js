@@ -90,7 +90,8 @@ const SUZHOU = {
     { id: 'changshu', name: '常熟市', description: '县域教育强市' },
     { id: 'zhangjiagang', name: '张家港市', description: '县域教育优质均衡' },
     { id: 'kunshan', name: '昆山市', description: '县域教育高地，名校聚集' },
-    { id: 'taicang', name: '太仓市', description: '德资企业集聚，职教特色鲜明' }
+    { id: 'taicang', name: '太仓市', description: '德资企业集聚，职教特色鲜明' },
+    { id: 'shizhishu', name: '苏州市直属', description: '苏州市教育局直属学校，跨区划招生' }
   ],
   // 学校层级排序权重（与上海共用 8 值词表；key 须与 DB school_key_level 词表对齐）
   keyLevelPriority: {
