@@ -61,6 +61,31 @@ const NEWS_SPECIALS = [
   }
 ];
 
+// 苏州专题卡片：苏州仅新闻频道，专题为苏州专属（路径不走 proxy 的 NEWS_SPECIAL_PATHS，可直访）
+const SUZHOU_NEWS_SPECIALS = [
+  {
+    title: '中考专题',
+    label: '热门',
+    icon: '中',
+    href: '/news/suzhou-zhongkao',
+    description: '{label}中考录取批次、四市六区招生格局、指标生 70% 均衡与 740 分构成'
+  },
+  {
+    title: '升学路径',
+    label: '必读',
+    icon: '路',
+    href: '/news/suzhou-pathways',
+    description: '职教贯通（3+4、5+2）与国际课程高中（A-Level/IBDP 等）两条通道'
+  },
+  {
+    title: '高考选考',
+    label: 'NEW',
+    icon: '高',
+    href: '/news/suzhou-gaokao',
+    description: '江苏 3+1+2 模式、2027 选考科目要求与录取时间轴'
+  }
+];
+
 // FOCUS 区块：首页右侧"平台更新动态"面板（动态指标，非专题入口）
 
 const KNOWLEDGE_TOPICS = [
@@ -176,6 +201,7 @@ function SectionLabel({ children }) {
 export default async function HomePage() {
   const { region, config } = await getRegionContext();
   const features = config.features;
+  const newsSpecials = region === 'suzhou' ? SUZHOU_NEWS_SPECIALS : NEWS_SPECIALS;
   const [schools, news] = await Promise.all([loadSchoolsList(region), loadNewsList(region)]);
   const districts = DISTRICT_CATALOG;
   const sortedNews = sortNews(news);
@@ -370,7 +396,7 @@ export default async function HomePage() {
           </div>
 
           <div className="home-news-specials-grid">
-            {NEWS_SPECIALS.map((special) => (
+            {newsSpecials.map((special) => (
               <RegionLink className="home-news-special-card" href={special.href} key={special.href}>
                 <div className="home-news-special-card-top">
                   <span aria-hidden="true">{special.icon}</span>
