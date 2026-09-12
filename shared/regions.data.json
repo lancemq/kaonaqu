@@ -7,24 +7,91 @@
       "brandSuffix": "SHANGHAI EDUCATION",
       "brandSuffixFull": "SHANGHAI EDUCATION PLATFORM",
       "officialSourceName": "上海市教育委员会",
-      "examTotal": { "zhongkao": 750, "gaokao": 660 },
+      "examTotal": {
+        "zhongkao": 750,
+        "gaokao": 660
+      },
       "districtCatalog": [
-        { "id": "huangpu", "name": "黄浦区", "description": "上海市中心城区，教育资源丰富" },
-        { "id": "xuhui", "name": "徐汇区", "description": "教育强区，名校集中" },
-        { "id": "changning", "name": "长宁区", "description": "国际化程度高，教育质量优秀" },
-        { "id": "jingan", "name": "静安区", "description": "市中心区域，优质教育资源集中" },
-        { "id": "putuo", "name": "普陀区", "description": "教育资源均衡发展" },
-        { "id": "hongkou", "name": "虹口区", "description": "历史悠久，教育传统深厚" },
-        { "id": "yangpu", "name": "杨浦区", "description": "高校聚集，教育资源丰富" },
-        { "id": "minhang", "name": "闵行区", "description": "新兴教育区域，发展迅速" },
-        { "id": "baoshan", "name": "宝山区", "description": "教育资源不断完善" },
-        { "id": "jiading", "name": "嘉定区", "description": "历史文化名城，教育发展良好" },
-        { "id": "pudong", "name": "浦东新区", "description": "经济发达，教育资源丰富" },
-        { "id": "jinshan", "name": "金山区", "description": "教育资源稳步提升" },
-        { "id": "songjiang", "name": "松江区", "description": "大学城区域，教育氛围浓厚" },
-        { "id": "qingpu", "name": "青浦区", "description": "教育资源快速发展" },
-        { "id": "fengxian", "name": "奉贤区", "description": "教育资源持续改善" },
-        { "id": "chongming", "name": "崇明区", "description": "生态岛，教育资源特色发展" }
+        {
+          "id": "huangpu",
+          "name": "黄浦区",
+          "description": "上海市中心城区，教育资源丰富"
+        },
+        {
+          "id": "xuhui",
+          "name": "徐汇区",
+          "description": "教育强区，名校集中"
+        },
+        {
+          "id": "changning",
+          "name": "长宁区",
+          "description": "国际化程度高，教育质量优秀"
+        },
+        {
+          "id": "jingan",
+          "name": "静安区",
+          "description": "市中心区域，优质教育资源集中"
+        },
+        {
+          "id": "putuo",
+          "name": "普陀区",
+          "description": "教育资源均衡发展"
+        },
+        {
+          "id": "hongkou",
+          "name": "虹口区",
+          "description": "历史悠久，教育传统深厚"
+        },
+        {
+          "id": "yangpu",
+          "name": "杨浦区",
+          "description": "高校聚集，教育资源丰富"
+        },
+        {
+          "id": "minhang",
+          "name": "闵行区",
+          "description": "新兴教育区域，发展迅速"
+        },
+        {
+          "id": "baoshan",
+          "name": "宝山区",
+          "description": "教育资源不断完善"
+        },
+        {
+          "id": "jiading",
+          "name": "嘉定区",
+          "description": "历史文化名城，教育发展良好"
+        },
+        {
+          "id": "pudong",
+          "name": "浦东新区",
+          "description": "经济发达，教育资源丰富"
+        },
+        {
+          "id": "jinshan",
+          "name": "金山区",
+          "description": "教育资源稳步提升"
+        },
+        {
+          "id": "songjiang",
+          "name": "松江区",
+          "description": "大学城区域，教育氛围浓厚"
+        },
+        {
+          "id": "qingpu",
+          "name": "青浦区",
+          "description": "教育资源快速发展"
+        },
+        {
+          "id": "fengxian",
+          "name": "奉贤区",
+          "description": "教育资源持续改善"
+        },
+        {
+          "id": "chongming",
+          "name": "崇明区",
+          "description": "生态岛，教育资源特色发展"
+        }
       ],
       "keyLevelPriority": {
         "市重点(高中)": 100,
@@ -40,7 +107,15 @@
         "areaServed": "上海",
         "titleTemplate": "考哪去 | {label}中考高考政策、学校信息与知识体系",
         "descriptionTemplate": "考哪去汇集{label}中考、高考政策与新闻，提供学校查询、区县专题和初高中知识点整理。",
-        "keywords": ["{label}中考", "{label}高考", "{label}学校", "升学政策", "中招", "高招", "{label}教育"]
+        "keywords": [
+          "{label}中考",
+          "{label}高考",
+          "{label}学校",
+          "升学政策",
+          "中招",
+          "高招",
+          "{label}教育"
+        ]
       },
       "features": {
         "schools": true,
@@ -53,27 +128,78 @@
       "scoreMatch": {
         "$comment": "估分择校引擎的地区参数。tierScoreRange 为无真实录取线学校的回退参考区间",
         "tierScoreRange": {
-          "四校": { "min": 705, "max": 712 },
-          "四校分校": { "min": 690, "max": 705 },
-          "八大": { "min": 685, "max": 700 },
-          "八大分校": { "min": 670, "max": 690 },
-          "新五虎": { "min": 680, "max": 695 },
-          "新五虎分校": { "min": 665, "max": 685 },
-          "市实验性示范性高中": { "min": 620, "max": 680 },
-          "市重点": { "min": 620, "max": 680 },
-          "市重点(高中)": { "min": 620, "max": 680 },
-          "区重点": { "min": 580, "max": 640 },
-          "区重点(高中)": { "min": 580, "max": 640 },
-          "一般高中": { "min": 560, "max": 620 },
-          "民办高中": { "min": 520, "max": 600 },
-          "国际课程": { "min": 500, "max": 580 }
+          "四校": {
+            "min": 705,
+            "max": 712
+          },
+          "四校分校": {
+            "min": 690,
+            "max": 705
+          },
+          "八大": {
+            "min": 685,
+            "max": 700
+          },
+          "八大分校": {
+            "min": 670,
+            "max": 690
+          },
+          "新五虎": {
+            "min": 680,
+            "max": 695
+          },
+          "新五虎分校": {
+            "min": 665,
+            "max": 685
+          },
+          "市实验性示范性高中": {
+            "min": 620,
+            "max": 680
+          },
+          "市重点": {
+            "min": 620,
+            "max": 680
+          },
+          "市重点(高中)": {
+            "min": 620,
+            "max": 680
+          },
+          "区重点": {
+            "min": 580,
+            "max": 640
+          },
+          "区重点(高中)": {
+            "min": 580,
+            "max": 640
+          },
+          "一般高中": {
+            "min": 560,
+            "max": 620
+          },
+          "民办高中": {
+            "min": 520,
+            "max": 600
+          },
+          "国际课程": {
+            "min": 500,
+            "max": 580
+          }
         },
         "tierPrestige": {
-          "四校": 100, "八大": 90, "四校分校": 80, "八大分校": 75,
-          "新五虎": 88, "新五虎分校": 80,
-          "市实验性示范性高中": 70, "市重点": 70, "市重点(高中)": 70,
-          "区重点": 60, "区重点(高中)": 60,
-          "一般高中": 50, "民办高中": 40, "国际课程": 35
+          "四校": 100,
+          "八大": 90,
+          "四校分校": 80,
+          "八大分校": 75,
+          "新五虎": 88,
+          "新五虎分校": 80,
+          "市实验性示范性高中": 70,
+          "市重点": 70,
+          "市重点(高中)": 70,
+          "区重点": 60,
+          "区重点(高中)": 60,
+          "一般高中": 50,
+          "民办高中": 40,
+          "国际课程": 35
         },
         "tierAlias": {
           "八大金刚": "八大",
@@ -82,7 +208,74 @@
           "新五虎分校": "新五虎",
           "市实验性示范性高中(高中)": "市重点"
         },
-        "internationalDefaultRange": { "min": 500, "max": 580 }
+        "internationalDefaultRange": {
+          "min": 500,
+          "max": 580
+        }
+      },
+      "home": {
+        "newsSpecials": [
+          {
+            "title": "中招专题",
+            "label": "热门",
+            "icon": "中",
+            "href": "/news/zhongkao-special",
+            "description": "{label}中考招生政策、志愿填报、录取节奏与关键节点汇总"
+          },
+          {
+            "title": "高招专题",
+            "label": "必读",
+            "icon": "高",
+            "href": "/news/gaokao-special",
+            "description": "高考综合改革、考试安排、招生录取等政策解读，附批次与志愿规则。"
+          },
+          {
+            "title": "体育改革",
+            "label": "NEW",
+            "icon": "体",
+            "href": "/news/sports-reform",
+            "description": "体育考试改革、评价方式、项目规则与训练准备集中追踪"
+          },
+          {
+            "title": "政策速查",
+            "label": "TOOLS",
+            "icon": "策",
+            "href": "/news/policy-glossary",
+            "description": "把常见政策概念、录取术语和问答入口整理成可快速查阅的工具"
+          }
+        ],
+        "featuredSchoolNames": [
+          "复旦大学附属中学",
+          "上海中学",
+          "华东师范大学第二附属中学",
+          "上海交通大学附属中学"
+        ],
+        "newsSpecialPages": [
+          "admission-timeline",
+          "gaokao-special",
+          "zhongkao-special",
+          "policy-faq",
+          "policy-glossary",
+          "sports-reform"
+        ],
+        "quickLinks": [
+          {
+            "label": "中考政策",
+            "href": "/news/zhongkao-special"
+          },
+          {
+            "label": "高考指南",
+            "href": "/news/gaokao-special"
+          },
+          {
+            "label": "学校对比",
+            "href": "/schools/compare"
+          },
+          {
+            "label": "知识专题",
+            "href": "/knowledge"
+          }
+        ]
       }
     },
     "suzhou": {
@@ -90,19 +283,66 @@
       "brandSuffix": "SUZHOU EDUCATION",
       "brandSuffixFull": "SUZHOU EDUCATION PLATFORM",
       "officialSourceName": "苏州市教育局",
-      "examTotal": { "zhongkao": 740, "gaokao": 750 },
+      "examTotal": {
+        "zhongkao": 740,
+        "gaokao": 750
+      },
       "districtCatalog": [
-        { "id": "gusu", "name": "姑苏区", "description": "苏州古城核心区，教育资源丰富" },
-        { "id": "huqiu", "name": "虎丘区", "description": "含苏州高新区，高新产业与教育资源集聚" },
-        { "id": "wuzhong", "name": "吴中区", "description": "太湖新城拓展，教育快速发展" },
-        { "id": "xiangcheng", "name": "相城区", "description": "教育资源持续完善" },
-        { "id": "wujiang", "name": "吴江区", "description": "长三角一体化示范区，教育质量优良" },
-        { "id": "sip", "name": "苏州工业园区", "description": "中外合作办学与国际化教育集中" },
-        { "id": "changshu", "name": "常熟市", "description": "县域教育强市" },
-        { "id": "zhangjiagang", "name": "张家港市", "description": "县域教育优质均衡" },
-        { "id": "kunshan", "name": "昆山市", "description": "县域教育高地，名校聚集" },
-        { "id": "taicang", "name": "太仓市", "description": "德资企业集聚，职教特色鲜明" },
-        { "id": "shizhishu", "name": "苏州市直属", "description": "苏州市教育局直属学校，跨区划招生" }
+        {
+          "id": "gusu",
+          "name": "姑苏区",
+          "description": "苏州古城核心区，教育资源丰富"
+        },
+        {
+          "id": "huqiu",
+          "name": "虎丘区",
+          "description": "含苏州高新区，高新产业与教育资源集聚"
+        },
+        {
+          "id": "wuzhong",
+          "name": "吴中区",
+          "description": "太湖新城拓展，教育快速发展"
+        },
+        {
+          "id": "xiangcheng",
+          "name": "相城区",
+          "description": "教育资源持续完善"
+        },
+        {
+          "id": "wujiang",
+          "name": "吴江区",
+          "description": "长三角一体化示范区，教育质量优良"
+        },
+        {
+          "id": "sip",
+          "name": "苏州工业园区",
+          "description": "中外合作办学与国际化教育集中"
+        },
+        {
+          "id": "changshu",
+          "name": "常熟市",
+          "description": "县域教育强市"
+        },
+        {
+          "id": "zhangjiagang",
+          "name": "张家港市",
+          "description": "县域教育优质均衡"
+        },
+        {
+          "id": "kunshan",
+          "name": "昆山市",
+          "description": "县域教育高地，名校聚集"
+        },
+        {
+          "id": "taicang",
+          "name": "太仓市",
+          "description": "德资企业集聚，职教特色鲜明"
+        },
+        {
+          "id": "shizhishu",
+          "name": "苏州市直属",
+          "description": "苏州市教育局直属学校，跨区划招生"
+        }
       ],
       "keyLevelPriority": {
         "市重点(高中)": 100,
@@ -118,7 +358,15 @@
         "areaServed": "苏州",
         "titleTemplate": "考哪去 | {label}中考高考政策与升学新闻",
         "descriptionTemplate": "考哪去汇集{label}中考、高考政策与升学新闻。",
-        "keywords": ["{label}中考", "{label}高考", "{label}新闻", "升学政策", "中招", "高招", "{label}教育"]
+        "keywords": [
+          "{label}中考",
+          "{label}高考",
+          "{label}新闻",
+          "升学政策",
+          "中招",
+          "高招",
+          "{label}教育"
+        ]
       },
       "features": {
         "schools": true,
@@ -131,9 +379,18 @@
       "scoreMatch": {
         "$comment": "苏州估分择校回退区间由 DB 真实录取线统计派生（2026-09：89 所有线高中的 p25-p75 分布，中考满分 740）；初中层级不参与中考匹配故不配置",
         "tierScoreRange": {
-          "市重点(高中)": { "min": 600, "max": 660 },
-          "区重点(高中)": { "min": 565, "max": 605 },
-          "一般高中": { "min": 525, "max": 600 }
+          "市重点(高中)": {
+            "min": 600,
+            "max": 660
+          },
+          "区重点(高中)": {
+            "min": 565,
+            "max": 605
+          },
+          "一般高中": {
+            "min": 525,
+            "max": 600
+          }
         },
         "tierPrestige": {
           "市重点(高中)": 100,
@@ -141,7 +398,185 @@
           "一般高中": 60
         },
         "tierAlias": {},
-        "internationalDefaultRange": { "min": 520, "max": 600 }
+        "internationalDefaultRange": {
+          "min": 520,
+          "max": 600
+        }
+      },
+      "home": {
+        "newsSpecials": [
+          {
+            "title": "中考专题",
+            "label": "热门",
+            "icon": "中",
+            "href": "/news/suzhou-zhongkao",
+            "description": "{label}中考录取批次、四市六区招生格局、指标生 70% 均衡与 740 分构成"
+          },
+          {
+            "title": "升学路径",
+            "label": "必读",
+            "icon": "路",
+            "href": "/news/suzhou-pathways",
+            "description": "职教贯通（3+4、5+2）与国际课程高中（A-Level/IBDP 等）两条通道"
+          },
+          {
+            "title": "高考选考",
+            "label": "NEW",
+            "icon": "高",
+            "href": "/news/suzhou-gaokao",
+            "description": "江苏 3+1+2 模式、2027 选考科目要求与录取时间轴"
+          }
+        ],
+        "featuredSchoolNames": [],
+        "newsSpecialPages": [
+          "suzhou-zhongkao",
+          "suzhou-pathways",
+          "suzhou-gaokao"
+        ],
+        "quickLinks": [
+          {
+            "label": "中考专题",
+            "href": "/news/suzhou-zhongkao"
+          },
+          {
+            "label": "高考选考",
+            "href": "/news/suzhou-gaokao"
+          }
+        ]
+      }
+    },
+    "nanjing": {
+      "label": "南京",
+      "brandSuffix": "NANJING EDUCATION",
+      "brandSuffixFull": "NANJING EDUCATION PLATFORM",
+      "officialSourceName": "南京市教育局",
+      "examTotal": {
+        "zhongkao": 700,
+        "gaokao": 750
+      },
+      "districtCatalog": [
+        {
+          "id": "xuanwu",
+          "name": "玄武区",
+          "description": "南京中心城区，名校聚集"
+        },
+        {
+          "id": "qinhuai",
+          "name": "秦淮区",
+          "description": "老城核心区，教育资源均衡"
+        },
+        {
+          "id": "jianye",
+          "name": "建邺区",
+          "description": "河西新城，教育快速发展"
+        },
+        {
+          "id": "gulou",
+          "name": "鼓楼区",
+          "description": "教育强区，名校集中"
+        },
+        {
+          "id": "qixia",
+          "name": "栖霞区",
+          "description": "仙林大学城，教育资源丰富"
+        },
+        {
+          "id": "yuhuatai",
+          "name": "雨花台区",
+          "description": "软件谷所在区，教育持续提升"
+        },
+        {
+          "id": "jiangning",
+          "name": "江宁区",
+          "description": "面积最大的市辖区，学校数量多"
+        },
+        {
+          "id": "pukou",
+          "name": "浦口区",
+          "description": "江北新区核心区域，教育快速发展"
+        },
+        {
+          "id": "luhe",
+          "name": "六合区",
+          "description": "江北副城，教育资源稳步建设"
+        },
+        {
+          "id": "lishui",
+          "name": "溧水区",
+          "description": "南部郊区，教育配套完善中"
+        },
+        {
+          "id": "gaochun",
+          "name": "高淳区",
+          "description": "南部远郊，国际慢城，教育特色发展"
+        }
+      ],
+      "keyLevelPriority": {
+        "市重点(高中)": 100,
+        "顶级公办(初中)": 95,
+        "顶级民办(初中)": 95,
+        "区重点(高中)": 80,
+        "强民办(初中)": 72,
+        "强公办(初中)": 70,
+        "一般高中": 60,
+        "一般初中": 40
+      },
+      "seo": {
+        "areaServed": "南京",
+        "titleTemplate": "考哪去 | {label}中考高考政策与升学新闻",
+        "descriptionTemplate": "考哪去汇集{label}中考、高考政策与升学新闻。",
+        "keywords": [
+          "{label}中考",
+          "{label}高考",
+          "{label}新闻",
+          "升学政策",
+          "中招",
+          "高招",
+          "{label}教育"
+        ]
+      },
+      "features": {
+        "schools": true,
+        "knowledge": false,
+        "compare": false,
+        "groups": false,
+        "district": true,
+        "scoreMatch": false
+      },
+      "home": {
+        "newsSpecials": [
+          {
+            "title": "中考专题",
+            "label": "热门",
+            "icon": "中",
+            "href": "/news",
+            "description": "{label}中考总分 700、批次与指标生政策，汇总招生政策与录取节奏。"
+          },
+          {
+            "title": "高考看板",
+            "label": "必读",
+            "icon": "考",
+            "href": "/news",
+            "description": "江苏 3+1+2 新高考在{label}的选科、赋分与录取要点追踪。"
+          }
+        ],
+        "featuredSchoolNames": [
+          "南京外国语学校",
+          "南京师范大学附属中学",
+          "金陵中学",
+          "南京市第一中学"
+        ],
+        "newsSpecialPages": [],
+        "quickLinks": [
+          {
+            "label": "中考高考动态",
+            "href": "/news?filter=exam"
+          },
+          {
+            "label": "政策文件",
+            "href": "/news?filter=policy"
+          }
+        ]
       }
     }
   }

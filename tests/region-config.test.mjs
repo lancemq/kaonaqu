@@ -148,3 +148,28 @@ test('sortBySchoolPriority：eliteCohort 非空优先', () => {
   ]);
   assert.equal(sorted[0].name, '四校');
 });
+
+test('nanjing 地区配置：满分 700/750、11 区、频道开关', () => {
+  const cfg = getRegionConfig('nanjing');
+  assert.equal(cfg.label, '南京');
+  assert.deepEqual(cfg.examTotal, { zhongkao: 700, gaokao: 750 });
+  assert.equal(cfg.districtCatalog.length, 11);
+  assert.equal(cfg.officialSourceName, '南京市教育局');
+  // 首批上线只开 schools/district；knowledge/groups 等暂关
+  assert.equal(cfg.features.schools, true);
+  assert.equal(cfg.features.district, true);
+  assert.equal(cfg.features.knowledge, false);
+  assert.equal(cfg.features.groups, false);
+  assert.equal(cfg.features.scoreMatch, false);
+  // 8 值层级词表与沪苏一致
+  assert.equal(cfg.keyLevelPriority['市重点(高中)'], 100);
+  // home 配置：特色校名单存在（首批 14 校中的头部高中），专题页为空数组
+  assert.ok(cfg.home.featuredSchoolNames.includes('南京外国语学校'));
+  assert.deepEqual(cfg.home.newsSpecialPages, []);
+});
+
+test('地区数量与白名单：三地区且 REGION_ENTRIES 与 REGIONS 同步', () => {
+  const { REGION_ENTRIES } = require('../shared/region-list.mjs');
+  assert.deepEqual(Object.keys(REGIONS), ['shanghai', 'suzhou', 'nanjing']);
+  assert.deepEqual(REGION_ENTRIES.map((e) => e.value), Object.keys(REGIONS));
+});

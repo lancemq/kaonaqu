@@ -14,77 +14,10 @@ import { RegionSelector } from '../components/region-selector';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsList, loadNewsList } = require('../shared/data-store');
-const { DISTRICT_CATALOG } = require('../shared/data-schema');
+const { getDistrictCatalog } = require('../shared/region-config');
 
-const FEATURED_SCHOOL_NAMES = [
-  '复旦大学附属中学',
-  '上海中学',
-  '华东师范大学第二附属中学',
-  '上海交通大学附属中学'
-];
-
-const QUICK_LINKS = [
-  { label: '中考政策', href: '/news/zhongkao-special' },
-  { label: '高考指南', href: '/news/gaokao-special' },
-  { label: '学校对比', href: '/schools/compare' },
-  { label: '知识专题', href: '/knowledge' }
-];
-
-const NEWS_SPECIALS = [
-  {
-    title: '中招专题',
-    label: '热门',
-    icon: '中',
-    href: '/news/zhongkao-special',
-    description: '{label}中考招生政策、志愿填报、录取节奏与关键节点汇总'
-  },
-  {
-    title: '高招专题',
-    label: '必读',
-    icon: '高',
-    href: '/news/gaokao-special',
-    description: '高考综合改革、考试安排、招生录取等政策解读，附批次与志愿规则。'
-  },
-  {
-    title: '体育改革',
-    label: 'NEW',
-    icon: '体',
-    href: '/news/sports-reform',
-    description: '体育考试改革、评价方式、项目规则与训练准备集中追踪'
-  },
-  {
-    title: '政策速查',
-    label: 'TOOLS',
-    icon: '策',
-    href: '/news/policy-glossary',
-    description: '把常见政策概念、录取术语和问答入口整理成可快速查阅的工具'
-  }
-];
-
-// 苏州专题卡片：苏州仅新闻频道，专题为苏州专属（路径不走 proxy 的 NEWS_SPECIAL_PATHS，可直访）
-const SUZHOU_NEWS_SPECIALS = [
-  {
-    title: '中考专题',
-    label: '热门',
-    icon: '中',
-    href: '/news/suzhou-zhongkao',
-    description: '{label}中考录取批次、四市六区招生格局、指标生 70% 均衡与 740 分构成'
-  },
-  {
-    title: '升学路径',
-    label: '必读',
-    icon: '路',
-    href: '/news/suzhou-pathways',
-    description: '职教贯通（3+4、5+2）与国际课程高中（A-Level/IBDP 等）两条通道'
-  },
-  {
-    title: '高考选考',
-    label: 'NEW',
-    icon: '高',
-    href: '/news/suzhou-gaokao',
-    description: '江苏 3+1+2 模式、2027 选考科目要求与录取时间轴'
-  }
-];
+// 首页地区专属内容（专题卡/快捷入口/特色校名单）统一放 shared/regions.data.json
+// 的 home 字段，新增地区只改配置，不再堆积 region === 'xxx' 特例分支。
 
 // FOCUS 区块：首页右侧"平台更新动态"面板（动态指标，非专题入口）
 
@@ -162,8 +95,10 @@ function keyLevelRank(school) {
   return PRIORITY[raw] || 0;
 }
 
-function getFeaturedSchools(schools) {
-  const selected = FEATURED_SCHOOL_NAMES.map((name) => findSchoolByName(schools, name)).filter(Boolean);
+function getFeaturedSchools(featuredNames, schools) {
+  const selected = (featuredNames || [])
+    .map((name) => findSchoolByName(schools, name))
+    .filter(Boolean);
   const selectedIds = new Set(selected.map((school) => school.id));
   const fallback = schools
     .filter((school) => !selectedIds.has(school.id))
@@ -201,9 +136,10 @@ function SectionLabel({ children }) {
 export default async function HomePage() {
   const { region, config } = await getRegionContext();
   const features = config.features;
-  const newsSpecials = region === 'suzhou' ? SUZHOU_NEWS_SPECIALS : NEWS_SPECIALS;
+  const homeConfig = config.home || {};
+  const newsSpecials = homeConfig.newsSpecials || [];
   const [schools, news] = await Promise.all([loadSchoolsList(region), loadNewsList(region)]);
-  const districts = DISTRICT_CATALOG;
+  const districts = getDistrictCatalog(region);
   const sortedNews = sortNews(news);
   const featuredNews = pickFeaturedNews(sortedNews, 4);
   const headlineNews = sortedNews
@@ -222,9 +158,9 @@ export default async function HomePage() {
     )
     .slice(0, 2);
 
-  const featuredSchools = getFeaturedSchools(schools);
+  const featuredSchools = getFeaturedSchools(homeConfig.featuredSchoolNames, schools);
   const districtHighlights = getDistrictHighlights(districts, schools);
-  const visibleQuickLinks = QUICK_LINKS.filter((item) => {
+  const visibleQuickLinks = (homeConfig.quickLinks || []).filter((item) => {
     if (item.href.startsWith('/schools')) return features.compare;
     if (item.href.startsWith('/knowledge')) return features.knowledge;
     return true;
@@ -384,6 +320,7 @@ export default async function HomePage() {
         </aside>
       </section>
 
+      {newsSpecials.length > 0 && (
       <section className="home-news-specials-slab">
         <div className="home-news-specials-overlay">
           <div className="home-news-specials-head">
@@ -410,6 +347,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+      )}
 
       {features.schools && (
         <section className="home-schools-slab">
