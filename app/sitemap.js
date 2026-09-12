@@ -1,15 +1,15 @@
-import { readFileSync, readdirSync } from 'fs';
+import { readdirSync } from 'fs';
 import { join } from 'path';
 import { createRequire } from 'module';
 import { KNOWN_REGIONS } from '../shared/region-list.mjs';
 
 // shared/ 是 CommonJS，app/ 下 ESM 通过 createRequire 桥接（见 CLAUDE.md）。
 const require = createRequire(import.meta.url);
-const { loadNewsIds } = require('../shared/data-store');
+const { loadNewsIds, loadSchoolIds } = require('../shared/data-store');
 const { getDistrictCatalog, getRegionFeatures } = require('../shared/region-config');
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
-// 遍历 KNOWN_REGIONS 为每个地区生成一套 URL；当前只有 shanghai，新增地区后自动扩展。
+// 遍历 KNOWN_REGIONS 为每个地区生成一套 URL；新增地区后自动扩展。
 const SPECIAL_PAGES = [
   'admission-timeline',
   'gaokao-special',
@@ -28,11 +28,11 @@ const SUZHOU_SPECIAL_PAGES = [
 
 // Knowledge URLs are generated live by scanning content/knowledge (the same
 // directory the route reads via fs.readdir), so the sitemap never drifts when a
-// slug is added, renamed, or removed. The hand-maintained knowledge entries in
-// data/sitemap-extra.xml are therefore ignored below.
-// District (区域) URLs are generated live from the region catalog so the
-// sitemap never drifts when a district is added/renamed. Previously omitted,
-// leaving the /schools/district/* pages uncrawled.
+// slug is added, renamed, or removed. District (区域) URLs are generated live
+// from the region catalog so the sitemap never drifts when a district is
+// added/renamed. School detail URLs are generated live from the DB (by region),
+// replacing the hand-maintained data/sitemap-extra.xml whose Shanghai slugs
+// leaked into /suzhou/schools/... prefixed URLs.
 function districtUrls(region, baseWithRegion) {
   if (getRegionFeatures(region).district === false) return [];
   const catalog = getDistrictCatalog(region);
@@ -75,38 +75,35 @@ function knowledgeUrls(region, baseWithRegion) {
     }));
 }
 
-// News URLs are generated live from the data store so the sitemap never
-// drifts when news is added/renamed. Everything else (schools, static routes)
-// is preserved verbatim from data/sitemap-extra.xml, which is kept in sync with
-// the curated URL set. Knowledge URLs from that file are skipped (generated
-// live above instead).
-function parseExtraUrls(region, baseWithRegion) {
+// 频道根页与工具页（原 data/sitemap-extra.xml 中除学校详情外的部分，显式枚举）。
+function staticChannelUrls(region, baseWithRegion) {
   const features = getRegionFeatures(region);
-  const xml = readFileSync(join(process.cwd(), 'data/sitemap-extra.xml'), 'utf8');
-  const blocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]);
-  return blocks
-    .map((b) => {
-      const rawLoc = (b.match(/<loc>([\s\S]*?)<\/loc>/) || [])[1]?.trim();
-      if (!rawLoc || rawLoc.startsWith(`${BASE}/knowledge`)) return null;
-      // 旧无前缀 URL 加 /{region}/ 前缀（统一带前缀）
-      const loc = rawLoc.replace(`${BASE}/`, `${baseWithRegion}/`);
-      // 关闭的频道 URL 不进 sitemap（如苏州仅新闻，排除 /schools /compare /groups /district）
-      const pathAfterBase = loc.slice(baseWithRegion.length);
-      if ((pathAfterBase === '/schools' || pathAfterBase.startsWith('/schools/')) && features.schools === false) return null;
-      if ((pathAfterBase === '/compare' || pathAfterBase.startsWith('/compare/')) && features.compare === false) return null;
-      if ((pathAfterBase === '/groups' || pathAfterBase.startsWith('/groups/')) && features.groups === false) return null;
-      if ((pathAfterBase === '/district' || pathAfterBase.startsWith('/district/')) && features.district === false) return null;
-      const lastmod = (b.match(/<lastmod>([\s\S]*?)<\/lastmod>/) || [])[1]?.trim();
-      const changefreq = (b.match(/<changefreq>([\s\S]*?)<\/changefreq>/) || [])[1]?.trim();
-      const priority = (b.match(/<priority>([\s\S]*?)<\/priority>/) || [])[1]?.trim();
-      return {
-        url: loc,
-        ...(lastmod ? { lastmod } : {}),
-        ...(changefreq ? { changefreq } : {}),
-        ...(priority ? { priority: Number(priority) } : {})
-      };
-    })
-    .filter(Boolean);
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = [
+    { url: baseWithRegion, lastmod: today, changefreq: 'daily', priority: 1 },
+    { url: `${baseWithRegion}/news`, lastmod: today, changefreq: 'daily', priority: 0.9 }
+  ];
+  if (features.schools) {
+    urls.push({ url: `${baseWithRegion}/schools`, lastmod: today, changefreq: 'weekly', priority: 0.8 });
+  }
+  if (features.compare) {
+    urls.push({ url: `${baseWithRegion}/compare`, lastmod: today, changefreq: 'weekly', priority: 0.6 });
+  }
+  if (features.groups) {
+    urls.push({ url: `${baseWithRegion}/groups`, lastmod: today, changefreq: 'weekly', priority: 0.6 });
+  }
+  return urls;
+}
+
+// 学校详情页：按 region 活生成（slug = 详情路由 id），替代 sitemap-extra.xml。
+function schoolUrls(region, baseWithRegion, slugs) {
+  if (getRegionFeatures(region).schools === false) return [];
+  return slugs.map((slug) => ({
+    url: `${baseWithRegion}/schools/${encodeURIComponent(slug)}`,
+    lastmod: new Date().toISOString().slice(0, 10),
+    changefreq: 'weekly',
+    priority: 0.7
+  }));
 }
 
 export default async function sitemap() {
@@ -116,7 +113,7 @@ export default async function sitemap() {
   for (const region of KNOWN_REGIONS) {
     const baseWithRegion = `${BASE}/${region}`;
     const features = getRegionFeatures(region);
-    const newsIds = await loadNewsIds(region);
+    const [newsIds, schoolIds] = await Promise.all([loadNewsIds(region), loadSchoolIds(region)]);
 
     // 新闻专题：苏州用苏州专属专题；其余地区 schools 关闭时跳过（专题重定向了，sitemap 不含）
     const specialPages = region === 'suzhou' ? SUZHOU_SPECIAL_PAGES : (features.schools ? SPECIAL_PAGES : []);
@@ -127,15 +124,20 @@ export default async function sitemap() {
       priority: 0.8
     }));
 
-    const extraUrls = parseExtraUrls(region, baseWithRegion);
-    const knowledgeSet = knowledgeUrls(region, baseWithRegion);
     // 静态工具页：score-match（features.scoreMatch 关闭时跳过）
     const toolUrls = features.scoreMatch === false
       ? []
       : [{ url: `${baseWithRegion}/schools/score-match`, lastmod: today, changefreq: 'weekly', priority: 0.6 }];
 
-    allUrls.push(...newsUrls, ...extraUrls, ...knowledgeSet, ...toolUrls, ...districtUrls(region, baseWithRegion));
+    allUrls.push(
+      ...newsUrls,
+      ...staticChannelUrls(region, baseWithRegion),
+      ...schoolUrls(region, baseWithRegion, schoolIds),
+      ...knowledgeUrls(region, baseWithRegion),
+      ...toolUrls,
+      ...districtUrls(region, baseWithRegion)
+    );
   }
 
   return allUrls;
-};
+}
