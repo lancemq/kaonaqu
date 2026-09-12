@@ -1,6 +1,13 @@
 import { createRequire } from 'module';
 import { redirect } from 'next/navigation';
-import SchoolsPageClient from '../../components/schools-page-client';
+import SchoolsCard from '../../components/schools-card';
+import SchoolsSearchBar from '../../components/schools-search-bar';
+import SchoolsFilterSidebar from '../../components/schools-filter-sidebar';
+import SchoolsSortSelect from '../../components/schools-sort-select';
+import Pager from '../../components/pager';
+import { RegionLink } from '../../components/region-link';
+import { RegionSelector } from '../../components/region-selector';
+import { SCHOOLS_SORT_OPTIONS } from '../../lib/schools-list-url.mjs';
 import { getSchoolOverview } from '../../lib/school-content';
 import {
   getSchoolTrainingDirections,
@@ -263,22 +270,122 @@ export default async function SchoolsPage({ searchParams }) {
     'numberOfItems': schools.length
   };
 
+  // === 渲染：服务端骨架 + 交互岛（B6 拆分） ===
+  // 卡片/hero/页脚为 server 渲染；筛选侧栏、搜索框、排序、对比按钮、分页跳转为 client 岛。
+  const totalDb = stageTotals.junior + stageTotals.senior_high + stageTotals.complete;
+
+  const activeFilterSummary = [];
+  if (filters.district !== 'all') {
+    const district = districts.find((item) => item.id === filters.district);
+    activeFilterSummary.push(`区域：${district?.name || district?.districtName || filters.district}`);
+  }
+  if (filters.stage !== 'all') activeFilterSummary.push(`学段：${filters.stage}`);
+  if (filters.property !== 'all') activeFilterSummary.push(`办学性质：${filters.property}`);
+  if (filters.keyLevel !== 'all') activeFilterSummary.push(`等级：${filters.keyLevel}`);
+  if (filters.cohort !== 'all') activeFilterSummary.push(region === 'suzhou' ? `办学星级：${filters.cohort}` : `荣誉：${filters.cohort}`);
+  if (filters.boarding === 'boarding') activeFilterSummary.push('寄宿制');
+  if (filters.boarding === 'day') activeFilterSummary.push('走读');
+  if (filters.international === 'international') activeFilterSummary.push('国际课程');
+  if (filters.features.length) {
+    const labels = filters.features
+      .map((fid) => filterOptions.featureFilters.find((f) => f.id === fid)?.label)
+      .filter(Boolean);
+    if (labels.length) activeFilterSummary.push(`特色：${labels.join('/')}`);
+  }
+  if (filters.query) activeFilterSummary.push(`关键词：${filters.query}`);
+  if (filters.sort !== 'priority') {
+    const opt = SCHOOLS_SORT_OPTIONS.find((o) => o.value === filters.sort);
+    if (opt) activeFilterSummary.push(`排序：${opt.label}`);
+  }
+
+  const pagerParams = {
+    district: filters.district,
+    stage: filters.stage,
+    property: filters.property,
+    keyLevel: filters.keyLevel,
+    cohort: filters.cohort,
+    boarding: filters.boarding,
+    international: filters.international,
+    query: filters.query,
+    sort: filters.sort,
+    features: filters.features
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <SchoolsPageClient
-        districts={districts}
-        schools={cards}
-        total={total}
-        totalPages={totalPages}
-        currentPage={safePage}
-        filters={filters}
-        filterOptions={filterOptions}
-        stageTotals={stageTotals}
-      />
+      <main className="schools-aerial-page">
+        <nav className="channel-nav" aria-label="顶部导航">
+          <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
+            <strong>考哪去</strong>
+            <span>{config.brandSuffix}</span>
+          </RegionLink>
+          <div className="channel-nav-links">
+            <RegionLink href="/">首页</RegionLink>
+            <RegionLink href="/news">新闻</RegionLink>
+            {config.features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
+            {config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+            <RegionSelector />
+          </div>
+        </nav>
+
+        <header className="channel-hero" id="top">
+          <div className="channel-hero-content">
+            <section className="channel-hero-copy" aria-label="学校频道概览">
+              <div className="channel-kicker"><span aria-hidden="true"></span><p>SCHOOL DATABASE</p></div>
+              <h1>{label}学校数据库</h1>
+              <p>收录全市 {totalDb.toLocaleString('zh-CN')} 所学校，按区域、类型、梯队筛选，查看各校特色与录取数据。</p>
+              <SchoolsSearchBar filters={filters} />
+            </section>
+
+            <aside className="channel-hero-stats" aria-label="学校数据统计">
+              <article><strong>{totalDb}</strong><span>收录学校</span></article>
+              <article><strong>{districts.length}</strong><span>覆盖区域</span></article>
+              <article><strong>{stageTotals.senior_high}</strong><span>高中样本</span></article>
+            </aside>
+          </div>
+        </header>
+
+        <section className="schools-aerial-content">
+          <SchoolsFilterSidebar districts={districts} filters={filters} filterOptions={filterOptions} />
+
+          <section className="schools-aerial-results" aria-label="学校检索结果">
+            <header className="schools-aerial-results-head">
+              <div>
+                <span>{total}</span>
+                <h2>所学校</h2>
+              </div>
+              <div className="schools-aerial-results-head-right">
+                <label htmlFor="prototype-sort-filter" className="schools-aerial-sort-label">排序</label>
+                <SchoolsSortSelect filters={filters} />
+              </div>
+              <p>{activeFilterSummary.length ? activeFilterSummary.join(' · ') : '未筛选，展示全量结果。'}</p>
+            </header>
+
+            <div className="schools-aerial-cardlist">
+              {cards.length === 0 ? (
+                <div className="schools-aerial-empty">
+                  <p>没有匹配的学校，请调整筛选条件。</p>
+                </div>
+              ) : cards.map((school) => (
+                <SchoolsCard key={school.id} school={school} />
+              ))}
+            </div>
+
+            <Pager currentPage={safePage} totalPages={totalPages} route="/schools" params={pagerParams} />
+          </section>
+        </section>
+
+        <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <footer className="channel-footer">
+          <div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div>
+          <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{config.features.schools && <RegionLink href="/schools">学校</RegionLink>}{config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}</nav>
+          <p>© 2026 考哪去</p>
+        </footer>
+      </main>
     </>
   );
 }
