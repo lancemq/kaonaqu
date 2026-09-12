@@ -1,0 +1,48 @@
+{
+  "slug": "nanjing",
+  "label": "南京",
+  "brandSuffix": "NANJING EDUCATION",
+  "brandSuffixFull": "NANJING EDUCATION PLATFORM",
+  "officialSourceName": "南京市教育局",
+  "examTotal": { "zhongkao": 700, "gaokao": 750 },
+  "districtCatalog": [
+    { "id": "xuanwu", "name": "玄武区", "description": "南京中心城区，名校聚集" },
+    { "id": "qinhuai", "name": "秦淮区", "description": "老城核心区，教育资源均衡" },
+    { "id": "jianye", "name": "建邺区", "description": "河西新城，教育快速发展" },
+    { "id": "gulou", "name": "鼓楼区", "description": "教育强区，名校集中" },
+    { "id": "qixia", "name": "栖霞区", "description": "仙林大学城，教育资源丰富" },
+    { "id": "yuhuatai", "name": "雨花台区", "description": "软件谷所在区，教育持续提升" },
+    { "id": "jiangning", "name": "江宁区", "description": "面积最大的市辖区，学校数量多" },
+    { "id": "pukou", "name": "浦口区", "description": "江北新区核心区域，教育快速发展" },
+    { "id": "luhe", "name": "六合区", "description": "江北副城，教育资源稳步建设" },
+    { "id": "lishui", "name": "溧水区", "description": "南部郊区，教育配套完善中" },
+    { "id": "gaochun", "name": "高淳区", "description": "南部远郊，国际慢城，教育特色发展" }
+  ],
+  "keyLevelPriority": {
+    "市重点(高中)": 100,
+    "顶级公办(初中)": 95,
+    "顶级民办(初中)": 95,
+    "区重点(高中)": 80,
+    "强民办(初中)": 72,
+    "强公办(初中)": 70,
+    "一般高中": 60,
+    "一般初中": 40
+  },
+  "seo": {
+    "areaServed": "南京",
+    "titleTemplate": "考哪去 | {label}中考高考政策与升学新闻",
+    "descriptionTemplate": "考哪去汇集{label}中考、高考政策与升学新闻。",
+    "keywords": ["{label}中考", "{label}高考", "{label}新闻", "升学政策", "中招", "高招", "{label}教育"]
+  },
+  "features": {
+    "schools": true,
+    "knowledge": false,
+    "compare": false,
+    "groups": false,
+    "district": true,
+    "scoreMatch": false
+  },
+  "dataSource": ["南京市教育局", "南京市招生考试院", "江苏省普通高中星级评估公示"],
+  "collectionStatus": "complete",
+  "schoolCount": { "junior": 3, "senior": 11 }
+}

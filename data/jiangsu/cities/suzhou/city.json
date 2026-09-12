@@ -1,0 +1,11 @@
+{
+  "slug": "suzhou",
+  "label": "苏州",
+  "brandSuffix": "SUZHOU EDUCATION",
+  "brandSuffixFull": "SUZHOU EDUCATION PLATFORM",
+  "officialSourceName": "苏州市教育局",
+  "examTotal": { "zhongkao": 740, "gaokao": 750 },
+  "dataSource": ["苏州市教育局", "苏州市教育考试院"],
+  "collectionStatus": "reference",
+  "note": "苏州学校数据已于 2026-08-06 全量入库 Supabase（385 所初高中，含 2023-2026 分数线、区县、星级），权威数据在 DB，本资料库不重复采集（避免分叉）。city.json 仅存配置参照。"
+}

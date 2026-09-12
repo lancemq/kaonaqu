@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://kaonaqu.xyz/data/jiangsu/school.schema.json",
+  "title": "江苏学校资料库 - 单校记录",
+  "description": "字段与 Supabase schools 表逐一对齐（camelCase 应用层形态）。入库时 schoolToRow 自动转 snake_case；source 字段非 DB 列，入库剥离。参照苏州 385 所已入库数据的口径。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["slug", "name", "region", "districtName", "schoolStageLabel", "schoolPropertyLabel", "schoolKeyLevel"],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "description": "应用层 id，等于 DB slug（UNIQUE）。生成规则：slugify(`${districtId}-${name}`)，与 createSchool 一致。",
+      "pattern": "^[a-z0-9\\u4e00-\\u9fa5-]+$",
+      "maxLength": 80
+    },
+    "name": { "type": "string", "minLength": 1, "description": "学校全称（含「市/区/县」前缀按当地习惯）" },
+    "region": {
+      "type": "string",
+      "description": "地区 slug，等于 city.json.slug；入库写入 schools.region 列。",
+      "enum": ["nanjing", "wuxi", "xuzhou", "changzhou", "suzhou", "nantong", "lianyungang", "huaian", "yancheng", "yangzhou", "zhenjiang", "taizhou", "suqian"]
+    },
+    "districtName": { "type": "string", "minLength": 1, "description": "区县名称（中文，如「玄武区」），须在该市 districts.json 的 districtCatalog 内" },
+    "schoolStageLabel": {
+      "type": "string",
+      "description": "学段标签。junior=初中，complete=完全中学（含初高中），senior_high=高中。",
+      "enum": ["初中", "完全中学", "高中"]
+    },
+    "schoolPropertyLabel": {
+      "type": "string",
+      "description": "办学性质标签。",
+      "enum": ["公办", "民办", "外籍", "中外合作"]
+    },
+    "schoolKeyLevel": {
+      "type": "string",
+      "description": "学校层级（8 值词表，与上海/苏州共用，决定列表排序权重 keyLevelPriority）。",
+      "enum": ["市重点(高中)", "区重点(高中)", "顶级公办(初中)", "顶级民办(初中)", "强公办(初中)", "强民办(初中)", "一般高中", "一般初中"]
+    },
+    "eliteCohort": {
+      "type": "string",
+      "description": "精英梯队（上海用：四校/八大金刚/四校分校/八大金刚分校）。江苏不使用，留空字符串。",
+      "default": ""
+    },
+    "group": { "type": "string", "default": "", "description": "教育集团名称（规范化后，如「金陵中学教育集团」）" },
+    "address": { "type": "string", "default": "", "description": "学校地址" },
+    "phone": { "type": "string", "default": "", "description": "联系电话" },
+    "website": { "type": "string", "default": "", "description": "官网 URL" },
+    "foundingYear": { "type": ["integer", "null"], "description": "创办年份（整数）或 null（未知）" },
+    "isBoarding": { "type": "boolean", "default": false, "description": "是否提供寄宿" },
+    "isInternational": { "type": "boolean", "default": false, "description": "是否国际课程/国际化学校" },
+    "image": { "type": "string", "default": "", "description": "学校图片 URL（可为空）" },
+    "profileDepth": {
+      "type": "string",
+      "default": "enhanced",
+      "description": "档案深度。foundation=基础（仅核心字段），enhanced=增强（含分数线/特色等）。",
+      "enum": ["foundation", "enhanced"]
+    },
+    "features": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "办学特色/荣誉标签数组。江苏普通高中星级写在此处（如「江苏省四星级普通高中」），由 lib/school-taxonomy.js:deriveSchoolStar 自动派生为办学星级筛选维度。"
+    },
+    "admissionInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "methods", "routes", "notes"],
+      "description": "统一招生信息源（所有招生字段集中于此）。",
+      "properties": {
+        "code": { "type": "string", "default": "", "description": "招生代码（6 位数字）" },
+        "methods": { "type": "array", "items": { "type": "string" }, "default": [], "description": "招生方式（如 统一招生/指标生/自主招生/特长生）" },
+        "routes": { "type": "array", "items": { "type": "string" }, "default": [], "description": "升学路径（如 普通高考/国际课程/艺术特长）" },
+        "notes": { "type": "string", "default": "", "description": "招生说明（口径/来源等长文本）" }
+      }
+    },
+    "scoreLines": {
+      "type": "array",
+      "default": [],
+      "description": "中招录取分数线年度序列（学生「考进」该校的线）。初中阶段无统一分数线，保持空数组。",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["year", "score"],
+        "properties": {
+          "year": { "type": "string", "description": "年份（字符串，如 \"2024\"）" },
+          "score": { "type": "string", "description": "当年统一招生录取最低分（字符串，保留原始口径，如 \"712\"）" },
+          "plan": { "type": "string", "default": "", "description": "招生计划（可选，如 \"200人\"）" },
+          "note": { "type": "string", "default": "", "description": "口径/来源说明（可选）" }
+        }
+      }
+    },
+    "outcomeStats": {
+      "type": "array",
+      "default": [],
+      "description": "办学成果年度序列（学校自身毕业生的升学/考试输出，与 scoreLines 方向相反）。",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["year", "exam", "kind", "verified", "source"],
+        "properties": {
+          "year": { "type": "integer", "description": "年份（整数，如 2026）" },
+          "exam": { "type": "string", "enum": ["中考", "高考"] },
+          "kind": { "type": "string", "enum": ["综评", "喜报"], "description": "综评=官方公示(verified=true)，喜报=学校/自媒体(verified=false)" },
+          "verified": { "type": "boolean", "description": "是否官方核实" },
+          "source": { "type": "string", "description": "来源名称" },
+          "sourceUrl": { "type": "string", "default": "", "description": "来源 URL（可选）" },
+          "metrics": {
+            "type": "object",
+            "description": "量化指标（如 qingbei 清北人数、score600plus 600分以上人数、topScore 最高分等）",
+            "additionalProperties": true
+          },
+          "note": { "type": "string", "default": "", "description": "备注" }
+        }
+      }
+    },
+    "content": {
+      "type": "array",
+      "default": [],
+      "description": "详情页内容块数组（type: markdown/heading/list 等，见苏州详情页结构）。资料库阶段通常留空，入库后由富集档案补充。"
+    },
+    "infoVerified": { "type": "boolean", "default": false, "description": "信息是否已人工核实" },
+    "source": {
+      "type": "object",
+      "description": "采集溯源（非 DB 列，入库时剥离）。记录资料库数据的来源与质量分级。",
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "default": "", "description": "原始来源 URL" },
+        "crawledAt": { "type": "string", "description": "采集日期（ISO，如 2026-08-11）" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low"], "description": "置信度：high=官方源核实，medium=权威媒体，low=单源未核实" }
+      }
+    }
+  }
+}

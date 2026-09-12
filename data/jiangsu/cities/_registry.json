@@ -1,0 +1,19 @@
+{
+  "province": "江苏省",
+  "description": "江苏 13 个地级市资料库注册表。collectionStatus: not_started=占位未采集 / in_progress=采集中 / complete=样板采集完成 / reference=权威数据在 DB，本地仅存配置参照（不重采）",
+  "cities": [
+    { "slug": "nanjing", "name": "南京市", "pinyin": "Nanjing", "districtCount": 11, "schoolCount": { "junior": 3, "senior": 11 }, "collectionStatus": "complete", "region": "nanjing", "note": "样板市：14 所初高中（重点高中 + 头部初中），含 2024/2025 中招投档线" },
+    { "slug": "wuxi", "name": "无锡市", "pinyin": "Wuxi", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "wuxi" },
+    { "slug": "xuzhou", "name": "徐州市", "pinyin": "Xuzhou", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "xuzhou" },
+    { "slug": "changzhou", "name": "常州市", "pinyin": "Changzhou", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "changzhou" },
+    { "slug": "suzhou", "name": "苏州市", "pinyin": "Suzhou", "districtCount": 11, "schoolCount": { "junior": 385, "senior": 385 }, "collectionStatus": "reference", "region": "suzhou", "note": "385 所初高中已于 2026-08-06 全量入库 Supabase，本地不重采；schoolCount 为 DB 全量口径（junior/senior 未拆分）" },
+    { "slug": "nantong", "name": "南通市", "pinyin": "Nantong", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "nantong" },
+    { "slug": "lianyungang", "name": "连云港市", "pinyin": "Lianyungang", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "lianyungang" },
+    { "slug": "huaian", "name": "淮安市", "pinyin": "Huai'an", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "huaian" },
+    { "slug": "yancheng", "name": "盐城市", "pinyin": "Yancheng", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "yancheng" },
+    { "slug": "yangzhou", "name": "扬州市", "pinyin": "Yangzhou", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "yangzhou" },
+    { "slug": "zhenjiang", "name": "镇江市", "pinyin": "Zhenjiang", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "zhenjiang" },
+    { "slug": "taizhou", "name": "泰州市", "pinyin": "Taizhou", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "taizhou" },
+    { "slug": "suqian", "name": "宿迁市", "pinyin": "Suqian", "districtCount": null, "schoolCount": { "junior": 0, "senior": 0 }, "collectionStatus": "not_started", "region": "suqian" }
+  ]
+}
