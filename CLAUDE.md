@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概览
 
-考哪去（kaonaqu）是面向上海学生和家长的升学信息站，聚合上海中考/高考新闻政策、学校信息、区域专题和初高中知识体系。基于 Next.js App Router（Next 16, React 19），数据权威源为线上 Supabase 数据库（`schools`/`news` 表），本地 JSON 为运行时只读缓存。
+考哪去（kaonaqu）是面向学生和家长的升学信息站，聚合中考/高考新闻政策、学校信息、区域专题和初高中知识体系。基于 Next.js App Router（Next 16, React 19），数据权威源为线上 Supabase 数据库（`schools`/`news` 表）。**多地区架构**：上海（默认）+ 苏州已上线，所有地区统一走 `/{region}/...` URL 前缀，由 `proxy.js`（Next 16 middleware 约定）rewrite 并注入 `x-region` header。
 
 ## 常用命令
 
@@ -13,9 +13,8 @@ npm install
 npm run dev              # 本地开发，http://localhost:3000
 npm run build            # 生产构建
 npm start                # 启动 Next 生产服务
+npm test                 # 跑全部测试（node:test，无额外测试框架）
 
-# 测试（node:test，无额外测试框架）
-node --test tests/*.test.mjs                  # 跑全部测试
 node --test tests/knowledge-content.test.mjs  # 跑单个测试文件
 ```
 
@@ -26,11 +25,11 @@ TypeScript 为可选（`strict: false`，`allowJs: true`）；仅 `score-match-e
 ### 数据流：数据库优先
 
 ```
-content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
+content/knowledge/*.json + Supabase(schools/news)  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 ```
 
-- 学校与新闻数据权威源均为线上数据库（`schools` / `news` 表），Supabase 为**唯一数据源**（2026-07-17 已移除 schools/news 的文件系统 json 缓存：不再写回、不再降级读取，serverless 上写不进/读不到/跨实例不共享）。`districts` 由 `buildDistricts(schools, news)` 从学校数据动态聚合生成，不依赖 `data/districts.json` 文件。其余 `data/*.json`（`districts.json`/`policies.json`/`knowledge-pages.json`）为提交的运行数据。
-- `content/` 存放 Markdown 长文（news / schools / policies 详情、knowledge 结构化 JSON）。
+- 学校与新闻数据权威源均为线上数据库（`schools` / `news` 表，带 `region` 列做地区隔离），Supabase 为**唯一数据源**（2026-07-17 已移除 schools/news 的文件系统 json 缓存：不再写回、不再降级读取，serverless 上写不进/读不到/跨实例不共享）。区目录由 `shared/region-config.js` 按 region 提供（上海 16 区、苏州 11 区县），`districts` 聚合数据由 `buildDistricts(schools, news, region)` 动态生成，`data/districts.json` 不在运行时读取路径上。`data/sitemap-extra.xml` 为 sitemap 的静态 URL 来源（schools/静态页），`data/jiangsu/` 为江苏资料库数据资产（非运行时）。
+- `content/` 现仅存放 knowledge 结构化 JSON（56 个学科×年级文件）；news/schools/policies 的长文内容已全部入库（DB `content` 列）。
 - `shared/data-store.js` 提供按页面需求拆分的查询函数（`loadSchoolsList`/`loadNewsList`/`loadSchoolsByDistrict`/`loadNewsIds`/`loadSchoolsMinimal`/`loadSchoolNamesByIds`/`loadSchoolsForRelated`/`loadSchoolCountsByDistrict`），取代原有的 `loadDataStore()` 一把梭全量加载。每个函数仅查该页面所需字段，减小 Supabase 响应体积与 Data Cache 占用（如区域详情页从 1.08MB 降至 0.04MB，sitemap 从 0.54MB 降至 5KB）。未配置 Supabase 时返回空数组/空对象。**缓存层只有 Next.js Data Cache 一层**（`shared/supabase-client.js` 的 `cachedFetch` 给所有 Supabase 查询附加 `next: { revalidate: 60, tags: ['supabase-data'] }`，持久化在 Vercel 缓存层、跨实例共享）；不再维护进程内 memo（与 Data Cache 职责重叠、serverless 实例生命周期不可控）。页面级 ISR（`export const revalidate`）也已全部移除，所有页面默认动态渲染，数据缓存统一由 Data Cache 兜底。写操作（POST/PUT/DELETE）成功后由 `app/api/[...slug]/route.js` 调 `revalidateTag('supabase-data')` 立即失效缓存，保证读自己写一致性；`revalidateTag` 是 Next 框架函数只能在 route 内调，所以不在 CJS 的 `shared/` 内调。
 - 增删改直接操作 DB（`createXxxInSupabase`/`updateXxxInSupabase`/`deleteXxxFromSupabase`），写操作后列表至多 60s 经 Data Cache revalidate 自动刷新（如需更强一致性可在写路径调 `revalidateTag('supabase-data')`）；DB 未配置时写操作抛 503。
 
@@ -41,9 +40,16 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 - 新增接口：在 `api-router.js` 加 `pathname` 分支即可，无需新建 route 文件。
 - **写操作鉴权**：`POST`/`PUT`/`DELETE` 必须带 `Authorization: Bearer $KNQ_ADMIN_TOKEN`，由 `route.js` 的 `checkWriteAuth` 闸门拦截（`crypto.timingSafeEqual` 恒定时间比较）；未配置 `KNQ_ADMIN_TOKEN` 时 fail-closed（一律 403）。`GET`/`OPTIONS` 只读放行。CORS 走 `KNQ_API_ALLOW_ORIGINS` 白名单（不能用 `*`，否则带 `Authorization` 的跨域请求会被浏览器拒）。
 
+### 多地区路由
+
+- `proxy.js`（Next 16 middleware 约定）：`/{region}/...` rewrite 到无前缀路径并注入 `x-region` header；无前缀路径 308 到 `/shanghai/...`；地区关闭的频道（如苏州的 `/knowledge`）308 到 `/{region}/news`。`/api` 不走前缀，从 `query.region` 取。
+- 地区配置唯一真源：`shared/regions.data.json`；`shared/region-config.js`（CJS）与 `shared/region-list.mjs`（ESM，client 可用）均从它派生，**新增地区只改 JSON 一处**。
+- server 组件经 `lib/region-server.mjs` 的 `getRegionContext()` 读 `x-region` + 配置；client 组件经 `components/region-context.jsx` 的 `useRegion()` 从 pathname 解析。
+- 地区差异项：区目录、中考/高考满分、学校层级权重、品牌后缀、SEO 文案模板、频道开关 `features`（news 恒开）。
+
 ### 页面与频道
 
-四个顶级频道，由 `components/body-page-flag.js` 设置 `body[data-page="..."]` 决定主题：
+四个顶级频道，由 `components/body-page-flag.js` 设置 `body[data-page="..."]` 决定主题（实际访问路径带 `/{region}/` 前缀，下表为 rewrite 后的内部路径）：
 
 | 路径 | data-page | 主要 client 组件 |
 |---|---|---|
@@ -56,10 +62,10 @@ content/*.md + data/*.json  ->  lib/* 与 shared/*  ->  app/* 页面 / app/api/*
 
 ### 样式系统
 
-- `styles/index.css`（由 `app/layout.js` 引入）依次 import `tokens.css` → `base.css` → `components/cards.css`；各频道/页面 CSS 由对应页面组件自行 import（如 `app/page.js` → `styles/channels/home.css`）。
+- `styles/index.css`（由 `app/layout.js` 引入）依次 import `tokens.css` → `base.css` → `components/cards.css` → `components/rich-blocks.css` → `components/region-selector.css`；各频道/页面 CSS 由对应页面组件自行 import（如 `app/page.js` → `styles/channels/home.css`）。
 - 目录分层：`tokens.css`（设计令牌）→ `base.css`（全局 reset 与共享基元）→ `channels/{home,news,schools,knowledge}.css`（频道级）→ `pages/*.css`（单页级，如 schools-detail / news-special）→ `components/*.css`（共享组件，如 pager、对比袋）。
 - **站点设计令牌统一定义在 `tokens.css` `:root`**（`--site-*`、`--channel-*`、hero 品牌渐变 `--channel-hero-bg`）；频道内只引用/按需覆盖，禁止复制整套令牌。Hero 背景统一用 `--channel-hero-bg` 纯 CSS 渐变，不使用外链图。
-- 字体：`app/layout.js` 用 `next/font/google` 自托管 4 个家族（Funnel Sans / Geist / Geist Mono / Noto Sans SC），以 CSS 变量（`--font-funnel` 等）注入 `<body>`；样式里一律写 `var(--channel-font-heading/body/caption/data)`，**禁止硬编码字体名**（next/font 会哈希字体家族名）。
+- 字体：`app/layout.js` 用 `next/font/google` 自托管 5 个家族（Funnel Sans / Geist / Geist Mono / Noto Sans SC / Noto Serif SC，中文字体不 preload、按 unicode-range 分片），以 CSS 变量（`--font-funnel` 等）注入 `<body>`；样式里一律写 `var(--channel-font-heading/body/caption/data)`，**禁止硬编码字体名**（next/font 会哈希字体家族名）。
 - 频道切换靠 `body[data-page="..."]` 选择器；`--channel-accent` 等变量按频道重定义。
 - 改全局视觉先动 `tokens.css` / `base.css`；只动某一频道才动对应 `channels/*.css`。
 
