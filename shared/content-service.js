@@ -9,6 +9,8 @@ const { DEFAULT_REGION } = require('./region-config');
 const {
   loadSchoolsList,
   loadNewsList,
+  querySchoolsList,
+  queryNewsList,
   getSchoolById: getSchoolByIdFull,
   getNewsById: getNewsByIdFull,
   sortBySchoolPriority,
@@ -37,34 +39,6 @@ function sortByTimeDesc(items, field = 'updatedAt') {
 
 function uniqueStrings(values) {
   return Array.from(new Set((values || []).map(cleanString).filter(Boolean)));
-}
-
-// content 现为 JSON block 数组（旧数据可能为 Markdown 字符串），搜索时提取全部文本。
-function contentToSearchableText(content) {
-  if (!content) return '';
-  if (typeof content === 'string') return content;
-  if (!Array.isArray(content)) return '';
-  return content.map((block) => {
-    if (typeof block === 'string') return block;
-    if (block.type === 'markdown') return block.text || '';
-    if (block.text) return block.text;
-    if (Array.isArray(block.items)) return block.items.join(' ');
-    return '';
-  }).join(' ');
-}
-
-function matchesQuery(fields, query) {
-  const normalizedQuery = cleanString(query).toLowerCase();
-  if (!normalizedQuery) {
-    return true;
-  }
-
-  const haystack = fields
-    .flat()
-    .map((value) => cleanString(value).toLowerCase())
-    .join(' ');
-
-  return haystack.includes(normalizedQuery);
 }
 
 function pickDefined(raw = {}) {
@@ -135,39 +109,26 @@ async function listDistricts(region = DEFAULT_REGION) {
 
 async function listSchools(filters = {}) {
   const region = cleanString(filters.region) || DEFAULT_REGION;
-  const schools = await loadSchoolsList(region);
   const q = cleanString(filters.q).toLowerCase();
   const districtId = cleanString(filters.district || filters.districtId);
   const stage = cleanString(filters.stage || filters.schoolStage);
   const schoolType = cleanString(filters.schoolType || filters.type);
 
-  return sortBySchoolPriority(schools.filter((school) => {
-    if (districtId && districtId !== 'all' && school.districtId !== districtId) {
-      return false;
-    }
-    if (stage && school.schoolStage !== stage) {
-      return false;
-    }
-    if (schoolType) {
-      const labelMatch = school.schoolPropertyLabel === schoolType;
-      const codeMatch = CODE_TO_TYPE_LABEL[schoolType] === school.schoolPropertyLabel;
-      if (!labelMatch && !codeMatch) {
-        return false;
-      }
-    }
+  // 属性筛选：兼容历史 code（public/private/...）与直接 label，统一解析成 DB 词表值再下推。
+  const propertyLabel = schoolType
+    ? (CODE_TO_TYPE_LABEL[schoolType] || schoolType)
+    : '';
 
-    return matchesQuery([
-      school.name,
-      school.districtName,
-      school.schoolStageLabel,
-      school.schoolPropertyLabel,
-      school.schoolKeyLevel,
-      school.eliteCohort,
-      school.address,
-      school.admissionInfo?.notes,
-      school.features
-    ], q);
-  }));
+  // 过滤条件下推到 DB（region/district/stage/propertyLabel/q），避免多地区铺开后全量内存过滤。
+  const schools = await querySchoolsList({
+    region,
+    districtId: districtId && districtId !== 'all' ? districtId : '',
+    stage,
+    propertyLabel,
+    q
+  });
+
+  return sortBySchoolPriority(schools);
 }
 
 async function getSchoolById(id) {
@@ -207,7 +168,6 @@ async function deleteSchool(id) {
 
 async function listNews(filters = {}) {
   const region = cleanString(filters.region) || DEFAULT_REGION;
-  const news = await loadNewsList(region);
   const q = cleanString(filters.q).toLowerCase();
   const districtId = cleanString(filters.district || filters.districtId);
   const examType = cleanString(filters.examType || filters.exam_type);
@@ -215,25 +175,20 @@ async function listNews(filters = {}) {
   const category = cleanString(filters.category);
   const sourceType = cleanString(filters.sourceType);
 
-  return sortByTimeDesc(news.filter((item) => {
-    if (districtId && districtId !== 'all' && item.districtId !== districtId) {
-      return false;
-    }
-    if (examType && item.examType !== examType) {
-      return false;
-    }
-    if (newsType && item.newsType !== newsType) {
-      return false;
-    }
-    if (category && item.category !== category) {
-      return false;
-    }
-    if (sourceType && item.source?.type !== sourceType) {
-      return false;
-    }
+  // 结构化过滤下推到 DB；source.type（jsonb 内层键）留给内存过滤。
+  const news = await queryNewsList({
+    region,
+    districtId: districtId && districtId !== 'all' ? districtId : '',
+    examType,
+    newsType,
+    category,
+    q
+  });
 
-    return matchesQuery([item.title, item.summary, contentToSearchableText(item.content), item.category], q);
-  }), 'publishedAt');
+  return sortByTimeDesc(
+    sourceType ? news.filter((item) => item.source?.type === sourceType) : news,
+    'publishedAt'
+  );
 }
 
 async function getNewsById(id) {

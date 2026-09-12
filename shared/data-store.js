@@ -253,6 +253,7 @@ async function loadSchoolsList(region = DEFAULT_REGION) {
 }
 
 // 全量新闻列表（轻量，排除 content）。供新闻列表页、首页、专题页等使用。0.1MB。
+// published_at 并列时按 id 倒序次级排序，保证同时间戳新闻顺序确定（跨查询一致）。
 async function loadNewsList(region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
   const client = getServiceClient();
@@ -260,7 +261,8 @@ async function loadNewsList(region = DEFAULT_REGION) {
     .from(NEWS_TABLE)
     .select(NEWS_LIST_COLUMNS)
     .eq('region', region)
-    .order('published_at', { ascending: false });
+    .order('published_at', { ascending: false })
+    .order('id', { ascending: false });
   if (error) throw error;
   return (data || []).map((row) => rowToNews(row)).filter(Boolean);
 }
@@ -281,6 +283,103 @@ async function loadSchoolsByDistrict(districtId, region = DEFAULT_REGION) {
   return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
 }
 
+// === 查询下推（API 列表/搜索路径）===
+// 把 region/district/stage/propertyLabel/q 等过滤条件下推到 Supabase（PostgREST），
+// 避免多地区铺开后全量拉到内存再过滤。供 shared/content-service.js 的
+// listSchools/searchSchools 使用；页面级取数仍走上面的针对性 load* 函数。
+// 行为与原内存过滤等价：q 匹配的列即原 matchesQuery 的字段集中存在于
+// SCHOOLS_LIST_COLUMNS 的部分（admission_info.notes 本就不在轻量列集，原搜索即空转）。
+
+// PostgREST ilike/or 语法转义：这些字符在 .or() 表达式或 ilike 模式中有语法含义。
+function escapeIlike(value) {
+  return String(value).replace(/([%_*,()\\])/g, '\\$1');
+}
+
+// stage（junior/complete/senior_high）反推 school_stage_label。
+// 与 inferSchoolStage 一一对应（DB 词表恰为 初中/完全中学/高中 三值）。
+const STAGE_TO_LABEL = { junior: '初中', complete: '完全中学', senior_high: '高中' };
+
+// 学校条件查询（轻量列集）。filters:
+//   region / districtId / stage / propertyLabel / q（模糊匹配
+//   name/address/district_name/stage/property/keyLevel/eliteCohort 标签文本）
+async function querySchoolsList(filters = {}) {
+  if (!isSupabaseConfigured()) return [];
+  const region = filters.region || DEFAULT_REGION;
+  const client = getServiceClient();
+  let query = client
+    .from(SCHOOLS_TABLE)
+    .select(SCHOOLS_LIST_COLUMNS)
+    .eq('region', region);
+
+  if (filters.districtId && filters.districtId !== 'all') {
+    const districtName = getDistrictIdToName(region)[filters.districtId];
+    if (!districtName) return [];
+    query = query.eq('district_name', districtName);
+  }
+  if (filters.stage) {
+    const stageLabel = STAGE_TO_LABEL[filters.stage];
+    if (!stageLabel) return [];
+    query = query.eq('school_stage_label', stageLabel);
+  }
+  if (filters.propertyLabel) {
+    query = query.eq('school_property_label', filters.propertyLabel);
+  }
+  if (filters.q) {
+    const like = `%${escapeIlike(filters.q)}%`;
+    query = query.or(
+      [
+        `name.ilike.${like}`,
+        `address.ilike.${like}`,
+        `district_name.ilike.${like}`,
+        `school_stage_label.ilike.${like}`,
+        `school_property_label.ilike.${like}`,
+        `school_key_level.ilike.${like}`,
+        `elite_cohort.ilike.${like}`
+      ].join(',')
+    );
+  }
+
+  const { data, error } = await query.order('id', { ascending: true });
+  if (error) throw error;
+  return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
+}
+
+// 新闻条件查询（轻量列集）。filters:
+//   region / districtId / examType / newsType / category / q（模糊匹配 title/summary/category）
+// 注：content 列不在轻量列集（原内存搜索对 content 即空转），source.type 留给调用方内存过滤。
+async function queryNewsList(filters = {}) {
+  if (!isSupabaseConfigured()) return [];
+  const region = filters.region || DEFAULT_REGION;
+  const client = getServiceClient();
+  let query = client
+    .from(NEWS_TABLE)
+    .select(NEWS_LIST_COLUMNS)
+    .eq('region', region);
+
+  if (filters.districtId && filters.districtId !== 'all') {
+    query = query.eq('district_id', filters.districtId);
+  }
+  if (filters.examType) {
+    query = query.eq('exam_type', filters.examType);
+  }
+  if (filters.newsType) {
+    query = query.eq('news_type', filters.newsType);
+  }
+  if (filters.category) {
+    query = query.eq('category', filters.category);
+  }
+  if (filters.q) {
+    const like = `%${escapeIlike(filters.q)}%`;
+    query = query.or(`title.ilike.${like},summary.ilike.${like},category.ilike.${like}`);
+  }
+
+  const { data, error } = await query
+    .order('published_at', { ascending: false })
+    .order('id', { ascending: false });
+  if (error) throw error;
+  return (data || []).map((row) => rowToNews(row)).filter(Boolean);
+}
+
 // 仅取新闻 id 列表（sitemap 用）。~5KB。
 async function loadNewsIds(region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
@@ -292,6 +391,20 @@ async function loadNewsIds(region = DEFAULT_REGION) {
     .order('published_at', { ascending: false });
   if (error) throw error;
   return (data || []).map((row) => row.id).filter(Boolean);
+}
+
+// 仅取学校 slug（= 详情路由 id）列表（sitemap 用）。避免手工维护 sitemap-extra.xml
+// 导致的跨地区 URL 漂移（曾把上海学校 slug 拼进 /suzhou/schools/ 前缀）。
+async function loadSchoolIds(region = DEFAULT_REGION) {
+  if (!isSupabaseConfigured()) return [];
+  const client = getServiceClient();
+  const { data, error } = await client
+    .from(SCHOOLS_TABLE)
+    .select('slug')
+    .eq('region', region)
+    .order('id', { ascending: true });
+  if (error) throw error;
+  return (data || []).map((row) => row.slug).filter(Boolean);
 }
 
 // 分数匹配页所需最小字段集。~0.15MB（比全量 0.44MB 少 66%）。
@@ -639,5 +752,8 @@ module.exports = {
   loadSchoolsMinimal,
   loadSchoolNamesByIds,
   loadSchoolsForRelated,
-  loadSchoolCountsByDistrict
+  loadSchoolCountsByDistrict,
+  loadSchoolIds,
+  querySchoolsList,
+  queryNewsList
 };
