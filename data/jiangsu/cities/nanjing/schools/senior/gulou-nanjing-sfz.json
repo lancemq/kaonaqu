@@ -8,22 +8,24 @@
   "schoolKeyLevel": "市重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
+  "address": "南京市鼓楼区察哈尔路37号",
+  "phone": "025-83469003",
+  "website": "http://www.nsfz.net",
+  "foundingYear": 1902,
   "isBoarding": false,
-  "isInternational": false,
+  "isInternational": true,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "首批国家级示范高中", "江苏省首批高品质示范高中建设学校", "IB国际文凭项目学校"],
   "admissionInfo": { "code": "1020", "methods": [], "routes": [], "notes": "" },
   "scoreLines": [
+    { "year": "2023", "score": "640", "plan": "", "note": "来源：南京市政府网转金陵日报（2023-07-11），市招考院公布" },
     { "year": "2024", "score": "642", "plan": "", "note": "来源：南京市政府网转载南京日报（2024-07-09）" },
-    { "year": "2025", "score": "649", "plan": "", "note": "察哈尔路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2025", "score": "649", "plan": "", "note": "察哈尔路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "652", "plan": "察哈尔路校区", "note": "晓庄校区645分；来源：金陵晚报（2026-07-14）转南京市招考院投档线" }
   ],
   "outcomeStats": [],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.nanjing.gov.cn/zzb/ywdt/msxx/202407/t20240709_5125793.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "http://cpho.tss.nsfz.net/Press/SchoolProfile.aspx", "crawledAt": "2026-09-12", "confidence": "high" }
 }

@@ -8,22 +8,26 @@
   "schoolKeyLevel": "区重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
+  "address": "南京市玄武区西家大塘14号",
+  "phone": "025-83269911",
+  "website": "https://www.nj13z.cn",
+  "foundingYear": 1955,
   "isBoarding": false,
-  "isInternational": false,
+  "isInternational": true,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "国家级示范性高中", "全国文明校园", "江苏省高品质示范高中建设学校"],
   "admissionInfo": { "code": "1100", "methods": [], "routes": [], "notes": "台城校区与红山新城校区两个校区招生" },
   "scoreLines": [
+    { "year": "2023", "score": "622", "plan": "台城校区", "note": "红山新城校区619分；预测投档线，来源：现代快报据南京市招考院（2023-07-11）" },
     { "year": "2024", "score": "618", "plan": "", "note": "红山新城校区；来源：南京市政府网转载南京日报（2024-07-09）" },
-    { "year": "2025", "score": "625", "plan": "", "note": "台城校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2025", "score": "625", "plan": "", "note": "台城校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "629", "plan": "台城校区", "note": "红山新城校区627分；来源：金陵晚报（2026-07-14）转南京市招考院投档线" }
   ],
-  "outcomeStats": [],
+  "outcomeStats": [
+    { "year": 2024, "exam": "高考", "kind": "综评", "verified": false, "source": "中国江苏网（交汇点）", "sourceUrl": "https://edu.jschina.com.cn/jy/202507/t20250709_s686dc2cee4b0c83a06823f39.shtml", "metrics": { "双一流占比": "超70%", "南师大线上人数": "近400人" }, "note": "每年考入复旦、中科大、南大、东大等985名校近百人；未披露一本率百分比" }
+  ],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.nanjing.gov.cn/zzb/ywdt/msxx/202407/t20240709_5125793.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "https://edu.jschina.com.cn/jy/202507/t20250709_s686dc2cee4b0c83a06823f39.shtml", "crawledAt": "2026-09-12", "confidence": "high" }
 }

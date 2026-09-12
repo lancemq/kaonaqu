@@ -1,16 +1,254 @@
 [
-  { "slug": "xuanwu-nanjing-fls", "name": "南京外国语学校", "district": "玄武区", "stage": "完全中学", "level": "顶级公办(初中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "gulou-nanjing-sfz", "name": "南京师范大学附属中学", "district": "鼓楼区", "stage": "高中", "level": "市重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "gulou-jinling-zhongxue", "name": "金陵中学", "district": "鼓楼区", "stage": "高中", "level": "市重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "qinhuai-nanjing-yizhong", "name": "南京市第一中学", "district": "秦淮区", "stage": "高中", "level": "市重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "jianye-nanjing-zhonghua-zhongxue", "name": "南京市中华中学", "district": "建邺区", "stage": "高中", "level": "市重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "gulou-nanjing-29zhong", "name": "南京市第二十九中学", "district": "鼓楼区", "stage": "高中", "level": "市重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "xuanwu-nanjing-13zhong", "name": "南京市第十三中学", "district": "玄武区", "stage": "高中", "level": "区重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "xuanwu-nanjing-9zhong", "name": "南京市第九中学", "district": "玄武区", "stage": "高中", "level": "区重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "gulou-ninghai-zhongxue", "name": "宁海中学", "district": "鼓楼区", "stage": "高中", "level": "区重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "jiangning-jiangning-gaoji-zhongxue", "name": "江宁高级中学", "district": "江宁区", "stage": "高中", "level": "区重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "yuhuatai-yuhuatai-zhongxue", "name": "南京市雨花台中学", "district": "雨花台区", "stage": "高中", "level": "区重点(高中)", "property": "公办", "star": "江苏省四星级普通高中" },
-  { "slug": "xuanwu-xuanwai", "name": "南京玄武外国语学校", "district": "玄武区", "stage": "初中", "level": "顶级民办(初中)", "property": "民办", "star": "" },
-  { "slug": "gulou-jinling-huiwen", "name": "南京金陵汇文学校", "district": "鼓楼区", "stage": "初中", "level": "强公办(初中)", "property": "公办", "star": "" },
-  { "slug": "qinhuai-nanjing-zhongying", "name": "南京市钟英中学", "district": "秦淮区", "stage": "初中", "level": "强公办(初中)", "property": "公办", "star": "" }
+  {
+    "slug": "jiangning-jiangning-gaoji-zhongxue",
+    "name": "江宁高级中学",
+    "district": "江宁区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "gaochun-gaochun-gaoji-zhongxue",
+    "name": "江苏省高淳高级中学",
+    "district": "高淳区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "pukou-jiangpu-gaoji-zhongxue",
+    "name": "江苏省江浦高级中学",
+    "district": "浦口区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "lishui-lishui-gaoji-zhongxue",
+    "name": "江苏省溧水高级中学",
+    "district": "溧水区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "luhe-liuhe-gaoji-zhongxue",
+    "name": "江苏省六合高级中学",
+    "district": "六合区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "gulou-jinling-zhongxue",
+    "name": "金陵中学",
+    "district": "鼓楼区",
+    "stage": "高中",
+    "level": "市重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "gulou-nanjing-sfz",
+    "name": "南京师范大学附属中学",
+    "district": "鼓楼区",
+    "stage": "高中",
+    "level": "市重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "gulou-nanjing-29zhong",
+    "name": "南京市第二十九中学",
+    "district": "鼓楼区",
+    "stage": "高中",
+    "level": "市重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "xuanwu-nanjing-9zhong",
+    "name": "南京市第九中学",
+    "district": "玄武区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "xuanwu-nanjing-13zhong",
+    "name": "南京市第十三中学",
+    "district": "玄武区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "qinhuai-nanjing-yizhong",
+    "name": "南京市第一中学",
+    "district": "秦淮区",
+    "stage": "高中",
+    "level": "市重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "gaochun-hubin-gaoji-zhongxue",
+    "name": "南京市高淳区湖滨高级中学",
+    "district": "高淳区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "lishui-lishui-dier-gaoji-zhongxue",
+    "name": "南京市溧水区第二高级中学",
+    "district": "溧水区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "luhe-chengqiao-gaoji-zhongxue",
+    "name": "南京市六合区程桥高级中学",
+    "district": "六合区",
+    "stage": "高中",
+    "level": "一般高中",
+    "property": "公办",
+    "star": "江苏省三星级普通高中"
+  },
+  {
+    "slug": "luhe-shiyan-gaoji-zhongxue",
+    "name": "南京市六合区实验高级中学",
+    "district": "六合区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "qixia-nanjing-qixia-zhongxue",
+    "name": "南京市栖霞中学",
+    "district": "栖霞区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "qixia-nanjing-yanziji-zhongxue",
+    "name": "南京市燕子矶中学",
+    "district": "栖霞区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "yuhuatai-yuhuatai-zhongxue",
+    "name": "南京市雨花台中学",
+    "district": "雨花台区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "jianye-nanjing-zhonghua-zhongxue",
+    "name": "南京市中华中学",
+    "district": "建邺区",
+    "stage": "高中",
+    "level": "市重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "xuanwu-nanjing-fls",
+    "name": "南京外国语学校",
+    "district": "玄武区",
+    "stage": "完全中学",
+    "level": "顶级公办(初中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "qixia-njfls-xianlin-fenxiao",
+    "name": "南京外国语学校仙林分校",
+    "district": "栖霞区",
+    "stage": "完全中学",
+    "level": "强民办(初中)",
+    "property": "民办",
+    "star": ""
+  },
+  {
+    "slug": "gulou-ninghai-zhongxue",
+    "name": "宁海中学",
+    "district": "鼓楼区",
+    "stage": "高中",
+    "level": "区重点(高中)",
+    "property": "公办",
+    "star": "江苏省四星级普通高中"
+  },
+  {
+    "slug": "gulou-jinling-huiwen",
+    "name": "南京金陵汇文学校",
+    "district": "鼓楼区",
+    "stage": "初中",
+    "level": "强公办(初中)",
+    "property": "公办",
+    "star": ""
+  },
+  {
+    "slug": "qixia-nsfz-dingjiazhuang-chuzhong",
+    "name": "南京师范大学附属中学丁家庄初级中学",
+    "district": "栖霞区",
+    "stage": "初中",
+    "level": "强公办(初中)",
+    "property": "公办",
+    "star": ""
+  },
+  {
+    "slug": "pukou-pukou-disanzhong",
+    "name": "南京市浦口区第三中学",
+    "district": "浦口区",
+    "stage": "初中",
+    "level": "一般初中",
+    "property": "公办",
+    "star": ""
+  },
+  {
+    "slug": "qixia-qixia-shiyan-chuzhong",
+    "name": "南京市栖霞区实验初级中学",
+    "district": "栖霞区",
+    "stage": "初中",
+    "level": "一般初中",
+    "property": "公办",
+    "star": ""
+  },
+  {
+    "slug": "qinhuai-nanjing-zhongying",
+    "name": "南京市钟英中学",
+    "district": "秦淮区",
+    "stage": "初中",
+    "level": "强公办(初中)",
+    "property": "公办",
+    "star": ""
+  },
+  {
+    "slug": "xuanwu-xuanwai",
+    "name": "南京玄武外国语学校",
+    "district": "玄武区",
+    "stage": "初中",
+    "level": "顶级民办(初中)",
+    "property": "民办",
+    "star": ""
+  }
 ]

@@ -8,21 +8,25 @@
   "schoolKeyLevel": "区重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
+  "address": "南京市江宁区天元东路699号",
+  "phone": "025-52173900",
+  "website": "http://www.jnsms.com",
+  "foundingYear": 1934,
   "isBoarding": false,
   "isInternational": false,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "国家级示范高中", "江苏省首批高品质科技高中建设学校"],
   "admissionInfo": { "code": "1600", "methods": [], "routes": [], "notes": "天元东路校区与福宁路校区两个校区招生" },
   "scoreLines": [
-    { "year": "2025", "score": "588", "plan": "", "note": "天元东路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2023", "score": "597", "plan": "天元东路校区", "note": "福宁路校区592分；第一批次预测投档线（江宁区生）；来源：现代快报据南京市招考院（2023-07-10）" },
+    { "year": "2025", "score": "588", "plan": "", "note": "天元东路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "593", "plan": "天元东路校区", "note": "福宁路校区589分；来源：新时高考网汇总（2026-08-19），其公布的其他校区线与官方金陵晚报（2026-07-14）逐条吻合" }
   ],
-  "outcomeStats": [],
+  "outcomeStats": [
+    { "year": 2024, "exam": "高考", "kind": "喜报", "verified": false, "source": "江宁高级中学官网", "sourceUrl": "http://www.jnsms.com/html/202410/NewShow-6353.html", "metrics": { "本一达线人数": 887, "本一率": "76%" }, "note": "另连续十年获南京市普通高中发展性评估突出贡献奖（全市唯一）" }
+  ],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.jswsxx.com/zszx/zsfs/19991.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "http://www.jnsms.com/html/202410/NewShow-6353.html", "crawledAt": "2026-09-12", "confidence": "high" }
 }

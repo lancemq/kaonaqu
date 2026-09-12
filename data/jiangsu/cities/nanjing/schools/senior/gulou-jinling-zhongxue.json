@@ -8,22 +8,24 @@
   "schoolKeyLevel": "市重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
+  "address": "南京市鼓楼区中山路169号",
+  "phone": "025-84786207",
   "website": "http://www.jlhs.net",
-  "foundingYear": null,
+  "foundingYear": 1888,
   "isBoarding": false,
-  "isInternational": false,
+  "isInternational": true,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "首批国家级示范高中", "江苏省模范学校"],
   "admissionInfo": { "code": "1040", "methods": [], "routes": [], "notes": "" },
   "scoreLines": [
+    { "year": "2023", "score": "639", "plan": "新街口校区", "note": "来源：南京市政府网转金陵日报（2023-07-11），市招考院公布" },
     { "year": "2024", "score": "640", "plan": "", "note": "新街口校区；来源：南京市政府网转载南京日报（2024-07-09）" },
-    { "year": "2025", "score": "644", "plan": "", "note": "新街口校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2025", "score": "644", "plan": "", "note": "新街口校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "647", "plan": "新街口校区", "note": "江心洲校区628分；来源：金陵晚报（2026-07-14）转南京市招考院投档线" }
   ],
   "outcomeStats": [],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.nanjing.gov.cn/zzb/ywdt/msxx/202407/t20240709_5125793.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "http://www.jlhs.net/WebPlus/DisplayInfo.jsp?pageID=18289&menuID=505", "crawledAt": "2026-09-12", "confidence": "high" }
 }

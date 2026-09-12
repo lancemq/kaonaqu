@@ -8,21 +8,23 @@
   "schoolKeyLevel": "区重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
+  "address": "南京市鼓楼区宁海路39号",
+  "phone": "025-83237305",
+  "website": "http://www.njnhzx.cn",
+  "foundingYear": 1912,
   "isBoarding": false,
   "isInternational": false,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "国家级示范性高中", "江苏省艺术教育特色学校", "美术特色课程基地"],
   "admissionInfo": { "code": "1140", "methods": [], "routes": [], "notes": "" },
   "scoreLines": [
-    { "year": "2025", "score": "611", "plan": "", "note": "来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2023", "score": "607", "plan": "", "note": "预测投档线；来源：现代快报据南京市招考院（2023-07-11）" },
+    { "year": "2025", "score": "611", "plan": "", "note": "来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "615", "plan": "", "note": "来源：新时高考网汇总（2026-08-19），其公布的其他校区线与官方金陵晚报（2026-07-14）逐条吻合" }
   ],
   "outcomeStats": [],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.jswsxx.com/zszx/zsfs/19991.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "https://m.nj.bendibao.com/edu/42668.shtm", "crawledAt": "2026-09-12", "confidence": "medium" }
 }

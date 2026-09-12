@@ -8,10 +8,10 @@
   "schoolKeyLevel": "市重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
+  "address": "南京市鼓楼区龙江小区蓝天园23号",
+  "phone": "025-86267809",
+  "website": "http://www.nj29jt.net",
+  "foundingYear": 1945,
   "isBoarding": false,
   "isInternational": false,
   "image": "",
@@ -19,11 +19,13 @@
   "features": ["江苏省四星级普通高中"],
   "admissionInfo": { "code": "1110", "methods": [], "routes": [], "notes": "龙江校区与锦江校区两个校区招生" },
   "scoreLines": [
+    { "year": "2023", "score": "634", "plan": "", "note": "2023年统招未分校区口径；预测投档线，来源：现代快报据南京市招考院（2023-07-11）" },
     { "year": "2024", "score": "595", "plan": "", "note": "来源：南京市政府网转载南京日报（2024-07-09）" },
-    { "year": "2025", "score": "641", "plan": "", "note": "龙江校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2025", "score": "641", "plan": "", "note": "龙江校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "644", "plan": "龙江校区", "note": "锦江校区642分；来源：金陵晚报（2026-07-14）转南京市招考院投档线" }
   ],
   "outcomeStats": [],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.nanjing.gov.cn/zzb/ywdt/msxx/202407/t20240709_5125793.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "https://news.sina.cn/2015-09-28/detail-ifxiehns3507155.d.html", "crawledAt": "2026-09-12", "confidence": "medium" }
 }

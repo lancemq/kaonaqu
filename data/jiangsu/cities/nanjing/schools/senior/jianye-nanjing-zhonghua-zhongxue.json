@@ -8,22 +8,26 @@
   "schoolKeyLevel": "市重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
-  "isBoarding": false,
-  "isInternational": false,
+  "address": "南京市建邺区兴隆大街208号",
+  "phone": "025-52689097",
+  "website": "https://www.njzhzx.net",
+  "foundingYear": 1899,
+  "isBoarding": true,
+  "isInternational": true,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "国家级示范高中", "江苏省首批重点中学", "江苏省文明校园"],
   "admissionInfo": { "code": "1080", "methods": [], "routes": [], "notes": "兴隆大街校区与雨花校区两个校区招生" },
   "scoreLines": [
+    { "year": "2023", "score": "630", "plan": "兴隆大街校区", "note": "雨花校区623分；预测投档线，来源：现代快报据南京市招考院（2023-07-11）" },
     { "year": "2024", "score": "629", "plan": "", "note": "兴隆大街校区；来源：南京市政府网转载南京日报（2024-07-09）" },
-    { "year": "2025", "score": "634", "plan": "", "note": "兴隆大街校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2025", "score": "634", "plan": "", "note": "兴隆大街校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "638", "plan": "兴隆校区", "note": "雨花校区633分；来源：金陵晚报（2026-07-14）转南京市招考院投档线" }
   ],
-  "outcomeStats": [],
+  "outcomeStats": [
+    { "year": 2024, "exam": "高考", "kind": "喜报", "verified": false, "source": "中华中学官网校庆简介", "sourceUrl": "https://www.njzhzx.net/xiaoqing/aboutus.html", "metrics": { "一本率": "99.1%", "985录取": "121人", "双一流及以上": "501人" }, "note": "2018-2024连续七年获南京市普通高中发展性评估突出贡献奖" }
+  ],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.nanjing.gov.cn/zzb/ywdt/msxx/202407/t20240709_5125793.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "https://www.njzhzx.net/xiaoqing/aboutus.html", "crawledAt": "2026-09-12", "confidence": "high" }
 }

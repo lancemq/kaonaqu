@@ -8,21 +8,25 @@
   "schoolKeyLevel": "区重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
-  "isBoarding": false,
-  "isInternational": false,
+  "address": "南京市雨花台区紫荆花路66号",
+  "phone": "025-58013918",
+  "website": "http://www.yhtzx.net",
+  "foundingYear": 1957,
+  "isBoarding": true,
+  "isInternational": true,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "江苏省重点中学", "江苏省首批高品质特色高中立项学校", "江苏省雨花石文化课程基地"],
   "admissionInfo": { "code": "1170", "methods": [], "routes": [], "notes": "紫荆花路校区与岱山校区两个校区招生" },
   "scoreLines": [
-    { "year": "2025", "score": "614", "plan": "", "note": "紫荆花路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2023", "score": "609", "plan": "紫荆花路校区", "note": "岱山校区606分；预测投档线，来源：现代快报据南京市招考院（2023-07-11）" },
+    { "year": "2025", "score": "614", "plan": "", "note": "紫荆花路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "617", "plan": "紫荆花路校区", "note": "岱山校区613分；来源：新时高考网汇总（2026-08-19），其公布的其他校区线与官方金陵晚报（2026-07-14）逐条吻合" }
   ],
-  "outcomeStats": [],
+  "outcomeStats": [
+    { "year": 2025, "exam": "高考", "kind": "喜报", "verified": false, "source": "雨花台中学官方公众号（江苏教育黄页转载）", "sourceUrl": "https://www.jsedu114.com/inner_province/111879.html", "metrics": { "985录取": "38人", "211录取": "150余人", "双一流": "270余人" }, "note": "近三年一本线（特控线）达线率持续保持90%以上；2025年江苏综评B类录取人数全省第一" }
+  ],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.jswsxx.com/zszx/zsfs/19991.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "http://www.njyh.gov.cn/yhtqrmzf/202404/t20240403_4201922.html", "crawledAt": "2026-09-12", "confidence": "high" }
 }

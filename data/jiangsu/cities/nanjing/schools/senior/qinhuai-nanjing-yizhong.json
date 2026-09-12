@@ -8,22 +8,27 @@
   "schoolKeyLevel": "市重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
+  "address": "南京市秦淮区中山南路301号",
+  "phone": "025-86668111",
+  "website": "https://www.njyz.net",
+  "foundingYear": 1907,
   "isBoarding": false,
-  "isInternational": false,
+  "isInternational": true,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "国家级示范高中", "首批全国文明校园", "丘成桐少年班"],
   "admissionInfo": { "code": "1060", "methods": [], "routes": [], "notes": "中山南路校区为主校区，另设江北校区" },
   "scoreLines": [
+    { "year": "2023", "score": "631", "plan": "中山南路校区", "note": "江北校区622分；预测投档线，来源：现代快报据南京市招考院（2023-07-11）" },
     { "year": "2024", "score": "632", "plan": "", "note": "中山南路校区；来源：南京市政府网转载南京日报（2024-07-09）" },
-    { "year": "2025", "score": "636", "plan": "", "note": "中山南路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2025", "score": "636", "plan": "", "note": "中山南路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "640", "plan": "中山南路校区", "note": "江北校区629分；来源：金陵晚报（2026-07-14）转南京市招考院投档线" }
   ],
-  "outcomeStats": [],
+  "outcomeStats": [
+    { "year": 2024, "exam": "高考", "kind": "喜报", "verified": false, "source": "南京一中官网学校简介", "sourceUrl": "https://www.njyz.net/xygk/xxjj", "metrics": { "一本率": "近99%", "清北录取": "3人", "C9录取": "30余人" }, "note": "" },
+    { "year": 2025, "exam": "高考", "kind": "喜报", "verified": false, "source": "南京一中官网/龙虎网2026招生启事", "sourceUrl": "http://news.longhoo.net/2026/bmcz_0313/854016.html", "metrics": { "一本率": "99%", "C9录取": "40余人" }, "note": "含1人经丘成桐领军计划录取清华；综评录取人数全省第二" }
+  ],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.nanjing.gov.cn/zzb/ywdt/msxx/202407/t20240709_5125793.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "https://www.njyz.net/xygk/xxjj", "crawledAt": "2026-09-12", "confidence": "high" }
 }

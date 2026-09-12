@@ -8,22 +8,26 @@
   "schoolKeyLevel": "区重点(高中)",
   "eliteCohort": "",
   "group": "",
-  "address": "",
-  "phone": "",
-  "website": "",
-  "foundingYear": null,
+  "address": "南京市玄武区长江路碑亭巷51号",
+  "phone": "025-68586008",
+  "website": "http://www.njjz.net",
+  "foundingYear": 1925,
   "isBoarding": false,
   "isInternational": false,
   "image": "",
   "profileDepth": "enhanced",
-  "features": ["江苏省四星级普通高中"],
+  "features": ["江苏省四星级普通高中", "国家级示范高中", "江苏省模范学校", "江苏省音乐课程基地"],
   "admissionInfo": { "code": "1090", "methods": [], "routes": [], "notes": "长江路校区与震旦校区两个校区招生" },
   "scoreLines": [
+    { "year": "2023", "score": "616", "plan": "长江路校区", "note": "震旦校区613分；预测投档线，来源：现代快报据南京市招考院（2023-07-11）" },
     { "year": "2024", "score": "617", "plan": "", "note": "长江路校区；来源：南京市政府网转载南京日报（2024-07-09）" },
-    { "year": "2025", "score": "620", "plan": "", "note": "长江路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" }
+    { "year": "2025", "score": "620", "plan": "", "note": "长江路校区；来源：江苏中考网转述南京市2025年中招第一批次投档线" },
+    { "year": "2026", "score": "625", "plan": "长江路校区", "note": "震旦校区619分；来源：新时高考网汇总（2026-08-19），其公布的其他校区线与官方金陵晚报（2026-07-14）逐条吻合" }
   ],
-  "outcomeStats": [],
+  "outcomeStats": [
+    { "year": 2024, "exam": "高考", "kind": "喜报", "verified": false, "source": "南京晨报（新浪转载）", "sourceUrl": "https://k.sina.com.cn/article_2188202475_826d51eb02001cj2c.html", "metrics": { "一本率": "94.4%", "600分以上": "超200人", "985录取": "38人", "211录取": "231人" }, "note": "综评录取2020届列全省第4、2021-2022届列全省第5" }
+  ],
   "content": [],
   "infoVerified": false,
-  "source": { "url": "https://www.nanjing.gov.cn/zzb/ywdt/msxx/202407/t20240709_5125793.html", "crawledAt": "2026-09-12", "confidence": "medium" }
+  "source": { "url": "http://www.njjz.net/xuexiaogaikuang/xuexiaojianjie/93.html", "crawledAt": "2026-09-12", "confidence": "high" }
 }
