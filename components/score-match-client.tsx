@@ -33,13 +33,19 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
   const [score, setScore] = useState<number | null>(null);
   const [districtId, setDistrictId] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const { brandSuffix, brandSuffixFull, examTotal, features } = useRegion();
+  const { brandSuffix, brandSuffixFull, examTotal, features, scoreMatch } = useRegion();
   const examMaxScore = examTotal?.zhongkao || MAX_SCORE_PER_EXAM.zhongkao;
 
   const results = useMemo(() => {
     if (score === null) return [];
-    return matchSchoolsByScore({ score, districtId: districtId || undefined, examType }, schools, examMaxScore);
-  }, [score, districtId, examType, schools, examMaxScore]);
+    // 注入地区匹配参数（tier 参考区间随地区：上海/苏州口径不同，见 regions.data.json）
+    return matchSchoolsByScore(
+      { score, districtId: districtId || undefined, examType },
+      schools,
+      examMaxScore,
+      scoreMatch
+    );
+  }, [score, districtId, examType, schools, examMaxScore, scoreMatch]);
 
   const grouped = useMemo(() => groupResultsByCategory(results), [results]);
 

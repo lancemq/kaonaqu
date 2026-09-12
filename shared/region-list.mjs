@@ -23,13 +23,15 @@ export const DEFAULT_REGION = regionsData.defaultRegion;
 export const KNOWN_REGIONS = Object.keys(regionsData.regions);
 
 // RegionSelector 下拉选项 + client 组件需要的字段（与 server 端 region-config 同源）。
+// scoreMatch 为估分择校引擎的地区参数（tier 参考区间等），供 score-match-client 注入引擎。
 export const REGION_ENTRIES = Object.entries(regionsData.regions).map(([value, cfg]) => ({
   value,
   label: cfg.label,
   brandSuffix: cfg.brandSuffix,
   brandSuffixFull: cfg.brandSuffixFull,
   examTotal: cfg.examTotal,
-  features: cfg.features
+  features: cfg.features,
+  scoreMatch: cfg.scoreMatch
 }));
 
 export function isKnownRegion(name) {

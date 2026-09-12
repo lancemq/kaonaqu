@@ -57,77 +57,80 @@ function getMatchKey(s: SchoolRecord): string {
   return s.eliteCohort || s.schoolKeyLevel || '';
 }
 
-// tier 参考录取区间（同 tier 学校录取参考，非精确线）
-// 键同时兼容旧词（市重点/区重点/八大）与 DB 8 值词表（市重点(高中)/区重点(高中)）及富集值（八大金刚/新五虎）。
-// 实际匹配走 normalizeTierKey 归一化，避免"市重点(高中)"等带后缀词查不到而被静默跳过。
-const TIER_SCORE_RANGE: Record<string, { min: number; max: number }> = {
-  四校: { min: 705, max: 712 },
-  四校分校: { min: 690, max: 705 },
-  八大: { min: 685, max: 700 },
-  八大分校: { min: 670, max: 690 },
-  新五虎: { min: 680, max: 695 },
-  新五虎分校: { min: 665, max: 685 },
-  '市实验性示范性高中': { min: 620, max: 680 },
-  市重点: { min: 620, max: 680 },
-  '市重点(高中)': { min: 620, max: 680 },
-  区重点: { min: 580, max: 640 },
-  '区重点(高中)': { min: 580, max: 640 },
-  一般高中: { min: 560, max: 620 },
-  民办高中: { min: 520, max: 600 },
-  国际课程: { min: 500, max: 580 }
-};
+// 地区匹配参数：tier 参考区间 / prestige / 别名随地区配置注入
+// （shared/regions.data.json 的 scoreMatch 块，经 region-list 传给 client）。
+// 默认值 = 上海口径（历史常量原样保留，未传 config 的旧调用行为不变）。
+export interface ScoreMatchConfig {
+  tierScoreRange: Record<string, { min: number; max: number }>;
+  tierPrestige: Record<string, number>;
+  tierAlias: Record<string, string>;
+  internationalDefaultRange: { min: number; max: number };
+}
 
-// tier prestige 排序权重（与 TIER_SCORE_RANGE 同键集合）
-const TIER_PRESTIGE: Record<string, number> = {
-  四校: 100,
-  八大: 90,
-  四校分校: 80,
-  八大分校: 75,
-  新五虎: 88,
-  新五虎分校: 80,
-  '市实验性示范性高中': 70,
-  市重点: 70,
-  '市重点(高中)': 70,
-  区重点: 60,
-  '区重点(高中)': 60,
-  一般高中: 50,
-  民办高中: 40,
-  国际课程: 35
+export const DEFAULT_SCORE_MATCH_CONFIG: ScoreMatchConfig = {
+  tierScoreRange: {
+    四校: { min: 705, max: 712 },
+    四校分校: { min: 690, max: 705 },
+    八大: { min: 685, max: 700 },
+    八大分校: { min: 670, max: 690 },
+    新五虎: { min: 680, max: 695 },
+    新五虎分校: { min: 665, max: 685 },
+    '市实验性示范性高中': { min: 620, max: 680 },
+    市重点: { min: 620, max: 680 },
+    '市重点(高中)': { min: 620, max: 680 },
+    区重点: { min: 580, max: 640 },
+    '区重点(高中)': { min: 580, max: 640 },
+    一般高中: { min: 560, max: 620 },
+    民办高中: { min: 520, max: 600 },
+    国际课程: { min: 500, max: 580 }
+  },
+  tierPrestige: {
+    四校: 100,
+    八大: 90,
+    四校分校: 80,
+    八大分校: 75,
+    新五虎: 88,
+    新五虎分校: 80,
+    '市实验性示范性高中': 70,
+    市重点: 70,
+    '市重点(高中)': 70,
+    区重点: 60,
+    '区重点(高中)': 60,
+    一般高中: 50,
+    民办高中: 40,
+    国际课程: 35
+  },
+  tierAlias: {
+    八大金刚: '八大',
+    八大金刚分校: '八大分校',
+    新五虎: '新五虎',
+    新五虎分校: '新五虎',
+    '市实验性示范性高中(高中)': '市重点'
+  },
+  internationalDefaultRange: { min: 500, max: 580 }
 };
-
-// 富集别名 → 规范 tier 键（用于八大金刚/新五虎等）
-const TIER_ALIAS: Record<string, string> = {
-  八大金刚: '八大',
-  八大金刚分校: '八大分校',
-  新五虎: '新五虎',
-  新五虎分校: '新五虎',
-  '市实验性示范性高中(高中)': '市重点'
-};
-
-// 国际课程默认参考区间（isInternational 学校且无更精确 tier 时使用）
-const INTERNATIONAL_DEFAULT_RANGE = { min: 500, max: 580 };
 
 const REACH_GAP = 20; // 低于区间下限 20 分内仍算冲刺
 
 // 归一化 tier 键：优先精确匹配；去掉 (高中)/(初中) 后缀再试；最后走别名映射。
-// 这样 "市重点(高中)" → "市重点"、"八大金刚" → "八大" 都能命中 TIER_SCORE_RANGE。
-function normalizeTierKey(key: string | undefined): string {
+// 这样 "市重点(高中)" → "市重点"、"八大金刚" → "八大" 都能命中 tierScoreRange。
+function normalizeTierKey(key: string | undefined, cfg: ScoreMatchConfig): string {
   if (!key) return '';
-  if (TIER_SCORE_RANGE[key]) return key;
+  if (cfg.tierScoreRange[key]) return key;
   const stripped = key.replace(/[（(].*$/, '');
-  if (TIER_SCORE_RANGE[stripped]) return stripped;
-  if (TIER_ALIAS[key] && TIER_SCORE_RANGE[TIER_ALIAS[key]]) return TIER_ALIAS[key];
+  if (cfg.tierScoreRange[stripped]) return stripped;
+  if (cfg.tierAlias[key] && cfg.tierScoreRange[cfg.tierAlias[key]]) return cfg.tierAlias[key];
   return '';
 }
 
-function resolveTierRange(key: string | undefined): { min: number; max: number } | null {
-  const nk = normalizeTierKey(key);
-  return nk ? TIER_SCORE_RANGE[nk] : null;
+function resolveTierRange(key: string | undefined, cfg: ScoreMatchConfig): { min: number; max: number } | null {
+  const nk = normalizeTierKey(key, cfg);
+  return nk ? cfg.tierScoreRange[nk] : null;
 }
 
-function tierPrestige(key: string | undefined): number {
-  const nk = normalizeTierKey(key);
-  return nk ? (TIER_PRESTIGE[nk] || 0) : 0;
+function tierPrestige(key: string | undefined, cfg: ScoreMatchConfig): number {
+  const nk = normalizeTierKey(key, cfg);
+  return nk ? (cfg.tierPrestige[nk] || 0) : 0;
 }
 
 // 各考试类型满分（上海中考满分 750；国际课程班同样参考中考成绩，故同为 750）
@@ -160,7 +163,7 @@ function categorizeByTier(score: number, range: { min: number; max: number }): M
 /**
  * 中考分支：有真实录取线的学校用真实线精确匹配，其余回退 tier 参考区间
  */
-function matchZhongkao(score: number, districtId: string | undefined, schools: SchoolRecord[]): ScoreMatchResult[] {
+function matchZhongkao(score: number, districtId: string | undefined, schools: SchoolRecord[], cfg: ScoreMatchConfig): ScoreMatchResult[] {
   const results: ScoreMatchResult[] = [];
   const seniorHighs = (schools || []).filter(
     (s) => s.schoolStage === 'senior_high' || s.schoolStage === 'complete'
@@ -168,11 +171,11 @@ function matchZhongkao(score: number, districtId: string | undefined, schools: S
 
   for (const school of seniorHighs) {
     // 无回退默认区间（高中必须能落到真实线或 tier 区间，否则本就无可靠参考）
-    const r = buildMatchResult(school, score, null, '');
+    const r = buildMatchResult(school, score, null, '', cfg);
     if (r) results.push(r);
   }
 
-  return applyDistrictAndSort(results, districtId);
+  return applyDistrictAndSort(results, districtId, cfg);
 }
 
 /**
@@ -180,17 +183,17 @@ function matchZhongkao(score: number, districtId: string | undefined, schools: S
  * 原"高考分匹配高中录取线"语义错位，重定位为面向 isInternational 学校的国际课程参考。
  * 国际课程班通常综合中考成绩、校测与简历录取，优先真实线，回退国际课程默认参考区间。
  */
-function matchInternational(score: number, districtId: string | undefined, schools: SchoolRecord[]): ScoreMatchResult[] {
+function matchInternational(score: number, districtId: string | undefined, schools: SchoolRecord[], cfg: ScoreMatchConfig): ScoreMatchResult[] {
   const results: ScoreMatchResult[] = [];
   const intlSchools = (schools || []).filter((s) => s.isInternational);
 
   for (const school of intlSchools) {
-    // 回退区间：国际课程默认参考区间
-    const r = buildMatchResult(school, score, INTERNATIONAL_DEFAULT_RANGE, '国际课程');
+    // 回退区间：地区配置的国际课程默认参考区间
+    const r = buildMatchResult(school, score, cfg.internationalDefaultRange, '国际课程', cfg);
     if (r) results.push(r);
   }
 
-  return applyDistrictAndSort(results, districtId);
+  return applyDistrictAndSort(results, districtId, cfg);
 }
 
 // 真实录取线的判定带宽（同一校历年录取线通常在 ±10 内波动，±此值内判为"匹配"）
@@ -233,7 +236,8 @@ function buildMatchResult(
   school: SchoolRecord,
   score: number,
   fallbackRange: { min: number; max: number } | null,
-  fallbackLabel: string
+  fallbackLabel: string,
+  cfg: ScoreMatchConfig
 ): ScoreMatchResult | null {
   const real = getRealLineInfo(school);
   if (real) {
@@ -250,9 +254,10 @@ function buildMatchResult(
   }
 
   const key = getMatchKey(school);
-  const range = resolveTierRange(key) || fallbackRange;
+  const tierRange = resolveTierRange(key, cfg);
+  const range = tierRange || fallbackRange;
   if (!range) return null;
-  const label = resolveTierRange(key) ? key : fallbackLabel;
+  const label = tierRange ? key : fallbackLabel;
   const category = categorizeByTier(score, range);
   if (!category) return null;
   return {
@@ -267,12 +272,12 @@ function buildMatchResult(
 /**
  * 区域过滤 + 排序：本区校优先，组内按 tier prestige 降序
  */
-function applyDistrictAndSort(results: ScoreMatchResult[], districtId?: string): ScoreMatchResult[] {
+function applyDistrictAndSort(results: ScoreMatchResult[], districtId: string | undefined, cfg: ScoreMatchConfig): ScoreMatchResult[] {
   if (!districtId) {
     return results.sort(
       (a, b) =>
         categoryOrder(a.category) - categoryOrder(b.category) ||
-        tierPrestige(getMatchKey(b.school)) - tierPrestige(getMatchKey(a.school))
+        tierPrestige(getMatchKey(b.school), cfg) - tierPrestige(getMatchKey(a.school), cfg)
     );
   }
 
@@ -281,7 +286,7 @@ function applyDistrictAndSort(results: ScoreMatchResult[], districtId?: string):
 
   const sortFn = (a: ScoreMatchResult, b: ScoreMatchResult) =>
     categoryOrder(a.category) - categoryOrder(b.category) ||
-    tierPrestige(getMatchKey(b.school)) - tierPrestige(getMatchKey(a.school));
+    tierPrestige(getMatchKey(b.school), cfg) - tierPrestige(getMatchKey(a.school), cfg);
 
   inDistrict.sort(sortFn);
   outDistrict.sort(sortFn);
@@ -297,11 +302,18 @@ function categoryOrder(c: MatchCategory): number {
   return 2;
 }
 
-export function matchSchoolsByScore(input: ScoreMatchInput, schools: SchoolRecord[], maxScore: number = MAX_SCORE): ScoreMatchResult[] {
+export function matchSchoolsByScore(
+  input: ScoreMatchInput,
+  schools: SchoolRecord[],
+  maxScore: number = MAX_SCORE,
+  config: ScoreMatchConfig = DEFAULT_SCORE_MATCH_CONFIG
+): ScoreMatchResult[] {
   const { score, districtId, examType } = input;
   if (!Number.isFinite(score) || score < 0 || score > maxScore) return [];
 
-  const all = examType === 'international' ? matchInternational(score, districtId, schools) : matchZhongkao(score, districtId, schools);
+  const all = examType === 'international'
+    ? matchInternational(score, districtId, schools, config)
+    : matchZhongkao(score, districtId, schools, config);
 
   // 每档 limit 8 所
   const limited: ScoreMatchResult[] = [];
