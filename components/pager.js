@@ -89,8 +89,9 @@ export default function Pager({ currentPage = 1, totalPages = 1, onPageChange, r
     );
   }
 
-  const prevHref = safeCurrent === 1 ? null : hrefFor(safeCurrent - 1);
-  const nextHref = safeCurrent === totalPages ? null : hrefFor(safeCurrent + 1);
+  // 链接模式才生成 href；回调模式下保持 button + onPageChange（否则拼出 undefined?page=N 坏链）
+  const prevHref = linkMode && safeCurrent > 1 ? hrefFor(safeCurrent - 1) : null;
+  const nextHref = linkMode && safeCurrent < totalPages ? hrefFor(safeCurrent + 1) : null;
 
   return (
     <div className="pager pager-enhanced" aria-label="分页导航">

@@ -71,7 +71,9 @@
     padding-top: 14px;
 }
 
+/* 链接模式（server 传入 route+params）渲染 <a>，与按钮共用外观 */
 .pager button,
+.pager a,
 .pager span {
     display: inline-flex;
     align-items: center;
@@ -85,6 +87,13 @@
     font-family: var(--channel-font-body);
     font-size: 13px;
     font-weight: 700;
+    text-decoration: none;
+}
+
+.pager a[aria-current="page"] {
+    border-color: var(--channel-ink);
+    background: var(--channel-ink);
+    color: #fff;
 }
 
 .pager button:last-child {
