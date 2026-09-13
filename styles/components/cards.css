@@ -132,6 +132,17 @@
     color: #fff;
 }
 
+/* 链接模式 <a> 的深色态需压过频道级 body[data-page] .xxx-page a 颜色规则
+   （如 schools-detail 的 (0,2,2) 会盖掉上一条的白字，出现深底深字），故提权 */
+.pager-enhanced a.pager-next,
+body[data-page] .pager-enhanced a.pager-next,
+.pager-enhanced a.pager-page.is-current,
+body[data-page] .pager-enhanced a.pager-page.is-current {
+    border-color: var(--channel-ink);
+    background: var(--channel-ink);
+    color: #fff;
+}
+
 .pager-enhanced .pager-ellipsis {
     min-height: 40px;
     padding: 0 4px;
