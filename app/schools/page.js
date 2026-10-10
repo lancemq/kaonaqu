@@ -141,6 +141,24 @@ function distinctLabels(schools, pick) {
   return Array.from(set);
 }
 
+// 筛选项只依赖 schools 全量（不随当前筛选变化）。schools 引用在 Data Cache 60s 窗口内
+// 是同一对象，按引用 memo 后并发请求共享这份 O(n) 遍历结果。
+const filterOptionsMemo = new WeakMap();
+
+function getFilterOptions(schools, region) {
+  if (filterOptionsMemo.has(schools)) return filterOptionsMemo.get(schools);
+  const cohortField = getRegionConfig(region).cohortField || 'eliteCohort';
+  const options = {
+    stage: distinctLabels(schools, (s) => (s.schoolStageLabel || '').trim()),
+    property: distinctLabels(schools, (s) => (s.schoolPropertyLabel || '').trim()),
+    keyLevel: distinctLabels(schools, (s) => (s.schoolKeyLevel || '').trim()),
+    cohort: distinctLabels(schools, (s) => (s[cohortField] || '')),
+    featureFilters: FEATURE_FILTERS.map(({ id, label }) => ({ id, label }))
+  };
+  filterOptionsMemo.set(schools, options);
+  return options;
+}
+
 // 排序用的层级权重（与 data-store 的 KEY_LEVEL_PRIORITY 对齐，仅用于列表排序）
 const KEY_LEVEL_SORT = {
   '市重点': 100, '三公': 95, '区重点': 80, '顶级民办': 70,
@@ -254,13 +272,9 @@ export default async function SchoolsPage({ searchParams }) {
   }
   const cards = fullPageSchools.map(toSchoolListCard);
 
-  const filterOptions = {
-    stage: distinctLabels(schools, (s) => (s.schoolStageLabel || '').trim()),
-    property: distinctLabels(schools, (s) => (s.schoolPropertyLabel || '').trim()),
-    keyLevel: distinctLabels(schools, (s) => (s.schoolKeyLevel || '').trim()),
-    cohort: distinctLabels(schools, (s) => (s[cohortField] || '')),
-    featureFilters: FEATURE_FILTERS.map(({ id, label }) => ({ id, label }))
-  };
+  // filterOptions 只依赖 schools 本身（不随筛选变化），做 region 级 memo：
+  // Data Cache 60s 窗口内同一 schools 引用直接复用，省去每次请求的 O(n) 遍历。
+  const filterOptions = getFilterOptions(schools, region);
 
   const stageTotals = { junior: 0, senior_high: 0, complete: 0 };
   for (const s of schools) {

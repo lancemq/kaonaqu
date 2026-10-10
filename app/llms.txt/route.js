@@ -3,6 +3,8 @@ import { buildAllUrls } from '../../lib/sitemap-urls.mjs';
 // llms.txt（AI 爬虫入口，https://llmstxt.org）：活生成，地区/学校数/URL 与站内数据同源，
 // 替代原手工维护的 public/llms.txt（已删除）。
 export const fetchCache = 'force-cache';
+// URL 清单 1 小时内直接复用上次构建结果（Route Cache），爬虫高频抓取不再反复跑函数。
+export const revalidate = 3600;
 
 export async function GET() {
   const { base, regions } = await buildAllUrls();

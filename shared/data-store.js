@@ -254,6 +254,26 @@ async function loadSchoolsList(region = DEFAULT_REGION) {
 
 // 全量新闻列表（轻量，排除 content）。供新闻列表页、首页、专题页等使用。0.1MB。
 // published_at 并列时按 id 倒序次级排序，保证同时间戳新闻顺序确定（跨查询一致）。
+// 新闻详情页相关数据专用：按 exam_type/category 过滤取最近 N 条（替代全量 loadNewsList 的 JS 打分），
+// 把"全量序列化→JS 过滤"的 CPU 成本下推为 SQL LIMIT 查询。结果仍经 Data Cache 缓存。
+async function loadNewsForRelated(region, { examType = '', category = '', excludeId = '', limit = 12 } = {}) {
+  if (!isSupabaseConfigured()) return [];
+  const client = getServiceClient();
+  let query = client
+    .from(NEWS_TABLE)
+    .select(NEWS_LIST_COLUMNS)
+    .eq('region', region)
+    .order('published_at', { ascending: false })
+    .order('id', { ascending: false })
+    .limit(limit);
+  if (excludeId) query = query.neq('id', excludeId);
+  if (examType) query = query.eq('exam_type', examType);
+  else if (category) query = query.eq('category', category);
+  const { data, error } = await query;
+  if (error) throw error;
+  return (data || []).map((row) => rowToNews(row)).filter(Boolean);
+}
+
 async function loadNewsList(region = DEFAULT_REGION) {
   if (!isSupabaseConfigured()) return [];
   const client = getServiceClient();
@@ -746,6 +766,7 @@ module.exports = {
   deleteNewsFromSupabase,
   sortBySchoolPriority,
   loadSchoolsList,
+  loadNewsForRelated,
   loadNewsList,
   loadSchoolsByDistrict,
   loadNewsIds,

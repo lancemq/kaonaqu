@@ -8,9 +8,12 @@ import { getRegionContext } from '../../../lib/region-server.mjs';
 import { RegionSelector } from '../../../components/region-selector';
 
 const require = createRequire(import.meta.url);
-const { getNewsById, loadNewsList, loadSchoolsForRelated } = require('../../../shared/data-store');
+const { getNewsById, loadNewsForRelated, loadSchoolsForRelated } = require('../../../shared/data-store');
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+
+// ISR：新闻/政策页 10 分钟内 CDN 直出（新闻时效为天级，秒级更新靠写侧 revalidateTag 兜底）。
+export const revalidate = 600;
 
 // 将正文里“名称（网址）”形式的裸网址转换为 Markdown 链接 [名称](网址)，
 // 使显示只保留可读名称、名称本身为可点击链接、原始网址不出现。
@@ -377,12 +380,22 @@ export default async function NewsDetailPage({ params }) {
     notFound();
   }
   const { region, config } = await getRegionContext();
-  const news = await loadNewsList(region);
+
   if (newsItem.newsType === 'policy') {
-    return renderPolicyDetail(newsItem, news, region);
+    // 政策详情：映射新闻单查 + 同 examType 政策近 8 条（专用查询，不再拉全量列表）
+    const mappedNewsId = getPolicyMappedNewsId(newsItem);
+    const [mappedNews, relatedPolicies] = await Promise.all([
+      mappedNewsId ? getNewsById(mappedNewsId) : Promise.resolve(null),
+      loadNewsForRelated(region, { examType: getPolicyExamType(newsItem), category: 'policy', excludeId: newsItem.id, limit: 8 }),
+    ]);
+    return renderPolicyDetail(newsItem, mappedNews, relatedPolicies, region);
   }
-  const relatedSchools = await loadSchoolsForRelated(newsItem.primarySchoolId, 4, region);
-  return renderNewsDetail(newsItem, news, relatedSchools, region);
+
+  const [relatedNews, relatedSchools] = await Promise.all([
+    loadNewsForRelated(region, { examType: newsItem.examType || '', excludeId: newsItem.id, limit: 12 }),
+    loadSchoolsForRelated(newsItem.primarySchoolId, 4, region),
+  ]);
+  return renderNewsDetail(newsItem, relatedNews, relatedSchools, region);
 }
 
 // 新闻来源：渲染为可点击外链（显示来源名，不显示网址文本）
@@ -405,10 +418,10 @@ function SourceLink({ source, fallbackName }) {
   );
 }
 
-function renderNewsDetail(item, news, relatedSchools, region) {
-  const policyNews = news.filter((n) => n.newsType === 'policy');
-  const relatedPolicies = buildRelatedPolicies(policyNews, item);
-  const relatedNews = buildRelatedNews(news, item);
+function renderNewsDetail(item, relatedNewsAll, relatedSchools, region) {
+  // 相关新闻已由 SQL 过滤（同 examType，排除自身，倒序），此处仅本地打分取 4 条
+  const relatedPolicies = relatedNewsAll.filter((n) => n.newsType === 'policy').slice(0, 4);
+  const relatedNews = buildRelatedNews(relatedNewsAll, item);
   const sourceName = item.source?.name || '未知来源';
   const articleType = getNewsCategoryLabel(item);
   const articleBodyMarkdown = item.content || '';
@@ -552,15 +565,12 @@ function renderNewsDetail(item, news, relatedSchools, region) {
   );
 }
 
-function renderPolicyDetail(item, news, region) {
+function renderPolicyDetail(item, mappedNews, relatedPolicies, region) {
   const mappedNewsId = getPolicyMappedNewsId(item);
-  const mappedNews = mappedNewsId ? news.find((entry) => entry.id === mappedNewsId) : null;
   const articleBodyMarkdown = item.content || '';
   const sourceName = item.source?.name || '官方来源';
   const examTypeLabel = getPolicyExamTypeLabel(item);
   const summaryText = cleanPolicyText(item.summary, item.title) || '暂无摘要';
-  const policyNews = news.filter((n) => n.newsType === 'policy');
-  const relatedPolicies = buildRelatedPoliciesForPolicy(policyNews, item);
   const displayDate = formatArticleDate(item.publishedAt || item.year);
 
   if (!articleBodyMarkdown || (Array.isArray(articleBodyMarkdown) && !articleBodyMarkdown.length)) {

@@ -19,6 +19,10 @@ import { RegionSelector } from '../../../components/region-selector';
 const require = createRequire(import.meta.url);
 const { getSchoolById } = require('../../../shared/data-store');
 
+// ISR：详情页内容非秒级时效（分数线/介绍低频更新），10 分钟内 CDN 直出，
+// 函数只为过期后的首次访问执行。写入侧已有 revalidateTag('supabase-data') 保读写一致。
+export const revalidate = 600;
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 
 function renderInlineMarkdown(text) {

@@ -42,7 +42,7 @@ export default async function GroupsPage({ searchParams }) {
     query: typeof params?.query === 'string' ? params.query : ''
   };
 
-  const data = buildGroupsData(schools);
+  const data = buildGroupsData(schools, region);
   const filteredGroups = filterGroups(data.groups, filters);
 
   const featuredGroups = filteredGroups.slice(0, 5);
