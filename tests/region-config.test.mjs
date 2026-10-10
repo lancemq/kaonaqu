@@ -168,8 +168,8 @@ test('nanjing 地区配置：满分 700/750、11 区、频道开关', () => {
   assert.deepEqual(cfg.home.newsSpecialPages, []);
 });
 
-test('地区数量与白名单：三地区且 REGION_ENTRIES 与 REGIONS 同步', () => {
+test('地区数量与白名单：四地区且 REGION_ENTRIES 与 REGIONS 同步', () => {
   const { REGION_ENTRIES } = require('../shared/region-list.mjs');
-  assert.deepEqual(Object.keys(REGIONS), ['shanghai', 'suzhou', 'nanjing']);
+  assert.deepEqual(Object.keys(REGIONS), ['shanghai', 'suzhou', 'nanjing', 'wuxi']);
   assert.deepEqual(REGION_ENTRIES.map((e) => e.value), Object.keys(REGIONS));
 });
