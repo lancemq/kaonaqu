@@ -1,6 +1,6 @@
 import '../../../styles/channels/knowledge.css';
 import 'katex/dist/katex.min.css';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import KnowledgePage from '../../../components/knowledge-page';
 import { getKnowledgePage, listKnowledgeSlugs, buildKnowledgeJsonLd } from '../../../lib/knowledge-content.mjs';
 import { getRegionContext } from '../../../lib/region-server.mjs';
@@ -11,7 +11,9 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { region, config } = await getRegionContext();
-  if (config.features.knowledge === false) redirect(`/${region}/news`);
+  // 知识内容为上海专属：非上海 region 直接 404（不 redirect——redirect 会让爬虫反复追链，
+  // 每条都消耗函数 CPU 且计入错误率；404 一次终局，对 SEO 也更干净）。
+  if (config.features.knowledge === false) notFound();
   const page = await getKnowledgePage((await params).slug || []);
 
   if (!page) {
@@ -40,7 +42,8 @@ export async function generateMetadata({ params }) {
 
 export default async function KnowledgeRoutePage({ params }) {
   const { region, config } = await getRegionContext();
-  if (config.features.knowledge === false) redirect(`/${region}/news`);
+  // 同上：非上海 region 404 终局（方案 A，见 generateMetadata 注释）。
+  if (config.features.knowledge === false) notFound();
   const page = await getKnowledgePage((await params).slug || []);
 
   if (!page) {
