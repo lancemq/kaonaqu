@@ -213,6 +213,8 @@ export default async function NewsPage({ searchParams }) {
         totalPages={totalPages}
         currentPage={safePage}
         activeFilter={activeFilter}
+        quickLinks={(config.home && config.home.quickLinks) || []}
+        featuredSpecial={(config.home && config.home.featuredSpecial) || null}
       />
 
       <div className="channel-color-bar" aria-hidden="true">

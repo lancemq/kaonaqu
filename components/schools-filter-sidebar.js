@@ -28,7 +28,7 @@ function FilterSection({ id, label, open, onToggle, active, badge, children }) {
   );
 }
 
-export default function SchoolsFilterSidebar({ districts, filters, filterOptions }) {
+export default function SchoolsFilterSidebar({ districts, filters, filterOptions, cohortLabel = '荣誉' }) {
   const router = useRouter();
   const { region, features } = useRegion();
   const { ids: bagIds, ready: bagReady, clear: clearBag, max: bagMax } = useCompareBag();
@@ -111,7 +111,7 @@ export default function SchoolsFilterSidebar({ districts, filters, filterOptions
         </div>
       </FilterSection>
 
-      <FilterSection id="cohort" label={region === 'suzhou' ? '办学星级' : '荣誉'} open={openSections.has('cohort')} onToggle={toggleSection} active={activeCohort !== 'all'}>
+      <FilterSection id="cohort" label={cohortLabel} open={openSections.has('cohort')} onToggle={toggleSection} active={activeCohort !== 'all'}>
         <div className="schools-aerial-filter-stack">
           {filterOptions.cohort.map((option) => (
             <button key={option} type="button" className={activeCohort === option ? 'is-active' : ''} onClick={() => navigate({ cohort: activeCohort === option ? 'all' : option })}>

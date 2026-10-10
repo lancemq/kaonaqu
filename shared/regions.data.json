@@ -275,8 +275,15 @@
             "label": "知识专题",
             "href": "/knowledge"
           }
-        ]
-      }
+        ],
+        "featuredSpecial": {
+          "label": "体育改革",
+          "title": "{label}体育考试改革专题",
+          "summary": "中考体育新规、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生，一页串起来看。",
+          "href": "/news/sports-reform"
+        }
+      },
+      "cohortField": "eliteCohort"
     },
     "suzhou": {
       "label": "苏州",
@@ -442,8 +449,15 @@
             "label": "高考选考",
             "href": "/news/suzhou-gaokao"
           }
-        ]
-      }
+        ],
+        "featuredSpecial": {
+          "label": "中考专题",
+          "title": "{label}中考政策详解",
+          "summary": "录取批次、四市六区招生格局、指标生 70% 均衡、740 分构成与体育中考，一页串起来看。",
+          "href": "/news/suzhou-zhongkao"
+        }
+      },
+      "cohortField": "schoolStar"
     },
     "nanjing": {
       "label": "南京",
@@ -577,7 +591,8 @@
             "href": "/news?filter=policy"
           }
         ]
-      }
+      },
+      "cohortField": "schoolStar"
     },
     "wuxi": {
       "label": "无锡",
@@ -682,7 +697,8 @@
             "href": "/news?filter=policy"
           }
         ]
-      }
+      },
+      "cohortField": "schoolStar"
     }
   }
 }

@@ -23,6 +23,7 @@ import { deriveSchoolStar } from '../../lib/school-taxonomy';
 import { getRegionContext } from '../../lib/region-server.mjs';
 
 const require = createRequire(import.meta.url);
+const { getRegionConfig } = require('../../shared/region-config');
 const { loadSchoolsList, getSchoolsByIds } = require('../../shared/data-store');
 const { buildDistricts } = require('../../shared/data-schema');
 
@@ -102,9 +103,10 @@ function toSchoolListCard(school) {
 
 function filterSchools(schools, filters, region = DEFAULT_REGION) {
   const q = (filters.query || '').trim().toLowerCase();
-  // 苏州无上海式「四校/八大金刚」荣誉层级，办学星级（四星/三星/二星/一星）由 features 派生，
-  // 故 cohort 维度在苏州取 schoolStar，上海取 eliteCohort。
-  const cohortOf = (s) => (region === 'suzhou' ? (s.schoolStar || '') : (s.eliteCohort || ''));
+  // cohort 维度取值字段由 regions.data.json 的 cohortField 决定
+  // （上海=eliteCohort 荣誉层级；苏州/南京/无锡=schoolStar 办学星级，由 features 派生）。
+  const cohortField = getRegionConfig(region).cohortField || 'eliteCohort';
+  const cohortOf = (s) => (s[cohortField] || '');
   return schools.filter((s) => {
     if (filters.district !== 'all' && s.districtId !== filters.district) return false;
     if (filters.stage !== 'all' && (s.schoolStageLabel || '') !== filters.stage) return false;
@@ -163,9 +165,10 @@ function scoreValue(line) {
 }
 
 function sortByPriority(list, region = DEFAULT_REGION) {
+  const cohortField = getRegionConfig(region).cohortField || 'eliteCohort';
   return list.slice().sort((a, b) => {
-    const aCohort = String(region === 'suzhou' ? (a.schoolStar || '') : (a.eliteCohort || '')).trim() ? 1 : 0;
-    const bCohort = String(region === 'suzhou' ? (b.schoolStar || '') : (b.eliteCohort || '')).trim() ? 1 : 0;
+    const aCohort = String(a[cohortField] || '').trim() ? 1 : 0;
+    const bCohort = String(b[cohortField] || '').trim() ? 1 : 0;
     if (aCohort !== bCohort) return bCohort - aCohort;
     const aLevel = KEY_LEVEL_SORT[String(a.schoolKeyLevel || '').trim()] || 0;
     const bLevel = KEY_LEVEL_SORT[String(b.schoolKeyLevel || '').trim()] || 0;
@@ -212,9 +215,11 @@ export default async function SchoolsPage({ searchParams }) {
   if (config.features.schools === false) redirect(`/${region}/news`);
   const label = config.label;
   const schools = await loadSchoolsList(region);
-  // 苏州学校无上海式荣誉层级，从 features 派生办学星级（四星/三星/二星/一星），
-  // 供列表筛选的「荣誉」维度在苏州改用星级。上海仍用 eliteCohort。
+  // 江苏城市学校无上海式荣誉层级，从 features 派生办学星级（四星/三星/二星/一星），
+  // 供列表筛选的「荣誉/星级」维度使用；取值字段由 regions.data.json cohortField 决定。
   for (const s of schools) s.schoolStar = deriveSchoolStar(s);
+  const cohortField = config.cohortField || 'eliteCohort';
+  const cohortLabel = cohortField === 'schoolStar' ? '办学星级' : '荣誉';
   const districts = buildDistricts(schools, [], region);
   const params = await searchParams;
 
@@ -253,7 +258,7 @@ export default async function SchoolsPage({ searchParams }) {
     stage: distinctLabels(schools, (s) => (s.schoolStageLabel || '').trim()),
     property: distinctLabels(schools, (s) => (s.schoolPropertyLabel || '').trim()),
     keyLevel: distinctLabels(schools, (s) => (s.schoolKeyLevel || '').trim()),
-    cohort: distinctLabels(schools, (s) => (region === 'suzhou' ? (s.schoolStar || '') : (s.eliteCohort || ''))),
+    cohort: distinctLabels(schools, (s) => (s[cohortField] || '')),
     featureFilters: FEATURE_FILTERS.map(({ id, label }) => ({ id, label }))
   };
 
@@ -282,7 +287,7 @@ export default async function SchoolsPage({ searchParams }) {
   if (filters.stage !== 'all') activeFilterSummary.push(`学段：${filters.stage}`);
   if (filters.property !== 'all') activeFilterSummary.push(`办学性质：${filters.property}`);
   if (filters.keyLevel !== 'all') activeFilterSummary.push(`等级：${filters.keyLevel}`);
-  if (filters.cohort !== 'all') activeFilterSummary.push(region === 'suzhou' ? `办学星级：${filters.cohort}` : `荣誉：${filters.cohort}`);
+  if (filters.cohort !== 'all') activeFilterSummary.push(`${cohortLabel}：${filters.cohort}`);
   if (filters.boarding === 'boarding') activeFilterSummary.push('寄宿制');
   if (filters.boarding === 'day') activeFilterSummary.push('走读');
   if (filters.international === 'international') activeFilterSummary.push('国际课程');
@@ -350,7 +355,7 @@ export default async function SchoolsPage({ searchParams }) {
         </header>
 
         <section className="schools-aerial-content">
-          <SchoolsFilterSidebar districts={districts} filters={filters} filterOptions={filterOptions} />
+          <SchoolsFilterSidebar districts={districts} filters={filters} filterOptions={filterOptions} cohortLabel={cohortLabel} />
 
           <section className="schools-aerial-results" aria-label="学校检索结果">
             <header className="schools-aerial-results-head">

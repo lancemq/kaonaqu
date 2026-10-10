@@ -30,34 +30,6 @@ function getSectionChip(section) {
   return SECTION_CHIP[section] || '资讯';
 }
 
-const QUICK_LINKS = [
-  { label: '中招专题', href: '/news/zhongkao-special' },
-  { label: '高招专题', href: '/news/gaokao-special' },
-  { label: '政策速查', href: '/news/policy-glossary' },
-  { label: '政策问答', href: '/news/policy-faq' }
-];
-
-const SPORTS_SPECIAL = {
-  label: '体育改革',
-  title: '{label}体育考试改革专题',
-  summary: '中考体育新规、过程性评价、统一考试时间表、伤病免缓考与体育特长生招生，一页串起来看。',
-  href: '/news/sports-reform'
-};
-
-// 苏州专题：仅新闻频道，侧栏入口指向苏州专属专题页
-const SUZHOU_QUICK_LINKS = [
-  { label: '中考专题', href: '/news/suzhou-zhongkao' },
-  { label: '升学路径', href: '/news/suzhou-pathways' },
-  { label: '高考选考', href: '/news/suzhou-gaokao' }
-];
-
-const SUZHOU_FEATURED_SPECIAL = {
-  label: '中考专题',
-  title: '{label}中考政策详解',
-  summary: '录取批次、四市六区招生格局、指标生 70% 均衡、740 分构成与体育中考，一页串起来看。',
-  href: '/news/suzhou-zhongkao'
-};
-
 function getItemHref(item) {
   return `/news/${encodeURIComponent(item.id)}`;
 }
@@ -81,11 +53,9 @@ function buildNewsHref(base, next) {
   return s ? `/news?${s}` : '/news';
 }
 
-export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, totalPages = 1, currentPage = 1, activeFilter = 'all' }) {
+export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, totalPages = 1, currentPage = 1, activeFilter = 'all', quickLinks = [], featuredSpecial = null }) {
   const router = useRouter();
   const { region, label } = useRegion();
-  const quickLinks = region === 'suzhou' ? SUZHOU_QUICK_LINKS : QUICK_LINKS;
-  const featuredSpecial = region === 'suzhou' ? SUZHOU_FEATURED_SPECIAL : SPORTS_SPECIAL;
   const [isPending, startTransition] = useTransition();
 
   // 服务端是唯一数据源：URL 变化即重新请求并下发当前页卡片。
@@ -172,12 +142,16 @@ export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, 
       <aside className="news-aerial-sidebar">
         <section className="news-hot-card">
           <SectionLabel>SPECIALS</SectionLabel>
-          <h2>{featuredSpecial.title.replace('{label}', label)}</h2>
-          <p>{featuredSpecial.summary}</p>
-          <RegionLink href={featuredSpecial.href}>
-            <span>{featuredSpecial.label}</span>
-            <strong>进入</strong>
-          </RegionLink>
+          {featuredSpecial ? (
+            <>
+              <h2>{featuredSpecial.title.replace('{label}', label)}</h2>
+              <p>{featuredSpecial.summary}</p>
+              <RegionLink href={featuredSpecial.href}>
+                <span>{featuredSpecial.label}</span>
+                <strong>进入</strong>
+              </RegionLink>
+            </>
+          ) : null}
         </section>
 
         <section className="news-quick-card">
