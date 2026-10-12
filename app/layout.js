@@ -2,7 +2,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Funnel_Sans, Geist, Geist_Mono, Noto_Sans_SC, Noto_Serif_SC } from 'next/font/google';
 import BodyPageFlag from '../components/body-page-flag';
 import { RegionProvider } from '../components/region-context';
-import { getRegionContext } from '../lib/region-server.mjs';
+
 import { KNOWN_REGIONS } from '../shared/region-list.mjs';
 import '../styles/index.css';
 
@@ -53,39 +53,15 @@ const fontNotoSerifSC = Noto_Serif_SC({
 // 故各页面不再使用 force-dynamic（searchParams/params 已自动使页面动态渲染）。
 export const fetchCache = 'force-cache';
 
-export async function generateMetadata() {
-  const { region, config } = await getRegionContext();
-  const label = config.label;
-  const title = config.seo.titleTemplate.replace('{label}', label);
-  const description = config.seo.descriptionTemplate.replace('{label}', label);
-  const keywords = config.seo.keywords.map((k) => k.replace('{label}', label));
+export function generateMetadata() {
+  // 地区级 SEO 元数据（title/canonical 等）移至 app/[region]/layout.js（从 params 取 region，
+  // 不再用 headers()，保证 ISR 生效）。根布局只保留全局 metadataBase。
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
-  return {
-    metadataBase: new URL(siteUrl),
-    title,
-    description,
-    keywords,
-    alternates: {
-      canonical: `/${region}`
-    },
-    openGraph: {
-      type: 'website',
-      locale: 'zh_CN',
-      siteName: '考哪去',
-      title,
-      description,
-      url: siteUrl
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description
-    }
-  };
+  return { metadataBase: new URL(siteUrl), openGraph: { locale: 'zh_CN', siteName: '考哪去' } };
 }
 
-export default async function RootLayout({ children }) {
-  const { region, config } = await getRegionContext();
+export default function RootLayout({ children }) {
+
   const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-7712476875404468';
   return (
     <html lang="zh-CN">

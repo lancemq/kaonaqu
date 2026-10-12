@@ -4,7 +4,7 @@ import { buildKnowledgeNav, getGradeQuickLinks } from '../lib/knowledge-content.
 import { MathBlock, renderInlineMath } from './knowledge-math';
 import KnowledgeQuiz from './knowledge-quiz';
 import { FREQ_LABELS } from '../lib/knowledge-meta.mjs';
-import { getRegionContext } from '../lib/region-server.mjs';
+import { getRegionContextSync } from '../lib/region-server.mjs';
 import { RegionSelector } from './region-selector';
 
 const NAV_ITEMS = [
@@ -526,7 +526,7 @@ function RichTextNode({ headingState, node }) {
   }
 }
 
-function SubjectPage({ page }) {
+function SubjectPage({ page, features }) {
   const headingState = { count: 0 };
   const articleBlocks = (page.richBlocks || []).filter((block) => !['page-header', 'subject-summary'].includes(block.className));
 
@@ -546,17 +546,17 @@ function SubjectPage({ page }) {
   );
 }
 
-export default async function KnowledgePage({ page }) {
+export default async function KnowledgePage({ page, region }) {
   const pageKind = getKnowledgePageKind(page);
-  const { config } = await getRegionContext();
+  const { config } = getRegionContextSync(region);
   const { brandSuffix, brandSuffixFull, features } = config;
 
   return (
     <main className={`knowledge-page knowledge-page-${pageKind}`} data-knowledge-slug={page.slug}>
       <SiteNav brandSuffix={brandSuffix} features={features} />
       {pageKind === 'channel' ? <ChannelPage page={page} /> : null}
-      {pageKind === 'grade' ? (page.renderMode === 'structured' ? <GradePage page={page} /> : <SubjectPage page={page} />) : null}
-      {pageKind === 'subject' ? <SubjectPage page={page} /> : null}
+      {pageKind === 'grade' ? (page.renderMode === 'structured' ? <GradePage page={page} /> : <SubjectPage page={page} features={features} />) : null}
+      {pageKind === 'subject' ? <SubjectPage page={page} features={features} /> : null}
       <ColorBlocks />
       <Footer brandSuffixFull={brandSuffixFull} />
     </main>

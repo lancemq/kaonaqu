@@ -5,7 +5,7 @@ import test from 'node:test';
 // groups 页结构守护（原针对 groups-page-client.js 的断言已随 P2 服务端化迁移）：
 // 页面为服务端骨架（channel-hero/footer + aerial 布局），交互只存在于岛组件中。
 test('school groups page keeps the aerial layout and is server-rendered with islands', () => {
-  const pageSource = readFileSync('app/schools/groups/page.js', 'utf8');
+  const pageSource = readFileSync('app/[region]/schools/groups/page.js', 'utf8');
 
   // 无遗留 SiteShell / 旧版页脚
   assert.doesNotMatch(pageSource, /<SiteShell/);

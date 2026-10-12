@@ -3,17 +3,17 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
 const topicPages = [
-  'app/news/zhongkao-special/page.js',
-  'app/news/gaokao-special/page.js'
+  'app/[region]/news/zhongkao-special/page.js',
+  'app/[region]/news/gaokao-special/page.js'
 ];
 
 const policyToolPages = [
-  'app/news/policy-faq/page.js',
-  'app/news/policy-glossary/page.js'
+  'app/[region]/news/policy-faq/page.js',
+  'app/[region]/news/policy-glossary/page.js'
 ];
 
 test('admission timeline uses the Pencil dual-track schedule redesign', () => {
-  const source = readFileSync('app/news/admission-timeline/page.js', 'utf8');
+  const source = readFileSync('app/[region]/news/admission-timeline/page.js', 'utf8');
   const styles = readFileSync('styles/pages/news-special.css', 'utf8');
 
   assert.match(source, /className="admission-timeline-page"/);

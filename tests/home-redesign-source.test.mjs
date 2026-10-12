@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
-const pageSource = await readFile(new URL('../app/page.js', import.meta.url), 'utf8');
+const pageSource = await readFile(new URL('../app/[region]/page.js', import.meta.url), 'utf8');
 const homeCss = await readFile(new URL('../styles/channels/home.css', import.meta.url), 'utf8');
 
 test('home page uses the aerial redesign shell instead of the old SiteShell prototype', () => {
@@ -29,7 +29,7 @@ test('home page includes the news specials entry section, fed from region config
 });
 
 test('首页地区专属内容配置化：不再堆积 region 特例分支', async () => {
-  const source = await readFile(new URL('../app/page.js', import.meta.url), 'utf8');
+  const source = await readFile(new URL('../app/[region]/page.js', import.meta.url), 'utf8');
   // 专题卡/快捷入口/特色校全部来自 regions.data.json 的 home 字段
   assert.match(source, /config\.home \|\| \{\}/);
   assert.match(source, /homeConfig\.newsSpecials/);

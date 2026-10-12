@@ -7,7 +7,7 @@ const { handleApiRequest } = require('../../../shared/api-router');
 const { checkWriteAuth, getCorsOrigin, corsHeaders } = require('../../../shared/api-auth');
 
 // Route handler 不继承 layout 的 fetchCache 段配置，需单独设置。
-// force-cache 使 GET 请求的 Supabase 查询被 Data Cache 缓存（revalidate: 60s），
+// force-cache 使 GET 请求的 Supabase 查询被 Data Cache 缓存（revalidate: SUPABASE_REVALIDATE，默认 300s），
 // 即使 handler 内先访问了 request.method / headers / searchParams 等 Request-time API。
 // 写操作（POST/PUT/DELETE）不受影响（非 GET，Data Cache 不缓存）。
 export const fetchCache = 'force-cache';
@@ -51,7 +51,7 @@ async function handle(request, paramsPromise) {
     });
 
     // 写操作成功后立即失效 Data Cache（异步失效，调用立即返回）。
-    // 让后续 GET /api/* 与页面查询函数拿到最新数据，避免 60s 延迟。
+    // 让后续 GET /api/* 与页面查询函数拿到最新数据，避免缓存延迟。
     if (request.method !== 'GET') {
       revalidateTag(SUPABASE_DATA_TAG);
     }

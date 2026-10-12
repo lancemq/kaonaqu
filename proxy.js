@@ -71,14 +71,9 @@ export function proxy(request) {
         return NextResponse.redirect(redirectUrl, 308);
       }
 
-      // 带前缀：rewrite 到剩余路径，注入 x-region。
-      const url = request.nextUrl.clone();
-      url.pathname = rest;
-      const requestHeaders = new Headers(request.headers);
-      requestHeaders.set('x-region', firstSegment);
-      return NextResponse.rewrite(url, {
-        request: { headers: requestHeaders },
-      });
+      // 带前缀：路由已实体化为 app/[region]/...（页面从 params.region 取地区），
+      // 不再 rewrite + x-region header——headers() 会使页面退化为动态渲染烧 CPU。
+      return NextResponse.next();
     }
     // 首段非地区（/schools、/news、/knowledge 等）：fallthrough 到 308。
   } else {

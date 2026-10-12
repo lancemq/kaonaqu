@@ -1,0 +1,299 @@
+import { RegionLink } from '../../../../components/region-link';
+import { redirect } from 'next/navigation';
+import { createRequire } from 'module';
+import {
+  clipText,
+  getDistrictSchoolTopic,
+  getSchoolAdmissionInfo,
+  getSchoolDistrictName,
+  getSchoolStage,
+  getSchoolType
+} from '../../../../lib/site-utils';
+import { getSchoolOverview } from '../../../../lib/school-content';
+import { getRegionContextFromParams } from '../../../../lib/region-server.mjs';
+import { RegionSelector } from '../../../../components/region-selector';
+
+const require = createRequire(import.meta.url);
+const { loadSchoolsList } = require('../../../../shared/data-store');
+const { getDistrictCatalog } = require('../../../../shared/region-config');
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+
+export async function generateMetadata({ params }) {
+  const { region, config } = await getRegionContextFromParams(params);
+  if (config.features.schools === false) redirect(`/${region}/news`);
+  const label = config.label;
+  return {
+    title: `${label}学校区域频道 - 各区学校结构与区域专题 | 考哪去`,
+    description: `按${label}各区查看学校结构、区域教育特点、初高中分布与学校专题入口。`,
+    alternates: { canonical: `/${region}/schools/district` }
+  };
+}
+
+
+function getVerifiedCount(schools) {
+  return (schools || []).filter((school) => school.infoVerified).length;
+}
+
+function rankSchool(school) {
+  const level = String(school?.schoolKeyLevel || '');
+  let score = 0;
+  if (level.includes('市重点')) score += 100;
+  else if (level.includes('区重点')) score += 80;
+  if (school?.infoVerified) score += 10;
+  score += (school?.features?.length || 0) + (school?.tags?.length || 0);
+  return score;
+}
+
+function countByStage(schools, stage) {
+  return schools.filter((school) => school.schoolStage === stage).length;
+}
+
+function buildDistrictRows(districts, schools) {
+  return districts
+    .map((district) => {
+      const districtSchools = schools.filter((school) => school.districtId === district.id);
+      return {
+        ...district,
+        total: districtSchools.length,
+        seniorHigh: countByStage(districtSchools, 'senior_high'),
+        junior: countByStage(districtSchools, 'junior'),
+        complete: countByStage(districtSchools, 'complete'),
+        publicCount: districtSchools.filter((school) => school.schoolPropertyLabel === '公办').length,
+        privateCount: districtSchools.filter((school) => school.schoolPropertyLabel === '民办').length,
+        topic: getDistrictSchoolTopic(district),
+        overview: district.districtOverview || getDistrictSchoolTopic(district) || district.description || '区域学校信息持续整理中。'
+      };
+    })
+    .sort((left, right) => Number(right.total || 0) - Number(left.total || 0));
+}
+
+function getDistrictFeaturedSchool(district, schools) {
+  return schools
+    .filter((school) => school.districtId === district.id)
+    .slice()
+    .sort((left, right) => rankSchool(right) - rankSchool(left))
+    .at(0);
+}
+
+function SectionKicker({ children }) {
+  return (
+    <div className="channel-kicker">
+      <span aria-hidden="true" />
+      <p>{children}</p>
+    </div>
+  );
+}
+
+async function SiteNav({ config: navConfig }) {
+  const config = navConfig;
+  return (
+    <nav className="channel-nav" aria-label="顶部导航">
+      <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
+        <strong>考哪去</strong>
+        <span>{config.brandSuffix}</span>
+      </RegionLink>
+      <div className="channel-nav-links">
+        <RegionLink href="/">首页</RegionLink>
+        <RegionLink href="/news">新闻</RegionLink>
+        <RegionLink className="is-active" href="/schools">学校</RegionLink>
+        <RegionLink href="/knowledge">知识</RegionLink>
+        <RegionSelector />
+      </div>
+    </nav>
+  );
+}
+
+async function Footer({ config: footerConfig }) {
+  const config = footerConfig;
+  return (
+    <>
+      <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <footer className="channel-footer">
+        <div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div>
+        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink></nav>
+        <p>© 2026 考哪去</p>
+      </footer>
+    </>
+  );
+}
+
+export default async function DistrictIndexPage({ params }) {
+  const { region, config } = await getRegionContextFromParams(params);
+  if (config.features.schools === false) redirect(`/${region}/news`);
+  const label = config.label;
+  const schools = await loadSchoolsList(region);
+  const districts = getDistrictCatalog(region);
+  const districtRows = buildDistrictRows(districts, schools);
+  const totals = {
+    districts: districtRows.length,
+    schools: schools.length,
+    junior: countByStage(schools, 'junior'),
+    seniorHigh: countByStage(schools, 'senior_high'),
+    complete: countByStage(schools, 'complete')
+  };
+  const leadDistrict = districtRows[0];
+  const zoneDistricts = districtRows.slice(0, 6);
+  const highlightedDistricts = districtRows.slice(0, 3);
+  const featuredSchools = highlightedDistricts
+    .map((district) => ({ district, school: getDistrictFeaturedSchool(district, schools) }))
+    .filter((item) => item.school);
+  const relatedTools = [
+    { label: '学校数据库', href: '/schools' },
+    { label: '学校对比', href: '/schools/compare' },
+    { label: '分数匹配', href: '/schools/score-match' }
+  ];
+
+  const collectionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `${label}学校区域频道`,
+    description: `按${label}各区查看学校结构、区域教育特点、初高中分布与学校专题入口。`,
+    url: `${SITE_URL}/${region}/schools/district`,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: districtRows.length,
+      itemListElement: districtRows.map((district, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: district.name,
+        url: `${SITE_URL}/${region}/schools/district/${district.id}`
+      }))
+    }
+  };
+
+  return (
+    <main className="schools-aerial-page district-channel-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+      <SiteNav config={config} />
+
+      <header className="channel-hero" id="top">
+        <div className="channel-hero-content">
+          <section className="channel-hero-copy" aria-label={`${label}学校区域频道概览`}>
+            <div className="district-channel-breadcrumb"><RegionLink href="/schools">学校</RegionLink><span>/</span><strong>区域频道</strong></div>
+            <SectionKicker>DISTRICT CHANNEL</SectionKicker>
+            <h1>{label}学校区域频道</h1>
+            <p>从区域进入，先看各区学校密度、初高中结构和区域教育特点，再进入具体区县专题和学校详情。</p>
+          </section>
+
+          <aside className="channel-hero-stats" aria-label="区域频道数据统计">
+            <article><strong>{totals.districts}</strong><span>覆盖区域</span></article>
+            <article><strong>{totals.schools}</strong><span>收录学校</span></article>
+            <article><strong>{totals.seniorHigh}</strong><span>高中样本</span></article>
+            <article><strong>{totals.complete}</strong><span>完全中学</span></article>
+          </aside>
+        </div>
+      </header>
+
+      <section className="district-channel-overview" aria-label="区域频道概况">
+        <div>
+          <h2>区域概况</h2>
+          <p>{label}学校资源在各区域之间差异明显。按区浏览可以先判断学校密度、通勤范围、头部学校和学段结构，再进入具体学校做细分比较。</p>
+        </div>
+        <div className="district-channel-overview-stats">
+          <article><strong>{leadDistrict?.name || '浦东新区'}</strong><span>学校记录最多</span></article>
+          <article><strong>{totals.junior}</strong><span>初中记录</span></article>
+          <article><strong>{getVerifiedCount(schools)}</strong><span>已人工校正</span></article>
+        </div>
+      </section>
+
+      <section className="district-channel-section district-channel-zones" aria-label="学校密集区域">
+        <SectionKicker>SCHOOL ZONES</SectionKicker>
+        <h2>学校密集区域</h2>
+        <p>先从学校记录更多、结构更丰富的区域切入，适合做第一轮横向比较。</p>
+        <div className="district-channel-zone-grid">
+          {zoneDistricts.map((district) => (
+            <RegionLink className="district-channel-zone-card" href={`/schools/district/${district.id}`} key={district.id}>
+              <div>
+                <strong>{district.name}</strong>
+                <span>{district.total} 所</span>
+              </div>
+              <p>{clipText(district.topic, 42)}</p>
+              <em>高中 {district.seniorHigh} · 初中 {district.junior}</em>
+            </RegionLink>
+          ))}
+        </div>
+      </section>
+
+      <section className="district-channel-section district-channel-highlights" aria-label="区域名校">
+        <SectionKicker>HIGHLIGHTS</SectionKicker>
+        <h2>区域名校</h2>
+        <div className="district-channel-featured-grid">
+          {featuredSchools.map(({ district, school }) => (
+            <RegionLink className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
+              <div><span>{district.name}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
+              <strong>{school.name}</strong>
+              <p>{clipText(getSchoolAdmissionInfo(school) || getSchoolOverview(school) || '学校信息持续整理中。', 46)}</p>
+              <b>进入 →</b>
+            </RegionLink>
+          ))}
+        </div>
+      </section>
+
+      <section className="district-channel-schools" aria-label={`${label}各区学校入口`}>
+        <div className="district-channel-main-list">
+          <div className="district-channel-list-head">
+            <div>
+              <SectionKicker>ALL DISTRICTS</SectionKicker>
+              <h2>{label}各区入口</h2>
+            </div>
+            <p>按学校数量排序，点击进入对应区级学校专题。</p>
+          </div>
+
+          <div className="district-channel-row-list">
+            {districtRows.map((district) => (
+              <RegionLink className="district-channel-row" href={`/schools/district/${district.id}`} key={district.id}>
+                <div className="district-channel-row-info">
+                  <strong>{district.name}</strong>
+                  <span>{clipText(district.overview, 54)}</span>
+                </div>
+                <div className="district-channel-row-score">
+                  <strong>{district.total}</strong>
+                  <span>学校</span>
+                </div>
+              </RegionLink>
+            ))}
+          </div>
+        </div>
+
+        <aside className="district-channel-sidebar" aria-label="区域频道侧栏">
+          <section className="channel-side-card">
+            <SectionKicker>QUICK FILTER</SectionKicker>
+            <h2>快速筛选</h2>
+            <RegionLink className="is-active" href="/schools?stage=senior_high">高中学校</RegionLink>
+            <RegionLink href="/schools?stage=junior">初中学校</RegionLink>
+            <RegionLink href="/schools?stage=complete">完全中学</RegionLink>
+            <RegionLink href="/schools?property=民办">民办学校</RegionLink>
+          </section>
+
+          <section className="channel-side-card">
+            <SectionKicker>TOP AREAS</SectionKicker>
+            <h2>热门区域</h2>
+            {zoneDistricts.slice(0, 5).map((district) => (
+              <RegionLink href={`/schools/district/${district.id}`} key={district.id}>
+                <span>{district.name} · {district.total} 所</span>
+                <i>→</i>
+              </RegionLink>
+            ))}
+          </section>
+
+          <section className="channel-side-card is-dark">
+            <SectionKicker>TOOLS</SectionKicker>
+            <h2>区域工具</h2>
+            {relatedTools.map((tool) => (
+              <RegionLink href={tool.href} key={tool.href}>
+                <span>{tool.label}</span>
+                <i>→</i>
+              </RegionLink>
+            ))}
+          </section>
+        </aside>
+      </section>
+
+      <Footer config={config} />
+    </main>
+  );
+}

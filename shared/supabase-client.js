@@ -46,7 +46,11 @@ const NEWS_TABLE = process.env.SUPABASE_NEWS_TABLE || 'news';
 //   覆盖该默认行为，使 Request-time API 之后的 fetch 也能被 Data Cache 缓存。
 //   cachedFetch 内的 cache: 'force-cache' 为冗余兜底（段配置已覆盖）。
 function cachedFetch(input, init = {}) {
-  // 每次调用读取当前 globalThis.fetch：Next 运行期已被 patch，能正确处理 next 缓存选项；
+  // Data Cache 时长（秒）：写操作后由 revalidateTag('supabase-data') 立即失效，
+// 读缓存可安全拉长（300s）以降低函数 CPU。可用环境变量覆盖。
+const SUPABASE_REVALIDATE = Number(process.env.SUPABASE_REVALIDATE_SECONDS || 300);
+
+// 每次调用读取当前 globalThis.fetch：Next 运行期已被 patch，能正确处理 next 缓存选项；
   // 非 Next 环境（迁移脚本）则为原生 fetch，忽略 next（自动降级为不缓存）。
   const fetchFn = globalThis.fetch;
   return fetchFn(input, {
@@ -54,7 +58,7 @@ function cachedFetch(input, init = {}) {
     cache: 'force-cache',
     next: {
       ...(init.next || {}),
-      revalidate: 60,
+      revalidate: SUPABASE_REVALIDATE,
       tags: ['supabase-data']
     }
   });

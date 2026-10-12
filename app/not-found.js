@@ -1,10 +1,10 @@
 import '../styles/pages/not-found.css';
 import { RegionLink } from '../components/region-link';
-import { getRegionContext } from '../lib/region-server.mjs';
+import { getRegionContextSync } from '../lib/region-server.mjs';
 import { RegionSelector } from '../components/region-selector';
 
 export async function generateMetadata() {
-  const { config } = await getRegionContext();
+  const { config } = getRegionContextSync();
   const label = config.label;
   return {
     title: '页面未找到 | 考哪去',
@@ -60,7 +60,7 @@ function NotFoundFooter({ config }) {
 }
 
 export default async function NotFound() {
-  const { config } = await getRegionContext();
+  const { config } = getRegionContextSync();
   const features = config.features;
   return (
     <main className="not-found-page">

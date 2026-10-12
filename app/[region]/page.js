@@ -1,0 +1,485 @@
+import '../../styles/channels/home.css';
+import { RegionLink } from '../../components/region-link';
+import { createRequire } from 'module';
+import {
+  getNewsCategoryLabel,
+  getNewsSection,
+  getSchoolAdmissionInfo,
+  getSchoolDistrictName,
+  getSchoolFeatures,
+  getSchoolStage
+} from '../../lib/site-utils';
+import { getRegionContextFromParams } from '../../lib/region-server.mjs';
+import { RegionSelector } from '../../components/region-selector';
+
+const require = createRequire(import.meta.url);
+const { loadSchoolsList, loadNewsList } = require('../../shared/data-store');
+const { getDistrictCatalog } = require('../../shared/region-config');
+
+// 首页地区专属内容（专题卡/快捷入口/特色校名单）统一放 shared/regions.data.json
+// 的 home 字段，新增地区只改配置，不再堆积 region === 'xxx' 特例分支。
+
+// FOCUS 区块：首页右侧"平台更新动态"面板（动态指标，非专题入口）
+
+const KNOWLEDGE_TOPICS = [
+  { label: '九年级中考总览', meta: 'GRADE 9', href: '/knowledge/grade-9' },
+  { label: '数学压轴题路径', meta: 'MATH', href: '/knowledge/math-grade9' },
+  { label: '物理实验专题', meta: 'PHYSICS', href: '/knowledge/physics-grade9' },
+  { label: '高中衔接准备', meta: 'SENIOR', href: '/knowledge/senior-1' }
+];
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+
+function getNewsHref(item) {
+  return item?.id ? `/news/${encodeURIComponent(item.id)}` : '/news';
+}
+
+// 选取最新的新闻展示，优先覆盖不同分区（保持多样性）
+function pickFeaturedNews(news, count = 4) {
+  // news 已按 publishedAt 降序排列
+  const picked = [];
+  const usedSections = new Set();
+
+  // 第一轮：按时间取，每个分区最多 1 条
+  for (const item of news) {
+    if (picked.length >= count) break;
+    const section = getNewsSection(item);
+    if (usedSections.has(section)) continue;
+    usedSections.add(section);
+    picked.push(item);
+  }
+
+  // 第二轮：分区不够，按时间补足
+  for (const item of news) {
+    if (picked.length >= count) break;
+    if (picked.some((existing) => existing.id === item.id)) continue;
+    picked.push(item);
+  }
+
+  return picked.slice(0, count);
+}
+
+function sortNews(news) {
+  // 按发布时间降序，最新的排前面
+  return news
+    .slice()
+    .sort((left, right) =>
+      String(right.publishedAt || '').localeCompare(String(left.publishedAt || ''))
+    );
+}
+
+function findSchoolByName(schools, name) {
+  return schools.find((school) => school.name === name)
+    || schools.find((school) => school.name.includes(name));
+}
+
+function getSchoolCompletenessScore(school) {
+  const tags = Array.isArray(school.tags) ? school.tags.length : 0;
+  const features = Array.isArray(school.features) ? school.features.length : 0;
+  return tags * 2 + features * 2 + [school.address, school.phone, school.website, school.admissionInfo?.notes].filter(Boolean).length;
+}
+
+// 层级徽标：剥离「(高中)/(初中)」后缀，如「市重点(高中)」→「市重点」
+function getSchoolKeyLevelLabel(school) {
+  const raw = String(school?.schoolKeyLevel || '').trim();
+  return raw ? raw.replace(/[（(].*?[）)]/g, '') : '';
+}
+
+// 层级权重（用于区县代表学校排序），与 data-store 的 KEY_LEVEL_PRIORITY 对齐
+function keyLevelRank(school) {
+  const raw = String(school?.schoolKeyLevel || '').replace(/[（(].*?[）)]/g, '').trim();
+  const PRIORITY = {
+    '市重点': 100, '三公': 95, '区重点': 80, '顶级民办': 70,
+    '优质公办': 65, '一般高中': 60, '一般初中': 40
+  };
+  return PRIORITY[raw] || 0;
+}
+
+function getFeaturedSchools(featuredNames, schools) {
+  const selected = (featuredNames || [])
+    .map((name) => findSchoolByName(schools, name))
+    .filter(Boolean);
+  const selectedIds = new Set(selected.map((school) => school.id));
+  const fallback = schools
+    .filter((school) => !selectedIds.has(school.id))
+    .sort((left, right) => getSchoolCompletenessScore(right) - getSchoolCompletenessScore(left));
+
+  return [...selected, ...fallback].slice(0, 4);
+}
+
+function getDistrictHighlights(districts, schools) {
+  return districts
+    .map((district) => {
+      const inDistrict = schools.filter((school) => school.districtId === district.id);
+      const topSchool = inDistrict
+        .slice()
+        .sort((left, right) => keyLevelRank(right) - keyLevelRank(left))[0];
+      return {
+        ...district,
+        visibleSchoolCount: inDistrict.length,
+        topSchoolName: topSchool ? topSchool.name : ''
+      };
+    })
+    .sort((left, right) => (right.visibleSchoolCount || 0) - (left.visibleSchoolCount || 0))
+    .slice(0, 6);
+}
+
+function SectionLabel({ children }) {
+  return (
+    <div className="channel-kicker">
+      <span aria-hidden="true"></span>
+      <p>{children}</p>
+    </div>
+  );
+}
+
+export default async function HomePage({ params }) {
+  const { region, config } = await getRegionContextFromParams(params);
+  const features = config.features;
+  const homeConfig = config.home || {};
+  const newsSpecials = homeConfig.newsSpecials || [];
+  const [schools, news] = await Promise.all([loadSchoolsList(region), loadNewsList(region)]);
+  const districts = getDistrictCatalog(region);
+  const sortedNews = sortNews(news);
+  const featuredNews = pickFeaturedNews(sortedNews, 4);
+  const headlineNews = sortedNews
+    .filter((item) => !featuredNews.some((featured) => featured.id === item.id))
+    .slice(0, 5);
+
+  const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
+  const recentNewsCount = news.filter((item) => String(item.publishedAt || '') >= weekAgo).length;
+
+  // FOCUS 面板的动态卡片：取左栏未用到的最新动态，避免重复
+  const focusTopicNews = sortedNews
+    .filter(
+      (item) =>
+        !featuredNews.some((featured) => featured.id === item.id) &&
+        !headlineNews.some((headline) => headline.id === item.id)
+    )
+    .slice(0, 2);
+
+  const featuredSchools = getFeaturedSchools(homeConfig.featuredSchoolNames, schools);
+  const districtHighlights = getDistrictHighlights(districts, schools);
+  const visibleQuickLinks = (homeConfig.quickLinks || []).filter((item) => {
+    if (item.href.startsWith('/schools')) return features.compare;
+    if (item.href.startsWith('/knowledge')) return features.knowledge;
+    return true;
+  });
+
+  const seoDescription = config.seo.descriptionTemplate.replace('{label}', config.label);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        name: '考哪去',
+        url: SITE_URL,
+        description: seoDescription,
+        areaServed: config.label
+      },
+      {
+        '@type': 'WebSite',
+        name: '考哪去',
+        url: SITE_URL,
+        description: seoDescription,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: `${SITE_URL}/${region}/schools?query={search_term_string}`,
+          'query-input': 'required name=search_term_string'
+        }
+      }
+    ]
+  };
+
+  return (
+    <main className="home-aerial-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <nav className="channel-nav" aria-label="顶部导航">
+        <RegionLink className="channel-brand" href="/" aria-label="考哪去首页">
+          <strong>考哪去</strong>
+          <span>{config.brandSuffix}</span>
+        </RegionLink>
+        <div className="channel-nav-links">
+          <RegionLink className="is-active" href="/">首页</RegionLink>
+          <RegionLink href="/news">新闻</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+          <RegionSelector />
+        </div>
+      </nav>
+
+      <header className="channel-hero">
+        <div className="channel-hero-grid" aria-hidden="true"></div>
+        <section className="channel-hero-content" aria-label="首页概览">
+          <div className="channel-hero-copy">
+            <SectionLabel>{config.brandSuffix} SIGNAL</SectionLabel>
+            <h1>{config.label}升学信息，从这里俯瞰全局</h1>
+            <p>
+              {features.schools && features.knowledge
+                ? '政策动态、重点学校、知识路径和区县判断收束在一个入口。先看全局，再进入具体选择。'
+                : '中考高考政策与升学新闻动态收束在一个入口。先看全局，再进入对应专题。'}
+            </p>
+            <div className="home-hero-actions">
+              <RegionLink href="/news">查看最新动态</RegionLink>
+              {features.schools && <RegionLink href="/schools">进入学校库</RegionLink>}
+            </div>
+          </div>
+
+          <aside className="channel-hero-stats" aria-label="首页数据摘要">
+            <article>
+              <span>01 / NEWS</span>
+              <strong>{news.length}</strong>
+              <p>本市升学动态</p>
+            </article>
+            <article>
+              <span>02 / DISTRICTS</span>
+              <strong>{districts.length}</strong>
+              <p>覆盖区县</p>
+            </article>
+            {features.schools && (
+              <article>
+                <span>03 / SCHOOLS</span>
+                <strong>{schools.length}</strong>
+                <p>收录学校</p>
+              </article>
+            )}
+          </aside>
+        </section>
+      </header>
+
+      <section className="home-news-slab">
+        <div className="home-news-column">
+          <SectionLabel>LATEST NEWS</SectionLabel>
+          <h2>最新升学动态</h2>
+          <p className="home-section-intro">按发布时间汇集{config.label}中考、高考最新政策与新闻动态，先看最新，再进对应专题。</p>
+
+          <div className="home-news-grid">
+            {featuredNews.map((item) => (
+              <RegionLink className="home-news-card" href={getNewsHref(item)} key={item.id}>
+                <span>{getNewsCategoryLabel(item)} / {item.publishedAt || 'DATE PENDING'}</span>
+                <h3>{item.title}</h3>
+                <p>{item.summary || '进入详情查看完整内容。'}</p>
+              </RegionLink>
+            ))}
+          </div>
+
+          <div className="home-news-list">
+            {headlineNews.map((item) => (
+              <RegionLink className="home-news-list-item" href={getNewsHref(item)} key={item.id}>
+                <span>{item.publishedAt || 'DATE PENDING'}</span>
+                <strong>{item.title}</strong>
+              </RegionLink>
+            ))}
+          </div>
+
+          <RegionLink className="home-text-link" href="/news">查看全部新闻</RegionLink>
+        </div>
+
+        <aside className="home-feature-panel home-focus-panel">
+          <SectionLabel>FOCUS</SectionLabel>
+          <h2>平台更新动态</h2>
+          <p className="home-focus-intro">{features.schools ? '官方政策与重点学校资料同步更新，近 7 天持续新增动态。' : '官方政策与升学动态同步更新，近 7 天持续新增。'}</p>
+          <div className="home-focus-stats">
+            <div>
+              <strong>{recentNewsCount}</strong>
+              <span>近 7 天新增升学动态</span>
+            </div>
+            {features.schools && (
+              <div>
+                <strong>{schools.length}+</strong>
+                <span>收录学校 · {districts.length} 个区县全覆盖</span>
+              </div>
+            )}
+            <div>
+              <strong>{news.length}</strong>
+              <span>累计升学政策与动态</span>
+            </div>
+          </div>
+          {focusTopicNews.length > 0 && (
+            <div className="home-focus-topics">
+              {focusTopicNews.map((item) => {
+                return (
+                  <RegionLink className="home-focus-topic" href={getNewsHref(item)} key={item.id}>
+                    <div className="home-focus-topic-head">
+                      <span className="home-focus-topic-icon" aria-hidden="true">
+                        {getNewsCategoryLabel(item).slice(0, 1)}
+                      </span>
+                      <strong>{item.title}</strong>
+                    </div>
+                    <p>{item.summary || '进入详情查看完整内容。'}</p>
+                  </RegionLink>
+                );
+              })}
+            </div>
+          )}
+          <RegionLink className="home-focus-topic-link" href="/news">查看全部动态 →</RegionLink>
+        </aside>
+      </section>
+
+      {newsSpecials.length > 0 && (
+      <section className="home-news-specials-slab">
+        <div className="home-news-specials-overlay">
+          <div className="home-news-specials-head">
+            <div>
+              <SectionLabel>TOPIC ENTRIES</SectionLabel>
+              <h2>新闻专题</h2>
+              <p>按专题分类浏览，直接进入对应政策与录取规则。</p>
+            </div>
+            <RegionLink href="/news">全部新闻 →</RegionLink>
+          </div>
+
+          <div className="home-news-specials-grid">
+            {newsSpecials.map((special) => (
+              <RegionLink className="home-news-special-card" href={special.href} key={special.href}>
+                <div className="home-news-special-card-top">
+                  <span aria-hidden="true">{special.icon}</span>
+                  <strong>{special.label}</strong>
+                </div>
+                <h3>{special.title}</h3>
+                <p>{special.description.replace('{label}', config.label)}</p>
+                <em>查看专题 →</em>
+              </RegionLink>
+            ))}
+          </div>
+        </div>
+      </section>
+      )}
+
+      {features.schools && (
+        <section className="home-schools-slab">
+          <SectionLabel>FEATURED SCHOOLS</SectionLabel>
+          <div className="home-section-heading-row">
+            <h2>重点学校一览</h2>
+            <div className="home-school-stats" aria-label="学校摘要">
+              <span>{schools.length}+ 所学校</span>
+              <span>{districts.length} 个区县</span>
+              <span>市重点 / 区重点 / 特色高中</span>
+              <RegionLink href="/schools">全部学校</RegionLink>
+            </div>
+          </div>
+
+          <div className="home-school-grid">
+            {featuredSchools.map((school) => {
+              const features = getSchoolFeatures(school).slice(0, 3);
+              const keyLevel = getSchoolKeyLevelLabel(school);
+              return (
+                <RegionLink className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
+                  <div className="home-school-card-top">
+                    <span className="home-school-meta">{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
+                  </div>
+                  <h3>{school.name}</h3>
+                  {keyLevel && <span className="home-school-level">{keyLevel}</span>}
+                  <p>{getSchoolAdmissionInfo(school)}</p>
+                  {features.length > 0 && (
+                    <div className="home-school-tags">
+                      {features.map((feature) => (
+                        <span key={feature}>{feature}</span>
+                      ))}
+                    </div>
+                  )}
+                </RegionLink>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {features.schools && (
+        <section className="home-photo-slab home-school-photo-slab">
+          <div>
+            <SectionLabel>SCHOOL LANDSCAPE</SectionLabel>
+            <h2>先看区域格局，再比较具体学校</h2>
+            <p>把学校放回区县和升学路径里看，择校判断会更接近真实场景。</p>
+            <RegionLink href="/schools/district">查看区县专题</RegionLink>
+          </div>
+        </section>
+      )}
+
+      {features.knowledge && (
+        <section className="home-knowledge-districts">
+          <div className="home-knowledge-column">
+            <SectionLabel>KNOWLEDGE INDEX</SectionLabel>
+            <h2>知识专题</h2>
+            <p>初中到高中各年级、各学科的知识档案与专题入口，按年级和科目直接进入。</p>
+            <div className="home-topic-grid">
+              {KNOWLEDGE_TOPICS.map((topic) => (
+                <RegionLink href={topic.href} key={topic.href}>
+                  <span>{topic.meta}</span>
+                  <strong>{topic.label}</strong>
+                </RegionLink>
+              ))}
+            </div>
+            <RegionLink className="home-text-link" href="/knowledge">进入知识体系</RegionLink>
+          </div>
+
+          <aside className="home-district-column">
+            <SectionLabel>DISTRICTS</SectionLabel>
+            <h2>热门区县</h2>
+            <div className="home-district-list">
+              {districtHighlights.map((district) => (
+                <RegionLink href={`/schools/district/${district.id}`} key={district.id}>
+                  <span>{district.name}</span>
+                  <strong>{district.visibleSchoolCount || district.schoolCount || 0} 所学校</strong>
+                  {district.topSchoolName && <em>代表：{district.topSchoolName}</em>}
+                </RegionLink>
+              ))}
+            </div>
+          </aside>
+        </section>
+      )}
+
+      <div className="channel-color-bar" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <section className="home-cta-slab">
+        <div className="home-cta-copy">
+          <SectionLabel>NEXT STEP</SectionLabel>
+          <h2>继续探索{config.label}升学路径</h2>
+          <p>
+            {features.schools && features.knowledge
+              ? '从政策时间线、学校数据库、区县专题和知识体系里选择下一步。'
+              : '从政策时间线与新闻专题里选择下一步。'}
+          </p>
+          <div className="home-cta-actions">
+            <RegionLink href="/news">查看升学动态</RegionLink>
+            {features.schools && <RegionLink href="/schools">查询学校信息</RegionLink>}
+          </div>
+        </div>
+
+        <aside className="home-floating-links">
+          <SectionLabel>QUICK ENTRY</SectionLabel>
+          <h3>快速入口</h3>
+          {visibleQuickLinks.map((item) => (
+            <RegionLink href={item.href} key={item.href}>
+              <span>{item.label}</span>
+              <strong>→</strong>
+            </RegionLink>
+          ))}
+        </aside>
+      </section>
+
+      <footer className="channel-footer">
+        <div>
+          <strong>考哪去</strong>
+          <span>{config.brandSuffixFull}</span>
+        </div>
+        <nav aria-label="页脚导航">
+          <RegionLink href="/news">新闻政策</RegionLink>
+          {features.schools && <RegionLink href="/schools">学校信息</RegionLink>}
+          {features.knowledge && <RegionLink href="/knowledge">知识体系</RegionLink>}
+          {features.district && <RegionLink href="/schools/district">区县专题</RegionLink>}
+        </nav>
+        <p>© 2026 考哪去</p>
+      </footer>
+    </main>
+  );
+}
