@@ -18,13 +18,15 @@ export const revalidate = 600;
 // 构建期为所有地区的新闻详情预生成静态页（ISR 10 分钟），后续由 CDN 直出。
 export async function generateStaticParams() {
   const { KNOWN_REGIONS } = require("../../../../shared/region-list.mjs");
+  // 构建时长控制：每地区只预生成最近 50 条（loadNewsIds 已按 published_at 倒序）。
+  // 长尾新闻流量极低，首次访问走 ISR 按需生成并缓存，效果几乎等价。
+  const PRERENDER_LIMIT = 50;
   const regions = await Promise.all(KNOWN_REGIONS.map(async (region) => ({
     region,
-    ids: await loadNewsIds(region)
+    ids: (await loadNewsIds(region)).slice(0, PRERENDER_LIMIT)
   })));
   return regions.flatMap(({ region, ids }) => ids.map((id) => ({ region, id })));
 }
-
 // 将正文里“名称（网址）”形式的裸网址转换为 Markdown 链接 [名称](网址)，
 // 使显示只保留可读名称、名称本身为可点击链接、原始网址不出现。
 // 覆盖三种形态：引号名称（“名称”/“名称”网站）、《》标题、括号前紧邻的名称。
