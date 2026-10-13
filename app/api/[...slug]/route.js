@@ -15,6 +15,13 @@ export const fetchCache = 'force-cache';
 // 写操作（POST/PUT/DELETE）成功后立即失效 Data Cache，确保读自己写一致性。
 // tag 与 shared/supabase-client.js cachedFetch 的 tags 对齐。
 const SUPABASE_DATA_TAG = 'supabase-data';
+// 按表收窄失效范围：改新闻只失效 news-data（学校页 ISR 不受影响），反之亦然。
+// 表级 tag 由 shared/supabase-client.cachedFetch 按 REST URL 表名自动派生。
+function tagForPathname(pathname) {
+  if (pathname.startsWith('/api/news')) return 'news-data';
+  if (pathname.startsWith('/api/schools') || pathname.startsWith('/api/search') || pathname.startsWith('/api/districts')) return 'schools-data';
+  return SUPABASE_DATA_TAG;
+}
 
 function jsonError(statusCode, message, code, corsOrigin) {
   return NextResponse.json(
@@ -53,7 +60,7 @@ async function handle(request, paramsPromise) {
     // 写操作成功后立即失效 Data Cache（异步失效，调用立即返回）。
     // 让后续 GET /api/* 与页面查询函数拿到最新数据，避免缓存延迟。
     if (request.method !== 'GET') {
-      revalidateTag(SUPABASE_DATA_TAG);
+      revalidateTag(tagForPathname(pathname));
     }
 
     // GET 200 且不带 Origin 头（匿名/爬虫请求）才加 CDN 缓存（s-maxage 300s）：

@@ -45,10 +45,18 @@ const NEWS_TABLE = process.env.SUPABASE_NEWS_TABLE || 'news';
 //   即使 fetch 显式设了 cache: 'force-cache' 也会被忽略。段级 fetchCache = 'force-cache'
 //   覆盖该默认行为，使 Request-time API 之后的 fetch 也能被 Data Cache 缓存。
 //   cachedFetch 内的 cache: 'force-cache' 为冗余兜底（段配置已覆盖）。
+// 按表级 tag 失效：URL 里的表名自动派生（/rest/v1/news?... -> 'news-data'），
+// 写操作只需 revalidateTag 对应表，不再击穿另一张表的全部 ISR 页缓存。
+function tableTagFromUrl(input) {
+  const url = typeof input === 'string' ? input : (input && input.url) || '';
+  if (new RegExp('\\/(' + NEWS_TABLE + ')(\\?|$)').test(url)) return 'news-data';
+  if (new RegExp('\\/(' + SCHOOLS_TABLE + '|' + SCHOOL_CONTENTS_TABLE + ')(\\?|$)').test(url)) return 'schools-data';
+  return 'supabase-data';
+}
 function cachedFetch(input, init = {}) {
   // Data Cache 时长（秒）：写操作后由 revalidateTag('supabase-data') 立即失效，
 // 读缓存可安全拉长（300s）以降低函数 CPU。可用环境变量覆盖。
-const SUPABASE_REVALIDATE = Number(process.env.SUPABASE_REVALIDATE_SECONDS || 300);
+const SUPABASE_REVALIDATE = Number(process.env.SUPABASE_REVALIDATE_SECONDS || 3600);
 
 // 每次调用读取当前 globalThis.fetch：Next 运行期已被 patch，能正确处理 next 缓存选项；
   // 非 Next 环境（迁移脚本）则为原生 fetch，忽略 next（自动降级为不缓存）。
@@ -59,7 +67,7 @@ const SUPABASE_REVALIDATE = Number(process.env.SUPABASE_REVALIDATE_SECONDS || 30
     next: {
       ...(init.next || {}),
       revalidate: SUPABASE_REVALIDATE,
-      tags: ['supabase-data']
+      tags: ['supabase-data', tableTagFromUrl(input)]
     }
   });
 }

@@ -11,11 +11,12 @@ const require = createRequire(import.meta.url);
 const { getNewsById, loadNewsForRelated, loadSchoolsForRelated, loadNewsIds } = require('../../../../shared/data-store');
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+// ISR：新闻/政策页 1 小时内 CDN 直出（新闻时效为天级）。写操作仍经
+// revalidateTag('news-data') 秒级失效，时效性不受影响；600->3600 削减 6 倍
+// 周期性重渲染（655 页被爬虫持续回访）。
+export const revalidate = 3600;
 
-// ISR：新闻/政策页 10 分钟内 CDN 直出（新闻时效为天级，秒级更新靠写侧 revalidateTag 兜底）。
-export const revalidate = 600;
-
-// 构建期为所有地区的新闻详情预生成静态页（ISR 10 分钟），后续由 CDN 直出。
+// 构建期为所有地区的新闻详情预生成静态页（ISR 1 小时），后续由 CDN 直出。
 export async function generateStaticParams() {
   const { KNOWN_REGIONS } = require("../../../../shared/region-list.mjs");
   // 构建时长控制：每地区只预生成最近 50 条（loadNewsIds 已按 published_at 倒序）。

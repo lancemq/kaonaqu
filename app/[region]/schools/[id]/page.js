@@ -19,10 +19,10 @@ import { RegionSelector } from '../../../../components/region-selector';
 const require = createRequire(import.meta.url);
 const { getSchoolById, loadSchoolIds } = require('../../../../shared/data-store');
 
-// ISR：详情页内容非秒级时效（分数线/介绍低频更新），10 分钟内 CDN 直出，
-// 函数只为过期后的首次访问执行。写入侧已有 revalidateTag('supabase-data') 保读写一致。
-export const revalidate = 600;
-// 构建期为所有地区的学校详情预生成静态页（ISR 10 分钟），后续由 CDN 直出。
+// ISR：详情页 1 小时内 CDN 直出。
+// 分数线为季节性低频数据，600->3600 削减周期性重渲染。
+export const revalidate = 3600;
+// 构建期为所有地区的学校详情预生成静态页（ISR 1 小时），后续由 CDN 直出。
 export async function generateStaticParams() {
   const { KNOWN_REGIONS } = require("../../../../shared/region-list.mjs");
   const regions = await Promise.all(KNOWN_REGIONS.map(async (region) => ({
