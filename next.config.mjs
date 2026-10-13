@@ -3,7 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   outputFileTracingIncludes: {
     '/*': [
-      './data/**/*',
+
+      // 仅 content/（知识 JSON、学校 markdown）为运行时读取；data/ 是迁移源数据，
+      // 运行时零引用（已核查 process.cwd/require/import），打包进函数徒增 15MB 冷启动。
       './content/**/*'
     ]
   },
