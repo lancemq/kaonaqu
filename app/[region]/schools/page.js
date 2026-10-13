@@ -47,6 +47,18 @@ function buildSearchText(school) {
   return haystack;
 }
 
+// 搜索文本按校对象 memo：Data Cache 缓存窗口内 schools 元素引用不变，
+// 免去每次请求对 888 所学校重复拼接 12+ 字段字符串。
+const searchTextMemo = new WeakMap();
+function getSearchText(school) {
+  let text = searchTextMemo.get(school);
+  if (text === undefined) {
+    text = buildSearchText(school);
+    searchTextMemo.set(school, text);
+  }
+  return text;
+}
+
 function getSchoolPositioning(school) {
   const desc = clipText(getSchoolOverview(school), 84);
   if (desc && desc !== '暂无') return desc;
@@ -127,7 +139,7 @@ function filterSchools(schools, filters, region = DEFAULT_REGION) {
         if (!schoolHasFeature(s, fid)) return false;
       }
     }
-    if (q && !buildSearchText(s).includes(q)) return false;
+    if (q && !getSearchText(s).includes(q)) return false;
     return true;
   });
 }
@@ -144,7 +156,35 @@ function distinctLabels(schools, pick) {
 // 筛选项只依赖 schools 全量（不随当前筛选变化）。schools 引用在 Data Cache 缓存窗口内
 // 是同一对象，按引用 memo 后并发请求共享这份 O(n) 遍历结果。
 const filterOptionsMemo = new WeakMap();
+const schoolStarsMemo = new WeakMap();
+const districtsMemo = new WeakMap();
+const stageTotalsMemo = new WeakMap();
 
+// schoolStar 派生/区县目录/学段统计同为每次请求重复的 O(n) 计算，
+// Data Cache 缓存窗口内 schools 引用不变，按引用 memo 直接复用。
+function applySchoolStars(schools) {
+  if (schoolStarsMemo.has(schools)) return;
+  for (const s of schools) s.schoolStar = deriveSchoolStar(s);
+  schoolStarsMemo.set(schools, true);
+}
+
+
+function getDistrictsCached(schools, region) {
+  let d = districtsMemo.get(schools);
+if (d === undefined) { d = buildDistricts(schools, [], region); districtsMemo.set(schools, d); }
+  return d;
+}
+
+function getStageTotals(schools) {
+  let t = stageTotalsMemo.get(schools);
+  if (t) return t;
+  t = { junior: 0, senior_high: 0, complete: 0 };
+  for (const s of schools) {
+    if (t[s.schoolStage] !== undefined) t[s.schoolStage] += 1;
+  }
+  stageTotalsMemo.set(schools, t);
+  return t;
+}
 function getFilterOptions(schools, region) {
   if (filterOptionsMemo.has(schools)) return filterOptionsMemo.get(schools);
   const cohortField = getRegionConfig(region).cohortField || 'eliteCohort';
@@ -235,10 +275,10 @@ export default async function SchoolsPage({ params: routeParams, searchParams })
   const schools = await loadSchoolsList(region);
   // 江苏城市学校无上海式荣誉层级，从 features 派生办学星级（四星/三星/二星/一星），
   // 供列表筛选的「荣誉/星级」维度使用；取值字段由 regions.data.json cohortField 决定。
-  for (const s of schools) s.schoolStar = deriveSchoolStar(s);
+  applySchoolStars(schools); // WeakMap memo：缓存窗口内 888 所星级派生只算一次
   const cohortField = config.cohortField || 'eliteCohort';
   const cohortLabel = cohortField === 'schoolStar' ? '办学星级' : '荣誉';
-  const districts = buildDistricts(schools, [], region);
+  const districts = getDistrictsCached(schools, region);
   const params = await searchParams;
 
   const filters = {
@@ -276,10 +316,7 @@ export default async function SchoolsPage({ params: routeParams, searchParams })
   // Data Cache 缓存窗口内同一 schools 引用直接复用，省去每次请求的 O(n) 遍历。
   const filterOptions = getFilterOptions(schools, region);
 
-  const stageTotals = { junior: 0, senior_high: 0, complete: 0 };
-  for (const s of schools) {
-    if (stageTotals[s.schoolStage] !== undefined) stageTotals[s.schoolStage] += 1;
-  }
+  const stageTotals = getStageTotals(schools); // WeakMap memo
 
   const itemListJsonLd = {
     '@context': 'https://schema.org',

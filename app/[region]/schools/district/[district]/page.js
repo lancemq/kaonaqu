@@ -88,6 +88,18 @@ async function Footer({ config: footerConfig }) {
   );
 }
 
+// ISR：区县页 10 分钟 CDN 直出，构建期按各地区 districtCatalog 预生成全部区页。
+export const revalidate = 600;
+
+export async function generateStaticParams() {
+  const { KNOWN_REGIONS } = require('../../../../../shared/region-list.mjs');
+  const { getRegionConfig } = require('../../../../../shared/region-config');
+  return KNOWN_REGIONS.flatMap((region) =>
+    (getRegionConfig(region).districtCatalog || [])
+      .map((d) => ({ region, district: d.id }))
+  );
+}
+
 export async function generateMetadata({ params }) {
   const { region, config } = await getRegionContextFromParams(params);
   if (config.features.schools === false) redirect(`/${region}/news`);

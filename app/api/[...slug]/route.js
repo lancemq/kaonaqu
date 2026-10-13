@@ -56,9 +56,15 @@ async function handle(request, paramsPromise) {
       revalidateTag(SUPABASE_DATA_TAG);
     }
 
+    // GET 成功响应加 CDN 缓存（s-maxage 与 Data Cache 同步 300s）：Vercel Edge 直接命中，
+    // 函数不执行，省去 JSON 序列化 CPU。写操作/错误响应不缓存。
+    const cdnHeaders = corsHeaders(corsOrigin);
+    if (request.method === 'GET' && result.statusCode === 200) {
+      cdnHeaders['Cache-Control'] = 'public, s-maxage=300, stale-while-revalidate=600';
+    }
     return NextResponse.json(result.payload, {
       status: result.statusCode,
-      headers: corsHeaders(corsOrigin)
+      headers: cdnHeaders
     });
   } catch (error) {
     return NextResponse.json(
