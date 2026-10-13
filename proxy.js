@@ -8,7 +8,7 @@ const { getRegionFeatures } = require('./shared/region-config');
 
 // 多地区路由代理（Next 16 proxy 文件约定，原 middleware）：所有地区（含上海）统一走 /{region}/... 前缀。
 //
-// - /{region}/...（已知地区）：rewrite 到 /...，注入 x-region request header 供 server 组件读取。
+// - /{region}/...（已知地区）：直接放行（路由实体化为 app/[region]/...，页面从 params.region 取地区）。
 //   若该地区关闭了路径对应频道（如苏州仅新闻），先 308 重定向到 /{region}/news。
 // - 无前缀路径（/schools、/、/news/xxx）：308 永久重定向到 /{DEFAULT_REGION}{pathname}，
 //   统一带前缀并把旧链接 SEO 权重传递到 /shanghai/...。

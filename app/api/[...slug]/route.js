@@ -56,10 +56,11 @@ async function handle(request, paramsPromise) {
       revalidateTag(SUPABASE_DATA_TAG);
     }
 
-    // GET 成功响应加 CDN 缓存（s-maxage 与 Data Cache 同步 300s）：Vercel Edge 直接命中，
-    // 函数不执行，省去 JSON 序列化 CPU。写操作/错误响应不缓存。
+    // GET 200 且不带 Origin 头（匿名/爬虫请求）才加 CDN 缓存（s-maxage 300s）：
+    // Vercel Edge 直接命中，函数不执行。跨域管理端请求带 Origin——绕过 CDN，
+    // 写操作 revalidateTag 后立即读到新数据（revalidateTag 只清 Data Cache 不清 CDN）。
     const cdnHeaders = corsHeaders(corsOrigin);
-    if (request.method === 'GET' && result.statusCode === 200) {
+    if (request.method === 'GET' && result.statusCode === 200 && request.headers.get('origin') === null) {
       cdnHeaders['Cache-Control'] = 'public, s-maxage=300, stale-while-revalidate=600';
     }
     return NextResponse.json(result.payload, {
