@@ -1,5 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
+  // 【Fluid CPU 关键】Next 16 客户端 Segment Cache 默认开启且无开关：
+  // 视口内每个 <Link> 都会预取 <href>.segments/_tree.segment，而该响应的
+  // Cache-Control 是 no-store（实测）——Vercel CDN 永不缓存，每次预取都是一次
+  // 函数执行。默认 staleTimes.dynamic=0 又导致客户端每次导航都重新拉树，
+  // 请求量 = PV × 视口内链接数（首页链接在全站导航里，故 /shanghai 树最热）。
+  // 拉长客户端复用窗口 + 关闭启动预载，削减 90%+ 的 segment 预取请求。
+  experimental: {
+    staleTimes: { dynamic: 300, static: 300 },
+    preloadEntriesOnStart: false
+  },
   reactStrictMode: true,
   outputFileTracingIncludes: {
     '/*': [
