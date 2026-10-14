@@ -53,20 +53,28 @@ function tableTagFromUrl(input) {
   if (new RegExp('\\/(' + SCHOOLS_TABLE + '|' + SCHOOL_CONTENTS_TABLE + ')(\\?|$)').test(url)) return 'schools-data';
   return 'supabase-data';
 }
-function cachedFetch(input, init = {}) {
-  // Data Cache 时长（秒）：写操作后由 revalidateTag('supabase-data') 立即失效，
-// 读缓存可安全拉长（300s）以降低函数 CPU。可用环境变量覆盖。
-const SUPABASE_REVALIDATE = Number(process.env.SUPABASE_REVALIDATE_SECONDS || 3600);
+// Data Cache 时长（秒），按表分级：新闻 6h；学校/分数线为季节性数据 12h。
+// 写操作经 revalidateTag 秒级失效，长 TTL 只影响绕过 API 的直连改动。
+// 可用环境变量覆盖：SUPABASE_REVALIDATE_SECONDS / NEWS_REVALIDATE_SECONDS / SCHOOLS_REVALIDATE_SECONDS。
+const SUPABASE_REVALIDATE = Number(process.env.SUPABASE_REVALIDATE_SECONDS || 21600);
+const NEWS_REVALIDATE = Number(process.env.NEWS_REVALIDATE_SECONDS || 21600);
+const SCHOOLS_REVALIDATE = Number(process.env.SCHOOLS_REVALIDATE_SECONDS || 43200);
 
-// 每次调用读取当前 globalThis.fetch：Next 运行期已被 patch，能正确处理 next 缓存选项；
-  // 非 Next 环境（迁移脚本）则为原生 fetch，忽略 next（自动降级为不缓存）。
+function tableRevalidateFromUrl(input) {
+  const tag = tableTagFromUrl(input);
+  if (tag === 'news-data') return NEWS_REVALIDATE;
+  if (tag === 'schools-data') return SCHOOLS_REVALIDATE;
+  return SUPABASE_REVALIDATE;
+}
+
+function cachedFetch(input, init = {}) {
   const fetchFn = globalThis.fetch;
   return fetchFn(input, {
     ...init,
     cache: 'force-cache',
     next: {
       ...(init.next || {}),
-      revalidate: SUPABASE_REVALIDATE,
+      revalidate: tableRevalidateFromUrl(input),
       tags: ['supabase-data', tableTagFromUrl(input)]
     }
   });

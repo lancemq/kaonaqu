@@ -63,12 +63,12 @@ async function handle(request, paramsPromise) {
       revalidateTag(tagForPathname(pathname));
     }
 
-    // GET 200 且不带 Origin 头（匿名/爬虫请求）才加 CDN 缓存（s-maxage 300s）：
+    // GET 200 且不带 Origin 头（匿名/爬虫请求）才加 CDN 缓存（s-maxage 30min）：
     // Vercel Edge 直接命中，函数不执行。跨域管理端请求带 Origin——绕过 CDN，
     // 写操作 revalidateTag 后立即读到新数据（revalidateTag 只清 Data Cache 不清 CDN）。
     const cdnHeaders = corsHeaders(corsOrigin);
     if (request.method === 'GET' && result.statusCode === 200 && request.headers.get('origin') === null) {
-      cdnHeaders['Cache-Control'] = 'public, s-maxage=300, stale-while-revalidate=600';
+      cdnHeaders['Cache-Control'] = 'public, s-maxage=1800, stale-while-revalidate=3600';
     }
     return NextResponse.json(result.payload, {
       status: result.statusCode,

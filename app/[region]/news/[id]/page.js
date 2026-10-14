@@ -14,7 +14,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
 // ISR：新闻/政策页 1 小时内 CDN 直出（新闻时效为天级）。写操作仍经
 // revalidateTag('news-data') 秒级失效，时效性不受影响；600->3600 削减 6 倍
 // 周期性重渲染（655 页被爬虫持续回访）。
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 // 构建期为所有地区的新闻详情预生成静态页（ISR 1 小时），后续由 CDN 直出。
 export async function generateStaticParams() {

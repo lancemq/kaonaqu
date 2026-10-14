@@ -118,7 +118,7 @@ const NEWS_LIST_COLUMNS = 'id,title,news_type,category,exam_type,summary,publish
 // 单校完整查询（详情页 / 列表 ≤10 张卡 / API）。仅一所，响应极小，
 // 经 Next.js Data Cache 按 id 缓存（revalidate 见 supabase-client.cachedFetch）。
 // 兼容 Next 动态路由 params：可能是数组或编码后的 slug。
-async function getSchoolById(rawId) {
+async function fetchSchoolById(rawId) {
   if (rawId == null) return null;
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
   const normalizedId = String(id || '');
@@ -146,7 +146,7 @@ async function getSchoolById(rawId) {
 
 // 批量完整查询（列表页当前页 ≤10 所卡片用，需 content 概览）。
 // 仅这几所取完整，避免 888 所全量 content 拉回。
-async function getSchoolsByIds(ids) {
+async function fetchSchoolsByIds(ids) {
   if (!Array.isArray(ids) || ids.length === 0) return [];
   const client = getServiceClient();
   const { data, error } = await client
@@ -164,7 +164,7 @@ async function getSchoolsByIds(ids) {
 // 单条新闻完整查询（详情页 / API 用，需 content）。
 // 经 Next.js Data Cache 按 id 缓存。兼容 Next 动态路由 params：数组或编码后的 id。
 // 与 resolveNewsById 对齐：先用原始 id 匹配，再用 decodeURIComponent 后匹配。
-async function getNewsById(rawId) {
+async function fetchNewsById(rawId) {
   if (rawId == null) return null;
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
   const normalizedId = String(id || '');
@@ -247,7 +247,7 @@ function rowToNews(row) {
 // 做的 WeakMap memo 跨请求永不命中。这里在实例内存缓存映射后的结果（同一引用），
 // 使两层 memo 都真正生效。TTL 300s；写侧 revalidateTag 清 Data Cache 后，
 // 本实例最迟 5 分钟内自愈（跨实例由 Data Cache + tag 保证）。
-const LIST_MEMO_TTL = 300;
+const LIST_MEMO_TTL = 1800;
 const listMemo = new Map();
 
 async function memoizedList(key, loader) {
@@ -258,6 +258,33 @@ async function memoizedList(key, loader) {
     throw err;
   });
   listMemo.set(key, { ts: Date.now(), promise });
+  return promise;
+}
+
+// 详情级 LRU 内存缓存（单条学校/新闻 + 列表页当前页批量取整校）：
+// 详情页 ISR 过期重验证、列表页每请求取 10 所完整卡时，温实例直接命中内存，
+// 跳过 fetch 反序列化 + rowToSchool 映射。容量 2000 条（约几 MB，1GB 实例绰绰有余）。
+const DETAIL_MEMO_TTL = 1800;
+const DETAIL_MEMO_MAX = 2000;
+const detailMemo = new Map();
+
+async function memoizedDetail(key, loader) {
+  const hit = detailMemo.get(key);
+  if (hit && Date.now() - hit.ts < DETAIL_MEMO_TTL) {
+    detailMemo.delete(key); detailMemo.set(key, hit); // LRU 触碰
+    return hit.promise;
+  }
+  const promise = loader().then((v) => {
+    if (v == null) return v; // null（未命中）不缓存，404 路径仍走 Data Cache
+    if (detailMemo.size >= DETAIL_MEMO_MAX) {
+      detailMemo.delete(detailMemo.keys().next().value);
+    }
+    return v;
+  }).catch((err) => {
+    detailMemo.delete(key);
+    throw err;
+  });
+  detailMemo.set(key, { ts: Date.now(), promise });
   return promise;
 }
 async function loadSchoolsList(region = DEFAULT_REGION) {
@@ -774,6 +801,24 @@ async function deleteNewsFromSupabase(id) {
   return { ok: true, id };
 }
 
+
+// ===== 详情级缓存包装（实例内存 LRU，见 memoizedDetail） =====
+async function getSchoolById(rawId) {
+  const id = Array.isArray(rawId) ? rawId[0] : rawId;
+  return memoizedDetail(`school:${String(id || '')}`, () => fetchSchoolById(rawId));
+}
+
+async function getNewsById(rawId) {
+  const id = Array.isArray(rawId) ? rawId[0] : rawId;
+  return memoizedDetail(`news:${String(id || '')}`, () => fetchNewsById(rawId));
+}
+
+// 列表页当前页批量取整校：按 id 复用单条缓存，缓存复用率高于整组 .in 查询。
+async function getSchoolsByIds(ids) {
+  if (!Array.isArray(ids) || ids.length === 0) return [];
+  const schools = await Promise.all(ids.map((id) => getSchoolById(id)));
+  return schools.filter(Boolean);
+}
 module.exports = {
   getSchoolById,
   getSchoolsByIds,

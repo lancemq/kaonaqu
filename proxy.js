@@ -89,7 +89,7 @@ export function proxy(request) {
       if (CDN_CACHED_LIST_PATHS.has(rest)) {
         response.headers.set(
           'Cache-Control',
-          'public, s-maxage=300, stale-while-revalidate=600'
+          'public, s-maxage=1800, stale-while-revalidate=3600'
         );
       }
       return response;

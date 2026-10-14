@@ -8,7 +8,7 @@ const nextConfig = {
   // 请求量 = PV × 视口内链接数（首页链接在全站导航里，故 /shanghai 树最热）。
   // 拉长客户端复用窗口 + 关闭启动预载，削减 90%+ 的 segment 预取请求。
   experimental: {
-    staleTimes: { dynamic: 300, static: 300 },
+    staleTimes: { dynamic: 900, static: 1800 },
     preloadEntriesOnStart: false
   },
   reactStrictMode: true,
