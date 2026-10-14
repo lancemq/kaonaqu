@@ -36,7 +36,7 @@ function ScoreLineBadge({ scoreLines }) {
 export default function SchoolsCard({ school }) {
   return (
     <article className="schools-aerial-card-wrap">
-      <RegionLink href={`/schools/${school.id}`} className="schools-aerial-card">
+      <RegionLink href={`/schools/${school.id}`} className="schools-aerial-card" prefetch={false}>
         <div className="schools-aerial-card-main">
           <p>{school.districtName} / {school.schoolStageLabel} / {getOwnershipLabel(school)}</p>
           <h3>{school.name}</h3>

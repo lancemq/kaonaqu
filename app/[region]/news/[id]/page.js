@@ -337,7 +337,7 @@ function SidebarList({ items, getHref, getLabel }) {
   return (
     <div className="news-detail-sidebar-list">
       {items.map((item) => (
-        <RegionLink key={item.id || getLabel(item)} href={getHref(item)}>
+        <RegionLink key={item.id || getLabel(item)} href={getHref(item)} prefetch={false}>
           <span>{getLabel(item)}</span>
           <i aria-hidden="true">→</i>
         </RegionLink>

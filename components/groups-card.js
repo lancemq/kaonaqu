@@ -37,7 +37,7 @@ export default function GroupsCard({ group, districts }) {
       {isExpanded ? (
         <div className="school-group-members">
           {group.schools.map((school) => (
-            <RegionLink key={school.id} className="school-group-member" href={`/schools/${school.id}`}>
+            <RegionLink key={school.id} className="school-group-member" href={`/schools/${school.id}`} prefetch={false}>
               <div>
                 <strong>{school.name}</strong>
                 <span>{getDistrictLabel(districts, school.districtId)} · {getSchoolStage(school)} · {getSchoolType(school)}</span>

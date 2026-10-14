@@ -234,7 +234,7 @@ export default async function DistrictSchoolsPage({ params }) {
           <h2>{districtInfo.name}优先学校</h2>
           <div className="district-channel-featured-grid">
             {featured.slice(0, 3).map((school) => (
-              <RegionLink className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
+              <RegionLink className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id} prefetch={false}>
                 <div><span>{getSchoolStage(school)}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
                 <strong>{school.name}</strong>
                 <p>{clipText(getSchoolAdmissionInfo(school) || getSchoolOverview(school) || '学校信息持续整理中。', 46)}</p>
@@ -259,7 +259,7 @@ export default async function DistrictSchoolsPage({ params }) {
             {sortedSchools.map((school) => {
               const tags = buildCardTags(school);
               return (
-                <RegionLink className="district-channel-row district-detail-school-row" href={`/schools/${school.id}`} key={school.id}>
+                <RegionLink className="district-channel-row district-detail-school-row" href={`/schools/${school.id}`} key={school.id} prefetch={false}>
                   <div className="district-channel-row-info">
                     <strong>{school.name}</strong>
                     <span>{getSchoolDistrictName(school)} / {getSchoolStage(school)} / {getSchoolOwnershipLabel(school) || '学校信息'}</span>

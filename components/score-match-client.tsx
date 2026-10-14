@@ -251,7 +251,7 @@ function ResultCard({ result }: { result: ScoreMatchResult }) {
   const { school, estimatedRange, reason, source } = result;
   return (
     <li>
-      <RegionLink className="score-match-aerial-card" href={`/schools/${school.id}`}>
+      <RegionLink className="score-match-aerial-card" href={`/schools/${school.id}`} prefetch={false}>
         <div className="score-match-aerial-card-head">
           <strong>{school.name}</strong>
           <span className="score-match-aerial-card-tier">{school.eliteCohort || school.schoolKeyLevel}</span>

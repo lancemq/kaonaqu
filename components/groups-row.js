@@ -21,7 +21,7 @@ export default function GroupsRow({ group, districts }) {
       {isExpanded ? (
         <div className="school-group-members">
           {group.schools.slice(0, 8).map((school) => (
-            <RegionLink key={school.id} href={`/schools/${school.id}`}>
+            <RegionLink key={school.id} href={`/schools/${school.id}`} prefetch={false}>
               <strong>{school.name}</strong>
               <span>{getDistrictLabel(districts, school.districtId || school.district)} / {getSchoolStage(school)} / {getSchoolType(school)}</span>
             </RegionLink>

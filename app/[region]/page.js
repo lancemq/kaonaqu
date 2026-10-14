@@ -367,7 +367,7 @@ export default async function HomePage({ params }) {
               const features = getSchoolFeatures(school).slice(0, 3);
               const keyLevel = getSchoolKeyLevelLabel(school);
               return (
-                <RegionLink className="home-school-card" href={`/schools/${school.id}`} key={school.id}>
+                <RegionLink className="home-school-card" href={`/schools/${school.id}`} key={school.id} prefetch={false}>
                   <div className="home-school-card-top">
                     <span className="home-school-meta">{getSchoolDistrictName(school)} / {getSchoolStage(school)}</span>
                   </div>

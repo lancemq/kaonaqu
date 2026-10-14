@@ -223,7 +223,7 @@ export default async function DistrictIndexPage({ params }) {
         <h2>区域名校</h2>
         <div className="district-channel-featured-grid">
           {featuredSchools.map(({ district, school }) => (
-            <RegionLink className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id}>
+            <RegionLink className="district-channel-featured-card" href={`/schools/${school.id}`} key={school.id} prefetch={false}>
               <div><span>{district.name}</span><em>{getSchoolType(school) || '学校档案'}</em></div>
               <strong>{school.name}</strong>
               <p>{clipText(getSchoolAdmissionInfo(school) || getSchoolOverview(school) || '学校信息持续整理中。', 46)}</p>
