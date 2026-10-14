@@ -4,7 +4,7 @@ import { buildAllUrls } from '../../lib/sitemap-urls.mjs';
 // 替代原手工维护的 public/llms.txt（已删除）。
 export const fetchCache = 'force-cache';
 // URL 清单 1 小时内直接复用上次构建结果（Route Cache），爬虫高频抓取不再反复跑函数。
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 export async function GET() {
   const { base, regions } = await buildAllUrls();
