@@ -105,7 +105,7 @@ export default function NewsPageClient({ news, schoolNamesById = {}, total = 0, 
               ? schoolNamesById[item.primarySchoolId] || ''
               : '';
             return (
-              <RegionLink className="news-article-row" href={getItemHref(item)} key={`${item.itemType}-${item.id}`}>
+              <RegionLink className="news-article-row" href={getItemHref(item)} prefetch={false} key={`${item.itemType}-${item.id}`}>
                 <div className="news-article-copy">
                   <div className="news-article-tags">
                     <span className={`news-article-chip is-${item.section || 'default'}`}>{getSectionChip(item.section)}</span>

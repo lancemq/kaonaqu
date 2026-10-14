@@ -240,16 +240,38 @@ function rowToNews(row) {
 
 // 全量学校列表（轻量，排除 content/admission_info/score_lines）。供学校列表页、
 // 教育集团页、对比页、区域列表页等需全量学校的页面使用。0.44MB。
+
+// ===== 实例级列表缓存（Fluid CPU 关键）=====
+// Data Cache 只缓存 fetch 响应，每次请求反序列化都产生新数组引用——导致
+// ① rowToSchool/rowToNews 的 888 行映射每次请求重跑；② 页面层按 schools 引用
+// 做的 WeakMap memo 跨请求永不命中。这里在实例内存缓存映射后的结果（同一引用），
+// 使两层 memo 都真正生效。TTL 300s；写侧 revalidateTag 清 Data Cache 后，
+// 本实例最迟 5 分钟内自愈（跨实例由 Data Cache + tag 保证）。
+const LIST_MEMO_TTL = 300;
+const listMemo = new Map();
+
+async function memoizedList(key, loader) {
+  const hit = listMemo.get(key);
+  if (hit && Date.now() - hit.ts < LIST_MEMO_TTL) return hit.promise;
+  const promise = loader().catch((err) => {
+    listMemo.delete(key);
+    throw err;
+  });
+  listMemo.set(key, { ts: Date.now(), promise });
+  return promise;
+}
 async function loadSchoolsList(region = DEFAULT_REGION) {
-  if (!isSupabaseConfigured()) return [];
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select(SCHOOLS_LIST_COLUMNS)
-    .eq('region', region)
-    .order('id', { ascending: true });
-  if (error) throw error;
-  return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
+  return memoizedList(`schools:${region}`, async () => {
+    if (!isSupabaseConfigured()) return [];
+    const client = getServiceClient();
+    const { data, error } = await client
+      .from(SCHOOLS_TABLE)
+      .select(SCHOOLS_LIST_COLUMNS)
+      .eq('region', region)
+      .order('id', { ascending: true });
+    if (error) throw error;
+    return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
+  });
 }
 
 // 全量新闻列表（轻量，排除 content）。供新闻列表页、首页、专题页等使用。0.1MB。
@@ -275,16 +297,18 @@ async function loadNewsForRelated(region, { examType = '', category = '', exclud
 }
 
 async function loadNewsList(region = DEFAULT_REGION) {
-  if (!isSupabaseConfigured()) return [];
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(NEWS_TABLE)
-    .select(NEWS_LIST_COLUMNS)
-    .eq('region', region)
-    .order('published_at', { ascending: false })
-    .order('id', { ascending: false });
-  if (error) throw error;
-  return (data || []).map((row) => rowToNews(row)).filter(Boolean);
+  return memoizedList(`news:${region}`, async () => {
+    if (!isSupabaseConfigured()) return [];
+    const client = getServiceClient();
+    const { data, error } = await client
+      .from(NEWS_TABLE)
+      .select(NEWS_LIST_COLUMNS)
+      .eq('region', region)
+      .order('published_at', { ascending: false })
+      .order('id', { ascending: false });
+    if (error) throw error;
+    return (data || []).map((row) => rowToNews(row)).filter(Boolean);
+  });
 }
 
 // 按区域 ID 查学校（区域详情页）。仅该区 ~50 所，而非全量 888 所。~0.02MB。

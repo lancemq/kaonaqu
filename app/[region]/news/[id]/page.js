@@ -19,9 +19,9 @@ export const revalidate = 3600;
 // 构建期为所有地区的新闻详情预生成静态页（ISR 1 小时），后续由 CDN 直出。
 export async function generateStaticParams() {
   const { KNOWN_REGIONS } = require("../../../../shared/region-list.mjs");
-  // 构建时长控制：每地区只预生成最近 50 条（loadNewsIds 已按 published_at 倒序）。
-  // 长尾新闻流量极低，首次访问走 ISR 按需生成并缓存，效果几乎等价。
-  const PRERENDER_LIMIT = 50;
+  // 全量预生成：长尾新闻被爬虫回访时按需 ISR 生成也是函数 CPU（Fluid 计费），
+  // 构建多花约 40s 换掉这部分运行时成本。可用 NEWS_PRERENDER_LIMIT 环境变量回调。
+  const PRERENDER_LIMIT = Number(process.env.NEWS_PRERENDER_LIMIT || 1000000);
   const regions = await Promise.all(KNOWN_REGIONS.map(async (region) => ({
     region,
     ids: (await loadNewsIds(region)).slice(0, PRERENDER_LIMIT)
@@ -523,7 +523,7 @@ function renderNewsDetail(item, relatedNewsAll, relatedSchools, region) {
               <h2>相关文章</h2>
               <div className="news-detail-related-text">
                 {relatedNews.map((entry) => (
-                  <RegionLink key={entry.id} href={`/news/${encodeURIComponent(entry.id)}`}>{entry.title}</RegionLink>
+                  <RegionLink key={entry.id} href={`/news/${encodeURIComponent(entry.id)}`} prefetch={false}>{entry.title}</RegionLink>
                 ))}
               </div>
             </section>
@@ -565,7 +565,7 @@ function renderNewsDetail(item, relatedNewsAll, relatedSchools, region) {
               <h2>相关政策</h2>
               <div className="news-detail-related-text is-light">
                 {relatedPolicies.map((policy) => (
-                  <RegionLink key={policy.id} href={getPolicyDetailHref(policy)}>{policy.title}</RegionLink>
+                  <RegionLink key={policy.id} href={getPolicyDetailHref(policy)} prefetch={false}>{policy.title}</RegionLink>
                 ))}
               </div>
             </section>
@@ -669,7 +669,7 @@ function renderPolicyDetail(item, mappedNews, relatedPolicies, region) {
               <SectionKicker inverse>RELATED</SectionKicker>
               <h2>对应新闻稿</h2>
               <div className="news-detail-related-text">
-                <RegionLink href={`/news/${encodeURIComponent(mappedNews.id)}`}>{mappedNews.title}</RegionLink>
+                <RegionLink href={`/news/${encodeURIComponent(mappedNews.id)}`} prefetch={false}>{mappedNews.title}</RegionLink>
               </div>
             </section>
           ) : null}
@@ -680,7 +680,7 @@ function renderPolicyDetail(item, mappedNews, relatedPolicies, region) {
               <h2>相关政策</h2>
               <div className="news-detail-related-text is-light">
                 {relatedPolicies.map((policy) => (
-                  <RegionLink key={policy.id} href={getPolicyDetailHref(policy)}>{policy.title}</RegionLink>
+                  <RegionLink key={policy.id} href={getPolicyDetailHref(policy)} prefetch={false}>{policy.title}</RegionLink>
                 ))}
               </div>
             </section>

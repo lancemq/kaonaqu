@@ -259,7 +259,7 @@ export default async function HomePage({ params }) {
 
           <div className="home-news-grid">
             {featuredNews.map((item) => (
-              <RegionLink className="home-news-card" href={getNewsHref(item)} key={item.id}>
+              <RegionLink className="home-news-card" href={getNewsHref(item)} prefetch={false} key={item.id}>
                 <span>{getNewsCategoryLabel(item)} / {item.publishedAt || 'DATE PENDING'}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary || '进入详情查看完整内容。'}</p>
