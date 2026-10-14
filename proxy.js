@@ -73,7 +73,26 @@ export function proxy(request) {
 
       // 带前缀：路由已实体化为 app/[region]/...（页面从 params.region 取地区），
       // 不再 rewrite + x-region header——headers() 会使页面退化为动态渲染烧 CPU。
-      return NextResponse.next();
+
+      // 【Fluid CPU】列表类页面（读 searchParams 的动态渲染）加边缘缓存：
+      // Vercel CDN 缓存 key 含 query string，每个筛选/翻页组合独立缓存，
+      // 重复访问（爬虫回访+用户筛选）由边缘直出，函数不再执行。
+      // 数据为天级更新，300s 边缘陈旧可接受（页面自身 Vary: rsc 保证
+      // HTML 与 RSC 预取分开缓存）。详情页已有 ISR，不在此列。
+      const CDN_CACHED_LIST_PATHS = new Set([
+        '/news',
+        '/schools',
+        '/schools/groups',
+        '/schools/compare'
+      ]);
+      const response = NextResponse.next();
+      if (CDN_CACHED_LIST_PATHS.has(rest)) {
+        response.headers.set(
+          'Cache-Control',
+          'public, s-maxage=300, stale-while-revalidate=600'
+        );
+      }
+      return response;
     }
     // 首段非地区（/schools、/news、/knowledge 等）：fallthrough 到 308。
   } else {
