@@ -36,7 +36,7 @@ const PEEK = args.includes('--peek');
 // mode=lines（南京口径：分数线+成绩缺口加权）| mode=outcome（上海口径：outcome 为空优先）
 const MODE = getArg('mode') || (REGION === 'shanghai' ? 'outcome' : 'lines');
 
-if (!['shanghai', 'suzhou', 'nanjing'].includes(REGION)) {
+if (!['shanghai', 'suzhou', 'nanjing', 'wuxi'].includes(REGION)) {
   console.error(`未知 region: ${REGION}（合法: shanghai/suzhou/nanjing）`);
   process.exit(1);
 }

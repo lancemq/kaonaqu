@@ -18,17 +18,17 @@ const { stripInternalNotes } = require('./admission-notes');
 // 公开 API 不外泄内部维护过程信息（【抽查】戳/口径考据/null 记账等，原文仅库内使用）。
 function sanitizeSchoolForPublic(school) {
   if (school && school.admissionInfo && typeof school.admissionInfo === 'object') {
+    const { auditNotes, ...publicAdmission } = school.admissionInfo;
     return {
       ...school,
       admissionInfo: {
-        ...school.admissionInfo,
-        notes: stripInternalNotes(school.admissionInfo.notes)
+        ...publicAdmission,
+        notes: stripInternalNotes(publicAdmission.notes)
       }
     };
   }
   return school;
 }
-
 function methodNotAllowed() {
   const error = new Error('Method not allowed');
   error.statusCode = 405;

@@ -57,7 +57,9 @@ function rowToSchool(row) {
       code: row.admission_info?.code || '',
       methods: Array.isArray(row.admission_info?.methods) ? row.admission_info.methods : [],
       routes: Array.isArray(row.admission_info?.routes) ? row.admission_info.routes : [],
-      notes: row.admission_info?.notes || ''
+      notes: row.admission_info?.notes || '',
+      // 内部审计原文（独立列 admission_audit，仅库内使用：apply 幂等去重、enrichment 消费）
+      auditNotes: row.admission_audit || ''
     },
     // 兼容别名（全部派生自 admission_info）
     admissionCode: row.admission_info?.code || '',
@@ -609,6 +611,11 @@ function schoolToRow(school = {}) {
         : (Array.isArray(school.admissionRoutes) ? school.admissionRoutes : []),
       notes: school.admissionInfo?.notes || ''
     },
+    // 审计列：仅当调用方显式提供时写（admissionInfo.auditNotes 或 admissionAudit），
+    // 否则不包含该键——update 不触碰列，历史脚本误传整对象也不会清掉审计原文
+    ...(school.admissionInfo?.auditNotes !== undefined || school.admissionAudit !== undefined
+      ? { admission_audit: school.admissionInfo?.auditNotes ?? school.admissionAudit ?? null }
+      : {}),
     info_verified: !!school.infoVerified
   };
 }

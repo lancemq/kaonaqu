@@ -30,7 +30,7 @@ const getArg = (name) => {
   return m ? m.split('=').slice(1).join('=') : null;
 };
 const REGION = getArg('region') || 'shanghai';
-if (!['shanghai', 'suzhou', 'nanjing'].includes(REGION)) {
+if (!['shanghai', 'suzhou', 'nanjing', 'wuxi'].includes(REGION)) {
   console.error(`未知 region: ${REGION}`);
   process.exit(1);
 }
@@ -74,8 +74,15 @@ function mergeScoreLines(curLines, newLines) {
   }
   return [...map.values()].sort((a, b) => a.year - b.year || (a.plan || '').localeCompare(b.plan || ''));
 }
+// 生成带日期戳的审计行并追加到 audit 文本（与库内历史【YYYYMMDD抽查】格式一致）
+function appendAuditLine(auditText, note) {
+  const stamp = '\u3010' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '抽查\u3011';
+  const line = stamp + note;
+  return auditText ? auditText + '\n' + line : line;
+}
 function sanitizeCode(raw) {
-  const m = String(raw || '').match(/\d{6}/);
+  // 兼容 6 位（沪/苏/宁）与 4 位片区码（无锡宜兴 8001-8008、洛社 7002 等按片区编制）
+  const m = String(raw || '').match(/\d{6}|\d{4}/);
   return m ? m[0] : '';
 }
 function cleanNotes(text) {
@@ -138,18 +145,13 @@ function appendAchievements(content, items) {
     const curLines = cur.scoreLines || [];
     const curOutcome = cur.outcomeStats || [];
 
-    const nextLines = Array.isArray(r.scoreLines) && r.scoreLines.length
-      ? mergeScoreLines(curLines, r.scoreLines) : curLines;
-    const nextOutcome = Array.isArray(r.outcomeStats) && r.outcomeStats.length
-      ? dedupeOutcome([...curOutcome, ...r.outcomeStats]) : curOutcome;
-
     const adm = { ...(cur.admissionInfo || {}) };
+    const auditHay = String(adm.auditNotes || '') + '\n' + String(adm.notes || '');
     const code = sanitizeCode(r.admissionCode);
     if (code) adm.code = code;
     const cleanNote = cleanNotes(r.notes);
-    if (cleanNote && !String(adm.notes || '').includes(cleanNote.slice(0, 30))) {
-      const stamp = `【${new Date().toISOString().slice(0, 10).replace(/-/g, '')}抽查】`;
-      adm.notes = adm.notes ? `${adm.notes}\n${stamp}${cleanNote}` : `${stamp}${cleanNote}`;
+    if (cleanNote && !auditHay.includes(cleanNote.slice(0, 30))) {
+      adm.auditNotes = appendAuditLine(adm.auditNotes, cleanNote);
     }
 
     const { content: nextContent, added: achAdded } = appendAchievements(cur.content, r.achievementsAppend || []);
