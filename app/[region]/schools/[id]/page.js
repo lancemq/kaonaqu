@@ -21,7 +21,7 @@ const { getSchoolById, loadSchoolIds } = require('../../../../shared/data-store'
 
 // ISR：详情页 1 小时内 CDN 直出。
 // 分数线为季节性低频数据，600->3600 削减周期性重渲染。
-export const revalidate = 43200;
+export const revalidate = 86400;
 // 构建期为所有地区的学校详情预生成静态页（ISR 1 小时），后续由 CDN 直出。
 export async function generateStaticParams() {
   const { KNOWN_REGIONS } = require("../../../../shared/region-list.mjs");

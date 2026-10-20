@@ -89,7 +89,7 @@ async function Footer({ config: footerConfig }) {
 }
 
 // ISR：区县页 10 分钟 CDN 直出，构建期按各地区 districtCatalog 预生成全部区页。
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 export async function generateStaticParams() {
   const { KNOWN_REGIONS } = require('../../../../../shared/region-list.mjs');

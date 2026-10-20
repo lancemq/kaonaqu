@@ -145,6 +145,11 @@ function appendAchievements(content, items) {
     const curLines = cur.scoreLines || [];
     const curOutcome = cur.outcomeStats || [];
 
+    const nextLines = Array.isArray(r.scoreLines) && r.scoreLines.length
+      ? mergeScoreLines(curLines, r.scoreLines) : curLines;
+    const nextOutcome = Array.isArray(r.outcomeStats) && r.outcomeStats.length
+      ? dedupeOutcome([...curOutcome, ...r.outcomeStats]) : curOutcome;
+
     const adm = { ...(cur.admissionInfo || {}) };
     const auditHay = String(adm.auditNotes || '') + '\n' + String(adm.notes || '');
     const code = sanitizeCode(r.admissionCode);

@@ -57,8 +57,8 @@ function tableTagFromUrl(input) {
 // 写操作经 revalidateTag 秒级失效，长 TTL 只影响绕过 API 的直连改动。
 // 可用环境变量覆盖：SUPABASE_REVALIDATE_SECONDS / NEWS_REVALIDATE_SECONDS / SCHOOLS_REVALIDATE_SECONDS。
 const SUPABASE_REVALIDATE = Number(process.env.SUPABASE_REVALIDATE_SECONDS || 21600);
-const NEWS_REVALIDATE = Number(process.env.NEWS_REVALIDATE_SECONDS || 21600);
-const SCHOOLS_REVALIDATE = Number(process.env.SCHOOLS_REVALIDATE_SECONDS || 43200);
+const NEWS_REVALIDATE = Number(process.env.NEWS_REVALIDATE_SECONDS || 43200);
+const SCHOOLS_REVALIDATE = Number(process.env.SCHOOLS_REVALIDATE_SECONDS || 86400);
 
 function tableRevalidateFromUrl(input) {
   const tag = tableTagFromUrl(input);
