@@ -74,11 +74,12 @@ export default function RootLayout({ children }) {
       >
         {/* 首屏同步设置 data-page，避免频道 CSS（body[data-page=...]）因客户端 useEffect 延迟而首屏闪烁（FOUC）。
             SPA 路由切换由 BodyPageFlag 的 useEffect 负责更新。
-            内联 R 由 KNOWN_REGIONS 注入（与 shared/region-list.mjs 同步），用于剥离 /{region}/ 前缀。 */}
+            内联 R 由 KNOWN_REGIONS 注入（与 shared/region-list.mjs 同步），用于剥离 /{region}/ 前缀；
+            G 为全局频道清单（与 components/body-page-flag.js GLOBAL_PAGE_PREFIXES 同步），无 region 前缀直接匹配。 */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              `(function(){try{var p=location.pathname||'/';var R=${JSON.stringify(KNOWN_REGIONS)};function sp(x){var s=x.split('/');if(s.length>2&&R.indexOf(s[1])>=0){return '/'+s.slice(2).join('/');}return x;}var pp=sp(p);var r=pp.indexOf('/news')===0?'news':pp.indexOf('/schools')===0?'schools':pp.indexOf('/knowledge')===0?'knowledge':'home';document.body.setAttribute('data-page',r);}catch(e){}})();`
+              `(function(){try{var p=location.pathname||'/';var R=${JSON.stringify(KNOWN_REGIONS)};var G=['universities'];function sp(x){var s=x.split('/');if(s.length>2&&R.indexOf(s[1])>=0){return '/'+s.slice(2).join('/');}return x;}var pp=sp(p);var r='home';for(var i=0;i<G.length;i++){if(pp.indexOf('/'+G[i])===0){r=G[i];break;}}if(r==='home'){r=pp.indexOf('/news')===0?'news':pp.indexOf('/schools')===0?'schools':pp.indexOf('/knowledge')===0?'knowledge':'home';}document.body.setAttribute('data-page',r);}catch(e){}})();`
           }}
         />
         <RegionProvider>

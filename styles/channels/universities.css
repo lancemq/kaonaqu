@@ -1,71 +1,255 @@
 /* 高校频道：全局频道（无 region 概念）。
-   复用频道骨架类名（channel-nav/hero/footer/color-bar，与 news/schools 同源），
-   本文件只做两件事：
-   1) body[data-page="universities"] 换肤强调色（深蓝，与 news 玫红/schools 蓝/knowledge 紫区分）
-   2) 高校列表专属布局（uni-* 类名） */
+   结构对齐其他频道 css 的自包含模式：频道骨架（channel-nav/hero/footer/color-bar）
+   在 body[data-page="universities"] 作用域下自带全套定义（同 news/knowledge），
+   另加高校专属 uni-* 布局。强调色深蓝 #1e40af（与 news 玫红/schools 蓝/knowledge 紫区分）。 */
+
+/* ===== 频道基础 ===== */
 body[data-page="universities"] {
     --uni-accent: #1e40af;
+    --uni-accent-strong: #1d4ed8;
     --uni-accent-soft: rgba(30, 64, 175, 0.08);
     --uni-accent-border: rgba(30, 64, 175, 0.22);
     --uni-paper: #f6f7fb;
     --uni-card: #ffffff;
     --uni-text: #1a1d29;
     --uni-muted: #5a6376;
+    background: var(--channel-paper);
+    color: var(--channel-text);
+    font-family: var(--channel-font-body);
+}
+
+body[data-page="universities"]::before,
+body[data-page="universities"]::after {
+    display: none;
+}
+
+body[data-page="universities"] a {
+    color: inherit;
+}
+
+/* ===== 页面容器 ===== */
+.uni-aerial-page,
+.uni-detail-page {
+    width: min(100%, var(--content-max));
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     background: var(--uni-paper);
     color: var(--uni-text);
 }
 
-body[data-page="universities"] .channel-nav .is-active,
-body[data-page="universities"] .channel-nav-links a.is-active {
-    color: var(--uni-accent);
-}
-
-/* ===== 列表页 ===== */
-.uni-aerial-page {
-    min-height: 100vh;
+/* ===== 顶部导航（骨架，对齐 knowledge.css） ===== */
+body[data-page="universities"] .channel-nav {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 80px;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--channel-line);
+    background: #ffffff;
+    width: 100%;
 }
 
-.uni-aerial-page .channel-hero h1 {
-    color: var(--uni-accent);
+body[data-page="universities"] .channel-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    text-decoration: none;
 }
 
-/* 搜索框 */
+body[data-page="universities"] .channel-brand strong {
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+body[data-page="universities"] .channel-brand span {
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    letter-spacing: 0.27em;
+    white-space: nowrap;
+}
+
+body[data-page="universities"] .channel-nav-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+body[data-page="universities"] .channel-nav-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+    border-radius: var(--site-radius-sm);
+    background: #ffffff;
+    color: var(--channel-text);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 160ms ease, color 160ms ease;
+}
+
+body[data-page="universities"] .channel-nav-links a:hover,
+body[data-page="universities"] .channel-nav-links a:focus-visible {
+    background: var(--channel-ink);
+    color: #ffffff;
+}
+
+body[data-page="universities"] .channel-nav-links a.is-active {
+    background: var(--uni-accent);
+    color: #ffffff;
+}
+
+/* ===== Hero（骨架） ===== */
+body[data-page="universities"] .channel-hero {
+    position: relative;
+    min-height: 340px;
+    overflow: hidden;
+    background: var(--uni-accent);
+    background-image: linear-gradient(135deg, #1e40af 0%, #1e3a8a 55%, #172554 100%);
+    width: 100%;
+}
+
+body[data-page="universities"] .channel-hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 56px;
+    width: min(1200px, calc(100% - 80px));
+    margin: 0 auto;
+    padding: 56px 0;
+}
+
+body[data-page="universities"] .channel-hero-copy {
+    display: grid;
+    gap: 16px;
+    max-width: 620px;
+}
+
+body[data-page="universities"] .channel-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+body[data-page="universities"] .channel-kicker span {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 auto;
+    background: #93c5fd;
+}
+
+body[data-page="universities"] .channel-kicker p {
+    color: #93c5fd;
+    font-family: var(--channel-font-caption);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    line-height: 1;
+    margin: 0;
+}
+
+body[data-page="universities"] .channel-hero-copy h1 {
+    margin: 0;
+    color: #ffffff;
+    font-family: var(--channel-font-heading);
+    font-size: 40px;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+}
+
+body[data-page="universities"] .channel-hero-copy p {
+    max-width: 540px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+body[data-page="universities"] .channel-hero-stats {
+    display: grid;
+    gap: 20px;
+    width: 220px;
+    color: #ffffff;
+}
+
+body[data-page="universities"] .channel-hero-stats article {
+    display: grid;
+    gap: 4px;
+}
+
+body[data-page="universities"] .channel-hero-stats strong {
+    color: #ffffff;
+    font-family: var(--channel-font-data);
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+body[data-page="universities"] .channel-hero-stats span {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--channel-font-caption);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+}
+
+/* ===== 搜索框 ===== */
 .uni-search {
     display: flex;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 8px;
     max-width: 480px;
 }
 
 .uni-search input {
     flex: 1;
     padding: 10px 14px;
-    border: 1px solid var(--uni-accent-border);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 10px;
-    background: var(--uni-card);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
     font-size: 14px;
-    color: var(--uni-text);
+}
+
+.uni-search input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .uni-search input:focus {
-    outline: 2px solid var(--uni-accent);
+    outline: 2px solid #ffffff;
     outline-offset: -1px;
+    background: rgba(255, 255, 255, 0.18);
 }
 
 .uni-search button {
     padding: 10px 20px;
     border: 0;
     border-radius: 10px;
-    background: var(--uni-accent);
-    color: #fff;
+    background: #ffffff;
+    color: var(--uni-accent);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
 }
 
-/* 主体两栏：筛选侧栏 + 结果 */
+.uni-search button:hover {
+    background: #dbeafe;
+}
+
+/* ===== 主体两栏：筛选侧栏 + 结果 ===== */
 .uni-aerial-content {
     width: min(1200px, calc(100% - 32px));
     margin: 0 auto;
@@ -154,6 +338,12 @@ body[data-page="universities"] .channel-nav-links a.is-active {
 
 .uni-sort-label { font-size: 13px; color: var(--uni-muted); }
 
+.uni-sort-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .uni-sort-form select {
     padding: 6px 10px;
     border-radius: 8px;
@@ -162,6 +352,18 @@ body[data-page="universities"] .channel-nav-links a.is-active {
     font-size: 13px;
     color: var(--uni-text);
 }
+
+.uni-sort-go {
+    padding: 6px 12px;
+    border: 1px solid var(--uni-accent-border);
+    border-radius: 8px;
+    background: var(--uni-card);
+    color: var(--uni-accent);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.uni-sort-go:hover { background: var(--uni-accent); color: #fff; border-color: var(--uni-accent); }
 
 .uni-summary {
     width: 100%;
@@ -244,15 +446,81 @@ body[data-page="universities"] .channel-nav-links a.is-active {
     border: 1px dashed var(--uni-accent-border);
 }
 
-/* 排序提交按钮（零 JS 表单方案） */
-.uni-sort-go {
-    padding: 6px 12px;
-    border: 1px solid var(--uni-accent-border);
-    border-radius: 8px;
-    background: var(--uni-card);
-    color: var(--uni-accent);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
+/* ===== 页脚（骨架，对齐 news/knowledge） ===== */
+body[data-page="universities"] .channel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    width: min(1200px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 24px 0 32px;
+    border-top: 1px solid var(--channel-line);
 }
-.uni-sort-go:hover { background: var(--uni-accent); color: #fff; border-color: var(--uni-accent); }
+
+body[data-page="universities"] .channel-footer > div {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+body[data-page="universities"] .channel-footer strong {
+    color: var(--channel-text);
+    font-family: var(--channel-font-heading);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+body[data-page="universities"] .channel-footer span {
+    color: var(--channel-muted);
+    font-family: var(--channel-font-caption);
+    font-size: 11px;
+    letter-spacing: 3px;
+    white-space: nowrap;
+}
+
+body[data-page="universities"] .channel-footer nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+}
+
+body[data-page="universities"] .channel-footer nav a {
+    color: var(--channel-muted);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+body[data-page="universities"] .channel-footer nav a:hover {
+    color: var(--uni-accent);
+}
+
+body[data-page="universities"] .channel-footer p {
+    margin: 0;
+    color: var(--channel-muted);
+    font-size: 12px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 900px) {
+    body[data-page="universities"] .channel-nav {
+        padding: 16px 20px;
+    }
+    body[data-page="universities"] .channel-hero-content {
+        width: calc(100% - 40px);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 40px 0;
+    }
+    body[data-page="universities"] .channel-hero-copy h1 {
+        font-size: 30px;
+    }
+    body[data-page="universities"] .channel-hero-stats {
+        grid-auto-flow: column;
+        grid-template-columns: none;
+        width: auto;
+        gap: 32px;
+    }
+}
