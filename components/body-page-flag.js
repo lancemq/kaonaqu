@@ -13,6 +13,9 @@ function stripRegionPrefix(pathname) {
   return pathname;
 }
 
+// 全局频道路径（无 region 前缀，stripRegionPrefix 后原样匹配）。
+const GLOBAL_PAGE_PREFIXES = ['/universities'];
+
 function resolvePage(pathname) {
   const path = stripRegionPrefix(pathname);
   if (path.startsWith('/news')) {
@@ -23,6 +26,9 @@ function resolvePage(pathname) {
   }
   if (path.startsWith('/knowledge')) {
     return 'knowledge';
+  }
+  for (const prefix of GLOBAL_PAGE_PREFIXES) {
+    if (path.startsWith(prefix)) return prefix.slice(1);
   }
   return 'home';
 }

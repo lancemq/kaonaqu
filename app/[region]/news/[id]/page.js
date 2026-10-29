@@ -305,6 +305,7 @@ function NewsDetailNav({ region }) {
         <RegionLink className="is-active" href="/news">新闻</RegionLink>
         {features.schools && <RegionLink href="/schools">学校</RegionLink>}
         {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+          <RegionLink href="/universities">高校</RegionLink>
         <RegionSelector />
       </div>
     </nav>

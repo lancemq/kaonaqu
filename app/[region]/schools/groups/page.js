@@ -71,7 +71,7 @@ export default async function GroupsPage({ params: routeParams, searchParams }) 
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
           {config.features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
-          {config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+          {config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}{config.features.schools && <RegionLink href="/universities">高校</RegionLink>}
           <RegionSelector />
         </div>
       </nav>
@@ -162,7 +162,7 @@ export default async function GroupsPage({ params: routeParams, searchParams }) 
           <RegionLink href="/">首页</RegionLink>
           <RegionLink href="/news">新闻</RegionLink>
           {config.features.schools && <RegionLink href="/schools">学校</RegionLink>}
-          {config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+          {config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}{config.features.schools && <RegionLink href="/universities">高校</RegionLink>}
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

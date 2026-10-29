@@ -26,6 +26,11 @@ const NEWS_SPECIAL_PATHS = new Set([
   '/news/policy-glossary'
 ]);
 
+// 全局频道白名单：首段命中则直接放行（不参与 region 前缀重定向）。
+// 高校库 /universities——全国维度数据，所有地区同一系统（docs/高校知识库详细设计.md）。
+// 未来新增全局频道（如专业库）往此 Set 加一项即可。
+const GLOBAL_CHANNELS = new Set(['universities']);
+
 // 检查无前缀的 rest 路径是否属于该地区已关闭的频道，需要 308 到 /{region}/news。
 // 非新闻频道按对应 feature 判断；新闻专题在 schools 关闭时重定向（内容上海专属）。
 function shouldRedirectToNews(rest, features) {
@@ -60,6 +65,22 @@ export function proxy(request) {
   const match = pathname.match(/^\/([a-z][a-z0-9-]*)(\/.*)?$/);
   if (match) {
     const firstSegment = match[1];
+
+    // 全局频道（/universities）：无 region 概念，直接放行。
+    // 列表根页纳入 CDN 边缘缓存（同 region 列表页 Fluid CPU 策略；
+    // 带筛选 query 的变体由 CDN 按 query string 独立缓存）。
+    if (GLOBAL_CHANNELS.has(firstSegment)) {
+      const rest = match[2] || '/';
+      const response = NextResponse.next();
+      if (rest === '/') {
+        response.headers.set(
+          'Cache-Control',
+          'public, s-maxage=1800, stale-while-revalidate=3600'
+        );
+      }
+      return response;
+    }
+
     if (isKnownRegion(firstSegment)) {
       const rest = match[2] || '/';
 

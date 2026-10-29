@@ -25,6 +25,7 @@ function NotFoundNav({ config }) {
         <RegionLink href="/news">新闻</RegionLink>
         {features.schools && <RegionLink href="/schools">学校</RegionLink>}
         {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+          <RegionLink href="/universities">高校</RegionLink>
         <RegionSelector />
       </div>
     </nav>
@@ -52,6 +53,7 @@ function NotFoundFooter({ config }) {
           <RegionLink href="/news">新闻</RegionLink>
           {features.schools && <RegionLink href="/schools">学校</RegionLink>}
           {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+          <RegionLink href="/universities">高校</RegionLink>
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

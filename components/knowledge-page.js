@@ -11,7 +11,8 @@ const NAV_ITEMS = [
   { label: '首页', href: '/' },
   { label: '新闻', href: '/news' },
   { label: '学校', href: '/schools' },
-  { label: '知识', href: '/knowledge' }
+  { label: '知识', href: '/knowledge' },
+  { label: '高校', href: '/universities' }
 ];
 
 function getKnowledgePageKind(page) {

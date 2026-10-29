@@ -383,7 +383,7 @@ export default async function SchoolsPage({ params: routeParams, searchParams })
             <RegionLink href="/">首页</RegionLink>
             <RegionLink href="/news">新闻</RegionLink>
             {config.features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
-            {config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+            {config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}{config.features.schools && <RegionLink href="/universities">高校</RegionLink>}
             <RegionSelector />
           </div>
         </nav>
@@ -438,7 +438,7 @@ export default async function SchoolsPage({ params: routeParams, searchParams })
         <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         <footer className="channel-footer">
           <div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div>
-          <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{config.features.schools && <RegionLink href="/schools">学校</RegionLink>}{config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}</nav>
+          <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{config.features.schools && <RegionLink href="/schools">学校</RegionLink>}{config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}{config.features.schools && <RegionLink href="/universities">高校</RegionLink>}</nav>
           <p>© 2026 考哪去</p>
         </footer>
       </main>
