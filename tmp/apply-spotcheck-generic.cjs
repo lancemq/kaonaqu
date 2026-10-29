@@ -159,10 +159,22 @@ function appendAchievements(content, items) {
       adm.auditNotes = appendAuditLine(adm.auditNotes, cleanNote);
     }
 
-    const { content: nextContent, added: achAdded } = appendAchievements(cur.content, r.achievementsAppend || []);
+    const { content: achContent, added: achAdded } = appendAchievements(cur.content, r.achievementsAppend || []);
+
+    // 概览块（contentOverviewBlocks）：content 为空/薄时前置插入「学校概览」heading+段落（幂等：已有概览标题则跳过）
+    let nextContent = achContent;
+    let ovAdded = 0;
+    if (Array.isArray(r.contentOverviewBlocks) && r.contentOverviewBlocks.length) {
+      const hasOverview = nextContent.some((b) => b.type === 'heading' && /概览/.test(b.text || ''));
+      if (!hasOverview) { nextContent = [...r.contentOverviewBlocks, ...nextContent]; ovAdded = r.contentOverviewBlocks.length; }
+    }
+
+    // 建校年份（foundingYear）：仅在库内缺失时回填，绝不覆盖已有值
+    const nextFounding = (cur.foundingYear == null && Number(r.foundingYear) > 0) ? Number(r.foundingYear) : cur.foundingYear;
+    const fyFilled = nextFounding !== cur.foundingYear;
 
     if (!EXEC) {
-      console.log(`[DRY] ${r.dbName}: lines ${curLines.length}->${nextLines.length} code=${adm.code || '-'} ach+${achAdded} outcome ${curOutcome.length}->${nextOutcome.length}`);
+      console.log(`[DRY] ${r.dbName}: lines ${curLines.length}->${nextLines.length} code=${adm.code || '-'} ach+${achAdded} ov+${ovAdded} fy=${nextFounding || '-'}${fyFilled ? '(补)' : ''} outcome ${curOutcome.length}->${nextOutcome.length}`);
       ok++;
       continue;
     }
@@ -173,13 +185,15 @@ function appendAchievements(content, items) {
         outcomeStats: nextOutcome,
         content: nextContent,
         admissionInfo: adm,
+        foundingYear: nextFounding,
         infoVerified: true,
       }));
       const back = await withRetry(() => getSchoolById(cur.id));
       const lineOk = (back.scoreLines || []).length >= nextLines.length;
       const outcomeOk = (back.outcomeStats || []).length >= nextOutcome.length;
-      const flag = lineOk && outcomeOk ? 'OK' : 'VERIFY-DIFF';
-      console.log(`${flag} ${r.dbName}: lines=${(back.scoreLines || []).length}(exp ${nextLines.length}) outcome=${(back.outcomeStats || []).length}(exp ${nextOutcome.length}) ach+${achAdded} code=${(back.admissionInfo || {}).code || '-'}`);
+      const fyOk = back.foundingYear != null || r.foundingYear == null;
+      const flag = lineOk && outcomeOk && fyOk ? 'OK' : 'VERIFY-DIFF';
+      console.log(`${flag} ${r.dbName}: lines=${(back.scoreLines || []).length}(exp ${nextLines.length}) outcome=${(back.outcomeStats || []).length}(exp ${nextOutcome.length}) ach+${achAdded} ov+${ovAdded} fy=${back.foundingYear || '-'} code=${(back.admissionInfo || {}).code || '-'}`);
       flag === 'OK' ? ok++ : fail++;
       doneIds.push(cur.id);
     } catch (e) { console.error(`FAIL ${r.dbName}: ${e.message}`); fail++; }
