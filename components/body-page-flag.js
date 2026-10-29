@@ -13,8 +13,12 @@ function stripRegionPrefix(pathname) {
   return pathname;
 }
 
-// 全局频道路径（无 region 前缀，stripRegionPrefix 后原样匹配）。
-const GLOBAL_PAGE_PREFIXES = ['/universities'];
+// 全局频道 → 复用皮肤映射（无 region 前缀，stripRegionPrefix 后原样匹配）。
+// universities 复用学校频道皮肤（页面直接用 schools-aerial-*/school-pencil-* 类名），
+// data-page 输出 "schools" 使 schools-detail.css 作用域原样生效。
+const GLOBAL_PAGE_SKINS = [
+  { prefix: '/universities', page: 'schools' }
+];
 
 function resolvePage(pathname) {
   const path = stripRegionPrefix(pathname);
@@ -27,8 +31,8 @@ function resolvePage(pathname) {
   if (path.startsWith('/knowledge')) {
     return 'knowledge';
   }
-  for (const prefix of GLOBAL_PAGE_PREFIXES) {
-    if (path.startsWith(prefix)) return prefix.slice(1);
+  for (const { prefix, page } of GLOBAL_PAGE_SKINS) {
+    if (path.startsWith(prefix)) return page;
   }
   return 'home';
 }

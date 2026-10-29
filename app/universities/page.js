@@ -1,6 +1,8 @@
 // 高校频道列表页：全局路由 /universities（无 region 前缀，所有地区同一系统）。
+// **样式完全复用学校频道专题皮肤**：页面结构/类名对齐 app/[region]/schools/page.js
+// （schools-aerial-* 骨架），data-page 输出 "schools"（见 body-page-flag/layout 内联脚本），
+// 由 styles/pages/schools-detail.css + styles/channels/schools.css 原样接管，本频道零自建 CSS。
 // 筛选维度：层次(本科/专科) / tags(双一流/985/211/强基) / 省份 / 性质 / 隶属 + 搜索。
-// URL query 即状态；读 searchParams 动态渲染 + proxy 边缘缓存（Fluid CPU 同 schools 列表）。
 import { createRequire } from 'module';
 import Link from 'next/link';
 import Pager from '../../components/pager';
@@ -11,7 +13,8 @@ import {
   parseUniversityFilters,
   buildUniversitiesHref
 } from '../../lib/universities-list.mjs';
-import '../../styles/channels/universities.css';
+import '../../styles/channels/schools.css';
+import '../../styles/pages/schools-detail.css';
 
 const require = createRequire(import.meta.url);
 const { loadUniversitiesList } = require('../../shared/university-store');
@@ -19,27 +22,27 @@ const { loadUniversitiesList } = require('../../shared/university-store');
 const UNIVERSITIES_PER_PAGE = 20;
 
 const LEVEL_OPTIONS = [
-  { value: 'all', label: '全部层次' },
+  { value: 'all', label: '全部' },
   { value: 'undergrad', label: '本科' },
-  { value: 'juniorCollege', label: '专科（高职）' }
+  { value: 'juniorCollege', label: '专科' }
 ];
 
 const TAG_OPTIONS = [
   { value: '双一流', label: '双一流' },
   { value: '985', label: '985' },
   { value: '211', label: '211' },
-  { value: '强基计划', label: '强基计划' }
+  { value: '强基计划', label: '强基' }
 ];
 
 const NATURE_OPTIONS = [
-  { value: 'all', label: '全部性质' },
+  { value: 'all', label: '全部' },
   { value: '公办', label: '公办' },
   { value: '民办', label: '民办' },
   { value: '中外合作', label: '中外合作' }
 ];
 
 const AFFILIATION_OPTIONS = [
-  { value: 'all', label: '全部隶属' },
+  { value: 'all', label: '全部' },
   { value: '教育部', label: '教育部' },
   { value: '工信部', label: '工信部' },
   { value: '其他部委', label: '其他部委' },
@@ -65,11 +68,28 @@ export const metadata = {
   alternates: { canonical: '/universities' }
 };
 
-function tagBadgeClass(tag) {
-  if (tag === '双一流') return 'uni-badge double';
-  if (tag === '985') return 'uni-badge c985';
-  if (tag === '211') return 'uni-badge c211';
-  return 'uni-badge';
+// 筛选小节：复用 schools-aerial-section 手风琴类名（<details> 原生开合，
+// 样式由 schools-detail.css 提供，免 client 岛）
+function FilterSection({ label, open = true, children }) {
+  return (
+    <details className="schools-aerial-filter-block schools-aerial-section is-open" open={open}>
+      <summary className="schools-aerial-section-head">
+        <span className="schools-aerial-section-title">{label}</span>
+        <span className="schools-aerial-section-right"><i className="schools-aerial-section-chevron" aria-hidden="true" /></span>
+      </summary>
+      <div className="schools-aerial-section-body">{children}</div>
+    </details>
+  );
+}
+
+function FilterChips({ options, active, onHref }) {
+  return (
+    <div className="schools-aerial-feature-chips">
+      {options.map((o) => (
+        <Link key={o.value} className={active === o.value ? 'is-active' : ''} href={onHref(o.value)}>{o.label}</Link>
+      ))}
+    </div>
+  );
 }
 
 export default async function UniversitiesPage({ searchParams }) {
@@ -85,17 +105,12 @@ export default async function UniversitiesPage({ searchParams }) {
   const safePage = Math.min(page, totalPages);
   const pageItems = filtered.slice((safePage - 1) * UNIVERSITIES_PER_PAGE, safePage * UNIVERSITIES_PER_PAGE);
 
-  // 筛选选项：省份从数据派生（导入范围可能不含港澳台），按标准序排列
   const provincesInData = new Set(all.map((u) => u.province).filter(Boolean));
-  const provinceOptions = [
-    { value: 'all', label: '全国' },
-    ...PROVINCE_ORDER.filter((p) => provincesInData.has(p)).map((p) => ({ value: p, label: p }))
-  ];
+  const provinceOptions = PROVINCE_ORDER.filter((p) => provincesInData.has(p));
 
   const totalUndergrad = all.filter((u) => u.isUndergrad).length;
   const totalDouble = all.filter((u) => (u.tags || []).includes('双一流')).length;
 
-  // 汇总当前筛选状态（results head 展示）
   const summary = [];
   if (filters.level !== 'all') summary.push(LEVEL_OPTIONS.find((o) => o.value === filters.level)?.label || '');
   if (filters.tags.length) summary.push(filters.tags.join('/'));
@@ -103,6 +118,7 @@ export default async function UniversitiesPage({ searchParams }) {
   if (filters.nature !== 'all') summary.push(filters.nature);
   if (filters.affiliation !== 'all') summary.push(filters.affiliation);
   if (filters.query) summary.push(`关键词：${filters.query}`);
+  if (filters.sort !== 'priority') summary.push(`排序：${UNIVERSITIES_SORT_OPTIONS.find((o) => o.value === filters.sort)?.label || ''}`);
 
   const itemListJsonLd = {
     '@context': 'https://schema.org',
@@ -115,7 +131,7 @@ export default async function UniversitiesPage({ searchParams }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
-      <main className="uni-aerial-page">
+      <main className="schools-aerial-page">
         <nav className="channel-nav" aria-label="顶部导航">
           <Link className="channel-brand" href="/" aria-label="考哪去首页">
             <strong>考哪去</strong>
@@ -135,145 +151,133 @@ export default async function UniversitiesPage({ searchParams }) {
             <section className="channel-hero-copy" aria-label="高校频道概览">
               <div className="channel-kicker"><span aria-hidden="true"></span><p>UNIVERSITY DATABASE</p></div>
               <h1>全国高校数据库</h1>
-              <p>收录全国 {all.length.toLocaleString('zh-CN')} 所普通高等学校（本科 {totalUndergrad} / 专科 {all.length - totalUndergrad}），双一流 {totalDouble} 所。全国维度，各地区共用。</p>
-              <form className="uni-search" action="/universities" method="GET" role="search">
+              <p>收录全国 {all.length.toLocaleString('zh-CN')} 所普通高等学校（本科 {totalUndergrad} / 专科 {all.length - totalUndergrad}），双一流 {totalDouble} 所，覆盖 31 个省市区。</p>
+              <form className="schools-aerial-searchbar" action="/universities" method="GET" role="search">
+                <span aria-hidden="true"></span>
                 <input
+                  id="prototype-university-search"
                   type="search"
                   name="query"
                   defaultValue={filters.query}
                   placeholder="搜索校名 / 简称 / 曾用名，如：清华、华政、哈工大"
                   aria-label="搜索高校"
                 />
-                <button type="submit">搜索</button>
+                <button type="submit">检索</button>
               </form>
             </section>
+
             <aside className="channel-hero-stats" aria-label="高校数据统计">
-              <article><strong>{all.length}</strong><span>收录高校</span></article>
-              <article><strong>{provinceOptions.length - 1}</strong><span>覆盖省市区</span></article>
+              <article><strong>{all.length.toLocaleString('zh-CN')}</strong><span>收录高校</span></article>
+              <article><strong>{provinceOptions.length}</strong><span>覆盖省市区</span></article>
               <article><strong>{totalDouble}</strong><span>双一流</span></article>
             </aside>
           </div>
         </header>
 
-        <section className="uni-aerial-content">
-          <aside className="uni-filter-sidebar" aria-label="筛选条件">
-            <div className="uni-filter-group">
-              <h3>层次</h3>
-              <div className="uni-filter-links">
-                {LEVEL_OPTIONS.map((o) => (
-                  <Link
-                    key={o.value}
-                    className={filters.level === o.value ? 'is-active' : ''}
-                    href={buildUniversitiesHref('/universities', { ...filters, level: o.value }, 1)}
-                  >{o.label}</Link>
-                ))}
-              </div>
+        <section className="schools-aerial-content">
+          <aside className="schools-aerial-sidebar" aria-label="筛选条件">
+            <div className="schools-aerial-sidebar-head">
+              <div className="channel-kicker"><span aria-hidden="true"></span><p>FILTER</p></div>
+              <h2>筛选条件</h2>
             </div>
-            <div className="uni-filter-group">
-              <h3>标签</h3>
-              <div className="uni-filter-links">
-                <Link className={!filters.tags.length ? 'is-active' : ''} href={buildUniversitiesHref('/universities', { ...filters, tags: [] }, 1)}>全部</Link>
-                {TAG_OPTIONS.map((o) => (
-                  <Link
-                    key={o.value}
-                    className={filters.tags.includes(o.value) ? 'is-active' : ''}
-                    href={buildUniversitiesHref('/universities', {
-                      ...filters,
-                      tags: filters.tags.includes(o.value)
-                        ? filters.tags.filter((t) => t !== o.value)
-                        : [...filters.tags, o.value]
-                    }, 1)}
-                  >{o.label}</Link>
-                ))}
-              </div>
-            </div>
-            <div className="uni-filter-group">
-              <h3>省份</h3>
-              <div className="uni-filter-links uni-filter-provinces">
-                {provinceOptions.map((o) => (
-                  <Link
-                    key={o.value}
-                    className={filters.province === o.value ? 'is-active' : ''}
-                    href={buildUniversitiesHref('/universities', { ...filters, province: o.value }, 1)}
-                  >{o.label}</Link>
-                ))}
-              </div>
-            </div>
-            <div className="uni-filter-group">
-              <h3>性质</h3>
-              <div className="uni-filter-links">
-                {NATURE_OPTIONS.map((o) => (
-                  <Link
-                    key={o.value}
-                    className={filters.nature === o.value ? 'is-active' : ''}
-                    href={buildUniversitiesHref('/universities', { ...filters, nature: o.value }, 1)}
-                  >{o.label}</Link>
-                ))}
-              </div>
-            </div>
-            <div className="uni-filter-group">
-              <h3>隶属</h3>
-              <div className="uni-filter-links">
-                {AFFILIATION_OPTIONS.map((o) => (
-                  <Link
-                    key={o.value}
-                    className={filters.affiliation === o.value ? 'is-active' : ''}
-                    href={buildUniversitiesHref('/universities', { ...filters, affiliation: o.value }, 1)}
-                  >{o.label}</Link>
-                ))}
-              </div>
+
+            <div className="schools-aerial-filter-stack">
+              <FilterSection label="层次">
+                <FilterChips
+                  options={LEVEL_OPTIONS}
+                  active={filters.level}
+                  onHref={(v) => buildUniversitiesHref('/universities', { ...filters, level: v }, 1)}
+                />
+              </FilterSection>
+
+              <FilterSection label="标签">
+                <div className="schools-aerial-feature-chips">
+                  <Link className={!filters.tags.length ? 'is-active' : ''} href={buildUniversitiesHref('/universities', { ...filters, tags: [] }, 1)}>全部</Link>
+                  {TAG_OPTIONS.map((o) => {
+                    const activeTag = filters.tags.includes(o.value);
+                    const nextTags = activeTag ? filters.tags.filter((t) => t !== o.value) : [...filters.tags, o.value];
+                    return (
+                      <Link key={o.value} className={activeTag ? 'is-active' : ''} href={buildUniversitiesHref('/universities', { ...filters, tags: nextTags }, 1)}>{o.label}</Link>
+                    );
+                  })}
+                </div>
+              </FilterSection>
+
+              <FilterSection label="省份" open={false}>
+                <div className="schools-aerial-feature-chips">
+                  <Link className={filters.province === 'all' ? 'is-active' : ''} href={buildUniversitiesHref('/universities', { ...filters, province: 'all' }, 1)}>全部</Link>
+                  {provinceOptions.map((p) => (
+                    <Link key={p} className={filters.province === p ? 'is-active' : ''} href={buildUniversitiesHref('/universities', { ...filters, province: p }, 1)}>{p}</Link>
+                  ))}
+                </div>
+              </FilterSection>
+
+              <FilterSection label="性质">
+                <FilterChips
+                  options={NATURE_OPTIONS}
+                  active={filters.nature}
+                  onHref={(v) => buildUniversitiesHref('/universities', { ...filters, nature: v }, 1)}
+                />
+              </FilterSection>
+
+              <FilterSection label="隶属" open={false}>
+                <FilterChips
+                  options={AFFILIATION_OPTIONS}
+                  active={filters.affiliation}
+                  onHref={(v) => buildUniversitiesHref('/universities', { ...filters, affiliation: v }, 1)}
+                />
+              </FilterSection>
             </div>
           </aside>
 
-          <section className="uni-aerial-results" aria-label="高校检索结果">
-            <header className="uni-aerial-results-head">
+          <section className="schools-aerial-results" aria-label="高校检索结果">
+            <header className="schools-aerial-results-head">
               <div>
                 <span>{total}</span>
                 <h2>所高校</h2>
               </div>
-              <div className="uni-aerial-results-head-right">
-                <label htmlFor="uni-sort" className="uni-sort-label">排序</label>
-                <form action="/universities" method="GET" className="uni-sort-form">
-                  {/* 保住既有筛选再排序：隐藏字段回填当前状态 */}
+              <div className="schools-aerial-results-head-right">
+                <label htmlFor="prototype-sort-filter" className="schools-aerial-sort-label">排序</label>
+                <form action="/universities" method="GET" className="schools-aerial-sort">
                   {filters.level !== 'all' && <input type="hidden" name="level" value={filters.level} />}
                   {filters.tags.length > 0 && <input type="hidden" name="tags" value={filters.tags.join(',')} />}
                   {filters.province !== 'all' && <input type="hidden" name="province" value={filters.province} />}
                   {filters.nature !== 'all' && <input type="hidden" name="nature" value={filters.nature} />}
                   {filters.affiliation !== 'all' && <input type="hidden" name="affiliation" value={filters.affiliation} />}
                   {filters.query && <input type="hidden" name="query" value={filters.query} />}
-                  <select id="uni-sort" name="sort" defaultValue={filters.sort}>
+                  <select id="prototype-sort-filter" name="sort" defaultValue={filters.sort}>
                     {UNIVERSITIES_SORT_OPTIONS.map((o) => (
                       <option key={o.value} value={o.value}>{o.label}</option>
                     ))}
                   </select>
-                  <button type="submit" className="uni-sort-go">Go</button>
+                  <button type="submit">Go</button>
                 </form>
               </div>
-              <p className="uni-summary">{summary.length ? summary.join(' · ') : '未筛选，展示全量结果。'}</p>
+              <p>{summary.length ? summary.join(' · ') : '未筛选，展示全量结果。'}</p>
             </header>
 
-            <div className="uni-cardlist">
+            <div className="schools-aerial-cardlist">
               {pageItems.length === 0 ? (
-                <div className="uni-empty"><p>没有匹配的高校，请调整筛选条件。</p></div>
+                <div className="schools-aerial-empty">
+                  <p>没有匹配的高校，请调整筛选条件。</p>
+                </div>
               ) : pageItems.map((u) => (
-                <Link key={u.id} className="uni-card" href={`/universities/${encodeURIComponent(u.slug)}`}>
-                  <div className="uni-card-head">
-                    <h3>{u.name}</h3>
-                    <div className="uni-card-badges">
-                      {(u.tags || []).map((t) => <span key={t} className={tagBadgeClass(t)}>{t}</span>)}
-                      {!u.isUndergrad && <span className="uni-badge jc">专科</span>}
+                <article key={u.id} className="schools-aerial-card-wrap">
+                  <Link href={`/universities/${encodeURIComponent(u.slug)}`} className="schools-aerial-card" prefetch={false}>
+                    <div className="schools-aerial-card-main">
+                      <p>{u.province}{u.city ? ` / ${u.city}` : ''} / {u.nature || '高校'}{u.isUndergrad ? ' / 本科' : ' / 专科'}</p>
+                      <h3>{u.name}</h3>
+                      <span>{u.aliases && u.aliases.length ? `简称：${u.aliases.slice(0, 3).join(' / ')}` : '查看高校概况、学科实力与录取数据。'}</span>
+                      <div className="schools-aerial-card-tags">
+                        {(u.tags || []).slice(0, 4).map((tag) => <em key={tag}>{tag}</em>)}
+                      </div>
                     </div>
-                  </div>
-                  <p className="uni-card-meta">
-                    {u.province}{u.city ? ` · ${u.city}` : ''}
-                    {u.affiliation ? ` · ${u.affiliation}直属` : ''}
-                    {u.nature ? ` · ${u.nature}` : ''}
-                    {u.foundingYear ? ` · 建校 ${u.foundingYear}` : ''}
-                  </p>
-                  {u.aliases && u.aliases.length > 0 && (
-                    <p className="uni-card-aliases">简称：{u.aliases.slice(0, 3).join(' / ')}</p>
-                  )}
-                </Link>
+                    <div className="schools-aerial-card-side">
+                      <strong>{(u.tags || [])[0] || (u.isUndergrad ? '本科' : '专科')}</strong>
+                      <b>查看详情 →</b>
+                    </div>
+                  </Link>
+                </article>
               ))}
             </div>
 
