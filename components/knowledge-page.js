@@ -6,14 +6,7 @@ import KnowledgeQuiz from './knowledge-quiz';
 import { FREQ_LABELS } from '../lib/knowledge-meta.mjs';
 import { getRegionContextSync } from '../lib/region-server.mjs';
 import { RegionSelector } from './region-selector';
-
-const NAV_ITEMS = [
-  { label: '首页', href: '/' },
-  { label: '新闻', href: '/news' },
-  { label: '学校', href: '/schools' },
-  { label: '知识', href: '/knowledge' },
-  { label: '高校', href: '/universities' }
-];
+import { SiteMenuLinks } from './site-menu';
 
 function getKnowledgePageKind(page) {
   if (page.slug === 'index') return 'channel';
@@ -143,11 +136,6 @@ function MetaBadges({ difficulty, examFrequency }) {
 }
 
 function SiteNav({ brandSuffix, features }) {
-  const visibleItems = NAV_ITEMS.filter((item) => {
-    if (item.href === '/schools') return features.schools;
-    if (item.href === '/knowledge') return features.knowledge;
-    return true;
-  });
   return (
     <header className="channel-nav">
       <RegionLink className="channel-brand" href="/">
@@ -155,11 +143,7 @@ function SiteNav({ brandSuffix, features }) {
         <span>{brandSuffix}</span>
       </RegionLink>
       <nav className="channel-nav-links" aria-label="主导航">
-        {visibleItems.map((item) => (
-          <RegionLink className={item.href === '/knowledge' ? 'is-active' : undefined} href={item.href} key={item.href}>
-            {item.label}
-          </RegionLink>
-        ))}
+        <SiteMenuLinks features={features} active="knowledge" />
         <RegionSelector />
       </nav>
     </header>

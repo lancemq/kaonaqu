@@ -4,6 +4,7 @@ import NewsPageClient from '../../../components/news-page-client';
 import { getNewsCategoryLabel, filterNews, getNewsSection } from '../../../lib/site-utils';
 import { getRegionContextFromParams } from '../../../lib/region-server.mjs';
 import { RegionSelector } from '../../../components/region-selector';
+import { SiteMenuLinks } from '../../../components/site-menu';
 
 const require = createRequire(import.meta.url);
 const { loadNewsList, loadSchoolNamesByIds } = require('../../../shared/data-store');
@@ -170,11 +171,7 @@ export default async function NewsPage({ params: routeParams, searchParams }) {
           <span>{config.brandSuffix}</span>
         </RegionLink>
         <div className="channel-nav-links">
-          <RegionLink href="/">首页</RegionLink>
-          <RegionLink className="is-active" href="/news">新闻</RegionLink>
-          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
-          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
-          <RegionLink href="/universities">高校</RegionLink>
+          <SiteMenuLinks features={features} active="news" />
           <RegionSelector />
         </div>
       </nav>
@@ -232,11 +229,7 @@ export default async function NewsPage({ params: routeParams, searchParams }) {
           <span>{config.brandSuffixFull}</span>
         </div>
         <nav aria-label="页脚导航">
-          <RegionLink href="/">首页</RegionLink>
-          <RegionLink href="/news">新闻</RegionLink>
-          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
-          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
-          <RegionLink href="/universities">高校</RegionLink>
+          <SiteMenuLinks features={features} />
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

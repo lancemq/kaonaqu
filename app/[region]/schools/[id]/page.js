@@ -15,6 +15,7 @@ import { renderBlocks } from '../../../../components/BlockRenderer';
 import { getSchoolOverview } from '../../../../lib/school-content';
 import { getRegionContextFromParams } from '../../../../lib/region-server.mjs';
 import { RegionSelector } from '../../../../components/region-selector';
+import { SiteMenuLinks } from '../../../../components/site-menu';
 
 const require = createRequire(import.meta.url);
 const { getSchoolById, loadSchoolIds } = require('../../../../shared/data-store');
@@ -239,13 +240,13 @@ export default async function SchoolDetailPage({ params }) {
       />
       <nav className="channel-nav" aria-label="顶部导航">
         <RegionLink className="channel-brand" href="/" aria-label="考哪去首页"><strong>考哪去</strong><span>{config.brandSuffix}</span></RegionLink>
-        <div className="channel-nav-links"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{config.features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}{config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}{config.features.schools && <RegionLink href="/universities">高校</RegionLink>}<RegionSelector /></div>
+        <div className="channel-nav-links"><SiteMenuLinks features={config.features} active="schools" /><RegionSelector /></div>
       </nav>
 
       <nav className="school-pencil-breadcrumb" aria-label="面包屑">
         <RegionLink href="/">首页</RegionLink>
         <i aria-hidden="true">/</i>
-        <RegionLink href="/schools">学校</RegionLink>
+        <RegionLink href="/schools">中学</RegionLink>
         <i aria-hidden="true">/</i>
         {districtHref ? (
           <RegionLink href={districtHref}>{districtName}</RegionLink>

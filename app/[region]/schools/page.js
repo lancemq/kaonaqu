@@ -7,6 +7,7 @@ import SchoolsSortSelect from '../../../components/schools-sort-select';
 import Pager from '../../../components/pager';
 import { RegionLink } from '../../../components/region-link';
 import { RegionSelector } from '../../../components/region-selector';
+import { SiteMenuLinks } from '../../../components/site-menu';
 import { SCHOOLS_SORT_OPTIONS } from '../../../lib/schools-list-url.mjs';
 import { getSchoolOverview } from '../../../lib/school-content';
 import {
@@ -380,10 +381,7 @@ export default async function SchoolsPage({ params: routeParams, searchParams })
             <span>{config.brandSuffix}</span>
           </RegionLink>
           <div className="channel-nav-links">
-            <RegionLink href="/">首页</RegionLink>
-            <RegionLink href="/news">新闻</RegionLink>
-            {config.features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
-            {config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}{config.features.schools && <RegionLink href="/universities">高校</RegionLink>}
+            <SiteMenuLinks features={config.features} active="schools" />
             <RegionSelector />
           </div>
         </nav>
@@ -438,7 +436,7 @@ export default async function SchoolsPage({ params: routeParams, searchParams })
         <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         <footer className="channel-footer">
           <div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div>
-          <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{config.features.schools && <RegionLink href="/schools">学校</RegionLink>}{config.features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}{config.features.schools && <RegionLink href="/universities">高校</RegionLink>}</nav>
+          <nav aria-label="页脚导航"><SiteMenuLinks features={config.features} /></nav>
           <p>© 2026 考哪去</p>
         </footer>
       </main>

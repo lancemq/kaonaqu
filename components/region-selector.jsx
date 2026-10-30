@@ -7,7 +7,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useRegion } from './region-context';
-import { regionPath } from '../shared/region-path.mjs';
+import { regionPath, isGlobalChannelPath } from '../shared/region-path.mjs';
 import { REGION_ENTRIES as REGIONS, DEFAULT_REGION } from '../shared/region-list.mjs';
 
 // 剥离 URL 中的 region 前缀，得到无前缀路径（/shanghai/schools -> /schools）
@@ -44,12 +44,15 @@ export function RegionSelector({ className = '' }) {
   }, [open]);
 
   const current = REGIONS.find((r) => r.value === region) || REGIONS[0];
+  // 全局频道（/universities 等）不属于任何地区：选中态置空，选任一地区都跳该地区学校频道
+  const onGlobalChannel = isGlobalChannelPath(stripRegionPrefix(pathname || '/'));
 
   const select = (value) => {
     setOpen(false);
-    if (value === region) return;
+    if (!onGlobalChannel && value === region) return;
     const base = stripRegionPrefix(pathname || '/');
-    window.location.assign(regionPath(base, value));
+    const target = onGlobalChannel ? '/schools' : base;
+    window.location.assign(regionPath(target, value));
   };
 
   return (
@@ -79,7 +82,7 @@ export function RegionSelector({ className = '' }) {
             <li key={r.value} role="option" aria-selected={r.value === region}>
               <button type="button" onClick={() => select(r.value)}>
                 <span>{r.label}</span>
-                {r.value === region && (
+                {!onGlobalChannel && r.value === region && (
                   <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
                     <path d="M2 7l3.5 3.5L12 3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>

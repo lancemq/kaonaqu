@@ -7,6 +7,15 @@ import { DEFAULT_REGION } from './region-list.mjs';
 
 const GLOBAL_CHANNELS = new Set(['universities']);
 
+// 全局频道首段清单（proxy.js GLOBAL_CHANNELS 同源语义；RegionSelector 等需要判断
+// "当前页是否无地区归属"时复用，避免各处硬编码首段名）。
+export const GLOBAL_CHANNEL_SEGMENTS = GLOBAL_CHANNELS;
+
+export function isGlobalChannelPath(pathname) {
+  const seg = String(pathname || '/').split('/')[1];
+  return Boolean(seg) && GLOBAL_CHANNELS.has(seg);
+}
+
 export function regionPath(path, region = DEFAULT_REGION) {
   if (path == null) return `/${region}`;
   if (typeof path !== 'string') return path;

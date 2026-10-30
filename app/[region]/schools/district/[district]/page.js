@@ -14,6 +14,7 @@ import {
 import { getSchoolOverview } from '../../../../../lib/school-content';
 import { getRegionContextFromParams } from '../../../../../lib/region-server.mjs';
 import { RegionSelector } from '../../../../../components/region-selector';
+import { SiteMenuLinks } from '../../../../../components/site-menu';
 
 const require = createRequire(import.meta.url);
 const { loadSchoolsByDistrict, loadSchoolCountsByDistrict } = require('../../../../../shared/data-store');
@@ -64,10 +65,7 @@ async function SiteNav({ config: navConfig }) {
         <span>{config.brandSuffix}</span>
       </RegionLink>
       <div className="channel-nav-links">
-        <RegionLink href="/">首页</RegionLink>
-        <RegionLink href="/news">新闻</RegionLink>
-        <RegionLink className="is-active" href="/schools">学校</RegionLink>
-        <RegionLink href="/knowledge">知识</RegionLink>
+        <SiteMenuLinks features={config.features} active="schools" />
         <RegionSelector />
       </div>
     </nav>
@@ -81,7 +79,7 @@ async function Footer({ config: footerConfig }) {
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
         <div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div>
-        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink><RegionLink href="/schools">学校</RegionLink><RegionLink href="/knowledge">知识</RegionLink></nav>
+        <nav aria-label="页脚导航"><SiteMenuLinks features={config.features} /></nav>
         <p>© 2026 考哪去</p>
       </footer>
     </>
@@ -198,7 +196,7 @@ export default async function DistrictSchoolsPage({ params }) {
       <header className="channel-hero district-detail-hero" id="top">
         <div className="channel-hero-content">
           <section className="channel-hero-copy" aria-label={`${districtInfo.name}学校专题概览`}>
-            <div className="district-channel-breadcrumb"><RegionLink href="/schools">学校</RegionLink><span>/</span><RegionLink href="/schools/district">区域频道</RegionLink><span>/</span><strong>{districtInfo.name}</strong></div>
+            <div className="district-channel-breadcrumb"><RegionLink href="/schools">中学</RegionLink><span>/</span><RegionLink href="/schools/district">区域频道</RegionLink><span>/</span><strong>{districtInfo.name}</strong></div>
             <SectionKicker>DISTRICT DATABASE</SectionKicker>
             <h1>{districtInfo.name}学校专题</h1>
             <p>{getDistrictSchoolTopic(districtInfo)}</p>

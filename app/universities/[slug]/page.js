@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import { renderBlocks } from '../../../components/BlockRenderer';
+import { RegionSelector } from '../../../components/region-selector';
+import { SiteMenuLinks } from '../../../components/site-menu';
 import '../../../styles/channels/schools.css';
 import '../../../styles/pages/schools-detail.css';
 
@@ -114,11 +116,8 @@ export default async function UniversityDetailPage({ params }) {
       <nav className="channel-nav" aria-label="顶部导航">
         <Link className="channel-brand" href="/" aria-label="考哪去首页"><strong>考哪去</strong><span>高校库</span></Link>
         <div className="channel-nav-links">
-          <Link href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
-          <Link className="is-active" href="/universities">高校</Link>
+          <SiteMenuLinks active="universities" />
+          <RegionSelector />
         </div>
       </nav>
 
@@ -234,11 +233,7 @@ export default async function UniversityDetailPage({ params }) {
       <footer className="channel-footer">
         <div><strong>考哪去</strong><span>高校知识库</span></div>
         <nav aria-label="页脚导航">
-          <Link href="/">首页</Link>
-          <Link href="/news">新闻</Link>
-          <Link href="/schools">学校</Link>
-          <Link href="/knowledge">知识</Link>
-          <Link href="/universities">高校</Link>
+          <SiteMenuLinks />
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

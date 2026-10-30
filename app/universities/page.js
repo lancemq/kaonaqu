@@ -11,6 +11,8 @@ import UniversitiesCard from '../../components/universities-card';
 import UniversitiesSearchBar from '../../components/universities-search-bar';
 import UniversitiesFilterSidebar from '../../components/universities-filter-sidebar';
 import UniversitiesSortSelect from '../../components/universities-sort-select';
+import { RegionSelector } from '../../components/region-selector';
+import { SiteMenuLinks } from '../../components/site-menu';
 import {
   UNIVERSITIES_SORT_OPTIONS,
   filterUniversities,
@@ -112,11 +114,8 @@ export default async function UniversitiesPage({ searchParams }) {
             <span>高校库</span>
           </Link>
           <div className="channel-nav-links">
-            <Link href="/">首页</Link>
-            <Link href="/news">新闻</Link>
-            <Link href="/schools">学校</Link>
-            <Link href="/knowledge">知识</Link>
-            <Link className="is-active" href="/universities">高校</Link>
+            <SiteMenuLinks active="universities" />
+            <RegionSelector />
           </div>
         </nav>
 
@@ -184,11 +183,7 @@ export default async function UniversitiesPage({ searchParams }) {
         <footer className="channel-footer">
           <div><strong>考哪去</strong><span>高校知识库</span></div>
           <nav aria-label="页脚导航">
-            <Link href="/">首页</Link>
-            <Link href="/news">新闻</Link>
-            <Link href="/schools">学校</Link>
-            <Link href="/knowledge">知识</Link>
-            <Link href="/universities">高校</Link>
+            <SiteMenuLinks />
           </nav>
           <p>© 2026 考哪去</p>
         </footer>

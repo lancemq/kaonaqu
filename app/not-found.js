@@ -2,6 +2,7 @@ import '../styles/pages/not-found.css';
 import { RegionLink } from '../components/region-link';
 import { getRegionContextSync } from '../lib/region-server.mjs';
 import { RegionSelector } from '../components/region-selector';
+import { SiteMenuLinks } from '../components/site-menu';
 
 export async function generateMetadata() {
   const { config } = getRegionContextSync();
@@ -21,11 +22,7 @@ function NotFoundNav({ config }) {
         <span>{config.brandSuffix}</span>
       </RegionLink>
       <div className="channel-nav-links">
-        <RegionLink href="/">首页</RegionLink>
-        <RegionLink href="/news">新闻</RegionLink>
-        {features.schools && <RegionLink href="/schools">学校</RegionLink>}
-        {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
-          <RegionLink href="/universities">高校</RegionLink>
+        <SiteMenuLinks features={features} />
         <RegionSelector />
       </div>
     </nav>
@@ -49,11 +46,7 @@ function NotFoundFooter({ config }) {
           <span>{config.brandSuffixFull}</span>
         </div>
         <nav aria-label="页脚导航">
-          <RegionLink href="/">首页</RegionLink>
-          <RegionLink href="/news">新闻</RegionLink>
-          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
-          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
-          <RegionLink href="/universities">高校</RegionLink>
+          <SiteMenuLinks features={features} />
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

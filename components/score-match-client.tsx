@@ -4,6 +4,7 @@ import { RegionLink } from './region-link';
 import { useMemo, useState } from 'react';
 import { useRegion } from './region-context';
 import { RegionSelector } from './region-selector';
+import { SiteMenuLinks } from './site-menu';
 import {
   getAllDistricts,
   groupResultsByCategory,
@@ -85,10 +86,7 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
           <span>{brandSuffix}</span>
         </RegionLink>
         <div className="channel-nav-links">
-          <RegionLink href="/">首页</RegionLink>
-          <RegionLink href="/news">新闻</RegionLink>
-          {features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
-          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+          <SiteMenuLinks features={features} active="schools" />
           <RegionSelector />
         </div>
       </nav>
@@ -230,10 +228,7 @@ export default function ScoreMatchClient({ schools }: { schools: SchoolRecord[] 
       <footer className="channel-footer">
         <div><strong>考哪去</strong><span>{brandSuffixFull}</span></div>
         <nav aria-label="页脚导航">
-          <RegionLink href="/">首页</RegionLink>
-          <RegionLink href="/news">新闻</RegionLink>
-          {features.schools && <RegionLink href="/schools">学校</RegionLink>}
-          {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}
+          <SiteMenuLinks features={features} />
         </nav>
         <p>© 2026 考哪去</p>
       </footer>

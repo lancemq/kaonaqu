@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useCompareBag } from './compare-bag';
 import { useRegion } from './region-context';
 import { RegionSelector } from './region-selector';
+import { SiteMenuLinks } from './site-menu';
 import {
   getSchoolDistrictName,
   getSchoolStage,
@@ -152,10 +153,7 @@ function SiteNav() {
         <span>{brandSuffix}</span>
       </RegionLink>
       <div className="channel-nav-links">
-        <RegionLink href="/">首页</RegionLink>
-        <RegionLink href="/news">新闻</RegionLink>
-        {features.schools && <RegionLink className="is-active" href="/schools">学校</RegionLink>}
-        {features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}<RegionLink href="/universities">高校</RegionLink>
+        <SiteMenuLinks features={features} active="schools" />
         <RegionSelector />
       </div>
     </nav>
@@ -169,7 +167,7 @@ function Footer() {
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <footer className="channel-footer">
         <div><strong>考哪去</strong><span>{brandSuffixFull}</span></div>
-        <nav aria-label="页脚导航"><RegionLink href="/">首页</RegionLink><RegionLink href="/news">新闻</RegionLink>{features.schools && <RegionLink href="/schools">学校</RegionLink>}{features.knowledge && <RegionLink href="/knowledge">知识</RegionLink>}<RegionLink href="/universities">高校</RegionLink></nav>
+        <nav aria-label="页脚导航"><SiteMenuLinks features={features} /></nav>
         <p>© 2026 考哪去</p>
       </footer>
     </>
@@ -287,7 +285,7 @@ export default function SchoolsCompareClient({ schools, initialSchools }) {
       <header className="channel-hero" id="top">
         <div className="channel-hero-content">
           <section className="channel-hero-copy" aria-label="学校对比工具概览">
-            <div className="compare-aerial-breadcrumb"><RegionLink href="/schools">学校</RegionLink><span>/</span><strong>学校对比</strong></div>
+            <div className="compare-aerial-breadcrumb"><RegionLink href="/schools">中学</RegionLink><span>/</span><strong>学校对比</strong></div>
             <CompareKicker>COMPARE SCHOOLS</CompareKicker>
             <h1>学校对比</h1>
             <p>多校横向对比，从区域、学段、梯队、办学特色到联系方式，一屏看清学校差异。</p>
