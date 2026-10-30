@@ -137,3 +137,37 @@ done 文件按城分文件（`spotcheck-done-{region}.json`），旧专项 done 
 | 上海 | shanghai | 750 | eliteCohort + starSystem:false | 816 | 1至15志愿；初中摇号无线 |
 | 苏州 | suzhou | 740 | schoolStar + starSystem:true | 385 | 四市六区；指标生 70% |
 | 南京 | nanjing | 700 | schoolStar + starSystem:true | 319 | 第一/二批次；招生范围三级（全市13所/原市区/本区）；多校区同代码 |
+
+---
+
+## 附：高校数据债每日批次（2026-10-30 起，与初高中线并行）
+
+> 高校线有独立分配器 `tmp/generate-university-task.cjs`（产 `tmp/university-task-today.json`），与 `generate-daily-task.cjs` 同日执行。高校与初高中是两张表、两套 apply 脚本，互不复用白名单。
+
+### 方向优先级（分配器内置）
+
+| 优先级 | 方向 | 说明 |
+|---|---|---|
+| P0 | tags-drift | 985∉211 等名单漂移监测（应恒为 0，非 0 先停下人工核查） |
+| P1 | df-disciplines | 双一流缺第四轮学科评估（当前剩 8：外交学院/西藏大学/青海大学/广州医科大学/内蒙古大学/石河子大学/宁夏大学/新疆大学——均已确认无 B+ 及以上学科，处理方式=在 audit_notes 记录查证口径而非硬造） |
+| P1 | df-content / df-facts | 双一流缺 content / 官网建校年（当前 0） |
+| P1 | t211-content | 211（非双一流）缺 content（当前 0） |
+| P2 | ug-content-head | 非 211 本科 enrich，苏沪京浙粤优先（253 所） |
+| P2 | ug-content-rest | 其余省份（1006 所） |
+| P2 | spot-check | 已 enrich 校抽检 20/百 |
+| P3 | score-lines | 默认关闭（`UNI_SCORE_LINES=1` 开启），等数据源方案定 |
+
+### 每批执行（10 所/批）
+
+1. 分配器 sample 取名单 → 3~4 组并行研究 agent
+2. 研究稿 `tmp/universities-{direction}-{MMDD}.json`（**直接覆写禁止追加**）：
+   `{name, overview(180-260字,含第二轮双一流建设学科), achievements(3条,首条固定「「双一流」建设高校（第二轮），建设学科：XX」), disciplines([{name,rating}] 仅A+/A/A-/B+), foundingYear, website, aliases}`
+3. **硬约束**：双一流建设学科以教育部 2022 第二轮官方名单为准（错写=最严重事故）；学科评估以第四轮官方结果为准（无 B+ 以上给空数组，不虚构）；官网域名不确定跳过；无 U+FFFD；name 与分配器名单逐字一致
+4. 写库：`node tmp/apply-universities-batch.cjs --research=... DRY → --exec`（合并语义：content 只填空 / 学科按 name 去重 / 年份官网只填缺 / 别名并集，绝不覆盖已有值）
+5. 读回验证（content 块数 / 学科条数）→ 归档 `tmp/applied-batches/YYYYMMDD/` → automation memory.md 追加批次记录
+
+### 已知口径（勿回退）
+
+- 双一流名单以官方 147 所为准；库内 144 = 147 − 4 军校 + 上海体育学院已更名上海体育大学。2026-10-30 曾纠偏：移除误标 5 所（上海海事/上海理工/四川师范/天津外语/天津财经）、补标 3 所（南科大/宁波大学/西南石油大学）——**名单来源不可靠时必须逐校对照教育部官方 PDF**
+- 评估口径修正记录：外交学院政治学无公开评级、天中医/南中医中药学 A-、东林林业工程 A+（林学 B+）、上财应经 A、上外外文 A+、南医大公卫 A+、广中医中医学 B+、川农畜牧 A-
+- 湖南大学 founding_year=976 为岳麓书院官方溯源口径（近代建制 1903/1926），非脏数据，勿修
