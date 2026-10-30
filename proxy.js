@@ -104,7 +104,9 @@ export function proxy(request) {
         '/news',
         '/schools',
         '/schools/groups',
-        '/schools/compare'
+        '/schools/compare',
+        // 地区前缀版高校库（/shanghai/universities 等）：与全局 /universities 同页同缓存
+        '/universities'
       ]);
       const response = NextResponse.next();
       if (CDN_CACHED_LIST_PATHS.has(rest)) {

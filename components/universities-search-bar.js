@@ -6,12 +6,12 @@ import { buildUniversitiesHref } from '../lib/universities-list.mjs';
 
 // 高校频道 hero 搜索框（client 岛，与 SchoolsSearchBar 同款 DOM/交互：
 // 本地输入态 + 提交后 URL 导航，服务端是唯一数据源）。
-export default function UniversitiesSearchBar({ filters }) {
+export default function UniversitiesSearchBar({ filters, basePath = '/universities' }) {
   const router = useRouter();
   const [queryInput, setQueryInput] = useState(filters.query || '');
 
   const applySearch = () => {
-    router.push(buildUniversitiesHref('/universities', { ...filters, query: queryInput.trim() }, 1));
+    router.push(buildUniversitiesHref(basePath, { ...filters, query: queryInput.trim() }, 1));
   };
 
   return (

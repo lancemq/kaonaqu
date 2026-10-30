@@ -57,9 +57,9 @@ function FilterSection({ id, label, open, onToggle, active, badge, children }) {
   );
 }
 
-export default function UniversitiesFilterSidebar({ filters, provinceOptions, quickLinks }) {
+export default function UniversitiesFilterSidebar({ filters, provinceOptions, quickLinks, basePath = '/universities' }) {
   const router = useRouter();
-  const navigate = (next) => router.push(buildUniversitiesHref('/universities', next, 1));
+  const navigate = (next) => router.push(buildUniversitiesHref(basePath, next, 1));
 
   const activeLevel = filters.level;
   const activeTags = Array.isArray(filters.tags) ? filters.tags : [];
@@ -180,7 +180,7 @@ export default function UniversitiesFilterSidebar({ filters, provinceOptions, qu
         </div>
       </FilterSection>
 
-      <button className="schools-aerial-reset" type="button" onClick={() => router.push('/universities')}>
+      <button className="schools-aerial-reset" type="button" onClick={() => router.push(basePath)}>
         清空全部条件
       </button>
     </aside>

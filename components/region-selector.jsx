@@ -3,11 +3,13 @@
 // 全站导航区域选择器：放在各频道 channel-nav-links 末尾。
 // 地区列表（REGIONS/DEFAULT_REGION）来自 shared/region-list.mjs 的 REGION_ENTRIES，
 // 与 region-config.js REGIONS 键保持一致；新增地区时只需改 shared/ 两处。
-// 选上海/其他 -> /{region}/schools（统一带前缀，由 proxy.js rewrite 到无前缀实际路由）。
+// 选上海/其他 -> /{region}/{当前频道}（统一带前缀，由 proxy.js rewrite 到无前缀实际路由）。
+// 全局频道（/universities）也保频道：-> /{region}/universities（内容与全局页一致，
+// 但 URL 携带地区上下文，导航里的新闻/中学跟随所选地区）。
 import { useEffect, useRef, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useRegion } from './region-context';
-import { regionPath, isGlobalChannelPath } from '../shared/region-path.mjs';
+import { regionScopedPath } from '../shared/region-path.mjs';
 import { REGION_ENTRIES as REGIONS, DEFAULT_REGION } from '../shared/region-list.mjs';
 
 // 剥离 URL 中的 region 前缀，得到无前缀路径（/shanghai/schools -> /schools）
@@ -44,15 +46,16 @@ export function RegionSelector({ className = '' }) {
   }, [open]);
 
   const current = REGIONS.find((r) => r.value === region) || REGIONS[0];
-  // 全局频道（/universities 等）不属于任何地区：选中态置空，选任一地区都跳该地区学校频道
-  const onGlobalChannel = isGlobalChannelPath(stripRegionPrefix(pathname || '/'));
+  const base = stripRegionPrefix(pathname || '/');
+  // 换地区时保留当前频道（全局频道 /universities 也保频道）：
+  // 选南京 -> /nanjing/universities（页面还是高校库），而不是跳到该地区中学频道。
+  const hasRegionPrefix = base !== (pathname || '/');
 
   const select = (value) => {
     setOpen(false);
-    if (!onGlobalChannel && value === region) return;
-    const base = stripRegionPrefix(pathname || '/');
-    const target = onGlobalChannel ? '/schools' : base;
-    window.location.assign(regionPath(target, value));
+    // 已在目标地区：不重复跳转
+    if (value === region && hasRegionPrefix) return;
+    window.location.assign(regionScopedPath(base, value));
   };
 
   return (
@@ -79,10 +82,10 @@ export function RegionSelector({ className = '' }) {
       {open && (
         <ul className="region-selector-menu" role="listbox" aria-label="地区列表">
           {REGIONS.map((r) => (
-            <li key={r.value} role="option" aria-selected={r.value === region}>
+            <li key={r.value} role="option" aria-selected={hasRegionPrefix && r.value === region}>
               <button type="button" onClick={() => select(r.value)}>
                 <span>{r.label}</span>
-                {!onGlobalChannel && r.value === region && (
+                {hasRegionPrefix && r.value === region && (
                   <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
                     <path d="M2 7l3.5 3.5L12 3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>

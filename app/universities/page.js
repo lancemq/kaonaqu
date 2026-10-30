@@ -26,6 +26,7 @@ import '../../styles/pages/schools-detail.css';
 
 const require = createRequire(import.meta.url);
 const { loadUniversitiesList, getUniversitiesBySlugs } = require('../../shared/university-store');
+const { getRegionFeatures } = require('../../shared/region-config');
 
 const UNIVERSITIES_PER_PAGE = 10;
 
@@ -49,10 +50,20 @@ export const metadata = {
   alternates: { canonical: '/universities' }
 };
 
-export default async function UniversitiesPage({ searchParams }) {
-  const params = await searchParams;
-  const filters = parseUniversityFilters(params);
-  const requestedPage = parseInt(typeof params?.page === 'string' ? params.page : '1', 10);
+export default async function UniversitiesPage({ searchParams, params }) {
+  // 该组件同时服务 /universities（全局）与 /{region}/universities（地区前缀版，
+  // 见 app/[region]/universities/page.js）。有地区段时，列表内的筛选/翻页/排序链接
+  // 都留在当前地区前缀下（basePath），使顶部导航的新闻/中学继续跟随所选地区。
+  const routeParams = params ? await params : null;
+  const regionSlug = typeof routeParams?.region === 'string' ? routeParams.region : null;
+  const basePath = regionSlug ? `/${regionSlug}/universities` : '/universities';
+  // 地区前缀版：菜单按该地区 features 收敛（如苏州/南京/无锡无「知识」）；
+  // 全局版无地区归属，沿用全量菜单（链接落到默认地区）。
+  const features = regionSlug ? getRegionFeatures(regionSlug) : undefined;
+
+  const query = await searchParams;
+  const filters = parseUniversityFilters(query);
+  const requestedPage = parseInt(typeof query?.page === 'string' ? query.page : '1', 10);
   const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
 
   const all = await loadUniversitiesList();
@@ -78,10 +89,10 @@ export default async function UniversitiesPage({ searchParams }) {
 
   // 侧栏「工具与导航」快捷入口
   const quickLinks = [
-    { label: '双一流高校', meta: `${totalDouble} 所`, href: buildUniversitiesHref('/universities', { ...filters, tags: ['双一流'] }, 1) },
-    { label: '985 高校', meta: `${total985} 所`, href: buildUniversitiesHref('/universities', { ...filters, tags: ['985'] }, 1) },
-    { label: '211 高校', meta: `${total211} 所`, href: buildUniversitiesHref('/universities', { ...filters, tags: ['211'] }, 1) },
-    { label: '本科院校', meta: `${totalUndergrad} 所`, href: buildUniversitiesHref('/universities', { ...filters, level: 'undergrad' }, 1) }
+    { label: '双一流高校', meta: `${totalDouble} 所`, href: buildUniversitiesHref(basePath, { ...filters, tags: ['双一流'] }, 1) },
+    { label: '985 高校', meta: `${total985} 所`, href: buildUniversitiesHref(basePath, { ...filters, tags: ['985'] }, 1) },
+    { label: '211 高校', meta: `${total211} 所`, href: buildUniversitiesHref(basePath, { ...filters, tags: ['211'] }, 1) },
+    { label: '本科院校', meta: `${totalUndergrad} 所`, href: buildUniversitiesHref(basePath, { ...filters, level: 'undergrad' }, 1) }
   ];
 
   const summary = [];
@@ -114,7 +125,7 @@ export default async function UniversitiesPage({ searchParams }) {
             <span>高校库</span>
           </Link>
           <div className="channel-nav-links">
-            <SiteMenuLinks active="universities" />
+            <SiteMenuLinks active="universities" features={features} />
             <RegionSelector />
           </div>
         </nav>
@@ -125,7 +136,7 @@ export default async function UniversitiesPage({ searchParams }) {
               <div className="channel-kicker"><span aria-hidden="true"></span><p>UNIVERSITY DATABASE</p></div>
               <h1>全国高校数据库</h1>
               <p>收录全国 {all.length.toLocaleString('zh-CN')} 所普通高等学校（本科 {totalUndergrad} / 专科 {all.length - totalUndergrad}），按层次、标签、省份、隶属筛选，查看高校概况、学科实力与录取数据。</p>
-              <UniversitiesSearchBar filters={filters} />
+              <UniversitiesSearchBar filters={filters} basePath={basePath} />
             </section>
 
             <aside className="channel-hero-stats" aria-label="高校数据统计">
@@ -137,7 +148,7 @@ export default async function UniversitiesPage({ searchParams }) {
         </header>
 
         <section className="schools-aerial-content">
-          <UniversitiesFilterSidebar filters={filters} provinceOptions={provinceOptions} quickLinks={quickLinks} />
+          <UniversitiesFilterSidebar filters={filters} provinceOptions={provinceOptions} quickLinks={quickLinks} basePath={basePath} />
 
           <section className="schools-aerial-results" aria-label="高校检索结果">
             <header className="schools-aerial-results-head">
@@ -147,7 +158,7 @@ export default async function UniversitiesPage({ searchParams }) {
               </div>
               <div className="schools-aerial-results-head-right">
                 <label htmlFor="prototype-sort-filter" className="schools-aerial-sort-label">排序</label>
-                <UniversitiesSortSelect filters={filters} />
+                <UniversitiesSortSelect filters={filters} basePath={basePath} />
               </div>
               <p>{summary.length ? summary.join(' · ') : '未筛选，展示全量结果。'}</p>
             </header>
@@ -165,7 +176,7 @@ export default async function UniversitiesPage({ searchParams }) {
             <Pager
               currentPage={safePage}
               totalPages={totalPages}
-              route="/universities"
+              route={basePath}
               params={{
                 level: filters.level,
                 tags: filters.tags,
@@ -183,7 +194,7 @@ export default async function UniversitiesPage({ searchParams }) {
         <footer className="channel-footer">
           <div><strong>考哪去</strong><span>高校知识库</span></div>
           <nav aria-label="页脚导航">
-            <SiteMenuLinks />
+            <SiteMenuLinks features={features} />
           </nav>
           <p>© 2026 考哪去</p>
         </footer>
