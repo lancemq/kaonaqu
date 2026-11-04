@@ -1,4 +1,4 @@
-import { Analytics } from '@vercel/analytics/react';
+
 import { Funnel_Sans, Geist, Geist_Mono, Noto_Sans_SC, Noto_Serif_SC } from 'next/font/google';
 import BodyPageFlag from '../components/body-page-flag';
 import { RegionProvider } from '../components/region-context';
@@ -86,7 +86,7 @@ export default function RootLayout({ children }) {
         <RegionProvider>
           <BodyPageFlag />
           {children}
-          <Analytics />
+
         </RegionProvider>
       </body>
     </html>
