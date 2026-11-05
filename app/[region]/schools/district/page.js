@@ -18,7 +18,7 @@ const require = createRequire(import.meta.url);
 const { loadSchoolsList } = require('../../../../shared/data-store');
 const { getDistrictCatalog } = require('../../../../shared/region-config');
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
 
 export async function generateMetadata({ params }) {
   const { region, config } = await getRegionContextFromParams(params);

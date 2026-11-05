@@ -20,7 +20,7 @@ const require = createRequire(import.meta.url);
 const { loadSchoolsByDistrict, loadSchoolCountsByDistrict } = require('../../../../../shared/data-store');
 const { getDistrictCatalog } = require('../../../../../shared/region-config');
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
 
 function buildCardTags(school) {
   const values = [

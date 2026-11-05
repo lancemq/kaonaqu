@@ -4,7 +4,7 @@ const {
   validateRequired,
   buildDistricts
 } = require('./data-schema');
-const { isSupabaseConfigured } = require('./supabase-client');
+const { isPgConfigured } = require('./pg-client');
 const { DEFAULT_REGION } = require('./region-config');
 const {
   loadSchoolsList,
@@ -58,7 +58,7 @@ function requireFields(record, requiredFields) {
 
 // 写操作不降级到本地缓存：DB 未配置时直接拒绝。
 function requireSupabase() {
-  if (!isSupabaseConfigured()) {
+  if (!isPgConfigured()) {
     const error = new Error('数据库未配置，写操作不可用');
     error.statusCode = 503;
     throw error;

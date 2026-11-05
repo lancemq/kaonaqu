@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const title = config.seo.titleTemplate.replace('{label}', label);
   const description = config.seo.descriptionTemplate.replace('{label}', label);
   const keywords = config.seo.keywords.map((k) => k.replace('{label}', label));
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
   return {
     title,
     description,

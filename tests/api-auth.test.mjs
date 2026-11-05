@@ -119,10 +119,10 @@ test('CORS 白名单内 Origin 返回具体值', () => {
   });
 });
 
-test('CORS 默认白名单含 kaonaqu.xyz', () => {
+test('CORS 默认白名单含 kaonaqu.cn', () => {
   withEnv({ KNQ_API_ALLOW_ORIGINS: undefined }, () => {
-    const req = makeRequest({ origin: 'https://kaonaqu.xyz' });
-    assert.equal(getCorsOrigin(req), 'https://kaonaqu.xyz');
+    const req = makeRequest({ origin: 'https://kaonaqu.cn' });
+    assert.equal(getCorsOrigin(req), 'https://kaonaqu.cn');
   });
 });
 

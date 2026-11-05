@@ -25,7 +25,71 @@ function loadEnvLocal() {
   }
 }
 loadEnvLocal();
-const { createClient } = require('@supabase/supabase-js');
+
+const { getPool } = require('../shared/pg-client');
+// supabase-js → pg 最小适配器：只实现本脚本用到的查询子集。
+function makeClient() {
+  const q = (sql, params) => getPool().query(sql, params).then((r) => r.rows);
+  function builder(table) {
+    const state = { table, cols: '*', where: [], params: [], updateSet: null, insertRow: null, single: false, limit: null, rangeFrom: null, rangeLimit: null, deleteFlag: false };
+    const b = {
+      select(cols) { state.cols = cols; return b; },
+      eq(col, val) { state.params.push(val); state.where.push(`${col} = $${state.params.length}`); return b; },
+      in(col, vals) { state.params.push(vals); state.where.push(`${col} = ANY($${state.params.length})`); return b; },
+      neq(col, val) { state.params.push(val); state.where.push(`${col} <> $${state.params.length}`); return b; },
+      update(row) { state.updateSet = row; return b; },
+      insert(row) { state.insertRow = row; return b; },
+      delete() { state.deleteFlag = true; return b; },
+      limit(n) { state.limit = n; return b; },
+      range(from, to) { state.rangeFrom = from; state.rangeLimit = to - from + 1; return b; },
+      single() { state.single = true; return b; },
+      maybeSingle() { state.single = true; return b; },
+      order() { return b; },
+      async then(resolve, reject) {
+        try {
+          let rows;
+          if (state.insertRow) {
+            const cols = Object.keys(state.insertRow);
+            const params = cols.map((c) => {
+              const v = state.insertRow[c];
+              return (v !== null && typeof v === 'object') ? JSON.stringify(v) : v;
+            });
+            const sql = `INSERT INTO ${state.table} (${cols.join(', ')}) VALUES (${cols.map((_, i) => `$${i + 1}`).join(', ')}) RETURNING *`;
+            rows = await q(sql, params);
+          } else if (state.updateSet) {
+            const cols = Object.keys(state.updateSet);
+            const params = cols.map((c) => {
+              const v = state.updateSet[c];
+              return (v !== null && typeof v === 'object') ? JSON.stringify(v) : v;
+            });
+            const sets = cols.map((c, i) => `${c} = $${i + 1}`).join(', ');
+            const whereSql = state.where.length ? ` WHERE ${state.where.join(' AND ')}` : '';
+            rows = await q(`UPDATE ${state.table} SET ${sets}${whereSql} RETURNING *`, [...params, ...state.params]);
+          } else if (state.deleteFlag) {
+            const whereSql = state.where.length ? ` WHERE ${state.where.join(' AND ')}` : '';
+            await q(`DELETE FROM ${state.table}${whereSql}`, state.params);
+            rows = [];
+          } else {
+            const colsSql = state.cols === '*' ? '*' : state.cols.split(',').map((c) => c.trim()).filter(Boolean).map((c) => (c === 'group' ? '"group"' : c)).join(', ');
+            const whereSql = state.where.length ? ` WHERE ${state.where.join(' AND ')}` : '';
+            const lim = state.rangeLimit != null ? ` LIMIT ${state.rangeLimit}` : (state.limit != null ? ` LIMIT ${state.limit}` : '');
+            const off = state.rangeFrom != null ? ` OFFSET ${state.rangeFrom}` : '';
+            rows = await q(`SELECT ${colsSql} FROM ${state.table}${whereSql}${lim}${off}`, state.params);
+          }
+          const data = state.single ? (rows[0] || null) : rows;
+          resolve({ data, error: null });
+        } catch (e) {
+          resolve({ data: null, error: { message: e.message, code: e.code } });
+        }
+      }
+    };
+    return b;
+  }
+  return { from: builder };
+}
+
+const client = makeClient();
+
 
 const EXEC = process.argv.includes('--exec');
 const arg = (n) => {
@@ -33,9 +97,6 @@ const arg = (n) => {
   return hit ? hit.split('=').slice(1).join('=') : null;
 };
 
-const client = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
-  auth: { persistSession: false }
-});
 
 function buildContent(entry) {
   const blocks = [];

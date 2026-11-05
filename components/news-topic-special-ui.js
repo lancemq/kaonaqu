@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { NewsAerialFooter, NewsAerialNav } from './news-aerial-ui';
 
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
 
 export function TopicSectionLabel({ children }) {
   return (

@@ -11,7 +11,7 @@ import { SiteMenuLinks } from '../../../../components/site-menu';
 const require = createRequire(import.meta.url);
 const { getNewsById, loadNewsForRelated, loadSchoolsForRelated, loadNewsIds } = require('../../../../shared/data-store');
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
 // ISR：新闻/政策页 1 小时内 CDN 直出（新闻时效为天级）。写操作仍经
 // revalidateTag('news-data') 秒级失效，时效性不受影响；600->3600 削减 6 倍
 // 周期性重渲染（655 页被爬虫持续回访）。

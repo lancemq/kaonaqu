@@ -56,7 +56,7 @@ export const fetchCache = 'force-cache';
 export function generateMetadata() {
   // 地区级 SEO 元数据（title/canonical 等）移至 app/[region]/layout.js（从 params 取 region，
   // 不再用 headers()，保证 ISR 生效）。根布局只保留全局 metadataBase。
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
   return { metadataBase: new URL(siteUrl), openGraph: { locale: 'zh_CN', siteName: '考哪去' } };
 }
 

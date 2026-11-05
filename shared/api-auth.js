@@ -4,7 +4,7 @@
 
 const { timingSafeEqual } = require('crypto');
 
-const DEFAULT_ALLOW_ORIGINS = 'http://localhost:3000,https://kaonaqu.xyz';
+const DEFAULT_ALLOW_ORIGINS = 'http://localhost:3000,https://kaonaqu.cn';
 
 function getAdminToken() {
   return process.env.KNQ_ADMIN_TOKEN || '';

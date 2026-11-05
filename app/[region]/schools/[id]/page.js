@@ -33,7 +33,7 @@ export async function generateStaticParams() {
   return regions.flatMap(({ region, ids }) => ids.map((id) => ({ region, id })));
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
 
 function renderInlineMarkdown(text) {
   const parts = [];

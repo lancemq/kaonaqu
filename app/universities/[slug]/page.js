@@ -17,7 +17,7 @@ const { getUniversityBySlug, loadUniversitiesList } = require('../../../shared/u
 
 export const revalidate = 86400;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
 
 const RATING_ORDER = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-'];
 

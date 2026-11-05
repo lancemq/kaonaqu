@@ -29,7 +29,7 @@ const KNOWLEDGE_TOPICS = [
   { label: '高中衔接准备', meta: 'SENIOR', href: '/knowledge/senior-1' }
 ];
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.xyz';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kaonaqu.cn';
 
 function getNewsHref(item) {
   return item?.id ? `/news/${encodeURIComponent(item.id)}` : '/news';

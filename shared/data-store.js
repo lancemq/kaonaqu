@@ -1,4 +1,16 @@
-const { isSupabaseConfigured, getServiceClient, SCHOOLS_TABLE, NEWS_TABLE } = require('./supabase-client');
+// 数据层：自建 PostgreSQL（pg 驱动直连）读取 + 写入。
+// 2026-11-05 从 Supabase PostgREST 迁移（shared/supabase-client.js 保留但不再被本文件引用）。
+// 连接：shared/pg-client.js（DATABASE_URL / POSTGRES_URL_NON_POOLING / POSTGRES_URL）。
+//
+// 迁移纪律：
+// - 每个函数的返回形态与 PostgREST 版本严格一致（jsonb 由 pg 驱动直接对象化，
+//   rowToSchool/rowToNews 无需改动；字段缺省用 COALESCE 或 row 侧兜底）。
+// - 缓存层级不变：列表 memoizedList（实例内存 1800s）+ 详情 memoizedDetail（LRU）。
+//   原 Next Data Cache（fetch 缓存）随 PostgREST 一起移除——pg 查询不经 fetch，
+//   实例内存 memo 即可覆盖单实例部署场景；服务器部署为单实例，无跨实例失效问题。
+// - 列表瘦列纪律保留：SQL 显式列出列名（原 SCHOOLS_LIST_COLUMNS 同一集合）。
+
+const { query, isPgConfigured } = require('./pg-client');
 const {
   DEFAULT_REGION,
   getKeyLevelPriority,
@@ -6,9 +18,7 @@ const {
   getDistrictIdToName
 } = require('./region-config');
 
-
-
-// === Supabase 读取 ===
+// === 读取 ===
 
 // 从 school_stage_label 推断 school_stage（数据库已删 school_stage 列）
 function inferSchoolStage(stageLabel) {
@@ -75,14 +85,8 @@ function rowToSchool(row) {
   };
 }
 
-// === 本地 JSON 与数据库表对齐 ===
-
 // 学校排序：eliteCohort 非空优先 + schoolKeyLevel 重点优先。
-// 层级权重现由 shared/region-config.js 按 region 提供（原内联词表已迁出，值不变）。
-// ⚠️ 键必须与 DB 真实 school_key_level 词表严格对齐（带 (高中)/(初中) 后缀），
-// 否则除"一般高中/一般初中"外所有层级都匹配不到、优先级落 0，层级排序实质失效。
-// DB 词表（8 值）：市重点(高中)/区重点(高中)/顶级公办(初中)/顶级民办(初中)/
-//   强公办(初中)/强民办(初中)/一般高中/一般初中。
+// ⚠️ 键必须与 DB 真实 school_key_level 词表严格对齐（带 (高中)/(初中) 后缀）。
 const KEY_LEVEL_PRIORITY = getKeyLevelPriority(DEFAULT_REGION);
 
 function sortBySchoolPriority(items) {
@@ -97,75 +101,40 @@ function sortBySchoolPriority(items) {
   });
 }
 
-// 列表轻量查询：显式排除体积最大的 content / admission_info 两列，
-// 使响应保持在 Next.js Data Cache 单条 2MB 上限内。实测（888 校）：
-//   select *                      2.66MB -> 超限不可缓存
-//   去 content                    1.61MB -> 2.33MB 仍超限（Next 缓存含响应开销）
-//   去 content+admission_info（保留 score_lines）  0.44MB -> ~0.46MB 可缓存 ✅
-// score_lines 单列极小（824 校为 []，仅 64 校含真实线约 300B/校，合计 ≈20KB），
-// 故重新纳入列表列，供对比页"近年录取分/走势"直接消费真实线，无需二次按 id 取回；
-// admission_info（notes 长文本，单列约 1MB）仍仅详情页需要，由 getSchoolById 取回。
-// 列表筛选/搜索依赖的 features/address/labels 等均保留。
-const SCHOOLS_LIST_COLUMNS = [
+// 列表轻量列集（瘦列纪律：排除 content / admission_info / admission_audit 三个大字段）。
+const SCHOOLS_LIST_COLUMNS_SQL = [
   'id', 'slug', 'name', 'region', 'district_name', 'school_stage_label', 'school_property_label',
-  'school_key_level', 'elite_cohort', 'group', 'address', 'phone', 'website',
+  'school_key_level', 'elite_cohort', '"group"', 'address', 'phone', 'website',
   'founding_year', 'is_boarding', 'is_international', 'image', 'profile_depth',
   'features', 'info_verified', 'score_lines', 'outcome_stats'
-].join(',');
+].join(', ');
 
-// 新闻列表轻量查询：排除体积最大的 content 列。
-// 列表页只展示标题/摘要等元数据，content 仅详情页需要（由 getNewsById 取完整行）。
-const NEWS_LIST_COLUMNS = 'id,title,news_type,category,exam_type,summary,published_at,updated_at,source,district_id,district_name,primary_school_id,related_school_ids,school_link_reason,school_link_confidence';
+// 新闻列表轻量列集（排除 content）。
+const NEWS_LIST_COLUMNS_SQL = [
+  'id', 'title', 'news_type', 'category', 'exam_type', 'summary', 'published_at', 'updated_at',
+  'source', 'district_id', 'district_name', 'primary_school_id', 'related_school_ids',
+  'school_link_reason', 'school_link_confidence'
+].join(', ');
 
-// 单校完整查询（详情页 / 列表 ≤10 张卡 / API）。仅一所，响应极小，
-// 经 Next.js Data Cache 按 id 缓存（revalidate 见 supabase-client.cachedFetch）。
-// 兼容 Next 动态路由 params：可能是数组或编码后的 slug。
+// 单校完整查询（详情页 / 列表 ≤10 张卡 / API）。
+// 兼容 Next 动态路由 params：可能是数组或编码后的 slug；limit 1 对重复 slug 鲁棒。
 async function fetchSchoolById(rawId) {
   if (rawId == null) return null;
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
-  const normalizedId = String(id || '');
-  let decodedId = normalizedId;
+  let decodedId = String(id || '');
   try {
-    decodedId = decodeURIComponent(normalizedId);
+    decodedId = decodeURIComponent(String(id || ''));
   } catch {
     // 已解码则保持原值
   }
-  const client = getServiceClient();
-  // 用 limit(1) 而非 maybeSingle()：影子表 school_new 无 slug 唯一约束，
-  // 若存在重复 slug 行（历史数据/多次拷贝），maybeSingle 会抛 PGRST116。
-  // limit(1) 取首条，对重复数据鲁棒；正常唯一 slug 行为不变。
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select('*')
-    .eq('slug', decodedId)
-    .limit(1);
-
-  if (error) {
-    throw error;
-  }
-  return data && data.length ? rowToSchool(data[0]) : null;
-}
-
-// 批量完整查询（列表页当前页 ≤10 所卡片用，需 content 概览）。
-// 仅这几所取完整，避免 888 所全量 content 拉回。
-async function fetchSchoolsByIds(ids) {
-  if (!Array.isArray(ids) || ids.length === 0) return [];
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select('*')
-    .in('slug', ids);
-
-  if (error) {
-    throw error;
-  }
-  const byId = new Map((data || []).map((row) => [row.slug, rowToSchool(row)]));
-  return ids.map((id) => byId.get(id) || null).filter(Boolean);
+  const rows = await query(
+    `SELECT * FROM schools WHERE slug = $1 LIMIT 1`,
+    [decodedId]
+  );
+  return rows.length ? rowToSchool(rows[0]) : null;
 }
 
 // 单条新闻完整查询（详情页 / API 用，需 content）。
-// 经 Next.js Data Cache 按 id 缓存。兼容 Next 动态路由 params：数组或编码后的 id。
-// 与 resolveNewsById 对齐：先用原始 id 匹配，再用 decodeURIComponent 后匹配。
 async function fetchNewsById(rawId) {
   if (rawId == null) return null;
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
@@ -176,21 +145,14 @@ async function fetchNewsById(rawId) {
   } catch {
     // 已解码则保持原值
   }
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(NEWS_TABLE)
-    .select('*')
-    .in('id', [normalizedId, decodedId])
-    .limit(1);
-
-  if (error) {
-    throw error;
-  }
-  return data && data.length ? rowToNews(data[0]) : null;
+  const rows = await query(
+    `SELECT * FROM news WHERE id = ANY($1) LIMIT 1`,
+    [[normalizedId, decodedId]]
+  );
+  return rows.length ? rowToNews(rows[0]) : null;
 }
 
 // news content 支持 JSON block 数组（新）与 Markdown 字符串（旧）两种格式。
-// JSON 字符串解析为数组；旧 Markdown 包装为 [{type:'markdown', text}] 由渲染器兼容。
 function parseNewsContent(raw) {
   if (!raw) return [];
   if (Array.isArray(raw)) return raw;
@@ -237,18 +199,7 @@ function rowToNews(row) {
   };
 }
 
-// === 按页面需求拆分的查询函数（取代 loadDataStore 一把梭） ===
-// 每个函数仅查该页面所需字段，减小 Supabase 响应体积与 Data Cache 占用。
-
-// 全量学校列表（轻量，排除 content/admission_info/score_lines）。供学校列表页、
-// 教育集团页、对比页、区域列表页等需全量学校的页面使用。0.44MB。
-
-// ===== 实例级列表缓存（Fluid CPU 关键）=====
-// Data Cache 只缓存 fetch 响应，每次请求反序列化都产生新数组引用——导致
-// ① rowToSchool/rowToNews 的 888 行映射每次请求重跑；② 页面层按 schools 引用
-// 做的 WeakMap memo 跨请求永不命中。这里在实例内存缓存映射后的结果（同一引用），
-// 使两层 memo 都真正生效。TTL 300s；写侧 revalidateTag 清 Data Cache 后，
-// 本实例最迟 5 分钟内自愈（跨实例由 Data Cache + tag 保证）。
+// ===== 实例级列表缓存（原 Fluid CPU 优化，单实例下继续生效）=====
 const LIST_MEMO_TTL = 1800;
 const listMemo = new Map();
 
@@ -263,9 +214,7 @@ async function memoizedList(key, loader) {
   return promise;
 }
 
-// 详情级 LRU 内存缓存（单条学校/新闻 + 列表页当前页批量取整校）：
-// 详情页 ISR 过期重验证、列表页每请求取 10 所完整卡时，温实例直接命中内存，
-// 跳过 fetch 反序列化 + rowToSchool 映射。容量 2000 条（约几 MB，1GB 实例绰绰有余）。
+// 详情级 LRU 内存缓存（单条学校/新闻 + 列表页当前页批量取整校）。
 const DETAIL_MEMO_TTL = 1800;
 const DETAIL_MEMO_MAX = 2000;
 const detailMemo = new Map();
@@ -277,7 +226,7 @@ async function memoizedDetail(key, loader) {
     return hit.promise;
   }
   const promise = loader().then((v) => {
-    if (v == null) return v; // null（未命中）不缓存，404 路径仍走 Data Cache
+    if (v == null) return v;
     if (detailMemo.size >= DETAIL_MEMO_MAX) {
       detailMemo.delete(detailMemo.keys().next().value);
     }
@@ -289,209 +238,194 @@ async function memoizedDetail(key, loader) {
   detailMemo.set(key, { ts: Date.now(), promise });
   return promise;
 }
+
+// 全量学校列表（轻量，排除 content/admission_info/score_lines 以外大字段）。
 async function loadSchoolsList(region = DEFAULT_REGION) {
   return memoizedList(`schools:${region}`, async () => {
-    if (!isSupabaseConfigured()) return [];
-    const client = getServiceClient();
-    const { data, error } = await client
-      .from(SCHOOLS_TABLE)
-      .select(SCHOOLS_LIST_COLUMNS)
-      .eq('region', region)
-      .order('id', { ascending: true });
-    if (error) throw error;
-    return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
+    if (!isPgConfigured()) return [];
+    const rows = await query(
+      `SELECT ${SCHOOLS_LIST_COLUMNS_SQL} FROM schools WHERE region = $1 ORDER BY id ASC`,
+      [region]
+    );
+    return rows.map((row) => rowToSchool(row)).filter(Boolean);
   });
 }
 
-// 全量新闻列表（轻量，排除 content）。供新闻列表页、首页、专题页等使用。0.1MB。
-// published_at 并列时按 id 倒序次级排序，保证同时间戳新闻顺序确定（跨查询一致）。
-// 新闻详情页相关数据专用：按 exam_type/category 过滤取最近 N 条（替代全量 loadNewsList 的 JS 打分），
-// 把"全量序列化→JS 过滤"的 CPU 成本下推为 SQL LIMIT 查询。结果仍经 Data Cache 缓存。
+// 全量新闻列表（轻量，排除 content）。published_at 并列时按 id 倒序次级排序。
+// 新闻详情页相关数据专用：按 exam_type/category 过滤取最近 N 条（SQL 下推）。
 async function loadNewsForRelated(region, { examType = '', category = '', excludeId = '', limit = 12 } = {}) {
-  if (!isSupabaseConfigured()) return [];
-  const client = getServiceClient();
-  let query = client
-    .from(NEWS_TABLE)
-    .select(NEWS_LIST_COLUMNS)
-    .eq('region', region)
-    .order('published_at', { ascending: false })
-    .order('id', { ascending: false })
-    .limit(limit);
-  if (excludeId) query = query.neq('id', excludeId);
-  if (examType) query = query.eq('exam_type', examType);
-  else if (category) query = query.eq('category', category);
-  const { data, error } = await query;
-  if (error) throw error;
-  return (data || []).map((row) => rowToNews(row)).filter(Boolean);
+  if (!isPgConfigured()) return [];
+  const conditions = ['region = $1'];
+  const params = [region];
+  let idx = 2;
+  if (excludeId) {
+    conditions.push(`id <> $${idx++}`);
+    params.push(excludeId);
+  }
+  if (examType) {
+    conditions.push(`exam_type = $${idx++}`);
+    params.push(examType);
+  } else if (category) {
+    conditions.push(`category = $${idx++}`);
+    params.push(category);
+  }
+  conditions.push('content IS NOT NULL'); // no-op 条件占位避免空串（保持参数从 $2 起稳定）
+  const rows = await query(
+    `SELECT ${NEWS_LIST_COLUMNS_SQL} FROM news WHERE ${conditions.join(' AND ')}
+     ORDER BY published_at DESC, id DESC LIMIT ${Number(limit) || 12}`,
+    params
+  );
+  return rows.map((row) => rowToNews(row)).filter(Boolean);
 }
 
 async function loadNewsList(region = DEFAULT_REGION) {
   return memoizedList(`news:${region}`, async () => {
-    if (!isSupabaseConfigured()) return [];
-    const client = getServiceClient();
-    const { data, error } = await client
-      .from(NEWS_TABLE)
-      .select(NEWS_LIST_COLUMNS)
-      .eq('region', region)
-      .order('published_at', { ascending: false })
-      .order('id', { ascending: false });
-    if (error) throw error;
-    return (data || []).map((row) => rowToNews(row)).filter(Boolean);
+    if (!isPgConfigured()) return [];
+    const rows = await query(
+      `SELECT ${NEWS_LIST_COLUMNS_SQL} FROM news WHERE region = $1 ORDER BY published_at DESC, id DESC`,
+      [region]
+    );
+    return rows.map((row) => rowToNews(row)).filter(Boolean);
   });
 }
 
-// 按区域 ID 查学校（区域详情页）。仅该区 ~50 所，而非全量 888 所。~0.02MB。
+// 按区域 ID 查学校（区域详情页）。
 async function loadSchoolsByDistrict(districtId, region = DEFAULT_REGION) {
-  if (!isSupabaseConfigured()) return [];
+  if (!isPgConfigured()) return [];
   const districtName = getDistrictIdToName(region)[districtId];
   if (!districtName) return [];
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select(SCHOOLS_LIST_COLUMNS)
-    .eq('region', region)
-    .eq('district_name', districtName)
-    .order('id', { ascending: true });
-  if (error) throw error;
-  return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
+  const rows = await query(
+    `SELECT ${SCHOOLS_LIST_COLUMNS_SQL} FROM schools WHERE region = $1 AND district_name = $2 ORDER BY id ASC`,
+    [region, districtName]
+  );
+  return rows.map((row) => rowToSchool(row)).filter(Boolean);
 }
 
-// === 查询下推（API 列表/搜索路径）===
-// 把 region/district/stage/propertyLabel/q 等过滤条件下推到 Supabase（PostgREST），
-// 避免多地区铺开后全量拉到内存再过滤。供 shared/content-service.js 的
-// listSchools/searchSchools 使用；页面级取数仍走上面的针对性 load* 函数。
-// 行为与原内存过滤等价：q 匹配的列即原 matchesQuery 的字段集中存在于
-// SCHOOLS_LIST_COLUMNS 的部分（admission_info.notes 本就不在轻量列集，原搜索即空转）。
+// === 条件查询（API 列表/搜索路径）===
+// 过滤条件下推到 SQL（region/district/stage/propertyLabel/q）。
 
-// PostgREST ilike/or 语法转义：这些字符在 .or() 表达式或 ilike 模式中有语法含义。
+// ilike 转义：这些字符在 LIKE 模式中有语法含义。
 function escapeIlike(value) {
-  return String(value).replace(/([%_*,()\\])/g, '\\$1');
+  return String(value).replace(/([%_\\])/g, '\\$1');
 }
 
 // stage（junior/complete/senior_high）反推 school_stage_label。
-// 与 inferSchoolStage 一一对应（DB 词表恰为 初中/完全中学/高中 三值）。
 const STAGE_TO_LABEL = { junior: '初中', complete: '完全中学', senior_high: '高中' };
 
 // 学校条件查询（轻量列集）。filters:
 //   region / districtId / stage / propertyLabel / q（模糊匹配
 //   name/address/district_name/stage/property/keyLevel/eliteCohort 标签文本）
 async function querySchoolsList(filters = {}) {
-  if (!isSupabaseConfigured()) return [];
+  if (!isPgConfigured()) return [];
   const region = filters.region || DEFAULT_REGION;
-  const client = getServiceClient();
-  let query = client
-    .from(SCHOOLS_TABLE)
-    .select(SCHOOLS_LIST_COLUMNS)
-    .eq('region', region);
+  const conditions = ['region = $1'];
+  const params = [region];
+  let idx = 2;
 
   if (filters.districtId && filters.districtId !== 'all') {
     const districtName = getDistrictIdToName(region)[filters.districtId];
     if (!districtName) return [];
-    query = query.eq('district_name', districtName);
+    conditions.push(`district_name = $${idx++}`);
+    params.push(districtName);
   }
   if (filters.stage) {
     const stageLabel = STAGE_TO_LABEL[filters.stage];
     if (!stageLabel) return [];
-    query = query.eq('school_stage_label', stageLabel);
+    conditions.push(`school_stage_label = $${idx++}`);
+    params.push(stageLabel);
   }
   if (filters.propertyLabel) {
-    query = query.eq('school_property_label', filters.propertyLabel);
+    conditions.push(`school_property_label = $${idx++}`);
+    params.push(filters.propertyLabel);
   }
   if (filters.q) {
     const like = `%${escapeIlike(filters.q)}%`;
-    query = query.or(
-      [
-        `name.ilike.${like}`,
-        `address.ilike.${like}`,
-        `district_name.ilike.${like}`,
-        `school_stage_label.ilike.${like}`,
-        `school_property_label.ilike.${like}`,
-        `school_key_level.ilike.${like}`,
-        `elite_cohort.ilike.${like}`
-      ].join(',')
+    conditions.push(
+      `(name ILIKE $${idx} OR address ILIKE $${idx} OR district_name ILIKE $${idx}
+        OR school_stage_label ILIKE $${idx} OR school_property_label ILIKE $${idx}
+        OR school_key_level ILIKE $${idx} OR elite_cohort ILIKE $${idx})`
     );
+    idx += 1;
+    params.push(like);
   }
 
-  const { data, error } = await query.order('id', { ascending: true });
-  if (error) throw error;
-  return (data || []).map((row) => rowToSchool(row)).filter(Boolean);
+  const rows = await query(
+    `SELECT ${SCHOOLS_LIST_COLUMNS_SQL} FROM schools WHERE ${conditions.join(' AND ')} ORDER BY id ASC`,
+    params
+  );
+  return rows.map((row) => rowToSchool(row)).filter(Boolean);
 }
 
 // 新闻条件查询（轻量列集）。filters:
 //   region / districtId / examType / newsType / category / q（模糊匹配 title/summary/category）
-// 注：content 列不在轻量列集（原内存搜索对 content 即空转），source.type 留给调用方内存过滤。
 async function queryNewsList(filters = {}) {
-  if (!isSupabaseConfigured()) return [];
+  if (!isPgConfigured()) return [];
   const region = filters.region || DEFAULT_REGION;
-  const client = getServiceClient();
-  let query = client
-    .from(NEWS_TABLE)
-    .select(NEWS_LIST_COLUMNS)
-    .eq('region', region);
+  const conditions = ['region = $1'];
+  const params = [region];
+  let idx = 2;
 
   if (filters.districtId && filters.districtId !== 'all') {
-    query = query.eq('district_id', filters.districtId);
+    conditions.push(`district_id = $${idx++}`);
+    params.push(filters.districtId);
   }
   if (filters.examType) {
-    query = query.eq('exam_type', filters.examType);
+    conditions.push(`exam_type = $${idx++}`);
+    params.push(filters.examType);
   }
   if (filters.newsType) {
-    query = query.eq('news_type', filters.newsType);
+    conditions.push(`news_type = $${idx++}`);
+    params.push(filters.newsType);
   }
   if (filters.category) {
-    query = query.eq('category', filters.category);
+    conditions.push(`category = $${idx++}`);
+    params.push(filters.category);
   }
   if (filters.q) {
     const like = `%${escapeIlike(filters.q)}%`;
-    query = query.or(`title.ilike.${like},summary.ilike.${like},category.ilike.${like}`);
+    conditions.push(`(title ILIKE $${idx} OR summary ILIKE $${idx} OR category ILIKE $${idx})`);
+    idx += 1;
+    params.push(like);
   }
 
-  const { data, error } = await query
-    .order('published_at', { ascending: false })
-    .order('id', { ascending: false });
-  if (error) throw error;
-  return (data || []).map((row) => rowToNews(row)).filter(Boolean);
+  const rows = await query(
+    `SELECT ${NEWS_LIST_COLUMNS_SQL} FROM news WHERE ${conditions.join(' AND ')}
+     ORDER BY published_at DESC, id DESC`,
+    params
+  );
+  return rows.map((row) => rowToNews(row)).filter(Boolean);
 }
 
-// 仅取新闻 id 列表（sitemap 用）。~5KB。
+// 仅取新闻 id 列表（sitemap 用）。
 async function loadNewsIds(region = DEFAULT_REGION) {
-  if (!isSupabaseConfigured()) return [];
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(NEWS_TABLE)
-    .select('id')
-    .eq('region', region)
-    .order('published_at', { ascending: false });
-  if (error) throw error;
-  return (data || []).map((row) => row.id).filter(Boolean);
+  if (!isPgConfigured()) return [];
+  const rows = await query(
+    `SELECT id FROM news WHERE region = $1 ORDER BY published_at DESC`,
+    [region]
+  );
+  return rows.map((row) => row.id).filter(Boolean);
 }
 
-// 仅取学校 slug（= 详情路由 id）列表（sitemap 用）。避免手工维护 sitemap-extra.xml
-// 导致的跨地区 URL 漂移（曾把上海学校 slug 拼进 /suzhou/schools/ 前缀）。
+// 仅取学校 slug（= 详情路由 id）列表（sitemap 用）。
 async function loadSchoolIds(region = DEFAULT_REGION) {
-  if (!isSupabaseConfigured()) return [];
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select('slug')
-    .eq('region', region)
-    .order('id', { ascending: true });
-  if (error) throw error;
-  return (data || []).map((row) => row.slug).filter(Boolean);
+  if (!isPgConfigured()) return [];
+  const rows = await query(
+    `SELECT slug FROM schools WHERE region = $1 ORDER BY id ASC`,
+    [region]
+  );
+  return rows.map((row) => row.slug).filter(Boolean);
 }
 
-// 分数匹配页所需最小字段集。~0.15MB（比全量 0.44MB 少 66%）。
+// 分数匹配页所需最小字段集。
 async function loadSchoolsMinimal(region = DEFAULT_REGION) {
-  if (!isSupabaseConfigured()) return [];
-  const client = getServiceClient();
+  if (!isPgConfigured()) return [];
   const nameToId = getDistrictNameToId(region);
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select('slug,name,district_name,school_stage_label,school_key_level,elite_cohort,group,is_international,score_lines')
-    .eq('region', region)
-    .order('id', { ascending: true });
-  if (error) throw error;
-  return (data || []).map((row) => ({
+  const rows = await query(
+    `SELECT slug, name, district_name, school_stage_label, school_key_level, elite_cohort, "group", is_international, score_lines
+     FROM schools WHERE region = $1 ORDER BY id ASC`,
+    [region]
+  );
+  return rows.map((row) => ({
     id: row.slug || '',
     name: row.name || '',
     districtId: nameToId[row.district_name] || '',
@@ -506,51 +440,37 @@ async function loadSchoolsMinimal(region = DEFAULT_REGION) {
   }));
 }
 
-// 按 id 批量取学校名映射（新闻列表页 schoolNameMap 用）。~3KB。
+// 按 id 批量取学校名映射（新闻列表页 schoolNameMap 用）。
 async function loadSchoolNamesByIds(ids) {
-  if (!isSupabaseConfigured()) return {};
+  if (!isPgConfigured()) return {};
   if (!Array.isArray(ids) || ids.length === 0) return {};
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select('slug,name')
-    .in('slug', ids);
-  if (error) throw error;
+  const rows = await query(
+    `SELECT slug, name FROM schools WHERE slug = ANY($1)`,
+    [ids]
+  );
   const map = {};
-  for (const row of data || []) {
+  for (const row of rows) {
     map[row.slug] = row.name;
   }
   return map;
 }
 
-// 新闻详情页相关学校：主校 + 按优先级填充。~2KB。
+// 新闻详情页相关学校：主校 + 按优先级填充。
 async function loadSchoolsForRelated(primarySchoolId, limit = 4, region = DEFAULT_REGION) {
-  if (!isSupabaseConfigured()) return [];
-  const client = getServiceClient();
+  if (!isPgConfigured()) return [];
 
-  const primaryPromise = primarySchoolId
-    ? client.from(SCHOOLS_TABLE)
-        .select(SCHOOLS_LIST_COLUMNS)
-        .eq('slug', primarySchoolId)
-        .maybeSingle()
-        .then(({ data, error }) => {
-          if (error) throw error;
-          return data ? rowToSchool(data) : null;
-        })
-    : Promise.resolve(null);
+  const [primaryRows, fillerRows] = await Promise.all([
+    primarySchoolId
+      ? query(`SELECT ${SCHOOLS_LIST_COLUMNS_SQL} FROM schools WHERE slug = $1 LIMIT 1`, [primarySchoolId])
+      : Promise.resolve([]),
+    query(
+      `SELECT ${SCHOOLS_LIST_COLUMNS_SQL} FROM schools WHERE region = $1 AND slug <> $2 LIMIT $3`,
+      [region, primarySchoolId || '', limit + 4]
+    )
+  ]);
 
-  // 填充：同地区、排除主校，多取以便排序后裁剪
-  const fillerPromise = client.from(SCHOOLS_TABLE)
-    .select(SCHOOLS_LIST_COLUMNS)
-    .eq('region', region)
-    .neq('slug', primarySchoolId || '')
-    .limit(limit + 4)
-    .then(({ data, error }) => {
-      if (error) throw error;
-      return sortBySchoolPriority((data || []).map((row) => rowToSchool(row)).filter(Boolean));
-    });
-
-  const [primary, fillers] = await Promise.all([primaryPromise, fillerPromise]);
+  const primary = primaryRows.length ? rowToSchool(primaryRows[0]) : null;
+  const fillers = sortBySchoolPriority(fillerRows.map((row) => rowToSchool(row)).filter(Boolean));
   const result = [];
   if (primary) result.push(primary);
   for (const s of fillers) {
@@ -560,26 +480,23 @@ async function loadSchoolsForRelated(primarySchoolId, limit = 4, region = DEFAUL
   return result;
 }
 
-// 按区域统计学校数（区域详情页侧栏排序用）。~15KB。
+// 按区域统计学校数（区域详情页侧栏排序用）。
 async function loadSchoolCountsByDistrict(region = DEFAULT_REGION) {
-  if (!isSupabaseConfigured()) return {};
-  const client = getServiceClient();
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .select('district_name')
-    .eq('region', region);
-  if (error) throw error;
+  if (!isPgConfigured()) return {};
+  const rows = await query(
+    `SELECT district_name, count(*)::int AS n FROM schools WHERE region = $1 GROUP BY district_name`,
+    [region]
+  );
   const counts = {};
-  for (const row of data || []) {
-    const name = row.district_name;
-    if (name) counts[name] = (counts[name] || 0) + 1;
+  for (const row of rows) {
+    if (row.district_name) counts[row.district_name] = row.n;
   }
   return counts;
 }
 
-// === Supabase 写入 ===
+// === 写入 ===
 // 应用层 camelCase -> DB snake_case 行（与 rowToSchool/rowToNews 严格对称）。
-// schools 表 id 为 BIGSERIAL 自增主键，应用 id 即 DB slug（UNIQUE）；写入不带 id 列。
+
 function schoolToRow(school = {}) {
   return {
     slug: school.id || '',
@@ -652,164 +569,162 @@ function newsToRow(news = {}) {
   };
 }
 
-// CRUD 写入：操作 DB，不写本地缓存。写操作后由 route.js 调 revalidateTag 失效 Data Cache。
+// schools 表列清单（写入用；id 自增不入列）。group 是保留字，带引号。
+const SCHOOL_COLUMNS = [
+  'slug', 'name', 'district_name', 'region', 'school_stage_label', 'school_property_label',
+  'school_key_level', 'elite_cohort', '"group"', 'address', 'phone', 'website',
+  'founding_year', 'is_boarding', 'is_international', 'image', 'profile_depth',
+  'features', 'score_lines', 'outcome_stats', 'content', 'admission_info',
+  'info_verified'
+];
+
+function schoolRowToSqlParams(row) {
+  // 列顺序与 SCHOOL_COLUMNS 严格一致（"group" 去引号取 row.group）。
+  // ⚠️ jsonb 列必须显式 JSON.stringify：node-postgres 会把 JS 数组序列化为
+  // Postgres array 字面量 {a,b}，写入 jsonb 列报 invalid input syntax for type json。
+  const j = (v) => JSON.stringify(v == null ? (Array.isArray(v) ? [] : {}) : v);
+  return [
+    row.slug, row.name, row.district_name, row.region, row.school_stage_label,
+    row.school_property_label, row.school_key_level, row.elite_cohort, row.group,
+    row.address, row.phone, row.website, row.founding_year, row.is_boarding,
+    row.is_international, row.image, row.profile_depth, j(row.features),
+    j(row.score_lines), j(row.outcome_stats), j(row.content),
+    j(row.admission_info), row.info_verified
+  ];
+}
 
 async function createSchoolInSupabase(school) {
-  const client = getServiceClient();
   const row = schoolToRow(school);
-
-  const { data: existing } = await client
-    .from(SCHOOLS_TABLE)
-    .select('slug')
-    .eq('slug', row.slug)
-    .maybeSingle();
-  if (existing) {
+  const existing = await query(`SELECT slug FROM schools WHERE slug = $1 LIMIT 1`, [row.slug]);
+  if (existing.length) {
     const error = new Error('学校已存在');
     error.statusCode = 409;
     throw error;
   }
-
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .insert(row)
-    .select()
-    .single();
-  if (error) {
-    throw error;
+  const cols = SCHOOL_COLUMNS.join(', ');
+  const placeholders = SCHOOL_COLUMNS.map((_, i) => `$${i + 1}`).join(', ');
+  // admission_audit 仅当显式提供时写
+  if (row.admission_audit !== undefined) {
+    const colsA = cols + ', admission_audit';
+    const phA = placeholders + `, $${SCHOOL_COLUMNS.length + 1}`;
+    const paramsA = [...schoolRowToSqlParams(row), row.admission_audit];
+    const rows = await query(
+      `INSERT INTO schools (${colsA}) VALUES (${phA}) RETURNING *`,
+      paramsA
+    );
+    return rowToSchool(rows[0]);
   }
-  return rowToSchool(data);
+  const rows = await query(
+    `INSERT INTO schools (${cols}) VALUES (${placeholders}) RETURNING *`,
+    schoolRowToSqlParams(row)
+  );
+  return rowToSchool(rows[0]);
 }
 
 async function updateSchoolInSupabase(slug, school) {
-  const client = getServiceClient();
   const row = schoolToRow({ ...school, id: slug });
 
-  const { data: existing } = await client
-    .from(SCHOOLS_TABLE)
-    .select('slug')
-    .eq('slug', slug)
-    .maybeSingle();
-  if (!existing) {
+  const existing = await query(`SELECT slug FROM schools WHERE slug = $1 LIMIT 1`, [slug]);
+  if (!existing.length) {
     const error = new Error('学校不存在');
     error.statusCode = 404;
     throw error;
   }
 
-  const { data, error } = await client
-    .from(SCHOOLS_TABLE)
-    .update(row)
-    .eq('slug', slug)
-    .select()
-    .single();
-  if (error) {
-    throw error;
+  // 动态 SET：只更新 schoolToRow 产出的键；admission_audit 显式提供时追加
+  const params = schoolRowToSqlParams(row);
+  const sets = SCHOOL_COLUMNS.map((col, i) => `${col} = $${i + 1}`);
+  if (row.admission_audit !== undefined) {
+    sets.push(`admission_audit = $${SCHOOL_COLUMNS.length + 1}`);
+    params.push(row.admission_audit);
   }
-  return rowToSchool(data);
+  params.push(slug);
+  const rows = await query(
+    `UPDATE schools SET ${sets.join(', ')} WHERE slug = $${params.length} RETURNING *`,
+    params
+  );
+  return rowToSchool(rows[0]);
 }
 
 async function deleteSchoolFromSupabase(slug) {
-  const client = getServiceClient();
-
-  const { data: existing } = await client
-    .from(SCHOOLS_TABLE)
-    .select('slug')
-    .eq('slug', slug)
-    .maybeSingle();
-  if (!existing) {
+  const existing = await query(`SELECT slug FROM schools WHERE slug = $1 LIMIT 1`, [slug]);
+  if (!existing.length) {
     const error = new Error('学校不存在');
     error.statusCode = 404;
     throw error;
   }
-
-  const { error } = await client
-    .from(SCHOOLS_TABLE)
-    .delete()
-    .eq('slug', slug);
-  if (error) {
-    throw error;
-  }
+  await query(`DELETE FROM schools WHERE slug = $1`, [slug]);
   return { ok: true, id: slug };
 }
 
-async function createNewsInSupabase(news) {
-  const client = getServiceClient();
-  const row = newsToRow(news);
+const NEWS_COLUMNS = [
+  'id', 'title', 'news_type', 'category', 'exam_type', 'summary', 'content',
+  'published_at', 'updated_at', 'source', 'district_id', 'district_name', 'region',
+  'primary_school_id', 'related_school_ids', 'school_link_reason', 'school_link_confidence'
+];
 
-  const { data: existing } = await client
-    .from(NEWS_TABLE)
-    .select('id')
-    .eq('id', row.id)
-    .maybeSingle();
-  if (existing) {
+function newsRowToSqlParams(row) {
+  // jsonb 列（source / related_school_ids）显式 stringify，理由同 schoolRowToSqlParams
+  const j = (v) => JSON.stringify(v == null ? {} : v);
+  return [
+    row.id, row.title, row.news_type, row.category, row.exam_type, row.summary,
+    typeof row.content === 'string' ? row.content : JSON.stringify(row.content || []),
+    row.published_at, row.updated_at,
+    j(row.source),
+    row.district_id, row.district_name, row.region,
+    row.primary_school_id,
+    JSON.stringify(Array.isArray(row.related_school_ids) ? row.related_school_ids : []),
+    row.school_link_reason, row.school_link_confidence
+  ];
+}
+
+async function createNewsInSupabase(news) {
+  const row = newsToRow(news);
+  const existing = await query(`SELECT id FROM news WHERE id = $1 LIMIT 1`, [row.id]);
+  if (existing.length) {
     const error = new Error('新闻已存在');
     error.statusCode = 409;
     throw error;
   }
-
-  const { data, error } = await client
-    .from(NEWS_TABLE)
-    .insert(row)
-    .select()
-    .single();
-  if (error) {
-    throw error;
-  }
-  return rowToNews(data);
+  const cols = NEWS_COLUMNS.join(', ');
+  const placeholders = NEWS_COLUMNS.map((_, i) => `$${i + 1}`).join(', ');
+  const rows = await query(
+    `INSERT INTO news (${cols}) VALUES (${placeholders}) RETURNING *`,
+    newsRowToSqlParams(row)
+  );
+  return rowToNews(rows[0]);
 }
 
 async function updateNewsInSupabase(id, news) {
-  const client = getServiceClient();
   const row = newsToRow({ ...news, id });
-
-  const { data: existing } = await client
-    .from(NEWS_TABLE)
-    .select('id')
-    .eq('id', id)
-    .maybeSingle();
-  if (!existing) {
+  const existing = await query(`SELECT id FROM news WHERE id = $1 LIMIT 1`, [id]);
+  if (!existing.length) {
     const error = new Error('新闻不存在');
     error.statusCode = 404;
     throw error;
   }
-
-  const { data, error } = await client
-    .from(NEWS_TABLE)
-    .update(row)
-    .eq('id', id)
-    .select()
-    .single();
-  if (error) {
-    throw error;
-  }
-  return rowToNews(data);
+  const params = newsRowToSqlParams(row);
+  const sets = NEWS_COLUMNS.map((col, i) => `${col} = $${i + 1}`);
+  params.push(id);
+  const rows = await query(
+    `UPDATE news SET ${sets.join(', ')} WHERE id = $${params.length} RETURNING *`,
+    params
+  );
+  return rowToNews(rows[0]);
 }
 
 async function deleteNewsFromSupabase(id) {
-  const client = getServiceClient();
-
-  const { data: existing } = await client
-    .from(NEWS_TABLE)
-    .select('id')
-    .eq('id', id)
-    .maybeSingle();
-  if (!existing) {
+  const existing = await query(`SELECT id FROM news WHERE id = $1 LIMIT 1`, [id]);
+  if (!existing.length) {
     const error = new Error('新闻不存在');
     error.statusCode = 404;
     throw error;
   }
-
-  const { error } = await client
-    .from(NEWS_TABLE)
-    .delete()
-    .eq('id', id);
-  if (error) {
-    throw error;
-  }
+  await query(`DELETE FROM news WHERE id = $1`, [id]);
   return { ok: true, id };
 }
 
-
-// ===== 详情级缓存包装（实例内存 LRU，见 memoizedDetail） =====
+// ===== 详情级缓存包装 =====
 async function getSchoolById(rawId) {
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
   return memoizedDetail(`school:${String(id || '')}`, () => fetchSchoolById(rawId));
@@ -820,12 +735,13 @@ async function getNewsById(rawId) {
   return memoizedDetail(`news:${String(id || '')}`, () => fetchNewsById(rawId));
 }
 
-// 列表页当前页批量取整校：按 id 复用单条缓存，缓存复用率高于整组 .in 查询。
+// 列表页当前页批量取整校：按 id 复用单条缓存。
 async function getSchoolsByIds(ids) {
   if (!Array.isArray(ids) || ids.length === 0) return [];
   const schools = await Promise.all(ids.map((id) => getSchoolById(id)));
   return schools.filter(Boolean);
 }
+
 module.exports = {
   getSchoolById,
   getSchoolsByIds,
