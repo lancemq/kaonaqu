@@ -58,6 +58,17 @@ API_WRITE_TOKEN=<原 token>
 - 旧 `SUPABASE_*` / `KNQ_*` 变量可全部删除（运行时代码已不再读取）。`shared/supabase-client.js` 文件保留仅为运维脚本（tmp/*.cjs）回看参考，网站构建不引用。
 - `PG_SSL_REJECT_UNAUTHORIZED` 无需设置（本机 127.0.0.1 无 TLS）。
 
+## 3.5 每日任务备份目录（数据债自动化用）
+
+```bash
+sudo mkdir -p /home/ubuntu/databak
+sudo chown ubuntu:ubuntu /home/ubuntu/databak
+```
+
+每日数据债任务（automation-1784266942235）写库前会自动备份：服务器上跑任务时带
+`BACKUP_DEST=/home/ubuntu/databak`（写进 .env.production 或 automation 环境即可），
+备份保留最近 14 份自动轮转。
+
 ## 4. 构建与常驻运行
 
 ```bash

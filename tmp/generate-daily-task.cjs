@@ -14,6 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Client } = require('pg');
+const { execFileSync } = require('child_process');
 
 const env = {};
 for (const l of fs.readFileSync(path.resolve(__dirname, '../.env.local'), 'utf8').split('\n')) {
@@ -75,6 +76,17 @@ const OUTCOME_NO_DATA_KNOWN = [
   // 2026-10-18 P1 key-school-outcome（江阴批次）追加：
   ,'无锡市-江阴市祝塘中学'                     // 江阴片区：未出现在无锡2022-2024各高中综评统计名单、查无校方/官方高考喜报，结构性无可靠高考数字（网传汇总不可信未录入）
 ];
+
+// ===== 第 0 步：数据库备份（2026-11-05 起强制） =====
+// 服务器部署：BACKUP_DEST=/home/ubuntu/databak（automation prompt 已写明）。
+// 本地开发：默认 backups/db/。备份失败 = 当日任务不出（强制，防无备份写库）。
+const BACKUP_DEST = process.env.BACKUP_DEST || path.resolve(__dirname, '..', 'backups', 'db');
+try {
+  execFileSync('node', [path.resolve(__dirname, 'backup-db.cjs'), `--dest=${BACKUP_DEST}`], { stdio: 'inherit' });
+} catch (e) {
+  console.error('第 0 步备份失败，终止今日任务分配（不写库）。', e.message);
+  process.exit(1);
+}
 
 (async () => {
   const c = new Client({ connectionString: url, ssl: { rejectUnauthorized: false }, channelBinding: 'disable', keepAlive: true });

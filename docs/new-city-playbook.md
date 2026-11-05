@@ -143,6 +143,8 @@ done 文件按城分文件（`spotcheck-done-{region}.json`），旧专项 done 
 ## 附：高校数据债每日批次（2026-10-30 起，与初高中线并行）
 
 > 高校线有独立分配器 `tmp/generate-university-task.cjs`（产 `tmp/university-task-today.json`），与 `generate-daily-task.cjs` 同日执行。高校与初高中是两张表、两套 apply 脚本，互不复用白名单。
+>
+> **第 0 步·数据库备份（2026-11-05 起强制）**：每日任务任何写库前，先在服务器 `/home/ubuntu/databak` 目录备份数据库——`BACKUP_DEST=/home/ubuntu/databak node tmp/generate-daily-task.cjs`（分配器已内置备份守卫，也可单独跑 `node tmp/backup-db.cjs --dest=/home/ubuntu/databak`）。备份失败 = 当日任务不出，禁止跳过备份直接写库。备份 gzip JSON 全表（schools/news/universities + 两张备份表），保留最近 14 份自动轮转。
 
 ### 方向优先级（分配器内置）
 
