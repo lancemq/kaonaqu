@@ -69,6 +69,12 @@ sudo chown ubuntu:ubuntu /home/ubuntu/databak
 `BACKUP_DEST=/home/ubuntu/databak`（写进 .env.production 或 automation 环境即可），
 备份保留最近 14 份自动轮转。
 
+## 3.6 新闻自动化写库（automation-1784168886234）
+
+每日新闻自动化的 import/verify 脚本走 `shared/data-store.js`，11-05 起数据层已切 pg 直连：
+服务器上只要 `.env`（或自动化环境）里有 `DATABASE_URL=postgres://kaonaqu:<密码>@127.0.0.1:5432/kaonaqu`，
+新闻就会写入本地 pg 库——新闻脚本零改动。跑批前建议先备份（同 3.5）。
+
 ## 4. 构建与常驻运行
 
 ```bash
