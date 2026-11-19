@@ -2,7 +2,6 @@
 import { Funnel_Sans, Geist, Geist_Mono, Noto_Sans_SC, Noto_Serif_SC } from 'next/font/google';
 import BodyPageFlag from '../components/body-page-flag';
 import { RegionProvider } from '../components/region-context';
-import Script from 'next/script';
 
 import { KNOWN_REGIONS } from '../shared/region-list.mjs';
 import '../styles/index.css';
@@ -68,16 +67,13 @@ export default function RootLayout({ children }) {
     <html lang="zh-CN">
       <head>
         <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`} crossOrigin="anonymous"></script>
-        {/* 百度统计（全站），afterInteractive 不阻塞首屏 */}
-        <Script id="baidu-hmt" strategy="afterInteractive">{`
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?8ffbbe4fc23f4656eb1dfa29d5b69dd4";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-`}</Script>
+        {/* 百度统计（全站）：必须用原生内联 script 输出在 HTML 源码中，百度后台抓源码检测 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              `var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?8ffbbe4fc23f4656eb1dfa29d5b69dd4";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();`
+          }}
+        />
       </head>
       <body
         className={`${fontFunnel.variable} ${fontGeist.variable} ${fontGeistMono.variable} ${fontNotoSansSC.variable} ${fontNotoSerifSC.variable}`}
