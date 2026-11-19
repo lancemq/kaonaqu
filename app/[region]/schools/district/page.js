@@ -1,3 +1,4 @@
+export const revalidate = 3600; // pg 直连后无 fetch 驱动 ISR，查库页面必须显式声明重验证
 import { RegionLink } from '../../../../components/region-link';
 import { redirect } from 'next/navigation';
 import { createRequire } from 'module';

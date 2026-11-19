@@ -1,3 +1,4 @@
+export const revalidate = 3600; // pg 直连后无 fetch 驱动 ISR，查库页面必须显式声明重验证
 import { redirect } from 'next/navigation';
 import ScoreMatchClient from '../../../../components/score-match-client';
 import { getRegionContextFromParams } from '../../../../lib/region-server.mjs';
