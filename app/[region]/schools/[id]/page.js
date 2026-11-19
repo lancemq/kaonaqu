@@ -465,7 +465,7 @@ export default async function SchoolDetailPage({ params }) {
       </section>
 
       <div className="channel-color-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <footer className="school-detail-footer"><div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div><p>© 2026 考哪去</p></footer>
+      <footer className="school-detail-footer"><div><strong>考哪去</strong><span>{config.brandSuffixFull}</span></div><p>© 2026 考哪去 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">沪ICP备2026057418号-2</a></p></footer>
     </main>
   );
 }

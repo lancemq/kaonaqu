@@ -235,7 +235,7 @@ export default async function UniversityDetailPage({ params }) {
         <nav aria-label="页脚导航">
           <SiteMenuLinks />
         </nav>
-        <p>© 2026 考哪去</p>
+        <p>© 2026 考哪去 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">沪ICP备2026057418号-2</a></p>
       </footer>
     </main>
   );
