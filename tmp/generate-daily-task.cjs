@@ -21,7 +21,7 @@ for (const l of fs.readFileSync(path.resolve(__dirname, '../.env.local'), 'utf8'
   const m = l.match(/^\s*([A-Za-z0-9_]+)\s*=\s*"?([^"]*)"?\s*$/);
   if (m) env[m[1]] = m[2];
 }
-let url = (env.POSTGRES_URL_NON_POOLING || env.POSTGRES_URL).replace(/[?&]sslmode=[^&]+/g, '');
+let url = (env.DATABASE_URL || env.DATABASE_URL || env.POSTGRES_URL_NON_POOLING || env.POSTGRES_URL).replace(/[?&]sslmode=[^&]+/g, '');
 
 const BATCH = Number((process.argv.find(a => a.startsWith('--batch=')) || '=20').split('=')[1]) || 20;
 

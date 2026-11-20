@@ -26,7 +26,7 @@ const arg = (n) => {
 const KEEP = Number(process.env.DB_BACKUP_KEEP || 14);
 const TABLES = (arg('tables') || 'schools,news,universities,schools_backup_20261029,news_backup_20261029').split(',').filter(Boolean);
 
-let url = (process.env.DATABASE_URL || process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || '').trim();
+let url = (process.env.DATABASE_URL || process.env.DATABASE_URL || process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || '').trim();
 if (!url) { console.error('BACKUP FAIL: 无数据库连接串'); process.exit(1); }
 // Supabase pooler：剥 sslmode + 显式 ssl 选项 + 关 channelBinding（backup-tables.cjs 同教训）
 url = url.replace(/[?&]sslmode=[^&]+/g, '');
