@@ -54,6 +54,16 @@ function shouldRedirectToNews(rest, features) {
 export function proxy(request) {
   const { pathname } = request.nextUrl;
 
+// 【域名迁移】旧域名 kaonaqu.xyz 全站 301 到 kaonaqu.cn（308：永久且保持方法/主体，
+// Google/百度均按永久重定向传递权重）。在 proxy 层完成，不进入函数——零计算成本。
+const REDIRECT_TARGET_HOST = 'kaonaqu.cn';
+if (request.nextUrl.hostname.endsWith('kaonaqu.xyz')) {
+  const target = request.nextUrl.clone();
+  target.protocol = 'https:';
+  target.host = REDIRECT_TARGET_HOST;
+  return NextResponse.redirect(target, 308);
+}
+
   // 根路径 / -> 308 /shanghai
   if (pathname === '/') {
     const url = request.nextUrl.clone();
