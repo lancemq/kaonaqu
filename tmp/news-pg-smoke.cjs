@@ -13,7 +13,7 @@ function loadEnvLocal() {
 }
 loadEnvLocal();
 
-let url = (process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || '').replace(/[?&]sslmode=[^&]+/g, '');
+let url = (process.env.DATABASE_URL || process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || '').replace(/[?&]sslmode=[^&]+/g, '');
 const store = require('../shared/data-store');
 
 (async () => {

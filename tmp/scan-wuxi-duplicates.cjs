@@ -12,7 +12,7 @@ function loadEnv() {
   return env;
 }
 const env = loadEnv();
-let url = env.POSTGRES_URL_NON_POOLING || env.POSTGRES_URL;
+let url = env.DATABASE_URL || env.POSTGRES_URL_NON_POOLING || env.POSTGRES_URL;
 url = url.replace(/[?&]sslmode=[^&]+/g, '');
 const norm = (n) => (n || '').replace(/\s+/g, '').replace(/（/g, '(').replace(/）/g, ')').toLowerCase();
 async function main() {
