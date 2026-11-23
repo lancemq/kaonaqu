@@ -1,5 +1,5 @@
 // 地区配置：集中所有"地区专属"规则（区目录、学校层级权重、考试满分、品牌、
-// SEO 文案模板等）。纯数据 + 纯函数，零外部依赖（不引入 supabase / next），
+// SEO 文案模板等）。纯数据 + 纯函数，零外部依赖（不引入数据库客户端 / next），
 // 可被 shared/（CJS require）、app server 组件（createRequire 桥接）、
 // 以及 proxy（经 .mjs 入口）安全引用。
 //

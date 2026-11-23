@@ -57,7 +57,7 @@ function requireFields(record, requiredFields) {
 }
 
 // 写操作不降级到本地缓存：DB 未配置时直接拒绝。
-function requireSupabase() {
+function requireDb() {
   if (!isPgConfigured()) {
     const error = new Error('数据库未配置，写操作不可用');
     error.statusCode = 503;
@@ -138,7 +138,7 @@ async function getSchoolById(id) {
 }
 
 async function createSchool(input) {
-  requireSupabase();
+  requireDb();
   const id = cleanString(input.id) || slugify(`${cleanString(input.districtId || input.district)}-${cleanString(input.name)}`);
   const region = cleanString(input.region) || DEFAULT_REGION;
   const school = buildSchoolRecord({ ...input, id, region });
@@ -147,7 +147,7 @@ async function createSchool(input) {
 }
 
 async function updateSchool(id, input) {
-  requireSupabase();
+  requireDb();
   // 取现有记录合并（getSchoolById 直接查 DB）
   const current = await getSchoolById(id);
   if (!current) {
@@ -161,7 +161,7 @@ async function updateSchool(id, input) {
 }
 
 async function deleteSchool(id) {
-  requireSupabase();
+  requireDb();
   // deleteSchoolFromSupabase 内部校验存在性（不存在抛 404）
   return deleteSchoolFromSupabase(id);
 }
@@ -196,7 +196,7 @@ async function getNewsById(id) {
 }
 
 async function createNews(input) {
-  requireSupabase();
+  requireDb();
   const id = cleanString(input.id) || slugify(`${cleanString(input.category || input.examType || 'news')}-${cleanString(input.title)}`);
   const region = cleanString(input.region) || DEFAULT_REGION;
   const news = buildNewsRecord({ ...input, id, region });
@@ -205,7 +205,7 @@ async function createNews(input) {
 }
 
 async function updateNews(id, input) {
-  requireSupabase();
+  requireDb();
   // 取现有记录合并（getNewsById 直接查 DB）
   const current = await getNewsById(id);
   if (!current) {
@@ -219,7 +219,7 @@ async function updateNews(id, input) {
 }
 
 async function deleteNews(id) {
-  requireSupabase();
+  requireDb();
   // deleteNewsFromSupabase 内部校验存在性（不存在抛 404）
   return deleteNewsFromSupabase(id);
 }

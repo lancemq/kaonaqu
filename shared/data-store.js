@@ -1,6 +1,7 @@
 // 数据层：自建 PostgreSQL（pg 驱动直连）读取 + 写入。
-// 2026-11-05 从 Supabase PostgREST 迁移（shared/supabase-client.js 保留但不再被本文件引用）。
+// 2026-11-05 从已废弃的 PostgREST 层迁移为 pg 直连；旧的 Supabase 客户端已移除。
 // 连接：shared/pg-client.js（DATABASE_URL / POSTGRES_URL_NON_POOLING / POSTGRES_URL）。
+// 注：写函数名保留 *InSupabase 历史后缀（底层已是 pg），避免破坏大量历史调用点。
 //
 // 迁移纪律：
 // - 每个函数的返回形态与 PostgREST 版本严格一致（jsonb 由 pg 驱动直接对象化，

@@ -7,20 +7,18 @@ const { handleApiRequest } = require('../../../shared/api-router');
 const { checkWriteAuth, getCorsOrigin, corsHeaders } = require('../../../shared/api-auth');
 
 // Route handler 不继承 layout 的 fetchCache 段配置，需单独设置。
-// force-cache 使 GET 请求的 Supabase 查询被 Data Cache 缓存（revalidate: SUPABASE_REVALIDATE，默认 300s），
+// force-cache 使 GET 请求的数据查询被 Data Cache 缓存，
 // 即使 handler 内先访问了 request.method / headers / searchParams 等 Request-time API。
 // 写操作（POST/PUT/DELETE）不受影响（非 GET，Data Cache 不缓存）。
 export const fetchCache = 'force-cache';
 
 // 写操作（POST/PUT/DELETE）成功后立即失效 Data Cache，确保读自己写一致性。
-// tag 与 shared/supabase-client.js cachedFetch 的 tags 对齐。
-const SUPABASE_DATA_TAG = 'supabase-data';
+const DATA_TAG = 'app-data';
 // 按表收窄失效范围：改新闻只失效 news-data（学校页 ISR 不受影响），反之亦然。
-// 表级 tag 由 shared/supabase-client.cachedFetch 按 REST URL 表名自动派生。
 function tagForPathname(pathname) {
   if (pathname.startsWith('/api/news')) return 'news-data';
   if (pathname.startsWith('/api/schools') || pathname.startsWith('/api/search') || pathname.startsWith('/api/districts')) return 'schools-data';
-  return SUPABASE_DATA_TAG;
+  return DATA_TAG;
 }
 
 function jsonError(statusCode, message, code, corsOrigin) {

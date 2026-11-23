@@ -2,6 +2,7 @@
 // 入库脚本：node scripts/import-to-supabase.mjs <city> [--exec]（在 data/jiangsu 目录下运行）
 // 默认 dry-run（只打印将写入的行数 + 抽样）；--exec 才真写库。
 // 按 slug upsert：DB 已存在该 slug 则 updateSchoolInSupabase，否则 createSchoolInSupabase。
+// （写函数名为历史命名，底层已是 pg 直连）
 // source 字段非 DB 列，写入前剥离。经 createRequire 桥接 CommonJS 的 shared/data-store.js。
 
 import fs from 'node:fs';
@@ -69,7 +70,7 @@ if (!exec) {
 }
 
 // --exec：按 slug upsert
-console.log('\n开始写入 Supabase schools 表（按 slug upsert）...');
+console.log('\n开始写入 schools 表（按 slug upsert）...');
 let created = 0;
 let updated = 0;
 const failures = [];

@@ -268,7 +268,7 @@ export async function generateMetadata({ params }) {
 }
 
 // searchParams 自动使页面动态渲染；fetchCache 由 app/layout.js 统一设为 force-cache，
-// Supabase 查询经 Next Data Cache 缓存（revalidate: 300s（SUPABASE_REVALIDATE_SECONDS 可调），tags: ['supabase-data']）。
+// 数据查询经 Next Data Cache 缓存，写操作后由 API 层 revalidateTag 失效。
 
 export default async function SchoolsPage({ params: routeParams, searchParams }) {
   const { region, config } = await getRegionContextFromParams(routeParams);

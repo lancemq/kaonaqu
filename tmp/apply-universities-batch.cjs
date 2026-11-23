@@ -63,7 +63,13 @@ function makeClient() {
               return (v !== null && typeof v === 'object') ? JSON.stringify(v) : v;
             });
             const sets = cols.map((c, i) => `${c} = $${i + 1}`).join(', ');
-            const whereSql = state.where.length ? ` WHERE ${state.where.join(' AND ')}` : '';
+            // FIX 2026-11-21: .eq() 生成 WHERE $N 时按 state.params 独立编号（从 $1 起），
+            // 但 update 的 SET 参数排在前面 → 占位符必须整体偏移 SET 参数个数，否则
+            // WHERE id=$1 实际指向 content(第一个 SET 列)，PG 推断 bigint vs jsonb 冲突。
+            const off = params.length;
+            const whereSql = state.where.length
+              ? ` WHERE ${state.where.map((w) => w.replace(/\$(\d+)/g, (_, n) => '$' + (Number(n) + off))).join(' AND ')}`
+              : '';
             rows = await q(`UPDATE ${state.table} SET ${sets}${whereSql} RETURNING *`, [...params, ...state.params]);
           } else if (state.deleteFlag) {
             const whereSql = state.where.length ? ` WHERE ${state.where.join(' AND ')}` : '';

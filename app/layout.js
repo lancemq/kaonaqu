@@ -47,7 +47,7 @@ const fontNotoSerifSC = Noto_Serif_SC({
 // 统一设置 fetchCache = 'force-cache'：使 Next.js Data Cache 对所有页面生效。
 // Previous Model auto 模式下，调用 searchParams / params / cookies 等 Request-time API
 // 之后的 fetch 默认不缓存（即使 fetch 显式设了 cache: 'force-cache' 也会被忽略）。
-// 段级 force-cache 覆盖此行为，使 Supabase 查询（cachedFetch）能被 Data Cache 缓存。
+// 段级 force-cache 覆盖此行为，使数据查询能被 Data Cache 缓存。
 // route handler（app/api/）不继承 layout 段配置，需单独设置（见 app/api/[...slug]/route.js）。
 // 注：dynamic = 'force-dynamic' 会把 fetchCache 默认改为 force-no-store 覆盖此设置，
 // 故各页面不再使用 force-dynamic（searchParams/params 已自动使页面动态渲染）。

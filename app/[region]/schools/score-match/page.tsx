@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// 学校数据经 Next Data Cache 缓存（revalidate: 300s（SUPABASE_REVALIDATE_SECONDS 可调），tags: ['supabase-data']），
+// 学校数据经 Next Data Cache 缓存，写操作后由 API 层 revalidateTag 失效），
 // 写操作后 revalidateTag 立即失效，保证评分匹配使用的数据不过时。
 
 export default async function ScoreMatchPage({ params }) {

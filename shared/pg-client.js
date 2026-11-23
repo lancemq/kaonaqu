@@ -1,14 +1,14 @@
 // pg 连接池单例（CommonJS，供 data-store / university-store 及迁移脚本使用）。
-// 取代 supabase-client（PostgREST over fetch）。目标库为自建 PostgreSQL
-//（服务器 124.221.252.243，本地开发可用 SUPABASE 直连串 POSTGRES_URL_NON_POOLING）。
+// 取代已废弃的 PostgREST over fetch 层。目标库为自建 PostgreSQL
+//（服务器 124.221.252.243，本地开发可用直连串 POSTGRES_URL_NON_POOLING）。
 //
 // 连接串来源（优先级）：
 //   DATABASE_URL           —— 生产首选（服务器部署用，标准 postgres:// URL）
-//   POSTGRES_URL_NON_POOLING —— 本地开发/迁移（Supabase 导出的直连串，剥 sslmode 用）
+//   POSTGRES_URL_NON_POOLING —— 本地开发/迁移（直连串，剥 sslmode 用）
 //   POSTGRES_URL           —— pooled 连接兜底
 //
 // SSL：默认拒绝自签证书失败（生产 pg 建议 accept_invalid_certificates 或正规 CA）。
-// 本地连 Supabase 需要 ssl={rejectUnauthorized:false}，由 PG_SSL_REJECT_UNAUTHORIZED=0 控制。
+// 本地连远端库需要 ssl={rejectUnauthorized:false}，由 PG_SSL_REJECT_UNAUTHORIZED=0 控制。
 const fs = require('fs');
 const path = require('path');
 
@@ -33,8 +33,8 @@ function rawConnectionString() {
   );
 }
 
-// Supabase 导出串带 ?sslmode=require&supa=... 等参数；pg 驱动对 sslmode=require
-// 会强制证书校验，Supabase pooler 证书链在本地 node 常校验失败 → 连接拒。
+// 连接串可能带 ?sslmode=require&supa=... 等参数；pg 驱动对 sslmode=require
+// 会强制证书校验，pooler 证书链在本地 node 常校验失败 → 连接拒。
 // 这里统一剥掉 sslmode 与 supa 参数，SSL 行为由 sslConfig() 显式控制。
 function normalizeConnectionString(raw) {
   let url = String(raw || '').trim();
@@ -47,7 +47,7 @@ function normalizeConnectionString(raw) {
 }
 
 function sslConfig() {
-  // PG_SSL_REJECT_UNAUTHORIZED=0 → 不校验证书（本地连 Supabase / 自签部署）
+  // PG_SSL_REJECT_UNAUTHORIZED=0 → 不校验证书（本地连远端库 / 自签部署）
   // 默认（生产正规 CA 或本机内网）走系统校验
   if (String(process.env.PG_SSL_REJECT_UNAUTHORIZED || '') === '0') {
     return { rejectUnauthorized: false };
@@ -88,7 +88,7 @@ async function query(sql, params = []) {
   return rows;
 }
 
-// 与 isSupabaseConfigured() 等价的运行时开关（data-store/content-service 沿用原名调用点已改）
+// 数据库是否已配置的运行时开关
 function isPgConfigured() {
   return !!rawConnectionString();
 }

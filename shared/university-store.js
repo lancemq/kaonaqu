@@ -1,6 +1,7 @@
 // 高校数据层：PostgreSQL universities 表 CRUD + 缓存瘦身列 + 出口清洗。
-// 2026-11-05 从 Supabase PostgREST 迁移为 pg 直连（shared/pg-client.js）。
+// 2026-11-05 从已废弃的 PostgREST 层迁移为 pg 直连（shared/pg-client.js）。
 // 独立于 schools（data-store.js）——高校为全局频道，无 region 概念。
+// 写函数名保留 *InSupabase 历史后缀（底层已是 pg），避免破坏研究流水线调用点。
 // 设计见 docs/高校知识库详细设计.md。
 //
 // - 列表查询排除 content/score_lines/disciplines 大字段（缓存瘦身）

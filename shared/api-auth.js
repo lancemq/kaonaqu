@@ -1,6 +1,6 @@
 // API 鉴权与 CORS 工具（CommonJS，供 app/api/[...slug]/route.js 与测试共用）。
 // 写操作（POST/PUT/DELETE）必须带合法 Bearer Token；GET/OPTIONS 只读放行。
-// 用于直连 service_role Supabase 的写 API 防护，未配置 token 时 fail-closed。
+// 写 API 鉴权防护，未配置 token 时 fail-closed。
 
 const { timingSafeEqual } = require('crypto');
 
