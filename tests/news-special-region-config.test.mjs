@@ -62,6 +62,22 @@ test('地区事实源 examTotal 覆盖四城中高考', () => {
   assert.equal(cfg.regions.nanjing.examTotal.zhongkao, 700);
 });
 
+test('体育改革专题页上海口径按地区隔离', () => {
+  const source = readFileSync('app/[region]/news/sports-reform/page.js', 'utf8');
+  // 页面标题/官方标题/侧栏注释均按 label 派生
+  assert.match(source, /const label = config\.label/);
+  assert.match(source, /const isShanghai = region === 'shanghai'/);
+  assert.match(source, /title=\{`\$\{currentYear\} \$\{label\}体育考试改革专题`\}/);
+  assert.match(source, /officialTitle=\{`这几份文件决定了今年\$\{label\}体育考试改革怎么走`\}/);
+  // 上海体育 30 分只能出现在 isShanghai 三元/分支内
+  assert.match(source, /const keyFacts = isShanghai \? \[/);
+  assert.match(source, /sideNotes=\{isShanghai \? \[/);
+  assert.match(source, /满分为 30 分/);
+  // 官方文件：上海走固定 ID，其他地区动态按官方来源取
+  assert.match(source, /const officialFocus = isShanghai/);
+  assert.match(source, /\.filter\(\(n\) => n\.source\?\.type === 'official'\)/);
+});
+
 test('专题组件对空数组不渲染，杜绝空壳区块', () => {
   const shell = readFileSync(SHELL, 'utf8');
   assert.match(shell, /officialItems\.length > 0/);
