@@ -295,17 +295,19 @@ export async function NewsTopicSpecialPage({
             </div>
           </section>
 
-          <section className="special-section">
-            <TopicSectionLabel>OFFICIAL FILES</TopicSectionLabel>
-            <h2>{officialTitle}</h2>
-            <div className="special-entry-stack">
-              {officialItems.map((item) => (
-                <TopicEntry key={item.id} item={item} />
-              ))}
-            </div>
-          </section>
+          {officialItems.length > 0 ? (
+            <section className="special-section">
+              <TopicSectionLabel>OFFICIAL FILES</TopicSectionLabel>
+              <h2>{officialTitle}</h2>
+              <div className="special-entry-stack">
+                {officialItems.map((item) => (
+                  <TopicEntry key={item.id} item={item} />
+                ))}
+              </div>
+            </section>
+          ) : null}
 
-          {sections.map((section) => (
+          {sections.filter((section) => section.items.length > 0).map((section) => (
             <section key={section.id} id={section.id} className="special-section">
               <TopicSectionLabel>{section.kicker}</TopicSectionLabel>
               <h2>{section.title}</h2>
@@ -317,15 +319,17 @@ export async function NewsTopicSpecialPage({
             </section>
           ))}
 
-          <section className="special-section">
-            <TopicSectionLabel>POLICIES</TopicSectionLabel>
-            <h2>{policyTitle}</h2>
-            <div className="special-entry-stack">
-              {policyItems.map((item) => (
-                <TopicEntry key={item.id} item={item} />
-              ))}
-            </div>
-          </section>
+          {policyItems.length > 0 ? (
+            <section className="special-section">
+              <TopicSectionLabel>POLICIES</TopicSectionLabel>
+              <h2>{policyTitle}</h2>
+              <div className="special-entry-stack">
+                {policyItems.map((item) => (
+                  <TopicEntry key={item.id} item={item} />
+                ))}
+              </div>
+            </section>
+          ) : null}
         </section>
 
         <aside className="special-side">
@@ -336,13 +340,15 @@ export async function NewsTopicSpecialPage({
             </section>
           ))}
 
-          <section className="channel-side-card is-dark compact">
-            <TopicSectionLabel>JUMP</TopicSectionLabel>
-            {sideLinks.map((item) => (
-              <a key={item.href} href={item.href}>{item.label}</a>
-            ))}
-            <RegionLink href="/news/admission-timeline">查看官方招生日程</RegionLink>
-          </section>
+          {sideLinks.length > 0 ? (
+            <section className="channel-side-card is-dark compact">
+              <TopicSectionLabel>JUMP</TopicSectionLabel>
+              {sideLinks.map((item) => (
+                <a key={item.href} href={item.href}>{item.label}</a>
+              ))}
+              <RegionLink href="/news/admission-timeline">查看官方招生日程</RegionLink>
+            </section>
+          ) : null}
         </aside>
       </section>
 
