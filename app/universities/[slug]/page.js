@@ -50,6 +50,31 @@ function groupScoreLines(lines) {
   return [...byProvince.entries()];
 }
 
+// 培养质量（outcome_stats）：指标中文标签 + 百分比格式化；口径见 docs/university-outcome-schema.md
+const OUTCOME_METRIC_LABELS = {
+  employmentRate: '毕业去向落实率',
+  furtherStudyRate: '继续深造率',
+  domesticRate: '国内深造率',
+  overseasRate: '出国(境)深造率',
+  directPhDRate: '直博比例'
+};
+function formatOutcomeRows(stats) {
+  return (Array.isArray(stats) ? stats : [])
+    .filter((o) => o && o.metrics && o.year)
+    .sort((a, b) => Number(b.year) - Number(a.year))
+    .map((o) => ({
+      year: o.year,
+      kind: o.kind || '就业质量',
+      verified: !!o.verified,
+      source: o.source || '',
+      sourceUrl: o.sourceUrl || '',
+      metrics: Object.entries(OUTCOME_METRIC_LABELS)
+        .filter(([k]) => o.metrics[k] != null && Number.isFinite(Number(o.metrics[k])))
+        .map(([k, label]) => ({ label, value: `${Number(o.metrics[k]).toFixed(2)}%` })),
+      note: o.note || ''
+    }));
+}
+
 export default async function UniversityDetailPage({ params }) {
   const { slug } = await params;
   const decoded = decodeURIComponent(slug);
@@ -61,6 +86,7 @@ export default async function UniversityDetailPage({ params }) {
     .sort((a, b) => RATING_ORDER.indexOf(a.rating || '') - RATING_ORDER.indexOf(b.rating || ''));
 
   const scoreGroups = groupScoreLines(u.scoreLines);
+  const outcomeRows = formatOutcomeRows(u.outcomeStats);
 
   // 相关推荐：同省 + 高 tag 权重，排除自身
   const all = await loadUniversitiesList();
@@ -198,6 +224,30 @@ export default async function UniversityDetailPage({ params }) {
               </div>
             ))}
           </section>
+
+          {outcomeRows.length > 0 && (
+            <section className="school-pencil-section" aria-label="培养质量">
+              <h2>培养质量（就业/深造）</h2>
+              {outcomeRows.map((o, i) => (
+                <div key={i} className="school-pencil-admission-block">
+                  <h3>{o.year} 届 · {o.kind}{o.verified ? '（官方公布）' : '（媒体/第三方）'}</h3>
+                  <div className="school-pencil-tags-list">
+                    {o.metrics.map((m) => (
+                      <span key={m.label} className="school-pencil-chipline">{m.label} {m.value}</span>
+                    ))}
+                  </div>
+                  {o.note && <p>{o.note}</p>}
+                  {o.source && (
+                    <p className="school-pencil-kicker">
+                      来源：{o.sourceUrl
+                        ? <a href={o.sourceUrl} target="_blank" rel="noopener noreferrer">{o.source}</a>
+                        : o.source}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </section>
+          )}
         </article>
 
         <aside className="school-pencil-sidebar">
