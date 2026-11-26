@@ -96,6 +96,7 @@ export default async function SuzhouPathwaysSpecialPage({ params }) {
   return (
     <NewsTopicSpecialPage
       region={region}
+      canonicalPath="/news/suzhou-pathways"
       kicker="SUZHOU PATHWAYS"
       title={`${currentYear} ${config.label}升学路径专题`}
       description="梳理苏州中考后的多元升学通道：职教高考班、中高职贯通（3+4、5+2）与国际课程高中，帮家庭按取向选对路径。"

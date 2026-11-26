@@ -2,6 +2,7 @@ import { RegionLink } from '../../../../components/region-link';
 import { notFound, redirect } from 'next/navigation';
 import { createRequire } from 'module';
 import { getSchoolDataQuality } from '../../../../lib/school-data-quality';
+import { encodePathSegment } from '../../../../lib/url-utils.mjs';
 import {
   getSchoolAdmissionStructured,
   getSchoolDistrictName,
@@ -81,18 +82,20 @@ export async function generateMetadata({ params }) {
   const stage = getSchoolStage(school);
   const ownership = getSchoolOwnershipLabel(school);
   const features = getSchoolFeatures(school).slice(0, 3).join('、');
+  const detailPath = `/${region}/schools/${encodePathSegment(id)}`;
 
   return {
     title: `${school.name}（${district}${ownership}${stage}）招生联系方式 | 考哪去`,
     description: `${school.name}位于${district}，${ownership}${stage}。${features ? '特色：' + features : ''}查看学校画像、招生路径与择校提示。`,
     keywords: [school.name, district, stage, ownership, `${config.label}学校`, '招生', '择校'].filter(Boolean),
-    alternates: { canonical: `/${region}/schools/${encodeURIComponent(id)}` },
+    alternates: { canonical: detailPath },
     openGraph: {
       type: 'article',
       locale: 'zh_CN',
       siteName: '考哪去',
       title: `${school.name}（${district}${ownership}${stage}）招生联系方式 | 考哪去`,
-      description: `${school.name}位于${district}，${ownership}${stage}。查看学校画像、招生路径与择校提示。`
+      description: `${school.name}位于${district}，${ownership}${stage}。查看学校画像、招生路径与择校提示。`,
+      url: `${SITE_URL}${detailPath}`
     }
   };
 }
@@ -126,7 +129,7 @@ export default async function SchoolDetailPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'School',
     'name': school.name,
-    'url': `${SITE_URL}/${region}/schools/${encodeURIComponent(school.id)}`,
+    'url': `${SITE_URL}/${region}/schools/${encodePathSegment(school.id)}`,
     ...(schoolSummary ? { 'description': schoolSummary } : {}),
     'address': {
       '@type': 'PostalAddress',

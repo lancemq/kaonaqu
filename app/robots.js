@@ -7,7 +7,13 @@ export default function robots() {
   return {
     rules: [
       { userAgent: '*', allow: '/', disallow },
-      { userAgent: 'Baiduspider', allow: '/', disallow }
+      { userAgent: 'Baiduspider', allow: '/', disallow },
+      // 显式允许生成式引擎抓取公开升学信息（与 * 规则一致，便于站点意图表达与被正确解析）。
+      {
+        userAgent: ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended', 'CCBot'],
+        allow: '/',
+        disallow
+      }
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL.replace(/^https?:\/\//, '')

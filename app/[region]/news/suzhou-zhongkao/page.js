@@ -112,6 +112,7 @@ export default async function SuzhouZhongkaoSpecialPage({ params }) {
   return (
     <NewsTopicSpecialPage
       region={region}
+      canonicalPath="/news/suzhou-zhongkao"
       kicker="SUZHOU ZHONGKAO"
       title={`${currentYear} ${config.label}中考政策详解`}
       description={`以 ${currentYear} 年苏州市高中阶段学校招生工作意见为依据，系统说明苏州中考录取批次、四市六区招生格局、指标生均衡分配、740 分构成与体育中考。`}

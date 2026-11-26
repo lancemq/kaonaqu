@@ -99,6 +99,8 @@ export default async function SuzhouGaokaoSpecialPage({ params }) {
 
   return (
     <NewsTopicSpecialPage
+      region={region}
+      canonicalPath="/news/suzhou-gaokao"
       kicker="SUZHOU GAOKAO"
       title={`${currentYear} ${config.label}高考与选考专题`}
       description="把江苏高考「3+1+2」模式、2027 版选考科目要求与 2026 录取时间轴、省控线串成一条清晰的行动线。"

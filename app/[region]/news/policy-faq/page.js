@@ -203,7 +203,8 @@ export async function generateMetadata({ params }) {
   const label = config.label;
   return {
     title: `${label}中考高考政策问答 - 高频问题与录取规则 | 考哪去`,
-    description: `集中查看${label}中考、高考升学中最常问的政策问题，包括报名资格、时间节点、志愿规则、高招通道选择、信息口径与下一步判断。`
+    description: `集中查看${label}中考、高考升学中最常问的政策问题，包括报名资格、时间节点、志愿规则、高招通道选择、信息口径与下一步判断。`,
+    alternates: { canonical: `/${region}/news/policy-faq` }
   };
 }
 

@@ -183,22 +183,58 @@ export async function NewsTopicSpecialPage({
   sideNotes,
   policyBlocks,
   contentId,
-  region
+  region,
+  canonicalPath
 }) {
   const regionStr = region || 'shanghai';
   const variantHref = {
     zhongkao: '/news/zhongkao-special',
     gaokao: '/news/gaokao-special',
-    sports: '/news/sports-reform'
+    sports: '/news/sports-reform',
+    faq: '/news/policy-faq',
+    glossary: '/news/policy-glossary'
   }[variant];
-  const collectionJsonLd = variantHref ? {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: title,
-    url: `${SITE_URL}/${regionStr}${variantHref}`,
-    description,
-    isPartOf: { '@type': 'WebSite', name: '考哪去', url: SITE_URL }
-  } : null;
+  const path = canonicalPath || variantHref;
+  let collectionJsonLd = null;
+  if (path) {
+    const pageUrl = `${SITE_URL}/${regionStr}${path}`;
+    const graph = [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${pageUrl}#page`,
+        name: title,
+        url: pageUrl,
+        description,
+        isPartOf: { '@type': 'WebSite', name: '考哪去', url: SITE_URL }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: '首页', item: `${SITE_URL}/${regionStr}` },
+          { '@type': 'ListItem', position: 2, name: '新闻', item: `${SITE_URL}/${regionStr}/news` },
+          { '@type': 'ListItem', position: 3, name: title, item: pageUrl }
+        ]
+      }
+    ];
+    // FAQ 页已有专用结构化数据，避免重复输出；其余专题把可见问答同步给生成式引擎。
+    const faqItems = variant === 'faq' ? [] : (policyBlocks || [])
+      .filter((block) => block.type === 'faq')
+      .flatMap((block) => Array.isArray(block.items) ? block.items : [])
+      .filter((item) => item && item.question && item.answer);
+    if (faqItems.length) {
+      graph.push({
+        '@type': 'FAQPage',
+        '@id': `${pageUrl}#faq`,
+        mainEntity: faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: { '@type': 'Answer', text: item.answer }
+        }))
+      });
+    }
+    collectionJsonLd = { '@context': 'https://schema.org', '@graph': graph };
+  }
 
   return (
     <main className={`special-page ${variant ? `is-${variant}` : ''}`}>

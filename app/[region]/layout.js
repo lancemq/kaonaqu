@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
     description,
     keywords,
     alternates: { canonical: `/${region}` },
-    openGraph: { type: 'website', title, description, url: siteUrl },
+    openGraph: { type: 'website', title, description, url: `${siteUrl.replace(/\/$/, '')}/${region}` },
     twitter: { card: 'summary_large_image', title, description }
   };
 }

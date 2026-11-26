@@ -1,4 +1,5 @@
 import { RegionLink } from '../../../../components/region-link';
+import { encodePathSegment } from '../../../../lib/url-utils.mjs';
 import { notFound } from 'next/navigation';
 import { createRequire } from 'module';
 import { getPolicyDetailHref, getPolicyMappedNewsId } from '../../../../lib/policy-detail';
@@ -370,13 +371,17 @@ export async function generateMetadata({ params }) {
       title: `${newsItem.title} - ${titleSuffix} | 考哪去`,
       description: newsItem.summary || `查看${cityLabel}升学新闻与政策详情。`,
       keywords: [examLabel, `${cityLabel}升学`, '政策解读', isPolicy ? '政策' : newsItem.newsType === 'exam' ? '考试' : '招生'],
-      alternates: { canonical: `/${region}/news/${encodeURIComponent(id)}` },
+      alternates: { canonical: `/${region}/news/${encodePathSegment(id)}` },
       openGraph: {
         type: 'article',
         locale: 'zh_CN',
         siteName: '考哪去',
         title: `${newsItem.title} - ${titleSuffix} | 考哪去`,
-        description: newsItem.summary || `查看${cityLabel}升学新闻与政策详情。`
+        description: newsItem.summary || `查看${cityLabel}升学新闻与政策详情。`,
+        url: `${SITE_URL}/${region}/news/${encodePathSegment(id)}`,
+        ...(newsItem.publishedAt ? { publishedTime: String(newsItem.publishedAt).slice(0, 10) } : {}),
+        ...(newsItem.updatedAt ? { modifiedTime: String(newsItem.updatedAt).slice(0, 10) } : {}),
+        ...(newsItem.source?.name ? { authors: [newsItem.source.name] } : {})
       }
     };
   }
@@ -454,8 +459,8 @@ function renderNewsDetail(item, relatedNewsAll, relatedSchools, region) {
     "@type": "NewsArticle",
     "headline": item.title,
     "description": item.summary || item.title,
-    "datePublished": item.publishedAt || '',
-    "dateModified": item.updatedAt || item.publishedAt || '',
+    ...(item.publishedAt ? { "datePublished": String(item.publishedAt).slice(0, 10) } : {}),
+    ...(item.updatedAt || item.publishedAt ? { "dateModified": String(item.updatedAt || item.publishedAt).slice(0, 10) } : {}),
     "image": [],
     "author": {
       "@type": "Organization",
@@ -469,7 +474,7 @@ function renderNewsDetail(item, relatedNewsAll, relatedSchools, region) {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/${region}/news/${encodeURIComponent(item.id)}`
+      "@id": `${SITE_URL}/${region}/news/${encodePathSegment(item.id)}`
     }
   };
 
@@ -593,8 +598,8 @@ function renderPolicyDetail(item, mappedNews, relatedPolicies, region) {
     "@type": "Article",
     "headline": item.title,
     "description": item.summary || item.title,
-    "datePublished": item.publishedAt || '',
-    "dateModified": item.publishedAt || '',
+    ...(item.publishedAt ? { "datePublished": String(item.publishedAt).slice(0, 10) } : {}),
+    ...(item.publishedAt ? { "dateModified": String(item.publishedAt).slice(0, 10) } : {}),
     "image": [],
     "author": {
       "@type": "Organization",
@@ -608,7 +613,7 @@ function renderPolicyDetail(item, mappedNews, relatedPolicies, region) {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/${region}/news/${encodeURIComponent(item.id)}`
+      "@id": `${SITE_URL}/${region}/news/${encodePathSegment(item.id)}`
     }
   };
 

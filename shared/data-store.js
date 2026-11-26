@@ -407,6 +407,21 @@ async function loadNewsIds(region = DEFAULT_REGION) {
   return rows.map((row) => row.id).filter(Boolean);
 }
 
+// sitemap 专用：新闻 id + 真实发布时间（lastmod 只用库内 published_at，禁止用当天日期伪造）。
+async function loadNewsSitemapEntries(region = DEFAULT_REGION) {
+  if (!isPgConfigured()) return [];
+  const rows = await query(
+    `SELECT id, published_at FROM news WHERE region = $1 ORDER BY published_at DESC`,
+    [region]
+  );
+  return rows
+    .map((row) => ({
+      id: row.id,
+      publishedAt: row.published_at ? String(row.published_at).slice(0, 10) : ''
+    }))
+    .filter((entry) => entry.id);
+}
+
 // 仅取学校 slug（= 详情路由 id）列表（sitemap 用）。
 async function loadSchoolIds(region = DEFAULT_REGION) {
   if (!isPgConfigured()) return [];
@@ -763,6 +778,7 @@ module.exports = {
   loadNewsList,
   loadSchoolsByDistrict,
   loadNewsIds,
+  loadNewsSitemapEntries,
   loadSchoolsMinimal,
   loadSchoolNamesByIds,
   loadSchoolsForRelated,
