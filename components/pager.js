@@ -89,17 +89,26 @@ export default function Pager({ currentPage = 1, totalPages = 1, onPageChange, r
     );
   }
 
-  // 链接模式才生成 href；回调模式下保持 button + onPageChange（否则拼出 undefined?page=N 坏链）
-  const prevHref = linkMode && safeCurrent > 1 ? hrefFor(safeCurrent - 1) : null;
-  const nextHref = linkMode && safeCurrent < totalPages ? hrefFor(safeCurrent + 1) : null;
+  // 链接模式生成 href；回调模式用 button + onPageChange（否则拼出 undefined?page=N 坏链）。
+  // 两种模式都要按边界启用/禁用前后页按钮，不能让回调模式的前后页永远 disabled。
+  const hasPrev = safeCurrent > 1;
+  const hasNext = safeCurrent < totalPages;
+  const prevHref = linkMode && hasPrev ? hrefFor(safeCurrent - 1) : null;
+  const nextHref = linkMode && hasNext ? hrefFor(safeCurrent + 1) : null;
+  const prevNode = linkMode ? (
+    <Link className="pager-prev" href={prevHref}>上一页</Link>
+  ) : (
+    <button className="pager-prev" type="button" onClick={() => goTo(safeCurrent - 1)}>上一页</button>
+  );
+  const nextNode = linkMode ? (
+    <Link className="pager-next" href={nextHref}>下一页</Link>
+  ) : (
+    <button className="pager-next" type="button" onClick={() => goTo(safeCurrent + 1)}>下一页</button>
+  );
 
   return (
     <div className="pager pager-enhanced" aria-label="分页导航">
-      {prevHref ? (
-        <Link className="pager-prev" href={prevHref}>上一页</Link>
-      ) : (
-        <button className="pager-prev" type="button" disabled>上一页</button>
-      )}
+      {hasPrev ? prevNode : <button className="pager-prev" type="button" disabled>上一页</button>}
 
       {pageItems.map((item, index) =>
         item === 'ellipsis' ? (
@@ -126,11 +135,7 @@ export default function Pager({ currentPage = 1, totalPages = 1, onPageChange, r
         )
       )}
 
-      {nextHref ? (
-        <Link className="pager-next" href={nextHref}>下一页</Link>
-      ) : (
-        <button className="pager-next" type="button" disabled>下一页</button>
-      )}
+      {hasNext ? nextNode : <button className="pager-next" type="button" disabled>下一页</button>}
 
       <form className="pager-jump" onSubmit={handleJump}>
         <label htmlFor="pager-jump-input">跳至</label>
